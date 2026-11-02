@@ -9,7 +9,7 @@ Protected startup is not a milestone. `Sitext` holds the PE entry point. Reachin
 | M2 representative static recompilation | done | Phase 3: 83 of 100 roots generated, and all 83 compiled. Phase 4 rerun of the same roots: 86 generated, 86 compiled. `repz ret` and `movmskps` are lowered |
 | M3 validated `.text` translation | done | Phase 5: the Phase 4 list of 6,604 functions, 6,598 generated, 6,598 compiled. The six failures are data reached by a jump. `fstpnce` was not implemented. The map now has 6,597 HIGH functions |
 | M4 native runtime proof of concept | done | Phase 6 ran `0x00721070`. Phase 7 runs a real `memset` call, a two-function call, and a three-function call on a mapped ordinary image. The game does not run |
-| M5 Win32 compatibility expansion | in progress | Real Undercover code has entered cdecl `memset`, `strlen`, `memcmp`, and `strcmp`, and the ST(0) helpers `_CIsin`, `_CIcos`, and `_CIacos`. Phase 10 executed the 31-function and 19-function closures; the completing paths enter 6 functions. Phase 11 ran the ordinary leaf that fills `0x0189D1A4`. Phase 13 traced that field to `call 0x00686000`, a three-argument helper whose body is not an ordinary function. Unknown imports fail closed. `win32_call` was not changed |
+| M5 Win32 compatibility expansion | in progress | Real Undercover code has entered cdecl `memset`, `strlen`, `memcmp`, and `strcmp`, and the ST(0) helpers `_CIsin`, `_CIcos`, and `_CIacos`. Phase 10 executed the 31-function and 19-function closures; the completing paths enter 6 functions. Phase 14 found that `call 0x00686000` is on 42 reachable high-confidence functions, not on the other 6,456, and not on the only `Direct3DCreate9` call. That call is still in an unreachable medium-confidence function. Unknown imports fail closed. `win32_call` was not changed |
 | M6 Direct3D 9 compatibility | future | the game's device and resource calls on the existing renderer |
 | M7 WebAssembly target | future | compile lifted C to Wasm |
 | M8 WebGPU renderer integration | future | Direct3D 9 calls on the browser renderer |
@@ -23,9 +23,11 @@ The order from here:
 1. STATIC RECOMPILATION. Done for the ordinary high-confidence list.
 2. ABI / CPU RUNTIME. Done for the tested paths: the integer helpers and the three ST(0) helpers.
 3. ORDINARY CALLBACK INITIALIZATION. Demonstrated. `0x009E8AD0` fills `0x0189D1A4`, and `0x0099DCD0` enters that target.
-4. ORDINARY OBJECT INITIALIZATION. Phase 12 found the writers. Phase 13 found that both writers depend on `call 0x00686000`, which 249 ordinary sites call as a three-argument pointer helper. The bytes at that address are not a function, and the first instruction leaves the image. That call was not replaced.
-5. LARGE INITIALIZATION EXECUTION. Not started. It waits on that call.
-6. GRAPHICS FRONTIER. `Direct3DCreate9` has one call, in a medium-confidence function that is not reachable from the high-confidence graph. This is not the next implementation.
-7. FIRST FRAME. Not started. Nothing here renders.
+4. ORDINARY OBJECT INITIALIZATION. Stopped. The writers of `0x0189DA84` and `[0x0189D0A0+8]` follow `call 0x00686000`. That address is an unavailable protected or external dependency. It is not substituted.
+5. DEPENDENCY CUT. Phase 14. Eleven reachable functions must hit that call, 31 can hit it on some walk, and 6,456 have no path to it. The 102-function closure at `0x0099DCD0` is in the last set and still needs the object field this call feeds. It is not the primary frontier.
+6. INDEPENDENT SUBSYSTEM FRONTIERS. The only `Direct3DCreate9` call does not use `0x00686000`. It sits in medium-confidence `0x0072E340`, behind `[0x01311E1C]`, which has no absolute writer. Direct3D was not implemented.
+7. FIRST FRAME, if a path becomes available. Not started. A factory pointer is not a frame.
+
+The strategy is ordinary static recompilation, then ordinary runtime islands, then this dependency cut, then independent subsystem frontiers, then a first-frame path if one is available.
 
 This sequence is not a claim that the game plays.

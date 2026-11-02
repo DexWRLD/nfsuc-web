@@ -162,11 +162,15 @@ The next cluster was taken from the high-confidence graph, not from a preselecte
 
 `0x00686000` is the target of 249 ordinary direct calls, 44 of them from high-confidence functions that the graph can reach. The calls take three stack arguments, the caller removes 12 bytes, and EAX is used as a pointer. The bytes at the address are not a function: the first instruction is `call 0xAE979FFB`, outside the image. Shifting the start by a few bytes does not find a prologue. The address is not an import thunk, not a data-table entry, and no ordinary instruction writes it. It was not replaced with `malloc`. `0x0055FF30` has four thiscall sites and the same kind of non-function bytes, without an out-of-image first instruction, so that one stays unclassified. Both object paths still stop on `0x00686000`. Details are in `analysis/undercover/runtime-phase13.md`.
 
+## Phase 14
+
+`0x00686000` remains unavailable and was not substituted. Of 6,498 reachable high-confidence functions, 11 must reach it, 31 can reach it, and 6,456 have no call-graph path. The 102 functions at `0x0099DCD0` are in the last set. Their executed prefix still needs an object field whose writer follows that call, so the closure stays retired as a primary frontier. `Direct3DCreate9` is one call inside medium-confidence `0x0072E340`. The span does not call the helper. The high-confidence caller `0x0072E5D0` is unreachable and only reaches the method when `[0x01311E1C]` is already 1. That dword has no absolute writer. The `.rdata` slot used before the import holds `0x008AA3AE`, an address inside `0x008A9480` rather than its entry. D3D9, TLS, and the filesystem were not implemented. Details are in `analysis/undercover/runtime-phase14.md`.
+
 ## Status
 
 STATIC CODE READINESS: established for the ordinary high-confidence `.text` list. 6,598 of 6,604 generate, and every generated function compiles. Compilation coverage is not the current limit.
 
-RUNTIME INITIALIZATION READINESS: partial. One ordinary leaf initializes the callback slot that blocked `0x0099DCD0`. The object pointer `0x0189DA84` and the field `[0x0189D0A0+8]` have ordinary writers, and both writers depend on `0x0189DA88`. The only store to that global is after `call 0x00686000`. Phase 13 counted 249 ordinary calls to that address and found no ordinary function body there.
+RUNTIME INITIALIZATION READINESS: partial. One ordinary leaf initializes the callback slot that blocked `0x0099DCD0`. The object pointer `0x0189DA84` and the field `[0x0189D0A0+8]` have ordinary writers, and both writers depend on `0x0189DA88`. The only store to that global is after `call 0x00686000`. Phase 14 kept that call unimplemented. It is a must-hit for 11 reachable functions and a possible hit for 31 more. The other 6,456 reachable high-confidence functions do not call it.
 
 INTEGER/STACK ABI: established for the tested paths. Cdecl `memset`, `strlen`, `memcmp`, and `strcmp` run from lifted callers, and the generated `add esp` removes the arguments. Unknown imports fail closed.
 
@@ -174,7 +178,7 @@ X87 CRT ABI: established in Phase 9 for `_CIsin`, `_CIcos`, and `_CIacos` as use
 
 DETERMINISTIC CLUSTER EXECUTION: established. Phase 8 ran the five-function string chain. Phase 9 ran the six-function `0x00A124B0` closure twice from the same state, then once with a second input. Phase 10 ran two larger static closures; the completing paths enter 6 functions and repeat.
 
-MAJOR NATIVE SUBSYSTEMS: future. The Phase 10 graph puts unresolved indirect calls and missing ordinary initialization ahead of filesystem, heap, timing, and Direct3D. Those subsystems are measured and not implemented.
+MAJOR NATIVE SUBSYSTEMS: future. Phase 14 found the only `Direct3DCreate9` call outside the helper cut, inside an unreachable medium-confidence function, behind a global with no absolute writer. Filesystem, timing, and thread-start calls exist on small independent closures. None of those subsystems was implemented.
 
 PROTECTED STARTUP: unresolved and outside this work. `Sitext` and the other protected sections are not read, executed, or rewritten.
 
@@ -184,4 +188,4 @@ The atomic helpers remain a single-threaded stand-in. The game does not boot or 
 
 ## Verdict
 
-The `0x00A124B0` closure runs, and Phase 10 can enter larger ordinary closures until a zero indirect slot or a null pointer. Phase 11 shows that slot has an ordinary writer and that executing the writer moves `0x0099DCD0` past it, onto another zero object field. Phase 12 finds the ordinary store for that field and stops at `call 0x00686000`, which is not an ordinary function. The game is not ready to boot.
+The `0x00A124B0` closure runs, and Phase 10 can enter larger ordinary closures until a zero indirect slot or a null pointer. Phase 11 shows that slot has an ordinary writer and that executing the writer moves `0x0099DCD0` past it, onto another zero object field. Phase 12 finds the ordinary store for that field and stops at `call 0x00686000`, which is not an ordinary function and is not substituted. Phase 14 shows that call is a narrow cut, and that `Direct3DCreate9` is on a different chain that still cannot be entered. The game is not ready to boot.
