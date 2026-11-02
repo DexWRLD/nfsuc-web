@@ -73,13 +73,15 @@ The NFSU2 import path rewrites `call [IAT]` / `jmp [IAT]` and `win32_call` then 
 
 `win32_call` is unchanged and still pops `4 * nargs` for NFSU2. `uc_abi_callee_bytes(UC_ABI_STDCALL, n)` is that same byte count. The two paths are not mixed.
 
-The first HLE set is `memcpy`, `memmove`, `memset`, `memcmp`, `strlen`, `strcmp`, and `strncmp`. Copies stay inside the guest image after a range check. `floor` and the `_CI*` math helpers are present in the metadata and are not implemented: their results use the x87 stack. Import tracing is off unless `uc_import_trace` is set.
+The first HLE set is `memcpy`, `memmove`, `memset`, `memcmp`, `strlen`, `strcmp`, and `strncmp`. Copies stay inside the guest image after a range check. `floor` remains unimplemented. `_CIsin`, `_CIcos`, and `_CIacos` are implemented as ST(0) replacements: the descriptor's `arg_loc` and `ret_loc` select that register, and a successful call does not write EAX. The host double function is only the mathematical operation. Import tracing is off unless `uc_import_trace` is set. An x87 failure reports EIP, TOP, ST(0), ST(1), FCW, and FSW. There is no tag word and no modeled x87 exception flag.
 
 `tools/uc_phase7_test.py` is the first harness that enters that dispatcher from a lifted Undercover call. `0x00739B90` and `0x009D9150` call the `memset` thunk `0x0087B2D6`. The generated `add esp, 0xc` removes the three cdecl arguments. The dispatcher removes only the return address.
 
 Direct calls between lifted functions go to the lifted body for that guest address. `dispatch_indirect` does not guess a target. An unknown target records the source function, `EIP`, the target, and the registers, and returns without a callee.
 
 The first cluster taken from the graph, rather than from a chosen subsystem, shares `0x009AE140`, `0x009AE2A0`, and `0x009DDA70`. `tools/uc_phase8_test.py` runs `0x009B0490`, `0x009AEBD0`, and `0x009AF0B0` through the existing `strlen`, `memcmp`, and `strcmp` helpers.
+
+`tools/uc_phase9_test.py` runs the next closed cluster, rooted at `0x00A124B0`. `0x00A11C50` calls `_CIsin` and `_CIcos`. `0x00A11AF0` calls `_CIacos`. The six functions return to the harness. The result is not a claim of bit-exact MSVCR80 math.
 
 ## Guest map
 

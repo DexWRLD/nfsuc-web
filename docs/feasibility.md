@@ -140,26 +140,30 @@ A read of `Sitext`, a write of `.rdata`, and an execute of `Sitext` fault with t
 
 ## Phase 8
 
-The next cluster was taken from the high-confidence graph, not from a preselected subsystem. Closures that reach unknown Winsock ordinals were left unrun. The executed cluster shares `0x009AE140`, `0x009AE2A0`, and `0x009DDA70`. `0x009B0490` calls `strlen`, `0x009AEBD0` calls `memcmp`, and `0x009AF0B0` calls `strcmp`. All three are existing cdecl helpers. A five-function chain through `strlen` returns the expected dwords, and the generated `add esp` removes one, three, or two arguments. Details are in `analysis/undercover/runtime-phase8.md`. The next closed candidate calls `_CIacos`, `_CIcos`, and `_CIsin` and was not run.
+The next cluster was taken from the high-confidence graph, not from a preselected subsystem. Closures that reach unknown Winsock ordinals were left unrun. The executed cluster shares `0x009AE140`, `0x009AE2A0`, and `0x009DDA70`. `0x009B0490` calls `strlen`, `0x009AEBD0` calls `memcmp`, and `0x009AF0B0` calls `strcmp`. All three are existing cdecl helpers. A five-function chain through `strlen` returns the expected dwords, and the generated `add esp` removes one, three, or two arguments. Details are in `analysis/undercover/runtime-phase8.md`. The next closed candidate calls `_CIacos`, `_CIcos`, and `_CIsin`.
+
+## Phase 9
+
+`tools/uc_phase9_test.py` executes that candidate. The call sites pass the argument in ST(0) and consume the result with `fstp`. `_CIsin`, `_CIcos`, and `_CIacos` replace ST(0) and do not write EAX. `0x00A11C50` and `0x00A11AF0` consume those results. The six functions under `0x00A124B0` return deterministically. A second input drops the sine and cosine calls and stores a different float. Host `sin`, `cos`, and `acos` are not claimed to match MSVCR80 bits. Details are in `analysis/undercover/runtime-phase9.md`.
 
 ## Status
 
 STATIC RECOMPILATION: established for the ordinary high-confidence `.text` list. 6,598 of 6,604 generate, and every generated function compiles.
 
-NATIVE SINGLE-FUNCTION EXECUTION: established in Phase 6. `0x00721070` runs in the native harness.
+INTEGER/STACK ABI: established for the tested paths. Cdecl `memset`, `strlen`, `memcmp`, and `strcmp` run from lifted callers, and the generated `add esp` removes the arguments. Unknown imports fail closed.
 
-IMPORT EXECUTION: established in Phase 7 for real cdecl `memset`, and extended in Phase 8 to real cdecl `strlen`, `memcmp`, and `strcmp`. Unknown imports fail closed.
+X87 CRT ABI: established in Phase 9 for `_CIsin`, `_CIcos`, and `_CIacos` as used by `0x00A124B0`. The argument and the result are ST(0). This is not bit-exact MSVCR80 math, and x87 exceptions are not modeled.
 
-MULTI-FUNCTION EXECUTION: established in Phase 7, and extended in Phase 8 to a five-function chain that calls `strlen`. Direct calls reach the lifted callee. An unresolved indirect target is not guessed.
+DETERMINISTIC CLUSTER EXECUTION: established. Phase 8 ran the five-function string chain. Phase 9 ran the six-function `0x00A124B0` closure twice from the same state, then once with a second input.
 
-ORDINARY DATA IMAGE: established in Phase 7. `.text`, `.rdata`, `.data`, `.tls`, and `.rsrc` are mapped at their guest addresses. `.data`'s virtual tail is zero. Checked accesses record the section and do not crash the host.
+MAJOR NATIVE SUBSYSTEMS: future. Direct3D, sound, input, sockets, and guest threads are not implemented.
 
 PROTECTED STARTUP: unresolved and outside this work. `Sitext` and the other protected sections are not read, executed, or rewritten.
 
-BROWSER / WASM: future work. The Undercover image above is a native test image. It is not a browser build.
+BROWSER/WASM: future work. The Undercover image above is a native test image. It is not a browser build.
 
 The atomic helpers remain a single-threaded stand-in. The game does not boot or run.
 
 ## Verdict
 
-The first such cluster has now run: the functions that share `0x009AE140` and call `strlen`, `memcmp`, and `strcmp`. The next closed candidate needs the x87 `_CI` sine, cosine, and arccosine helpers. The game is not ready to boot.
+The `0x00A124B0` closure now runs, including real `_CIsin`, `_CIcos`, and `_CIacos` calls whose results are consumed by the lifted callers. The game is not ready to boot.
