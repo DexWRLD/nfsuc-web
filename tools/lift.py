@@ -922,21 +922,54 @@ class Lifter:
             return [f"{{ uint32_t _v={E(0)} & {mask}, _c5=({cnt})&31u, _s=_c5 % {bits}u;"
                     f" if(_c5){{ uint32_t _r = _s ? ({fn0}) : _v; c->cf={cfx};"
                     f" if(_c5==1u) c->of={of1}; {W(0,'_r')} }} }}"]
-        if m == 'xadd':
-            # temporary: source and destination are swapped, then added
+        locked = m.startswith("lock ")
+        opname = m.split(" ", 1)[1] if locked else m
+        if opname == 'xadd':
+            # TEMP = SRC + DEST; SRC = DEST; DEST = TEMP. Flags match ADD.
+            # LOCK is a separate helper so a later native or WASM build can
+            # make the memory step atomic without changing the unlocked form.
+            if locked:
+                if o[0].type != X86_OP_MEM or bits not in (8, 16, 32):
+                    raise Unsupported(m)
+                nbyte = bits // 8
+                ea = self.ea(o[0].mem)
+                return [f"{{ uint32_t _s={E(1)}; uint32_t _d=guest_atomic_xadd((uint32_t)({ea}), _s, {nbyte}u);"
+                        f" uint32_t _r=_d+_s; FLAGS_ADD_M(_d,_s,_r,{bits},{self._fm()}); {W(1,'_d')} }}"]
             return [f"{{ uint32_t _d={E(0)}, _s={E(1)}, _r=_d+_s;"
                     f" FLAGS_ADD_M(_d,_s,_r,{bits},{self._fm()}); {W(1,'_d')} {W(0,'_r')} }}"]
-        if m == 'cmpxchg':
-            # compare with acc; if equal write the source to the destination, else the destination to acc
+        if opname == 'cmpxchg':
+            # Compare accumulator with DEST. Flags match that subtraction.
+            # Equal: DEST = SRC. Not equal: accumulator = DEST.
             acc = {8:"(uint8_t)c->eax",16:"(uint16_t)c->eax",32:"c->eax"}[bits]
             wacc = {8:"c->eax=(c->eax & 0xffffff00u)|((_d)&0xffu);",
                     16:"c->eax=(c->eax & 0xffff0000u)|((_d)&0xffffu);",
                     32:"c->eax=(_d);"}[bits]
-            # On the real CPU the flags come from an implicit "DEST - ACC" compare
-            # (measured with Rosetta); ZF is the same either way round.
+            if locked:
+                if o[0].type != X86_OP_MEM or bits not in (8, 16, 32):
+                    raise Unsupported(m)
+                nbyte = bits // 8
+                ea = self.ea(o[0].mem)
+                return [f"{{ uint32_t _a={acc}, _d=guest_atomic_cmpxchg((uint32_t)({ea}), _a, {E(1)}, {nbyte}u), _r=_d-_a;"
+                        f" FLAGS_SUB_M(_d,_a,_r,{bits},{self._fm()});"
+                        f" if(!c->zf){{ {wacc} }} }}"]
             return [f"{{ uint32_t _a={acc}, _d={E(0)}, _r=_d-_a;"
                     f" FLAGS_SUB_M(_d,_a,_r,{bits},{self._fm()});"
                     f" if(c->zf){{ {W(0,E(1))} }} else {{ {wacc} }} }}"]
+        if opname == 'cmpxchg8b':
+            # EDX:EAX is compared with the 64-bit memory operand. On a match
+            # ECX:EBX is stored and ZF=1. On a miss EDX:EAX becomes the memory
+            # value and ZF=0. The other arithmetic flags are architecturally
+            # undefined and are left alone. LOCK goes through the atomic helper.
+            if not o or o[0].type != X86_OP_MEM:
+                raise Unsupported(m)
+            ea = self.ea(o[0].mem)
+            if locked:
+                return [f"{{ uint32_t _lo, _hi; int _eq=guest_atomic_cmpxchg8b((uint32_t)({ea}), c->eax, c->edx, c->ebx, c->ecx, &_lo, &_hi);"
+                        f" c->zf=_eq?1u:0u; if(!_eq){{ c->eax=_lo; c->edx=_hi; }} }}"]
+            return [f"{{ uint32_t _lo=guest_atomic_load((uint32_t)({ea}), 4u), _hi=guest_atomic_load((uint32_t)({ea})+4u, 4u);"
+                    f" int _eq=(_lo==c->eax && _hi==c->edx); c->zf=_eq?1u:0u;"
+                    f" if(_eq){{ guest_atomic_store((uint32_t)({ea}), c->ebx, 4u); guest_atomic_store((uint32_t)({ea})+4u, c->ecx, 4u); }}"
+                    f" else {{ c->eax=_lo; c->edx=_hi; }} }}"]
         if m in ('bsf','bsr'):
             # if the source is 0, ZF=1 and the destination does NOT CHANGE
             fn = "_i=0; while(!((_v>>_i)&1u)) _i++;" if m=='bsf' else \
@@ -1232,15 +1265,54 @@ class Lifter:
                         f" for(int _k=0;_k<16;_k++)"
                         f" if(c->xmm[{XM[o[1].reg]}].b[_k] & 0x80u) _r|=1u<<_k;"
                         f" {W(0,'_r')} }}"]
-        if m == 'pshufd' and is_xm(0):
+        if m == 'pshufd' and is_xm(0) and len(o) > 2 and o[2].type == X86_OP_IMM:
+            # Each destination dword is a copy of one source dword. The
+            # immediate selects the lanes. Values stay integers.
             imm = o[2].imm & 0xff
-            sel = [(imm>>0)&3,(imm>>2)&3,(imm>>4)&3,(imm>>6)&3]
-            src = (f"c->xmm[{XM[o[1].reg]}]" if is_xm(1) else None)
-            if src is None: raise Unsupported(m)
+            sel = [(imm >> 0) & 3, (imm >> 2) & 3, (imm >> 4) & 3, (imm >> 6) & 3]
             di = XM[o[0].reg]
-            return [f"{{ uint32_t _t[4]; " +
-                    " ".join(f"_t[{k}]={src}.u32[{sel[k]}];" for k in range(4)) +
-                    " " + " ".join(f"c->xmm[{di}].u32[{k}]=_t[{k}];" for k in range(4)) + " }"]
+            if is_xm(1):
+                loads = " ".join(f"_t[{k}]=c->xmm[{XM[o[1].reg]}].u32[{sel[k]}];" for k in range(4))
+            elif is_mem(1):
+                ea = self.ea(o[1].mem)
+                loads = " ".join(f"_t[{k}]=MR32(({ea})+{sel[k] * 4}u);" for k in range(4))
+            else:
+                raise Unsupported(m)
+            stores = " ".join(f"c->xmm[{di}].u32[{k}]=_t[{k}];" for k in range(4))
+            return [f"{{ uint32_t _t[4]; {loads} {stores} }}"]
+        if m == 'pshuflw' and is_xm(0) and len(o) > 2 and o[2].type == X86_OP_IMM:
+            # Shuffle the low four 16-bit words. The high qword is copied.
+            imm = o[2].imm & 0xFF
+            sel = [(imm >> (2 * k)) & 3 for k in range(4)]
+            di = XM[o[0].reg]
+            if is_xm(1):
+                lo = f"c->xmm[{XM[o[1].reg]}].u64[0]"
+                hi = f"c->xmm[{XM[o[1].reg]}].u64[1]"
+            elif is_mem(1):
+                ea = self.ea(o[1].mem)
+                lo = f"MR64({ea})"
+                hi = f"MR64(({ea})+8u)"
+            else:
+                raise Unsupported(m)
+            picks = " ".join(
+                f"_r |= (uint64_t)(((_lo >> {sel[k] * 16}) & 0xffffu) << {k * 16});"
+                for k in range(4)
+            )
+            return [f"{{ uint64_t _lo={lo}, _hi={hi}, _r=0; {picks} c->xmm[{di}].u64[0]=_r; c->xmm[{di}].u64[1]=_hi; }}"]
+        if m in ('psrldq', 'pslldq') and is_xm(0) and len(o) > 1 and o[1].type == X86_OP_IMM:
+            # Shift the 16 raw bytes. Counts of 16 or more zero the register.
+            di = XM[o[0].reg]
+            count = o[1].imm & 0xFF
+            if count == 0:
+                return [f"/* {m} 0 */"]
+            if count >= 16:
+                return [f"for(int _i=0;_i<16;_i++) c->xmm[{di}].b[_i]=0;"]
+            if m == 'psrldq':
+                move = f"for(int _i=0;_i<{16 - count};_i++) c->xmm[{di}].b[_i]=_t[_i+{count}];"
+            else:
+                move = f"for(int _i={count};_i<16;_i++) c->xmm[{di}].b[_i]=_t[_i-{count}];"
+            return [f"{{ uint8_t _t[16]; for(int _i=0;_i<16;_i++) _t[_i]=c->xmm[{di}].b[_i];"
+                    f" for(int _i=0;_i<16;_i++) c->xmm[{di}].b[_i]=0; {move} }}"]
         if m in ('movq2dq',) and is_xm(0) and is_mm(1):
             return [f"c->xmm[{XM[o[0].reg]}].u64[0] = c->mm[{MM[o[1].reg]}];"
                     f" c->xmm[{XM[o[0].reg]}].u64[1] = 0;"]
@@ -1378,6 +1450,15 @@ class Lifter:
         # punpck / packuswb
         UNP = {'punpcklbw':(1,0),'punpcklwd':(2,0),'punpckldq':(4,0),
                'punpckhbw':(1,1),'punpckhwd':(2,1),'punpckhdq':(4,1)}
+        if m == 'punpcklqdq' and is_xm(0) and (is_xm(1) or is_mem(1)):
+            # Low qword of dest stays. Low qword of src becomes the high qword.
+            di = XM[o[0].reg]
+            return [f"c->xmm[{di}].u64[1] = (uint64_t)({qwords(1, 0)});"]
+        if m == 'punpckhqdq' and is_xm(0) and (is_xm(1) or is_mem(1)):
+            # High qword of dest becomes the low qword. High qword of src becomes the high qword.
+            di = XM[o[0].reg]
+            return [f"{{ uint64_t _d=(uint64_t)({qwords(0, 1)}), _s=(uint64_t)({qwords(1, 1)});"
+                    f" c->xmm[{di}].u64[0]=_d; c->xmm[{di}].u64[1]=_s; }}"]
         if m in UNP and is_xm(0):
             # 128-bit: the low (punpckl*) or high (punpckh*) qwords of both
             # operands interleave into the whole register

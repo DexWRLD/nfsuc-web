@@ -97,6 +97,55 @@ uint8_t *guest_memchk(uint32_t a, unsigned n, const char *fn);
 #define MRF64(a) (*(double   *)(g_mem + (uint32_t)(a)))
 #endif
 
+/* Guest atomic read-modify-write.
+ *
+ * LOCK is not discarded. A locked xadd, cmpxchg, or cmpxchg8b in lifted C
+ * calls one of these helpers. An unlocked xadd or cmpxchg does not.
+ *
+ * The bodies below are the single-threaded compile harness: one guest
+ * load and one guest store, with no host lock and no wasm atomic. A native
+ * multithreaded runtime, and a WASM build that uses shared memory, must
+ * replace the body with a real atomic of the same width. Until that
+ * replacement exists, this is not a correct browser or multiprocessor
+ * atomic. cmpxchg8b is two little-endian 32-bit halves through byte
+ * accesses, not a cast of the guest address to uint64_t*. */
+static inline uint32_t guest_atomic_load(uint32_t addr, unsigned n) {
+    uint8_t *p = g_mem + addr;
+    uint32_t v = 0;
+    for (unsigned i = 0; i < n; i++) v |= (uint32_t)p[i] << (8u * i);
+    return v;
+}
+static inline void guest_atomic_store(uint32_t addr, uint32_t v, unsigned n) {
+    uint8_t *p = g_mem + addr;
+    for (unsigned i = 0; i < n; i++) p[i] = (uint8_t)(v >> (8u * i));
+}
+static inline uint32_t guest_atomic_xadd(uint32_t addr, uint32_t addend, unsigned n) {
+    uint32_t old = guest_atomic_load(addr, n);
+    uint32_t mask = n == 4 ? 0xffffffffu : (1u << (8u * n)) - 1u;
+    guest_atomic_store(addr, (old + addend) & mask, n);
+    return old;
+}
+static inline uint32_t guest_atomic_cmpxchg(uint32_t addr, uint32_t expected, uint32_t replacement, unsigned n) {
+    uint32_t old = guest_atomic_load(addr, n);
+    uint32_t mask = n == 4 ? 0xffffffffu : (1u << (8u * n)) - 1u;
+    if ((old & mask) == (expected & mask)) guest_atomic_store(addr, replacement & mask, n);
+    return old;
+}
+static inline int guest_atomic_cmpxchg8b(uint32_t addr, uint32_t eax, uint32_t edx,
+                                         uint32_t ebx, uint32_t ecx,
+                                         uint32_t *old_lo, uint32_t *old_hi) {
+    uint32_t lo = guest_atomic_load(addr, 4);
+    uint32_t hi = guest_atomic_load(addr + 4u, 4);
+    *old_lo = lo;
+    *old_hi = hi;
+    if (lo == eax && hi == edx) {
+        guest_atomic_store(addr, ebx, 4);
+        guest_atomic_store(addr + 4u, ecx, 4);
+        return 1;
+    }
+    return 0;
+}
+
 enum { R_EAX=0,R_ECX,R_EDX,R_EBX,R_ESP,R_EBP,R_ESI,R_EDI };
 
 /* An indirect or out-of-range jmp at the end of a lifted function: control

@@ -508,9 +508,6 @@ def _sum_counter(rows, key):
 
 
 REAL_GAP_MNEMONICS = (
-    "movmskps", "repz ret", "rep ret",
-    "lock xadd", "lock cmpxchg", "lock cmpxchg8b",
-    "pshuflw", "psrldq", "pslldq",
     "fnsave", "frstor", "fnstenv", "fsave", "fstenv",
 )
 
