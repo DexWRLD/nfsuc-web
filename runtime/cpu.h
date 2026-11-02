@@ -88,6 +88,18 @@ uint8_t *guest_memchk(uint32_t a, unsigned n, const char *fn);
 #define MR64(a)  (*(gm_u64  *)(GMEM_ + (uint32_t)(a)))
 #define MRF32(a) (*(gm_f32  *)(GMEM_ + (uint32_t)(a)))
 #define MRF64(a) (*(gm_f64  *)(GMEM_ + (uint32_t)(a)))
+#elif defined(UC_GUEST_CHECKED)
+/* Undercover native tests. The NFSU2 default below is unchanged when this
+ * macro is absent. A checked load returns a host pointer only after the
+ * region table accepts the address. Stores in lifted C that must observe
+ * write permission call uc_guest_store* instead of assigning through MR. */
+uint8_t *uc_guest_ptr(uint32_t addr, unsigned n, int write);
+#define MR8(a)   (*(uint8_t  *)uc_guest_ptr((uint32_t)(a), 1, 0))
+#define MR16(a)  (*(uint16_t *)uc_guest_ptr((uint32_t)(a), 2, 0))
+#define MR32(a)  (*(uint32_t *)uc_guest_ptr((uint32_t)(a), 4, 0))
+#define MR64(a)  (*(uint64_t *)uc_guest_ptr((uint32_t)(a), 8, 0))
+#define MRF32(a) (*(float    *)uc_guest_ptr((uint32_t)(a), 4, 0))
+#define MRF64(a) (*(double   *)uc_guest_ptr((uint32_t)(a), 8, 0))
 #else
 #define MR8(a)   (*(uint8_t  *)(g_mem + (uint32_t)(a)))
 #define MR16(a)  (*(uint16_t *)(g_mem + (uint32_t)(a)))
@@ -95,6 +107,12 @@ uint8_t *guest_memchk(uint32_t a, unsigned n, const char *fn);
 #define MR64(a)  (*(uint64_t *)(g_mem + (uint32_t)(a)))
 #define MRF32(a) (*(float    *)(g_mem + (uint32_t)(a)))
 #define MRF64(a) (*(double   *)(g_mem + (uint32_t)(a)))
+#endif
+
+#if defined(UC_GUEST_CHECKED)
+#define UC_ATOMIC_PTR(addr, n, write) uc_guest_ptr((addr), (n), (write))
+#else
+#define UC_ATOMIC_PTR(addr, n, write) (g_mem + (addr))
 #endif
 
 /* Guest atomic read-modify-write.
@@ -110,13 +128,13 @@ uint8_t *guest_memchk(uint32_t a, unsigned n, const char *fn);
  * atomic. cmpxchg8b is two little-endian 32-bit halves through byte
  * accesses, not a cast of the guest address to uint64_t*. */
 static inline uint32_t guest_atomic_load(uint32_t addr, unsigned n) {
-    uint8_t *p = g_mem + addr;
+    uint8_t *p = UC_ATOMIC_PTR(addr, n, 0);
     uint32_t v = 0;
     for (unsigned i = 0; i < n; i++) v |= (uint32_t)p[i] << (8u * i);
     return v;
 }
 static inline void guest_atomic_store(uint32_t addr, uint32_t v, unsigned n) {
-    uint8_t *p = g_mem + addr;
+    uint8_t *p = UC_ATOMIC_PTR(addr, n, 1);
     for (unsigned i = 0; i < n; i++) p[i] = (uint8_t)(v >> (8u * i));
 }
 static inline uint32_t guest_atomic_xadd(uint32_t addr, uint32_t addend, unsigned n) {
