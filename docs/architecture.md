@@ -79,6 +79,8 @@ The first HLE set is `memcpy`, `memmove`, `memset`, `memcmp`, `strlen`, `strcmp`
 
 Direct calls between lifted functions go to the lifted body for that guest address. `dispatch_indirect` does not guess a target. An unknown target records the source function, `EIP`, the target, and the registers, and returns without a callee.
 
+The first cluster taken from the graph, rather than from a chosen subsystem, shares `0x009AE140`, `0x009AE2A0`, and `0x009DDA70`. `tools/uc_phase8_test.py` runs `0x009B0490`, `0x009AEBD0`, and `0x009AF0B0` through the existing `strlen`, `memcmp`, and `strcmp` helpers.
+
 ## Guest map
 
 The NFSU2 runtime reserves a guest image at `0x00400000` .. `0x00932000` and a dispatch table sized for that `.text`. That map is unchanged.

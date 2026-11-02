@@ -138,15 +138,19 @@ Seven CRT imports have HLE bodies: `memcpy`, `memmove`, `memset`, `memcmp`, `str
 
 A read of `Sitext`, a write of `.rdata`, and an execute of `Sitext` fault with the section name. The host process continues. No protected section is mapped. No new import was added. The game is not executed.
 
+## Phase 8
+
+The next cluster was taken from the high-confidence graph, not from a preselected subsystem. Closures that reach unknown Winsock ordinals were left unrun. The executed cluster shares `0x009AE140`, `0x009AE2A0`, and `0x009DDA70`. `0x009B0490` calls `strlen`, `0x009AEBD0` calls `memcmp`, and `0x009AF0B0` calls `strcmp`. All three are existing cdecl helpers. A five-function chain through `strlen` returns the expected dwords, and the generated `add esp` removes one, three, or two arguments. Details are in `analysis/undercover/runtime-phase8.md`. The next closed candidate calls `_CIacos`, `_CIcos`, and `_CIsin` and was not run.
+
 ## Status
 
 STATIC RECOMPILATION: established for the ordinary high-confidence `.text` list. 6,598 of 6,604 generate, and every generated function compiles.
 
 NATIVE SINGLE-FUNCTION EXECUTION: established in Phase 6. `0x00721070` runs in the native harness.
 
-IMPORT EXECUTION: established in Phase 7 for real cdecl `memset`. `0x00739B90` and `0x009D9150` call the thunk and return. The other conventions are still the Phase 6 synthetic checks. Unknown imports fail closed.
+IMPORT EXECUTION: established in Phase 7 for real cdecl `memset`, and extended in Phase 8 to real cdecl `strlen`, `memcmp`, and `strcmp`. Unknown imports fail closed.
 
-MULTI-FUNCTION EXECUTION: established in Phase 7 for a two-function pair and a three-function chain. Direct calls reach the lifted callee. An unresolved indirect target is not guessed.
+MULTI-FUNCTION EXECUTION: established in Phase 7, and extended in Phase 8 to a five-function chain that calls `strlen`. Direct calls reach the lifted callee. An unresolved indirect target is not guessed.
 
 ORDINARY DATA IMAGE: established in Phase 7. `.text`, `.rdata`, `.data`, `.tls`, and `.rsrc` are mapped at their guest addresses. `.data`'s virtual tail is zero. Checked accesses record the section and do not crash the host.
 
@@ -158,4 +162,4 @@ The atomic helpers remain a single-threaded stand-in. The game does not boot or 
 
 ## Verdict
 
-The next step is a native subsystem that a selected ordinary function actually calls, still without entering `Sitext` and still without graphics. The game is not ready to boot.
+The first such cluster has now run: the functions that share `0x009AE140` and call `strlen`, `memcmp`, and `strcmp`. The next closed candidate needs the x87 `_CI` sine, cosine, and arccosine helpers. The game is not ready to boot.
