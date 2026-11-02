@@ -1,0 +1,1004 @@
+{
+  "old_counts": {
+    "REJECTED_DATA_LIKE": 514,
+    "MEDIUM_CONFIDENCE": 50,
+    "HIGH_CONFIDENCE": 6597,
+    "LOW_CONFIDENCE": 20
+  },
+  "new_counts": {
+    "REJECTED_DATA_LIKE": 1454,
+    "MEDIUM_CONFIDENCE": 165,
+    "HIGH_CONFIDENCE": 22779,
+    "LOW_CONFIDENCE": 54
+  },
+  "old_covered_bytes": 1851810,
+  "new_covered_bytes": 3864703,
+  "text_size": 7730171,
+  "old_coverage_pct": 23.96,
+  "new_coverage_pct": 50.0,
+  "cohort_size": 1782,
+  "cohort_outcomes": {
+    "CFG_BUDGET_EXCEEDED": 3,
+    "PROMOTED_HIGH": 1769,
+    "REMAINS_MEDIUM": 5,
+    "REJECTED_DATA": 3,
+    "DEMOTED_LOW": 2
+  },
+  "cfg_budget_exceeded": 72,
+  "strong_cfg_enrolled": 14868,
+  "termination_counts": {
+    "NO_TERMINATOR": 206,
+    "OVERLAP_CONFLICT": 40,
+    "DECODE_FAILURE": 685,
+    "MULTIPLE_RETURNS": 4489,
+    "RET_REACHED": 16415,
+    "CFG_BUDGET_EXCEEDED": 72,
+    "TAIL_TRANSFER": 2200,
+    "UNKNOWN": 319,
+    "EXTERNAL_BOUNDARY": 26
+  },
+  "newly_high_count": 16202,
+  "lost_high_count": 20,
+  "generation": {
+    "attempted": 22779,
+    "generated": 22770,
+    "compiled": 22770,
+    "compiler_failures": 0,
+    "fail_mnemonics": [
+      [
+        "int",
+        7
+      ],
+      [
+        "fbstp",
+        2
+      ]
+    ],
+    "indirect_calls": 20969,
+    "external_edges": 37,
+    "switches": 295,
+    "rejected_switches": 65,
+    "source_bytes": 103023875,
+    "translation_units": 22770,
+    "compile_seconds": 155.1,
+    "failed_functions": [
+      "0x0070E3B0",
+      "0x0070E3C0",
+      "0x0070E3D0",
+      "0x0070E3E0",
+      "0x0070E3F0",
+      "0x0070E400",
+      "0x007BABC0",
+      "0x0085F820",
+      "0x00865B10"
+    ],
+    "compiler_failed_functions": []
+  },
+  "helper_cut": {
+    "MUST": 74,
+    "MAY": 139,
+    "NO_PATH": 22394,
+    "high": 22607
+  },
+  "unknown_b": [
+    {
+      "site": "0x00793AFA",
+      "kind": "call",
+      "owner": "0x00793A30",
+      "label": "MEDIUM_CONFIDENCE",
+      "reachable": true
+    },
+    {
+      "site": "0x0079478A",
+      "kind": "call",
+      "owner": "0x00794690",
+      "label": "HIGH_CONFIDENCE",
+      "reachable": true
+    },
+    {
+      "site": "0x00794CA0",
+      "kind": "call",
+      "owner": "0x00794C10",
+      "label": "HIGH_CONFIDENCE",
+      "reachable": true
+    },
+    {
+      "site": "0x008101E6",
+      "kind": "call",
+      "owner": "0x008101B0",
+      "label": "HIGH_CONFIDENCE",
+      "reachable": true
+    }
+  ],
+  "graphics": {
+    "0x00766730": {
+      "label": "HIGH_CONFIDENCE",
+      "score": 105,
+      "reachable": true,
+      "insns": 227,
+      "blocks": 25,
+      "termination": "RET_REACHED",
+      "calls": [
+        "0x004A74F0",
+        "0x004AAFD0",
+        "0x00686F30",
+        "0x00695490",
+        "0x0071E630",
+        "0x00723A00",
+        "0x00727F40",
+        "0x0072E5C0",
+        "0x0072E5D0",
+        "0x00730450",
+        "0x0073A5C0",
+        "0x0073F4E0",
+        "0x007661A0",
+        "0x00977300",
+        "0x009773B0"
+      ],
+      "tails": [],
+      "callers_e8": [],
+      "pred": []
+    },
+    "0x0072E5D0": {
+      "label": "HIGH_CONFIDENCE",
+      "score": 105,
+      "reachable": true,
+      "insns": 130,
+      "blocks": 16,
+      "termination": "MULTIPLE_RETURNS",
+      "calls": [
+        "0x00695490",
+        "0x0071DD00",
+        "0x007297D0",
+        "0x0072E340",
+        "0x007304D0",
+        "0x00731B30",
+        "0x0077FEE0",
+        "0x009773B0",
+        "0x00977420"
+      ],
+      "tails": [],
+      "callers_e8": [
+        "0x00766773"
+      ],
+      "pred": [
+        "0x00766730"
+      ]
+    },
+    "0x0072E340": {
+      "label": "HIGH_CONFIDENCE",
+      "score": 105,
+      "reachable": true,
+      "insns": 351,
+      "blocks": 12,
+      "termination": "MULTIPLE_RETURNS",
+      "calls": [
+        "0x0071DB40",
+        "0x0071DE60",
+        "0x0071EA40",
+        "0x00723610",
+        "0x007237B0",
+        "0x00729750",
+        "0x0072B7D0",
+        "0x0072DCA0",
+        "0x0072DD00",
+        "0x0072DD60",
+        "0x0072DDC0",
+        "0x0072DF90",
+        "0x0087A79C"
+      ],
+      "tails": [],
+      "callers_e8": [
+        "0x0072E612"
+      ],
+      "pred": [
+        "0x0072E5D0"
+      ]
+    },
+    "0x0072DD00": {
+      "label": "HIGH_CONFIDENCE",
+      "score": 105,
+      "reachable": true,
+      "insns": 33,
+      "blocks": 4,
+      "termination": "RET_REACHED",
+      "calls": [
+        "0x00728FA0"
+      ],
+      "tails": [
+        "0x0072D730"
+      ],
+      "callers_e8": [
+        "0x0072E3A4",
+        "0x0072E3C5"
+      ],
+      "pred": [
+        "0x0072E340"
+      ]
+    },
+    "0x00722D60": {
+      "label": "HIGH_CONFIDENCE",
+      "score": 105,
+      "reachable": true,
+      "insns": 24,
+      "blocks": 5,
+      "termination": "RET_REACHED",
+      "calls": [
+        "0x0071EB40",
+        "0x009773B0"
+      ],
+      "tails": [],
+      "callers_e8": [],
+      "pred": []
+    }
+  },
+  "d3d_shortest_chain": [
+    "0x0087A79C",
+    "0x0072E340"
+  ],
+  "d3d_high_chain": [
+    "0x0087A79C",
+    "0x0072E340"
+  ],
+  "d3d_independent_chain": [
+    "0x0087A79C",
+    "0x0072E340"
+  ],
+  "flag_writer_e8_callers": 0,
+  "flag_writer_abs_refs": 0,
+  "flag_writer_preds": [],
+  "slots": {
+    "0x00B611D4": {
+      "value": "0x008A9F58",
+      "class": "INVALID_INSTRUCTION_BOUNDARY",
+      "in_map": false,
+      "map_label": null
+    },
+    "0x00B61188": {
+      "value": "0x008AB180",
+      "class": "INVALID_INSTRUCTION_BOUNDARY",
+      "in_map": false,
+      "map_label": null
+    },
+    "0x00B615C4": {
+      "value": "0x008AA3AE",
+      "class": "INVALID_INSTRUCTION_BOUNDARY",
+      "in_map": false,
+      "map_label": null
+    }
+  },
+  "tls_writes": [],
+  "object_refs": [
+    {
+      "kind": "ADDRESS_TAKEN",
+      "eip": "0x0071E9B1",
+      "owner": "0x0071E9A0",
+      "label": "HIGH_CONFIDENCE",
+      "reachable": true,
+      "text": "mov ecx, 0x01318170",
+      "conf": "high"
+    },
+    {
+      "kind": "ADDRESS_TAKEN",
+      "eip": "0x0071E9D2",
+      "owner": "0x0071E9A0",
+      "label": "HIGH_CONFIDENCE",
+      "reachable": true,
+      "text": "mov ecx, 0x01318170",
+      "conf": "high"
+    },
+    {
+      "kind": "ADDRESS_TAKEN",
+      "eip": "0x0071E9E0",
+      "owner": "0x0071E9A0",
+      "label": "HIGH_CONFIDENCE",
+      "reachable": true,
+      "text": "mov ecx, 0x01318170",
+      "conf": "high"
+    },
+    {
+      "kind": "ADDRESS_TAKEN",
+      "eip": "0x0071E9F5",
+      "owner": "0x0071E9A0",
+      "label": "HIGH_CONFIDENCE",
+      "reachable": true,
+      "text": "mov ecx, 0x01318170",
+      "conf": "high"
+    },
+    {
+      "kind": "ADDRESS_TAKEN",
+      "eip": "0x0071EA03",
+      "owner": "0x0071E9A0",
+      "label": "HIGH_CONFIDENCE",
+      "reachable": true,
+      "text": "mov ecx, 0x01318170",
+      "conf": "high"
+    },
+    {
+      "kind": "ADDRESS_TAKEN",
+      "eip": "0x0071EA11",
+      "owner": "0x0071E9A0",
+      "label": "HIGH_CONFIDENCE",
+      "reachable": true,
+      "text": "mov ecx, 0x01318170",
+      "conf": "high"
+    },
+    {
+      "kind": "ADDRESS_TAKEN",
+      "eip": "0x00725D6F",
+      "owner": "0x00725CA0",
+      "label": "HIGH_CONFIDENCE",
+      "reachable": true,
+      "text": "mov ecx, 0x01318170",
+      "conf": "high"
+    },
+    {
+      "kind": "ADDRESS_TAKEN",
+      "eip": "0x00727F81",
+      "owner": "0x00727F40",
+      "label": "HIGH_CONFIDENCE",
+      "reachable": true,
+      "text": "mov ecx, 0x01318170",
+      "conf": "high"
+    },
+    {
+      "kind": "ADDRESS_TAKEN",
+      "eip": "0x0072973F",
+      "owner": "0x00729720",
+      "label": "HIGH_CONFIDENCE",
+      "reachable": true,
+      "text": "mov ecx, 0x01318170",
+      "conf": "high"
+    },
+    {
+      "kind": "ADDRESS_TAKEN",
+      "eip": "0x0072B1A2",
+      "owner": "0x0072B030",
+      "label": "HIGH_CONFIDENCE",
+      "reachable": true,
+      "text": "mov ecx, 0x01318170",
+      "conf": "high"
+    },
+    {
+      "kind": "ADDRESS_TAKEN",
+      "eip": "0x0072B353",
+      "owner": "0x0072B030",
+      "label": "HIGH_CONFIDENCE",
+      "reachable": true,
+      "text": "mov ecx, 0x01318170",
+      "conf": "high"
+    },
+    {
+      "kind": "ADDRESS_TAKEN",
+      "eip": "0x0072E5C0",
+      "owner": "0x0072E5C0",
+      "label": "HIGH_CONFIDENCE",
+      "reachable": true,
+      "text": "mov ecx, 0x01318170",
+      "conf": "high"
+    },
+    {
+      "kind": "ADDRESS_TAKEN",
+      "eip": "0x007318C4",
+      "owner": "0x00731730",
+      "label": "HIGH_CONFIDENCE",
+      "reachable": true,
+      "text": "mov ecx, 0x01318170",
+      "conf": "high"
+    },
+    {
+      "kind": "ADDRESS_TAKEN",
+      "eip": "0x0073DA15",
+      "owner": "0x0073DA00",
+      "label": "HIGH_CONFIDENCE",
+      "reachable": true,
+      "text": "mov ecx, 0x01318170",
+      "conf": "high"
+    },
+    {
+      "kind": "ADDRESS_TAKEN",
+      "eip": "0x00742717",
+      "owner": "0x00742710",
+      "label": "HIGH_CONFIDENCE",
+      "reachable": true,
+      "text": "mov ecx, 0x01318170",
+      "conf": "high"
+    },
+    {
+      "kind": "ADDRESS_TAKEN",
+      "eip": "0x00742737",
+      "owner": "0x00742730",
+      "label": "HIGH_CONFIDENCE",
+      "reachable": true,
+      "text": "mov ecx, 0x01318170",
+      "conf": "high"
+    },
+    {
+      "kind": "ADDRESS_TAKEN",
+      "eip": "0x007427C1",
+      "owner": "0x007427B0",
+      "label": "HIGH_CONFIDENCE",
+      "reachable": true,
+      "text": "mov ecx, 0x01318170",
+      "conf": "high"
+    },
+    {
+      "kind": "ADDRESS_TAKEN",
+      "eip": "0x007427D1",
+      "owner": "0x007427B0",
+      "label": "HIGH_CONFIDENCE",
+      "reachable": true,
+      "text": "mov ecx, 0x01318170",
+      "conf": "high"
+    },
+    {
+      "kind": "ADDRESS_TAKEN",
+      "eip": "0x00742912",
+      "owner": "0x00742910",
+      "label": "HIGH_CONFIDENCE",
+      "reachable": true,
+      "text": "mov ecx, 0x01318170",
+      "conf": "high"
+    },
+    {
+      "kind": "ADDRESS_TAKEN",
+      "eip": "0x00742923",
+      "owner": "0x00742910",
+      "label": "HIGH_CONFIDENCE",
+      "reachable": true,
+      "text": "mov ecx, 0x01318170",
+      "conf": "high"
+    },
+    {
+      "kind": "ADDRESS_TAKEN",
+      "eip": "0x007429C4",
+      "owner": "0x007429B0",
+      "label": "HIGH_CONFIDENCE",
+      "reachable": true,
+      "text": "mov ecx, 0x01318170",
+      "conf": "high"
+    },
+    {
+      "kind": "ADDRESS_TAKEN",
+      "eip": "0x00742A08",
+      "owner": "0x007429B0",
+      "label": "HIGH_CONFIDENCE",
+      "reachable": true,
+      "text": "mov ecx, 0x01318170",
+      "conf": "high"
+    },
+    {
+      "kind": "ADDRESS_TAKEN",
+      "eip": "0x007438C3",
+      "owner": "0x007438B0",
+      "label": "HIGH_CONFIDENCE",
+      "reachable": true,
+      "text": "mov ecx, 0x01318170",
+      "conf": "high"
+    },
+    {
+      "kind": "ADDRESS_TAKEN",
+      "eip": "0x00743991",
+      "owner": "0x00743980",
+      "label": "HIGH_CONFIDENCE",
+      "reachable": true,
+      "text": "mov ecx, 0x01318170",
+      "conf": "high"
+    },
+    {
+      "kind": "ADDRESS_TAKEN",
+      "eip": "0x00747F79",
+      "owner": "0x00747F70",
+      "label": "HIGH_CONFIDENCE",
+      "reachable": true,
+      "text": "mov ecx, 0x01318170",
+      "conf": "high"
+    },
+    {
+      "kind": "ADDRESS_TAKEN",
+      "eip": "0x0074DC32",
+      "owner": "0x0074D8D0",
+      "label": "HIGH_CONFIDENCE",
+      "reachable": true,
+      "text": "mov ecx, 0x01318170",
+      "conf": "high"
+    },
+    {
+      "kind": "ADDRESS_TAKEN",
+      "eip": "0x0074E700",
+      "owner": "0x0074E030",
+      "label": "HIGH_CONFIDENCE",
+      "reachable": true,
+      "text": "mov ecx, 0x01318170",
+      "conf": "high"
+    },
+    {
+      "kind": "ADDRESS_TAKEN",
+      "eip": "0x0074E728",
+      "owner": "0x0074E030",
+      "label": "HIGH_CONFIDENCE",
+      "reachable": true,
+      "text": "mov ecx, 0x01318170",
+      "conf": "high"
+    },
+    {
+      "kind": "ADDRESS_TAKEN",
+      "eip": "0x00750CE3",
+      "owner": "0x00750CB0",
+      "label": "HIGH_CONFIDENCE",
+      "reachable": true,
+      "text": "mov ecx, 0x01318170",
+      "conf": "high"
+    },
+    {
+      "kind": "ADDRESS_TAKEN",
+      "eip": "0x00750D00",
+      "owner": "0x00750CB0",
+      "label": "HIGH_CONFIDENCE",
+      "reachable": true,
+      "text": "mov ecx, 0x01318170",
+      "conf": "high"
+    },
+    {
+      "kind": "ADDRESS_TAKEN",
+      "eip": "0x00750D1D",
+      "owner": "0x00750CB0",
+      "label": "HIGH_CONFIDENCE",
+      "reachable": true,
+      "text": "mov ecx, 0x01318170",
+      "conf": "high"
+    },
+    {
+      "kind": "ADDRESS_TAKEN",
+      "eip": "0x007525D3",
+      "owner": "0x007525B0",
+      "label": "HIGH_CONFIDENCE",
+      "reachable": true,
+      "text": "mov ecx, 0x01318170",
+      "conf": "high"
+    },
+    {
+      "kind": "ADDRESS_TAKEN",
+      "eip": "0x007525F6",
+      "owner": "0x007525B0",
+      "label": "HIGH_CONFIDENCE",
+      "reachable": true,
+      "text": "mov ecx, 0x01318170",
+      "conf": "high"
+    },
+    {
+      "kind": "ADDRESS_TAKEN",
+      "eip": "0x00752674",
+      "owner": "0x00752650",
+      "label": "HIGH_CONFIDENCE",
+      "reachable": true,
+      "text": "mov ecx, 0x01318170",
+      "conf": "high"
+    },
+    {
+      "kind": "ADDRESS_TAKEN",
+      "eip": "0x00752697",
+      "owner": "0x00752650",
+      "label": "HIGH_CONFIDENCE",
+      "reachable": true,
+      "text": "mov ecx, 0x01318170",
+      "conf": "high"
+    },
+    {
+      "kind": "ADDRESS_TAKEN",
+      "eip": "0x00752A99",
+      "owner": "0x00752650",
+      "label": "HIGH_CONFIDENCE",
+      "reachable": true,
+      "text": "mov ecx, 0x01318170",
+      "conf": "high"
+    },
+    {
+      "kind": "ADDRESS_TAKEN",
+      "eip": "0x00752B2C",
+      "owner": "0x00752AF0",
+      "label": "HIGH_CONFIDENCE",
+      "reachable": true,
+      "text": "mov ecx, 0x01318170",
+      "conf": "high"
+    },
+    {
+      "kind": "ADDRESS_TAKEN",
+      "eip": "0x00752DA7",
+      "owner": "0x00752CC0",
+      "label": "HIGH_CONFIDENCE",
+      "reachable": true,
+      "text": "mov ecx, 0x01318170",
+      "conf": "high"
+    },
+    {
+      "kind": "ADDRESS_TAKEN",
+      "eip": "0x00752EAB",
+      "owner": "0x00752E70",
+      "label": "HIGH_CONFIDENCE",
+      "reachable": true,
+      "text": "mov ecx, 0x01318170",
+      "conf": "high"
+    },
+    {
+      "kind": "ADDRESS_TAKEN",
+      "eip": "0x00753221",
+      "owner": "0x007530E0",
+      "label": "HIGH_CONFIDENCE",
+      "reachable": true,
+      "text": "mov ecx, 0x01318170",
+      "conf": "high"
+    },
+    {
+      "kind": "ADDRESS_TAKEN",
+      "eip": "0x0075322D",
+      "owner": "0x007530E0",
+      "label": "HIGH_CONFIDENCE",
+      "reachable": true,
+      "text": "mov ecx, 0x01318170",
+      "conf": "high"
+    },
+    {
+      "kind": "ADDRESS_TAKEN",
+      "eip": "0x0075324E",
+      "owner": "0x00753240",
+      "label": "HIGH_CONFIDENCE",
+      "reachable": true,
+      "text": "mov ecx, 0x01318170",
+      "conf": "high"
+    },
+    {
+      "kind": "ADDRESS_TAKEN",
+      "eip": "0x0075326E",
+      "owner": "0x00753240",
+      "label": "HIGH_CONFIDENCE",
+      "reachable": true,
+      "text": "mov ecx, 0x01318170",
+      "conf": "high"
+    },
+    {
+      "kind": "ADDRESS_TAKEN",
+      "eip": "0x00754125",
+      "owner": "0x007540E0",
+      "label": "HIGH_CONFIDENCE",
+      "reachable": true,
+      "text": "mov ecx, 0x01318170",
+      "conf": "high"
+    },
+    {
+      "kind": "ADDRESS_TAKEN",
+      "eip": "0x00754145",
+      "owner": "0x007540E0",
+      "label": "HIGH_CONFIDENCE",
+      "reachable": true,
+      "text": "mov ecx, 0x01318170",
+      "conf": "high"
+    },
+    {
+      "kind": "ADDRESS_TAKEN",
+      "eip": "0x0075417C",
+      "owner": "0x007540E0",
+      "label": "HIGH_CONFIDENCE",
+      "reachable": true,
+      "text": "mov ecx, 0x01318170",
+      "conf": "high"
+    },
+    {
+      "kind": "ADDRESS_TAKEN",
+      "eip": "0x0075419C",
+      "owner": "0x007540E0",
+      "label": "HIGH_CONFIDENCE",
+      "reachable": true,
+      "text": "mov ecx, 0x01318170",
+      "conf": "high"
+    },
+    {
+      "kind": "ADDRESS_TAKEN",
+      "eip": "0x007541CE",
+      "owner": "0x007540E0",
+      "label": "HIGH_CONFIDENCE",
+      "reachable": true,
+      "text": "mov ecx, 0x01318170",
+      "conf": "high"
+    },
+    {
+      "kind": "ADDRESS_TAKEN",
+      "eip": "0x007541F1",
+      "owner": "0x007540E0",
+      "label": "HIGH_CONFIDENCE",
+      "reachable": true,
+      "text": "mov ecx, 0x01318170",
+      "conf": "high"
+    },
+    {
+      "kind": "ADDRESS_TAKEN",
+      "eip": "0x00754212",
+      "owner": "0x007540E0",
+      "label": "HIGH_CONFIDENCE",
+      "reachable": true,
+      "text": "mov ecx, 0x01318170",
+      "conf": "high"
+    },
+    {
+      "kind": "ADDRESS_TAKEN",
+      "eip": "0x00754255",
+      "owner": "0x007540E0",
+      "label": "HIGH_CONFIDENCE",
+      "reachable": true,
+      "text": "mov ecx, 0x01318170",
+      "conf": "high"
+    },
+    {
+      "kind": "ADDRESS_TAKEN",
+      "eip": "0x00754276",
+      "owner": "0x007540E0",
+      "label": "HIGH_CONFIDENCE",
+      "reachable": true,
+      "text": "mov ecx, 0x01318170",
+      "conf": "high"
+    },
+    {
+      "kind": "ADDRESS_TAKEN",
+      "eip": "0x007542A5",
+      "owner": "0x007540E0",
+      "label": "HIGH_CONFIDENCE",
+      "reachable": true,
+      "text": "mov ecx, 0x01318170",
+      "conf": "high"
+    },
+    {
+      "kind": "ADDRESS_TAKEN",
+      "eip": "0x007542BE",
+      "owner": "0x007540E0",
+      "label": "HIGH_CONFIDENCE",
+      "reachable": true,
+      "text": "mov ecx, 0x01318170",
+      "conf": "high"
+    },
+    {
+      "kind": "ADDRESS_TAKEN",
+      "eip": "0x007542DE",
+      "owner": "0x007540E0",
+      "label": "HIGH_CONFIDENCE",
+      "reachable": true,
+      "text": "mov ecx, 0x01318170",
+      "conf": "high"
+    },
+    {
+      "kind": "ADDRESS_TAKEN",
+      "eip": "0x00754466",
+      "owner": "0x00754390",
+      "label": "MEDIUM_CONFIDENCE",
+      "reachable": true,
+      "text": "mov ecx, 0x01318170",
+      "conf": "high"
+    },
+    {
+      "kind": "ADDRESS_TAKEN",
+      "eip": "0x007544BC",
+      "owner": "0x007544B0",
+      "label": "HIGH_CONFIDENCE",
+      "reachable": true,
+      "text": "mov ecx, 0x01318170",
+      "conf": "high"
+    },
+    {
+      "kind": "ADDRESS_TAKEN",
+      "eip": "0x00754515",
+      "owner": "0x007544B0",
+      "label": "HIGH_CONFIDENCE",
+      "reachable": true,
+      "text": "mov ecx, 0x01318170",
+      "conf": "high"
+    },
+    {
+      "kind": "ADDRESS_TAKEN",
+      "eip": "0x00754532",
+      "owner": "0x007544B0",
+      "label": "HIGH_CONFIDENCE",
+      "reachable": true,
+      "text": "mov ecx, 0x01318170",
+      "conf": "high"
+    },
+    {
+      "kind": "ADDRESS_TAKEN",
+      "eip": "0x007545FC",
+      "owner": "0x007545F0",
+      "label": "HIGH_CONFIDENCE",
+      "reachable": true,
+      "text": "mov ecx, 0x01318170",
+      "conf": "high"
+    },
+    {
+      "kind": "ADDRESS_TAKEN",
+      "eip": "0x0075461D",
+      "owner": "0x007545F0",
+      "label": "HIGH_CONFIDENCE",
+      "reachable": true,
+      "text": "mov ecx, 0x01318170",
+      "conf": "high"
+    },
+    {
+      "kind": "ADDRESS_TAKEN",
+      "eip": "0x00754665",
+      "owner": "0x007545F0",
+      "label": "HIGH_CONFIDENCE",
+      "reachable": true,
+      "text": "mov ecx, 0x01318170",
+      "conf": "high"
+    },
+    {
+      "kind": "ADDRESS_TAKEN",
+      "eip": "0x00754688",
+      "owner": "0x007545F0",
+      "label": "HIGH_CONFIDENCE",
+      "reachable": true,
+      "text": "mov ecx, 0x01318170",
+      "conf": "high"
+    },
+    {
+      "kind": "ADDRESS_TAKEN",
+      "eip": "0x007549C6",
+      "owner": "0x00754840",
+      "label": "HIGH_CONFIDENCE",
+      "reachable": true,
+      "text": "mov ecx, 0x01318170",
+      "conf": "high"
+    },
+    {
+      "kind": "ADDRESS_TAKEN",
+      "eip": "0x007557D0",
+      "owner": "0x007555C0",
+      "label": "HIGH_CONFIDENCE",
+      "reachable": true,
+      "text": "mov ecx, 0x01318170",
+      "conf": "high"
+    },
+    {
+      "kind": "ADDRESS_TAKEN",
+      "eip": "0x00755C67",
+      "owner": "0x00755C60",
+      "label": "HIGH_CONFIDENCE",
+      "reachable": true,
+      "text": "mov ecx, 0x01318170",
+      "conf": "high"
+    },
+    {
+      "kind": "ADDRESS_TAKEN",
+      "eip": "0x00755CA2",
+      "owner": "0x00755C60",
+      "label": "HIGH_CONFIDENCE",
+      "reachable": true,
+      "text": "mov ecx, 0x01318170",
+      "conf": "high"
+    },
+    {
+      "kind": "ADDRESS_TAKEN",
+      "eip": "0x0075F30B",
+      "owner": "0x0075F2E0",
+      "label": "HIGH_CONFIDENCE",
+      "reachable": true,
+      "text": "mov ecx, 0x01318170",
+      "conf": "high"
+    },
+    {
+      "kind": "ADDRESS_TAKEN",
+      "eip": "0x0075F8F7",
+      "owner": "0x0075F8F0",
+      "label": "HIGH_CONFIDENCE",
+      "reachable": true,
+      "text": "mov ecx, 0x01318170",
+      "conf": "high"
+    },
+    {
+      "kind": "ADDRESS_TAKEN",
+      "eip": "0x0075FA9F",
+      "owner": "0x0075FA40",
+      "label": "HIGH_CONFIDENCE",
+      "reachable": true,
+      "text": "mov ecx, 0x01318170",
+      "conf": "high"
+    },
+    {
+      "kind": "ADDRESS_TAKEN",
+      "eip": "0x0075FB00",
+      "owner": "0x0075FA40",
+      "label": "HIGH_CONFIDENCE",
+      "reachable": true,
+      "text": "mov ecx, 0x01318170",
+      "conf": "high"
+    },
+    {
+      "kind": "ADDRESS_TAKEN",
+      "eip": "0x0075FC73",
+      "owner": "0x0075FA40",
+      "label": "HIGH_CONFIDENCE",
+      "reachable": true,
+      "text": "mov ecx, 0x01318170",
+      "conf": "high"
+    },
+    {
+      "kind": "ADDRESS_TAKEN",
+      "eip": "0x00766763",
+      "owner": "0x00766730",
+      "label": "HIGH_CONFIDENCE",
+      "reachable": true,
+      "text": "mov ecx, 0x01318170",
+      "conf": "high"
+    },
+    {
+      "kind": "ADDRESS_TAKEN",
+      "eip": "0x007667AE",
+      "owner": "0x00766730",
+      "label": "HIGH_CONFIDENCE",
+      "reachable": true,
+      "text": "mov ecx, 0x01318170",
+      "conf": "high"
+    },
+    {
+      "kind": "ADDRESS_TAKEN",
+      "eip": "0x00766814",
+      "owner": "0x00766730",
+      "label": "HIGH_CONFIDENCE",
+      "reachable": true,
+      "text": "mov ecx, 0x01318170",
+      "conf": "high"
+    },
+    {
+      "kind": "ADDRESS_TAKEN",
+      "eip": "0x00766925",
+      "owner": "0x00766730",
+      "label": "HIGH_CONFIDENCE",
+      "reachable": true,
+      "text": "mov ecx, 0x01318170",
+      "conf": "high"
+    },
+    {
+      "kind": "ADDRESS_TAKEN",
+      "eip": "0x00766CDC",
+      "owner": "0x00766BE0",
+      "label": "HIGH_CONFIDENCE",
+      "reachable": true,
+      "text": "mov ecx, 0x01318170",
+      "conf": "high"
+    },
+    {
+      "kind": "ADDRESS_TAKEN",
+      "eip": "0x0076748E",
+      "owner": "0x00767440",
+      "label": "HIGH_CONFIDENCE",
+      "reachable": true,
+      "text": "mov ecx, 0x01318170",
+      "conf": "high"
+    },
+    {
+      "kind": "ADDRESS_TAKEN",
+      "eip": "0x007674AE",
+      "owner": "0x00767440",
+      "label": "HIGH_CONFIDENCE",
+      "reachable": true,
+      "text": "mov ecx, 0x01318170",
+      "conf": "high"
+    },
+    {
+      "kind": "ADDRESS_TAKEN",
+      "eip": "0x00768394",
+      "owner": "0x00768180",
+      "label": "HIGH_CONFIDENCE",
+      "reachable": true,
+      "text": "mov ecx, 0x01318170",
+      "conf": "high"
+    }
+  ],
+  "object_ref_kinds": {
+    "ADDRESS_TAKEN": 123
+  },
+  "phase5_failures": {
+    "0x00401DC0": "REJECTED_DATA_LIKE",
+    "0x00780150": "REJECTED_DATA_LIKE",
+    "0x007C8350": "REJECTED_DATA_LIKE",
+    "0x007C9010": "REJECTED_DATA_LIKE",
+    "0x00841BF0": "REJECTED_DATA_LIKE",
+    "0x00A945E0": "REJECTED_DATA_LIKE"
+  }
+}
