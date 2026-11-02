@@ -25,6 +25,13 @@ uint32_t uc_stat_indirect;
 int uc_stat_depth;
 int uc_stat_max_depth;
 UcLimitStop uc_limit_stop;
+int uc_global_trace;
+uint32_t uc_global_lo;
+uint32_t uc_global_hi;
+uint32_t uc_guest_eip;
+UcGlobalWrite uc_gwrites[UC_GWRITE_CAP];
+int uc_gwrite_count;
+int uc_gwrite_total;
 static uint64_t uc_limit_t0;
 
 static uint8_t *image_mem;
@@ -71,6 +78,26 @@ static void poll_timeout(struct CPU *c, uint32_t target) {
     if (uc_limit_t0 == 0) uc_limit_t0 = now;
     if (now - uc_limit_t0 > uc_limit_ms)
         trip_limit(5, "wall-clock timeout", c, target);
+}
+
+void uc_global_clear(void) {
+    uc_gwrite_count = 0;
+    uc_gwrite_total = 0;
+}
+
+static void note_global(uint32_t addr, uint32_t size, uint32_t oldv, uint32_t newv) {
+    UcGlobalWrite *w;
+    if (!uc_global_trace) return;
+    if (addr < uc_global_lo || addr >= uc_global_hi) return;
+    w = &uc_gwrites[uc_gwrite_total % UC_GWRITE_CAP];
+    uc_gwrite_total++;
+    uc_gwrite_count = uc_gwrite_total < UC_GWRITE_CAP ? uc_gwrite_total : UC_GWRITE_CAP;
+    w->eip = uc_guest_eip;
+    w->fn = uc_current_fn;
+    w->addr = addr;
+    w->size = size;
+    w->oldv = oldv;
+    w->newv = newv;
 }
 
 void uc_limits_clear(void) {
@@ -313,20 +340,26 @@ uint32_t uc_guest_load32(uint32_t addr, int *ok) {
 
 void uc_guest_store8(uint32_t addr, uint8_t value) {
     uint8_t *p = uc_guest_ptr(addr, 1, 1);
+    uint8_t oldv;
     if (p == sink) return;
+    oldv = *p;
     *p = value;
+    note_global(addr, 1, oldv, value);
 }
 
 void uc_guest_store32(uint32_t addr, uint32_t value, int *ok) {
     uint8_t *p = uc_guest_ptr(addr, 4, 1);
+    uint32_t oldv;
     if (p == sink) {
         if (ok) *ok = 0;
         return;
     }
+    oldv = (uint32_t)p[0] | ((uint32_t)p[1] << 8) | ((uint32_t)p[2] << 16) | ((uint32_t)p[3] << 24);
     p[0] = (uint8_t)value;
     p[1] = (uint8_t)(value >> 8);
     p[2] = (uint8_t)(value >> 16);
     p[3] = (uint8_t)(value >> 24);
+    note_global(addr, 4, oldv, value);
     if (ok) *ok = 1;
 }
 

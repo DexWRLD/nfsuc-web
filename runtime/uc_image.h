@@ -116,7 +116,29 @@ typedef struct UcLimitStop {
 
 extern UcLimitStop uc_limit_stop;
 
+/* Optional .data write log for initializer runs. Off unless uc_global_trace is set.
+ * Addresses outside [uc_global_lo, uc_global_hi) are ignored. */
+#define UC_GWRITE_CAP 128
+
+typedef struct UcGlobalWrite {
+    uint32_t eip;
+    uint32_t fn;
+    uint32_t addr;
+    uint32_t size;
+    uint32_t oldv;
+    uint32_t newv;
+} UcGlobalWrite;
+
+extern int uc_global_trace;
+extern uint32_t uc_global_lo;
+extern uint32_t uc_global_hi;
+extern uint32_t uc_guest_eip;
+extern UcGlobalWrite uc_gwrites[UC_GWRITE_CAP];
+extern int uc_gwrite_count;
+extern int uc_gwrite_total;
+
 void uc_limits_clear(void);
+void uc_global_clear(void);
 int uc_limit_note_import(struct CPU *c, uint32_t thunk);
 int uc_limit_note_indirect(struct CPU *c, uint32_t target);
 
