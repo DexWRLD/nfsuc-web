@@ -604,7 +604,8 @@ th { color: #8b949e; font-weight: 600; }
 <h2>Current frontier</h2>
 <p>Current blocker: <code>0x00686000</code>, %s.</p>
 <p>Strategy: %s</p>
-<p>Direct3DCreate9 independent of <code>0x00686000</code>: %s. Reachable from the high-confidence graph: %s. Enterable now: %s. Call <code>%s</code> in <code>%s</code> (%s).</p>
+<p>Direct3DCreate9 frontier: %s. Independent of <code>0x00686000</code>: %s. Reachable from the high-confidence graph: %s. Enterable now: %s. Call <code>%s</code> in <code>%s</code> (%s).</p>
+<p>%s</p>
 <p>First-frame estimate, marked as an estimate: best case phase %d, likely %d–%d. %s</p>
 <p>Recorded runs with no function-map cell: %s. Other entered functions whose tests do not record an address stay UNKNOWN.</p>
 <h2>Phases</h2>
@@ -643,12 +644,14 @@ document.querySelectorAll("rect[data-addr]").forEach(function (node) {
         html.escape(unknown_b["status"]),
         html.escape(boundary["status"]),
         html.escape(model["project"]["strategy"]),
+        html.escape(graphics.get("frontier") or "UNKNOWN"),
         html.escape(graphics["independent_of_0x00686000"]),
         html.escape(graphics["reachable_from_high_graph"]),
         html.escape(graphics["enterable_now"]),
         html.escape(graphics["call"]),
         html.escape(graphics["function"]),
         html.escape(graphics["confidence"]),
+        html.escape("; ".join(graphics.get("blockers") or []) or "No blocker list."),
         estimate["best_case_phase"],
         estimate["likely_low"],
         estimate["likely_high"],

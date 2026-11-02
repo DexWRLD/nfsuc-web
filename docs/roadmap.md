@@ -25,7 +25,7 @@ The order from here:
 3. ORDINARY CALLBACK INITIALIZATION. Demonstrated. `0x009E8AD0` fills `0x0189D1A4`, and `0x0099DCD0` enters that target.
 4. ORDINARY OBJECT INITIALIZATION. Stopped. The writers of `0x0189DA84` and `[0x0189D0A0+8]` follow `call 0x00686000`. That address is an unavailable protected or external dependency. It is not substituted.
 5. DEPENDENCY CUT. Phase 14. Eleven reachable functions must hit that call, 31 can hit it on some walk, and 6,456 have no path to it. The 102-function closure at `0x0099DCD0` is in the last set and still needs the object field this call feeds. It is not the primary frontier.
-6. INDEPENDENT SUBSYSTEM FRONTIERS. The only `Direct3DCreate9` call does not use `0x00686000`. It sits in medium-confidence `0x0072E340`, behind `[0x01311E1C]`, which has no absolute writer. Direct3D was not implemented.
+6. INDEPENDENT SUBSYSTEM FRONTIERS. The only `Direct3DCreate9` call does not use `0x00686000`. Phase 15 found definite `xchg` writers for `[0x01311E1C]`, including value `1` at `0x00722D60`, but that writer has no ordinary caller. The ESI slot before the import is not a valid entry. Direct3D was not implemented.
 7. FIRST FRAME, if a path becomes available. Not started. A factory pointer is not a frame.
 
 The strategy is ordinary static recompilation, then ordinary runtime islands, then this dependency cut, then independent subsystem frontiers, then a first-frame path if one is available.
