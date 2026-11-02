@@ -1,83 +1,98 @@
-# Need for Speed: Underground 2 in the browser
+# nfsuc-web
 
-A fan project that runs the PC game *Need for Speed: Underground 2* (2004) in Google Chrome and Firefox. The game's
-x86 code is translated to C ahead of time and compiled to WebAssembly. Direct3D 9 runs on WebGPU and the sound on
-Web Audio. You bring your own copy of the game.
+Experimental research into static recompilation of the 32-bit Windows version of Need for Speed Undercover. The goal is a portable native build and, later, a WebAssembly build with a browser runtime. This repository does not run the game.
 
-Based on [NFSU2Recomp](https://github.com/TalhaMudo/NFSU2Recomp) by Talha Müderrisoğlu, the original x86 → C static
-recompiler for NFSU2. This project was forked from
-[its MIT-licensed version of 16 October 2026](https://github.com/TalhaMudo/NFSU2Recomp/tree/3d187ce7e5f1b99c0580866da4dbaa6d59dd23c7)
-and uses only code from that version.
+You supply your own legally obtained compatible installation. The game directory is an external input. It is read only, and nothing from it is committed.
 
-> Not affiliated with or endorsed by Electronic Arts. This repository contains none of the game's code or data.
+Not affiliated with or endorsed by Electronic Arts.
 
-![The start page: Play, the controls, your saves and Online](docs/web/start-page.png)
-
-## What you need
-
-- **The game:** your own PC copy, patched to v1.2 (North America), with this exact `SPEED2.EXE` (other versions
-  will not work): 4,800,512 bytes, SHA-256 `f9dd86c054878ce6276beb07c1fd61874f7a1e4bf1f241b084c65b73e24168a7`.
-- **To build:** an Apple Silicon Mac (the tested setup) or Linux, Python 3, Node.js 20 or newer, Rust
-  ([rustup](https://rustup.rs)), and [wasi-sdk](https://github.com/WebAssembly/wasi-sdk/releases) 34 for that system
-  unpacked into `deps/`. On Windows,
-  build in WSL 2 with the clone in the Linux file system (`~/nfsu2-web`): under `/mnt/c` it builds much slower.
-- **To play:** the latest Google Chrome, or Firefox where it has WebGPU (Windows, macOS).
-
-## Build
-
-```sh
-python3 -m venv .venv && .venv/bin/pip install -r requirements.txt
-web/gen.sh "/path/to/Need for Speed Underground 2/SPEED2.EXE"   # translate the game's code to C (into gen/)
-web/build.sh                                                    # compile it to out/web/nfsu2.wasm
+```
+original user-owned nfs.exe
+        |
+        v
+read-only PE/x86 analysis
+        |
+        v
+function discovery
+        |
+        v
+x86 static lifter
+        |
+        v
+generated C
+        |
+        +--> native development target
+        |
+        +--> WebAssembly
+                |
+                v
+        browser compatibility runtime
+                |
+                +--> Win32 compatibility
+                +--> Direct3D 9 -> WebGPU
+                +--> audio
+                +--> input
+                +--> filesystem
+                +--> threading
 ```
 
-The generated C and the compiled module are made from the game, so they are never committed (`.gitignore`).
+The WebAssembly target and the browser runtime boxes are the intended direction. They are not implemented for Undercover. The native step today is compile-only: generated functions are type-checked with clang and are not executed as a game.
 
-## Play
+## What this repository does not distribute
+
+- Need for Speed Undercover
+- `nfs.exe`
+- Electronic Arts assets
+- copyrighted game data
+- DRM or copy-protection bypass tools
+- generated C or WebAssembly translated from the game
+
+Protected startup (`Sitext` and the other protected sections) is out of scope. The tools do not unpack, decrypt, emulate, patch, or follow it.
+
+## What the measurements show
+
+- The executable is PE32 / x86.
+- Ordinary `.text` is about 7.7 MB and is highly analyzable: Capstone decodes 99.5% of it.
+- About 13,090 high-confidence function roots come from direct calls that land on a decoded instruction.
+- The existing NFSU2 lifter accepts about 99.9% of the 874,653 instructions reached from those roots.
+- A 100-function sample first produced C for 83 functions, and all 83 compiled. After `repz ret` and `movmskps` were lowered, the same 100 addresses produced 86 functions and all 86 compiled. The other 14 are data-like roots.
+- The high-confidence direct-call set is 6,604 functions. 6,532 generated and all 6,532 compiled. Real gaps that remain are locked atomics (`lock xadd`, `lock cmpxchg`, `lock cmpxchg8b`) and a few SSE forms (`psrldq`, `pslldq`, `punpcklqdq`, `pshufd`).
+- The PE entry point is in protected `Sitext`. That startup is unresolved on purpose.
+
+Reports: [docs/feasibility.md](docs/feasibility.md), [analysis/undercover/](analysis/undercover/).
+
+## Layout
+
+| Path | What it is |
+| --- | --- |
+| `tools/uc_analyze.py` | Read-only PE report. |
+| `tools/uc_code_analyze.py` | Static analysis of ordinary `.text` only. |
+| `tools/uc_gen.py` | Isolated generation experiment. Does not change the NFSU2 generator. |
+| `tools/lift.py` | The x86-to-C lifter. Near `ret` includes `repz ret`, and `movmskps` is lowered. |
+| `tools/uc_funcmap.py` | Undercover function confidence and the high-confidence translation. Does not change `genall.py`. |
+| `tools/uc_imports.py` | Names `.rdata` import thunks. Does not implement the runtime. |
+| `runtime/` | The NFSU2 guest CPU and compatibility runtime. |
+| `analysis/undercover/` | Statistics and write-ups. No game bytes. |
+| `generated/undercover/` | Local generated C. Gitignored. |
+| `docs/architecture.md` | How the pieces fit. |
+| `docs/roadmap.md` | Milestones. Protected startup is not one of them. |
 
 ```sh
-web/start.sh --data "/path/to/Need for Speed Underground 2"
+python tools/uc_analyze.py "C:\Games\Need For Speed Undercover\nfs.exe"
+python tools/uc_code_analyze.py "C:\Games\Need For Speed Undercover\nfs.exe"
+python tools/uc_gen.py "C:\Games\Need For Speed Undercover\nfs.exe" --sample-only
 ```
 
-Open **http://localhost:8080/** in Chrome or Firefox and press **Play**. The start page has the settings, your saves
-and the controls. The player's guide is [docs/web/PLAYING.md](docs/web/PLAYING.md). The game plays in any of its
-thirteen languages, in Brazilian Portuguese, in Polish, in Turkish or in Hungarian; the dubbed voices and movies and the
-Portuguese, Polish, Turkish and Hungarian text come from mods, as language packs
-([docs/web/VPS.md](docs/web/VPS.md#languages)). The menus and HUD can be redrawn at four times their size, from a mod
-as a texture pack ([docs/web/VPS.md](docs/web/VPS.md#texture-packs)).
+Requires Python 3, `capstone`, and `pefile` (`requirements.txt`). The compile check uses clang. `CLANG` can point at the binary.
 
-To play with friends, run the server behind HTTPS, for example on a small VPS with Docker:
-[docs/web/VPS.md](docs/web/VPS.md).
-Everyone who plays from the same server can meet in free roam.
+## Attribution
 
-## How it works
+This tree is a clone of [nfsu2-web](https://github.com/th0mk/nfsu2-web) by Thom. That project is a fork of the MIT release of [NFSU2Recomp](https://github.com/TalhaMudo/NFSU2Recomp) by Talha Müderrisoğlu (16 October 2026) and uses only code from that version. The NFSU2 browser port, its runtime, and its lifter remain in this tree. Their README is preserved at [docs/upstream-nfsu2.md](docs/upstream-nfsu2.md).
 
-- **`tools/`:** a Python lifter (Capstone) turns every function of `SPEED2.EXE` into C.
-- **`runtime/`:** Windows, Direct3D 9, DirectSound and DirectInput, reimplemented. `runtime/web/` holds the browser
-  parts.
-- **`web/src/`:** the page. It runs the game's threads as workers on one shared memory, draws with WebGPU and plays
-  sound through an AudioWorklet.
-- **`web/server-rs/`:** the server, in Rust: serves the page, the module and your game folder, and connects players
-  for multiplayer.
-
-More in [docs/web/DESIGN.md](docs/web/DESIGN.md). The same tree still builds the native macOS version
-(`./gen.sh`, `./build.sh && ./link.sh`, `./run.sh`).
-
-## Credits
-
-Based on Talha Müderrisoğlu's [NFSU2Recomp](https://github.com/TalhaMudo/NFSU2Recomp) (its MIT version, see the
-top), the static recompilation of NFSU2 for Apple Silicon, which in turn follows the method of
-[N64: Recompiled](https://github.com/N64Recomp/N64Recomp) and [XenonRecomp](https://github.com/hedge-dev/XenonRecomp).
-The language packs are built from KyoriAsh's [Multi 13 languages mod](https://nfsmods.xyz/mod/5749) (with Lee-Ryo's
-Thai support, whose patch `runtime/language.c` follows), from TraduMix's and MixMods' Brazilian Portuguese
-translation (Fyro, Beater, Kerlyston F.; Junior_Djjr, SideWinder, Elyzandro), from PLProjekt's Polish translation
-(Daniel Graszka, MaDeR, Marcin Piech, Nati, Mateusz Wilkowski, alter), from VileStuff's
-[English Subtitles Fixed](https://nfsmods.xyz/mod/5286), from muntazam's
-[Turkish translation](https://www.moddb.com/mods/need-for-speed-underground-2-turkish-translation-patch) and from
-GameHunter's [Hungarian translation](http://www.gamehunter.hu/2010/08/need-for-speed-underground-2-pc.html)
-(L_zooltan). The texture pack is built from LunicAura106's
-[Upscaled HUD](https://nfsmods.xyz/mod/4319). Built with the help of Claude Code.
+New Undercover-only files are the `uc_*.py` tools, `tests/uc_harness.h`, `tests/uc_host/`, `analysis/undercover/`, and the documents listed above. They call the existing lifter. They do not modify it.
 
 ## License
 
-MIT ([LICENSE](LICENSE)). *Need for Speed* and *Need for Speed: Underground 2* are trademarks of Electronic Arts Inc.
+MIT. The copyright notice and permission text are in [LICENSE](LICENSE): copyright (c) 2026 th0mk, with portions copyright (c) 2026 Talha Müderrisoğlu. Those notices stay with the code they cover.
+
+*Need for Speed* and *Need for Speed Undercover* are trademarks of Electronic Arts Inc.
