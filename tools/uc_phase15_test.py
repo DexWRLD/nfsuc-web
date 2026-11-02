@@ -87,9 +87,10 @@ def main():
     # Object address immediate in outer caller.
     expect(blob[0x00766763 - base:0x00766763 - base + 5] == bytes.fromhex("b970813101"), "object imm")
 
-    # Discovery cap still present (document, do not change here).
+    # Phase 16 removed the 24-instruction linear sketch.
     text = open(os.path.join(ROOT, "tools", "uc_funcmap.py"), encoding="utf-8").read()
-    expect("for _ in range(24):" in text, "24-insn fact walk still present")
+    expect("for _ in range(24):" not in text, "24-insn fact walk removed")
+    expect("CFG_BUDGET_EXCEEDED" in text, "cfg budget term")
 
     # No helper call in the create span.
     lo, hi = 0x0072E340 - base, 0x0072E5C0 - base

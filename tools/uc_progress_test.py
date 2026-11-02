@@ -37,26 +37,39 @@ def main():
     reachable_high = sum(
         1 for row in function_map["functions"]
         if row["label"] == "HIGH_CONFIDENCE" and row.get("reachable"))
-    expect(first["translation"]["counts"]["COMPILED"] == reachable_high, "compiled cells")
+    failed = {item.upper() for item in compiled["failed_functions"]}
+    expect(
+        first["translation"]["counts"]["COMPILED"]
+        == reachable_high - sum(
+            1 for row in function_map["functions"]
+            if row["label"] == "HIGH_CONFIDENCE" and row.get("reachable")
+            and row["va"].upper() in failed
+        ),
+        "compiled cells",
+    )
     expect(first["translation"]["compiled"] == compiled["compiled"], "compile record")
     expect(first["translation"]["generated"] == compiled["generated"], "generated record")
     expect(first["translation"]["compiler_failures"] == compiled["compiler_failures"], "compiler failures")
     expect(first["translation"]["compiler_failures"] == 0, "compiler failure value")
+    expect(first["discovery"]["high"] == reachable_high, "discovery high")
+    expect(first["discovery"]["cfg_budget_exceeded"] == function_map.get("cfg_budget_exceeded", 0), "discovery budget")
     completed = [item for item in functions if item.get("completed")]
     expect(first["runtime"]["counts"]["EXECUTED"] == len(completed), "executed cells")
     expect(first["runtime"]["unlogged_entries"] == "UNKNOWN", "unlogged stays unknown")
     by_addr = {item["address"]: item for item in functions}
-    expect(by_addr["0x0072E340"]["external_helper"] == "UNKNOWN", "medium stays unknown")
-    expect(by_addr["0x0072E340"]["translation_status"] == "DISCOVERED_NOT_GENERATED", "medium not compiled")
+    expect(by_addr["0x0072E340"]["external_helper"] == "NO_PATH_TO_EXTERNAL_HELPER", "create independent")
+    expect(by_addr["0x0072E340"]["translation_status"] == "COMPILED", "create compiled")
     expect(by_addr["0x00830380"]["runtime_status"] == "BLOCKED_EXTERNAL", "must caller")
     expect(by_addr["0x00830380"]["external_helper"] == "MUST_REACH_EXTERNAL_HELPER", "must label")
-    expect(first["helper_cut"]["must"] == 11, "must count")
-    expect(first["helper_cut"]["may"] == 31, "may count")
-    expect(first["helper_cut"]["independent"] == 6456, "independent count")
+    expect(first["helper_cut"]["must"] == 74, "must count")
+    expect(first["helper_cut"]["may"] == 139, "may count")
+    expect(first["helper_cut"]["independent"] == 22394, "independent count")
     expect(first["boundaries"]["0x0055FF30"]["status"] == "UNKNOWN", "unknown helper")
     expect("PROTECTED" not in first["boundaries"]["0x0055FF30"]["status"], "unknown is not protected")
     expect(first["graphics"]["independent_of_0x00686000"] == "YES", "d3d independence")
+    expect(first["graphics"]["reachable_from_high_graph"] == "YES", "d3d reachable")
     expect(first["graphics"]["enterable_now"] == "NO", "d3d not enterable")
+    expect(first["graphics"]["confidence"] == "HIGH_CONFIDENCE", "d3d confidence")
 
     svg_cells = svg_a.count("data-addr=")
     expect(svg_cells == 2 * len(functions), "svg cells")
