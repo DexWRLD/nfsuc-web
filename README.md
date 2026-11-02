@@ -56,7 +56,7 @@ Protected startup (`Sitext` and the other protected sections) is out of scope. T
 - About 13,090 high-confidence function roots come from direct calls that land on a decoded instruction.
 - The existing NFSU2 lifter accepts about 99.9% of the 874,653 instructions reached from those roots.
 - A 100-function sample first produced C for 83 functions, and all 83 compiled. After `repz ret` and `movmskps` were lowered, the same 100 addresses produced 86 functions and all 86 compiled. The other 14 are data-like roots.
-- The high-confidence direct-call set is 6,604 functions. 6,532 generated and all 6,532 compiled. Real gaps that remain are locked atomics (`lock xadd`, `lock cmpxchg`, `lock cmpxchg8b`) and a few SSE forms (`psrldq`, `pslldq`, `punpcklqdq`, `pshufd`).
+- The Phase 4 high-confidence list is 6,604 functions. After the remaining SSE and locked atomic forms were lowered, 6,598 generated and all 6,598 compiled. The six failures are data reached by a jump, not a missing compiler opcode. The game does not run.
 - The PE entry point is in protected `Sitext`. That startup is unresolved on purpose.
 
 Reports: [docs/feasibility.md](docs/feasibility.md), [analysis/undercover/](analysis/undercover/).
@@ -68,7 +68,7 @@ Reports: [docs/feasibility.md](docs/feasibility.md), [analysis/undercover/](anal
 | `tools/uc_analyze.py` | Read-only PE report. |
 | `tools/uc_code_analyze.py` | Static analysis of ordinary `.text` only. |
 | `tools/uc_gen.py` | Isolated generation experiment. Does not change the NFSU2 generator. |
-| `tools/lift.py` | The x86-to-C lifter. Near `ret` includes `repz ret`, and `movmskps` is lowered. |
+| `tools/lift.py` | The x86-to-C lifter. Near `ret` includes `repz ret`. XMM shuffles and locked atomics used by Undercover are lowered. |
 | `tools/uc_funcmap.py` | Undercover function confidence and the high-confidence translation. Does not change `genall.py`. |
 | `tools/uc_imports.py` | Names `.rdata` import thunks. Does not implement the runtime. |
 | `runtime/` | The NFSU2 guest CPU and compatibility runtime. |

@@ -97,6 +97,41 @@ The game does not boot or run. Protected startup remains outside this work.
 
 Details: `analysis/undercover/recompilation-feasibility.md`, `function-map.md`, `high-confidence.md`, `import-thunks.md`.
 
+## Phase 5
+
+The same 6,604 Phase 4 addresses were generated again after the remaining compiler opcodes were lowered. Classification was not edited to raise the percentage. `tools/uc_isa_phase5.py` checks the new forms on integer lanes and on guest memory bytes.
+
+`psrldq` and `pslldq` shift the 16 raw XMM bytes and fill with zero. Counts of 0, 1, 4, 8, 15, 16, and greater than 16 are tested. `pshufd` copies 32-bit lanes, including a memory source. `pshuflw` copies 16-bit lanes in the low qword and leaves the high qword unchanged. `punpcklqdq` keeps the destination low qword and inserts the source low qword above it. `punpckhqdq` moves the destination high qword down and inserts the source high qword above it. `pshuflw` and `punpckhqdq` were hidden in Phase 4 because an earlier instruction in the same function failed first.
+
+Locked `xadd`, `cmpxchg`, and `cmpxchg8b` call `guest_atomic_*` in `runtime/cpu.h`. Unlocked `xadd` and `cmpxchg` do not. The helper body is a single-threaded load and store for the compile harness. It is not a multiprocessor atomic and it is not a WebAssembly shared-memory atomic. `cmpxchg8b` compares `EDX:EAX` with two little-endian 32-bit halves, writes `ECX:EBX` on a match, and updates `EDX:EAX` and ZF on a miss. It does not cast the guest address to `uint64_t*`. Every Undercover site is `lock xadd dword ptr [reg], reg32`, `lock cmpxchg dword ptr [reg], reg32`, or `lock cmpxchg8b qword ptr [reg]`.
+
+`fstpnce` is Capstone's name for the reserved bytes `D9 DB`. It is not `fstp`, which the lifter already implements. It is not implemented.
+
+| | Phase 4 list |
+| --- | --- |
+| Functions attempted | 6,604 |
+| Generated | 6,598 (99.9%) |
+| Compiled | 6,598 |
+| Compilation of generated functions | 100% |
+| Compiler failures | 0 |
+| Generated source | 48,306,062 bytes |
+| Translation units | 6,598 |
+| Compile time | 144s |
+
+The six failures are not missing compiler opcodes. Five real-looking entries reach `aad`, `aaa`, `ljmp`, or `fstpnce` by following a jump into data. `0x00401DC0` is data (`salc` and a call outside `.text`). Details are in `analysis/undercover/phase5-failures.md`.
+
+The map then rejects any HIGH or MEDIUM function whose lifter walk reaches that data class. HIGH moves from 6,604 to 6,597, MEDIUM from 79 to 50, and REJECTED_DATA_LIKE from 478 to 514. LOW stays 20. Reachable entries stay 7,181. CFG coverage moves from 1,853,801 to 1,851,810 of 7,730,171 bytes (24.0%). The extra former HIGH function is `0x004A7520`, which is data the lifter compiled only because `into` is emitted as a comment. It remains inside the 6,598 generated count.
+
+`analysis/undercover/import-abi.json` lists the 199 thunks: 137 cdecl, 19 stdcall, 1 thiscall, 42 unknown. 157 have high confidence. 31 ordinals and the undecorated DirectX helpers stay unknown. 3,404 direct calls and 2,604 tail jumps are counted separately. `win32_call` is unchanged.
+
+## Status
+
+STATIC RECOMPILATION STATUS: the Phase 4 high-confidence list generates at 6,598 / 6,604 and every generated function compiles. No genuine unsupported compiler opcode remains in that list.
+
+RUNTIME STATUS: not started. The atomic helpers are a single-threaded stand-in. Imports are metadata only. The game does not boot or run.
+
+PROTECTED STARTUP STATUS: not analyzed. `Sitext` and the other protected sections were not read, executed, or rewritten.
+
 ## Verdict
 
-ADAPT LIFTER FURTHER
+PROCEED TO IMPORT/RUNTIME ABI ADAPTATION

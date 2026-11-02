@@ -14,7 +14,7 @@ read-only PE/x86 analysis          tools/uc_analyze.py, tools/uc_code_analyze.py
 function discovery                 tools/uc_funcmap.py (Undercover only; genall.py is unchanged)
         |
         v
-x86 static lifter                  tools/lift.py (NFSU2 lifter, plus repz ret and movmskps)
+x86 static lifter                  tools/lift.py (NFSU2 lifter, plus the Undercover SSE and atomic forms)
         |
         v
 generated C                        generated/undercover/  (not committed)
@@ -40,13 +40,13 @@ These components originated in NFSU2Recomp and nfsu2-web. They still build that 
 
 | Path | Role |
 | --- | --- |
-| `tools/lift.py` | Capstone x86-32 to C. `RawLifter` translates a `.text` image without opening other sections. Near `ret` includes the `F3 C3` form, and `movmskps` reads the existing XMM lanes. |
+| `tools/lift.py` | Capstone x86-32 to C. `RawLifter` translates a `.text` image without opening other sections. Near `ret` includes `F3 C3`. XMM byte shifts, shuffles, and qword unpacks use the existing integer lanes. Locked `xadd`, `cmpxchg`, and `cmpxchg8b` call `guest_atomic_*`. |
 | `tools/genall.py` | NFSU2 function discovery and sharded C generation. Not used for Undercover. |
 | `tools/reloc2.py`, `tools/argcount.py`, `tools/prepare_module.py` | NFSU2 relocations and stdcall import arities. |
-| `runtime/cpu.h` and `runtime/` | Guest CPU, memory, and the Win32 / Direct3D 9 / audio / input runtime for Underground 2. |
+| `runtime/cpu.h` and `runtime/` | Guest CPU, memory, and the Win32 / Direct3D 9 / audio / input runtime for Underground 2. `guest_atomic_xadd`, `guest_atomic_cmpxchg`, and `guest_atomic_cmpxchg8b` are the locked read-modify-write boundary. The current body is one guest load and one guest store. A native multithreaded runtime, and a WASM build with shared memory, must replace that body. Until then it is not a browser atomic. |
 | `web/` | Browser page, WebGPU renderer, and multiplayer server for Underground 2. |
 
-`tools/uc_analyze.py`, `tools/uc_code_analyze.py`, `tools/uc_gen.py`, `tools/uc_funcmap.py`, `tools/uc_imports.py`, and `tools/uc_isa_test.py` are the Undercover tools. They read only the caller's nfs.exe and write reports under `analysis/undercover/`. `tools/genall.py` is not on that path.
+`tools/uc_analyze.py`, `tools/uc_code_analyze.py`, `tools/uc_gen.py`, `tools/uc_funcmap.py`, `tools/uc_imports.py`, `tools/uc_isa_test.py`, and `tools/uc_isa_phase5.py` are the Undercover tools. They read only the caller's nfs.exe and write reports under `analysis/undercover/`. `tools/genall.py` is not on that path.
 
 ## Boundaries
 
@@ -67,7 +67,7 @@ Protected startup is outside this roadmap. There is no plan to unpack, decrypt, 
 
 The NFSU2 import path rewrites `call [IAT]` / `jmp [IAT]` and `win32_call` then pops `4 * nargs`, which is stdcall. Undercover's ordinary `.text` does not address the PE import-address table. It calls a stub, `jmp dword ptr [slot]`, whose slot is in `.rdata`.
 
-`analysis/undercover/import-thunks.md` names 199 of those stubs from the on-disk import entry in the slot. Undecorated MSVCR80 exports are cdecl (137). One MSVCR80 method is thiscall. Undecorated Win32 exports in that set are stdcall (19). Ordinals and undecorated DirectX helpers stay unknown (42) rather than being guessed. The runtime still pops every import as stdcall, so generated code can be compiled and cannot yet call these thunks correctly.
+`analysis/undercover/import-thunks.md` and `analysis/undercover/import-abi.json` name 199 of those stubs from the on-disk import entry in the slot. Undecorated MSVCR80 exports are cdecl (137). One MSVCR80 method is thiscall. Undecorated Win32 exports in that set are stdcall (19). Ordinals and undecorated DirectX helpers stay unknown (42) rather than being guessed. 157 of the 199 have high confidence. The JSON is preparation for a later runtime. `win32_call` is unchanged and still pops every import as stdcall, so generated code can be compiled and cannot yet call these thunks correctly.
 
 ## Guest map
 
