@@ -34,6 +34,11 @@ PRIV = {
 LES = {"les", "lds"}
 RARE = {"arpl", "bound", "salc", "into", "icebp", "ud0", "ud1"}
 ENTRY_BAD = BCD | FAR | PRIV | LES | RARE
+# Opcodes the lifter does not treat as compiler output. A HIGH or MEDIUM
+# function whose control flow reaches one of these is data reached by a jump,
+# not a missing instruction. Privileged opcodes the lifter already comments
+# out (in, hlt, cli) are not in this set.
+DATA_CFG = BCD | {"lcall", "ljmp", "les", "lds", "salc", "fstpnce", "iret", "iretd", "into", "arpl", "bound"}
 STACK = {"push", "pop", "pushfd", "popfd", "enter", "leave"}
 LOOP = {"jecxz", "jcxz", "loop", "loope", "loopz", "loopne", "loopnz"}
 
@@ -489,6 +494,51 @@ def classify(facts, from_call, calls_known):
     return label, score, reasons
 
 
+def demote_data_cfg(blob, base, graph, coverage):
+    """Reject a scored function when the lifter's CFG reaches embedded data.
+
+    The linear walk stops at instruction-boundary jumps. discover() follows
+    every in-range jump, which is how a real-looking entry can land on aad,
+    aaa, salc, ljmp, or the reserved bytes Capstone calls fstpnce. Those are
+    not implemented. The function is reclassified instead.
+    """
+    lifter = lift.RawLifter(blob, base, comments=False)
+    demoted = []
+    for row in graph.values():
+        if row["label"] not in ("HIGH_CONFIDENCE", "MEDIUM_CONFIDENCE"):
+            continue
+        bad = None
+        blocks, _calls = lifter.discover(row["va"])
+        for insns in blocks.values():
+            for insn in insns:
+                if insn.mnemonic.split()[-1] in DATA_CFG:
+                    bad = insn.mnemonic
+                    break
+            if bad:
+                break
+        if not bad:
+            continue
+        row["label"] = "REJECTED_DATA_LIKE"
+        row["score"] = 0
+        row["reasons"] = [
+            f"lifter control flow reaches `{bad}`",
+            "following a jump leaves compiler-shaped code and enters embedded data",
+        ]
+        row.pop("_owned", None)
+        demoted.append({"va": row["va"], "mnemonic": bad})
+    for index in range(len(coverage)):
+        coverage[index] = 0
+    for row in graph.values():
+        owned = row.pop("_owned", None)
+        if not owned or row["label"] not in ("HIGH_CONFIDENCE", "MEDIUM_CONFIDENCE"):
+            continue
+        for addr in owned:
+            rel = addr - base
+            if 0 <= rel < len(coverage):
+                coverage[rel] = 1
+    return demoted
+
+
 def build(info):
     blob = info["bytes"]
     base = info["text_va"]
@@ -561,6 +611,7 @@ def build(info):
         }
         graph[va] = row
         if label in ("HIGH_CONFIDENCE", "MEDIUM_CONFIDENCE"):
+            row["_owned"] = list(owned)
             for addr in owned:
                 rel = addr - base
                 if 0 <= rel < len(coverage):
@@ -588,6 +639,8 @@ def build(info):
         row["reasons"].append("calls another classified function")
         if row["label"] == "MEDIUM_CONFIDENCE" and row["score"] >= 60 and row.get("bad_branch", 0) == 0 and row.get("ends_ret"):
             row["label"] = "HIGH_CONFIDENCE"
+
+    demoted = demote_data_cfg(blob, base, graph, coverage)
 
     unreachable = []
     for off in range(len(blob) - 3):
@@ -620,6 +673,7 @@ def build(info):
         "unreachable": unreachable,
         "covered_bytes": covered,
         "text_size": len(blob),
+        "data_cfg_rejected": demoted,
     }
 
 
@@ -746,6 +800,30 @@ def write_reports(doc, out_dir):
         "MEDIUM at 40 or more; LOW at 20 or more; otherwise REJECTED_DATA_LIKE. "
         "An illegal first instruction is rejected before the points are added.",
         "",
+        "After scoring, HIGH and MEDIUM functions are checked with the lifter's own control-flow walk. "
+        "If that walk reaches `aad`, `aaa`, `salc`, `ljmp`, `fstpnce`, or another opcode in the same data class, "
+        "the function is reclassified REJECTED_DATA_LIKE. The opcode is not added to the lifter. "
+        f"Phase 5 rejected {len(doc.get('data_cfg_rejected') or [])} functions this way.",
+        "",
+        "## Change from Phase 4",
+        "",
+        "Phase 4 scored 6,604 HIGH and 79 MEDIUM from the linear walk. "
+        "Phase 5 keeps that score, then rejects a function whose lifter control flow reaches embedded data. "
+        "Generation of the original 6,604 is recorded in `high-confidence.md` and is not recomputed from this smaller set.",
+        "",
+        "| | Phase 4 | Phase 5 |",
+        "| --- | --- | --- |",
+        "| HIGH_CONFIDENCE | 6,604 | " + str(counts["HIGH_CONFIDENCE"]) + " |",
+        "| MEDIUM_CONFIDENCE | 79 | " + str(counts["MEDIUM_CONFIDENCE"]) + " |",
+        "| LOW_CONFIDENCE | 20 | " + str(counts["LOW_CONFIDENCE"]) + " |",
+        "| REJECTED_DATA_LIKE | 478 | " + str(counts["REJECTED_DATA_LIKE"]) + " |",
+        "| CFG-covered bytes | 1,853,801 | " + str(doc["covered_bytes"]) + " |",
+        "",
+        "Seven former HIGH functions were rejected. Six are the generation failures. "
+        "The seventh, `0x004A7520`, is data that the lifter still compiled because `into` is emitted as a comment. "
+        "Former MEDIUM functions rejected by the same check include real `55 8B EC` prologues that jump into data. "
+        "That rejection is a boundary problem.",
+        "",
         "## Counts",
         "",
         f"- Seeds: {doc['seeds']}",
@@ -828,6 +906,16 @@ def write_reports(doc, out_dir):
         "unreachable_counts": dict(un_counts),
         "covered_bytes": doc["covered_bytes"],
         "text_size": doc["text_size"],
+        "data_cfg_rejected": [
+            {"va": hx(item["va"]), "mnemonic": item["mnemonic"]}
+            for item in doc.get("data_cfg_rejected") or []
+        ],
+        "phase4_high_confidence": 6604,
+        "classification_note": (
+            "Phase 4 scored 6604 HIGH_CONFIDENCE functions from the linear walk. "
+            "Phase 5 keeps that score, then rejects a function whose lifter CFG reaches embedded data. "
+            "Generation statistics for the original 6604 are in high-confidence.md and are not recomputed from the reduced set."
+        ),
         "functions": stored,
     }
     path_json = os.path.join(out_dir, "function-map.json")
@@ -838,8 +926,8 @@ def write_reports(doc, out_dir):
     return counts
 
 
-def generate_high(info, graph, clang):
-    high = sorted(va for va, row in graph.items() if row["label"] == "HIGH_CONFIDENCE")
+def generate_high(info, vas, clang):
+    high = sorted(vas)
     print(f"  generating {len(high)} HIGH_CONFIDENCE functions", file=sys.stderr)
     lifter = ucg.make_lifter(info["bytes"], info["text_va"])
     out_dir = os.path.join(ROOT, "generated", "undercover", "high")
@@ -941,7 +1029,8 @@ def write_generation(rows, compile_seconds, out_dir):
     lines = [
         "# High-confidence generation",
         "",
-        "Only HIGH_CONFIDENCE functions were translated. MEDIUM and LOW roots were not.",
+        "This is the exact Phase 4 HIGH_CONFIDENCE address list when `--from-list` is used. MEDIUM and LOW roots were not translated.",
+        "A later reclassification does not remove a failure from this percentage.",
         "Generated C is under `generated/undercover/high/` and is not committed.",
         "The game was not executed.",
         "",
@@ -978,8 +1067,12 @@ def write_generation(rows, compile_seconds, out_dir):
         lines.append("None.")
     else:
         for row in compile_failed:
-            head = (row.get("compiler_error") or "").splitlines()
-            lines.append(f"- {ucg.hx(row['va'])}: {head[0] if head else 'unknown'}")
+            lines.append(f"### {ucg.hx(row['va'])}")
+            lines.append("")
+            lines.append("```")
+            lines.append((row.get("compiler_error") or "unknown").rstrip())
+            lines.append("```")
+            lines.append("")
     lines.append("")
     path = os.path.join(out_dir, "high-confidence.md")
     with open(path, "w", encoding="utf-8", newline="\n") as fh:
@@ -1006,15 +1099,45 @@ def write_generation(rows, compile_seconds, out_dir):
     return summary
 
 
+def load_address_list(path):
+    addrs = []
+    for line in open(path, encoding="utf-8"):
+        line = line.strip()
+        if not line or line.startswith("#"):
+            continue
+        addrs.append(int(line.split()[0], 16))
+    return addrs
+
+
 def main(argv):
     if len(argv) < 2:
-        die("usage: uc_funcmap.py <nfs.exe> [--generate]")
+        die("usage: uc_funcmap.py <nfs.exe> [--generate | --from-list addresses.txt]")
     exe = argv[1]
     do_gen = "--generate" in argv
+    list_path = ""
+    if "--from-list" in argv:
+        index = argv.index("--from-list")
+        if index + 1 >= len(argv):
+            die("--from-list needs a path")
+        list_path = argv[index + 1]
     info = uca.read_inputs(exe)
     info["path"] = os.path.abspath(exe)
     out_dir = uca.assert_output_ok(os.path.join(ROOT, "analysis", "undercover"), exe)
     uca.assert_output_ok(os.path.join(ROOT, "generated", "undercover"), exe)
+    if list_path:
+        addrs = load_address_list(list_path)
+        clang = ucg.find_clang()
+        if not clang:
+            die("clang was not found")
+        print(f"  generating the saved list ({len(addrs)} addresses)", file=sys.stderr)
+        rows, compile_seconds = generate_high(info, addrs, clang)
+        summary = write_generation(rows, compile_seconds, out_dir)
+        print(
+            f"  high generated {summary['generated']}/{summary['attempted']} "
+            f"compiled {summary['compiled']}/{summary['generated']}",
+            file=sys.stderr,
+        )
+        return
     t0 = time.time()
     doc = build(info)
     counts = write_reports(doc, out_dir)
@@ -1029,7 +1152,8 @@ def main(argv):
     clang = ucg.find_clang()
     if not clang:
         die("clang was not found")
-    rows, compile_seconds = generate_high(info, doc["graph"], clang)
+    vas = [va for va, row in doc["graph"].items() if row["label"] == "HIGH_CONFIDENCE"]
+    rows, compile_seconds = generate_high(info, vas, clang)
     summary = write_generation(rows, compile_seconds, out_dir)
     print(
         f"  high generated {summary['generated']}/{summary['attempted']} "

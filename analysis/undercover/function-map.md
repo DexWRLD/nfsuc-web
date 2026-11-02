@@ -45,17 +45,33 @@ Optimized MSVC code often omits `55 8B EC`. A frame pointer adds points. It is n
 
 Labels: HIGH at 60 or more with a terminator and no bad branch; MEDIUM at 40 or more; LOW at 20 or more; otherwise REJECTED_DATA_LIKE. An illegal first instruction is rejected before the points are added.
 
+After scoring, HIGH and MEDIUM functions are checked with the lifter's own control-flow walk. If that walk reaches `aad`, `aaa`, `salc`, `ljmp`, `fstpnce`, or another opcode in the same data class, the function is reclassified REJECTED_DATA_LIKE. The opcode is not added to the lifter. Phase 5 rejected 36 functions this way.
+
 ## Counts
 
 - Seeds: 3751
 - Reachable entries walked: 7181
-- HIGH_CONFIDENCE: 6604
-- MEDIUM_CONFIDENCE: 79
+- HIGH_CONFIDENCE: 6597
+- MEDIUM_CONFIDENCE: 50
 - LOW_CONFIDENCE: 20
-- REJECTED_DATA_LIKE among walked entries: 478
+- REJECTED_DATA_LIKE among walked entries: 514
 - Unreachable prologue or padding candidates: 15755
 - Short-window sketch of those candidates, not a second graph and not generated: 11710 score like HIGH, 4045 like MEDIUM, 0 like LOW, 0 like REJECTED_DATA_LIKE
-- CFG coverage of `.text`: 1853801 / 7730171 bytes (24.0%)
+- CFG coverage of `.text`: 1851810 / 7730171 bytes (24.0%)
+
+## Change from Phase 4
+
+Phase 4 scored 6,604 HIGH and 79 MEDIUM from the linear walk. Phase 5 keeps that score, then rejects a function whose lifter control flow reaches embedded data. Generation of the original 6,604 is recorded in `high-confidence.md` and is not recomputed from this smaller set.
+
+| | Phase 4 | Phase 5 |
+| --- | --- | --- |
+| HIGH_CONFIDENCE | 6,604 | 6,597 |
+| MEDIUM_CONFIDENCE | 79 | 50 |
+| LOW_CONFIDENCE | 20 | 20 |
+| REJECTED_DATA_LIKE | 478 | 514 |
+| CFG-covered bytes | 1,853,801 | 1,851,810 |
+
+Seven former HIGH functions were rejected. Six are the generation failures (`0x00401DC0`, `0x00780150`, `0x007C8350`, `0x007C9010`, `0x00841BF0`, `0x00A945E0`). The seventh, `0x004A7520`, is data (`inc edi`, `std`, `into`) that the lifter still compiled because `into` is emitted as a comment. Twenty-nine former MEDIUM functions were rejected for the same check. Some of those begin with a real `55 8B EC` and then jump into data, so the rejection is a boundary problem, not a claim that the prologue bytes are data.
 
 Coverage counts bytes of instructions that belong to a reachable HIGH or MEDIUM function, including its switch targets. LOW and rejected entries do not add coverage.
 
@@ -67,10 +83,8 @@ An unreachable candidate is a frame prologue, or the first instruction after a r
 
 | Function | Score | Insns | Why |
 | --- | --- | --- | --- |
-| 0x00401DC0 | 85 | 3 | instruction boundary; referenced from a validated function; internal branches land on instruction boundaries |
 | 0x0045D5E0 | 105 | 13 | instruction boundary; referenced from a validated function; stack operation without requiring a frame pointer |
 | 0x0045F160 | 85 | 1 | instruction boundary; referenced from a validated function; internal branches land on instruction boundaries |
-| 0x004A7520 | 80 | 16 | instruction boundary; referenced from a validated function; stack operation without requiring a frame pointer |
 | 0x005CAED0 | 105 | 9 | instruction boundary; referenced from a validated function; stack operation without requiring a frame pointer |
 | 0x005D87E0 | 105 | 9 | instruction boundary; referenced from a validated function; stack operation without requiring a frame pointer |
 | 0x0065BF10 | 85 | 2 | instruction boundary; referenced from a validated function; internal branches land on instruction boundaries |
@@ -79,8 +93,10 @@ An unreachable candidate is a frame prologue, or the first instruction after a r
 | 0x006DD7C0 | 118 | 61 | instruction boundary; MSVC frame prologue; preceded by int3 padding |
 | 0x006DE410 | 118 | 98 | instruction boundary; MSVC frame prologue; preceded by int3 padding |
 | 0x006DFE00 | 85 | 42 | instruction boundary; preceded by int3 padding; internal branches land on instruction boundaries |
+| 0x006E0010 | 80 | 16 | instruction boundary; stack operation without requiring a frame pointer; internal branches land on instruction boundaries |
+| 0x006E3240 | 120 | 43 | instruction boundary; referenced from a validated function; stack operation without requiring a frame pointer |
 
-6592 more are in `function-map.json`.
+6585 more are in `function-map.json`.
 
 ### MEDIUM_CONFIDENCE
 
@@ -90,16 +106,16 @@ An unreachable candidate is a frame prologue, or the first instruction after a r
 | 0x00453EF0 | 70 | 3 | instruction boundary; referenced from a validated function; internal branches land on instruction boundaries |
 | 0x0045CC30 | 70 | 4 | instruction boundary; referenced from a validated function; internal branches land on instruction boundaries |
 | 0x004A2C20 | 55 | 4 | instruction boundary; referenced from a validated function; stack operation without requiring a frame pointer |
-| 0x004A9010 | 55 | 29 | instruction boundary; referenced from a validated function; stack operation without requiring a frame pointer |
 | 0x004A9310 | 60 | 7 | instruction boundary; referenced from a validated function; stack operation without requiring a frame pointer |
 | 0x004AA3F0 | 90 | 7 | instruction boundary; referenced from a validated function; stack operation without requiring a frame pointer |
 | 0x004AA690 | 70 | 3 | instruction boundary; referenced from a validated function; internal branches land on instruction boundaries |
-| 0x00521410 | 55 | 4 | instruction boundary; referenced from a validated function; stack operation without requiring a frame pointer |
 | 0x005217A0 | 90 | 7 | instruction boundary; referenced from a validated function; stack operation without requiring a frame pointer |
 | 0x005247B0 | 55 | 38 | instruction boundary; referenced from a validated function; stack operation without requiring a frame pointer |
 | 0x005258D0 | 50 | 2 | instruction boundary; referenced from a validated function; stack operation without requiring a frame pointer |
+| 0x00525A50 | 45 | 5 | instruction boundary; referenced from a validated function; internal branches land on instruction boundaries |
+| 0x00526350 | 50 | 7 | instruction boundary; referenced from a validated function; stack operation without requiring a frame pointer |
 
-67 more are in `function-map.json`.
+38 more are in `function-map.json`.
 
 ### LOW_CONFIDENCE
 
@@ -137,4 +153,4 @@ An unreachable candidate is a frame prologue, or the first instruction after a r
 | 0x004013D0 | 0 | 0 | call or jump target is not on an instruction boundary |
 | 0x00401440 | 0 | 0 | call or jump target is not on an instruction boundary |
 
-466 more are in `function-map.json`.
+502 more are in `function-map.json`.
