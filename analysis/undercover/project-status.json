@@ -1,0 +1,131 @@
+{
+  "current_phase": 14,
+  "strategy": "Find independent ordinary runtime and graphics frontiers. 0x00686000 stays unimplemented.",
+  "boundaries": {
+    "0x00686000": {
+      "status": "PROTECTED_OR_EXTERNAL_DEPENDENCY",
+      "direct_call_sites": 249,
+      "high_confidence_span_sites": 88,
+      "reachable_high_span_sites": 44,
+      "implemented": false,
+      "substituted": false,
+      "lifted": false,
+      "executed": false,
+      "note": "Site census is the Phase 13 count. The control-flow cut is helper-cut.json."
+    },
+    "0x0055FF30": {
+      "status": "UNKNOWN",
+      "direct_call_sites": 4,
+      "implemented": false,
+      "lifted": false,
+      "executed": false
+    }
+  },
+  "initialization": [
+    {
+      "address": "0x0189D1A4",
+      "status": "ORDINARY INITIALIZATION PROVEN",
+      "writer": "0x009E8AD0",
+      "store": "0x009E8B16",
+      "value": "0x009E78C0",
+      "slot_writes": 49,
+      "slot_span": "0x0189D198..0x0189D270",
+      "evidence": "init-provenance.json WRITE at 0x009E8B16; phase 11 test requires the writer and the value"
+    },
+    {
+      "address": "0x0189DA84",
+      "status": "BLOCKED BY EXTERNAL INITIALIZATION PATH",
+      "evidence": "The publishing store follows call 0x00686000"
+    },
+    {
+      "address": "0x0189D0A0+8",
+      "status": "BLOCKED BY SAME EXTERNAL INITIALIZATION PATH",
+      "evidence": "The field writer follows the same unavailable call"
+    },
+    {
+      "address": "0x0188DAFC",
+      "status": "ORDINARY WRITER KNOWN / NOT EXECUTED",
+      "writer": "0x00B523E0",
+      "store": "0x00B551A3",
+      "evidence": "Ordinary byte store. The phase 11 run left the flag at 0"
+    }
+  ],
+  "graphics": {
+    "import": "Direct3DCreate9",
+    "call": "0x0072E3B9",
+    "function": "0x0072E340",
+    "confidence": "MEDIUM_CONFIDENCE",
+    "independent_of_0x00686000": "YES",
+    "reachable_from_high_graph": "NO",
+    "enterable_now": "NO"
+  },
+  "first_frame_estimate": {
+    "best_case_phase": 20,
+    "likely_low": 22,
+    "likely_high": 28,
+    "is_estimate": true,
+    "uncertainty": "The flag in front of Direct3DCreate9 has no absolute writer, and that call does not create a device."
+  },
+  "recorded_execution": [
+    {
+      "address": "0x00721070",
+      "phase": 6,
+      "completed": true,
+      "evidence": "Phase 6 test runs this leaf and fails unless that run passes"
+    },
+    {
+      "address": "0x00739B90",
+      "phase": 7,
+      "completed": true,
+      "evidence": "Phase 7 test requires uc_guest_execute of this address to return 1"
+    },
+    {
+      "address": "0x009E8AD0",
+      "phase": 11,
+      "completed": true,
+      "evidence": "Phase 11 test requires init_slot_fn to be this address and init_status 0"
+    },
+    {
+      "address": "0x009E78C0",
+      "phase": 11,
+      "completed": true,
+      "evidence": "Phase 11 test requires the callback entry after the leaf"
+    },
+    {
+      "address": "0x0099DCD0",
+      "phase": 11,
+      "completed": false,
+      "evidence": "Phase 11 harness enters this function. The continuation faults at 0x009E4B49"
+    }
+  ],
+  "phases": [
+    {"phase": 1, "name": "PE analysis", "state": "completed"},
+    {"phase": 2, "name": "CFG and instruction analysis", "state": "completed"},
+    {"phase": 3, "name": "Compile sample", "state": "completed"},
+    {"phase": 4, "name": "Lifter expansion", "state": "completed"},
+    {"phase": 5, "name": "Compiler closure", "state": "completed"},
+    {"phase": 6, "name": "First native execution", "state": "completed"},
+    {"phase": 7, "name": "Imports and mapped image", "state": "completed"},
+    {"phase": 8, "name": "Deterministic clusters", "state": "completed"},
+    {"phase": 9, "name": "x87 and CRT math ABI", "state": "completed"},
+    {"phase": 10, "name": "Runtime frontier", "state": "completed"},
+    {"phase": 11, "name": "Callback initialization", "state": "completed"},
+    {"phase": 12, "name": "Object initialization analysis", "state": "completed"},
+    {"phase": 13, "name": "External boundary classification", "state": "completed"},
+    {"phase": 14, "name": "Dependency cut and alternate frontier", "state": "current"}
+  ],
+  "milestones": [
+    {"name": "STATIC RECOMPILATION", "state": "ACHIEVED"},
+    {"name": "NATIVE EXECUTION", "state": "DEMONSTRATED"},
+    {"name": "CRT / ABI", "state": "PARTIAL"},
+    {"name": "ORDINARY CALLBACK INITIALIZATION", "state": "DEMONSTRATED"},
+    {"name": "LARGE ORDINARY INITIALIZATION", "state": "BLOCKED"},
+    {"name": "GRAPHICS FRONTIER", "state": "PARTIAL"},
+    {"name": "D3D9 DEVICE", "state": "NOT STARTED"},
+    {"name": "FIRST FRAME", "state": "NOT STARTED"},
+    {"name": "INPUT / SIMULATION", "state": "NOT STARTED"},
+    {"name": "FIRST DRIVE", "state": "NOT STARTED"},
+    {"name": "WASM / BROWSER", "state": "NOT STARTED"},
+    {"name": "PLAYABLE WEB BUILD", "state": "NOT STARTED"}
+  ]
+}
