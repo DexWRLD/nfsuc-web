@@ -169,6 +169,110 @@ def slice_address(insns, index):
     return None
 
 
+def track_base_forward(insns, index, reg_name, bound=40):
+    """Follow a base register forward and report field accesses and calls.
+
+    `reg_name` is one of eax..edi. The instruction at `index` has just defined it.
+    Returns a list of (kind, eip, offset, text). Offset is added to the original base.
+    """
+    return _track_base_forward(insns, index, reg_name, bound)
+
+
+def _track_base_forward(insns, index, reg_name, bound):
+    from capstone.x86 import (
+        X86_REG_EAX, X86_REG_EBX, X86_REG_ECX, X86_REG_EDX,
+        X86_REG_ESI, X86_REG_EDI, X86_REG_EBP, X86_REG_ESP,
+    )
+    id_name = {
+        X86_REG_EAX: "eax", X86_REG_EBX: "ebx", X86_REG_ECX: "ecx", X86_REG_EDX: "edx",
+        X86_REG_ESI: "esi", X86_REG_EDI: "edi", X86_REG_EBP: "ebp", X86_REG_ESP: "esp",
+    }
+    name_id = {v: k for k, v in id_name.items()}
+    if reg_name not in name_id:
+        return []
+    live = {reg_name: 0}
+    caller_saved = {"eax", "ecx", "edx"}
+    events = []
+    end = min(len(insns), index + 1 + bound)
+    for insn in insns[index + 1:end]:
+        if insn.mnemonic.startswith("ret"):
+            break
+        text = "%s %s" % (insn.mnemonic, insn.op_str)
+        for op in insn.operands:
+            if op.type != X86_OP_MEM or op.mem.index or not op.mem.base:
+                continue
+            name = id_name.get(PARENT.get(op.mem.base))
+            if name not in live:
+                continue
+            offset = (live[name] + op.mem.disp) & 0xFFFFFFFF
+            write = bool(op.access & 2) or insn.mnemonic in ("mov", "lea", "add", "sub", "and", "or", "xor") and op is insn.operands[0]
+            # lea writes the register, not the memory.
+            if insn.mnemonic == "lea":
+                write = False
+            kind = "FIELD_WRITE" if write else "FIELD_READ"
+            events.append((kind, insn.address, offset, text))
+        if insn.mnemonic == "call":
+            if "ecx" in live:
+                events.append(("PASS_ECX", insn.address, live["ecx"], text))
+            for name in caller_saved:
+                live.pop(name, None)
+            continue
+        dest = None
+        if insn.operands and insn.operands[0].type == X86_OP_REG:
+            dest = id_name.get(PARENT.get(insn.operands[0].reg))
+        if dest is None:
+            continue
+        ops = insn.operands
+        if insn.mnemonic == "mov" and len(ops) > 1 and ops[1].type == X86_OP_REG:
+            src = id_name.get(PARENT.get(ops[1].reg))
+            if src in live:
+                live[dest] = live[src]
+            else:
+                live.pop(dest, None)
+            continue
+        if insn.mnemonic == "lea" and len(ops) > 1 and ops[1].type == X86_OP_MEM and not ops[1].mem.index:
+            src = id_name.get(PARENT.get(ops[1].mem.base))
+            if src in live:
+                live[dest] = (live[src] + ops[1].mem.disp) & 0xFFFFFFFF
+            else:
+                live.pop(dest, None)
+            continue
+        if insn.mnemonic == "add" and dest in live and len(ops) > 1 and ops[1].type == X86_OP_IMM:
+            live[dest] = (live[dest] + ops[1].imm) & 0xFFFFFFFF
+            continue
+        if insn.mnemonic == "sub" and dest in live and len(ops) > 1 and ops[1].type == X86_OP_IMM:
+            live[dest] = (live[dest] - (ops[1].imm & 0xFFFFFFFF)) & 0xFFFFFFFF
+            continue
+        if writes_reg(insn, name_id[dest]):
+            live.pop(dest, None)
+    return events
+
+
+def previous_call_target(insns, index):
+    """If the instruction before `index` is a direct call, return its target."""
+    if index <= 0 or index >= len(insns):
+        return None
+    prev = insns[index - 1]
+    if prev.mnemonic != "call" or not prev.operands:
+        return None
+    op = prev.operands[0]
+    if op.type != X86_OP_IMM:
+        return None
+    return op.imm & 0xFFFFFFFF
+
+
+def dispatch_entry_ok(va, generated, text_lo, text_hi, protected=()):
+    """A numeric .text address is not enough. The entry must be generated."""
+    if not isinstance(va, int) or va <= 0:
+        return False
+    for lo, hi in protected:
+        if lo <= va < hi:
+            return False
+    if va < text_lo or va >= text_hi:
+        return False
+    return va in generated
+
+
 def decode_window(blob, base, va, size):
     md = Cs(CS_ARCH_X86, CS_MODE_32)
     md.detail = True

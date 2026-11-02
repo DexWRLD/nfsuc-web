@@ -90,6 +90,45 @@ def test_pointer_runs_and_ranges():
         raise SystemExit("text pointer not flagged")
 
 
+def test_field_write_through_base():
+    blob = bytes([0xB9]) + struct.pack("<I", TARGET) + bytes([0x89, 0x41, 0x08, 0x8B, 0x01])
+    insns = asm(blob)
+    events = prov.track_base_forward(insns, 0, "ecx")
+    kinds = [(e[0], e[2]) for e in events]
+    if ("FIELD_WRITE", 8) not in kinds or ("FIELD_READ", 0) not in kinds:
+        raise SystemExit(events)
+
+
+def test_field_write_through_copy():
+    # mov ecx, TARGET; mov esi, ecx; mov [esi+4], ebx
+    blob = bytes([0xB9]) + struct.pack("<I", TARGET) + bytes([0x8B, 0xF1, 0x89, 0x5E, 0x04])
+    insns = asm(blob)
+    events = prov.track_base_forward(insns, 0, "ecx")
+    if not any(e[0] == "FIELD_WRITE" and e[2] == 4 for e in events):
+        raise SystemExit(events)
+
+
+def test_eax_published_by_previous_call():
+    # call 0x009E9160; mov dword ptr [TARGET], eax
+    rel = 0x009E9160 - (0x00400005)
+    blob = bytes([0xE8]) + struct.pack("<i", rel) + bytes([0xA3]) + struct.pack("<I", TARGET)
+    insns = asm(blob)
+    if prov.previous_call_target(insns, 1) != 0x009E9160:
+        raise SystemExit(prov.previous_call_target(insns, 1))
+
+
+def test_dispatch_rejects_numeric_text_address():
+    generated = {0x009E78C0}
+    if not prov.dispatch_entry_ok(0x009E78C0, generated, 0x00401000, 0x00B61000):
+        raise SystemExit("generated entry rejected")
+    if prov.dispatch_entry_ok(0x00695490, generated, 0x00401000, 0x00B61000):
+        raise SystemExit("ungenerated .text address accepted")
+    if prov.dispatch_entry_ok(0, generated, 0x00401000, 0x00B61000):
+        raise SystemExit("zero accepted")
+    if prov.dispatch_entry_ok(0x009E78C0, generated, 0x00401000, 0x00B61000, ((0x009E0000, 0x00A00000),)):
+        raise SystemExit("protected range accepted")
+
+
 def test_relative_caller():
     target = 0x00401010
     rel = target - (0x00400000 + 5)
@@ -108,6 +147,10 @@ def main():
     test_absolute_write_encoding()
     test_address_taken_encoding()
     test_pointer_runs_and_ranges()
+    test_eax_published_by_previous_call()
+    test_dispatch_rejects_numeric_text_address()
+    test_field_write_through_base()
+    test_field_write_through_copy()
     test_relative_caller()
     print("uc initprov tests passed")
 
