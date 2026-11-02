@@ -170,11 +170,15 @@ The next cluster was taken from the high-confidence graph, not from a preselecte
 
 `[0x01311E1C]` is a 0/1/2 synchronization dword. Absolute `mov` writers are still absent; three `xchg`-through-`ECX` sites are definite writers for values 1, 2, and 0. The value-`1` writer `0x00722D60` has no ordinary `E8` caller and no absolute pointer in allowed sections. The graphics object is the static zeroed global `0x01318170`. `[0x00B615C4]` holds `0x008AA3AE`, which is mid-instruction. `0x00766730` and `0x0072E340` grow past the function-map's 24-instruction fact walk to ordinary returns; they were not promoted. Direct3D was not implemented. Details are in `analysis/undercover/runtime-phase15.md`.
 
+## Phase 16
+
+The 24-instruction unreachable-candidate sketch was replaced by a CFG-aware fact walk with explicit safety budgets and termination reasons. Strong CFG-complete padding/prologue candidates were enrolled into the ordinary graph. Reachable HIGH rose from 6,597 to 22,779; CFG coverage of ordinary `.text` rose from 24% to 50%. Of the old 1,782 `insns==24` MEDIUM cohort, 1,769 promoted to HIGH. Generation 22,770/22,779, compile 22,770/22,770. The helper cut remains narrow (74 must / 139 may / 22,394 independent). `0x0072E340` is now reachable HIGH and independent of `0x00686000`, but Direct3DCreate9 is still not enterable: flag=1 writer disconnected, callback slots invalid, TLS unwitten, object zeroed. Details are in `analysis/undercover/runtime-phase16.md`.
+
 ## Status
 
-STATIC CODE READINESS: established for the ordinary high-confidence `.text` list. 6,598 of 6,604 generate, and every generated function compiles. Compilation coverage is not the current limit. The medium-confidence set is largely capped at 24 scored instructions; that is a discovery limit, not a claim about those functions' true size.
+STATIC CODE READINESS: established for the repaired ordinary high-confidence `.text` list. 22,770 of 22,779 generate, and every generated function compiles. The old 24-instruction discovery cap is gone.
 
-RUNTIME INITIALIZATION READINESS: partial. One ordinary leaf initializes the callback slot that blocked `0x0099DCD0`. The object pointer `0x0189DA84` and the field `[0x0189D0A0+8]` have ordinary writers, and both writers depend on `0x0189DA88`. The only store to that global is after `call 0x00686000`. Phase 14 kept that call unimplemented. It is a must-hit for 11 reachable functions and a possible hit for 31 more. The other 6,456 reachable high-confidence functions do not call it.
+RUNTIME INITIALIZATION READINESS: partial. One ordinary leaf initializes the callback slot that blocked `0x0099DCD0`. The object pointer `0x0189DA84` and the field `[0x0189D0A0+8]` have ordinary writers, and both writers depend on `0x0189DA88`. The only store to that global is after `call 0x00686000`. Phase 16 kept that call unimplemented. It is a must-hit for 74 reachable HIGH functions and a possible hit for 139 more. The other 22,394 reachable high-confidence functions do not call it.
 
 INTEGER/STACK ABI: established for the tested paths. Cdecl `memset`, `strlen`, `memcmp`, and `strcmp` run from lifted callers, and the generated `add esp` removes the arguments. Unknown imports fail closed.
 
@@ -182,7 +186,7 @@ X87 CRT ABI: established in Phase 9 for `_CIsin`, `_CIcos`, and `_CIacos` as use
 
 DETERMINISTIC CLUSTER EXECUTION: established. Phase 8 ran the five-function string chain. Phase 9 ran the six-function `0x00A124B0` closure twice from the same state, then once with a second input. Phase 10 ran two larger static closures; the completing paths enter 6 functions and repeat.
 
-MAJOR NATIVE SUBSYSTEMS: future. Phase 15 keeps `Direct3DCreate9` outside the helper cut and not enterable: the flag's value-`1` writer is ordinary but unreachable from the ordinary graph, and the pre-create callback slot is not a valid entry. Filesystem, timing, TLS, and Direct3D were not implemented.
+MAJOR NATIVE SUBSYSTEMS: future. Phase 16 puts `Direct3DCreate9` on a reachable HIGH path outside the helper cut, but it is still not enterable: the flag's value-`1` writer remains without an ordinary caller, and the pre-create callback slots are not valid entries. Filesystem, timing, TLS, and Direct3D were not implemented.
 
 PROTECTED STARTUP: unresolved and outside this work. `Sitext` and the other protected sections are not read, executed, or rewritten.
 
@@ -192,4 +196,4 @@ The atomic helpers remain a single-threaded stand-in. The game does not boot or 
 
 ## Verdict
 
-The `0x00A124B0` closure runs, and Phase 10 can enter larger ordinary closures until a zero indirect slot or a null pointer. Phase 11 shows that slot has an ordinary writer and that executing the writer moves `0x0099DCD0` past it, onto another zero object field. Phase 12 finds the ordinary store for that field and stops at `call 0x00686000`, which is not an ordinary function and is not substituted. Phase 14 shows that call is a narrow cut. Phase 15 shows `Direct3DCreate9` is independent of it and still not enterable: the gate flag's value-`1` writer is ordinary code with no ordinary caller. The game is not ready to boot.
+The `0x00A124B0` closure runs, and Phase 10 can enter larger ordinary closures until a zero indirect slot or a null pointer. Phase 11 shows that slot has an ordinary writer and that executing the writer moves `0x0099DCD0` past it, onto another zero object field. Phase 12 finds the ordinary store for that field and stops at `call 0x00686000`, which is not an ordinary function and is not substituted. Phase 14–16 show that call remains a narrow cut. Phase 16 repaired function discovery and put `Direct3DCreate9` on a reachable HIGH path that is still not enterable: the gate flag's value-`1` writer is ordinary code with no ordinary caller. The game is not ready to boot.
