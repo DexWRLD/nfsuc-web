@@ -77,6 +77,10 @@ typedef struct UcAccessFault {
 #define UC_SPAN_CAP 32
 #define UC_REGION_CAP 24
 
+/* Limits are off when the matching value is 0. The trace log is a ring:
+ * uc_trace_total counts every event, and the last UC_TRACE_CAP events are
+ * kept. uc_trace_count stays the number of events still sitting in order at
+ * the front of the log, which is the whole log until it wraps. */
 extern int uc_exec_trace;
 extern uint32_t uc_current_fn;
 extern uint32_t uc_fault_eip;
@@ -85,7 +89,36 @@ extern UcSpan uc_spans[UC_SPAN_CAP];
 extern int uc_span_count;
 extern UcTraceEvent uc_trace_log[UC_TRACE_CAP];
 extern int uc_trace_count;
+extern int uc_trace_total;
 extern uint32_t uc_esp_mark[8];
+
+extern uint32_t uc_limit_calls;
+extern uint32_t uc_limit_depth;
+extern uint32_t uc_limit_imports;
+extern uint32_t uc_limit_indirect;
+extern uint32_t uc_limit_ms;
+extern uint64_t (*uc_host_ms)(void);
+extern int (*uc_limit_hook)(void);
+extern uint32_t uc_stat_calls;
+extern uint32_t uc_stat_imports;
+extern uint32_t uc_stat_indirect;
+extern int uc_stat_depth;
+extern int uc_stat_max_depth;
+
+typedef struct UcLimitStop {
+    int active;
+    int code; /* 1 calls, 2 depth, 3 imports, 4 indirect, 5 timeout */
+    uint32_t fn;
+    uint32_t eip;
+    uint32_t target;
+    char why[48];
+} UcLimitStop;
+
+extern UcLimitStop uc_limit_stop;
+
+void uc_limits_clear(void);
+int uc_limit_note_import(struct CPU *c, uint32_t thunk);
+int uc_limit_note_indirect(struct CPU *c, uint32_t target);
 
 int uc_image_reset(uint8_t *mem, uint32_t mem_size);
 int uc_image_map(const UcSectionIn *section);

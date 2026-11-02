@@ -10,7 +10,22 @@ UcSpan uc_spans[UC_SPAN_CAP];
 int uc_span_count;
 UcTraceEvent uc_trace_log[UC_TRACE_CAP];
 int uc_trace_count;
+int uc_trace_total;
 uint32_t uc_esp_mark[8];
+uint32_t uc_limit_calls;
+uint32_t uc_limit_depth;
+uint32_t uc_limit_imports;
+uint32_t uc_limit_indirect;
+uint32_t uc_limit_ms;
+uint64_t (*uc_host_ms)(void);
+int (*uc_limit_hook)(void);
+uint32_t uc_stat_calls;
+uint32_t uc_stat_imports;
+uint32_t uc_stat_indirect;
+int uc_stat_depth;
+int uc_stat_max_depth;
+UcLimitStop uc_limit_stop;
+static uint64_t uc_limit_t0;
 
 static uint8_t *image_mem;
 static uint32_t image_size;
@@ -36,6 +51,72 @@ static void copy_text(char *dst, const char *src, unsigned cap) {
 
 static void copy_name(char *dst, const char *src) {
     copy_text(dst, src, 16);
+}
+
+static void trip_limit(int code, const char *why, struct CPU *c, uint32_t target) {
+    if (uc_limit_stop.active) return;
+    uc_limit_stop.active = 1;
+    uc_limit_stop.code = code;
+    uc_limit_stop.fn = uc_current_fn;
+    uc_limit_stop.eip = c ? c->eip : uc_fault_eip;
+    uc_limit_stop.target = target;
+    copy_text(uc_limit_stop.why, why, 48);
+    if (uc_limit_hook) uc_limit_hook();
+}
+
+static void poll_timeout(struct CPU *c, uint32_t target) {
+    uint64_t now;
+    if (!uc_limit_ms || !uc_host_ms || uc_limit_stop.active) return;
+    now = uc_host_ms();
+    if (uc_limit_t0 == 0) uc_limit_t0 = now;
+    if (now - uc_limit_t0 > uc_limit_ms)
+        trip_limit(5, "wall-clock timeout", c, target);
+}
+
+void uc_limits_clear(void) {
+    uc_stat_calls = 0;
+    uc_stat_imports = 0;
+    uc_stat_indirect = 0;
+    uc_stat_depth = 0;
+    uc_stat_max_depth = 0;
+    uc_limit_stop.active = 0;
+    uc_limit_stop.code = 0;
+    uc_limit_stop.fn = 0;
+    uc_limit_stop.eip = 0;
+    uc_limit_stop.target = 0;
+    uc_limit_stop.why[0] = 0;
+    uc_limit_t0 = uc_host_ms ? uc_host_ms() : 0;
+    uc_trace_total = 0;
+    uc_trace_count = 0;
+}
+
+int uc_limit_note_import(struct CPU *c, uint32_t thunk) {
+    uc_stat_imports++;
+    poll_timeout(c, thunk);
+    if (uc_limit_imports && uc_stat_imports > uc_limit_imports) {
+        trip_limit(3, "import limit", c, thunk);
+        return 0;
+    }
+    return uc_limit_stop.active ? 0 : 1;
+}
+
+int uc_limit_note_indirect(struct CPU *c, uint32_t target) {
+    uc_stat_indirect++;
+    poll_timeout(c, target);
+    if (uc_limit_indirect && uc_stat_indirect > uc_limit_indirect) {
+        trip_limit(4, "indirect limit", c, target);
+        return 0;
+    }
+    return uc_limit_stop.active ? 0 : 1;
+}
+
+static UcTraceEvent *trace_slot(void) {
+    UcTraceEvent *e;
+    if (!uc_exec_trace) return 0;
+    e = &uc_trace_log[uc_trace_total % UC_TRACE_CAP];
+    uc_trace_total++;
+    uc_trace_count = uc_trace_total < UC_TRACE_CAP ? uc_trace_total : UC_TRACE_CAP;
+    return e;
 }
 
 static int name_eq(const char *a, const char *b) {
@@ -73,6 +154,13 @@ int uc_image_reset(uint8_t *mem, uint32_t mem_size) {
     region_count = 0;
     uc_span_count = 0;
     uc_trace_count = 0;
+    uc_trace_total = 0;
+    uc_stat_calls = 0;
+    uc_stat_imports = 0;
+    uc_stat_indirect = 0;
+    uc_stat_depth = 0;
+    uc_stat_max_depth = 0;
+    uc_limit_stop.active = 0;
     uc_current_fn = 0;
     uc_access_fault.active = 0;
     for (i = 0; i < 16; i++) sink[i] = 0;
@@ -164,25 +252,36 @@ static void note_fault(uint32_t addr, unsigned n, int kind, const char *section,
     uc_access_fault.kind = kind;
     copy_name(uc_access_fault.section, section ? section : "unmapped");
     copy_text(uc_access_fault.why, why, 48);
-    if (uc_exec_trace && uc_trace_count < UC_TRACE_CAP) {
-        UcTraceEvent *e = &uc_trace_log[uc_trace_count++];
-        e->kind = UC_EV_UNMAPPED_ACCESS;
-        e->fn = uc_current_fn;
-        e->eip = 0;
-        e->target = addr;
-        e->esp = e->eax = e->ecx = e->edx = e->ebx = e->esi = e->edi = e->ebp = 0;
+    if (uc_exec_trace) {
+        UcTraceEvent *e = trace_slot();
+        if (e) {
+            e->kind = UC_EV_UNMAPPED_ACCESS;
+            e->fn = uc_current_fn;
+            e->eip = uc_fault_eip;
+            e->target = addr;
+            e->esp = e->eax = e->ecx = e->edx = e->ebx = e->esi = e->edi = e->ebp = 0;
+        }
     }
+    if (uc_limit_hook) uc_limit_hook();
 }
 
 void uc_access_clear(void) {
     uc_access_fault.active = 0;
+    uc_access_fault.function_va = 0;
+    uc_access_fault.eip = 0;
+    uc_access_fault.address = 0;
+    uc_access_fault.size = 0;
+    uc_access_fault.kind = 0;
     uc_access_fault.section[0] = 0;
     uc_access_fault.why[0] = 0;
 }
 
 uint8_t *uc_guest_ptr(uint32_t addr, unsigned n, int write) {
-    UcRegion *r = find_region(addr, n, 1);
+    UcRegion *r;
     UcRegion *named;
+    poll_timeout(0, addr);
+    if (uc_limit_stop.active) return sink;
+    r = find_region(addr, n, 1);
     if (!r) {
         named = find_region(addr, n ? n : 1, 0);
         note_fault(addr, n, write ? UC_ACCESS_WRITE : UC_ACCESS_READ,
@@ -238,13 +337,15 @@ int uc_guest_execute(uint32_t addr) {
         named = r ? r : find_region(addr, 1, 0);
         note_fault(addr, 1, UC_ACCESS_EXECUTE, named ? named->name : "unmapped",
                    r ? "region is not executable" : "unmapped execute");
-        if (uc_exec_trace && uc_trace_count < UC_TRACE_CAP) {
-            UcTraceEvent *e = &uc_trace_log[uc_trace_count++];
-            e->kind = UC_EV_INDIRECT_CALL;
-            e->fn = uc_current_fn;
-            e->target = addr;
-            e->eip = uc_fault_eip;
-            e->esp = e->eax = e->ecx = e->edx = e->ebx = e->esi = e->edi = e->ebp = 0;
+        if (uc_exec_trace) {
+            UcTraceEvent *e = trace_slot();
+            if (e) {
+                e->kind = UC_EV_INDIRECT_CALL;
+                e->fn = uc_current_fn;
+                e->target = addr;
+                e->eip = uc_fault_eip;
+                e->esp = e->eax = e->ecx = e->edx = e->ebx = e->esi = e->edi = e->ebp = 0;
+            }
         }
         return 0;
     }
@@ -252,9 +353,8 @@ int uc_guest_execute(uint32_t addr) {
 }
 
 void uc_trace(int kind, uint32_t fn, uint32_t eip, uint32_t target, struct CPU *c) {
-    UcTraceEvent *e;
-    if (!uc_exec_trace || uc_trace_count >= UC_TRACE_CAP) return;
-    e = &uc_trace_log[uc_trace_count++];
+    UcTraceEvent *e = trace_slot();
+    if (!e) return;
     e->kind = kind;
     e->fn = fn;
     e->eip = eip;
@@ -276,11 +376,21 @@ void uc_trace(int kind, uint32_t fn, uint32_t eip, uint32_t target, struct CPU *
 void uc_fn_enter(uint32_t va, struct CPU *c) {
     uc_current_fn = va;
     uc_fault_eip = c->eip;
+    uc_stat_calls++;
+    uc_stat_depth++;
+    if (uc_stat_depth > uc_stat_max_depth) uc_stat_max_depth = uc_stat_depth;
     uc_trace(UC_EV_FUNCTION_ENTER, va, c->eip, va, c);
+    poll_timeout(c, va);
+    if (uc_limit_stop.active) return;
+    if (uc_limit_calls && uc_stat_calls > uc_limit_calls)
+        trip_limit(1, "call limit", c, va);
+    else if (uc_limit_depth && (uint32_t)uc_stat_depth > uc_limit_depth)
+        trip_limit(2, "depth limit", c, va);
 }
 
 void uc_fn_leave(uint32_t va, struct CPU *c) {
     uc_trace(UC_EV_FUNCTION_RETURN, va, c->eip, va, c);
+    if (uc_stat_depth > 0) uc_stat_depth--;
 }
 
 void uc_esp_mark_at(int slot, struct CPU *c) {
