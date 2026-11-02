@@ -57,7 +57,7 @@ Protected startup (`Sitext` and the other protected sections) is out of scope. T
 - The existing NFSU2 lifter accepts about 99.9% of the 874,653 instructions reached from those roots.
 - A 100-function sample first produced C for 83 functions, and all 83 compiled. After `repz ret` and `movmskps` were lowered, the same 100 addresses produced 86 functions and all 86 compiled. The other 14 are data-like roots.
 - The Phase 4 high-confidence list is 6,604 functions. After the remaining SSE and locked atomic forms were lowered, 6,598 generated and all 6,598 compiled. The six failures are data reached by a jump, not a missing compiler opcode.
-- `0x00721070` runs in a native harness. Real cdecl calls to `memset`, `strlen`, `memcmp`, and `strcmp` run from lifted functions, including a five-function chain. `_CIsin`, `_CIcos`, and `_CIacos` return on ST(0) inside the six-function `0x00A124B0` closure. Unknown imports fail closed. The game does not run.
+- `0x00721070` runs in a native harness. Real cdecl calls to `memset`, `strlen`, `memcmp`, and `strcmp` run from lifted functions, including a five-function chain. `_CIsin`, `_CIcos`, and `_CIacos` return on ST(0) inside the six-function `0x00A124B0` closure. Phase 10 enters the 31-function `0x00968D10` closure and the 19-function `0x00B01EB0` closure; the paths that return enter 6 functions. Unknown imports fail closed. The game does not run.
 - The PE entry point is in protected `Sitext`. That startup is unresolved on purpose.
 
 Reports: [docs/feasibility.md](docs/feasibility.md), [analysis/undercover/](analysis/undercover/).

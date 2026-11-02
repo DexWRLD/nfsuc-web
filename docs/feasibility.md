@@ -146,6 +146,10 @@ The next cluster was taken from the high-confidence graph, not from a preselecte
 
 `tools/uc_phase9_test.py` executes that candidate. The call sites pass the argument in ST(0) and consume the result with `fstp`. `_CIsin`, `_CIcos`, and `_CIacos` replace ST(0) and do not write EAX. `0x00A11C50` and `0x00A11AF0` consume those results. The six functions under `0x00A124B0` return deterministically. A second input drops the sine and cosine calls and stores a different float. Host `sin`, `cos`, and `acos` are not claimed to match MSVCR80 bits. Details are in `analysis/undercover/runtime-phase9.md`.
 
+## Phase 10
+
+`tools/uc_frontier.py` classifies the high-confidence call graph. The largest closure with no missing import and no indirect call is 19 functions at `0x00B01EB0`. The largest whose only import is already implemented is 31 functions at `0x00968D10`. Both were executed. Each completing input entered 6 functions. A second input for each root takes a different path. The 102-function closure at `0x0099DCD0` is the largest set blocked only by indirect calls, and running it stops at `0x0099DCEB` on a zero `.data` slot. Filesystem, heap, timing, and `Direct3DCreate9` are not the next gate. Details are in `analysis/undercover/runtime-phase10.md`.
+
 ## Status
 
 STATIC RECOMPILATION: established for the ordinary high-confidence `.text` list. 6,598 of 6,604 generate, and every generated function compiles.
@@ -154,9 +158,9 @@ INTEGER/STACK ABI: established for the tested paths. Cdecl `memset`, `strlen`, `
 
 X87 CRT ABI: established in Phase 9 for `_CIsin`, `_CIcos`, and `_CIacos` as used by `0x00A124B0`. The argument and the result are ST(0). This is not bit-exact MSVCR80 math, and x87 exceptions are not modeled.
 
-DETERMINISTIC CLUSTER EXECUTION: established. Phase 8 ran the five-function string chain. Phase 9 ran the six-function `0x00A124B0` closure twice from the same state, then once with a second input.
+DETERMINISTIC CLUSTER EXECUTION: established. Phase 8 ran the five-function string chain. Phase 9 ran the six-function `0x00A124B0` closure twice from the same state, then once with a second input. Phase 10 ran two larger static closures; the completing paths enter 6 functions and repeat.
 
-MAJOR NATIVE SUBSYSTEMS: future. Direct3D, sound, input, sockets, and guest threads are not implemented.
+MAJOR NATIVE SUBSYSTEMS: future. The Phase 10 graph puts unresolved indirect calls and missing ordinary initialization ahead of filesystem, heap, timing, and Direct3D. Those subsystems are measured and not implemented.
 
 PROTECTED STARTUP: unresolved and outside this work. `Sitext` and the other protected sections are not read, executed, or rewritten.
 
@@ -166,4 +170,4 @@ The atomic helpers remain a single-threaded stand-in. The game does not boot or 
 
 ## Verdict
 
-The `0x00A124B0` closure now runs, including real `_CIsin`, `_CIcos`, and `_CIacos` calls whose results are consumed by the lifted callers. The game is not ready to boot.
+The `0x00A124B0` closure runs, and Phase 10 can enter larger ordinary closures until a zero indirect slot or a null pointer. The game is not ready to boot.

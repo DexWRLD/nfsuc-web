@@ -83,6 +83,8 @@ The first cluster taken from the graph, rather than from a chosen subsystem, sha
 
 `tools/uc_phase9_test.py` runs the next closed cluster, rooted at `0x00A124B0`. `0x00A11C50` calls `_CIsin` and `_CIcos`. `0x00A11AF0` calls `_CIacos`. The six functions return to the harness. The result is not a claim of bit-exact MSVCR80 math.
 
+`tools/uc_frontier.py` ranks high-confidence closures by the imports, indirect calls, and protected edges they actually reach. `runtime/uc_image.c` can cap calls, depth, imports, indirect dispatches, and a host-supplied millisecond clock. The trace log is a ring of the last 64 events. `tools/uc_phase10_test.py` runs the 31-function closure at `0x00968D10` and the 19-function closure at `0x00B01EB0`. The paths that return enter 6 functions. A deeper root, `0x0099DCD0`, stops at `call dword ptr [0x0189D1A4]` because that dword is 0. No filesystem, heap, timer, or D3D9 runtime was added.
+
 ## Guest map
 
 The NFSU2 runtime reserves a guest image at `0x00400000` .. `0x00932000` and a dispatch table sized for that `.text`. That map is unchanged.
