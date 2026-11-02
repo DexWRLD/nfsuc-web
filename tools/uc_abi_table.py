@@ -27,6 +27,11 @@ KNOWN = {
 }
 # public: void type_info::_type_info_dtor_internal_method(void)
 THISCALL_NO_STACK = "?_type_info_dtor_internal_method@type_info@@QAEXXZ"
+X87 = {
+    "_CIsin": "UC_HLE_CISIN",
+    "_CIcos": "UC_HLE_CICOS",
+    "_CIacos": "UC_HLE_CIACOS",
+}
 
 
 def c_string(text):
@@ -56,12 +61,16 @@ def main():
         ordinal = -1 if row["ordinal"] is None else int(row["ordinal"])
         abi = ABI[row["calling_convention"]]
         dwords, hle = -1, "UC_HLE_NONE"
+        arg_loc, ret_loc = "UC_LOC_STACK", "UC_LOC_EAX"
         if symbol in KNOWN and row["calling_convention"] == "cdecl":
             dwords, hle = KNOWN[symbol]
+        elif symbol in X87 and row["calling_convention"] == "cdecl":
+            dwords, hle = 0, X87[symbol]
+            arg_loc, ret_loc = "UC_LOC_ST0", "UC_LOC_ST0"
         elif symbol == THISCALL_NO_STACK and row["calling_convention"] == "thiscall":
             dwords = 0
         lines.append(
-            "    { %s, %s, %s, %s, %d, %s, %d, %s },"
+            "    { %s, %s, %s, %s, %d, %s, %d, %s, %s, %s },"
             % (
                 row["thunk"],
                 row["iat_slot"],
@@ -71,6 +80,8 @@ def main():
                 abi,
                 dwords,
                 hle,
+                arg_loc,
+                ret_loc,
             )
         )
     lines.append("};")

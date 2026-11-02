@@ -91,6 +91,7 @@ def build_source(bodies):
 #include "uc_image.h"
 
 uint8_t *g_mem;
+int _fltused;
 static int uc_hle_fail;
 static int uc_direct_fail;
 static uint32_t uc_strlen_calls, uc_memcmp_calls, uc_strcmp_calls;

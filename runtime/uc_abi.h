@@ -10,6 +10,9 @@
  * address. STDCALL, THISCALL, and FASTCALL: the callee removes the recorded
  * stack arguments. UNKNOWN is not treated as stdcall and is not called.
  *
+ * arg_loc and ret_loc are separate from that integer convention. An import
+ * whose result is UC_LOC_ST0 replaces ST(0) and does not write EAX.
+ *
  * NFSU2's win32_call is unchanged. It still executes
  * `c->esp += 4u * (uint32_t)e->nargs` after popping the return address.
  * uc_abi_callee_bytes(UC_ABI_STDCALL, n) is that same `4 * n`. Undercover
@@ -40,8 +43,25 @@ typedef enum UcHle {
     UC_HLE_MEMCMP,
     UC_HLE_STRLEN,
     UC_HLE_STRCMP,
-    UC_HLE_STRNCMP
+    UC_HLE_STRNCMP,
+    UC_HLE_CISIN,
+    UC_HLE_CICOS,
+    UC_HLE_CIACOS
 } UcHle;
+
+/* Where an import argument is read, and where its result is written.
+ * STACK means the integer stack already described by stack_dwords.
+ * ST0 means the x87 register ST(0). EAX is the integer return used by
+ * the CRT memory helpers. A descriptor selects one; the dispatcher does
+ * not turn an ST0 result into an EAX result. */
+typedef enum UcLoc {
+    UC_LOC_NONE = 0,
+    UC_LOC_EAX = 1,
+    UC_LOC_ST0 = 2,
+    UC_LOC_STACK = 3
+} UcLoc;
+
+typedef double (*UcHostUnary)(double);
 
 typedef struct UcImport {
     uint32_t thunk;
@@ -52,6 +72,8 @@ typedef struct UcImport {
     UcAbi abi;
     int stack_dwords;  /* -1 when the layout has not been recorded */
     UcHle hle;
+    uint8_t arg_loc;   /* UC_LOC_STACK or UC_LOC_ST0 */
+    uint8_t ret_loc;   /* UC_LOC_EAX or UC_LOC_ST0 */
 } UcImport;
 
 typedef struct UcDecoded {
@@ -94,11 +116,29 @@ typedef struct UcImportTrace {
  * STDCALL/THISCALL/FASTCALL: 4 * stack_dwords. CDECL: 0. Unknown: -1. */
 int uc_abi_callee_bytes(UcAbi abi, int stack_dwords);
 
+/* x87 state the runtime actually keeps. There is no tag word. */
+typedef struct UcX87Fault {
+    int active;
+    uint32_t function_va;
+    uint32_t eip;
+    int32_t top;
+    double st0;
+    double st1;
+    uint16_t fcw;
+    uint16_t fsw;
+    const char *why;
+} UcX87Fault;
+
 extern uint32_t uc_guest_limit;
 extern int uc_import_trace;                 /* 0 unless a host turns it on */
 extern uint32_t uc_import_trace_count;
 extern UcImportFault uc_import_fault;
 extern UcImportTrace uc_import_trace_last;
+extern UcX87Fault uc_x87_fault;
+extern uint32_t (*uc_x87_current_fn)(void);
+extern UcHostUnary uc_host_sin;
+extern UcHostUnary uc_host_cos;
+extern UcHostUnary uc_host_acos;
 
 const UcImport *uc_import_find(uint32_t thunk);
 unsigned uc_import_count(void);

@@ -56,6 +56,7 @@ def main():
 #include "uc_abi.h"
 static uint8_t image[0x100000];
 uint8_t *g_mem = image;
+int _fltused;
 void unsupported_insn(CPU *c, uint32_t a, const char *w) { (void)c; (void)a; (void)w; }
 void cpuid_shim(CPU *c) { (void)c; }
 uint64_t rdtsc_shim(void) { return 0; }

@@ -13,6 +13,41 @@ int uc_import_trace;
 uint32_t uc_import_trace_count;
 UcImportFault uc_import_fault;
 UcImportTrace uc_import_trace_last;
+UcX87Fault uc_x87_fault;
+UcHostUnary uc_host_sin;
+UcHostUnary uc_host_cos;
+UcHostUnary uc_host_acos;
+
+/* The image tracer owns uc_current_fn. This unit does not link it.
+ * A harness that has the tracer installs a reader; otherwise the
+ * fault still reports EIP, TOP, ST(0), ST(1), FCW, and FSW. */
+uint32_t (*uc_x87_current_fn)(void);
+
+static void x87_fail(struct CPU *c, const char *why) {
+    uc_x87_fault.active = 1;
+    uc_x87_fault.function_va = uc_x87_current_fn ? uc_x87_current_fn() : 0;
+    uc_x87_fault.eip = c->eip;
+    uc_x87_fault.top = c->top;
+    uc_x87_fault.st0 = ST(0);
+    uc_x87_fault.st1 = ST(1);
+    uc_x87_fault.fcw = c->fcw;
+    uc_x87_fault.fsw = fsw_get(c);
+    uc_x87_fault.why = why;
+}
+
+/* Replace ST(0). TOP is not moved. The host function is only the
+ * mathematical operation; it does not see the guest stack. */
+static int x87_replace(struct CPU *c, UcHostUnary fn, const char *missing) {
+    double in, out;
+    if (!fn) {
+        x87_fail(c, missing);
+        return 0;
+    }
+    in = ST(0);
+    out = fn(in);
+    ST(0) = out;
+    return 1;
+}
 
 #include "uc_import_table.inc"
 
@@ -71,10 +106,25 @@ static int ranges_overlap(uint32_t a, uint32_t b, uint32_t n) {
     return 1;
 }
 
-static uint32_t hle_run(const UcImport *imp, const UcDecoded *in, int *ok) {
+static uint32_t hle_run(struct CPU *c, const UcImport *imp, const UcDecoded *in, int *ok) {
     uint32_t a, b, n, i;
     int diff;
     *ok = 0;
+    if (imp->arg_loc == UC_LOC_ST0 || imp->ret_loc == UC_LOC_ST0) {
+        if (imp->arg_loc != UC_LOC_ST0 || imp->ret_loc != UC_LOC_ST0) {
+            x87_fail(c, "x87 import must read and write ST(0)");
+            return 0;
+        }
+        if (imp->hle == UC_HLE_CISIN)
+            *ok = x87_replace(c, uc_host_sin, "host sin is not bound");
+        else if (imp->hle == UC_HLE_CICOS)
+            *ok = x87_replace(c, uc_host_cos, "host cos is not bound");
+        else if (imp->hle == UC_HLE_CIACOS)
+            *ok = x87_replace(c, uc_host_acos, "host acos is not bound");
+        else
+            x87_fail(c, "ST0 import has no x87 HLE");
+        return 0;
+    }
     if (in->stack_dwords < 1) return 0;
     a = in->stack[0];
     switch (imp->hle) {
@@ -221,7 +271,7 @@ int uc_import_invoke(struct CPU *c, const UcImport *imp, UcHleFn override) {
         decode(c, imp, &decoded);
         ok = 1;
         if (override) eax = override(c, &decoded, &ok);
-        else eax = hle_run(imp, &decoded, &ok);
+        else eax = hle_run(c, imp, &decoded, &ok);
         if (!ok) {
             c->esp = esp0;
             c->eax = eax0;
@@ -231,9 +281,11 @@ int uc_import_invoke(struct CPU *c, const UcImport *imp, UcHleFn override) {
         }
     }
     extra = uc_abi_callee_bytes(imp->abi, imp->stack_dwords);
-    c->eax = eax;
+    /* An ST0 result stays in the x87 register. EAX is the integer return. */
+    if (imp->ret_loc == UC_LOC_ST0) c->eax = eax0;
+    else c->eax = eax;
     c->eip = ret;
     if (extra > 0) c->esp += (uint32_t)extra;
-    fill_trace(c, imp, site, esp0, eax, 1);
+    fill_trace(c, imp, site, esp0, c->eax, 1);
     return 1;
 }
