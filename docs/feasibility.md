@@ -124,14 +124,38 @@ The map then rejects any HIGH or MEDIUM function whose lifter walk reaches that 
 
 `analysis/undercover/import-abi.json` lists the 199 thunks: 137 cdecl, 19 stdcall, 1 thiscall, 42 unknown. 157 have high confidence. 31 ordinals and the undecorated DirectX helpers stay unknown. 3,404 direct calls and 2,604 tail jumps are counted separately. `win32_call` is unchanged.
 
+## Phase 6
+
+The lifter was not changed. `runtime/uc_import.c` dispatches Undercover imports by the convention in `import-abi.json`. Cdecl and stdcall were checked with the same argument block: after a cdecl return, guest ESP has moved by 4, and the caller must add the argument bytes; after a stdcall return, guest ESP has moved by 4 plus `4 * n`. That stdcall distance is the same `4 * n` still used by `win32_call`. A synthetic thiscall keeps `this` in `ECX` and pops one recorded stack dword. A synthetic fastcall reads `ECX` and `EDX` plus one stack dword. `D3DXMatrixMultiply` stays unknown and the call fails without moving ESP, even if a handler is supplied.
+
+Seven CRT imports have HLE bodies: `memcpy`, `memmove`, `memset`, `memcmp`, `strlen`, `strcmp`, `strncmp`. Overlapping `memcpy` is rejected. The other 192 imports have no HLE and fail if called.
+
+`tools/uc_phase6_test.py` translates `0x00721070` and runs that C in a native harness. The body is `mov eax, [esp+4]` / `xor eax, [esp+8]` / `ret 8`. With stack arguments `0x11111111` and `0x01010101` and return address `0x00DEC0DE`, the result is `EAX = 0x10101010`, `EIP` is the planted return address, and `ESP` is 12 bytes above the entry value. A second call with both arguments `0xFFFFFFFF` returns 0. No other register changes. This is not execution of `nfs.exe`. That function does not call an import.
+
+## Phase 7
+
+`tools/uc_phase7_test.py` runs lifted functions against a guest image of the ordinary sections. `0x00739B90` calls `memset` through `uc_import_invoke` and the generated caller removes the 12 argument bytes. `0x009B3910` calls `0x009CF900` and both return. `0x00AEC8E0` calls `0x00983AB0` and `0x009EE750`. `0x009D9150` calls the same `memset` and then writes two `.data` dwords. `0x00816E50` reads the float at `.rdata` `0x00B69278`. The details and the ESP trace are in `analysis/undercover/runtime-phase7.md`.
+
+A read of `Sitext`, a write of `.rdata`, and an execute of `Sitext` fault with the section name. The host process continues. No protected section is mapped. No new import was added. The game is not executed.
+
 ## Status
 
-STATIC RECOMPILATION STATUS: the Phase 4 high-confidence list generates at 6,598 / 6,604 and every generated function compiles. No genuine unsupported compiler opcode remains in that list.
+STATIC RECOMPILATION: established for the ordinary high-confidence `.text` list. 6,598 of 6,604 generate, and every generated function compiles.
 
-RUNTIME STATUS: not started. The atomic helpers are a single-threaded stand-in. Imports are metadata only. The game does not boot or run.
+NATIVE SINGLE-FUNCTION EXECUTION: established in Phase 6. `0x00721070` runs in the native harness.
 
-PROTECTED STARTUP STATUS: not analyzed. `Sitext` and the other protected sections were not read, executed, or rewritten.
+IMPORT EXECUTION: established in Phase 7 for real cdecl `memset`. `0x00739B90` and `0x009D9150` call the thunk and return. The other conventions are still the Phase 6 synthetic checks. Unknown imports fail closed.
+
+MULTI-FUNCTION EXECUTION: established in Phase 7 for a two-function pair and a three-function chain. Direct calls reach the lifted callee. An unresolved indirect target is not guessed.
+
+ORDINARY DATA IMAGE: established in Phase 7. `.text`, `.rdata`, `.data`, `.tls`, and `.rsrc` are mapped at their guest addresses. `.data`'s virtual tail is zero. Checked accesses record the section and do not crash the host.
+
+PROTECTED STARTUP: unresolved and outside this work. `Sitext` and the other protected sections are not read, executed, or rewritten.
+
+BROWSER / WASM: future work. The Undercover image above is a native test image. It is not a browser build.
+
+The atomic helpers remain a single-threaded stand-in. The game does not boot or run.
 
 ## Verdict
 
-PROCEED TO IMPORT/RUNTIME ABI ADAPTATION
+The next step is a native subsystem that a selected ordinary function actually calls, still without entering `Sitext` and still without graphics. The game is not ready to boot.

@@ -67,8 +67,22 @@ Protected startup is outside this roadmap. There is no plan to unpack, decrypt, 
 
 The NFSU2 import path rewrites `call [IAT]` / `jmp [IAT]` and `win32_call` then pops `4 * nargs`, which is stdcall. Undercover's ordinary `.text` does not address the PE import-address table. It calls a stub, `jmp dword ptr [slot]`, whose slot is in `.rdata`.
 
-`analysis/undercover/import-thunks.md` and `analysis/undercover/import-abi.json` name 199 of those stubs from the on-disk import entry in the slot. Undecorated MSVCR80 exports are cdecl (137). One MSVCR80 method is thiscall. Undecorated Win32 exports in that set are stdcall (19). Ordinals and undecorated DirectX helpers stay unknown (42) rather than being guessed. 157 of the 199 have high confidence. The JSON is preparation for a later runtime. `win32_call` is unchanged and still pops every import as stdcall, so generated code can be compiled and cannot yet call these thunks correctly.
+`analysis/undercover/import-thunks.md` and `analysis/undercover/import-abi.json` name 199 of those stubs. Undecorated MSVCR80 exports are cdecl (137). One MSVCR80 method is thiscall, with no stack arguments. Undecorated Win32 exports in that set are stdcall (19). Ordinals and undecorated DirectX helpers stay unknown (42). 157 of the 199 have high confidence.
+
+`runtime/uc_abi.h` and `runtime/uc_import.c` are the Undercover import path. A call names a descriptor. The descriptor holds the DLL, the symbol or ordinal, the convention, and the known stack-dword count. A decoder reads `ECX`, `EDX`, and the guest stack. An HLE function performs the operation and does not decide who pops arguments. Cdecl pops only the return address. Stdcall, thiscall, and fastcall pop the recorded stack arguments as well. An unknown convention fails with the call site, thunk, DLL, symbol or ordinal, ESP, and the general registers. It is not called as stdcall.
+
+`win32_call` is unchanged and still pops `4 * nargs` for NFSU2. `uc_abi_callee_bytes(UC_ABI_STDCALL, n)` is that same byte count. The two paths are not mixed.
+
+The first HLE set is `memcpy`, `memmove`, `memset`, `memcmp`, `strlen`, `strcmp`, and `strncmp`. Copies stay inside the guest image after a range check. `floor` and the `_CI*` math helpers are present in the metadata and are not implemented: their results use the x87 stack. Import tracing is off unless `uc_import_trace` is set.
+
+`tools/uc_phase7_test.py` is the first harness that enters that dispatcher from a lifted Undercover call. `0x00739B90` and `0x009D9150` call the `memset` thunk `0x0087B2D6`. The generated `add esp, 0xc` removes the three cdecl arguments. The dispatcher removes only the return address.
+
+Direct calls between lifted functions go to the lifted body for that guest address. `dispatch_indirect` does not guess a target. An unknown target records the source function, `EIP`, the target, and the registers, and returns without a callee.
 
 ## Guest map
 
-The NFSU2 runtime reserves a guest image at `0x00400000` .. `0x00932000` and a dispatch table sized for that `.text`. Undercover's image runs through `0x024A5000`, and its `.text` already ends at `0x00B603FB`. Fitting that image into the guest map is future runtime work. It is not done here.
+The NFSU2 runtime reserves a guest image at `0x00400000` .. `0x00932000` and a dispatch table sized for that `.text`. That map is unchanged.
+
+Undercover's native harness has a separate image. `runtime/uc_image.c` copies `.text`, `.rdata`, `.data`, `.tls`, and `.rsrc` to their guest virtual addresses, honors the section's read, write, and execute flags, and zero-fills a virtual tail when the file copy is shorter than the virtual size. `Stext`, `Sitext`, `Srdata`, `Sdata`, `Sidata`, and `.securom` are recorded and left unmapped. A checked build rejects a read, write, or execute that misses a mapped region, and a write to a read-only region, without crashing the host. The harness stack is a private region at `0x03000000`. It is not part of the PE image.
+
+This image is the Phase 7 test image. It is not the NFSU2 browser map, and it is not a running game.
