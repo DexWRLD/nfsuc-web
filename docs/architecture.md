@@ -83,7 +83,9 @@ The first cluster taken from the graph, rather than from a chosen subsystem, sha
 
 `tools/uc_phase9_test.py` runs the next closed cluster, rooted at `0x00A124B0`. `0x00A11C50` calls `_CIsin` and `_CIcos`. `0x00A11AF0` calls `_CIacos`. The six functions return to the harness. The result is not a claim of bit-exact MSVCR80 math.
 
-`tools/uc_frontier.py` ranks high-confidence closures by the imports, indirect calls, and protected edges they actually reach. `runtime/uc_image.c` can cap calls, depth, imports, indirect dispatches, and a host-supplied millisecond clock. The trace log is a ring of the last 64 events. `tools/uc_phase10_test.py` runs the 31-function closure at `0x00968D10` and the 19-function closure at `0x00B01EB0`. The paths that return enter 6 functions. A deeper root, `0x0099DCD0`, stops at `call dword ptr [0x0189D1A4]` because that dword is 0. No filesystem, heap, timer, or D3D9 runtime was added.
+`tools/uc_frontier.py` ranks high-confidence closures by the imports, indirect calls, and protected edges they actually reach. `runtime/uc_image.c` can cap calls, depth, imports, indirect dispatches, and a host-supplied millisecond clock. The trace log is a ring of the last 64 events. `tools/uc_phase10_test.py` runs the 31-function closure at `0x00968D10` and the 19-function closure at `0x00B01EB0`. The paths that return enter 6 functions.
+
+Static code readiness and runtime initialization readiness are different. The high-confidence list is generated and compiled. The 102-function closure at `0x0099DCD0` still stopped, in Phase 10, on `call dword ptr [0x0189D1A4]` because that dword was 0. Phase 11 found the ordinary writer: `0x009E8AD0` stores `0x009E78C0` there. `tools/uc_phase11_test.py` runs that leaf, then enters the callback. The next stop is a zero field of the object at `0x0189D0A0`, at EIP `0x009E4B49`. A global-write trace records those stores when it is enabled. It stays off for the earlier harnesses. No filesystem, heap, timer, or D3D9 runtime was added.
 
 ## Guest map
 

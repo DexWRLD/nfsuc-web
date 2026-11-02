@@ -150,9 +150,15 @@ The next cluster was taken from the high-confidence graph, not from a preselecte
 
 `tools/uc_frontier.py` classifies the high-confidence call graph. The largest closure with no missing import and no indirect call is 19 functions at `0x00B01EB0`. The largest whose only import is already implemented is 31 functions at `0x00968D10`. Both were executed. Each completing input entered 6 functions. A second input for each root takes a different path. The 102-function closure at `0x0099DCD0` is the largest set blocked only by indirect calls, and running it stops at `0x0099DCEB` on a zero `.data` slot. Filesystem, heap, timing, and `Direct3DCreate9` are not the next gate. Details are in `analysis/undercover/runtime-phase10.md`.
 
+## Phase 11
+
+`tools/uc_initprov.py` searches ordinary `.text` for absolute and simple register-relative writers of a global. `0x0189D1A4` has 906 indirect calls, all followed by `add esp, 0x0C`, and one writer: `0x009E8AD0` at `0x009E8B16` stores `0x009E78C0`. That leaf writes 48 other dwords the same way. Running it fills the slot. Retrying `0x0099DCD0` enters the callback and stops later at `0x009E4B49` on a zero object field (`0xFFFFFFFC`). `0x0188DAFC` was not written. `_CIsqrt` was not implemented. Details are in `analysis/undercover/runtime-phase11.md`.
+
 ## Status
 
-STATIC RECOMPILATION: established for the ordinary high-confidence `.text` list. 6,598 of 6,604 generate, and every generated function compiles.
+STATIC CODE READINESS: established for the ordinary high-confidence `.text` list. 6,598 of 6,604 generate, and every generated function compiles. Compilation coverage is not the current limit.
+
+RUNTIME INITIALIZATION READINESS: partial. One ordinary leaf initializes the callback slot that blocked `0x0099DCD0`. The object pointer that callback reads, and the object at `0x0189D0A0`, are still zero. Those are ordinary-data dependencies, not missing generated functions.
 
 INTEGER/STACK ABI: established for the tested paths. Cdecl `memset`, `strlen`, `memcmp`, and `strcmp` run from lifted callers, and the generated `add esp` removes the arguments. Unknown imports fail closed.
 
@@ -170,4 +176,4 @@ The atomic helpers remain a single-threaded stand-in. The game does not boot or 
 
 ## Verdict
 
-The `0x00A124B0` closure runs, and Phase 10 can enter larger ordinary closures until a zero indirect slot or a null pointer. The game is not ready to boot.
+The `0x00A124B0` closure runs, and Phase 10 can enter larger ordinary closures until a zero indirect slot or a null pointer. Phase 11 shows that slot has an ordinary writer and that executing the writer moves `0x0099DCD0` past it, onto another zero object field. The limiting factor is initialized runtime state, not compilation coverage. The game is not ready to boot.
