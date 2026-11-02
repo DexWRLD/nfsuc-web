@@ -1,0 +1,6518 @@
+{
+  "target": "0x0189D1A4",
+  "refs": [
+    {
+      "function": "0x98efe0",
+      "eip": "0x98f05c",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9901e0",
+      "eip": "0x9916f9",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x991dd0",
+      "eip": "0x991df0",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x991dd0",
+      "eip": "0x991e5e",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x991f70",
+      "eip": "0x991f95",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x992190",
+      "eip": "0x9921b7",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9921f0",
+      "eip": "0x992214",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x992250",
+      "eip": "0x992274",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x992290",
+      "eip": "0x9922b4",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x992920",
+      "eip": "0x9935d1",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x994490",
+      "eip": "0x9944ab",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x994760",
+      "eip": "0x9947d2",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x994760",
+      "eip": "0x9948dc",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x994d70",
+      "eip": "0x99516a",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9953e0",
+      "eip": "0x99549a",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x995510",
+      "eip": "0x9955db",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x995730",
+      "eip": "0x99574e",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x995730",
+      "eip": "0x99579e",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x995810",
+      "eip": "0x995973",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x995990",
+      "eip": "0x995a86",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x995c20",
+      "eip": "0x995d09",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x995c20",
+      "eip": "0x995d46",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x995c20",
+      "eip": "0x995d8c",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x995c20",
+      "eip": "0x995daf",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x995c20",
+      "eip": "0x995e60",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x996240",
+      "eip": "0x9962ea",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x996350",
+      "eip": "0x996380",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x996940",
+      "eip": "0x996976",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x996940",
+      "eip": "0x99699d",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x996bb0",
+      "eip": "0x996bf3",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x996bb0",
+      "eip": "0x996c1c",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x996bb0",
+      "eip": "0x996c43",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x996fd0",
+      "eip": "0x996fed",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x996fd0",
+      "eip": "0x99700b",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x996fd0",
+      "eip": "0x997054",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9970a0",
+      "eip": "0x9970bc",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9970a0",
+      "eip": "0x9970dd",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x997120",
+      "eip": "0x99713e",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x997120",
+      "eip": "0x997172",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9971f0",
+      "eip": "0x99724e",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x997360",
+      "eip": "0x9973b4",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x997360",
+      "eip": "0x9973d2",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x997880",
+      "eip": "0x99789b",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x997880",
+      "eip": "0x9978ce",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x997880",
+      "eip": "0x9978f4",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x997910",
+      "eip": "0x997929",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x997910",
+      "eip": "0x99794a",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x997910",
+      "eip": "0x99797d",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9979e0",
+      "eip": "0x997abd",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x998000",
+      "eip": "0x998027",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9983a0",
+      "eip": "0x998650",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9983a0",
+      "eip": "0x9986dc",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9983a0",
+      "eip": "0x998711",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9983a0",
+      "eip": "0x998746",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9983a0",
+      "eip": "0x99877b",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9983a0",
+      "eip": "0x9987b0",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9983a0",
+      "eip": "0x9987e5",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x998850",
+      "eip": "0x998c6e",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x998850",
+      "eip": "0x998d34",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x998e80",
+      "eip": "0x998ebf",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x99a600",
+      "eip": "0x99a62e",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x99a600",
+      "eip": "0x99a655",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x99a600",
+      "eip": "0x99a67c",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x99a850",
+      "eip": "0x99a882",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x99a850",
+      "eip": "0x99a8a8",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x99a950",
+      "eip": "0x99a971",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x99a9a0",
+      "eip": "0x99a9be",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x99a9a0",
+      "eip": "0x99a9e1",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x99aaa0",
+      "eip": "0x99ab34",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x99abd0",
+      "eip": "0x99ac0a",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x99acb0",
+      "eip": "0x99acce",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x99ad20",
+      "eip": "0x99ad3e",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x99adf0",
+      "eip": "0x99b4c2",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x99b570",
+      "eip": "0x99b597",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x99bca0",
+      "eip": "0x99bde2",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x99be00",
+      "eip": "0x99be39",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x99bf30",
+      "eip": "0x99bfc1",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x99bf30",
+      "eip": "0x99bff8",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x99bf30",
+      "eip": "0x99c077",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x99bf30",
+      "eip": "0x99c09a",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x99bf30",
+      "eip": "0x99c0c0",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x99bf30",
+      "eip": "0x99c12b",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x99bf30",
+      "eip": "0x99c239",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x99bf30",
+      "eip": "0x99c269",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x99bf30",
+      "eip": "0x99c2da",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x99bf30",
+      "eip": "0x99c300",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x99bf30",
+      "eip": "0x99c36e",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x99bf30",
+      "eip": "0x99c391",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x99c4f0",
+      "eip": "0x99c512",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x99c6b0",
+      "eip": "0x99c6cc",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x99c6f0",
+      "eip": "0x99c70c",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x99c730",
+      "eip": "0x99c74c",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x99c770",
+      "eip": "0x99c78c",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x99c7b0",
+      "eip": "0x99c7cc",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x99c7f0",
+      "eip": "0x99c80c",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x99c830",
+      "eip": "0x99c84c",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x99c870",
+      "eip": "0x99c88c",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x99c8d0",
+      "eip": "0x99c8ec",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x99c910",
+      "eip": "0x99c92c",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x99c950",
+      "eip": "0x99c96c",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x99c990",
+      "eip": "0x99c9ac",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x99c9d0",
+      "eip": "0x99c9ec",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x99ca10",
+      "eip": "0x99ca2c",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x99ca50",
+      "eip": "0x99ca6c",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x99ca90",
+      "eip": "0x99caac",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x99cad0",
+      "eip": "0x99caef",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x99cb10",
+      "eip": "0x99cb2f",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x99cb50",
+      "eip": "0x99cb6f",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x99cb90",
+      "eip": "0x99cbaf",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x99cbd0",
+      "eip": "0x99cbef",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x99cc10",
+      "eip": "0x99cc2f",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x99cc50",
+      "eip": "0x99cc6f",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x99cc90",
+      "eip": "0x99ccaf",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x99ccd0",
+      "eip": "0x99ccef",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x99cd10",
+      "eip": "0x99cd2f",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x99cd50",
+      "eip": "0x99cd6c",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x99cd90",
+      "eip": "0x99cdaf",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x99ce00",
+      "eip": "0x99ce22",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x99ce50",
+      "eip": "0x99ce72",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x99cee0",
+      "eip": "0x99cf04",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x99cf20",
+      "eip": "0x99cf44",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x99cf60",
+      "eip": "0x99cf7f",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x99cfa0",
+      "eip": "0x99cfbf",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x99cfe0",
+      "eip": "0x99cfff",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x99d030",
+      "eip": "0x99d04f",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x99d080",
+      "eip": "0x99d09f",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x99d0c0",
+      "eip": "0x99d0df",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x99d120",
+      "eip": "0x99d13f",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x99d160",
+      "eip": "0x99d17f",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x99d1a0",
+      "eip": "0x99d1bf",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x99d1e0",
+      "eip": "0x99d1ff",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x99d280",
+      "eip": "0x99d2aa",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x99d280",
+      "eip": "0x99d303",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x99d670",
+      "eip": "0x99d6a1",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x99dcd0",
+      "eip": "0x99dceb",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x99de70",
+      "eip": "0x99e01b",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x99e050",
+      "eip": "0x99e07a",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x99e1d0",
+      "eip": "0x99e1eb",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x99e660",
+      "eip": "0x99e7ce",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x99ed30",
+      "eip": "0x99ee55",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x99ef00",
+      "eip": "0x99ef99",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x99f1c0",
+      "eip": "0x99f270",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x99f2e0",
+      "eip": "0x99f35a",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x99f8d0",
+      "eip": "0x99f9b8",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x99fbd0",
+      "eip": "0x99fcf0",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x99fd80",
+      "eip": "0x99fda1",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x99fd80",
+      "eip": "0x99fdc2",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x99fe50",
+      "eip": "0x9a0072",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x99fe50",
+      "eip": "0x9a0147",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x99fe50",
+      "eip": "0x9a0170",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x99fe50",
+      "eip": "0x9a01a0",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9a0730",
+      "eip": "0x9a0762",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9a0830",
+      "eip": "0x9a0862",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9a0940",
+      "eip": "0x9a0972",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9a0990",
+      "eip": "0x9a09c2",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9a0a90",
+      "eip": "0x9a0b30",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9a0a90",
+      "eip": "0x9a0b87",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9a0be0",
+      "eip": "0x9a1405",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9a27a0",
+      "eip": "0x9a33d9",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9a27a0",
+      "eip": "0x9a3434",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9a27a0",
+      "eip": "0x9a3746",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9a27a0",
+      "eip": "0x9a3781",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9a3910",
+      "eip": "0x9a3939",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9a3910",
+      "eip": "0x9a397e",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9a39a0",
+      "eip": "0x9a3a3f",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9a4180",
+      "eip": "0x9a419c",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9a4260",
+      "eip": "0x9a427e",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9a43f0",
+      "eip": "0x9a44d8",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9a43f0",
+      "eip": "0x9a4511",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9a43f0",
+      "eip": "0x9a454a",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9a43f0",
+      "eip": "0x9a4583",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9a43f0",
+      "eip": "0x9a4663",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9a43f0",
+      "eip": "0x9a469c",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9a43f0",
+      "eip": "0x9a46d5",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9a43f0",
+      "eip": "0x9a470e",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9a43f0",
+      "eip": "0x9a47b7",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9a43f0",
+      "eip": "0x9a47f0",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9a43f0",
+      "eip": "0x9a4829",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9a43f0",
+      "eip": "0x9a4862",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9a4a50",
+      "eip": "0x9a4ed2",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9a4a50",
+      "eip": "0x9a4f0b",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9a4a50",
+      "eip": "0x9a4f44",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9a4a50",
+      "eip": "0x9a4f7d",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9a4a50",
+      "eip": "0x9a507c",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9a4a50",
+      "eip": "0x9a50b5",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9a4a50",
+      "eip": "0x9a50ee",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9a4a50",
+      "eip": "0x9a5127",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9a4a50",
+      "eip": "0x9a5229",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9a4a50",
+      "eip": "0x9a5262",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9a4a50",
+      "eip": "0x9a529b",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9a4a50",
+      "eip": "0x9a52d4",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9a5930",
+      "eip": "0x9a5975",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9a5cf0",
+      "eip": "0x9a5f63",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9a69f0",
+      "eip": "0x9a6b34",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9a69f0",
+      "eip": "0x9a6b92",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9a69f0",
+      "eip": "0x9a6be6",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9a69f0",
+      "eip": "0x9a6ca3",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9a69f0",
+      "eip": "0x9a6d63",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9a69f0",
+      "eip": "0x9a6d96",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9a6e00",
+      "eip": "0x9a6ed7",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9a6e00",
+      "eip": "0x9a6f01",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9a6e00",
+      "eip": "0x9a6f98",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9a6fb0",
+      "eip": "0x9a7040",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9a6fb0",
+      "eip": "0x9a707f",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9a6fb0",
+      "eip": "0x9a7123",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9a7210",
+      "eip": "0x9a722e",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9a7290",
+      "eip": "0x9a72b7",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9a7300",
+      "eip": "0x9a7327",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9a7490",
+      "eip": "0x9a74ae",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9a7490",
+      "eip": "0x9a7770",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9a7490",
+      "eip": "0x9a7799",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9a7490",
+      "eip": "0x9a77c9",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9a7af0",
+      "eip": "0x9a7b0e",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9a7af0",
+      "eip": "0x9a7b53",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9a7cb0",
+      "eip": "0x9a7ce0",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9a7cb0",
+      "eip": "0x9a7d76",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9a7e90",
+      "eip": "0x9a7eca",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9a7e90",
+      "eip": "0x9a7eeb",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9a7ff0",
+      "eip": "0x9a802a",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9a7ff0",
+      "eip": "0x9a804b",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9a82f0",
+      "eip": "0x9a831f",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9a84f0",
+      "eip": "0x9a851f",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9a8bc0",
+      "eip": "0x9a8c6d",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9a9420",
+      "eip": "0x9a9b16",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9a9bb0",
+      "eip": "0x9a9bf1",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9a9bb0",
+      "eip": "0x9a9c15",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9a9e20",
+      "eip": "0x9a9e42",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9a9e60",
+      "eip": "0x9a9e82",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9a9ea0",
+      "eip": "0x9a9ec2",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9a9ee0",
+      "eip": "0x9a9f05",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9a9f20",
+      "eip": "0x9a9f45",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9a9f60",
+      "eip": "0x9a9f85",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9a9fa0",
+      "eip": "0x9a9fc5",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9a9fe0",
+      "eip": "0x9aa009",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9aa020",
+      "eip": "0x9aa045",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9aa060",
+      "eip": "0x9aa085",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9aa0a0",
+      "eip": "0x9aa0c5",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9aa0e0",
+      "eip": "0x9aa105",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9aa120",
+      "eip": "0x9aa145",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9aa160",
+      "eip": "0x9aa185",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9aa1a0",
+      "eip": "0x9aa1c5",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9aa1e0",
+      "eip": "0x9aa205",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9aa220",
+      "eip": "0x9aa245",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9aa260",
+      "eip": "0x9aa285",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9aa2a0",
+      "eip": "0x9aa2c5",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9aa2e0",
+      "eip": "0x9aa305",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9aa320",
+      "eip": "0x9aa345",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9aa360",
+      "eip": "0x9aa385",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9aa3a0",
+      "eip": "0x9aa3c5",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9aa590",
+      "eip": "0x9aa5ac",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9aa590",
+      "eip": "0x9aa5ca",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9aa660",
+      "eip": "0x9aa682",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9aa6b0",
+      "eip": "0x9aa6d7",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9aa720",
+      "eip": "0x9aa744",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9aa810",
+      "eip": "0x9aa837",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9aa870",
+      "eip": "0x9aa99e",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9ab520",
+      "eip": "0x9ab54a",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9acdf0",
+      "eip": "0x9acee1",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9acdf0",
+      "eip": "0x9acf0d",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9acdf0",
+      "eip": "0x9ad0c5",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9acdf0",
+      "eip": "0x9ad368",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9ad6a0",
+      "eip": "0x9ad6e1",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9ad860",
+      "eip": "0x9ad87e",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9ad8d0",
+      "eip": "0x9ad8ee",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9ad970",
+      "eip": "0x9ad98c",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9ada30",
+      "eip": "0x9ada82",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9adaa0",
+      "eip": "0x9adabf",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9adaf0",
+      "eip": "0x9adb12",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9adaf0",
+      "eip": "0x9adb44",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9adb90",
+      "eip": "0x9adbef",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9adc00",
+      "eip": "0x9adc16",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9ade40",
+      "eip": "0x9ade71",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9ade40",
+      "eip": "0x9ade92",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9ae160",
+      "eip": "0x9ae180",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9ae200",
+      "eip": "0x9ae21f",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9ae2c0",
+      "eip": "0x9ae2e3",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9ae500",
+      "eip": "0x9ae535",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9ae550",
+      "eip": "0x9ae56c",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9ae5c0",
+      "eip": "0x9ae5dc",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9ae610",
+      "eip": "0x9ae62c",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9ae690",
+      "eip": "0x9ae6ac",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9ae750",
+      "eip": "0x9ae766",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9ae790",
+      "eip": "0x9ae7b5",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9ae7e0",
+      "eip": "0x9ae805",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9ae830",
+      "eip": "0x9ae855",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9ae8d0",
+      "eip": "0x9ae90a",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9ae8d0",
+      "eip": "0x9ae94a",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9aea80",
+      "eip": "0x9aeab0",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9aeae0",
+      "eip": "0x9aeb07",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9aeae0",
+      "eip": "0x9aeb47",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9aed30",
+      "eip": "0x9aedce",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9aeef0",
+      "eip": "0x9aefa3",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9af210",
+      "eip": "0x9af22e",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9af210",
+      "eip": "0x9af26a",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9af320",
+      "eip": "0x9af363",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9af320",
+      "eip": "0x9af39d",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9af3f0",
+      "eip": "0x9af415",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9af3f0",
+      "eip": "0x9af46c",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9af520",
+      "eip": "0x9af55b",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9af520",
+      "eip": "0x9af598",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9af520",
+      "eip": "0x9af5ee",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9af520",
+      "eip": "0x9af61c",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9af520",
+      "eip": "0x9af63d",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9af520",
+      "eip": "0x9af698",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9af520",
+      "eip": "0x9af6d9",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9af520",
+      "eip": "0x9af707",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9af520",
+      "eip": "0x9af728",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9af520",
+      "eip": "0x9af757",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9af520",
+      "eip": "0x9af795",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9af520",
+      "eip": "0x9af7d8",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9af520",
+      "eip": "0x9af81b",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9af520",
+      "eip": "0x9af849",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9af520",
+      "eip": "0x9af86a",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9af520",
+      "eip": "0x9af895",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9af8b0",
+      "eip": "0x9af8c9",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9af8b0",
+      "eip": "0x9af8f1",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9af8b0",
+      "eip": "0x9af927",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9af8b0",
+      "eip": "0x9af952",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9afb80",
+      "eip": "0x9afbbb",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9afb80",
+      "eip": "0x9afc03",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9afb80",
+      "eip": "0x9afc57",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9afb80",
+      "eip": "0x9afc85",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9afb80",
+      "eip": "0x9afca6",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9afb80",
+      "eip": "0x9afd08",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9afb80",
+      "eip": "0x9afd4b",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9afb80",
+      "eip": "0x9afd79",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9afb80",
+      "eip": "0x9afd9a",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9afb80",
+      "eip": "0x9afdd2",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9afb80",
+      "eip": "0x9afe10",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9afb80",
+      "eip": "0x9afe53",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9afb80",
+      "eip": "0x9afe96",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9afb80",
+      "eip": "0x9afec4",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9afb80",
+      "eip": "0x9afee5",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9afb80",
+      "eip": "0x9aff19",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9aff40",
+      "eip": "0x9aff99",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b0060",
+      "eip": "0x9b0110",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b0140",
+      "eip": "0x9b015b",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b0140",
+      "eip": "0x9b01d7",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b0250",
+      "eip": "0x9b0269",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b02a0",
+      "eip": "0x9b02be",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b02a0",
+      "eip": "0x9b0326",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b0390",
+      "eip": "0x9b03ae",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b0540",
+      "eip": "0x9b055f",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b0580",
+      "eip": "0x9b059f",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b05b0",
+      "eip": "0x9b06aa",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b0710",
+      "eip": "0x9b075c",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b0710",
+      "eip": "0x9b077d",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b0790",
+      "eip": "0x9b07af",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b07c0",
+      "eip": "0x9b07de",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b07c0",
+      "eip": "0x9b07fc",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b07c0",
+      "eip": "0x9b08c7",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b07c0",
+      "eip": "0x9b093e",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b0a10",
+      "eip": "0x9b0a30",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b0a10",
+      "eip": "0x9b0a50",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b0d10",
+      "eip": "0x9b0d7b",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b0d90",
+      "eip": "0x9b0dfb",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b0e10",
+      "eip": "0x9b0e8e",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b0ef0",
+      "eip": "0x9b0f0e",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b0fc0",
+      "eip": "0x9b0fde",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b10d0",
+      "eip": "0x9b10ee",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b10d0",
+      "eip": "0x9b115e",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b11b0",
+      "eip": "0x9b11ce",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b1230",
+      "eip": "0x9b124e",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b12b0",
+      "eip": "0x9b12ce",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b1350",
+      "eip": "0x9b136e",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b13e0",
+      "eip": "0x9b13fe",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b1480",
+      "eip": "0x9b149e",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b1760",
+      "eip": "0x9b181b",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b1830",
+      "eip": "0x9b1895",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b18f0",
+      "eip": "0x9b1955",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b1a10",
+      "eip": "0x9b1a2f",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b1a10",
+      "eip": "0x9b1a59",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b1a10",
+      "eip": "0x9b1a79",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b1ba0",
+      "eip": "0x9b1bbe",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b1c40",
+      "eip": "0x9b1c65",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b1d20",
+      "eip": "0x9b1d7f",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b1d20",
+      "eip": "0x9b1da4",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b1d20",
+      "eip": "0x9b1e35",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b1d20",
+      "eip": "0x9b1e9e",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b1f40",
+      "eip": "0x9b2094",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b1f40",
+      "eip": "0x9b20e8",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b2160",
+      "eip": "0x9b21d0",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b2160",
+      "eip": "0x9b233d",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b2820",
+      "eip": "0x9b2840",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b2820",
+      "eip": "0x9b28b5",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b2820",
+      "eip": "0x9b2909",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b2820",
+      "eip": "0x9b292a",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b2820",
+      "eip": "0x9b295e",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b2820",
+      "eip": "0x9b297f",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b2820",
+      "eip": "0x9b29a0",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b2820",
+      "eip": "0x9b29c1",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b2820",
+      "eip": "0x9b29e2",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b2820",
+      "eip": "0x9b2a03",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b2820",
+      "eip": "0x9b2a24",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b2820",
+      "eip": "0x9b2a45",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b2820",
+      "eip": "0x9b2a66",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b2820",
+      "eip": "0x9b2a87",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b2820",
+      "eip": "0x9b2aa8",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b2820",
+      "eip": "0x9b2ac9",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b2820",
+      "eip": "0x9b2aea",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b2820",
+      "eip": "0x9b2b0b",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b2820",
+      "eip": "0x9b2b2c",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b2820",
+      "eip": "0x9b2b4d",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b2820",
+      "eip": "0x9b2b6e",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b2820",
+      "eip": "0x9b2b8f",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b2820",
+      "eip": "0x9b2bb0",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b2820",
+      "eip": "0x9b2bd1",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b2820",
+      "eip": "0x9b2bf2",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b2820",
+      "eip": "0x9b2c13",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b2820",
+      "eip": "0x9b2c34",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b2820",
+      "eip": "0x9b2c55",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b2820",
+      "eip": "0x9b2c76",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b2820",
+      "eip": "0x9b2c97",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b2820",
+      "eip": "0x9b2cb8",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b2e20",
+      "eip": "0x9b2e4a",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b2f50",
+      "eip": "0x9b2f84",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b3130",
+      "eip": "0x9b3162",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b3370",
+      "eip": "0x9b339f",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b3440",
+      "eip": "0x9b34c7",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b3550",
+      "eip": "0x9b3586",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b3630",
+      "eip": "0x9b3666",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b3af0",
+      "eip": "0x9b3b1d",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b3c50",
+      "eip": "0x9b3c84",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b3c50",
+      "eip": "0x9b3d04",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b3de0",
+      "eip": "0x9b3e2d",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b3f30",
+      "eip": "0x9b3f4b",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b3f30",
+      "eip": "0x9b3f94",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b3f30",
+      "eip": "0x9b3fd3",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b4010",
+      "eip": "0x9b4031",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b4010",
+      "eip": "0x9b405c",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b4010",
+      "eip": "0x9b40b7",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b4010",
+      "eip": "0x9b41ac",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b4250",
+      "eip": "0x9b426e",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b4250",
+      "eip": "0x9b42e4",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b4250",
+      "eip": "0x9b4311",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b4250",
+      "eip": "0x9b434c",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b4250",
+      "eip": "0x9b4372",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b4250",
+      "eip": "0x9b43dc",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b4520",
+      "eip": "0x9b4562",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b4520",
+      "eip": "0x9b45c5",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b4520",
+      "eip": "0x9b46c6",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b4520",
+      "eip": "0x9b47ed",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b4520",
+      "eip": "0x9b488c",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b4520",
+      "eip": "0x9b48af",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b4520",
+      "eip": "0x9b48db",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b4520",
+      "eip": "0x9b4a91",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b4520",
+      "eip": "0x9b4b65",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b4e50",
+      "eip": "0x9b4e7e",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b4fc0",
+      "eip": "0x9b4ff3",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b50d0",
+      "eip": "0x9b5103",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b51d0",
+      "eip": "0x9b5203",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b5740",
+      "eip": "0x9b575b",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b57c0",
+      "eip": "0x9b57e8",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b57c0",
+      "eip": "0x9b5836",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b5870",
+      "eip": "0x9b5898",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b5870",
+      "eip": "0x9b58e5",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b5870",
+      "eip": "0x9b594a",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b5870",
+      "eip": "0x9b599f",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b5f40",
+      "eip": "0x9b5f68",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b6030",
+      "eip": "0x9b6086",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b60b0",
+      "eip": "0x9b60e5",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b61b0",
+      "eip": "0x9b61d3",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b62d0",
+      "eip": "0x9b62e9",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b62d0",
+      "eip": "0x9b630d",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b62d0",
+      "eip": "0x9b6331",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b6350",
+      "eip": "0x9b6369",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b6350",
+      "eip": "0x9b638d",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b6350",
+      "eip": "0x9b63b1",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b63f0",
+      "eip": "0x9b640c",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b63f0",
+      "eip": "0x9b6433",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b63f0",
+      "eip": "0x9b645a",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b6880",
+      "eip": "0x9b68f1",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b6900",
+      "eip": "0x9b691e",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b6900",
+      "eip": "0x9b6981",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b69c0",
+      "eip": "0x9b6a19",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b69c0",
+      "eip": "0x9b6c1c",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b69c0",
+      "eip": "0x9b6dc2",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b74c0",
+      "eip": "0x9b74d8",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b74c0",
+      "eip": "0x9b74f6",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b74c0",
+      "eip": "0x9b7514",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b7540",
+      "eip": "0x9b756e",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b7ac0",
+      "eip": "0x9b7d5f",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b7e30",
+      "eip": "0x9b7e4d",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b7e30",
+      "eip": "0x9b7fb3",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b7e30",
+      "eip": "0x9b800d",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b7e30",
+      "eip": "0x9b804a",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b84b0",
+      "eip": "0x9b84c9",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b8510",
+      "eip": "0x9b852b",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b85a0",
+      "eip": "0x9b85bb",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b8640",
+      "eip": "0x9b865b",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b8820",
+      "eip": "0x9b8838",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b88c0",
+      "eip": "0x9b891b",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b88c0",
+      "eip": "0x9b899b",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b8af0",
+      "eip": "0x9b8b42",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b8d10",
+      "eip": "0x9b8dd6",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b90d0",
+      "eip": "0x9b9150",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b9160",
+      "eip": "0x9b93d4",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b9160",
+      "eip": "0x9b95a9",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b95c0",
+      "eip": "0x9b95e5",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b9600",
+      "eip": "0x9b9627",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b97e0",
+      "eip": "0x9b999f",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9b97e0",
+      "eip": "0x9ba438",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9ba600",
+      "eip": "0x9ba6d7",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9ba600",
+      "eip": "0x9ba788",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9ba600",
+      "eip": "0x9ba7af",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9ba600",
+      "eip": "0x9ba7f1",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9ba9c0",
+      "eip": "0x9ba9fc",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9bac10",
+      "eip": "0x9bac39",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9badf0",
+      "eip": "0x9bae0b",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9bbbc0",
+      "eip": "0x9bbc39",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9bbbc0",
+      "eip": "0x9bbc74",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9bc050",
+      "eip": "0x9bc0f7",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9bc3e0",
+      "eip": "0x9bc3fb",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9bc480",
+      "eip": "0x9bc49b",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9bc4b0",
+      "eip": "0x9bc4cb",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9bc590",
+      "eip": "0x9bc5ab",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9bc5c0",
+      "eip": "0x9bc5db",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9bc5f0",
+      "eip": "0x9bc60b",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9be240",
+      "eip": "0x9be30c",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9be240",
+      "eip": "0x9be3e2",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9bee90",
+      "eip": "0x9beeab",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9bf5e0",
+      "eip": "0x9bf65c",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9bf5e0",
+      "eip": "0x9bf719",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9bf830",
+      "eip": "0x9bf8bb",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9bf830",
+      "eip": "0x9bf8dc",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9bfe20",
+      "eip": "0x9bfee6",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9c0d70",
+      "eip": "0x9c0d92",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9c0d70",
+      "eip": "0x9c0ebb",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9c0f30",
+      "eip": "0x9c0fa0",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9c10d0",
+      "eip": "0x9c10f2",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9c10d0",
+      "eip": "0x9c1120",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9c1190",
+      "eip": "0x9c11bb",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9c1240",
+      "eip": "0x9c126a",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9c1240",
+      "eip": "0x9c12e3",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9c1240",
+      "eip": "0x9c132c",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9c1240",
+      "eip": "0x9c13b5",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9c1470",
+      "eip": "0x9c1698",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9c16b0",
+      "eip": "0x9c16cf",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9c1c50",
+      "eip": "0x9c1de7",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9c1c50",
+      "eip": "0x9c1efb",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9c20f0",
+      "eip": "0x9c2153",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9c20f0",
+      "eip": "0x9c21b8",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9c20f0",
+      "eip": "0x9c21e8",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9c20f0",
+      "eip": "0x9c22e4",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9c20f0",
+      "eip": "0x9c2355",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9c20f0",
+      "eip": "0x9c262d",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9c20f0",
+      "eip": "0x9c26c2",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9c20f0",
+      "eip": "0x9c270d",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9c20f0",
+      "eip": "0x9c27c9",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9c29a0",
+      "eip": "0x9c29f6",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9c2a60",
+      "eip": "0x9c300d",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9c2a60",
+      "eip": "0x9c3046",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9c2a60",
+      "eip": "0x9c3117",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9c3550",
+      "eip": "0x9c35a6",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9c3f40",
+      "eip": "0x9c3f69",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9c4150",
+      "eip": "0x9c4186",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9c4150",
+      "eip": "0x9c4256",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9c4150",
+      "eip": "0x9c428b",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9c4150",
+      "eip": "0x9c4373",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9c4460",
+      "eip": "0x9c4520",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9c4460",
+      "eip": "0x9c45e5",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9c4460",
+      "eip": "0x9c4619",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9c4460",
+      "eip": "0x9c4673",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9c4460",
+      "eip": "0x9c46ee",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9c4460",
+      "eip": "0x9c477c",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9c4460",
+      "eip": "0x9c4849",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9c4950",
+      "eip": "0x9c49ac",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9c4950",
+      "eip": "0x9c49f0",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9c4ac0",
+      "eip": "0x9c4b05",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9c4ac0",
+      "eip": "0x9c4b55",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9c4ee0",
+      "eip": "0x9c4efe",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9c54a0",
+      "eip": "0x9c54f6",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9c54a0",
+      "eip": "0x9c5538",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9c54a0",
+      "eip": "0x9c5648",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9c56f0",
+      "eip": "0x9c58a4",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9c59e0",
+      "eip": "0x9c59fe",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9c59e0",
+      "eip": "0x9c5a25",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9c59e0",
+      "eip": "0x9c5a89",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9c5f60",
+      "eip": "0x9c5fb7",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9c5f60",
+      "eip": "0x9c6007",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9c5f60",
+      "eip": "0x9c6060",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9c65a0",
+      "eip": "0x9c662b",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9c65a0",
+      "eip": "0x9c66f7",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9c65a0",
+      "eip": "0x9c6718",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9c65a0",
+      "eip": "0x9c6754",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9c67d0",
+      "eip": "0x9c6866",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9c67d0",
+      "eip": "0x9c68d6",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9c6970",
+      "eip": "0x9c69f8",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9c6a50",
+      "eip": "0x9c6aad",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9c6a50",
+      "eip": "0x9c6bb4",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9c7040",
+      "eip": "0x9c728f",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9c7480",
+      "eip": "0x9c7612",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9c7480",
+      "eip": "0x9c77b9",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9c7480",
+      "eip": "0x9c77f7",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9c7480",
+      "eip": "0x9c781d",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9c7480",
+      "eip": "0x9c786d",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9c7e70",
+      "eip": "0x9c7ef9",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9c7f10",
+      "eip": "0x9c7f6e",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9c83d0",
+      "eip": "0x9c8794",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9c8af0",
+      "eip": "0x9c8b82",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9c8bd0",
+      "eip": "0x9c8bf7",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9c8ca0",
+      "eip": "0x9c8cc7",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9c8d70",
+      "eip": "0x9c8d97",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9c8e60",
+      "eip": "0x9c8e87",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9c8f50",
+      "eip": "0x9c90b1",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9c90e0",
+      "eip": "0x9c912c",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9c9140",
+      "eip": "0x9c917f",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9c91d0",
+      "eip": "0x9c9288",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9c9da0",
+      "eip": "0x9c9df8",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9c9e40",
+      "eip": "0x9c9f1f",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9c9f80",
+      "eip": "0x9c9f9c",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9c9f80",
+      "eip": "0x9c9feb",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9c9f80",
+      "eip": "0x9ca02a",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9c9f80",
+      "eip": "0x9ca059",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9ca090",
+      "eip": "0x9ca0ae",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9ca090",
+      "eip": "0x9ca0da",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9ca120",
+      "eip": "0x9ca1a9",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9ca1c0",
+      "eip": "0x9ca230",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9ca1c0",
+      "eip": "0x9ca4af",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9ca1c0",
+      "eip": "0x9ca6d2",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9ca6e0",
+      "eip": "0x9ca751",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9ca760",
+      "eip": "0x9ca77c",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9ca790",
+      "eip": "0x9ca7c1",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9ca7e0",
+      "eip": "0x9ca802",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9ca820",
+      "eip": "0x9ca842",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9ca860",
+      "eip": "0x9ca882",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9ca8a0",
+      "eip": "0x9ca8c2",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9ca8e0",
+      "eip": "0x9ca902",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9ca920",
+      "eip": "0x9ca942",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9ca960",
+      "eip": "0x9ca982",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9ca9a0",
+      "eip": "0x9ca9c2",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9ca9e0",
+      "eip": "0x9caa02",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9caa20",
+      "eip": "0x9caa42",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9caa60",
+      "eip": "0x9caa82",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9caaa0",
+      "eip": "0x9caac5",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9caae0",
+      "eip": "0x9cab05",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9cab20",
+      "eip": "0x9cab45",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9cab60",
+      "eip": "0x9cab85",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9cb6b0",
+      "eip": "0x9cb880",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9cb940",
+      "eip": "0x9cb96a",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9cba10",
+      "eip": "0x9cba31",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9cbec0",
+      "eip": "0x9cbf6d",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9cc2b0",
+      "eip": "0x9cc2ce",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9cc2b0",
+      "eip": "0x9cc2ec",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9cc2b0",
+      "eip": "0x9cc30a",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9cc500",
+      "eip": "0x9cc51e",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9cc500",
+      "eip": "0x9cc556",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9cc500",
+      "eip": "0x9cc5a6",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9cc600",
+      "eip": "0x9cc61e",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9cc600",
+      "eip": "0x9cc63c",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9cc600",
+      "eip": "0x9cc65a",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9cc870",
+      "eip": "0x9cca33",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9cc870",
+      "eip": "0x9cca6b",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9cc870",
+      "eip": "0x9ccaa3",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9cc870",
+      "eip": "0x9ccadb",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9ccb40",
+      "eip": "0x9ccb81",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9ccb40",
+      "eip": "0x9ccbb5",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9ccb40",
+      "eip": "0x9ccbd9",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9ccb40",
+      "eip": "0x9cccd2",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9ccb40",
+      "eip": "0x9ccd0a",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9ccb40",
+      "eip": "0x9ccd3a",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9ccd50",
+      "eip": "0x9ccdb9",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9ccdf0",
+      "eip": "0x9cce6f",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9ccea0",
+      "eip": "0x9ccee3",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9ccf20",
+      "eip": "0x9ccf3e",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9ccf20",
+      "eip": "0x9ccf8a",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9ccf20",
+      "eip": "0x9ccfc7",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9ccf20",
+      "eip": "0x9cd03c",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9cd110",
+      "eip": "0x9cd13d",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9cd1b0",
+      "eip": "0x9cd1ce",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9cd1b0",
+      "eip": "0x9cd21a",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9cd1b0",
+      "eip": "0x9cd257",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9cd390",
+      "eip": "0x9cd3af",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9cd390",
+      "eip": "0x9cd3cf",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9cd390",
+      "eip": "0x9cd5f8",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9cd390",
+      "eip": "0x9cd793",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9cdb50",
+      "eip": "0x9cdb7b",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9cdb50",
+      "eip": "0x9cdc12",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9cdb50",
+      "eip": "0x9cdd7c",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9cdb50",
+      "eip": "0x9cddbb",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9cdb50",
+      "eip": "0x9cdf14",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9cdb50",
+      "eip": "0x9cdf53",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9ced30",
+      "eip": "0x9ced58",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9cee00",
+      "eip": "0x9ceeca",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9cee00",
+      "eip": "0x9cef24",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9cf020",
+      "eip": "0x9cf049",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9cf020",
+      "eip": "0x9cf104",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9cf020",
+      "eip": "0x9cf15e",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9cf210",
+      "eip": "0x9cf2a6",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9cf680",
+      "eip": "0x9cf6c5",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9cf680",
+      "eip": "0x9cf72e",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9cf8d0",
+      "eip": "0x9cf8ee",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9cf910",
+      "eip": "0x9cf95e",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9cf990",
+      "eip": "0x9cf9e9",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9cfcb0",
+      "eip": "0x9cfcdd",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9cfcb0",
+      "eip": "0x9cfef4",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9cfcb0",
+      "eip": "0x9cff3d",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9cfcb0",
+      "eip": "0x9d0000",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9d0a40",
+      "eip": "0x9d0ace",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9d0a40",
+      "eip": "0x9d0b0b",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9d0a40",
+      "eip": "0x9d0b55",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9d0fc0",
+      "eip": "0x9d101e",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9d1120",
+      "eip": "0x9d1199",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9d11e0",
+      "eip": "0x9d12c4",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9d1530",
+      "eip": "0x9d16fd",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9d1750",
+      "eip": "0x9d178f",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9d2470",
+      "eip": "0x9d25a2",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9d2470",
+      "eip": "0x9d2705",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9d2d80",
+      "eip": "0x9d2d9e",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9d3550",
+      "eip": "0x9d357d",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9d3550",
+      "eip": "0x9d35a7",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9d3550",
+      "eip": "0x9d3622",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9d3550",
+      "eip": "0x9d36d0",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9d3550",
+      "eip": "0x9d36f2",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9d3550",
+      "eip": "0x9d38b1",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9d38f0",
+      "eip": "0x9d3918",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9d38f0",
+      "eip": "0x9d3a21",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9d38f0",
+      "eip": "0x9d3b60",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9d38f0",
+      "eip": "0x9d3bb0",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9d38f0",
+      "eip": "0x9d3c5b",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9d3e40",
+      "eip": "0x9d3ecd",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9d3e40",
+      "eip": "0x9d3ef8",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9d3e40",
+      "eip": "0x9d3f11",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9d3e40",
+      "eip": "0x9d3f41",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9d3e40",
+      "eip": "0x9d3f72",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9d3e40",
+      "eip": "0x9d3f9f",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9d3fc0",
+      "eip": "0x9d3fe5",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9d40f0",
+      "eip": "0x9d410e",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9d4160",
+      "eip": "0x9d4179",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9d41c0",
+      "eip": "0x9d41dc",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9d4210",
+      "eip": "0x9d4228",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9d4250",
+      "eip": "0x9d426c",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9d4250",
+      "eip": "0x9d428d",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9d4920",
+      "eip": "0x9d4967",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9d49c0",
+      "eip": "0x9d49e5",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9d49c0",
+      "eip": "0x9d4a20",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9d4b30",
+      "eip": "0x9d4b4e",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9d4b30",
+      "eip": "0x9d4c81",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9d4b30",
+      "eip": "0x9d4ca3",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9d4b30",
+      "eip": "0x9d4cc3",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9d4eb0",
+      "eip": "0x9d4ece",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9d4eb0",
+      "eip": "0x9d4fcd",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9d4eb0",
+      "eip": "0x9d4fef",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9d4eb0",
+      "eip": "0x9d500f",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9d5140",
+      "eip": "0x9d51b5",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9d5410",
+      "eip": "0x9d5457",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9d5930",
+      "eip": "0x9d5979",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9d5a60",
+      "eip": "0x9d5a7c",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9d5af0",
+      "eip": "0x9d5b0c",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9d5cd0",
+      "eip": "0x9d5cf6",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9d5d50",
+      "eip": "0x9d5d77",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9d5ff0",
+      "eip": "0x9d6013",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9d6040",
+      "eip": "0x9d6069",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9d60e0",
+      "eip": "0x9d6109",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9d67f0",
+      "eip": "0x9d6b6d",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9d70b0",
+      "eip": "0x9d72e3",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9d7300",
+      "eip": "0x9d7318",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9d7350",
+      "eip": "0x9d736b",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9d73d0",
+      "eip": "0x9d73f6",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9d7420",
+      "eip": "0x9d7444",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9d7530",
+      "eip": "0x9d7550",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9d7610",
+      "eip": "0x9d7630",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9d7610",
+      "eip": "0x9d76e3",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9d7700",
+      "eip": "0x9d771f",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9d7730",
+      "eip": "0x9d774f",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9d7760",
+      "eip": "0x9d777f",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9d77a0",
+      "eip": "0x9d78de",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9d7bb0",
+      "eip": "0x9d7bd8",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9d7c30",
+      "eip": "0x9d7c58",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9d7cb0",
+      "eip": "0x9d7ce8",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9d7ff0",
+      "eip": "0x9d8018",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9d8060",
+      "eip": "0x9d8088",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9d80d0",
+      "eip": "0x9d80f8",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9d8c50",
+      "eip": "0x9d8da5",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9d8c50",
+      "eip": "0x9d8dc9",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9d8c50",
+      "eip": "0x9d8ee1",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9d9610",
+      "eip": "0x9d9633",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9d9610",
+      "eip": "0x9d965f",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9d9760",
+      "eip": "0x9d978c",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9d98b0",
+      "eip": "0x9d9911",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9da5b0",
+      "eip": "0x9da5c8",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9da5f0",
+      "eip": "0x9da608",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9da620",
+      "eip": "0x9da638",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9da970",
+      "eip": "0x9da98c",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9da970",
+      "eip": "0x9da9c7",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9dad50",
+      "eip": "0x9dad66",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9dadf0",
+      "eip": "0x9dae11",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9dae60",
+      "eip": "0x9dae7b",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9daee0",
+      "eip": "0x9daf27",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9daee0",
+      "eip": "0x9daf59",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9daf70",
+      "eip": "0x9dafa8",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9daf70",
+      "eip": "0x9dafe0",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9db1f0",
+      "eip": "0x9db224",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9db1f0",
+      "eip": "0x9db340",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9db380",
+      "eip": "0x9db3d5",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9db4b0",
+      "eip": "0x9db4c8",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9db550",
+      "eip": "0x9db568",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9db5f0",
+      "eip": "0x9db60b",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9db690",
+      "eip": "0x9db6ab",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9db760",
+      "eip": "0x9db779",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9db7f0",
+      "eip": "0x9db809",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9db880",
+      "eip": "0x9db899",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9db910",
+      "eip": "0x9db92b",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9db9d0",
+      "eip": "0x9db9eb",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9dba80",
+      "eip": "0x9dba9b",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9dbb30",
+      "eip": "0x9dbb4b",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9dbbe0",
+      "eip": "0x9dbbfb",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9dbcc0",
+      "eip": "0x9dbcdb",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9dbd40",
+      "eip": "0x9dbd59",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9dbe90",
+      "eip": "0x9dbeab",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9dbed0",
+      "eip": "0x9dbeeb",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9dbf10",
+      "eip": "0x9dbfd4",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9dc250",
+      "eip": "0x9dc26e",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9dc2b0",
+      "eip": "0x9dc2ea",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9dc310",
+      "eip": "0x9dc504",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9dc310",
+      "eip": "0x9dc56d",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9dc5a0",
+      "eip": "0x9dc5c7",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9dc5a0",
+      "eip": "0x9dc727",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9dc770",
+      "eip": "0x9dc7e0",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9dc810",
+      "eip": "0x9dc837",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9dd570",
+      "eip": "0x9dd59f",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9dd850",
+      "eip": "0x9dd86e",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9dd8b0",
+      "eip": "0x9dd8ce",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9ddb70",
+      "eip": "0x9ddb8e",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9ddbd0",
+      "eip": "0x9ddbfa",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9de200",
+      "eip": "0x9de21f",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9de230",
+      "eip": "0x9de24f",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9de330",
+      "eip": "0x9de34e",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9de580",
+      "eip": "0x9de59c",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9de5f0",
+      "eip": "0x9de60c",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9de6f0",
+      "eip": "0x9de70c",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9de790",
+      "eip": "0x9de7ae",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9de9c0",
+      "eip": "0x9de9e5",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9dea60",
+      "eip": "0x9dea85",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9deae0",
+      "eip": "0x9deb05",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9deb40",
+      "eip": "0x9deb65",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9deba0",
+      "eip": "0x9debc5",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9dec00",
+      "eip": "0x9dec25",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9dec60",
+      "eip": "0x9dec85",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9decc0",
+      "eip": "0x9dece5",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9ded20",
+      "eip": "0x9ded3c",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9dee20",
+      "eip": "0x9dee3e",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9df2d0",
+      "eip": "0x9df2ee",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9dfdd0",
+      "eip": "0x9dfdee",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9dfe30",
+      "eip": "0x9dfe4e",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9dfe90",
+      "eip": "0x9dfeae",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9dfef0",
+      "eip": "0x9dff0e",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9dff50",
+      "eip": "0x9dff6e",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9dffb0",
+      "eip": "0x9dffce",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9e0010",
+      "eip": "0x9e002e",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9e0070",
+      "eip": "0x9e008e",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9e00d0",
+      "eip": "0x9e00ec",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9e0110",
+      "eip": "0x9e012e",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9e06b0",
+      "eip": "0x9e06cc",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9e0ca0",
+      "eip": "0x9e0cc4",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9e0ce0",
+      "eip": "0x9e0d04",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9e14f0",
+      "eip": "0x9e150e",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9e1770",
+      "eip": "0x9e178e",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9e18b0",
+      "eip": "0x9e18d8",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9e1a50",
+      "eip": "0x9e1a70",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9e1a50",
+      "eip": "0x9e1a9b",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9e2e00",
+      "eip": "0x9e2e8a",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9e2e00",
+      "eip": "0x9e2ea7",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9e4100",
+      "eip": "0x9e4169",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9e4180",
+      "eip": "0x9e41ca",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9e4240",
+      "eip": "0x9e4269",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9e4240",
+      "eip": "0x9e42bb",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9e4640",
+      "eip": "0x9e465c",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9e4640",
+      "eip": "0x9e4683",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9e4640",
+      "eip": "0x9e46b9",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9e46d0",
+      "eip": "0x9e46eb",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9e46d0",
+      "eip": "0x9e4712",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9e4760",
+      "eip": "0x9e4785",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9e47d0",
+      "eip": "0x9e47f3",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9e4820",
+      "eip": "0x9e4849",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9e4890",
+      "eip": "0x9e48ae",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9e4890",
+      "eip": "0x9e48d9",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9e4940",
+      "eip": "0x9e4967",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9e4990",
+      "eip": "0x9e49ae",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9e4990",
+      "eip": "0x9e49d9",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9e4a60",
+      "eip": "0x9e4a93",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9e4b10",
+      "eip": "0x9e4b32",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9e4b60",
+      "eip": "0x9e4b83",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9e4bb0",
+      "eip": "0x9e4be5",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9e4bb0",
+      "eip": "0x9e4c1b",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9e4c30",
+      "eip": "0x9e4c55",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9e4c80",
+      "eip": "0x9e4c9c",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9e4c80",
+      "eip": "0x9e4cdb",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9e4d40",
+      "eip": "0x9e4d60",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9e4da0",
+      "eip": "0x9e4dbf",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9e4e20",
+      "eip": "0x9e4e42",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9e4e70",
+      "eip": "0x9e4e92",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9e4ed0",
+      "eip": "0x9e4eec",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9e4ed0",
+      "eip": "0x9e4f13",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9e4ed0",
+      "eip": "0x9e4f4a",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9e4f60",
+      "eip": "0x9e4f7b",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9e4f60",
+      "eip": "0x9e4fa2",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9e4ff0",
+      "eip": "0x9e5010",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9e50a0",
+      "eip": "0x9e50c2",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9e5b30",
+      "eip": "0x9e5b56",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9e5b30",
+      "eip": "0x9e5b9a",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9e5c10",
+      "eip": "0x9e5c47",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9e7630",
+      "eip": "0x9e764b",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9e7630",
+      "eip": "0x9e7672",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9e76a0",
+      "eip": "0x9e76bb",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9e76a0",
+      "eip": "0x9e76e2",
+      "kind": "INDIRECT_CALL",
+      "text": "call dword ptr [0x0189D1A4]",
+      "confidence": "high"
+    },
+    {
+      "function": "0x9e76a0",
+      "eip": "0x9e8b16",
+      "kind": "WRITE",
+      "text": "mov dword ptr [0x0189D1A4], 0x009E78C0",
+      "confidence": "high"
+    }
+  ],
+  "bss_store_count": 2682,
+  "text_pointer_store_count": 19,
+  "pointer_tables": [
+    {
+      "va": "0x00B63548",
+      "count": 542
+    },
+    {
+      "va": "0x00BC7200",
+      "count": 332
+    },
+    {
+      "va": "0x00B62EF0",
+      "count": 302
+    },
+    {
+      "va": "0x00B62AF0",
+      "count": 221
+    },
+    {
+      "va": "0x00B62198",
+      "count": 211
+    },
+    {
+      "va": "0x00B61230",
+      "count": 171
+    },
+    {
+      "va": "0x00CA990C",
+      "count": 171
+    },
+    {
+      "va": "0x00B89E34",
+      "count": 167
+    },
+    {
+      "va": "0x00B885C4",
+      "count": 166
+    },
+    {
+      "va": "0x00BB1AAC",
+      "count": 150
+    },
+    {
+      "va": "0x00BB161C",
+      "count": 146
+    },
+    {
+      "va": "0x00B8527C",
+      "count": 136
+    },
+    {
+      "va": "0x00C30280",
+      "count": 135
+    },
+    {
+      "va": "0x00B7D4C4",
+      "count": 129
+    },
+    {
+      "va": "0x00B7FB0C",
+      "count": 129
+    },
+    {
+      "va": "0x00B7D2BC",
+      "count": 128
+    },
+    {
+      "va": "0x00B7DACC",
+      "count": 128
+    },
+    {
+      "va": "0x00B7D8CC",
+      "count": 127
+    },
+    {
+      "va": "0x00B7D0BC",
+      "count": 126
+    },
+    {
+      "va": "0x00B7D6CC",
+      "count": 126
+    },
+    {
+      "va": "0x00B7EA54",
+      "count": 126
+    },
+    {
+      "va": "0x00B7F904",
+      "count": 126
+    },
+    {
+      "va": "0x00BD1B20",
+      "count": 125
+    },
+    {
+      "va": "0x00B61ED0",
+      "count": 121
+    },
+    {
+      "va": "0x00B651B4",
+      "count": 113
+    },
+    {
+      "va": "0x00B66A24",
+      "count": 113
+    },
+    {
+      "va": "0x00B66D2C",
+      "count": 113
+    },
+    {
+      "va": "0x00B6705C",
+      "count": 113
+    },
+    {
+      "va": "0x00B673AC",
+      "count": 113
+    },
+    {
+      "va": "0x00B67714",
+      "count": 113
+    },
+    {
+      "va": "0x00B67A74",
+      "count": 113
+    },
+    {
+      "va": "0x00B67D34",
+      "count": 113
+    },
+    {
+      "va": "0x00B680DC",
+      "count": 113
+    },
+    {
+      "va": "0x00B68454",
+      "count": 113
+    },
+    {
+      "va": "0x00B6106C",
+      "count": 107
+    },
+    {
+      "va": "0x00CA9748",
+      "count": 107
+    },
+    {
+      "va": "0x00C2FE24",
+      "count": 106
+    },
+    {
+      "va": "0x00B61B00",
+      "count": 104
+    },
+    {
+      "va": "0x00BC0BDC",
+      "count": 99
+    },
+    {
+      "va": "0x00B85944",
+      "count": 98
+    }
+  ]
+}
