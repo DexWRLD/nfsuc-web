@@ -70,20 +70,29 @@ def main():
     for banned in ("e8f63f2fae", "MZ", "This program cannot be run"):
         expect(banned not in blob, "embedded content " + banned)
 
+    png_a = progress.render_png(first)
+    png_b = progress.render_png(second)
+    expect(png_a == png_b, "png drift")
+    expect(png_a[:8] == b"\x89PNG\r\n\x1a\n", "png signature")
+
     left = tempfile.mkdtemp(prefix="uc-progress-")
     right = tempfile.mkdtemp(prefix="uc-progress-")
     progress.main([left])
     progress.main([right])
-    for name in ("progress.json", "progress.svg", "progress.html"):
-        with open(os.path.join(left, name), encoding="utf-8") as handle:
+    for name in ("progress.json", "progress.svg", "progress.html", "progress.png"):
+        mode = "rb" if name.endswith(".png") else "r"
+        encoding = None if name.endswith(".png") else "utf-8"
+        with open(os.path.join(left, name), mode, encoding=encoding) as handle:
             a = handle.read()
-        with open(os.path.join(right, name), encoding="utf-8") as handle:
+        with open(os.path.join(right, name), mode, encoding=encoding) as handle:
             b = handle.read()
         expect(a == b, "file drift " + name)
         if name.endswith(".json"):
             json.loads(a)
         if name.endswith(".svg"):
             ET.fromstring(a)
+        if name.endswith(".png"):
+            expect(a[:8] == b"\x89PNG\r\n\x1a\n", "written png")
     print("progress dashboard ok", len(functions), first["runtime"]["counts"]["EXECUTED"])
 
 

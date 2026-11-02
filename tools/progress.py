@@ -669,7 +669,131 @@ def dump(model):
     return json.dumps(public, indent=2) + "\n"
 
 
-def write_outputs(directory, model, svg, page):
+def _hex_rgb(color):
+    color = color.lstrip("#")
+    return tuple(int(color[i:i + 2], 16) for i in (0, 2, 4))
+
+
+def render_png(model):
+    """Raster twin of the SVG for GitHub README embedding.
+
+    GitHub often skips large multi-thousand-element SVGs in README files.
+    """
+    from PIL import Image, ImageDraw, ImageFont
+
+    functions = model["functions"]
+    translation = groups_for(functions, "translation_status")
+    runtime = groups_for(functions, "runtime_status")
+    trans = model["translation"]
+    run = model["runtime"]
+    cut = model["helper_cut"]
+    cut_text = "UNKNOWN" if cut == "UNKNOWN" else "%d must / %d may / %d independent" % (
+        cut["must"], cut["may"], cut["independent"])
+    badges = [
+        ("Functions compiled", "%d/%d" % (trans["compiled"], trans["attempted"])),
+        ("Compiler failures", str(trans["compiler_failures"])),
+        ("Recorded entries", str(run["recorded_entries"])),
+        ("Phase", str(model["project"]["current_phase"])),
+        ("External boundary", "0x00686000"),
+        ("Helper cut", cut_text),
+    ]
+
+    # Measure height with the same geometry as the SVG.
+    class Measure(list):
+        pass
+
+    measure = Measure()
+    y = badge_row(measure, badges, 14)
+    y = draw_map(measure, "Function translation", translation, "translation_status",
+                 TRANSLATION_COLOR, 16, y + 8, WIDTH - 32, 360, False)
+    y = legend(measure, 16, y + 8, TRANSLATION_COLOR)
+    y += 16
+    y = draw_map(measure, "Runtime reachability", runtime, "runtime_status",
+                 RUNTIME_COLOR, 16, y + 28, WIDTH - 32, 360, False)
+    y = legend(measure, 16, y + 8, RUNTIME_COLOR)
+    height = y + 36
+
+    image = Image.new("RGB", (WIDTH, height), _hex_rgb(BG))
+    draw = ImageDraw.Draw(image)
+    try:
+        font = ImageFont.truetype("segoeui.ttf", 12)
+        font_sm = ImageFont.truetype("segoeui.ttf", 10)
+        font_title = ImageFont.truetype("segoeui.ttf", 15)
+    except OSError:
+        font = ImageFont.load_default()
+        font_sm = font
+        font_title = font
+
+    def paint_map(title, groups, field, colors, x, top, w, h):
+        draw.text((x, top + 2), title, fill=_hex_rgb(TEXT), font=font_title)
+        body_y = top + 24
+        body_h = h - 24
+        rects = squarify([group["total"] for group in groups], x, body_y, w, body_h)
+        for group, rect in zip(groups, rects):
+            gx, gy, gw, gh = snap(rect)
+            if gw <= 0 or gh <= 0:
+                continue
+            draw.rectangle([gx, gy, gx + gw - 1, gy + gh - 1], fill=_hex_rgb(PANEL), outline=_hex_rgb(LINE))
+            header = 0
+            if gh > 36 and gw > 80:
+                header = 14
+                percent = (100.0 * group["done"] / group["total"]) if group["total"] else 0
+                caption = "%s %d/%d %.0f%%" % (group["name"], group["done"], group["total"], percent)
+                if len(caption) * 6 > gw - 8:
+                    caption = "%s %.0f%%" % (group["name"], percent)
+                draw.text((gx + 4, gy + 2), caption, fill=_hex_rgb(MUTED), font=font_sm)
+            boxes = cell_boxes(group["total"], gx + 2, gy + header + 2, max(0, gw - 4), max(0, gh - header - 4))
+            for item, box in zip(group["items"], boxes):
+                cx, cy, cw, ch = box
+                color = _hex_rgb(colors[item[field]])
+                if cw <= 1 or ch <= 1:
+                    draw.point((cx, cy), fill=color)
+                else:
+                    draw.rectangle([cx, cy, cx + cw - 1, cy + ch - 1], fill=color)
+        return top + h
+
+    def paint_legend(x, top, colors):
+        cursor = x
+        for name, color in colors.items():
+            draw.rectangle([cursor, top, cursor + 9, top + 9], fill=_hex_rgb(color))
+            draw.text((cursor + 14, top - 1), name, fill=_hex_rgb(MUTED), font=font_sm)
+            cursor += 14 + 7 * len(name) + 10
+        return top + 18
+
+    # Badges
+    x = 16
+    row_y = 14
+    for label, value in badges:
+        text = "%s  %s" % (label, value)
+        width = 16 + int(6.6 * len(text))
+        if x + width > WIDTH - 16:
+            x = 16
+            row_y += 28
+        draw.rounded_rectangle([x, row_y, x + width, row_y + 22], radius=4,
+                               fill=_hex_rgb(PANEL), outline=_hex_rgb(LINE))
+        draw.text((x + 8, row_y + 4), text, fill=_hex_rgb(TEXT), font=font)
+        x += width + 8
+    y = row_y + 30
+    y = paint_map("Function translation", translation, "translation_status",
+                  TRANSLATION_COLOR, 16, y + 8, WIDTH - 32, 360)
+    y = paint_legend(16, y + 8, TRANSLATION_COLOR)
+    note = "High-confidence function compilation %d/%d. This is not project completion." % (
+        trans["compiled"], trans["attempted"])
+    draw.text((16, y + 4), note, fill=_hex_rgb(MUTED), font=font_sm)
+    y += 16
+    y = paint_map("Runtime reachability", runtime, "runtime_status",
+                  RUNTIME_COLOR, 16, y + 28, WIDTH - 32, 360)
+    y = paint_legend(16, y + 8, RUNTIME_COLOR)
+    draw.text((16, y + 4), run["note"] + " Unlogged entries: UNKNOWN.",
+              fill=_hex_rgb(MUTED), font=font_sm)
+
+    from io import BytesIO
+    buf = BytesIO()
+    image.save(buf, format="PNG", optimize=True)
+    return buf.getvalue()
+
+
+def write_outputs(directory, model, svg, page, png=None):
     os.makedirs(directory, exist_ok=True)
     with open(os.path.join(directory, "progress.json"), "w", encoding="utf-8", newline="\n") as handle:
         handle.write(dump(model))
@@ -677,6 +801,9 @@ def write_outputs(directory, model, svg, page):
         handle.write(svg)
     with open(os.path.join(directory, "progress.html"), "w", encoding="utf-8", newline="\n") as handle:
         handle.write(page)
+    if png is not None:
+        with open(os.path.join(directory, "progress.png"), "wb") as handle:
+            handle.write(png)
 
 
 def main(argv=None):
@@ -687,7 +814,8 @@ def main(argv=None):
     model = build()
     svg = render_svg(model, detailed=False)
     page = render_html(model, render_svg(model, detailed=True))
-    write_outputs(directory, model, svg, page)
+    png = render_png(model)
+    write_outputs(directory, model, svg, page, png)
     trans = model["translation"]
     print("cells %d compiled-record %d/%d compiler-failures %d recorded-entries %d"
           % (trans["map_cells"], trans["compiled"], trans["attempted"],

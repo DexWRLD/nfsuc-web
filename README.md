@@ -10,13 +10,9 @@ Not affiliated with or endorsed by Electronic Arts.
 
 ## Status
 
-<p align="center">
-  <img src="analysis/undercover/progress.svg" alt="Undercover function translation and runtime reachability maps" width="100%">
-</p>
+![Undercover function translation and runtime reachability](analysis/undercover/progress.png)
 
 Each cell is one analyzed function. The upper map is translation and compilation. The lower map is runtime reachability. Green on the first map does not mean the game runs.
-
-Full page with tooltips, initialization, and the current frontier: [analysis/undercover/progress.html](analysis/undercover/progress.html)
 
 ```sh
 python tools/progress.py
