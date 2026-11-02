@@ -252,8 +252,44 @@ def main(argv):
     path = os.path.join(out_dir, "import-thunks.md")
     with open(path, "w", encoding="utf-8", newline="\n") as fh:
         fh.write("\n".join(lines))
+    abi = []
+    for row in rows:
+        symbol = row["symbol"]
+        ordinal = int(symbol[1:]) if symbol.startswith("#") and symbol[1:].isdigit() else None
+        unique = len(row["dlls"]) == 1
+        confidence = "high" if unique and row["convention"] != "unknown" else "low"
+        abi.append({
+            "dll": row["dll"],
+            "symbol": symbol if ordinal is None else "",
+            "ordinal": ordinal,
+            "thunk": hx(row["thunk"]),
+            "iat_slot": hx(row["slot"]),
+            "calling_convention": row["convention"],
+            "call_sites": row["calls"],
+            "tail_jumps": row["tails"],
+            "confidence": confidence,
+        })
+    abi_doc = {
+        "note": (
+            "Analysis only. win32_call is unchanged. "
+            "confidence is high only when one DLL owns the symbol and the convention is not unknown. "
+            "DirectX ordinals and helper exports stay unknown. "
+            "call_sites counts direct calls. tail_jumps are separate and are not added in."
+        ),
+        "thunks": len(thunks),
+        "resolved": len(abi),
+        "unresolved_slots": unresolved,
+        "by_convention": dict(sorted(by_conv.items())),
+        "by_confidence": dict(collections.Counter(item["confidence"] for item in abi)),
+        "imports": abi,
+    }
+    abi_path = os.path.join(out_dir, "import-abi.json")
+    with open(abi_path, "w", encoding="utf-8") as fh:
+        json.dump(abi_doc, fh, indent=2)
+        fh.write("\n")
     print(f"  resolved {len(rows)} unresolved {unresolved}", file=sys.stderr)
     print(f"  wrote {path}", file=sys.stderr)
+    print(f"  wrote {abi_path}", file=sys.stderr)
 
 
 if __name__ == "__main__":
