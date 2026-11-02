@@ -42,6 +42,26 @@ DATA_CFG = BCD | {"lcall", "ljmp", "les", "lds", "salc", "fstpnce", "iret", "ire
 STACK = {"push", "pop", "pushfd", "popfd", "enter", "leave"}
 LOOP = {"jecxz", "jcxz", "loop", "loope", "loopz", "loopne", "loopnz"}
 
+# Safety budgets for one function CFG. Chosen from observed ordinary HIGH
+# functions (p99 ~1100 instructions, max ~6000). Not a linear discovery cap.
+INSN_BUDGET = 16384
+BLOCK_BUDGET = 4096
+BYTE_SPAN_BUDGET = 262144
+
+TERMINATION = (
+    "RET_REACHED",
+    "MULTIPLE_RETURNS",
+    "TAIL_TRANSFER",
+    "CFG_COMPLETE",
+    "DECODE_FAILURE",
+    "EXTERNAL_BOUNDARY",
+    "PROTECTED_BOUNDARY",
+    "OVERLAP_CONFLICT",
+    "CFG_BUDGET_EXCEEDED",
+    "NO_TERMINATOR",
+    "UNKNOWN",
+)
+
 
 def die(msg):
     print(msg, file=sys.stderr)
@@ -110,14 +130,27 @@ def entry_shape(blob, base, va):
 
 
 class Walker:
-    def __init__(self, blob, base, starts, lifter):
+    """CFG-aware ordinary-function fact walk.
+
+    Control-flow termination decides function extent. Safety budgets exist only
+    to stop pathological analysis and are reported as CFG_BUDGET_EXCEEDED.
+    Direct calls are recorded; callees are not absorbed into the current body.
+    """
+
+    def __init__(self, blob, base, starts, lifter,
+                 insn_budget=INSN_BUDGET, block_budget=BLOCK_BUDGET,
+                 byte_span_budget=BYTE_SPAN_BUDGET):
         self.blob = blob
         self.base = base
         self.n = len(blob)
         self.starts = starts
         self.L = lifter
+        self.insn_budget = insn_budget
+        self.block_budget = block_budget
+        self.byte_span_budget = byte_span_budget
         self.md = Cs(CS_ARCH_X86, CS_MODE_32)
         self.md.detail = True
+        self.entry_set = set()
 
     def decode(self, va):
         if not on_boundary(self.starts, self.base, self.n, va):
@@ -126,17 +159,19 @@ class Walker:
         found = list(self.md.disasm(self.blob[off:off + 15], va))
         return found[0] if found else None
 
-    def walk(self, entry, entries):
-        facts = {
+    def _empty_facts(self, entry):
+        return {
             "va": entry,
             "on_boundary": on_boundary(self.starts, self.base, self.n, entry),
-            "frame": prologue_at(self.blob, entry - self.base),
-            "after_int3": after_int3(self.blob, entry - self.base),
+            "frame": prologue_at(self.blob, entry - self.base) if 0 <= entry - self.base < self.n else False,
+            "after_int3": after_int3(self.blob, entry - self.base) if 0 < entry - self.base < self.n else False,
             "insns": 0,
             "bytes": 0,
+            "blocks": 0,
             "stack": 0,
             "calls": [],
             "tails": [],
+            "returns": [],
             "switches": 0,
             "switch_targets": 0,
             "bad_branch": 0,
@@ -151,40 +186,93 @@ class Walker:
             "ends_import": False,
             "entry_nonsense": False,
             "truncated": False,
+            "budget_exceeded": False,
+            "overlap_conflicts": [],
+            "termination": "UNKNOWN",
             "span": 0,
         }
+
+    def _strong_foreign_entry(self, target, entry, entries):
+        """True when target looks like another function, not a local block."""
+        if target == entry:
+            return False
+        if target in entries:
+            return True
+        return entry_shape(self.blob, self.base, target)
+
+    def _budget_hit(self, facts, owned):
+        if facts["insns"] >= self.insn_budget:
+            return True
+        if facts["blocks"] >= self.block_budget:
+            return True
+        if owned:
+            span = max(owned) + 1 - min(min(owned), facts["va"])
+            if span >= self.byte_span_budget:
+                return True
+        return False
+
+    def _enqueue(self, queue, seen, dest):
+        if dest not in seen:
+            queue.append(dest)
+
+    def walk(self, entry, entries):
+        facts = self._empty_facts(entry)
         if not facts["on_boundary"]:
+            facts["termination"] = "DECODE_FAILURE"
             return facts, set()
         first = self.decode(entry)
         if first is None:
             facts["undecodable"] += 1
+            facts["termination"] = "DECODE_FAILURE"
             return facts, set()
         if first.mnemonic in ENTRY_BAD:
             facts["entry_nonsense"] = True
             facts["insns"] = 1
             self._tally(facts, first)
+            facts["termination"] = "DECODE_FAILURE"
             return facts, set()
 
         blocks = {}
         queue = collections.deque([entry])
         seen = set()
         owned = set()
-        while queue and facts["insns"] < 20000:
+        hit_external = False
+        hit_overlap = False
+        hit_decode = False
+
+        while queue:
+            if self._budget_hit(facts, owned):
+                facts["budget_exceeded"] = True
+                facts["truncated"] = True
+                break
             va = queue.popleft()
             if va in seen:
                 continue
             if not on_boundary(self.starts, self.base, self.n, va):
                 facts["bad_branch"] += 1
                 continue
+            if not self.L.in_text(va):
+                hit_external = True
+                facts["bad_branch"] += 1
+                continue
             seen.add(va)
+            facts["blocks"] += 1
             ins = []
             cur = va
-            while facts["insns"] < 20000 and len(ins) < 4000:
-                if ins and prologue_at(self.blob, cur - self.base) and cur != entry:
+            while True:
+                if self._budget_hit(facts, owned):
+                    facts["budget_exceeded"] = True
+                    facts["truncated"] = True
                     break
+                if ins and cur != entry:
+                    if cur in entries or prologue_at(self.blob, cur - self.base):
+                        facts["overlap_conflicts"].append(cur)
+                        hit_overlap = True
+                        break
                 insn = self.decode(cur)
                 if insn is None:
                     facts["undecodable"] += 1
+                    hit_decode = True
                     break
                 ins.append(insn)
                 facts["insns"] += 1
@@ -195,17 +283,19 @@ class Walker:
                 nxt = insn.address + insn.size
                 if lift._is_near_ret(m):
                     facts["ends_ret"] = True
+                    facts["returns"].append(insn.address)
                     break
                 if m == "jmp" and insn.operands and insn.operands[0].type == X86_OP_IMM:
                     target = insn.operands[0].imm & 0xffffffff
-                    if self.L.in_text(target) and (
-                        entry_shape(self.blob, self.base, target) or target in entries
-                    ) and target != entry:
+                    if self.L.in_text(target) and self._strong_foreign_entry(target, entry, entries):
                         facts["tails"].append(target)
                         facts["ends_tail"] = True
                     elif self.L.in_text(target) and on_boundary(self.starts, self.base, self.n, target):
-                        queue.append(target)
+                        self._enqueue(queue, seen, target)
+                    elif self.L.in_text(target):
+                        facts["bad_branch"] += 1
                     else:
+                        hit_external = True
                         facts["bad_branch"] += 1
                     break
                 if m == "jmp" and insn.operands and insn.operands[0].type == X86_OP_MEM:
@@ -218,14 +308,25 @@ class Walker:
                     target = insn.operands[0].imm & 0xffffffff
                     for dest in (target, nxt):
                         if self.L.in_text(dest) and on_boundary(self.starts, self.base, self.n, dest):
-                            queue.append(dest)
+                            # Follow both arms. A branch that lands on another known
+                            # entry is recorded as a conflict but still explored only
+                            # when the destination is the fall-through or a local label;
+                            # a conditional jump to a strong foreign entry is not absorbed.
+                            if dest != entry and dest != nxt and self._strong_foreign_entry(dest, entry, entries):
+                                facts["overlap_conflicts"].append(dest)
+                            else:
+                                self._enqueue(queue, seen, dest)
                         elif self.L.in_text(dest):
+                            facts["bad_branch"] += 1
+                        else:
+                            hit_external = True
                             facts["bad_branch"] += 1
                     break
                 if m == "call" and insn.operands and insn.operands[0].type == X86_OP_IMM:
                     target = insn.operands[0].imm & 0xffffffff
                     if self.L.in_text(target):
                         facts["calls"].append(target)
+                    # Never absorb the callee body into this function.
                 if m == "int3":
                     pad = self.blob[nxt - self.base:nxt - self.base + 3]
                     if pad == b"\xcc\xcc\xcc":
@@ -233,23 +334,121 @@ class Walker:
                 if m in ("hlt", "ud2", "retf"):
                     break
                 if not self.L.in_text(nxt):
+                    hit_external = True
                     break
                 cur = nxt
-            else:
-                if len(ins) >= 4000:
-                    facts["truncated"] = True
             if ins:
                 blocks[ins[0].address] = ins
-        if facts["insns"] >= 20000:
-            facts["truncated"] = True
-        self._switches(facts, blocks, queue, seen, owned)
+            if facts["budget_exceeded"]:
+                break
+
+        if not facts["budget_exceeded"]:
+            self._switches(facts, blocks, queue, seen, owned, entry, entries)
+            while queue and not facts["budget_exceeded"]:
+                if self._budget_hit(facts, owned):
+                    facts["budget_exceeded"] = True
+                    facts["truncated"] = True
+                    break
+                va = queue.popleft()
+                if va in seen:
+                    continue
+                if not on_boundary(self.starts, self.base, self.n, va):
+                    facts["bad_branch"] += 1
+                    continue
+                seen.add(va)
+                facts["blocks"] += 1
+                ins = []
+                cur = va
+                while True:
+                    if self._budget_hit(facts, owned):
+                        facts["budget_exceeded"] = True
+                        facts["truncated"] = True
+                        break
+                    if ins and cur != entry and (cur in entries or prologue_at(self.blob, cur - self.base)):
+                        facts["overlap_conflicts"].append(cur)
+                        hit_overlap = True
+                        break
+                    insn = self.decode(cur)
+                    if insn is None:
+                        facts["undecodable"] += 1
+                        hit_decode = True
+                        break
+                    ins.append(insn)
+                    facts["insns"] += 1
+                    facts["bytes"] += insn.size
+                    self._own(owned, insn)
+                    self._tally(facts, insn)
+                    m = insn.mnemonic
+                    nxt = insn.address + insn.size
+                    if lift._is_near_ret(m):
+                        facts["ends_ret"] = True
+                        facts["returns"].append(insn.address)
+                        break
+                    if m == "jmp" and insn.operands and insn.operands[0].type == X86_OP_IMM:
+                        target = insn.operands[0].imm & 0xffffffff
+                        if self.L.in_text(target) and self._strong_foreign_entry(target, entry, entries):
+                            facts["tails"].append(target)
+                            facts["ends_tail"] = True
+                        elif self.L.in_text(target) and on_boundary(self.starts, self.base, self.n, target):
+                            self._enqueue(queue, seen, target)
+                        else:
+                            facts["bad_branch"] += 1
+                        break
+                    if is_jcc(m) and insn.operands and insn.operands[0].type == X86_OP_IMM:
+                        target = insn.operands[0].imm & 0xffffffff
+                        for dest in (target, nxt):
+                            if dest not in seen and self.L.in_text(dest) and on_boundary(
+                                self.starts, self.base, self.n, dest
+                            ):
+                                self._enqueue(queue, seen, dest)
+                        break
+                    if m == "call" and insn.operands and insn.operands[0].type == X86_OP_IMM:
+                        target = insn.operands[0].imm & 0xffffffff
+                        if self.L.in_text(target):
+                            facts["calls"].append(target)
+                    if m in ("hlt", "ud2", "retf", "int3"):
+                        break
+                    if not self.L.in_text(nxt):
+                        hit_external = True
+                        break
+                    cur = nxt
+                if ins:
+                    blocks[ins[0].address] = ins
+
         if facts["insns"]:
             last = max(owned) if owned else entry
             facts["span"] = max(1, last + 1 - entry)
         facts["calls"] = sorted(set(facts["calls"]))
         facts["tails"] = sorted(set(facts["tails"]))
+        facts["returns"] = sorted(set(facts["returns"]))
+        facts["overlap_conflicts"] = sorted(set(facts["overlap_conflicts"]))
+        facts["blocks"] = max(facts["blocks"], len(blocks))
+        facts["termination"] = self._termination(facts, hit_external, hit_overlap, hit_decode)
         facts["owned"] = owned
         return facts, owned
+
+    def _termination(self, facts, hit_external, hit_overlap, hit_decode):
+        if facts["budget_exceeded"] or facts["truncated"]:
+            return "CFG_BUDGET_EXCEEDED"
+        if facts["entry_nonsense"] or (hit_decode and facts["insns"] == 0):
+            return "DECODE_FAILURE"
+        if hit_decode and not (facts["ends_ret"] or facts["ends_tail"] or facts["ends_import"]):
+            return "DECODE_FAILURE"
+        if hit_overlap and not (facts["ends_ret"] or facts["ends_tail"] or facts["ends_import"]):
+            return "OVERLAP_CONFLICT"
+        if hit_external and not (facts["ends_ret"] or facts["ends_tail"] or facts["ends_import"]):
+            return "EXTERNAL_BOUNDARY"
+        if len(facts["returns"]) > 1:
+            return "MULTIPLE_RETURNS"
+        if facts["ends_ret"]:
+            return "RET_REACHED"
+        if facts["ends_tail"] or facts["ends_import"]:
+            return "TAIL_TRANSFER"
+        if facts["insns"] > 0 and facts["bad_branch"] == 0 and facts["undecodable"] == 0:
+            return "CFG_COMPLETE" if facts["switches"] else "NO_TERMINATOR"
+        if facts["insns"] > 0:
+            return "NO_TERMINATOR"
+        return "UNKNOWN"
 
     def _own(self, owned, insn):
         for addr in range(insn.address, insn.address + insn.size):
@@ -271,7 +470,7 @@ class Walker:
         if base in RARE or m in RARE:
             facts["nonsense"] += 1
 
-    def _switches(self, facts, blocks, queue, seen, owned):
+    def _switches(self, facts, blocks, queue, seen, owned, entry, entries):
         bounds = {}
         for ins in blocks.values():
             if not ins:
@@ -279,139 +478,41 @@ class Walker:
             bound = self.L._jt_bound(ins)
             if bound:
                 bounds[bound[2]] = bound[:2]
-        added = True
-        while added:
-            added = False
-            for ba, ins in list(blocks.items()):
-                if not ins or ba not in bounds:
-                    continue
-                jmp = ins[-1]
-                if jmp.address in facts.get("_jtab", ()):
-                    continue
-                try:
-                    tab = self.L._jt_table(ins, bounds[ba])
-                except Exception:
-                    tab = None
-                if not tab:
-                    if jmp.mnemonic == "jmp" and jmp.operands and jmp.operands[0].type == X86_OP_MEM:
-                        mem = jmp.operands[0].mem
-                        if mem.index and (mem.scale or 0) == 4:
-                            facts["bad_branch"] += 1
-                    continue
-                facts.setdefault("_jtab", set()).add(jmp.address)
-                facts["switches"] += 1
-                _reg, _disp, targets = tab
-                for target in targets:
-                    target &= 0xffffffff
-                    facts["switch_targets"] += 1
-                    if target in seen:
-                        continue
-                    if not on_boundary(self.starts, self.base, self.n, target):
+        for ba, ins in list(blocks.items()):
+            if self._budget_hit(facts, owned):
+                facts["budget_exceeded"] = True
+                facts["truncated"] = True
+                return
+            if not ins or ba not in bounds:
+                continue
+            jmp = ins[-1]
+            if jmp.address in facts.get("_jtab", ()):
+                continue
+            try:
+                tab = self.L._jt_table(ins, bounds[ba])
+            except Exception:
+                tab = None
+            if not tab:
+                if jmp.mnemonic == "jmp" and jmp.operands and jmp.operands[0].type == X86_OP_MEM:
+                    mem = jmp.operands[0].mem
+                    if mem.index and (mem.scale or 0) == 4:
                         facts["bad_branch"] += 1
-                        continue
-                    seen.add(target)
-                    added = True
-                    ins2 = []
-                    cur = target
-                    while facts["insns"] < 20000 and len(ins2) < 4000:
-                        insn = self.decode(cur)
-                        if insn is None:
-                            facts["undecodable"] += 1
-                            break
-                        ins2.append(insn)
-                        facts["insns"] += 1
-                        facts["bytes"] += insn.size
-                        self._own(owned, insn)
-                        self._tally(facts, insn)
-                        m = insn.mnemonic
-                        nxt = insn.address + insn.size
-                        if lift._is_near_ret(m) or m in ("jmp", "hlt", "ud2", "retf") or is_jcc(m):
-                            if m == "jmp" and insn.operands and insn.operands[0].type == X86_OP_IMM:
-                                dest = insn.operands[0].imm & 0xffffffff
-                                if self.L.in_text(dest) and on_boundary(self.starts, self.base, self.n, dest):
-                                    if dest not in seen:
-                                        seen.add(dest)
-                                        # decoded lazily by the outer loop via queue
-                                        queue.append(dest)
-                            elif is_jcc(m) and insn.operands and insn.operands[0].type == X86_OP_IMM:
-                                dest = insn.operands[0].imm & 0xffffffff
-                                for dest2 in (dest, nxt):
-                                    if self.L.in_text(dest2) and dest2 not in seen and on_boundary(
-                                        self.starts, self.base, self.n, dest2
-                                    ):
-                                        queue.append(dest2)
-                            if lift._is_near_ret(m):
-                                facts["ends_ret"] = True
-                            break
-                        if m == "call" and insn.operands and insn.operands[0].type == X86_OP_IMM:
-                            target2 = insn.operands[0].imm & 0xffffffff
-                            if self.L.in_text(target2):
-                                facts["calls"].append(target2)
-                        cur = nxt
-                    if ins2:
-                        blocks[ins2[0].address] = ins2
-            # Drain targets queued from switch cases with the same rules as the main walk.
-            while queue and facts["insns"] < 20000:
-                va = queue.popleft()
-                if va in seen:
+                continue
+            facts.setdefault("_jtab", set()).add(jmp.address)
+            facts["switches"] += 1
+            _reg, _disp, targets = tab
+            for target in targets:
+                target &= 0xffffffff
+                facts["switch_targets"] += 1
+                if target in seen:
                     continue
-                if not on_boundary(self.starts, self.base, self.n, va):
+                if not on_boundary(self.starts, self.base, self.n, target):
                     facts["bad_branch"] += 1
                     continue
-                seen.add(va)
-                ins = []
-                cur = va
-                while facts["insns"] < 20000 and len(ins) < 4000:
-                    insn = self.decode(cur)
-                    if insn is None:
-                        facts["undecodable"] += 1
-                        break
-                    ins.append(insn)
-                    facts["insns"] += 1
-                    facts["bytes"] += insn.size
-                    self._own(owned, insn)
-                    self._tally(facts, insn)
-                    m = insn.mnemonic
-                    nxt = insn.address + insn.size
-                    if lift._is_near_ret(m):
-                        facts["ends_ret"] = True
-                        break
-                    if m == "jmp" and insn.operands and insn.operands[0].type == X86_OP_IMM:
-                        target = insn.operands[0].imm & 0xffffffff
-                        if self.L.in_text(target) and on_boundary(self.starts, self.base, self.n, target):
-                            if entry_shape(self.blob, self.base, target) or target in entries_placeholder(self):
-                                facts["tails"].append(target)
-                                facts["ends_tail"] = True
-                            else:
-                                queue.append(target)
-                        else:
-                            facts["bad_branch"] += 1
-                        break
-                    if is_jcc(m) and insn.operands and insn.operands[0].type == X86_OP_IMM:
-                        target = insn.operands[0].imm & 0xffffffff
-                        for dest in (target, nxt):
-                            if dest not in seen and self.L.in_text(dest) and on_boundary(
-                                self.starts, self.base, self.n, dest
-                            ):
-                                queue.append(dest)
-                        break
-                    if m == "call" and insn.operands and insn.operands[0].type == X86_OP_IMM:
-                        target = insn.operands[0].imm & 0xffffffff
-                        if self.L.in_text(target):
-                            facts["calls"].append(target)
-                    if m in ("hlt", "ud2", "retf"):
-                        break
-                    cur = nxt
-                if ins:
-                    blocks[ins[0].address] = ins
-                    bound = self.L._jt_bound(ins)
-                    if bound:
-                        bounds[bound[2]] = bound[:2]
-                        added = True
-
-
-def entries_placeholder(walker):
-    return getattr(walker, "entry_set", set())
+                if self._strong_foreign_entry(target, entry, entries):
+                    facts["overlap_conflicts"].append(target)
+                    continue
+                self._enqueue(queue, seen, target)
 
 
 def classify(facts, from_call, calls_known):
@@ -476,14 +577,22 @@ def classify(facts, from_call, calls_known):
     if facts["undecodable"] >= 3:
         score -= 25
         reasons.append("undecodable bytes inside the CFG")
-    if facts["truncated"]:
+    term = facts.get("termination") or "UNKNOWN"
+    budget_hit = facts.get("budget_exceeded") or facts.get("truncated") or term == "CFG_BUDGET_EXCEEDED"
+    if budget_hit:
         score -= 10
-        reasons.append("walk hit its instruction cap")
+        reasons.append("CFG safety budget exceeded")
     hard = facts["far"] or facts["bcd"] or facts["les"] or facts["entry_nonsense"]
-    terminated = facts["ends_ret"] or facts["ends_tail"] or facts["ends_import"] or facts["switches"]
+    # Tail transfers and multiple returns are valid ordinary terminators.
+    terminated = (
+        facts["ends_ret"]
+        or facts["ends_tail"]
+        or facts["ends_import"]
+        or term in ("RET_REACHED", "MULTIPLE_RETURNS", "TAIL_TRANSFER", "CFG_COMPLETE")
+    )
     if hard or score < 20 or facts["insns"] == 0:
         label = "REJECTED_DATA_LIKE"
-    elif score >= 60 and facts["bad_branch"] == 0 and not facts["truncated"] and terminated:
+    elif score >= 60 and facts["bad_branch"] == 0 and not budget_hit and terminated:
         label = "HIGH_CONFIDENCE"
     elif score >= 40 and facts["bad_branch"] <= 1:
         label = "MEDIUM_CONFIDENCE"
@@ -599,6 +708,7 @@ def build(info):
             "from_call": from_call,
             "seed": why if not from_call else "",
             "insns": facts["insns"],
+            "blocks": facts.get("blocks", 0),
             "bytes": facts["bytes"],
             "calls": facts["calls"],
             "tails": facts["tails"],
@@ -608,6 +718,8 @@ def build(info):
             "after_int3": facts["after_int3"],
             "ends_ret": facts["ends_ret"],
             "entry_nonsense": facts["entry_nonsense"],
+            "termination": facts.get("termination", "UNKNOWN"),
+            "budget_exceeded": bool(facts.get("budget_exceeded")),
         }
         graph[va] = row
         if label in ("HIGH_CONFIDENCE", "MEDIUM_CONFIDENCE"):
@@ -640,31 +752,142 @@ def build(info):
         if row["label"] == "MEDIUM_CONFIDENCE" and row["score"] >= 60 and row.get("bad_branch", 0) == 0 and row.get("ends_ret"):
             row["label"] = "HIGH_CONFIDENCE"
 
-    demoted = demote_data_cfg(blob, base, graph, coverage)
+    # Second wave: CFG-walk uncovered strong candidates (int3 padding or frame
+    # prologue). Candidates that classify HIGH/MEDIUM with a real terminator are
+    # enrolled and their direct calls expand the ordinary graph. This replaces
+    # the old 24-instruction linear sketch that truncated coherent functions.
+    def _commit(va, facts, owned, from_call, why):
+        label, score, reasons = classify(facts, from_call, False)
+        row = {
+            "va": va,
+            "label": label,
+            "score": score,
+            "reasons": reasons,
+            "reachable": True,
+            "from_call": from_call,
+            "seed": why if not from_call else "",
+            "insns": facts["insns"],
+            "blocks": facts.get("blocks", 0),
+            "bytes": facts["bytes"],
+            "calls": facts["calls"],
+            "tails": facts["tails"],
+            "switches": facts["switches"],
+            "bad_branch": facts["bad_branch"],
+            "frame": facts["frame"],
+            "after_int3": facts["after_int3"],
+            "ends_ret": facts["ends_ret"],
+            "entry_nonsense": facts["entry_nonsense"],
+            "termination": facts.get("termination", "UNKNOWN"),
+            "budget_exceeded": bool(facts.get("budget_exceeded")),
+        }
+        graph[va] = row
+        seen_entries.add(va)
+        if label in ("HIGH_CONFIDENCE", "MEDIUM_CONFIDENCE"):
+            row["_owned"] = list(owned)
+            for addr in owned:
+                rel = addr - base
+                if 0 <= rel < len(coverage):
+                    coverage[rel] = 1
+            for target in facts["calls"] + facts["tails"]:
+                entry_set.add(target)
+                walker.entry_set = entry_set
+                if target not in seen_entries:
+                    queue.append((target, True, ""))
+        return label
 
     unreachable = []
+    extra = 0
     for off in range(len(blob) - 3):
-        if not starts[off] or coverage[off] or (base + off) in graph:
+        if not starts[off] or coverage[off] or (base + off) in seen_entries:
             continue
-        # int3 itself is an instruction, so a padding run must not be counted once
-        # per 0xCC. The candidate is the first real instruction after four or more
-        # padding bytes, or a frame prologue the walk never reached.
         if blob[off] == 0xCC:
             continue
         padded = off >= 4 and blob[off - 4:off] == b"\xcc\xcc\xcc\xcc"
         if not prologue_at(blob, off) and not padded:
             continue
         va = base + off
-        window = _window(blob, base, starts, va)
-        label, score, reasons = classify(window, False, False)
-        unreachable.append({
-            "va": va,
-            "label": label,
-            "score": score,
-            "reasons": reasons,
-            "reachable": False,
-            "insns": window["insns"],
-        })
+        facts, owned = walker.walk(va, entry_set)
+        label, score, reasons = classify(facts, False, False)
+        enroll = (
+            label in ("HIGH_CONFIDENCE", "MEDIUM_CONFIDENCE")
+            and facts.get("termination") not in ("CFG_BUDGET_EXCEEDED", "DECODE_FAILURE", "UNKNOWN")
+            and (facts["ends_ret"] or facts["ends_tail"] or facts["ends_import"])
+        )
+        if enroll:
+            _commit(va, facts, owned, False, "cfg-complete strong entry")
+            extra += 1
+        else:
+            unreachable.append({
+                "va": va,
+                "label": label,
+                "score": score,
+                "reasons": reasons,
+                "reachable": False,
+                "insns": facts["insns"],
+                "blocks": facts.get("blocks", 0),
+                "termination": facts.get("termination", "UNKNOWN"),
+                "budget_exceeded": bool(facts.get("budget_exceeded")),
+            })
+    if extra:
+        print(f"  strong cfg candidates enrolled {extra}", file=sys.stderr)
+    while queue:
+        va, from_call, why = queue.popleft()
+        if va in seen_entries:
+            continue
+        if not on_boundary(starts, base, len(blob), va):
+            graph[va] = {
+                "va": va,
+                "label": "REJECTED_DATA_LIKE",
+                "score": 0,
+                "reasons": ["call or jump target is not on an instruction boundary"],
+                "reachable": True,
+                "from_call": from_call,
+                "seed": why,
+                "insns": 0,
+                "blocks": 0,
+                "calls": [],
+                "tails": [],
+                "switches": 0,
+                "termination": "DECODE_FAILURE",
+            }
+            seen_entries.add(va)
+            continue
+        facts, owned = walker.walk(va, entry_set)
+        _commit(va, facts, owned, from_call, why)
+        if len(graph) % 500 == 0:
+            print(f"  classified {len(graph)}", file=sys.stderr)
+
+    # Drop unreachable rows that became covered or enrolled during expansion.
+    unreachable = [
+        row for row in unreachable
+        if row["va"] not in graph and not coverage[row["va"] - base]
+    ]
+
+    # Re-apply call-into-classified evidence on the expanded set.
+    for row in graph.values():
+        if row.get("entry_nonsense") or row["label"] == "REJECTED_DATA_LIKE":
+            continue
+        if "calls another classified function" in (row.get("reasons") or []):
+            continue
+        known = any(
+            graph.get(target, {}).get("label") in ("HIGH_CONFIDENCE", "MEDIUM_CONFIDENCE")
+            for target in row.get("calls") or []
+        )
+        if not known:
+            continue
+        row["score"] += 10
+        row["reasons"].append("calls another classified function")
+        if row["label"] == "MEDIUM_CONFIDENCE" and row["score"] >= 60 and row.get("bad_branch", 0) == 0 and row.get("ends_ret"):
+            row["label"] = "HIGH_CONFIDENCE"
+
+    demoted = demote_data_cfg(blob, base, graph, coverage)
+
+    term_counts = collections.Counter()
+    budget_hit = 0
+    for row in graph.values():
+        term_counts[row.get("termination") or "UNKNOWN"] += 1
+        if row.get("budget_exceeded") or row.get("termination") == "CFG_BUDGET_EXCEEDED":
+            budget_hit += 1
     covered = sum(coverage)
     return {
         "decoded_boundaries": decoded,
@@ -674,72 +897,13 @@ def build(info):
         "covered_bytes": covered,
         "text_size": len(blob),
         "data_cfg_rejected": demoted,
+        "termination_counts": dict(term_counts),
+        "cfg_budget_exceeded": budget_hit,
+        "insn_budget": INSN_BUDGET,
+        "block_budget": BLOCK_BUDGET,
+        "byte_span_budget": BYTE_SPAN_BUDGET,
+        "strong_cfg_enrolled": extra,
     }
-
-
-def _window(blob, base, starts, va):
-    """Cheap look at an unreachable candidate. Does not follow calls."""
-    md = _window.md
-    facts = {
-        "on_boundary": True,
-        "frame": prologue_at(blob, va - base),
-        "after_int3": after_int3(blob, va - base),
-        "insns": 0,
-        "bytes": 0,
-        "span": 1,
-        "stack": 0,
-        "bad_branch": 0,
-        "undecodable": 0,
-        "privileged": 0,
-        "far": 0,
-        "bcd": 0,
-        "les": 0,
-        "nonsense": 0,
-        "ends_ret": False,
-        "ends_tail": False,
-        "ends_import": False,
-        "entry_nonsense": False,
-        "switches": 0,
-        "truncated": False,
-    }
-    cur = va
-    for _ in range(24):
-        if not on_boundary(starts, base, len(blob), cur):
-            facts["undecodable"] += 1
-            break
-        found = list(md.disasm(blob[cur - base:cur - base + 15], cur))
-        if not found:
-            facts["undecodable"] += 1
-            break
-        insn = found[0]
-        if facts["insns"] == 0 and insn.mnemonic in ENTRY_BAD:
-            facts["entry_nonsense"] = True
-        facts["insns"] += 1
-        facts["bytes"] += insn.size
-        m = insn.mnemonic
-        base_m = m.split()[-1]
-        if m in STACK or "esp" in insn.op_str:
-            facts["stack"] += 1
-        if base_m in PRIV:
-            facts["privileged"] += 1
-        if base_m in FAR:
-            facts["far"] += 1
-        if base_m in BCD:
-            facts["bcd"] += 1
-        if base_m in LES:
-            facts["les"] += 1
-        if lift._is_near_ret(m):
-            facts["ends_ret"] = True
-            break
-        if m == "jmp":
-            facts["ends_tail"] = True
-            break
-        cur = insn.address + insn.size
-    facts["span"] = max(1, facts["bytes"])
-    return facts
-
-
-_window.md = Cs(CS_ARCH_X86, CS_MODE_32)
 
 
 def write_reports(doc, out_dir):
@@ -763,15 +927,20 @@ def write_reports(doc, out_dir):
         "- phase 3 functions that generated and compiled",
         "- `55 8B EC` at a boundary whose preceding byte is `int3`",
         "",
-        "From a function classified HIGH or MEDIUM the walk follows:",
+        "From a function classified HIGH or MEDIUM the walk follows a CFG worklist:",
         "",
-        "- a direct `call` whose target is inside `.text`",
-        "- a direct `jmp` whose target already looks like an entry (frame prologue, int3 padding, or an existing entry)",
+        "- ordinary direct conditional branches",
+        "- ordinary direct unconditional branches that stay inside the function",
+        "- a direct `jmp` whose target already looks like an entry becomes a tail transfer",
+        "- a direct `call` is recorded; the callee is not absorbed",
         "- targets of a switch table recognized by the same bounds the lifter uses",
         "",
-        "A direct `jmp` to any other in-range address stays inside the function. "
-        "Switch targets stay inside the function. A call into a target whose first instruction is "
-        "privileged, far, BCD, `les`/`lds`, or another rare legacy opcode is rejected and is not expanded.",
+        "Function termination is decided from control flow (ret, tail transfer, import jump), "
+        "not from a tiny linear instruction count. Safety budgets still exist "
+        f"({doc.get('insn_budget', INSN_BUDGET)} instructions / "
+        f"{doc.get('block_budget', BLOCK_BUDGET)} blocks / "
+        f"{doc.get('byte_span_budget', BYTE_SPAN_BUDGET)} byte span) and report "
+        "`CFG_BUDGET_EXCEEDED` instead of silently truncating.",
         "",
         "Optimized MSVC code often omits `55 8B EC`. A frame pointer adds points. It is not required.",
         "",
@@ -795,34 +964,31 @@ def write_reports(doc, out_dir):
         "| `les` or `lds` | -30 |",
         "| Repeated rare legacy opcodes | -25 |",
         "| Three or more undecodable gaps | -25 |",
+        "| CFG safety budget exceeded | -10 |",
         "",
         "Labels: HIGH at 60 or more with a terminator and no bad branch; "
         "MEDIUM at 40 or more; LOW at 20 or more; otherwise REJECTED_DATA_LIKE. "
-        "An illegal first instruction is rejected before the points are added.",
+        "An illegal first instruction is rejected before the points are added. "
+        "Tail transfers and multiple returns are valid terminators.",
         "",
         "After scoring, HIGH and MEDIUM functions are checked with the lifter's own control-flow walk. "
         "If that walk reaches `aad`, `aaa`, `salc`, `ljmp`, `fstpnce`, or another opcode in the same data class, "
         "the function is reclassified REJECTED_DATA_LIKE. The opcode is not added to the lifter. "
         f"Phase 5 rejected {len(doc.get('data_cfg_rejected') or [])} functions this way.",
         "",
-        "## Change from Phase 4",
+        "## Phase 16 discovery repair",
         "",
-        "Phase 4 scored 6,604 HIGH and 79 MEDIUM from the linear walk. "
-        "Phase 5 keeps that score, then rejects a function whose lifter control flow reaches embedded data. "
-        "Generation of the original 6,604 is recorded in `high-confidence.md` and is not recomputed from this smaller set.",
+        "Phase 15 found that unreachable candidates were scored with a 24-instruction linear sketch. "
+        "Phase 16 replaces that with the CFG walker above, then enrolls CFG-complete strong entries "
+        f"({doc.get('strong_cfg_enrolled', 0)} enrolled this run) into the ordinary graph.",
         "",
-        "| | Phase 4 | Phase 5 |",
+        "| | Prior map | Phase 16 |",
         "| --- | --- | --- |",
-        "| HIGH_CONFIDENCE | 6,604 | " + str(counts["HIGH_CONFIDENCE"]) + " |",
-        "| MEDIUM_CONFIDENCE | 79 | " + str(counts["MEDIUM_CONFIDENCE"]) + " |",
+        "| HIGH_CONFIDENCE | 6,597 | " + str(counts["HIGH_CONFIDENCE"]) + " |",
+        "| MEDIUM_CONFIDENCE | 50 | " + str(counts["MEDIUM_CONFIDENCE"]) + " |",
         "| LOW_CONFIDENCE | 20 | " + str(counts["LOW_CONFIDENCE"]) + " |",
-        "| REJECTED_DATA_LIKE | 478 | " + str(counts["REJECTED_DATA_LIKE"]) + " |",
-        "| CFG-covered bytes | 1,853,801 | " + str(doc["covered_bytes"]) + " |",
-        "",
-        "Seven former HIGH functions were rejected. Six are the generation failures. "
-        "The seventh, `0x004A7520`, is data that the lifter still compiled because `into` is emitted as a comment. "
-        "Former MEDIUM functions rejected by the same check include real `55 8B EC` prologues that jump into data. "
-        "That rejection is a boundary problem.",
+        "| REJECTED_DATA_LIKE | 514 | " + str(counts["REJECTED_DATA_LIKE"]) + " |",
+        "| CFG-covered bytes | 1,851,810 | " + str(doc["covered_bytes"]) + " |",
         "",
         "## Counts",
         "",
@@ -832,8 +998,10 @@ def write_reports(doc, out_dir):
         f"- MEDIUM_CONFIDENCE: {counts['MEDIUM_CONFIDENCE']}",
         f"- LOW_CONFIDENCE: {counts['LOW_CONFIDENCE']}",
         f"- REJECTED_DATA_LIKE among walked entries: {counts['REJECTED_DATA_LIKE']}",
+        f"- CFG budget exceeded among walked entries: {doc.get('cfg_budget_exceeded', 0)}",
+        f"- Strong CFG candidates enrolled: {doc.get('strong_cfg_enrolled', 0)}",
         f"- Unreachable prologue or padding candidates: {len(doc['unreachable'])}",
-        "- Short-window sketch of those candidates, not a second graph and not generated: "
+        "- CFG sketch of those candidates, not generated: "
         f"{un_counts['HIGH_CONFIDENCE']} score like HIGH, "
         f"{un_counts['MEDIUM_CONFIDENCE']} like MEDIUM, "
         f"{un_counts['LOW_CONFIDENCE']} like LOW, "
@@ -845,10 +1013,25 @@ def write_reports(doc, out_dir):
         "including its switch targets. LOW and rejected entries do not add coverage.",
         "",
         "An unreachable candidate is a frame prologue, or the first instruction after a run of at least four `int3` bytes, "
-        "that the direct-call walk never entered and that is not already inside a walked body. "
-        "The short window is only a sketch. Those addresses were not generated. "
+        "that the ordinary graph never entered and that is not already inside a walked body. "
+        "Those remaining addresses were not enrolled. "
         "`function-map.json` stores the first 5000 of them.",
         "",
+        "## Termination",
+        "",
+    ]
+    term_counts = doc.get("termination_counts") or {}
+    if term_counts:
+        lines.append("| Termination | Count |")
+        lines.append("| --- | --- |")
+        for name in TERMINATION:
+            if name in term_counts:
+                lines.append(f"| `{name}` | {term_counts[name]} |")
+        for name, count in sorted(term_counts.items()):
+            if name not in TERMINATION:
+                lines.append(f"| `{name}` | {count} |")
+        lines.append("")
+    lines += [
         "## Examples",
         "",
     ]
@@ -861,11 +1044,14 @@ def write_reports(doc, out_dir):
             lines.append("None.")
             lines.append("")
             continue
-        lines.append("| Function | Score | Insns | Why |")
-        lines.append("| --- | --- | --- | --- |")
+        lines.append("| Function | Score | Insns | Termination | Why |")
+        lines.append("| --- | --- | --- | --- | --- |")
         for row in rows[:12]:
             why = "; ".join(row["reasons"][:3])
-            lines.append(f"| {hx(row['va'])} | {row['score']} | {row.get('insns', 0)} | {why} |")
+            lines.append(
+                f"| {hx(row['va'])} | {row['score']} | {row.get('insns', 0)} | "
+                f"{row.get('termination', '')} | {why} |"
+            )
         if len(rows) > 12:
             lines.append("")
             lines.append(f"{len(rows) - 12} more are in `function-map.json`.")
@@ -882,9 +1068,12 @@ def write_reports(doc, out_dir):
             "reasons": row["reasons"],
             "reachable": True,
             "insns": row.get("insns", 0),
+            "blocks": row.get("blocks", 0),
             "calls": [hx(v) for v in row.get("calls") or []],
             "tails": [hx(v) for v in row.get("tails") or []],
             "switches": row.get("switches", 0),
+            "termination": row.get("termination", "UNKNOWN"),
+            "budget_exceeded": bool(row.get("budget_exceeded")),
         })
     for row in doc["unreachable"][:5000]:
         stored.append({
@@ -894,9 +1083,12 @@ def write_reports(doc, out_dir):
             "reasons": row["reasons"],
             "reachable": False,
             "insns": row.get("insns", 0),
+            "blocks": row.get("blocks", 0),
             "calls": [],
             "tails": [],
             "switches": 0,
+            "termination": row.get("termination", "UNKNOWN"),
+            "budget_exceeded": bool(row.get("budget_exceeded")),
         })
     body = {
         "seeds": doc["seeds"],
@@ -910,11 +1102,17 @@ def write_reports(doc, out_dir):
             {"va": hx(item["va"]), "mnemonic": item["mnemonic"]}
             for item in doc.get("data_cfg_rejected") or []
         ],
+        "termination_counts": dict(term_counts),
+        "cfg_budget_exceeded": doc.get("cfg_budget_exceeded", 0),
+        "strong_cfg_enrolled": doc.get("strong_cfg_enrolled", 0),
+        "insn_budget": doc.get("insn_budget", INSN_BUDGET),
+        "block_budget": doc.get("block_budget", BLOCK_BUDGET),
+        "byte_span_budget": doc.get("byte_span_budget", BYTE_SPAN_BUDGET),
         "phase4_high_confidence": 6604,
         "classification_note": (
-            "Phase 4 scored 6604 HIGH_CONFIDENCE functions from the linear walk. "
-            "Phase 5 keeps that score, then rejects a function whose lifter CFG reaches embedded data. "
-            "Generation statistics for the original 6604 are in high-confidence.md and are not recomputed from the reduced set."
+            "Phase 16 uses a CFG-aware fact walk with explicit safety budgets. "
+            "Strong CFG-complete padding/prologue candidates are enrolled into the ordinary graph. "
+            "Data-CFG demotion still rejects HIGH/MEDIUM functions whose lifter CFG reaches embedded data."
         ),
         "functions": stored,
     }
