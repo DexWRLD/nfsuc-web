@@ -80,7 +80,17 @@ def _shift_count(i, base):
         return (o[1].imm & 31) if o[1].type == X86_OP_IMM else None
     return 1                      # one-operand form: the count is a constant 1
 
-_OPAQUE = ('call','ret','retf','int','int3','iret','iretd',
+# F3 C3 is a near RET. Capstone names it "repz ret" (sometimes "rep ret").
+# Intel ignores a REP prefix on near RET; MSVC emits the two-byte form as an
+# AMD branch-prediction hint. It pops one return address and leaves, exactly
+# as C3 does. It is not a repeated string operation, and the prefix does not
+# change the stack adjustment. F2 C3 is a different encoding and is not this.
+_NEAR_RET = ('ret', 'retn', 'repz ret', 'rep ret', 'repe ret')
+
+def _is_near_ret(m):
+    return m in _NEAR_RET
+
+_OPAQUE = ('call','ret','retn','repz ret','rep ret','repe ret','retf','int','int3','iret','iretd',
            'sysenter','syscall','ud2','hlt','arpl')
 
 # x87: capstone REUSES the `eflags` field for the FPU status bits (C0-C3)
@@ -166,7 +176,7 @@ def abi_cfg(blocks, in_text, jtab=None):
                 nxt = last.address + last.size
                 if nxt in blocks: s.append(nxt)
                 else: ext = 1
-        elif m in ('ret','retf','iret','iretd'):
+        elif _is_near_ret(m) or m in ('retf','iret','iretd'):
             pass
         else:
             nxt = last.address + last.size
@@ -181,7 +191,7 @@ def abi_cfg(blocks, in_text, jtab=None):
                     kl.append((i.address, F_ALL, 0, 1, o.imm))
                 else:
                     kl.append((i.address, F_ALL, 0, 2, 0))   # ABI: the callee does not read the caller's flags
-            elif mm in ('ret','retn'):
+            elif _is_near_ret(mm):
                 kl.append((i.address, 0, 0, 3, 0))
             else:
                 d, u = _flag_defuse_abi(i)
@@ -263,7 +273,7 @@ def flag_liveness(blocks, addrs, in_text):
                 nxt = last.address + last.size
                 if nxt in blocks: s.append(nxt)
                 else: ext = True
-        elif m in ('ret','retf','iret','iretd'):
+        elif _is_near_ret(m) or m in ('retf','iret','iretd'):
             # ret is in the _OPAQUE list: all flags count as live on return
             # (hand-written asm may use CF as a return channel).
             # Measured: even with this CONSERVATIVE setting flag writes drop by 53%,
@@ -517,7 +527,7 @@ class Lifter:
                     try: i=next(self.md.disasm(self.TDATA[off:off+16],va))
                     except StopIteration: break
                     ins.append(i); m=i.mnemonic
-                    if m in ('ret','retf'): break
+                    if _is_near_ret(m) or m == 'retf': break
                     if m=='jmp':
                         o=i.operands[0]
                         if o.type==X86_OP_IMM and self.in_text(o.imm):
@@ -698,7 +708,7 @@ class Lifter:
                 return [f"PUSH32(0x{i.address+i.size:x}u); sub_{t:08x}(c);"]
             # x86: the call target is read BEFORE the return address is pushed (call [esp+N]!)
             return [f"{{ uint32_t _ct = {E(0)}; PUSH32(0x{i.address+i.size:x}u); DISPATCH_CALL(c, _ct); }}"]
-        if m in ('ret','retf'):
+        if _is_near_ret(m) or m == 'retf':
             n = o[0].imm if o else 0
             # RETEIP=0: the return address is not written to c->eip (only popped off the stack).
             # A lifted caller always continues right after the call; the only place
@@ -1202,6 +1212,16 @@ class Lifter:
             d0=f"c->xmm[{XM[o[0].reg]}].u64[{sel//4}]"
             sh=(sel%4)*16
             return [f"{d0} = ({d0} & ~((uint64_t)0xFFFFu << {sh})) | ({val} << {sh});"]
+        if m == 'movmskps' and is_gp(0) and is_xm(1):
+            # Sign bit of each of the four float lanes, packed into bits 0..3.
+            # Lane bits are read from the integer view so ±0 keep distinct signs.
+            xi = XM[o[1].reg]
+            return ["{ uint32_t _r="
+                    f"((c->xmm[{xi}].u32[0]>>31)&1u)"
+                    f"|((c->xmm[{xi}].u32[1]>>30)&2u)"
+                    f"|((c->xmm[{xi}].u32[2]>>29)&4u)"
+                    f"|((c->xmm[{xi}].u32[3]>>28)&8u);"
+                    f" {W(0,'_r')} }}"]
         if m == 'pmovmskb' and o[0].type==X86_OP_REG:
             if is_mm(1):
                 return [f"{{ uint32_t _r=0; uint64_t _a=c->mm[{MM[o[1].reg]}];"
@@ -1888,7 +1908,7 @@ class Lifter:
             if x87opt: body += ["    "+l for l in xb.close()]
             # if the block falls through, jump to the next block
             last=ins[-1] if ins else None
-            if last is not None and last.mnemonic not in ('ret','retf','jmp') and not (last.mnemonic.startswith('j') and last.mnemonic[1:] in CC):
+            if last is not None and not _is_near_ret(last.mnemonic) and last.mnemonic not in ('retf','jmp') and not (last.mnemonic.startswith('j') and last.mnemonic[1:] in CC):
                 nxt=last.address+last.size
                 if nxt in lbl: body.append(f"    goto L_{nxt:08x};")
         # stub labels for the branch targets not generated because of truncation
