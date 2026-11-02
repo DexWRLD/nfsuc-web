@@ -1,39 +1,40 @@
 # High-confidence generation
 
-This is the exact Phase 4 HIGH_CONFIDENCE address list (6,604 functions). MEDIUM and LOW roots were not translated. The six failures below stay in this list; the later map reclassifies them and does not drop them from this percentage.
+This is the exact Phase 4 HIGH_CONFIDENCE address list when `--from-list` is used. MEDIUM and LOW roots were not translated.
+A later reclassification does not remove a failure from this percentage.
 Generated C is under `generated/undercover/high/` and is not committed.
 The game was not executed.
 
-- Functions attempted: 6604
-- Functions generated: 6598
-- Generation success: 99.9%
-- Functions compiled: 6598
+- Functions attempted: 22779
+- Functions generated: 22770
+- Generation success: 100.0%
+- Functions compiled: 22770
 - Compilation success: 100.0%
 - Compiler failures: 0
-- Unresolved indirect calls: 6875
-- Unresolved external direct edges: 11
-- Recognized switches: 142
-- Rejected switches: 53
-- Generated source size: 48306062 bytes
-- Translation units: 6598
-- Compile time: 144s
+- Unresolved indirect calls: 20969
+- Unresolved external direct edges: 37
+- Recognized switches: 295
+- Rejected switches: 65
+- Generated source size: 103023875 bytes
+- Translation units: 22770
+- Compile time: 155s
 
 ## Generation failures
 
-- `aad`: 2
-- `salc`: 1
-- `aaa`: 1
-- `fstpnce`: 1
-- `ljmp`: 1
+- `int`: 7
+- `fbstp`: 2
 
 | Function | Mnemonic | Reason |
 | --- | --- | --- |
-| 0x00401DC0 | `salc` | salc |
-| 0x00780150 | `aad` | aad |
-| 0x007C8350 | `aaa` | aaa |
-| 0x007C9010 | `fstpnce` | fstpnce |
-| 0x00841BF0 | `ljmp` | ljmp |
-| 0x00A945E0 | `aad` | aad |
+| 0x0070E3B0 | `int` | int |
+| 0x0070E3C0 | `int` | int |
+| 0x0070E3D0 | `int` | int |
+| 0x0070E3E0 | `int` | int |
+| 0x0070E3F0 | `int` | int |
+| 0x0070E400 | `int` | int |
+| 0x007BABC0 | `int` | int |
+| 0x0085F820 | `fbstp` | fbstp |
+| 0x00865B10 | `fbstp` | fbstp |
 
 ## Compiler failures
 
