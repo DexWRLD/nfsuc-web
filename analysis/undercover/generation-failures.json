@@ -1,0 +1,147 @@
+{
+  "description": "Generation failures are instructions the lifter refused. Watchlist instructions that were lowered are listed separately so a no-op or an existing lowering is not counted as a failed function.",
+  "failures": [
+    {
+      "function": "0x00401250",
+      "address": "0x00401262",
+      "raw": "37",
+      "mnemonic": "aaa",
+      "operands": "",
+      "reason": "aaa"
+    },
+    {
+      "function": "0x004012A0",
+      "address": "0x0040127E",
+      "raw": "c4b66f85abcf",
+      "mnemonic": "les",
+      "operands": "esi, ptr [esi - 0x30547a91]",
+      "reason": "les"
+    },
+    {
+      "function": "0x004014E0",
+      "address": "0x004015BE",
+      "raw": "2f",
+      "mnemonic": "das",
+      "operands": "",
+      "reason": "das"
+    },
+    {
+      "function": "0x00401510",
+      "address": "0x004015BE",
+      "raw": "2f",
+      "mnemonic": "das",
+      "operands": "",
+      "reason": "das"
+    },
+    {
+      "function": "0x00401570",
+      "address": "0x0040158D",
+      "raw": "cf",
+      "mnemonic": "iretd",
+      "operands": "",
+      "reason": "iretd"
+    },
+    {
+      "function": "0x00401FD0",
+      "address": "0x00401FD5",
+      "raw": "d59f",
+      "mnemonic": "aad",
+      "operands": "0x9f",
+      "reason": "aad"
+    },
+    {
+      "function": "0x004A91F0",
+      "address": "0x004A90E6",
+      "raw": "37",
+      "mnemonic": "aaa",
+      "operands": "",
+      "reason": "aaa"
+    },
+    {
+      "function": "0x005DAAB0",
+      "address": "0x005DAAFB",
+      "raw": "9ad5dac1f36453",
+      "mnemonic": "lcall",
+      "operands": "0x5364, 0xf3c1dad5",
+      "reason": "lcall"
+    },
+    {
+      "function": "0x0065AA30",
+      "address": "0x0065A991",
+      "raw": "9a70ef99d1b24b",
+      "mnemonic": "lcall",
+      "operands": "0x4bb2, 0xd199ef70",
+      "reason": "lcall"
+    },
+    {
+      "function": "0x00695490",
+      "address": "0x006954B6",
+      "raw": "ea2f8f53a1c407",
+      "mnemonic": "ljmp",
+      "operands": "0x7c4:0xa1538f2f",
+      "reason": "ljmp"
+    },
+    {
+      "function": "0x006962A0",
+      "address": "0x006962E2",
+      "raw": "9a4362296a847c",
+      "mnemonic": "lcall",
+      "operands": "0x7c84, 0x6a296243",
+      "reason": "lcall"
+    },
+    {
+      "function": "0x00772800",
+      "address": "0x00403076",
+      "raw": "2f",
+      "mnemonic": "das",
+      "operands": "",
+      "reason": "das"
+    },
+    {
+      "function": "0x00783BB0",
+      "address": "0x00533065",
+      "raw": "37",
+      "mnemonic": "aaa",
+      "operands": "",
+      "reason": "aaa"
+    },
+    {
+      "function": "0x007C6C90",
+      "address": "0x0047C57E",
+      "raw": "c4b6d7591dbb",
+      "mnemonic": "les",
+      "operands": "esi, ptr [esi - 0x44e2a629]",
+      "reason": "les"
+    }
+  ],
+  "watchlist_in_lifted_functions": [
+    {
+      "address": "0x00B02AA1",
+      "mnemonic": "movmskps",
+      "operands": "eax, xmm0",
+      "raw": "0f50c0",
+      "function": "0x00B02690"
+    },
+    {
+      "address": "0x00B02BB1",
+      "mnemonic": "movmskps",
+      "operands": "edx, xmm0",
+      "raw": "0f50d0",
+      "function": "0x00B02690"
+    },
+    {
+      "address": "0x00B0750E",
+      "mnemonic": "movmskps",
+      "operands": "edx, xmm0",
+      "raw": "0f50d0",
+      "function": "0x00B070C0"
+    },
+    {
+      "address": "0x00B07615",
+      "mnemonic": "movmskps",
+      "operands": "eax, xmm0",
+      "raw": "0f50c0",
+      "function": "0x00B070C0"
+    }
+  ]
+}
