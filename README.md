@@ -8,6 +8,14 @@ You keep the game on your own machine. The tools only read it. Nothing from the 
 
 Not affiliated with or endorsed by Electronic Arts.
 
+## Status
+
+![Function translation and runtime reachability](analysis/undercover/progress.svg)
+
+The first map is compilation. The second is whether a function has actually run, or is only known to be ready. A full translation map does not mean the game is playable.
+
+[Open the status page](analysis/undercover/progress.html). Regenerate it with `python tools/progress.py`.
+
 ## Where things stand
 
 | | |
