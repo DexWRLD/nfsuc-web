@@ -1,0 +1,914 @@
+[
+  {
+    "insns": [
+      {
+        "addr": "0x0045F160",
+        "text": "ret 0xce4d"
+      }
+    ],
+    "calls": [],
+    "imports": [],
+    "globals": [],
+    "indirect": [],
+    "protected": [],
+    "suitable_score": 100,
+    "reason": "no calls and no indirect control flow; no absolute or non-stack memory; small straight-line body; ends with a near return",
+    "va": "0x0045F160",
+    "map_insns": 1,
+    "score_map": 85
+  },
+  {
+    "insns": [
+      {
+        "addr": "0x006B0A80",
+        "text": "ret 0x92c7"
+      }
+    ],
+    "calls": [],
+    "imports": [],
+    "globals": [],
+    "indirect": [],
+    "protected": [],
+    "suitable_score": 100,
+    "reason": "no calls and no indirect control flow; no absolute or non-stack memory; small straight-line body; ends with a near return",
+    "va": "0x006B0A80",
+    "map_insns": 1,
+    "score_map": 85
+  },
+  {
+    "insns": [
+      {
+        "addr": "0x00902FFC",
+        "text": "ret"
+      }
+    ],
+    "calls": [],
+    "imports": [],
+    "globals": [],
+    "indirect": [],
+    "protected": [],
+    "suitable_score": 100,
+    "reason": "no calls and no indirect control flow; no absolute or non-stack memory; small straight-line body; ends with a near return",
+    "va": "0x00902FFC",
+    "map_insns": 1,
+    "score_map": 85
+  },
+  {
+    "insns": [
+      {
+        "addr": "0x00A491F0",
+        "text": "ret"
+      }
+    ],
+    "calls": [],
+    "imports": [],
+    "globals": [],
+    "indirect": [],
+    "protected": [],
+    "suitable_score": 100,
+    "reason": "no calls and no indirect control flow; no absolute or non-stack memory; small straight-line body; ends with a near return",
+    "va": "0x00A491F0",
+    "map_insns": 1,
+    "score_map": 100
+  },
+  {
+    "insns": [
+      {
+        "addr": "0x00A6B450",
+        "text": "ret"
+      }
+    ],
+    "calls": [],
+    "imports": [],
+    "globals": [],
+    "indirect": [],
+    "protected": [],
+    "suitable_score": 100,
+    "reason": "no calls and no indirect control flow; no absolute or non-stack memory; small straight-line body; ends with a near return",
+    "va": "0x00A6B450",
+    "map_insns": 1,
+    "score_map": 100
+  },
+  {
+    "insns": [
+      {
+        "addr": "0x00A6E7C0",
+        "text": "ret"
+      }
+    ],
+    "calls": [],
+    "imports": [],
+    "globals": [],
+    "indirect": [],
+    "protected": [],
+    "suitable_score": 100,
+    "reason": "no calls and no indirect control flow; no absolute or non-stack memory; small straight-line body; ends with a near return",
+    "va": "0x00A6E7C0",
+    "map_insns": 1,
+    "score_map": 85
+  },
+  {
+    "insns": [
+      {
+        "addr": "0x00AF7ED0",
+        "text": "ret"
+      }
+    ],
+    "calls": [],
+    "imports": [],
+    "globals": [],
+    "indirect": [],
+    "protected": [],
+    "suitable_score": 100,
+    "reason": "no calls and no indirect control flow; no absolute or non-stack memory; small straight-line body; ends with a near return",
+    "va": "0x00AF7ED0",
+    "map_insns": 1,
+    "score_map": 100
+  },
+  {
+    "insns": [
+      {
+        "addr": "0x00B00D90",
+        "text": "ret"
+      }
+    ],
+    "calls": [],
+    "imports": [],
+    "globals": [],
+    "indirect": [],
+    "protected": [],
+    "suitable_score": 100,
+    "reason": "no calls and no indirect control flow; no absolute or non-stack memory; small straight-line body; ends with a near return",
+    "va": "0x00B00D90",
+    "map_insns": 1,
+    "score_map": 100
+  },
+  {
+    "insns": [
+      {
+        "addr": "0x0065BF10",
+        "text": "xor al, 0x80"
+      },
+      {
+        "addr": "0x0065BF12",
+        "text": "ret 0xe3d1"
+      }
+    ],
+    "calls": [],
+    "imports": [],
+    "globals": [],
+    "indirect": [],
+    "protected": [],
+    "suitable_score": 100,
+    "reason": "no calls and no indirect control flow; no absolute or non-stack memory; small straight-line body; ends with a near return",
+    "va": "0x0065BF10",
+    "map_insns": 2,
+    "score_map": 85
+  },
+  {
+    "insns": [
+      {
+        "addr": "0x00721050",
+        "text": "mov eax, 0xcea3b8"
+      },
+      {
+        "addr": "0x00721055",
+        "text": "ret"
+      }
+    ],
+    "calls": [],
+    "imports": [],
+    "globals": [],
+    "indirect": [],
+    "protected": [],
+    "suitable_score": 100,
+    "reason": "no calls and no indirect control flow; no absolute or non-stack memory; small straight-line body; ends with a near return",
+    "va": "0x00721050",
+    "map_insns": 2,
+    "score_map": 100
+  },
+  {
+    "insns": [
+      {
+        "addr": "0x00739E20",
+        "text": "sub dword ptr [0x13c6444], 1"
+      },
+      {
+        "addr": "0x00739E27",
+        "text": "ret"
+      }
+    ],
+    "calls": [],
+    "imports": [],
+    "globals": [],
+    "indirect": [],
+    "protected": [],
+    "suitable_score": 100,
+    "reason": "no calls and no indirect control flow; no absolute or non-stack memory; small straight-line body; ends with a near return",
+    "va": "0x00739E20",
+    "map_insns": 2,
+    "score_map": 100
+  },
+  {
+    "insns": [
+      {
+        "addr": "0x007409C0",
+        "text": "mov eax, dword ptr [0x13c65d4]"
+      },
+      {
+        "addr": "0x007409C5",
+        "text": "ret"
+      }
+    ],
+    "calls": [],
+    "imports": [],
+    "globals": [],
+    "indirect": [],
+    "protected": [],
+    "suitable_score": 100,
+    "reason": "no calls and no indirect control flow; no absolute or non-stack memory; small straight-line body; ends with a near return",
+    "va": "0x007409C0",
+    "map_insns": 2,
+    "score_map": 100
+  },
+  {
+    "insns": [
+      {
+        "addr": "0x00789620",
+        "text": "fld dword ptr [0x179f41c]"
+      },
+      {
+        "addr": "0x00789626",
+        "text": "ret"
+      }
+    ],
+    "calls": [],
+    "imports": [],
+    "globals": [],
+    "indirect": [],
+    "protected": [],
+    "suitable_score": 100,
+    "reason": "no calls and no indirect control flow; no absolute or non-stack memory; small straight-line body; ends with a near return",
+    "va": "0x00789620",
+    "map_insns": 2,
+    "score_map": 85
+  },
+  {
+    "insns": [
+      {
+        "addr": "0x00789650",
+        "text": "fld dword ptr [0x179fc28]"
+      },
+      {
+        "addr": "0x00789656",
+        "text": "ret"
+      }
+    ],
+    "calls": [],
+    "imports": [],
+    "globals": [],
+    "indirect": [],
+    "protected": [],
+    "suitable_score": 100,
+    "reason": "no calls and no indirect control flow; no absolute or non-stack memory; small straight-line body; ends with a near return",
+    "va": "0x00789650",
+    "map_insns": 2,
+    "score_map": 100
+  },
+  {
+    "insns": [
+      {
+        "addr": "0x007F7230",
+        "text": "mov eax, dword ptr [0x181e40c]"
+      },
+      {
+        "addr": "0x007F7235",
+        "text": "ret"
+      }
+    ],
+    "calls": [],
+    "imports": [],
+    "globals": [],
+    "indirect": [],
+    "protected": [],
+    "suitable_score": 100,
+    "reason": "no calls and no indirect control flow; no absolute or non-stack memory; small straight-line body; ends with a near return",
+    "va": "0x007F7230",
+    "map_insns": 2,
+    "score_map": 100
+  },
+  {
+    "insns": [
+      {
+        "addr": "0x00817160",
+        "text": "mov al, byte ptr [0x127e3b5]"
+      },
+      {
+        "addr": "0x00817165",
+        "text": "ret"
+      }
+    ],
+    "calls": [],
+    "imports": [],
+    "globals": [],
+    "indirect": [],
+    "protected": [],
+    "suitable_score": 100,
+    "reason": "no calls and no indirect control flow; no absolute or non-stack memory; small straight-line body; ends with a near return",
+    "va": "0x00817160",
+    "map_insns": 2,
+    "score_map": 100
+  },
+  {
+    "insns": [
+      {
+        "addr": "0x00893E50",
+        "text": "mov eax, ecx"
+      },
+      {
+        "addr": "0x00893E52",
+        "text": "ret 4"
+      }
+    ],
+    "calls": [],
+    "imports": [],
+    "globals": [],
+    "indirect": [],
+    "protected": [],
+    "suitable_score": 100,
+    "reason": "no calls and no indirect control flow; no absolute or non-stack memory; small straight-line body; ends with a near return",
+    "va": "0x00893E50",
+    "map_insns": 2,
+    "score_map": 100
+  },
+  {
+    "insns": [
+      {
+        "addr": "0x00895640",
+        "text": "mov eax, dword ptr [0x18860f8]"
+      },
+      {
+        "addr": "0x00895645",
+        "text": "ret"
+      }
+    ],
+    "calls": [],
+    "imports": [],
+    "globals": [],
+    "indirect": [],
+    "protected": [],
+    "suitable_score": 100,
+    "reason": "no calls and no indirect control flow; no absolute or non-stack memory; small straight-line body; ends with a near return",
+    "va": "0x00895640",
+    "map_insns": 2,
+    "score_map": 100
+  },
+  {
+    "insns": [
+      {
+        "addr": "0x00895B50",
+        "text": "mov eax, dword ptr [0x18860f4]"
+      },
+      {
+        "addr": "0x00895B55",
+        "text": "ret"
+      }
+    ],
+    "calls": [],
+    "imports": [],
+    "globals": [],
+    "indirect": [],
+    "protected": [],
+    "suitable_score": 100,
+    "reason": "no calls and no indirect control flow; no absolute or non-stack memory; small straight-line body; ends with a near return",
+    "va": "0x00895B50",
+    "map_insns": 2,
+    "score_map": 100
+  },
+  {
+    "insns": [
+      {
+        "addr": "0x00896760",
+        "text": "mov eax, 0x12876a4"
+      },
+      {
+        "addr": "0x00896765",
+        "text": "ret"
+      }
+    ],
+    "calls": [],
+    "imports": [],
+    "globals": [],
+    "indirect": [],
+    "protected": [],
+    "suitable_score": 100,
+    "reason": "no calls and no indirect control flow; no absolute or non-stack memory; small straight-line body; ends with a near return",
+    "va": "0x00896760",
+    "map_insns": 2,
+    "score_map": 100
+  },
+  {
+    "insns": [
+      {
+        "addr": "0x0090319D",
+        "text": "mov eax, dword ptr [0x1886320]"
+      },
+      {
+        "addr": "0x009031A2",
+        "text": "ret"
+      }
+    ],
+    "calls": [],
+    "imports": [],
+    "globals": [],
+    "indirect": [],
+    "protected": [],
+    "suitable_score": 100,
+    "reason": "no calls and no indirect control flow; no absolute or non-stack memory; small straight-line body; ends with a near return",
+    "va": "0x0090319D",
+    "map_insns": 2,
+    "score_map": 85
+  },
+  {
+    "insns": [
+      {
+        "addr": "0x00907A49",
+        "text": "mov eax, dword ptr [0x1886334]"
+      },
+      {
+        "addr": "0x00907A4E",
+        "text": "ret"
+      }
+    ],
+    "calls": [],
+    "imports": [],
+    "globals": [],
+    "indirect": [],
+    "protected": [],
+    "suitable_score": 100,
+    "reason": "no calls and no indirect control flow; no absolute or non-stack memory; small straight-line body; ends with a near return",
+    "va": "0x00907A49",
+    "map_insns": 2,
+    "score_map": 85
+  },
+  {
+    "insns": [
+      {
+        "addr": "0x00977840",
+        "text": "mov eax, dword ptr [0x189b1e0]"
+      },
+      {
+        "addr": "0x00977845",
+        "text": "ret"
+      }
+    ],
+    "calls": [],
+    "imports": [],
+    "globals": [],
+    "indirect": [],
+    "protected": [],
+    "suitable_score": 100,
+    "reason": "no calls and no indirect control flow; no absolute or non-stack memory; small straight-line body; ends with a near return",
+    "va": "0x00977840",
+    "map_insns": 2,
+    "score_map": 100
+  },
+  {
+    "insns": [
+      {
+        "addr": "0x009EBD90",
+        "text": "mov eax, dword ptr [0x189dc08]"
+      },
+      {
+        "addr": "0x009EBD95",
+        "text": "ret"
+      }
+    ],
+    "calls": [],
+    "imports": [],
+    "globals": [],
+    "indirect": [],
+    "protected": [],
+    "suitable_score": 100,
+    "reason": "no calls and no indirect control flow; no absolute or non-stack memory; small straight-line body; ends with a near return",
+    "va": "0x009EBD90",
+    "map_insns": 2,
+    "score_map": 100
+  },
+  {
+    "insns": [
+      {
+        "addr": "0x00A03510",
+        "text": "mov al, 1"
+      },
+      {
+        "addr": "0x00A03512",
+        "text": "ret"
+      }
+    ],
+    "calls": [],
+    "imports": [],
+    "globals": [],
+    "indirect": [],
+    "protected": [],
+    "suitable_score": 100,
+    "reason": "no calls and no indirect control flow; no absolute or non-stack memory; small straight-line body; ends with a near return",
+    "va": "0x00A03510",
+    "map_insns": 2,
+    "score_map": 100
+  },
+  {
+    "insns": [
+      {
+        "addr": "0x00A12850",
+        "text": "mov eax, 0x129e5d0"
+      },
+      {
+        "addr": "0x00A12855",
+        "text": "ret"
+      }
+    ],
+    "calls": [],
+    "imports": [],
+    "globals": [],
+    "indirect": [],
+    "protected": [],
+    "suitable_score": 100,
+    "reason": "no calls and no indirect control flow; no absolute or non-stack memory; small straight-line body; ends with a near return",
+    "va": "0x00A12850",
+    "map_insns": 2,
+    "score_map": 100
+  },
+  {
+    "insns": [
+      {
+        "addr": "0x00A43690",
+        "text": "mov eax, 0x18ae810"
+      },
+      {
+        "addr": "0x00A43695",
+        "text": "ret"
+      }
+    ],
+    "calls": [],
+    "imports": [],
+    "globals": [],
+    "indirect": [],
+    "protected": [],
+    "suitable_score": 100,
+    "reason": "no calls and no indirect control flow; no absolute or non-stack memory; small straight-line body; ends with a near return",
+    "va": "0x00A43690",
+    "map_insns": 2,
+    "score_map": 100
+  },
+  {
+    "insns": [
+      {
+        "addr": "0x00AD0640",
+        "text": "mov eax, dword ptr [esp + 4]"
+      },
+      {
+        "addr": "0x00AD0644",
+        "text": "ret"
+      }
+    ],
+    "calls": [],
+    "imports": [],
+    "globals": [],
+    "indirect": [],
+    "protected": [],
+    "suitable_score": 100,
+    "reason": "no calls and no indirect control flow; no absolute or non-stack memory; small straight-line body; ends with a near return",
+    "va": "0x00AD0640",
+    "map_insns": 2,
+    "score_map": 100
+  },
+  {
+    "insns": [
+      {
+        "addr": "0x00721070",
+        "text": "mov eax, dword ptr [esp + 4]"
+      },
+      {
+        "addr": "0x00721074",
+        "text": "xor eax, dword ptr [esp + 8]"
+      },
+      {
+        "addr": "0x00721078",
+        "text": "ret 8"
+      }
+    ],
+    "calls": [],
+    "imports": [],
+    "globals": [],
+    "indirect": [],
+    "protected": [],
+    "suitable_score": 100,
+    "reason": "no calls and no indirect control flow; no absolute or non-stack memory; small straight-line body; ends with a near return",
+    "va": "0x00721070",
+    "map_insns": 3,
+    "score_map": 100
+  },
+  {
+    "insns": [
+      {
+        "addr": "0x00803FE0",
+        "text": "fld dword ptr [esp + 4]"
+      },
+      {
+        "addr": "0x00803FE4",
+        "text": "fcos"
+      },
+      {
+        "addr": "0x00803FE6",
+        "text": "ret"
+      }
+    ],
+    "calls": [],
+    "imports": [],
+    "globals": [],
+    "indirect": [],
+    "protected": [],
+    "suitable_score": 100,
+    "reason": "no calls and no indirect control flow; no absolute or non-stack memory; small straight-line body; ends with a near return",
+    "va": "0x00803FE0",
+    "map_insns": 3,
+    "score_map": 85
+  },
+  {
+    "insns": [
+      {
+        "addr": "0x009A7CA1",
+        "text": "mov esp, ebp"
+      },
+      {
+        "addr": "0x009A7CA3",
+        "text": "pop ebp"
+      },
+      {
+        "addr": "0x009A7CA4",
+        "text": "ret"
+      }
+    ],
+    "calls": [],
+    "imports": [],
+    "globals": [],
+    "indirect": [],
+    "protected": [],
+    "suitable_score": 100,
+    "reason": "no calls and no indirect control flow; no absolute or non-stack memory; small straight-line body; ends with a near return",
+    "va": "0x009A7CA1",
+    "map_insns": 3,
+    "score_map": 120
+  },
+  {
+    "insns": [
+      {
+        "addr": "0x009EE7B0",
+        "text": "mov eax, dword ptr [esp + 4]"
+      },
+      {
+        "addr": "0x009EE7B4",
+        "text": "add eax, 0x10"
+      },
+      {
+        "addr": "0x009EE7B7",
+        "text": "ret"
+      }
+    ],
+    "calls": [],
+    "imports": [],
+    "globals": [],
+    "indirect": [],
+    "protected": [],
+    "suitable_score": 100,
+    "reason": "no calls and no indirect control flow; no absolute or non-stack memory; small straight-line body; ends with a near return",
+    "va": "0x009EE7B0",
+    "map_insns": 3,
+    "score_map": 100
+  },
+  {
+    "insns": [
+      {
+        "addr": "0x009FF300",
+        "text": "mov eax, dword ptr [esp + 4]"
+      },
+      {
+        "addr": "0x009FF304",
+        "text": "add eax, 8"
+      },
+      {
+        "addr": "0x009FF307",
+        "text": "ret"
+      }
+    ],
+    "calls": [],
+    "imports": [],
+    "globals": [],
+    "indirect": [],
+    "protected": [],
+    "suitable_score": 100,
+    "reason": "no calls and no indirect control flow; no absolute or non-stack memory; small straight-line body; ends with a near return",
+    "va": "0x009FF300",
+    "map_insns": 3,
+    "score_map": 100
+  },
+  {
+    "insns": [
+      {
+        "addr": "0x00AF90E0",
+        "text": "mov eax, dword ptr [esp + 4]"
+      },
+      {
+        "addr": "0x00AF90E4",
+        "text": "add eax, 0x10"
+      },
+      {
+        "addr": "0x00AF90E7",
+        "text": "ret"
+      }
+    ],
+    "calls": [],
+    "imports": [],
+    "globals": [],
+    "indirect": [],
+    "protected": [],
+    "suitable_score": 100,
+    "reason": "no calls and no indirect control flow; no absolute or non-stack memory; small straight-line body; ends with a near return",
+    "va": "0x00AF90E0",
+    "map_insns": 3,
+    "score_map": 100
+  },
+  {
+    "insns": [
+      {
+        "addr": "0x00AF90F0",
+        "text": "mov eax, dword ptr [esp + 4]"
+      },
+      {
+        "addr": "0x00AF90F4",
+        "text": "add eax, 0x10"
+      },
+      {
+        "addr": "0x00AF90F7",
+        "text": "ret"
+      }
+    ],
+    "calls": [],
+    "imports": [],
+    "globals": [],
+    "indirect": [],
+    "protected": [],
+    "suitable_score": 100,
+    "reason": "no calls and no indirect control flow; no absolute or non-stack memory; small straight-line body; ends with a near return",
+    "va": "0x00AF90F0",
+    "map_insns": 3,
+    "score_map": 100
+  },
+  {
+    "insns": [
+      {
+        "addr": "0x00AF9100",
+        "text": "mov eax, dword ptr [esp + 4]"
+      },
+      {
+        "addr": "0x00AF9104",
+        "text": "add eax, 0x20"
+      },
+      {
+        "addr": "0x00AF9107",
+        "text": "ret"
+      }
+    ],
+    "calls": [],
+    "imports": [],
+    "globals": [],
+    "indirect": [],
+    "protected": [],
+    "suitable_score": 100,
+    "reason": "no calls and no indirect control flow; no absolute or non-stack memory; small straight-line body; ends with a near return",
+    "va": "0x00AF9100",
+    "map_insns": 3,
+    "score_map": 100
+  },
+  {
+    "insns": [
+      {
+        "addr": "0x007415E0",
+        "text": "mov eax, dword ptr [esp + 4]"
+      },
+      {
+        "addr": "0x007415E4",
+        "text": "imul eax, eax, 0x220"
+      },
+      {
+        "addr": "0x007415EA",
+        "text": "add eax, 0x178af50"
+      },
+      {
+        "addr": "0x007415EF",
+        "text": "ret"
+      }
+    ],
+    "calls": [],
+    "imports": [],
+    "globals": [],
+    "indirect": [],
+    "protected": [],
+    "suitable_score": 100,
+    "reason": "no calls and no indirect control flow; no absolute or non-stack memory; small straight-line body; ends with a near return",
+    "va": "0x007415E0",
+    "map_insns": 4,
+    "score_map": 100
+  },
+  {
+    "insns": [
+      {
+        "addr": "0x009B6190",
+        "text": "push ebp"
+      },
+      {
+        "addr": "0x009B6191",
+        "text": "mov ebp, esp"
+      },
+      {
+        "addr": "0x009B6193",
+        "text": "pop ebp"
+      },
+      {
+        "addr": "0x009B6194",
+        "text": "ret"
+      }
+    ],
+    "calls": [],
+    "imports": [],
+    "globals": [],
+    "indirect": [],
+    "protected": [],
+    "suitable_score": 100,
+    "reason": "no calls and no indirect control flow; no absolute or non-stack memory; small straight-line body; ends with a near return",
+    "va": "0x009B6190",
+    "map_insns": 4,
+    "score_map": 108
+  },
+  {
+    "insns": [
+      {
+        "addr": "0x009B61A0",
+        "text": "push ebp"
+      },
+      {
+        "addr": "0x009B61A1",
+        "text": "mov ebp, esp"
+      },
+      {
+        "addr": "0x009B61A3",
+        "text": "pop ebp"
+      },
+      {
+        "addr": "0x009B61A4",
+        "text": "ret"
+      }
+    ],
+    "calls": [],
+    "imports": [],
+    "globals": [],
+    "indirect": [],
+    "protected": [],
+    "suitable_score": 100,
+    "reason": "no calls and no indirect control flow; no absolute or non-stack memory; small straight-line body; ends with a near return",
+    "va": "0x009B61A0",
+    "map_insns": 4,
+    "score_map": 108
+  },
+  {
+    "insns": [
+      {
+        "addr": "0x009BAE20",
+        "text": "push ebp"
+      },
+      {
+        "addr": "0x009BAE21",
+        "text": "mov ebp, esp"
+      },
+      {
+        "addr": "0x009BAE23",
+        "text": "pop ebp"
+      },
+      {
+        "addr": "0x009BAE24",
+        "text": "ret"
+      }
+    ],
+    "calls": [],
+    "imports": [],
+    "globals": [],
+    "indirect": [],
+    "protected": [],
+    "suitable_score": 100,
+    "reason": "no calls and no indirect control flow; no absolute or non-stack memory; small straight-line body; ends with a near return",
+    "va": "0x009BAE20",
+    "map_insns": 4,
+    "score_map": 108
+  }
+]
