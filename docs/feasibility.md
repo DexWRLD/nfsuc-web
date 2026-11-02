@@ -154,11 +154,15 @@ The next cluster was taken from the high-confidence graph, not from a preselecte
 
 `tools/uc_initprov.py` searches ordinary `.text` for absolute and simple register-relative writers of a global. `0x0189D1A4` has 906 indirect calls, all followed by `add esp, 0x0C`, and one writer: `0x009E8AD0` at `0x009E8B16` stores `0x009E78C0`. That leaf writes 48 other dwords the same way. Running it fills the slot. Retrying `0x0099DCD0` enters the callback and stops later at `0x009E4B49` on a zero object field (`0xFFFFFFFC`). `0x0188DAFC` was not written. `_CIsqrt` was not implemented. Details are in `analysis/undercover/runtime-phase11.md`.
 
+## Phase 12
+
+`0x0189DA84` is the pointer returned by `0x009E9160`, which returns the block it was given. That block is the return of `0x009EB870` and is 0x248 bytes. The call is reached only after `[0x0189DA88]` is nonzero. The only writer of `0x0189DA88` is `0x009E9410`, and its only caller is `0x00810291` inside medium-confidence `0x008101B0`, after `call 0x00686000`. That address does not disassemble as code. `0x0189D0A0` is an in-place object. The Phase 11 fault reads `[object+8] - 4` while `+8` is 0. `0x009E4640` is the ordinary store of that pointer, and the value comes from `0x009DC250`, which ends up calling `[0x0189D198]`. The Phase 11 leaf sets that slot to `0x009E77D0`, and `0x009E77D0` again needs `0x0189DA88`. Neither global was written by the harness, and `0x0099DCD0` was not retried. Details are in `analysis/undercover/runtime-phase12.md`.
+
 ## Status
 
 STATIC CODE READINESS: established for the ordinary high-confidence `.text` list. 6,598 of 6,604 generate, and every generated function compiles. Compilation coverage is not the current limit.
 
-RUNTIME INITIALIZATION READINESS: partial. One ordinary leaf initializes the callback slot that blocked `0x0099DCD0`. The object pointer that callback reads, and the object at `0x0189D0A0`, are still zero. Those are ordinary-data dependencies, not missing generated functions.
+RUNTIME INITIALIZATION READINESS: partial. One ordinary leaf initializes the callback slot that blocked `0x0099DCD0`. The object pointer `0x0189DA84` and the field `[0x0189D0A0+8]` have ordinary writers, and both writers depend on `0x0189DA88`. The only store to that global is after `call 0x00686000`, which is not an ordinary function.
 
 INTEGER/STACK ABI: established for the tested paths. Cdecl `memset`, `strlen`, `memcmp`, and `strcmp` run from lifted callers, and the generated `add esp` removes the arguments. Unknown imports fail closed.
 
@@ -176,4 +180,4 @@ The atomic helpers remain a single-threaded stand-in. The game does not boot or 
 
 ## Verdict
 
-The `0x00A124B0` closure runs, and Phase 10 can enter larger ordinary closures until a zero indirect slot or a null pointer. Phase 11 shows that slot has an ordinary writer and that executing the writer moves `0x0099DCD0` past it, onto another zero object field. The limiting factor is initialized runtime state, not compilation coverage. The game is not ready to boot.
+The `0x00A124B0` closure runs, and Phase 10 can enter larger ordinary closures until a zero indirect slot or a null pointer. Phase 11 shows that slot has an ordinary writer and that executing the writer moves `0x0099DCD0` past it, onto another zero object field. Phase 12 finds the ordinary store for that field and stops at `call 0x00686000`, which is not an ordinary function. The game is not ready to boot.
