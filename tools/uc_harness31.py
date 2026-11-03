@@ -363,6 +363,9 @@ class Harness:
         self.addrs = sorted(set(addrs))
         info = uca.read_inputs(GAME)
         self.image = p7.read_sections(GAME)
+        # Match uc_gen/genall: recognize MSVC absolute dword jump tables as
+        # switch/case local labels instead of DISPATCH_TAIL (BLOCKED_INDIRECT).
+        os.environ["JTSWITCH"] = "1"
         lifter = lift.RawLifter(info["bytes"], info["text_va"], comments=False)
         bodies, self.failed = [], {}
         for addr in self.addrs:
