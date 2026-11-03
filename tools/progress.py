@@ -1017,6 +1017,22 @@ def _graphics_config_synthetic_badge(model):
     return "NOT INTEGRATED"
 
 
+def _blocked_external_attribution_badge(model):
+    try:
+        raw = json.load(open(os.path.join(ANALYSIS, "runtime-frontier.json"), encoding="utf-8"))
+        att = raw.get("blocked_external_attribution") or {}
+    except Exception:
+        att = {}
+    if not att:
+        return "UNMEASURED"
+    return "n=%s root=%s dir=%s tr=%s" % (
+        att.get("count", "?"),
+        (att.get("root") or "?")[-4:],
+        att.get("direct", "?"),
+        att.get("transitive", "?"),
+    )
+
+
 def _target_provenance_badge(model):
     prov = model.get("target_provenance") or {}
     try:
@@ -1396,6 +1412,7 @@ def render_svg(model, detailed=False):
         ("VIRTUAL DISPATCH", _virtual_dispatch_badge(model)),
         ("GAME TARGET PROVENANCE", _target_provenance_badge(model)),
         ("GRAPHICS CONFIG SYNTHETIC", _graphics_config_synthetic_badge(model)),
+        ("BLOCKED_EXTERNAL ATTR", _blocked_external_attribution_badge(model)),
     ]
     parts = []
     y = badge_row(parts, badges, 14)
@@ -1821,6 +1838,7 @@ def render_png(model):
         ("VIRTUAL DISPATCH", _virtual_dispatch_badge(model)),
         ("GAME TARGET PROVENANCE", _target_provenance_badge(model)),
         ("GRAPHICS CONFIG SYNTHETIC", _graphics_config_synthetic_badge(model)),
+        ("BLOCKED_EXTERNAL ATTR", _blocked_external_attribution_badge(model)),
     ]
 
     # Measure height with the same geometry as the SVG.

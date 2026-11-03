@@ -8,7 +8,7 @@
 <rect x="400" y="14" width="148" height="22" rx="4" fill="#161b22" stroke="#30363d"/>
 <text x="408" y="29" fill="#e6edf3" font-size="11" font-family="Segoe UI, sans-serif">Recorded entries  18</text>
 <rect x="556" y="14" width="75" height="22" rx="4" fill="#161b22" stroke="#30363d"/>
-<text x="564" y="29" fill="#e6edf3" font-size="11" font-family="Segoe UI, sans-serif">Phase  43</text>
+<text x="564" y="29" fill="#e6edf3" font-size="11" font-family="Segoe UI, sans-serif">Phase  44</text>
 <rect x="639" y="14" width="207" height="22" rx="4" fill="#161b22" stroke="#30363d"/>
 <text x="647" y="29" fill="#e6edf3" font-size="11" font-family="Segoe UI, sans-serif">External boundary  0x00686000</text>
 <rect x="16" y="42" width="339" height="22" rx="4" fill="#161b22" stroke="#30363d"/>
@@ -159,6 +159,8 @@
 <text x="712" y="645" fill="#e6edf3" font-size="11" font-family="Segoe UI, sans-serif">GAME TARGET PROVENANCE  UC 1.1.2.1 VERIFIED</text>
 <rect x="16" y="658" width="464" height="22" rx="4" fill="#161b22" stroke="#30363d"/>
 <text x="24" y="673" fill="#e6edf3" font-size="11" font-family="Segoe UI, sans-serif">GRAPHICS CONFIG SYNTHETIC  SYNTHETIC ok tests=44 FIRST_FRAME BLOCKED</text>
+<rect x="488" y="658" width="346" height="22" rx="4" fill="#161b22" stroke="#30363d"/>
+<text x="496" y="673" fill="#e6edf3" font-size="11" font-family="Segoe UI, sans-serif">BLOCKED_EXTERNAL ATTR  n=74 root=6000 dir=62 tr=12</text>
 <text x="16" y="712" fill="#e6edf3" font-size="15" font-family="Segoe UI, sans-serif">Function translation</text>
 <rect x="16" y="720" width="68" height="86" fill="#161b22" stroke="#30363d" stroke-width="1"/>
 <rect x="18" y="722" width="2" height="2" fill="#f85149" data-addr="0x00401030"><title>0x00401030 | REJECTED_DATA | UNKNOWN</title></rect>
