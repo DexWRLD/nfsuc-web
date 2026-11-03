@@ -1,6 +1,96 @@
 {
-  "phase": 26,
+  "phase": 27,
   "roots": [
+    {
+      "root": "0x00929972",
+      "phase": 27,
+      "result": "EXECUTED_CHAIN",
+      "ordinary_initializers_executed": [],
+      "functions_entered": [
+        "0x00929972",
+        "0x00924D30"
+      ],
+      "unique_functions_entered": 2,
+      "max_depth": 2,
+      "imports": [
+        "_CIsqrt"
+      ],
+      "indirect_resolved": 0,
+      "termination": "return",
+      "required_state": "POD parent this in ESI; mid-frame stack as after 0x0092996A (case 0 of parent 0x00929900 switch)",
+      "notes": "Ordinary case-0 body of 0x00929900 \u2192 0x00924D30; parent switch uses jump table (lifter DISPATCH_TAIL); case body is legitimate ordinary code",
+      "evidence": "uc_phase27_test.py",
+      "parent_cfg": "0x00929900"
+    },
+    {
+      "root": "0x00949920",
+      "phase": 27,
+      "result": "EXECUTED_CLEAN",
+      "ordinary_initializers_executed": [],
+      "functions_entered": [
+        "0x00949920"
+      ],
+      "unique_functions_entered": 1,
+      "max_depth": 1,
+      "imports": [
+        "_CIcos",
+        "_CIsin",
+        "_CIsqrt"
+      ],
+      "indirect_resolved": 0,
+      "termination": "return",
+      "required_state": "POD this; stack floats",
+      "notes": "IMPORT_READY math leaf now ENTERABLE via POD contract",
+      "evidence": "uc_phase27_test.py"
+    },
+    {
+      "root": "0x0072EAE0",
+      "phase": 27,
+      "result": "BLOCKED_PROTECTED",
+      "functions_entered": [],
+      "max_depth": 0,
+      "termination": "not entered",
+      "required_state": "this+0x18 iface via protected 0x007306C0/.securom slot",
+      "indirect_class": "PROTECTED_INITIALIZED_CALLBACK",
+      "notes": "diagnostic complete; not forced"
+    },
+    {
+      "root": "0x0096CED0",
+      "phase": 27,
+      "result": "BLOCKED_REQUIRED_STATE",
+      "functions_entered": [],
+      "max_depth": 0,
+      "termination": "not entered",
+      "required_state": [],
+      "notes": "init still UNKNOWN"
+    },
+    {
+      "root": "0x00B01EB0",
+      "phase": 27,
+      "result": "BLOCKED_REQUIRED_STATE",
+      "functions_entered": [],
+      "max_depth": 0,
+      "termination": "not entered",
+      "notes": "complex multi-arg; UNKNOWN"
+    },
+    {
+      "root": "0x00A52DF0",
+      "phase": 27,
+      "result": "BLOCKED_REQUIRED_STATE",
+      "functions_entered": [],
+      "max_depth": 0,
+      "termination": "not entered",
+      "notes": "matrix fields UNKNOWN; no ctor"
+    },
+    {
+      "root": "0x00A28720",
+      "phase": 27,
+      "result": "BLOCKED_REQUIRED_STATE",
+      "functions_entered": [],
+      "max_depth": 0,
+      "termination": "not entered",
+      "notes": "packed stream UNKNOWN"
+    },
     {
       "root": "0x00924D30",
       "result": "EXECUTED_CLEAN",
@@ -45,76 +135,6 @@
       "evidence": "uc_phase6_test.py"
     },
     {
-      "root": "0x0096CED0",
-      "result": "BLOCKED_REQUIRED_STATE",
-      "functions_entered": [],
-      "imports": [],
-      "max_depth": 0,
-      "termination": "not entered",
-      "required_state": "large object (+0xb28, +0x30, +0x24); multi-callee closure",
-      "notes": "Largest READY_WITH_IMPORTS island root; not fabricated"
-    },
-    {
-      "root": "0x0072EAE0",
-      "result": "BLOCKED_INDIRECT",
-      "functions_entered": [],
-      "imports": [],
-      "max_depth": 0,
-      "termination": "not entered",
-      "required_state": "this + buffer; vtable call via [eax+0x18]",
-      "indirect_class": "RUNTIME_INITIALIZED",
-      "notes": "call eax through object vtable"
-    },
-    {
-      "root": "0x00B01EB0",
-      "result": "BLOCKED_REQUIRED_STATE",
-      "functions_entered": [],
-      "imports": [],
-      "max_depth": 0,
-      "termination": "not entered",
-      "required_state": "complex multi-arg structure; 856-insn READY root",
-      "notes": "Largest READY closure root"
-    },
-    {
-      "root": "0x00A52DF0",
-      "result": "BLOCKED_REQUIRED_STATE",
-      "functions_entered": [],
-      "imports": [
-        "_CIsin",
-        "_CIsqrt"
-      ],
-      "max_depth": 0,
-      "termination": "not entered",
-      "required_state": "this+0x140/+0x150 SIMD matrices; stack float",
-      "notes": "import-ready leaf; object layout unknown"
-    },
-    {
-      "root": "0x00949920",
-      "result": "BLOCKED_REQUIRED_STATE",
-      "functions_entered": [],
-      "imports": [
-        "_CIcos",
-        "_CIsin",
-        "_CIsqrt"
-      ],
-      "max_depth": 0,
-      "termination": "not entered",
-      "required_state": "this+0xa4 write; multi float stack args; .rdata constant",
-      "notes": "import-ready; object semantics unclear"
-    },
-    {
-      "root": "0x00A28720",
-      "result": "BLOCKED_REQUIRED_STATE",
-      "functions_entered": [],
-      "imports": [
-        "_CIsqrt"
-      ],
-      "max_depth": 0,
-      "termination": "not entered",
-      "required_state": "thiscall + packed word stream args",
-      "notes": "import-ready _CIsqrt leaf; input packing unknown"
-    },
-    {
       "root": "0x009F0D20",
       "result": "BLOCKED_IMPORT",
       "functions_entered": [],
@@ -136,8 +156,11 @@
     "0x00739B90",
     "0x0088390D",
     "0x00924D30",
+    "0x00929972",
+    "0x00949920",
     "0x009E78C0",
     "0x009E8AD0"
   ],
-  "execution_runs_note": "Campaign rows with EXECUTED_* plus historical harness roots"
+  "deepest_ordinary_execution_chain": 2,
+  "largest_executed_ordinary_closure": 2
 }

@@ -1,13 +1,10 @@
 {
-  "phase": 26,
+  "phase": 27,
   "definitions": {
-    "STATIC_READY": "HIGH with no import thunks and no protected callees in the direct call list.",
-    "IMPORT_READY": "HIGH whose direct import thunks are all HLE-implemented and with no protected callees. May still need state or hit indirects.",
-    "RUNTIME_READY": "Conservative: size(READY)+size(READY_WITH_IMPLEMENTED_IMPORTS) largest closures from uc_frontier. Not inflated by single-import unlock totals.",
-    "ENTERABLE": "IMPORT_READY/STATIC_READY with a known small guest-state contract sufficient to call.",
-    "EXECUTED": "UNIQUE_UC_FUNCTIONS_EXECUTED from harness-logged completed runs.",
-    "UNIQUE_UC_FUNCTIONS_EXECUTED": "Distinct guest function VAs with completed=true harness evidence.",
-    "EXECUTION_RUNS": "Number of distinct harness campaign/test entries that entered a root."
+    "ENTERABLE": "All pre-entry required state establishable via primitives, static PE data, standard runtime, or proven ordinary init/ctor. Not merely IMPORT_READY.",
+    "ORDINARY_INIT_RECOVERED": "Root has a complete classification that is not BLOCKED_UNKNOWN_STATE.",
+    "DEEPEST_ORDINARY_EXECUTION_CHAIN": "Max ordinary UC frames in one harness run.",
+    "LARGEST_EXECUTED_ORDINARY_CLOSURE": "Distinct ordinary UC functions entered in one controlled run."
   },
   "high_functions": 22779,
   "generated": 22770,
@@ -15,280 +12,214 @@
   "static_ready": 20762,
   "import_ready": 737,
   "runtime_ready": 54,
-  "runtime_ready_closures": {
-    "READY": 19,
-    "READY_WITH_IMPLEMENTED_IMPORTS": 35,
-    "ready_root": "0x00B01EB0",
-    "ready_with_imports_root": "0x0096CED0"
-  },
-  "enterable_estimate": 3,
-  "unique_uc_functions_executed": 6,
+  "enterable": 6,
+  "enterable_roots": [
+    "0x00721070",
+    "0x0088390D",
+    "0x00924D30",
+    "0x00929900",
+    "0x00929972",
+    "0x00949920"
+  ],
+  "unique_uc_functions_executed": 8,
   "unique_uc_functions_executed_list": [
     "0x00721070",
     "0x00739B90",
     "0x0088390D",
     "0x00924D30",
+    "0x00929972",
+    "0x00949920",
     "0x009E78C0",
     "0x009E8AD0"
   ],
-  "unique_uc_functions_entered": 7,
-  "execution_runs": 6,
-  "blocked_graphics": 124,
-  "blocked_protected": 585,
-  "blocked_standard_runtime": 733,
-  "unknown_blocker": 79,
-  "cisqrt": {
-    "thunk": "0x00AE5116",
-    "iat_slot": "0x00B61448",
-    "dll": "MSVCR80.dll",
-    "symbol": "_CIsqrt",
-    "convention": "cdecl",
-    "call_sites": 116,
-    "high_callers": 55,
-    "abi": "X87 ST0\u2192ST0; cdecl; 0 stack dwords; EAX unchanged; TOP unchanged",
-    "hle": "UC_HLE_CISQRT",
-    "host": "uc_host_sqrt (ucrtbase sqrt)",
-    "numerical_policy": "Host double math; not MSVCR80/x87 80-bit bit-exact; no tag-word; no exception signaling fidelity.",
-    "pre_single_unlock_functions": 88,
-    "post_single_unlock_gone": true,
-    "functions_now_import_ready_with_cisqrt": 53,
-    "largest_affected_island": {
-      "root": "0x00A1CD60",
-      "representative": "0x00A1CD60",
-      "function_count": 6,
-      "edge_count": 6,
-      "imports": [
-        [
-          "_CIsqrt",
-          3
-        ]
-      ],
-      "missing_imports": [],
-      "indirect_calls": 0,
-      "protected_deps": 0,
-      "graphics_deps": 0,
-      "tls_members": 0,
-      "blockers": {
-        "RUNTIME_READY": 1
-      },
-      "enterable": true,
-      "executed_member": false,
-      "members_sample": [
-        "0x00A1CD60",
-        "0x00A1CDF0",
-        "0x00A28DF0",
-        "0x00A2B820",
-        "0x00A2B9E0",
-        "0x00A2BC30"
-      ],
-      "non_graphics": true,
-      "leverage": 148
-    }
-  },
-  "unlock_recompute": {
-    "functions_newly_import_ready_estimate": 53,
-    "closures_newly_import_ready_estimate": 88,
-    "note": "Phase-25 single_unlock[_CIsqrt]=88 counted otherwise-clean closures. Per-function call-list import-ready with _CIsqrt and no other missing imports is 53 HIGH functions. RUNTIME_READY closure sizes remain 19+35 because newly unlocked closures are smaller than the extreme.",
-    "islands_listing_cisqrt": 13,
-    "largest_cisqrt_island": 6,
-    "largest_cisqrt_root": "0x00A1CD60"
-  },
-  "phase25_to_26_delta": {
-    "high": 0,
-    "compiled": 0,
-    "runtime_ready_closures": "unchanged extremes 54 (19+35)",
-    "import_ready_cisqrt_callers": 53,
-    "unique_executed_delta": "+1 (0x00924D30); audited total 6",
-    "top_single_unlock_now": [
-      [
-        "_wassert",
-        22
-      ],
-      [
-        "tolower",
-        21
-      ],
-      [
-        "sprintf",
-        21
-      ],
-      [
-        "sscanf",
-        15
-      ],
-      [
-        "_snprintf",
-        13
-      ]
-    ]
-  },
-  "campaign_summary": {
-    "attempted": 10,
-    "outcomes": {
-      "EXECUTED_CLEAN": 3,
-      "BLOCKED_REQUIRED_STATE": 5,
-      "BLOCKED_INDIRECT": 1,
-      "BLOCKED_IMPORT": 1
-    },
-    "most_common_next_blocker": [
-      "BLOCKED_REQUIRED_STATE",
-      5
-    ],
-    "observed_in_executed_imports": {
-      "_CIsqrt": 1,
-      "strncpy": 1
-    },
-    "CIpow_observed": false,
-    "setjmp3_observed": false,
-    "floor_observed": false,
-    "malloc_free_observed": false,
-    "filesystem_observed": false,
-    "timing_observed": false,
-    "tls_observed": false,
-    "unresolved_indirect_observed": true,
-    "deepest_chain": 1,
-    "largest_island_entered": 1,
-    "latest_newly_executed_root": "0x00924D30"
-  },
+  "execution_runs": 5,
+  "deepest_ordinary_execution_chain": 2,
+  "largest_executed_ordinary_closure": 2,
+  "ordinary_init_recovered": 4,
+  "init_blocked_external": 0,
+  "init_blocked_protected": 1,
+  "init_blocked_unknown": 4,
   "ordinary_runtime_frontier": {
     "HIGH": 22779,
     "COMPILED": 22770,
     "STATIC_READY": 20762,
     "IMPORT_READY": 737,
     "RUNTIME_READY": 54,
-    "ENTERABLE": 3,
-    "EXECUTED": 6,
-    "BLOCKED_STANDARD_RUNTIME": 733,
-    "BLOCKED_PROTECTED": 585,
-    "BLOCKED_GRAPHICS": 124,
-    "UNKNOWN": 79
+    "ENTERABLE": 6,
+    "EXECUTED": 8,
+    "ORDINARY_INIT_RECOVERED": 4,
+    "INIT_BLOCKED_EXTERNAL": 0,
+    "INIT_BLOCKED_PROTECTED": 1,
+    "INIT_BLOCKED_UNKNOWN": 4
   },
-  "harness_capability": {
-    "mapped_ordinary_sections": "IMPLEMENTED",
-    "guest_stack": "IMPLEMENTED",
-    "direct_uc_calls": "IMPLEMENTED",
-    "nested_uc_calls": "IMPLEMENTED",
-    "imports_hle": "PARTIAL",
-    "x87": "PARTIAL",
-    "simd": "PARTIAL",
-    "atomics": "PARTIAL",
-    "memory_validation": "IMPLEMENTED",
-    "indirect_dispatch": "PARTIAL",
-    "tls": "STUB",
-    "filesystem": "MISSING",
-    "threads": "MISSING",
-    "timing": "MISSING",
-    "seh": "STUB",
-    "notes": "Native UC harness maps ordinary PE sections and runs lifted HIGH functions with import HLE for CRT mem/string and a few x87 helpers. NFSU2 win32/fileio/thread helpers exist in the broader tree but are not wired as the Undercover native UC import path. Atomics suffice for single-thread controlled execution.",
-    "atomic_correctness": "SUFFICIENT_FOR_SINGLE_THREAD",
-    "crt_cisqrt": "IMPLEMENTED",
-    "crt_cisqrt_abi": "X87 ST0\u2192ST0",
-    "crt_cisqrt_test": "PASS"
+  "campaign_summary": {
+    "phase27_attempted": 7,
+    "outcomes": {
+      "EXECUTED_CHAIN": 1,
+      "EXECUTED_CLEAN": 1,
+      "BLOCKED_PROTECTED": 1,
+      "BLOCKED_REQUIRED_STATE": 4
+    },
+    "most_common_next_blocker": [
+      "BLOCKED_REQUIRED_STATE",
+      4
+    ],
+    "deepest_chain": 2,
+    "largest_executed_closure": 2,
+    "latest_newly_executed_root": "0x00929972",
+    "CIpow_reached": false,
+    "floor_reached": false,
+    "malloc_free_reached": false,
+    "filesystem_reached": false,
+    "timing_reached": false,
+    "tls_reached": false,
+    "seh_required": false
   },
+  "indirect_72eae0": {
+    "summary": "Reads this+0x18 as interface pointer; call [ [*+0x18] + 0x18 ]. Caller 0x00731320 obtains object via 0x007306C0 which does jmp dword ptr [0x023AF9C8] located in .securom.",
+    "required": [
+      {
+        "name": "ecx/this",
+        "class": "THIS_POINTER",
+        "prov": "CALLER_ARGUMENT"
+      },
+      {
+        "name": "stack buffer",
+        "class": "BUFFER",
+        "prov": "CALLER_ARGUMENT"
+      },
+      {
+        "name": "+0x18 iface",
+        "class": "VTABLE",
+        "prov": "PROTECTED_INITIALIZED"
+      }
+    ],
+    "protected": true,
+    "indirect_class": "PROTECTED_INITIALIZED_CALLBACK",
+    "indirect_slot": "0x023AF9C8",
+    "indirect_slot_section": ".securom",
+    "enterability": "BLOCKED_PROTECTED_INIT",
+    "enterable": false
+  },
+  "top_import_ready": [
+    {
+      "root": "0x0099FE50",
+      "score": 729,
+      "imports": [],
+      "high_callees": 65,
+      "insns": 794
+    },
+    {
+      "root": "0x009B97E0",
+      "score": 715,
+      "imports": [],
+      "high_callees": 60,
+      "insns": 1156
+    },
+    {
+      "root": "0x009BE240",
+      "score": 642,
+      "imports": [],
+      "high_callees": 56,
+      "insns": 824
+    },
+    {
+      "root": "0x0075A840",
+      "score": 628,
+      "imports": [],
+      "high_callees": 55,
+      "insns": 780
+    },
+    {
+      "root": "0x00AD6900",
+      "score": 614,
+      "imports": [],
+      "high_callees": 41,
+      "insns": 2043
+    },
+    {
+      "root": "0x009CD390",
+      "score": 535,
+      "imports": [],
+      "high_callees": 48,
+      "insns": 550
+    },
+    {
+      "root": "0x007E9080",
+      "score": 521,
+      "imports": [
+        "memset"
+      ],
+      "high_callees": 32,
+      "insns": 2016
+    },
+    {
+      "root": "0x00A4BC30",
+      "score": 489,
+      "imports": [],
+      "high_callees": 29,
+      "insns": 1996
+    },
+    {
+      "root": "0x00ABD490",
+      "score": 484,
+      "imports": [],
+      "high_callees": 19,
+      "insns": 2948
+    },
+    {
+      "root": "0x009D2470",
+      "score": 483,
+      "imports": [],
+      "high_callees": 43,
+      "insns": 539
+    },
+    {
+      "root": "0x00AC9770",
+      "score": 482,
+      "imports": [],
+      "high_callees": 32,
+      "insns": 1621
+    },
+    {
+      "root": "0x009A39A0",
+      "score": 431,
+      "imports": [],
+      "high_callees": 37,
+      "insns": 612
+    },
+    {
+      "root": "0x00AC7AE0",
+      "score": 427,
+      "imports": [],
+      "high_callees": 27,
+      "insns": 1574
+    },
+    {
+      "root": "0x0091CD10",
+      "score": 426,
+      "imports": [
+        "memset"
+      ],
+      "high_callees": 1,
+      "insns": 4161
+    },
+    {
+      "root": "0x00A67F20",
+      "score": 399,
+      "imports": [],
+      "high_callees": 32,
+      "insns": 799
+    }
+  ],
   "first_frame": "FIRST_FRAME_PATH_BLOCKED_BY_PROTECTED_BACKEND",
   "graphics_frozen": true,
-  "top_ordinary_island": {
-    "root": "0x009F0D20",
-    "representative": "0x009F0D20",
-    "function_count": 274,
-    "edge_count": 774,
-    "imports": [
-      [
-        "strchr",
-        5
-      ],
-      [
-        "sprintf",
-        3
-      ],
-      [
-        "memcpy",
-        3
-      ],
-      [
-        "isdigit",
-        3
-      ],
-      [
-        "isspace",
-        2
-      ],
-      [
-        "longjmp",
-        2
-      ],
-      [
-        "iscntrl",
-        2
-      ],
-      [
-        "isalnum",
-        2
-      ],
-      [
-        "strtoul",
-        1
-      ],
-      [
-        "strncpy",
-        1
-      ],
-      [
-        "strncat",
-        1
-      ],
-      [
-        "strcspn",
-        1
-      ]
-    ],
-    "missing_imports": [
-      "_CIpow",
-      "_setjmp3",
-      "floor",
-      "isalnum",
-      "isalpha",
-      "iscntrl",
-      "isdigit",
-      "isspace",
-      "localeconv",
-      "longjmp",
-      "sprintf",
-      "strchr",
-      "strcoll",
-      "strcspn",
-      "strncat",
-      "strtoul"
-    ],
-    "indirect_calls": 0,
-    "protected_deps": 0,
-    "graphics_deps": 0,
-    "tls_members": 0,
-    "blockers": {
-      "BLOCKED_IMPORT": 23,
-      "BLOCKED_EXTERNAL": 5
-    },
-    "enterable": false,
-    "executed_member": false,
-    "members_sample": [
-      "0x009F0D20",
-      "0x009F0DE0",
-      "0x009F0E70",
-      "0x009F0EA0",
-      "0x009F0EC0",
-      "0x009F0EE0",
-      "0x009F0F20",
-      "0x009F0F50"
-    ],
-    "non_graphics": true,
-    "leverage": 692
+  "recommended_phase28": "Most common remaining blocker is still BLOCKED_REQUIRED_STATE / UNKNOWN object provenance for large islands. Next: recover ordinary ctors for matrix/math objects (0x00A52DF0 family) or expand the 0x00929900-style POD parent chains. Do not implement CRT/FS/timing until an ENTERABLE chain reaches them. 0x0072EAE0 stays protected.",
+  "cisqrt": {
+    "hle": "UC_HLE_CISQRT",
+    "status": "IMPLEMENTED"
   },
-  "selected_implementation": {
-    "implementation": "_CIsqrt CRT HLE",
-    "symbol": "_CIsqrt",
-    "thunk": "0x00AE5116",
-    "standard_public_semantics": true,
-    "protected_dependency": false
-  },
-  "recommended_phase27": "Most common campaign next blocker is BLOCKED_REQUIRED_STATE (ordinary object/global contracts). Prefer documenting/entering proven ordinary initializers for import-ready math leaves, or implement next clean CRT HLE (tolower / floor cdecl \u2014 not _CI*) only if execution evidence elevates it. Do not implement _CIpow/_setjmp3 without real execution pressure. Graphics remain frozen."
+  "harness_capability": {
+    "crt_cisqrt": "IMPLEMENTED"
+  }
 }

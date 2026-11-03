@@ -1,49 +1,87 @@
 {
-  "phase": 26,
-  "top_10_blockers": [
-    {
-      "blocker": "BLOCKED_REQUIRED_STATE",
-      "note": "Dominant Phase-26 campaign next blocker for otherwise import-ready roots",
-      "recommended_now": "YES_FOR_PHASE27_ANALYSIS"
-    },
-    {
-      "blocker": "BLOCKED_INDIRECT",
-      "note": "Observed at 0x0072EAE0 (RUNTIME_INITIALIZED vtable)",
-      "recommended_now": "CANDIDATE"
-    },
-    {
-      "blocker": "IMPORT:tolower",
-      "single_unlock_post": 21,
-      "recommended_now": "CANDIDATE"
-    },
-    {
-      "blocker": "IMPORT:floor",
-      "note": "cdecl CRT; not _CI* ABI",
-      "single_unlock_post": 12,
-      "recommended_now": "CANDIDATE"
-    },
-    {
-      "blocker": "IMPORT:_CIpow",
-      "note": "Not observed in real Phase-26 execution; do not auto-implement",
-      "recommended_now": "NO"
-    },
-    {
-      "blocker": "IMPORT:_setjmp3",
-      "note": "Not observed in real Phase-26 execution",
-      "recommended_now": "NO"
-    }
-  ],
-  "campaign_outcome_histogram": {
-    "EXECUTED_CLEAN": 3,
-    "BLOCKED_REQUIRED_STATE": 5,
-    "BLOCKED_INDIRECT": 1,
-    "BLOCKED_IMPORT": 1
+  "phase": 27,
+  "campaign_outcomes": {
+    "EXECUTED_CHAIN": 1,
+    "EXECUTED_CLEAN": 1,
+    "BLOCKED_PROTECTED": 1,
+    "BLOCKED_REQUIRED_STATE": 4
   },
-  "selected": {
-    "implementation": "_CIsqrt CRT HLE",
-    "symbol": "_CIsqrt",
-    "thunk": "0x00AE5116",
-    "standard_public_semantics": true,
-    "protected_dependency": false
-  }
+  "most_common_real_blocker": [
+    "BLOCKED_REQUIRED_STATE",
+    4
+  ],
+  "top_import_ready": [
+    {
+      "root": "0x0099FE50",
+      "score": 729,
+      "imports": [],
+      "high_callees": 65,
+      "insns": 794
+    },
+    {
+      "root": "0x009B97E0",
+      "score": 715,
+      "imports": [],
+      "high_callees": 60,
+      "insns": 1156
+    },
+    {
+      "root": "0x009BE240",
+      "score": 642,
+      "imports": [],
+      "high_callees": 56,
+      "insns": 824
+    },
+    {
+      "root": "0x0075A840",
+      "score": 628,
+      "imports": [],
+      "high_callees": 55,
+      "insns": 780
+    },
+    {
+      "root": "0x00AD6900",
+      "score": 614,
+      "imports": [],
+      "high_callees": 41,
+      "insns": 2043
+    },
+    {
+      "root": "0x009CD390",
+      "score": 535,
+      "imports": [],
+      "high_callees": 48,
+      "insns": 550
+    },
+    {
+      "root": "0x007E9080",
+      "score": 521,
+      "imports": [
+        "memset"
+      ],
+      "high_callees": 32,
+      "insns": 2016
+    },
+    {
+      "root": "0x00A4BC30",
+      "score": 489,
+      "imports": [],
+      "high_callees": 29,
+      "insns": 1996
+    },
+    {
+      "root": "0x00ABD490",
+      "score": 484,
+      "imports": [],
+      "high_callees": 19,
+      "insns": 2948
+    },
+    {
+      "root": "0x009D2470",
+      "score": 483,
+      "imports": [],
+      "high_callees": 43,
+      "insns": 539
+    }
+  ]
 }
