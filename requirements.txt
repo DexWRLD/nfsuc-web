@@ -7,3 +7,8 @@ pefile>=2023.2.7
 # Only for tools/exeicon.py (pack.sh's app icon) and tools/contact_sheet.py
 # (the test runs' contact sheets)
 Pillow>=10
+
+# Optional analysis oracle (NOT required for build / runtime / tests / dashboard).
+# Install separately when running tools/angr_oracle.py or tools/uc_phase21.py with angr:
+#   pip install "angr==10.0.5" "bitstring>=4.1,<4.3"
+# Recorded with Python 3.12. angr is never the recompilation backend.
