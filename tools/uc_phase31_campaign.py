@@ -21,6 +21,7 @@ TIMING_IMPORTS = {"GetTickCount", "QueryPerformanceCounter", "QueryPerformanceFr
 THREAD_STATE_IMPORTS = {"GetCurrentThread", "GetCurrentThreadId", "GetThreadPriority",
                         "SetThreadPriority", "SetPriorityClass", "GetPriorityClass"}
 AFFINITY_IMPORTS = {"SetThreadAffinityMask", "GetProcessAffinityMask", "SetProcessAffinityMask"}
+ALERTABLE_WAIT_IMPORTS = {"SleepEx"}
 FS_IMPORTS = {"CreateFileA", "ReadFile", "WriteFile", "CloseHandle", "FindFirstFileA",
               "FindNextFileA", "FindClose", "GetFileAttributesA", "SetFilePointer"}
 TLS_IMPORTS = {"TlsGetValue", "TlsFree"}
@@ -32,7 +33,9 @@ THREAD_IMPORTS = {"InitializeCriticalSection", "EnterCriticalSection", "LeaveCri
 OUTCOMES = (
     "EXECUTED_CLEAN", "EXECUTED_CHAIN", "EXECUTED_TO_NEXT_BLOCKER", "BLOCKED_REQUIRED_STATE",
     "BLOCKED_IMPORT", "BLOCKED_INDIRECT", "BLOCKED_MEMORY", "BLOCKED_TLS", "BLOCKED_FILESYSTEM",
-    "BLOCKED_TIMING", "BLOCKED_EXTERNAL", "BLOCKED_PROTECTED", "FAULT", "UNKNOWN",
+    "BLOCKED_TIMING", "BLOCKED_GUEST_TIME_ADVANCEMENT", "BLOCKED_TIMING_LOOP",
+    "BLOCKED_ALERTABLE_WAIT", "BLOCKED_THREAD_SCHEDULER", "BLOCKED_EXTERNAL",
+    "BLOCKED_PROTECTED", "FAULT", "UNKNOWN",
 )
 REQUIRED_SUBCLASSES = (
     "UNKNOWN_OBJECT", "UNKNOWN_PARENT", "UNKNOWN_GLOBAL", "UNKNOWN_BUFFER",
@@ -40,7 +43,7 @@ REQUIRED_SUBCLASSES = (
 )
 HISTOGRAM_KEYS = (
     "REQUIRED_STATE", "IMPORT", "INDIRECT", "MEMORY", "TLS", "FILESYSTEM",
-    "TIMING", "EXTERNAL", "PROTECTED", "CLEAN_RETURN",
+    "TIMING", "ALERTABLE_WAIT", "EXTERNAL", "PROTECTED", "CLEAN_RETURN",
 )
 
 
@@ -64,6 +67,8 @@ def classify_outcome(root, out_view, fmap_label=None, import_name=None):
         res["detail"] = name
         if name in TLS_IMPORTS:
             res.update(result="BLOCKED_TLS", hist="TLS")
+        elif name in ALERTABLE_WAIT_IMPORTS:
+            res.update(result="BLOCKED_ALERTABLE_WAIT", hist="ALERTABLE_WAIT")
         elif name in TIMING_IMPORTS:
             res.update(result="BLOCKED_TIMING", hist="TIMING")
         elif name in FS_IMPORTS:
@@ -117,7 +122,8 @@ def classify_outcome(root, out_view, fmap_label=None, import_name=None):
 def finalize_result(res, depth):
     """EXECUTED_TO_NEXT_BLOCKER when a real chain entered >=2 frames before stopping."""
     if res["result"].startswith("BLOCKED") and depth >= 2 and res["hist"] in (
-            "IMPORT", "TIMING", "FILESYSTEM", "TLS", "PROTECTED", "EXTERNAL"):
+            "IMPORT", "TIMING", "ALERTABLE_WAIT", "FILESYSTEM", "TLS",
+            "PROTECTED", "EXTERNAL"):
         res = dict(res)
         res["blocker_result"] = res["result"]
         res["result"] = "EXECUTED_TO_NEXT_BLOCKER"
@@ -262,6 +268,10 @@ def run_campaign(specs=None, harness=None, fmap=None):
             "spc_calls": getattr(out, "spc_calls", 0),
             "stp_calls": getattr(out, "stp_calls", 0),
             "thread_priority": getattr(out, "thread_priority", 0),
+            "qpc_calls": getattr(out, "qpc_calls", 0),
+            "qpf_calls": getattr(out, "qpf_calls", 0),
+            "qpc_ticks_lo": getattr(out, "qpc_ticks_lo", 0),
+            "qpc_ticks_hi": getattr(out, "qpc_ticks_hi", 0),
             "stubs": [], "esp_delta_ok": out.esp == out.esp_expected,
         })
     return rows, harness
