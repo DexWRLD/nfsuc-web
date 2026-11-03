@@ -1,0 +1,2817 @@
+{
+  "device": {
+    "va": "0x013C6510",
+    "mapped": {
+      "section": ".data",
+      "value": 0,
+      "reason": "virtual tail zero"
+    },
+    "writers": [
+      {
+        "kind": "READ",
+        "eip": "0x0071CDB0",
+        "text": "mov eax, dword ptr [0x013C6510]",
+        "owner": "0x0071CDA0",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x0071D3DC",
+        "text": "mov eax, dword ptr [0x013C6510]",
+        "owner": "0x0071D300",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x0071D40D",
+        "text": "mov ecx, dword ptr [0x013C6510]",
+        "owner": "0x0071D300",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x0071DAF0",
+        "text": "mov edx, dword ptr [0x013C6510]",
+        "owner": "0x0071DAE0",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x0071E630",
+        "text": "mov eax, dword ptr [0x013C6510]",
+        "owner": "0x0071E630",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x0072319B",
+        "text": "mov eax, dword ptr [0x013C6510]",
+        "owner": "0x00723160",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x007231CB",
+        "text": "mov eax, dword ptr [0x013C6510]",
+        "owner": "0x00723160",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x007231F4",
+        "text": "mov eax, dword ptr [0x013C6510]",
+        "owner": "0x00723160",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "ADDRESS_TAKEN",
+        "eip": "0x007252B6",
+        "text": "push 0x013C6510",
+        "owner": "0x00725200",
+        "label": "HIGH_CONFIDENCE",
+        "class": "DEFINITE_DEVICE_PUBLICATION"
+      },
+      {
+        "kind": "ADDRESS_TAKEN",
+        "eip": "0x007252E8",
+        "text": "push 0x013C6510",
+        "owner": "0x00725200",
+        "label": "HIGH_CONFIDENCE",
+        "class": "DEFINITE_DEVICE_PUBLICATION"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x00725305",
+        "text": "mov eax, dword ptr [0x013C6510]",
+        "owner": "0x00725200",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x00725317",
+        "text": "mov eax, dword ptr [0x013C6510]",
+        "owner": "0x00725200",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x00725331",
+        "text": "mov eax, dword ptr [0x013C6510]",
+        "owner": "0x00725200",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x00725341",
+        "text": "mov eax, dword ptr [0x013C6510]",
+        "owner": "0x00725200",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x007253C2",
+        "text": "mov eax, dword ptr [0x013C6510]",
+        "owner": "0x00725200",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x00725420",
+        "text": "mov eax, dword ptr [0x013C6510]",
+        "owner": "0x00725200",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x007254AF",
+        "text": "mov eax, dword ptr [0x013C6510]",
+        "owner": "0x007254A0",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x0072550C",
+        "text": "mov eax, dword ptr [0x013C6510]",
+        "owner": "0x007254A0",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x007258ED",
+        "text": "mov eax, dword ptr [0x013C6510]",
+        "owner": "0x00725580",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x00725A71",
+        "text": "mov ecx, dword ptr [0x013C6510]",
+        "owner": "0x00725580",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x00725AB9",
+        "text": "mov eax, dword ptr [0x013C6510]",
+        "owner": "0x00725580",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x00727F21",
+        "text": "mov eax, dword ptr [0x013C6510]",
+        "owner": "0x00727ED0",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x0072987A",
+        "text": "mov eax, dword ptr [0x013C6510]",
+        "owner": "0x007297D0",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x00729909",
+        "text": "mov eax, dword ptr [0x013C6510]",
+        "owner": "0x007297D0",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x0072E228",
+        "text": "mov eax, dword ptr [0x013C6510]",
+        "owner": "0x0072E050",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x0072E664",
+        "text": "mov eax, dword ptr [0x013C6510]",
+        "owner": "0x0072E5D0",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x00730145",
+        "text": "mov eax, dword ptr [0x013C6510]",
+        "owner": "0x00730040",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x00731B30",
+        "text": "mov eax, dword ptr [0x013C6510]",
+        "owner": "0x00731B30",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x00733757",
+        "text": "mov eax, dword ptr [0x013C6510]",
+        "owner": "0x00733700",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x0073376A",
+        "text": "mov eax, dword ptr [0x013C6510]",
+        "owner": "0x00733700",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x00733790",
+        "text": "mov eax, dword ptr [0x013C6510]",
+        "owner": "0x00733700",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x00733848",
+        "text": "mov eax, dword ptr [0x013C6510]",
+        "owner": "0x007337F0",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x0073385B",
+        "text": "mov eax, dword ptr [0x013C6510]",
+        "owner": "0x007337F0",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x00733887",
+        "text": "mov eax, dword ptr [0x013C6510]",
+        "owner": "0x007337F0",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x00734C1E",
+        "text": "mov eax, dword ptr [0x013C6510]",
+        "owner": "0x00734B20",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x00734C56",
+        "text": "mov eax, dword ptr [0x013C6510]",
+        "owner": "0x00734B20",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x00734C6A",
+        "text": "mov eax, dword ptr [0x013C6510]",
+        "owner": "0x00734B20",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x00734C7E",
+        "text": "mov eax, dword ptr [0x013C6510]",
+        "owner": "0x00734B20",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x0073DA44",
+        "text": "mov eax, dword ptr [0x013C6510]",
+        "owner": "0x0073DA00",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x0073E773",
+        "text": "mov eax, dword ptr [0x013C6510]",
+        "owner": "0x0073E770",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x0073E7C0",
+        "text": "mov eax, dword ptr [0x013C6510]",
+        "owner": "0x0073E770",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x0073E813",
+        "text": "mov eax, dword ptr [0x013C6510]",
+        "owner": "0x0073E770",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x0073EB2F",
+        "text": "mov edx, dword ptr [0x013C6510]",
+        "owner": "0x0073EB10",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x0073EE7F",
+        "text": "mov esi, dword ptr [0x013C6510]",
+        "owner": "0x0073EE70",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x0073F0DC",
+        "text": "mov edi, dword ptr [0x013C6510]",
+        "owner": "0x0073F0C0",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x0074097D",
+        "text": "mov eax, dword ptr [0x013C6510]",
+        "owner": "0x00740960",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x00740C1C",
+        "text": "mov eax, dword ptr [0x013C6510]",
+        "owner": "0x00740C00",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x00741376",
+        "text": "mov ecx, dword ptr [0x013C6510]",
+        "owner": "0x00741340",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x0074285C",
+        "text": "mov eax, dword ptr [0x013C6510]",
+        "owner": "0x00742810",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x0074286F",
+        "text": "mov eax, dword ptr [0x013C6510]",
+        "owner": "0x00742810",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x00742883",
+        "text": "mov eax, dword ptr [0x013C6510]",
+        "owner": "0x00742810",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x00747770",
+        "text": "mov eax, dword ptr [0x013C6510]",
+        "owner": "0x00747770",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x00747FB4",
+        "text": "mov eax, dword ptr [0x013C6510]",
+        "owner": "0x00747FB0",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x0074800B",
+        "text": "mov ecx, dword ptr [0x013C6510]",
+        "owner": "0x00747FF0",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x00748024",
+        "text": "mov eax, dword ptr [0x013C6510]",
+        "owner": "0x00747FF0",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x0074D151",
+        "text": "mov eax, dword ptr [0x013C6510]",
+        "owner": "0x0074D0F0",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x0074D241",
+        "text": "mov esi, dword ptr [0x013C6510]",
+        "owner": "0x0074D230",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x0074D57C",
+        "text": "mov eax, dword ptr [0x013C6510]",
+        "owner": "0x0074D540",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x007508A5",
+        "text": "mov eax, dword ptr [0x013C6510]",
+        "owner": "0x00750870",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x00750925",
+        "text": "mov eax, dword ptr [0x013C6510]",
+        "owner": "0x007508F0",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x00750995",
+        "text": "mov eax, dword ptr [0x013C6510]",
+        "owner": "0x00750970",
+        "label": "LOW_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x007509CB",
+        "text": "mov esi, dword ptr [0x013C6510]",
+        "owner": "0x007509B0",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x00750A3A",
+        "text": "mov ecx, dword ptr [0x013C6510]",
+        "owner": "0x007509B0",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x00750B7B",
+        "text": "mov esi, dword ptr [0x013C6510]",
+        "owner": "0x00750B60",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x00751184",
+        "text": "mov eax, dword ptr [0x013C6510]",
+        "owner": "0x00751170",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x007511A6",
+        "text": "mov eax, dword ptr [0x013C6510]",
+        "owner": "0x00751170",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x00751220",
+        "text": "mov eax, dword ptr [0x013C6510]",
+        "owner": "0x00751170",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x00751242",
+        "text": "mov eax, dword ptr [0x013C6510]",
+        "owner": "0x00751170",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x007512B1",
+        "text": "mov eax, dword ptr [0x013C6510]",
+        "owner": "0x007512B0",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x007512DC",
+        "text": "mov eax, dword ptr [0x013C6510]",
+        "owner": "0x007512B0",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x007513C6",
+        "text": "mov eax, dword ptr [0x013C6510]",
+        "owner": "0x00751360",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x007515B6",
+        "text": "mov eax, dword ptr [0x013C6510]",
+        "owner": "0x00751360",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x00752AF0",
+        "text": "mov eax, dword ptr [0x013C6510]",
+        "owner": "0x00752AF0",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x00752B03",
+        "text": "mov eax, dword ptr [0x013C6510]",
+        "owner": "0x00752AF0",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x00752B53",
+        "text": "mov eax, dword ptr [0x013C6510]",
+        "owner": "0x00752AF0",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x00752B7C",
+        "text": "mov eax, dword ptr [0x013C6510]",
+        "owner": "0x00752AF0",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x00752B9E",
+        "text": "mov eax, dword ptr [0x013C6510]",
+        "owner": "0x00752AF0",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x00752BC7",
+        "text": "mov eax, dword ptr [0x013C6510]",
+        "owner": "0x00752AF0",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x00752BE6",
+        "text": "mov eax, dword ptr [0x013C6510]",
+        "owner": "0x00752AF0",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x007530A9",
+        "text": "mov edx, dword ptr [0x013C6510]",
+        "owner": "0x00752E70",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x00753164",
+        "text": "mov eax, dword ptr [0x013C6510]",
+        "owner": "0x007530E0",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x007532B0",
+        "text": "mov eax, dword ptr [0x013C6510]",
+        "owner": "0x00753240",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x007532CF",
+        "text": "mov eax, dword ptr [0x013C6510]",
+        "owner": "0x00753240",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x00753325",
+        "text": "mov ecx, dword ptr [0x013C6510]",
+        "owner": "0x00753310",
+        "label": "REJECTED_DATA_LIKE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x007540E3",
+        "text": "mov eax, dword ptr [0x013C6510]",
+        "owner": "0x007540E0",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x0075410A",
+        "text": "mov eax, dword ptr [0x013C6510]",
+        "owner": "0x007540E0",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x007541DE",
+        "text": "mov esi, dword ptr [0x013C6510]",
+        "owner": "0x007540E0",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x00754315",
+        "text": "mov eax, dword ptr [0x013C6510]",
+        "owner": "0x007540E0",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x0075433A",
+        "text": "mov eax, dword ptr [0x013C6510]",
+        "owner": "0x007540E0",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x007543B0",
+        "text": "mov eax, dword ptr [0x013C6510]",
+        "owner": "0x00754390",
+        "label": "MEDIUM_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x00754402",
+        "text": "mov eax, dword ptr [0x013C6510]",
+        "owner": "0x00754390",
+        "label": "MEDIUM_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x0075447C",
+        "text": "mov eax, dword ptr [0x013C6510]",
+        "owner": "0x00754390",
+        "label": "MEDIUM_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x007544B4",
+        "text": "mov edi, dword ptr [0x013C6510]",
+        "owner": "0x007544B0",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x007545F2",
+        "text": "mov ebx, dword ptr [0x013C6510]",
+        "owner": "0x007545F0",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x00754B84",
+        "text": "mov ecx, dword ptr [0x013C6510]",
+        "owner": "0x00754B60",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x00754BCB",
+        "text": "mov ecx, dword ptr [0x013C6510]",
+        "owner": "0x00754B60",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x00754C06",
+        "text": "mov edx, dword ptr [0x013C6510]",
+        "owner": "0x00754B60",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x00755CBA",
+        "text": "mov edx, dword ptr [0x013C6510]",
+        "owner": "0x00755C60",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x007579DD",
+        "text": "mov edx, dword ptr [0x013C6510]",
+        "owner": "0x00757960",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x007579FF",
+        "text": "mov ecx, dword ptr [0x013C6510]",
+        "owner": "0x00757960",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x00757A20",
+        "text": "mov ecx, dword ptr [0x013C6510]",
+        "owner": "0x00757960",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x00757AD1",
+        "text": "mov eax, dword ptr [0x013C6510]",
+        "owner": "0x00757A50",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x00757AF1",
+        "text": "mov ecx, dword ptr [0x013C6510]",
+        "owner": "0x00757A50",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x00757B12",
+        "text": "mov ecx, dword ptr [0x013C6510]",
+        "owner": "0x00757A50",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x00757B91",
+        "text": "mov edi, dword ptr [0x013C6510]",
+        "owner": "0x00757B80",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x0075DBD8",
+        "text": "mov ecx, dword ptr [0x013C6510]",
+        "owner": "0x0075DBC0",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x0075EAF6",
+        "text": "mov ecx, dword ptr [0x013C6510]",
+        "owner": "0x0075E920",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x0075EB70",
+        "text": "mov edx, dword ptr [0x013C6510]",
+        "owner": "0x0075E920",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x0075ECD4",
+        "text": "mov ecx, dword ptr [0x013C6510]",
+        "owner": "0x0075EBF0",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x0075ED10",
+        "text": "mov ecx, dword ptr [0x013C6510]",
+        "owner": "0x0075EBF0",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x0075ED91",
+        "text": "mov edx, dword ptr [0x013C6510]",
+        "owner": "0x0075EBF0",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x0075EEE5",
+        "text": "mov eax, dword ptr [0x013C6510]",
+        "owner": "0x0075EEC0",
+        "label": "LOW_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x0075EF2A",
+        "text": "mov ecx, dword ptr [0x013C6510]",
+        "owner": "0x0075EF20",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x0075EF8E",
+        "text": "mov edx, dword ptr [0x013C6510]",
+        "owner": "0x0075EF20",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x0075F2A5",
+        "text": "mov eax, dword ptr [0x013C6510]",
+        "owner": "0x0075F240",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x00764AAC",
+        "text": "mov ecx, dword ptr [0x013C6510]",
+        "owner": "0x007649A0",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x00764AE1",
+        "text": "mov eax, dword ptr [0x013C6510]",
+        "owner": "0x007649A0",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x00764E4D",
+        "text": "mov ecx, dword ptr [0x013C6510]",
+        "owner": "0x00764B40",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x00764F07",
+        "text": "mov ecx, dword ptr [0x013C6510]",
+        "owner": "0x00764B40",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x00764F26",
+        "text": "mov eax, dword ptr [0x013C6510]",
+        "owner": "0x00764B40",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x00765338",
+        "text": "mov ecx, dword ptr [0x013C6510]",
+        "owner": "0x00764F70",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x00765374",
+        "text": "mov eax, dword ptr [0x013C6510]",
+        "owner": "0x00764F70",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x00765393",
+        "text": "mov edx, dword ptr [0x013C6510]",
+        "owner": "0x00764F70",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x00765688",
+        "text": "mov ecx, dword ptr [0x013C6510]",
+        "owner": "0x00765510",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x007660AF",
+        "text": "mov ecx, dword ptr [0x013C6510]",
+        "owner": "0x00765D90",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x007666CF",
+        "text": "mov ecx, dword ptr [0x013C6510]",
+        "owner": "0x00766400",
+        "label": "REJECTED_DATA_LIKE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x007666E6",
+        "text": "mov edx, dword ptr [0x013C6510]",
+        "owner": "0x00766400",
+        "label": "REJECTED_DATA_LIKE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x00766AF7",
+        "text": "mov eax, dword ptr [0x013C6510]",
+        "owner": "0x00766AC0",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x00766E49",
+        "text": "mov ecx, dword ptr [0x013C6510]",
+        "owner": "0x00766BE0",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x00766F2A",
+        "text": "mov eax, dword ptr [0x013C6510]",
+        "owner": "0x00766ED0",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x00766F3E",
+        "text": "mov eax, dword ptr [0x013C6510]",
+        "owner": "0x00766ED0",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x00766F51",
+        "text": "mov eax, dword ptr [0x013C6510]",
+        "owner": "0x00766ED0",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x00767134",
+        "text": "mov ecx, dword ptr [0x013C6510]",
+        "owner": "0x00766ED0",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x007671BE",
+        "text": "mov eax, dword ptr [0x013C6510]",
+        "owner": "0x00767180",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x007671D2",
+        "text": "mov eax, dword ptr [0x013C6510]",
+        "owner": "0x00767180",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x007671E5",
+        "text": "mov eax, dword ptr [0x013C6510]",
+        "owner": "0x00767180",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x00767408",
+        "text": "mov ecx, dword ptr [0x013C6510]",
+        "owner": "0x00767180",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x007674DA",
+        "text": "mov eax, dword ptr [0x013C6510]",
+        "owner": "0x00767440",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x007674EC",
+        "text": "mov eax, dword ptr [0x013C6510]",
+        "owner": "0x00767440",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x007674FF",
+        "text": "mov eax, dword ptr [0x013C6510]",
+        "owner": "0x00767440",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x0076771D",
+        "text": "mov ecx, dword ptr [0x013C6510]",
+        "owner": "0x00767440",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x007677BF",
+        "text": "mov eax, dword ptr [0x013C6510]",
+        "owner": "0x00767760",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x007677DB",
+        "text": "mov eax, dword ptr [0x013C6510]",
+        "owner": "0x00767760",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x00767A0A",
+        "text": "mov ecx, dword ptr [0x013C6510]",
+        "owner": "0x00767760",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x00767A46",
+        "text": "mov edx, dword ptr [0x013C6510]",
+        "owner": "0x00767760",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x00767DC7",
+        "text": "mov ecx, dword ptr [0x013C6510]",
+        "owner": "0x00767BC0",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x007680FA",
+        "text": "mov ecx, dword ptr [0x013C6510]",
+        "owner": "0x00767E90",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x00768500",
+        "text": "mov ecx, dword ptr [0x013C6510]",
+        "owner": "0x00768180",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x007685BB",
+        "text": "mov ecx, dword ptr [0x013C6510]",
+        "owner": "0x00768590",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x00768A8B",
+        "text": "mov ecx, dword ptr [0x013C6510]",
+        "owner": "0x00768990",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x00769043",
+        "text": "mov ebp, dword ptr [0x013C6510]",
+        "owner": "0x00768EC0",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x007692EF",
+        "text": "mov ecx, dword ptr [0x013C6510]",
+        "owner": "0x00768EC0",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x0076A620",
+        "text": "mov eax, dword ptr [0x013C6510]",
+        "owner": "0x0076A600",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x0076B39C",
+        "text": "mov ecx, dword ptr [0x013C6510]",
+        "owner": "0x0076AFC0",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x0076B6C0",
+        "text": "mov ecx, dword ptr [0x013C6510]",
+        "owner": "0x0076B3D0",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x0076C8F8",
+        "text": "mov eax, dword ptr [0x013C6510]",
+        "owner": "0x0076C8D0",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x0076CED5",
+        "text": "mov esi, dword ptr [0x013C6510]",
+        "owner": "0x0076CEB0",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x0076D199",
+        "text": "mov ecx, dword ptr [0x013C6510]",
+        "owner": "0x0076CEB0",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x0076D372",
+        "text": "mov ecx, dword ptr [0x013C6510]",
+        "owner": "0x0076CEB0",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x0077076E",
+        "text": "mov eax, dword ptr [0x013C6510]",
+        "owner": "0x00770750",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x007707AD",
+        "text": "mov eax, dword ptr [0x013C6510]",
+        "owner": "0x00770750",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x007707F3",
+        "text": "mov eax, dword ptr [0x013C6510]",
+        "owner": "0x00770750",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x0077204D",
+        "text": "mov eax, dword ptr [0x013C6510]",
+        "owner": "0x00771FB0",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x00772068",
+        "text": "mov eax, dword ptr [0x013C6510]",
+        "owner": "0x00771FB0",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x00772479",
+        "text": "mov eax, dword ptr [0x013C6510]",
+        "owner": "0x007723E0",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x00772494",
+        "text": "mov eax, dword ptr [0x013C6510]",
+        "owner": "0x007723E0",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      },
+      {
+        "kind": "READ",
+        "eip": "0x007820D7",
+        "text": "mov eax, dword ptr [0x013C6510]",
+        "owner": "0x00781A60",
+        "label": "HIGH_CONFIDENCE",
+        "class": "UNKNOWN"
+      }
+    ],
+    "writer_classes": {
+      "UNKNOWN": 165,
+      "DEFINITE_DEVICE_PUBLICATION": 2
+    },
+    "publication": {
+      "path": "0x007297D0 -> (0x00686000 alloc) -> 0x00725200 COM +0x40 out-param",
+      "instructions": [
+        "push 0x013C6510 @ 0x007252B6",
+        "push 0x013C6510 @ 0x007252E8"
+      ],
+      "class": "DEFINITE_DEVICE_PUBLICATION"
+    }
+  },
+  "publisher_fn": {
+    "entry": "0x00725200",
+    "insn_count": 203,
+    "abi": {
+      "form": "thiscall + stdcall stack args",
+      "ecx": "graphics/renderer object (saved ESI)",
+      "stack_args": 4,
+      "ret_bytes": "0x10 (ret 0x10)",
+      "return": "EAX = HRESULT-like from device publication COM call (EBX)"
+    },
+    "first_stack_arg": "COM factory/wrapper object (EBP); typically [graphics_object+0x10]",
+    "out_param_pushes": [
+      {
+        "va": "0x007252B6",
+        "text": "push 0x13c6510"
+      },
+      {
+        "va": "0x007252E8",
+        "text": "push 0x13c6510"
+      }
+    ],
+    "create_like_sites": [
+      {
+        "call_va": "0x007252CF",
+        "vtable_offset": "0x40",
+        "args_push_order": [
+          "0x013C6510 (out IDirect3DDevice9**)",
+          "lea [esi+0x130] (presentation-params-like)",
+          "0x40 (BehaviorFlags-like; D3DCREATE_HARDWARE_VERTEXPROCESSING)",
+          "saved hwnd/adapter fields",
+          "DeviceType-like",
+          "Adapter-like",
+          "this=EBP"
+        ]
+      },
+      {
+        "call_va": "0x007252F5",
+        "vtable_offset": "0x40",
+        "note": "retry with BehaviorFlags 0x20 and DeviceType 1"
+      }
+    ],
+    "success_demo_sequence": [
+      "BeginScene +0xA4 @ 0x00725313",
+      "Clear +0xAC @ 0x0072532F (flags 7)",
+      "EndScene +0xA8 @ 0x0072533F",
+      "Present +0x44 @ 0x00725350"
+    ],
+    "devicelost_compare": {
+      "va": "0x007252F9",
+      "imm": "0x8876086C"
+    },
+    "listing": [
+      {
+        "va": "0x00725200",
+        "text": "sub esp, 0x460"
+      },
+      {
+        "va": "0x00725206",
+        "text": "mov eax, dword ptr [0x1285688]"
+      },
+      {
+        "va": "0x0072520B",
+        "text": "xor eax, esp"
+      },
+      {
+        "va": "0x0072520D",
+        "text": "mov dword ptr [esp + 0x45c], eax"
+      },
+      {
+        "va": "0x00725214",
+        "text": "mov eax, dword ptr [esp + 0x46c]"
+      },
+      {
+        "va": "0x0072521B",
+        "text": "push ebx"
+      },
+      {
+        "va": "0x0072521C",
+        "text": "push ebp"
+      },
+      {
+        "va": "0x0072521D",
+        "text": "mov ebp, dword ptr [esp + 0x46c]"
+      },
+      {
+        "va": "0x00725224",
+        "text": "mov edx, dword ptr [ebp]"
+      },
+      {
+        "va": "0x00725227",
+        "text": "push esi"
+      },
+      {
+        "va": "0x00725228",
+        "text": "mov esi, ecx"
+      },
+      {
+        "va": "0x0072522A",
+        "text": "mov ecx, dword ptr [esp + 0x474]"
+      },
+      {
+        "va": "0x00725231",
+        "text": "push edi"
+      },
+      {
+        "va": "0x00725232",
+        "text": "mov dword ptr [esp + 0x18], eax"
+      },
+      {
+        "va": "0x00725236",
+        "text": "mov eax, dword ptr [edx + 0x10]"
+      },
+      {
+        "va": "0x00725239",
+        "text": "push ebp"
+      },
+      {
+        "va": "0x0072523A",
+        "text": "mov dword ptr [esp + 0x18], esi"
+      },
+      {
+        "va": "0x0072523E",
+        "text": "mov dword ptr [esp + 0x14], ecx"
+      },
+      {
+        "va": "0x00725242",
+        "text": "mov dword ptr [esp + 0x20], 1"
+      },
+      {
+        "va": "0x0072524A",
+        "text": "xor ebx, ebx"
+      },
+      {
+        "va": "0x0072524C",
+        "text": "call eax"
+      },
+      {
+        "va": "0x0072524E",
+        "text": "test eax, eax"
+      },
+      {
+        "va": "0x00725250",
+        "text": "jbe 0x72529c"
+      },
+      {
+        "va": "0x00725252",
+        "text": "mov ecx, dword ptr [ebp]"
+      },
+      {
+        "va": "0x00725255",
+        "text": "mov eax, dword ptr [ecx + 0x14]"
+      },
+      {
+        "va": "0x00725258",
+        "text": "lea edx, [esp + 0x20]"
+      },
+      {
+        "va": "0x0072525C",
+        "text": "push edx"
+      },
+      {
+        "va": "0x0072525D",
+        "text": "push 0"
+      },
+      {
+        "va": "0x0072525F",
+        "text": "push ebx"
+      },
+      {
+        "va": "0x00725260",
+        "text": "push ebp"
+      },
+      {
+        "va": "0x00725261",
+        "text": "call eax"
+      },
+      {
+        "va": "0x00725263",
+        "text": "mov edi, 0xbab52c"
+      },
+      {
+        "va": "0x00725268",
+        "text": "lea esi, [esp + 0x220]"
+      },
+      {
+        "va": "0x0072526F",
+        "text": "mov ecx, 0xf"
+      },
+      {
+        "va": "0x00725274",
+        "text": "xor edx, edx"
+      },
+      {
+        "va": "0x00725276",
+        "text": "repe cmpsb byte ptr [esi], byte ptr es:[edi]"
+      },
+      {
+        "va": "0x00725278",
+        "text": "je 0x72528c"
+      },
+      {
+        "va": "0x0072527A",
+        "text": "mov eax, dword ptr [ebp]"
+      },
+      {
+        "va": "0x0072527D",
+        "text": "mov ecx, dword ptr [eax + 0x10]"
+      },
+      {
+        "va": "0x00725280",
+        "text": "push ebp"
+      },
+      {
+        "va": "...",
+        "text": "..."
+      },
+      {
+        "va": "0x00725427",
+        "text": "mov edx, dword ptr [ecx + 0xe4]"
+      },
+      {
+        "va": "0x0072542D",
+        "text": "push 0x54534e49"
+      },
+      {
+        "va": "0x00725432",
+        "text": "push 0x9a"
+      },
+      {
+        "va": "0x00725437",
+        "text": "push eax"
+      },
+      {
+        "va": "0x00725438",
+        "text": "call edx"
+      },
+      {
+        "va": "0x0072543A",
+        "text": "test eax, eax"
+      },
+      {
+        "va": "0x0072543C",
+        "text": "setge al"
+      },
+      {
+        "va": "0x0072543F",
+        "text": "mov byte ptr [esi + 0x1b4], al"
+      },
+      {
+        "va": "0x00725445",
+        "text": "mov ecx, esi"
+      },
+      {
+        "va": "0x00725447",
+        "text": "call 0x722db0"
+      },
+      {
+        "va": "0x0072544C",
+        "text": "cmp byte ptr [0x12ce465], 0"
+      },
+      {
+        "va": "0x00725453",
+        "text": "je 0x72545f"
+      },
+      {
+        "va": "0x00725455",
+        "text": "mov dword ptr [esi + 0x1b0], 2"
+      },
+      {
+        "va": "0x0072545F",
+        "text": "mov ecx, dword ptr [0x13181c4]"
+      },
+      {
+        "va": "0x00725465",
+        "text": "cmp dword ptr [ecx + 0x58], edi"
+      },
+      {
+        "va": "0x00725468",
+        "text": "je 0x725479"
+      },
+      {
+        "va": "0x0072546A",
+        "text": "mov edx, dword ptr [0x1318184]"
+      },
+      {
+        "va": "0x00725470",
+        "text": "cmp dword ptr [edx + 0x1b0], 2"
+      },
+      {
+        "va": "0x00725477",
+        "text": "jne 0x725480"
+      },
+      {
+        "va": "0x00725479",
+        "text": "mov byte ptr [0xcd4af1], 0"
+      },
+      {
+        "va": "0x00725480",
+        "text": "mov ecx, dword ptr [esp + 0x46c]"
+      },
+      {
+        "va": "0x00725487",
+        "text": "pop edi"
+      },
+      {
+        "va": "0x00725488",
+        "text": "pop esi"
+      },
+      {
+        "va": "0x00725489",
+        "text": "pop ebp"
+      },
+      {
+        "va": "0x0072548A",
+        "text": "mov eax, ebx"
+      },
+      {
+        "va": "0x0072548C",
+        "text": "pop ebx"
+      },
+      {
+        "va": "0x0072548D",
+        "text": "xor ecx, esp"
+      },
+      {
+        "va": "0x0072548F",
+        "text": "call 0x87b350"
+      },
+      {
+        "va": "0x00725494",
+        "text": "add esp, 0x460"
+      },
+      {
+        "va": "0x0072549A",
+        "text": "ret 0x10"
+      }
+    ]
+  },
+  "publisher_caller": {
+    "entry": "0x007297D0",
+    "events": [
+      {
+        "va": "0x00729801",
+        "text": "call 0x686000"
+      },
+      {
+        "va": "0x00729836",
+        "text": "call 0x725200"
+      },
+      {
+        "va": "0x0072986A",
+        "text": "call 0x725200"
+      },
+      {
+        "va": "0x0072987A",
+        "text": "mov eax, dword ptr [0x13c6510]"
+      },
+      {
+        "va": "0x00729909",
+        "text": "mov eax, dword ptr [0x13c6510]"
+      },
+      {
+        "va": "0x0072994E",
+        "text": "call 0x686000"
+      }
+    ],
+    "helper_0x00686000": {
+      "before_device_publication": true,
+      "after_device_publication": true,
+      "first_site": "0x00729801",
+      "first_role": "allocator-like (push 0x84 size / tag / 0); result stored [esi+0x50]",
+      "second_site": "0x0072994E",
+      "second_role": "later sibling after device already published/used",
+      "note": "Successful call to 0x00725200 is sequenced AFTER the first 0x00686000 allocation. The helper is on the prerequisite path, not merely an error path."
+    },
+    "factory_arg": {
+      "push": "[esi+0x10] as first stack arg to 0x00725200",
+      "means": "requires graphics object factory field (Direct3DCreate9 result)"
+    },
+    "device_pub_sites": [
+      "0x00729836",
+      "0x0072986A"
+    ],
+    "retry_on_failure": true
+  },
+  "createdevice": {
+    "confidence": "CREATEDEVICE_STRONG_CANDIDATE",
+    "vtable_offset": "0x40",
+    "raw_idirect3d9_createdevice_offset": "0x3C",
+    "out_param_proof": true,
+    "out_param_instruction": "push 0x013C6510 @ 0x007252B6 / 0x007252E8",
+    "evidence": [
+      "Source interface is stack COM object EBP from [graphics_object+0x10] factory field",
+      "Six stack args + this match CreateDevice arity/order (Adapter, DevType, HWND, BehaviorFlags, D3DPRESENT_PARAMETERS*, out device**)",
+      "BehaviorFlags immediates 0x40 then retry 0x20",
+      "HRESULT in EAX/EBX; success (==0) then BeginScene/Clear/EndScene/Present on published DEVICE",
+      "D3DERR_DEVICELOST constant compared",
+      "Offset +0x40 is one slot past raw IDirect3D9::CreateDevice (+0x3C) => wrapper-shaped, not raw proven"
+    ]
+  },
+  "dependency_graph": {
+    "goal": "non-NULL [0x013C6510] via ordinary 0x00725200 publication",
+    "edges": [
+      {
+        "from": "0x007297D0",
+        "to": "0x00686000 first",
+        "class": "PROTECTED_BOUNDARY"
+      },
+      {
+        "from": "0x00686000",
+        "to": "[obj+0x50] allocation",
+        "class": "PROTECTED_BOUNDARY"
+      },
+      {
+        "from": "0x007297D0",
+        "to": "[obj+0x10] factory iface",
+        "class": "EXTERNAL_STATE"
+      },
+      {
+        "from": "[obj+0x10]",
+        "to": "blocked factory 0x0072E340 / 0x00B615C4",
+        "class": "EXTERNAL_CODE"
+      },
+      {
+        "from": "0x007297D0",
+        "to": "0x00725200",
+        "class": "ORDINARY_DIRECT"
+      },
+      {
+        "from": "0x00725200",
+        "to": "COM +0x40 out-param publish DEVICE",
+        "class": "ORDINARY_INDIRECT_PROVEN"
+      },
+      {
+        "from": "0x00725200 success",
+        "to": "Clear/Begin/End/Present demo",
+        "class": "ORDINARY_INDIRECT_PROVEN"
+      }
+    ],
+    "first_unavailable_edge": "PROTECTED_BOUNDARY call 0x00686000 before 0x00725200 (also EXTERNAL_CODE for factory field via 0x00B615C4)",
+    "b615c4_mandatory_for_in_game_publication": true,
+    "helper_before_successful_publication": true
+  },
+  "helper_relationship": {
+    "before_device_publication": true,
+    "after_device_publication": true,
+    "first_site": "0x00729801",
+    "first_role": "allocator-like (push 0x84 size / tag / 0); result stored [esi+0x50]",
+    "second_site": "0x0072994E",
+    "second_role": "later sibling after device already published/used",
+    "note": "Successful call to 0x00725200 is sequenced AFTER the first 0x00686000 allocation. The helper is on the prerequisite path, not merely an error path."
+  },
+  "callback_relationship": {
+    "slot": "0x00B615C4",
+    "mandatory_for_in_game_publication": true,
+    "mandatory_for_present_prefix": false,
+    "note": "Factory field [obj+0x10] feeds 0x00725200; that field is written on blocked factory prefix."
+  },
+  "release": {
+    "confidence": "RELEASE_STRONG_CANDIDATE",
+    "device_linked_sites": [
+      {
+        "call": "0x00727F31",
+        "owner": "0x00727ED0",
+        "label": "HIGH_CONFIDENCE",
+        "soft_name": "Release"
+      },
+      {
+        "call": "0x007409A4",
+        "owner": "0x00740960",
+        "label": "HIGH_CONFIDENCE",
+        "soft_name": "Release"
+      },
+      {
+        "call": "0x007428C8",
+        "owner": "0x00742810",
+        "label": "HIGH_CONFIDENCE",
+        "soft_name": "Release"
+      },
+      {
+        "call": "0x007477AF",
+        "owner": "0x00747770",
+        "label": "HIGH_CONFIDENCE",
+        "soft_name": "Release"
+      },
+      {
+        "call": "0x00748053",
+        "owner": "0x00747FF0",
+        "label": "HIGH_CONFIDENCE",
+        "soft_name": "Release"
+      },
+      {
+        "call": "0x0074806D",
+        "owner": "0x00747FF0",
+        "label": "HIGH_CONFIDENCE",
+        "soft_name": "Release"
+      }
+    ],
+    "count": 6
+  },
+  "reset": {
+    "confidence": "RESET_NOT_FOUND",
+    "device_linked_0x38": [],
+    "broad_0x38_count": 93,
+    "note": "No DEVICE-global-linked IDirect3DDevice9::Reset (+0x38) call found. Broad +0x38 COM hits are dominated by non-device objects / false friends (e.g. field compares + SetRenderState)."
+  },
+  "recovery": {
+    "found": false,
+    "reset_confidence": "RESET_NOT_FOUND",
+    "devicelost_sites": [
+      {
+        "va": "0x007252F9",
+        "owner": "0x00725200",
+        "imm": "0x8876086C",
+        "behavior": "skip Begin/Clear/End/Present demo if HRESULT <= DEVICELOST or != 0"
+      }
+    ]
+  },
+  "republication": {
+    "found": false,
+    "note": "Only publication sites are ADDRESS_TAKEN out-params in 0x00725200. No ordinary absolute store of a new non-NULL device pointer found. No Reset-based recovery that rewrites 0x013C6510 found."
+  },
+  "presentation_parameters": {
+    "candidate": "[ESI+0x130] in 0x00725200 where ESI is thiscall object",
+    "size": "UNKNOWN (D3DPRESENT_PARAMETERS-sized region plausible)",
+    "writers": "object field initialization paths not fully mapped this phase"
+  },
+  "present_fn": {
+    "entry": "0x00752AF0",
+    "present_site": "0x00752B14",
+    "endscene_site": "0x00752B01",
+    "shortest_path": [
+      {
+        "va": "0x00752AF0",
+        "text": "mov eax, dword ptr [0x13c6510]"
+      },
+      {
+        "va": "0x00752AF5",
+        "text": "mov ecx, dword ptr [eax]"
+      },
+      {
+        "va": "0x00752AF7",
+        "text": "mov edx, dword ptr [ecx + 0xa8]"
+      },
+      {
+        "va": "0x00752AFD",
+        "text": "push ebx"
+      },
+      {
+        "va": "0x00752AFE",
+        "text": "push esi"
+      },
+      {
+        "va": "0x00752AFF",
+        "text": "push edi"
+      },
+      {
+        "va": "0x00752B00",
+        "text": "push eax"
+      },
+      {
+        "va": "0x00752B01",
+        "text": "call edx"
+      },
+      {
+        "va": "0x00752B03",
+        "text": "mov eax, dword ptr [0x13c6510]"
+      },
+      {
+        "va": "0x00752B08",
+        "text": "mov ecx, dword ptr [eax]"
+      },
+      {
+        "va": "0x00752B0A",
+        "text": "mov edx, dword ptr [ecx + 0x44]"
+      },
+      {
+        "va": "0x00752B0D",
+        "text": "xor ebx, ebx"
+      },
+      {
+        "va": "0x00752B0F",
+        "text": "push ebx"
+      },
+      {
+        "va": "0x00752B10",
+        "text": "push ebx"
+      },
+      {
+        "va": "0x00752B11",
+        "text": "push ebx"
+      },
+      {
+        "va": "0x00752B12",
+        "text": "push ebx"
+      },
+      {
+        "va": "0x00752B13",
+        "text": "push eax"
+      },
+      {
+        "va": "0x00752B14",
+        "text": "call edx"
+      }
+    ],
+    "prerequisites_on_prefix": [
+      {
+        "item": "[0x013C6510] non-NULL device",
+        "class": "D3D_DEVICE_STATE"
+      },
+      {
+        "item": "device vtable readable",
+        "class": "D3D_DEVICE_STATE"
+      }
+    ],
+    "not_read_on_prefix": [
+      "TLS",
+      "0x00B615C4",
+      "0x00686000",
+      "flag 0x01311E1C",
+      "factory field"
+    ],
+    "later_after_present": "additional ordinary calls; some callees may hit 0x00686000"
+  },
+  "clear": {
+    "confidence": "CLEAR_PROVEN",
+    "offset": "0xAC",
+    "best": {
+      "function": "0x00725200",
+      "call": "0x0072532F",
+      "args": "Clear(0, NULL, 7, 0, 1.0f, 0) shaped",
+      "device": "0x013C6510"
+    },
+    "sites": [
+      {
+        "call": "0x0072532F",
+        "owner": "0x00725200",
+        "label": "HIGH_CONFIDENCE",
+        "soft_name": "Clear"
+      },
+      {
+        "call": "0x0072532F",
+        "owner": "0x00725200",
+        "label": "HIGH_CONFIDENCE",
+        "soft_name": "Clear"
+      },
+      {
+        "call": "0x0074289F",
+        "owner": "0x00742810",
+        "label": "HIGH_CONFIDENCE",
+        "soft_name": "Clear"
+      },
+      {
+        "call": "0x0074289F",
+        "owner": "0x00742810",
+        "label": "HIGH_CONFIDENCE",
+        "soft_name": "Clear"
+      },
+      {
+        "call": "0x0074289F",
+        "owner": "0x00742810",
+        "label": "HIGH_CONFIDENCE",
+        "soft_name": "Clear"
+      },
+      {
+        "call": "0x00766F69",
+        "owner": "0x00766ED0",
+        "label": "HIGH_CONFIDENCE",
+        "soft_name": "Clear"
+      },
+      {
+        "call": "0x00766F69",
+        "owner": "0x00766ED0",
+        "label": "HIGH_CONFIDENCE",
+        "soft_name": "Clear"
+      },
+      {
+        "call": "0x00766F69",
+        "owner": "0x00766ED0",
+        "label": "HIGH_CONFIDENCE",
+        "soft_name": "Clear"
+      },
+      {
+        "call": "0x007671FD",
+        "owner": "0x00767180",
+        "label": "HIGH_CONFIDENCE",
+        "soft_name": "Clear"
+      },
+      {
+        "call": "0x007671FD",
+        "owner": "0x00767180",
+        "label": "HIGH_CONFIDENCE",
+        "soft_name": "Clear"
+      },
+      {
+        "call": "0x007671FD",
+        "owner": "0x00767180",
+        "label": "HIGH_CONFIDENCE",
+        "soft_name": "Clear"
+      },
+      {
+        "call": "0x00767517",
+        "owner": "0x00767440",
+        "label": "HIGH_CONFIDENCE",
+        "soft_name": "Clear"
+      }
+    ]
+  },
+  "aliases": {
+    "count": 147,
+    "samples": [
+      {
+        "kind": "stack_arg",
+        "va": "0x0071CDCB",
+        "reg": "eax",
+        "owner": "0x0071CDA0"
+      },
+      {
+        "kind": "stack_arg",
+        "va": "0x0071D3E2",
+        "reg": "eax",
+        "owner": "0x0071D300"
+      },
+      {
+        "kind": "stack_arg",
+        "va": "0x0071D3E8",
+        "reg": "eax",
+        "owner": "0x0071D300"
+      },
+      {
+        "kind": "stack_arg",
+        "va": "0x0071D413",
+        "reg": "ecx",
+        "owner": "0x0071D300"
+      },
+      {
+        "kind": "stack_arg",
+        "va": "0x0071DAFC",
+        "reg": "edx",
+        "owner": "0x0071DAE0"
+      },
+      {
+        "kind": "stack_arg",
+        "va": "0x0071E63D",
+        "reg": "eax",
+        "owner": "0x0071E630"
+      },
+      {
+        "kind": "object_field",
+        "va": "0x0071E640",
+        "base": "esi",
+        "offset": "0x194",
+        "owner": "0x0071E630"
+      },
+      {
+        "kind": "stack_arg",
+        "va": "0x007231B8",
+        "reg": "eax",
+        "owner": "0x00723160"
+      },
+      {
+        "kind": "stack_arg",
+        "va": "0x00725312",
+        "reg": "eax",
+        "owner": "0x00725200"
+      },
+      {
+        "kind": "stack_arg",
+        "va": "0x0072532E",
+        "reg": "eax",
+        "owner": "0x00725200"
+      },
+      {
+        "kind": "stack_arg",
+        "va": "0x0072533E",
+        "reg": "eax",
+        "owner": "0x00725200"
+      },
+      {
+        "kind": "stack_arg",
+        "va": "0x0072534F",
+        "reg": "eax",
+        "owner": "0x00725200"
+      },
+      {
+        "kind": "stack_arg",
+        "va": "0x007253E4",
+        "reg": "eax",
+        "owner": "0x00725200"
+      },
+      {
+        "kind": "stack_arg",
+        "va": "0x00725437",
+        "reg": "eax",
+        "owner": "0x00725200"
+      },
+      {
+        "kind": "stack_arg",
+        "va": "0x007254BD",
+        "reg": "eax",
+        "owner": "0x007254A0"
+      },
+      {
+        "kind": "stack_arg",
+        "va": "0x00725520",
+        "reg": "eax",
+        "owner": "0x007254A0"
+      },
+      {
+        "kind": "stack_arg",
+        "va": "0x00725901",
+        "reg": "eax",
+        "owner": "0x00725580"
+      },
+      {
+        "kind": "stack_arg",
+        "va": "0x00725A99",
+        "reg": "ecx",
+        "owner": "0x00725580"
+      },
+      {
+        "kind": "stack_arg",
+        "va": "0x00725AC3",
+        "reg": "eax",
+        "owner": "0x00725580"
+      },
+      {
+        "kind": "stack_arg",
+        "va": "0x00727F30",
+        "reg": "eax",
+        "owner": "0x00727ED0"
+      },
+      {
+        "kind": "stack_arg",
+        "va": "0x00729890",
+        "reg": "eax",
+        "owner": "0x007297D0"
+      },
+      {
+        "kind": "stack_arg",
+        "va": "0x00729926",
+        "reg": "eax",
+        "owner": "0x007297D0"
+      },
+      {
+        "kind": "stack_arg",
+        "va": "0x0072E238",
+        "reg": "eax",
+        "owner": "0x0072E050"
+      },
+      {
+        "kind": "stack_arg",
+        "va": "0x0072E675",
+        "reg": "eax",
+        "owner": "0x0072E5D0"
+      },
+      {
+        "kind": "stack_arg",
+        "va": "0x00730156",
+        "reg": "eax",
+        "owner": "0x00730040"
+      },
+      {
+        "kind": "stack_arg",
+        "va": "0x00731B4E",
+        "reg": "eax",
+        "owner": "0x00731B30"
+      },
+      {
+        "kind": "stack_arg",
+        "va": "0x00733761",
+        "reg": "eax",
+        "owner": "0x00733700"
+      },
+      {
+        "kind": "stack_arg",
+        "va": "0x0073377E",
+        "reg": "eax",
+        "owner": "0x00733700"
+      },
+      {
+        "kind": "stack_arg",
+        "va": "0x00733799",
+        "reg": "eax",
+        "owner": "0x00733700"
+      },
+      {
+        "kind": "stack_arg",
+        "va": "0x00733852",
+        "reg": "eax",
+        "owner": "0x007337F0"
+      },
+      {
+        "kind": "stack_arg",
+        "va": "0x0073386C",
+        "reg": "eax",
+        "owner": "0x007337F0"
+      },
+      {
+        "kind": "stack_arg",
+        "va": "0x007338AB",
+        "reg": "eax",
+        "owner": "0x007337F0"
+      },
+      {
+        "kind": "stack_arg",
+        "va": "0x00734C29",
+        "reg": "eax",
+        "owner": "0x00734B20"
+      },
+      {
+        "kind": "stack_arg",
+        "va": "0x00734C67",
+        "reg": "eax",
+        "owner": "0x00734B20"
+      },
+      {
+        "kind": "stack_arg",
+        "va": "0x00734C7B",
+        "reg": "eax",
+        "owner": "0x00734B20"
+      },
+      {
+        "kind": "stack_arg",
+        "va": "0x00734C8B",
+        "reg": "eax",
+        "owner": "0x00734B20"
+      },
+      {
+        "kind": "stack_arg",
+        "va": "0x0073DA54",
+        "reg": "eax",
+        "owner": "0x0073DA00"
+      },
+      {
+        "kind": "stack_arg",
+        "va": "0x0073EB47",
+        "reg": "edx",
+        "owner": "0x0073EB10"
+      },
+      {
+        "kind": "stack_arg",
+        "va": "0x00740992",
+        "reg": "eax",
+        "owner": "0x00740960"
+      },
+      {
+        "kind": "stack_arg",
+        "va": "0x007413AB",
+        "reg": "ecx",
+        "owner": "0x00741340"
+      }
+    ],
+    "proven_reg_copies_and_pushes": 147,
+    "note": "Conservative short-window propagation from DEVICE loads; no durable secondary global store proven."
+  },
+  "wrappers": [
+    {
+      "entry": "0x0073EE70",
+      "vtable_offset": "0x000000E4",
+      "soft_name": "SetRenderState",
+      "direct_calls": 1
+    },
+    {
+      "entry": "0x00740960",
+      "vtable_offset": "0x00000008",
+      "soft_name": "Release",
+      "direct_calls": 1
+    },
+    {
+      "entry": "0x00747770",
+      "vtable_offset": "0x00000008",
+      "soft_name": "Release",
+      "direct_calls": 0
+    },
+    {
+      "entry": "0x00747FF0",
+      "vtable_offset": "0x00000008",
+      "soft_name": "Release",
+      "direct_calls": 2
+    },
+    {
+      "entry": "0x0074D0F0",
+      "vtable_offset": "0x000000E4",
+      "soft_name": "SetRenderState",
+      "direct_calls": 0
+    },
+    {
+      "entry": "0x0074D230",
+      "vtable_offset": "0x000000E4",
+      "soft_name": "SetRenderState",
+      "direct_calls": 0
+    },
+    {
+      "entry": "0x007509B0",
+      "vtable_offset": "0x000000E4",
+      "soft_name": "SetRenderState",
+      "direct_calls": 0
+    },
+    {
+      "entry": "0x00750B60",
+      "vtable_offset": "0x000000E4",
+      "soft_name": "SetRenderState",
+      "direct_calls": 0
+    },
+    {
+      "entry": "0x00767180",
+      "vtable_offset": "0x000000AC",
+      "soft_name": "Clear",
+      "direct_calls": 0
+    },
+    {
+      "entry": "0x0076A600",
+      "vtable_offset": "0x000000A4",
+      "soft_name": "BeginScene",
+      "direct_calls": 1
+    }
+  ],
+  "wrapper_count": 10,
+  "draw": {
+    "count": 5,
+    "by_offset": {
+      "0x00000148": 2,
+      "0x0000014C": 2,
+      "0x00000150": 0,
+      "0x00000154": 1
+    },
+    "strongest": {
+      "vt_load": "0x007B2ADD",
+      "meth_load": "0x007B2AE1",
+      "call": "0x007B2AE7",
+      "obj_reg": "eax",
+      "owner": "0x007B2AC0",
+      "label": "HIGH_CONFIDENCE",
+      "soft_name": "DrawPrimitive"
+    },
+    "confidence": "DRAW_PRIMITIVE_STRONG",
+    "note": "Strict vtable COM shapes for Draw* exist (e.g. 0x007B2AC0 DP via renderer 0x017AA798 helper return). They are NOT direct loads of 0x013C6510. Device alias into that renderer path is not proven in this pass.",
+    "candidates": [
+      {
+        "vt_load": "0x007B2ADD",
+        "meth_load": "0x007B2AE1",
+        "call": "0x007B2AE7",
+        "obj_reg": "eax",
+        "owner": "0x007B2AC0",
+        "label": "HIGH_CONFIDENCE",
+        "soft_name": "DrawPrimitive",
+        "offset": "0x00000148",
+        "device_global_direct": false
+      },
+      {
+        "vt_load": "0x007B39CB",
+        "meth_load": "0x007B39CD",
+        "call": "0x007B39D3",
+        "obj_reg": "ecx",
+        "owner": "0x007B36A0",
+        "label": "HIGH_CONFIDENCE",
+        "soft_name": "DrawPrimitive",
+        "offset": "0x00000148",
+        "device_global_direct": false
+      },
+      {
+        "vt_load": "0x007A14F3",
+        "meth_load": "0x007A14F5",
+        "call": "0x007A14FD",
+        "obj_reg": "ebx",
+        "owner": "0x007A1400",
+        "label": "HIGH_CONFIDENCE",
+        "soft_name": "DrawIndexedPrimitive",
+        "offset": "0x0000014C",
+        "device_global_direct": false
+      },
+      {
+        "vt_load": "0x007B29D3",
+        "meth_load": "0x007B29D5",
+        "call": "0x007B29E7",
+        "obj_reg": "edi",
+        "owner": "0x007B2930",
+        "label": "HIGH_CONFIDENCE",
+        "soft_name": "DrawIndexedPrimitive",
+        "offset": "0x0000014C",
+        "device_global_direct": false
+      },
+      {
+        "vt_load": "0x007B1C6E",
+        "meth_load": "0x007B1C70",
+        "call": "0x007B1C78",
+        "obj_reg": "edi",
+        "owner": "0x007B17C0",
+        "label": "HIGH_CONFIDENCE",
+        "soft_name": "DrawIndexedPrimitiveUP",
+        "offset": "0x00000154",
+        "device_global_direct": false
+      }
+    ]
+  },
+  "renderer_object": {
+    "candidate": "0x017AA798",
+    "evidence": "DrawPrimitive path 0x007B2AC0 loads [0x017AA798] then helper-returned COM for VT +0x148",
+    "device_field": "UNKNOWN"
+  },
+  "linked_device_methods": {
+    "0x000000A4": [
+      {
+        "call": "0x00725313",
+        "owner": "0x00725200",
+        "label": "HIGH_CONFIDENCE",
+        "soft_name": "BeginScene"
+      },
+      {
+        "call": "0x0076A62E",
+        "owner": "0x0076A600",
+        "label": "HIGH_CONFIDENCE",
+        "soft_name": "BeginScene"
+      }
+    ],
+    "0x000000AC": [
+      {
+        "call": "0x0072532F",
+        "owner": "0x00725200",
+        "label": "HIGH_CONFIDENCE",
+        "soft_name": "Clear"
+      },
+      {
+        "call": "0x0072532F",
+        "owner": "0x00725200",
+        "label": "HIGH_CONFIDENCE",
+        "soft_name": "Clear"
+      },
+      {
+        "call": "0x0074289F",
+        "owner": "0x00742810",
+        "label": "HIGH_CONFIDENCE",
+        "soft_name": "Clear"
+      },
+      {
+        "call": "0x0074289F",
+        "owner": "0x00742810",
+        "label": "HIGH_CONFIDENCE",
+        "soft_name": "Clear"
+      },
+      {
+        "call": "0x0074289F",
+        "owner": "0x00742810",
+        "label": "HIGH_CONFIDENCE",
+        "soft_name": "Clear"
+      },
+      {
+        "call": "0x00766F69",
+        "owner": "0x00766ED0",
+        "label": "HIGH_CONFIDENCE",
+        "soft_name": "Clear"
+      },
+      {
+        "call": "0x00766F69",
+        "owner": "0x00766ED0",
+        "label": "HIGH_CONFIDENCE",
+        "soft_name": "Clear"
+      },
+      {
+        "call": "0x00766F69",
+        "owner": "0x00766ED0",
+        "label": "HIGH_CONFIDENCE",
+        "soft_name": "Clear"
+      },
+      {
+        "call": "0x007671FD",
+        "owner": "0x00767180",
+        "label": "HIGH_CONFIDENCE",
+        "soft_name": "Clear"
+      },
+      {
+        "call": "0x007671FD",
+        "owner": "0x00767180",
+        "label": "HIGH_CONFIDENCE",
+        "soft_name": "Clear"
+      }
+    ],
+    "0x000000A8": [
+      {
+        "call": "0x0072533F",
+        "owner": "0x00725200",
+        "label": "HIGH_CONFIDENCE",
+        "soft_name": "EndScene"
+      },
+      {
+        "call": "0x0072533F",
+        "owner": "0x00725200",
+        "label": "HIGH_CONFIDENCE",
+        "soft_name": "EndScene"
+      },
+      {
+        "call": "0x0072533F",
+        "owner": "0x00725200",
+        "label": "HIGH_CONFIDENCE",
+        "soft_name": "EndScene"
+      },
+      {
+        "call": "0x00752B01",
+        "owner": "0x00752AF0",
+        "label": "HIGH_CONFIDENCE",
+        "soft_name": "EndScene"
+      }
+    ],
+    "0x00000044": [
+      {
+        "call": "0x00725350",
+        "owner": "0x00725200",
+        "label": "HIGH_CONFIDENCE",
+        "soft_name": "Present"
+      },
+      {
+        "call": "0x00725350",
+        "owner": "0x00725200",
+        "label": "HIGH_CONFIDENCE",
+        "soft_name": "Present"
+      },
+      {
+        "call": "0x00725350",
+        "owner": "0x00725200",
+        "label": "HIGH_CONFIDENCE",
+        "soft_name": "Present"
+      },
+      {
+        "call": "0x00725350",
+        "owner": "0x00725200",
+        "label": "HIGH_CONFIDENCE",
+        "soft_name": "Present"
+      },
+      {
+        "call": "0x00752B14",
+        "owner": "0x00752AF0",
+        "label": "HIGH_CONFIDENCE",
+        "soft_name": "Present"
+      },
+      {
+        "call": "0x00752B14",
+        "owner": "0x00752AF0",
+        "label": "HIGH_CONFIDENCE",
+        "soft_name": "Present"
+      }
+    ],
+    "0x000000E4": [
+      {
+        "call": "0x007253E5",
+        "owner": "0x00725200",
+        "label": "HIGH_CONFIDENCE",
+        "soft_name": "SetRenderState"
+      },
+      {
+        "call": "0x00725438",
+        "owner": "0x00725200",
+        "label": "HIGH_CONFIDENCE",
+        "soft_name": "SetRenderState"
+      },
+      {
+        "call": "0x00725521",
+        "owner": "0x007254A0",
+        "label": "HIGH_CONFIDENCE",
+        "soft_name": "SetRenderState"
+      },
+      {
+        "call": "0x0073EEC7",
+        "owner": "0x0073EE70",
+        "label": "HIGH_CONFIDENCE",
+        "soft_name": "SetRenderState"
+      },
+      {
+        "call": "0x0074D162",
+        "owner": "0x0074D0F0",
+        "label": "HIGH_CONFIDENCE",
+        "soft_name": "SetRenderState"
+      },
+      {
+        "call": "0x0074D253",
+        "owner": "0x0074D230",
+        "label": "HIGH_CONFIDENCE",
+        "soft_name": "SetRenderState"
+      },
+      {
+        "call": "0x0074D264",
+        "owner": "0x0074D230",
+        "label": "HIGH_CONFIDENCE",
+        "soft_name": "SetRenderState"
+      },
+      {
+        "call": "0x0074D278",
+        "owner": "0x0074D230",
+        "label": "HIGH_CONFIDENCE",
+        "soft_name": "SetRenderState"
+      },
+      {
+        "call": "0x0074D289",
+        "owner": "0x0074D230",
+        "label": "HIGH_CONFIDENCE",
+        "soft_name": "SetRenderState"
+      },
+      {
+        "call": "0x007509E5",
+        "owner": "0x007509B0",
+        "label": "HIGH_CONFIDENCE",
+        "soft_name": "SetRenderState"
+      }
+    ],
+    "0x00000008": [
+      {
+        "call": "0x00727F31",
+        "owner": "0x00727ED0",
+        "label": "HIGH_CONFIDENCE",
+        "soft_name": "Release"
+      },
+      {
+        "call": "0x007409A4",
+        "owner": "0x00740960",
+        "label": "HIGH_CONFIDENCE",
+        "soft_name": "Release"
+      },
+      {
+        "call": "0x007428C8",
+        "owner": "0x00742810",
+        "label": "HIGH_CONFIDENCE",
+        "soft_name": "Release"
+      },
+      {
+        "call": "0x007477AF",
+        "owner": "0x00747770",
+        "label": "HIGH_CONFIDENCE",
+        "soft_name": "Release"
+      },
+      {
+        "call": "0x00748053",
+        "owner": "0x00747FF0",
+        "label": "HIGH_CONFIDENCE",
+        "soft_name": "Release"
+      },
+      {
+        "call": "0x0074806D",
+        "owner": "0x00747FF0",
+        "label": "HIGH_CONFIDENCE",
+        "soft_name": "Release"
+      }
+    ]
+  },
+  "FIRST_CLEAR_FRONTIER": {
+    "status": "BLOCKED_EXTERNAL",
+    "code": "FOUND",
+    "runtime": "BLOCKED_EXTERNAL_DEVICE_PUBLICATION",
+    "path": "0x007297D0 -> 0x00686000 -> 0x00725200 -> Clear"
+  },
+  "FIRST_DRAW_FRONTIER": {
+    "status": "FOUND_STRONG",
+    "confidence": "DRAW_PRIMITIVE_STRONG",
+    "note": "Strict vtable COM shapes for Draw* exist (e.g. 0x007B2AC0 DP via renderer 0x017AA798 helper return). They are NOT direct loads of 0x013C6510. Device alias into that renderer path is not proven in this pass.",
+    "runtime": "BLOCKED_EXTERNAL_OR_UNMAPPED_RENDERER_STATE",
+    "strongest": {
+      "vt_load": "0x007B2ADD",
+      "meth_load": "0x007B2AE1",
+      "call": "0x007B2AE7",
+      "obj_reg": "eax",
+      "owner": "0x007B2AC0",
+      "label": "HIGH_CONFIDENCE",
+      "soft_name": "DrawPrimitive"
+    },
+    "device_tied": false
+  },
+  "PRESENT_CODE_FRONTIER": {
+    "status": "FOUND",
+    "entry": "0x00752AF0",
+    "site": "0x00752B14"
+  },
+  "PRESENT_RUNTIME_FRONTIER": {
+    "status": "BLOCKED_EXTERNAL_DEVICE_STATE",
+    "reason": "requires live [0x013C6510]; in-game publisher blocked"
+  },
+  "runtime_contract": [
+    {
+      "item": "[0x013C6510] IDirect3DDevice9-like",
+      "class": "D3D_DEVICE_STATE",
+      "for": "0x00752AF0 prefix"
+    },
+    {
+      "item": "PE image mapping / ordinary .text",
+      "class": "PE_STATE",
+      "for": "all"
+    },
+    {
+      "item": "factory [0x01318170+0x10]",
+      "class": "EXTERNAL_STATE",
+      "for": "in-game publication only"
+    },
+    {
+      "item": "0x00B615C4 callback table",
+      "class": "EXTERNAL_STATE",
+      "for": "factory prefix only; NOT on Present prefix"
+    },
+    {
+      "item": "0x00686000",
+      "class": "EXTERNAL_STATE",
+      "for": "in-game publication caller; NOT on Present prefix"
+    },
+    {
+      "item": "renderer 0x017AA798",
+      "class": "UNKNOWN",
+      "for": "engine Draw* candidates"
+    },
+    {
+      "item": "HWND / present params at [obj+0x130]",
+      "class": "UNKNOWN",
+      "for": "publication/reset"
+    }
+  ],
+  "seam": {
+    "classification": "PARTIAL_POST_INIT_SEAM",
+    "rationale": "Ordinary EndScene/Present/Clear code at proven DEVICE consumers is a legitimate post-init API boundary: a host-owned IDirect3DDevice9 published at 0x013C6510 is standard graphics-runtime state, not SecuROM callback reconstruction. However full frame/draw still depends on additional renderer object state (e.g. 0x017AA798) not reduced to the DEVICE global alone, and in-game publication remains externally blocked.",
+    "requires_reproducing_protected_semantics": false,
+    "requires_reproducing_protected_for_in_game_publication": true,
+    "acceptable_host_responsibility": "IDirect3DDevice9* at 0x013C6510 (+ later renderer state as mapped)"
+  },
+  "d3d9_implementation": {
+    "proven_device_interface": true,
+    "useful_post_init_consumers": true,
+    "clean_or_acceptable_seam": true,
+    "minimum_method_surface_understood": true,
+    "no_need_to_reproduce_protected_callbacks_for_present": true,
+    "draw_path_device_aliased": false,
+    "decision": "NO",
+    "reason": "Partial seam exists for Present/Clear, but Phase 20 does not green-light implementation: draw is not DEVICE-aliased, republication is blocked, and project policy keeps D3D9 unimplemented until a dedicated implementation phase."
+  },
+  "first_frame_estimate": {
+    "best_case_phase": "UNBOUNDED",
+    "likely_range": "UNBOUNDED",
+    "note": "Partial post-init seam identified, but estimate stays UNBOUNDED until an accepted implementation phase covers host device + mapped renderer/draw state."
+  },
+  "execution": {
+    "ran": false,
+    "reason": "no fabricated device; analysis only"
+  },
+  "phase21": {
+    "recommendation": "EXPAND_POST_INIT_GRAPHICS_ANALYSIS",
+    "actions": [
+      "Prove or reject DEVICE alias into renderer 0x017AA798 / Draw* paths",
+      "Map presentation-parameter field writers on the graphics object",
+      "Decide whether host-provided DEVICE at 0x013C6510 is an accepted runtime contract for a Present-only milestone",
+      "Keep D3D9 unimplemented until that decision"
+    ]
+  },
+  "dashboard": {
+    "DEVICE_CODE": "PROVEN",
+    "DEVICE_PUBLICATION": "EXTERNAL/BLOCKED",
+    "PRESENT_CODE": "FOUND",
+    "PRESENT_RUNTIME": "BLOCKED",
+    "DRAW_CODE": "FOUND",
+    "RESET_RECOVERY": "NOT FOUND",
+    "POST_INIT_SEAM": "PARTIAL",
+    "D3D9_IMPLEMENTATION": "NOT JUSTIFIED",
+    "FIRST_FRAME_ESTIMATE": "UNBOUNDED"
+  }
+}
