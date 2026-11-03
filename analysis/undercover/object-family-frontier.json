@@ -1,5 +1,5 @@
 {
-  "phase": 40,
+  "phase": 41,
   "ranked_constructor_candidates": [
     {
       "va": "0x009E98F0",
@@ -346,30 +346,9 @@
     {
       "family_id": "A_9E9160",
       "ctor_init_va": "0x009E9160",
-      "object_ownership": "CALLER_STORAGE",
-      "extent": "0x00000248",
-      "vtable": [
-        "0x00C30E68",
-        "0x00C30F2C",
-        "0x00C30D5C"
-      ],
-      "required_state": [
-        "ECX=caller buffer",
-        "stack src+flags"
-      ],
-      "ordinary_consumers": [
-        "0x009E9140",
-        "0x009E9150",
-        "0x009E7780",
-        "0x009E8400",
-        "0x009E8460",
-        "0x009E83D0"
-      ],
-      "lifecycle_execution_result": "EXECUTED_STATEFUL_SEQUENCE",
-      "confidence": "HIGH",
-      "limitations": "Allocator/factory paths closed",
-      "independent": true,
-      "phase_established": 38
+      "phase_established": 38,
+      "nontrivial": true,
+      "lifecycle_execution_result": "EXECUTED_STATEFUL_SEQUENCE"
     },
     {
       "family_id": "B_9E98F0_POD",
@@ -379,68 +358,289 @@
       "vtable": [
         "0x00C30F2C"
       ],
-      "required_state": [
-        "ECX=caller buffer (raw)",
-        "no stack args"
+      "phase_established": 40,
+      "methods": [
+        {
+          "va": "0x009E9980",
+          "classification": "PURE_GETTER",
+          "contract": "STANDALONE_FAMILY_B",
+          "label": "HIGH_CONFIDENCE",
+          "head": [
+            "mov eax, 0xc30f38",
+            "ret "
+          ],
+          "note": "returns 0x00C30F38",
+          "standalone_enterable": true
+        },
+        {
+          "va": "0x009E9990",
+          "classification": "COPY_METHOD",
+          "contract": "STANDALONE_FAMILY_B",
+          "label": "HIGH_CONFIDENCE",
+          "head": [
+            "push esi",
+            "mov esi, ecx",
+            "call 0x9e7710",
+            "mov eax, dword ptr [esp + 8]",
+            "mov dword ptr [esi], 0xc30f2c",
+            "mov ecx, dword ptr [eax + 4]"
+          ],
+          "note": "copy-initializer ret 4",
+          "standalone_enterable": true
+        },
+        {
+          "va": "0x009E9A30",
+          "classification": "BOUNDED_STATE_TRANSFORM",
+          "contract": "STANDALONE_FAMILY_B",
+          "label": "HIGH_CONFIDENCE",
+          "head": [
+            "mov edx, dword ptr [ecx + 0x48]",
+            "mov eax, dword ptr [esp + 4]",
+            "mov dword ptr [eax + 0x10], edx",
+            "mov edx, dword ptr [ecx + 0x44]",
+            "mov dword ptr [eax + 0xc], edx",
+            "mov edx, dword ptr [ecx + 0x40]"
+          ],
+          "note": "exports ctor fields +0x38..+0x4C into caller buffer",
+          "standalone_enterable": true
+        },
+        {
+          "va": "0x009E7E40",
+          "classification": "DESTRUCTOR_OR_FREE",
+          "contract": "EXCLUDED",
+          "label": "HIGH_CONFIDENCE",
+          "head": [
+            "push esi",
+            "mov esi, ecx",
+            "call 0x9e7730",
+            "test byte ptr [esp + 8], 1",
+            "je 0x9e7e58",
+            "push esi"
+          ],
+          "note": "calls 0x00686030 \u2014 excluded",
+          "standalone_enterable": false
+        },
+        {
+          "va": "0x009E9CD0",
+          "classification": "EMBEDDED_ONLY_METHOD",
+          "contract": "EMBEDDED_FAMILY_B",
+          "label": "HIGH_CONFIDENCE",
+          "head": [
+            "sub esp, 0xc",
+            "push ebx",
+            "mov ebx, ecx",
+            "mov eax, dword ptr [ebx + 4]",
+            "cmp byte ptr [eax + 0x28], 0",
+            "jne 0x9e9ce7"
+          ],
+          "note": "reads [this+4] as nested POD; not standalone Family B",
+          "standalone_enterable": false
+        },
+        {
+          "va": "0x009E9DB0",
+          "classification": "EMBEDDED_ONLY_METHOD",
+          "contract": "EMBEDDED_FAMILY_B",
+          "label": "HIGH_CONFIDENCE",
+          "head": [
+            "sub esp, 0xc",
+            "push edi",
+            "mov edi, ecx",
+            "mov eax, dword ptr [edi + 4]",
+            "cmp byte ptr [eax + 0x28], 0",
+            "jne 0x9e9dc7"
+          ],
+          "note": "reads [this+4]+0x2C; parent wrapper",
+          "standalone_enterable": false
+        }
       ],
-      "ordinary_fields_initialized": {
-        "+0": "0x00C30F2C",
-        "+0x2C/+0x30": "0x10",
-        "+0x28": "1",
-        "+0x34": "1",
-        "+0x38..+0x4C": "from nested 0x009E0880 table",
-        "+0x50": "0"
+      "strongest_nontrivial_consumer": {
+        "va": "0x009E9A30",
+        "abi": "thiscall ret 4; arg0=dest buffer",
+        "required_fields": [
+          "+0x38",
+          "+0x3C",
+          "+0x40",
+          "+0x44",
+          "+0x48",
+          "+0x4C"
+        ],
+        "provenance": "CONSTRUCTOR_PRODUCED",
+        "observed": [
+          "0x00000040",
+          "0x00000040",
+          "0x00000040",
+          "0x00000200",
+          "0x00000200",
+          "0x00000100"
+        ],
+        "match": true,
+        "result": "EXECUTED_STATEFUL_SEQUENCE"
       },
-      "ordinary_consumers": [
+      "standalone_consumers": [
         "0x009E9980",
-        "0x009E9990"
+        "0x009E9990",
+        "0x009E9A30"
+      ],
+      "embedded_only_consumers": [
+        "0x009E9CD0",
+        "0x009E9DB0"
       ],
       "lifecycle_execution_result": "EXECUTED_STATEFUL_SEQUENCE",
-      "confidence": "HIGH",
-      "limitations": "Destructor 0x009E7E40 not executed; dtor avoided",
-      "independent": true,
-      "phase_established": 40,
-      "classification": "PROVEN_ORDINARY_CONSTRUCTOR",
-      "observable": {
-        "rtti_eax": "0x00C30F38",
-        "expected": "0x00C30F38",
-        "copy_dst_vt": "0x00C30F2C"
-      }
+      "nontrivial": true,
+      "confidence": "HIGH"
     },
     {
-      "family_id": "SEM_97BB30",
-      "ctor_init_va": "0x0097BB30",
+      "family_id": "C_9EB350",
+      "ctor_init_va": "0x009EB350",
       "object_ownership": "CALLER_STORAGE",
-      "extent": "0x00000150",
-      "vtable": null,
-      "required_state": [
-        "ECX buffer",
-        "two stack args; +0x140 written from arg"
+      "extent": "0x0000001C",
+      "vtable": [
+        "0x00C31180"
       ],
-      "ordinary_consumers": [],
-      "lifecycle_execution_result": "EXECUTED_CLEAN_CTOR_ONLY",
-      "confidence": "MEDIUM",
-      "limitations": "No ordinary consumer without additional +0x140 contract",
-      "independent": true,
-      "phase_established": 37,
-      "classification": "STRONG_ORDINARY_CONSTRUCTOR"
+      "classification": "STRONG_ORDINARY_CONSTRUCTOR",
+      "abi": "thiscall ret 0x10; 4 stack args; arg2\u2192dword used as optional ptr",
+      "required_state": [
+        "ECX caller buffer",
+        "arg2 pointer to zero skips 0x009D2C40"
+      ],
+      "ordinary_consumers": [
+        "0x009EB310"
+      ],
+      "ordinary_fields": {
+        "+0": "0x00C31180",
+        "+0x10": "0x00000011",
+        "+0x14": "0x00000022",
+        "+0x18": "0x00000033"
+      },
+      "lifecycle_execution_result": "EXECUTED_STATEFUL_SEQUENCE",
+      "nontrivial": false,
+      "note": "RTTI-only consumer so far; dtor/slot0 hits protected free",
+      "phase_established": 41,
+      "confidence": "HIGH",
+      "independent": true
     }
   ],
-  "independent_object_families_executed": 2,
-  "phase40_new_independent_families": 1,
-  "phase40_new_clean_lifecycles": 1,
-  "strongest_new_family": "B_9E98F0_POD",
+  "independent_object_families_executed": 3,
+  "clean_independent_object_lifecycles": 3,
+  "nontrivial_object_lifecycles": 2,
+  "strongest_new_family": "C_9EB350",
+  "strongest_nontrivial_new_consumer": "0x009E9A30",
   "observations": {
-    "family_a_getter_al": 90,
-    "family_a_dc": 90,
-    "family_a_vt": "0x00C30E68",
-    "family_b_ctor_clean": true,
-    "family_b_vt": "0x00C30F2C",
-    "family_b_plus2c": "0x00000010",
-    "family_b_plus34": "0x00000001",
-    "family_b_plus50": "0x00000000",
-    "family_b_rtti_eax": "0x00C30F38",
-    "copy_dst_vt": "0x00C30F2C",
-    "copy_dst_2c": "0x00000010"
-  }
+    "family_a_al": 90,
+    "family_b_fields": [
+      "0x00000040",
+      "0x00000040",
+      "0x00000040",
+      "0x00000200",
+      "0x00000200",
+      "0x00000100"
+    ],
+    "family_b_export_dest": [
+      "0x00000040",
+      "0x00000040",
+      "0x00000040",
+      "0x00000200",
+      "0x00000200",
+      "0x00000100"
+    ],
+    "family_b_export_match": true,
+    "family_c_vt": "0x00C31180",
+    "family_c_10": "0x00000011",
+    "family_c_14": "0x00000022",
+    "family_c_18": "0x00000033"
+  },
+  "family_b_method_census": [
+    {
+      "va": "0x009E9980",
+      "classification": "PURE_GETTER",
+      "contract": "STANDALONE_FAMILY_B",
+      "label": "HIGH_CONFIDENCE",
+      "head": [
+        "mov eax, 0xc30f38",
+        "ret "
+      ],
+      "note": "returns 0x00C30F38",
+      "standalone_enterable": true
+    },
+    {
+      "va": "0x009E9990",
+      "classification": "COPY_METHOD",
+      "contract": "STANDALONE_FAMILY_B",
+      "label": "HIGH_CONFIDENCE",
+      "head": [
+        "push esi",
+        "mov esi, ecx",
+        "call 0x9e7710",
+        "mov eax, dword ptr [esp + 8]",
+        "mov dword ptr [esi], 0xc30f2c",
+        "mov ecx, dword ptr [eax + 4]"
+      ],
+      "note": "copy-initializer ret 4",
+      "standalone_enterable": true
+    },
+    {
+      "va": "0x009E9A30",
+      "classification": "BOUNDED_STATE_TRANSFORM",
+      "contract": "STANDALONE_FAMILY_B",
+      "label": "HIGH_CONFIDENCE",
+      "head": [
+        "mov edx, dword ptr [ecx + 0x48]",
+        "mov eax, dword ptr [esp + 4]",
+        "mov dword ptr [eax + 0x10], edx",
+        "mov edx, dword ptr [ecx + 0x44]",
+        "mov dword ptr [eax + 0xc], edx",
+        "mov edx, dword ptr [ecx + 0x40]"
+      ],
+      "note": "exports ctor fields +0x38..+0x4C into caller buffer",
+      "standalone_enterable": true
+    },
+    {
+      "va": "0x009E7E40",
+      "classification": "DESTRUCTOR_OR_FREE",
+      "contract": "EXCLUDED",
+      "label": "HIGH_CONFIDENCE",
+      "head": [
+        "push esi",
+        "mov esi, ecx",
+        "call 0x9e7730",
+        "test byte ptr [esp + 8], 1",
+        "je 0x9e7e58",
+        "push esi"
+      ],
+      "note": "calls 0x00686030 \u2014 excluded",
+      "standalone_enterable": false
+    },
+    {
+      "va": "0x009E9CD0",
+      "classification": "EMBEDDED_ONLY_METHOD",
+      "contract": "EMBEDDED_FAMILY_B",
+      "label": "HIGH_CONFIDENCE",
+      "head": [
+        "sub esp, 0xc",
+        "push ebx",
+        "mov ebx, ecx",
+        "mov eax, dword ptr [ebx + 4]",
+        "cmp byte ptr [eax + 0x28], 0",
+        "jne 0x9e9ce7"
+      ],
+      "note": "reads [this+4] as nested POD; not standalone Family B",
+      "standalone_enterable": false
+    },
+    {
+      "va": "0x009E9DB0",
+      "classification": "EMBEDDED_ONLY_METHOD",
+      "contract": "EMBEDDED_FAMILY_B",
+      "label": "HIGH_CONFIDENCE",
+      "head": [
+        "sub esp, 0xc",
+        "push edi",
+        "mov edi, ecx",
+        "mov eax, dword ptr [edi + 4]",
+        "cmp byte ptr [eax + 0x28], 0",
+        "jne 0x9e9dc7"
+      ],
+      "note": "reads [this+4]+0x2C; parent wrapper",
+      "standalone_enterable": false
+    }
+  ]
 }

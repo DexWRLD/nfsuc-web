@@ -1,5 +1,5 @@
 {
-  "phase": 40,
+  "phase": 41,
   "campaign_outcomes": {
     "EXECUTED_CHAIN": 8,
     "BLOCKED_REQUIRED_STATE": 3,
@@ -35,6 +35,6 @@
     2
   ],
   "clean_stateful_sequences": 11,
-  "real_vtable_dispatches_executed": 1,
-  "latest_real_runtime_boundary": "Independent POD family B clean; vtable=EXECUTED_VTABLE_DISPATCH; allocator/factory still closed"
+  "virtual_call_continuation_classification": "INCORRECT_VTABLE_SLOT",
+  "latest_real_runtime_boundary": "B export nontrivial; C RTTI lifecycle; vcall continuation INCORRECT_VTABLE_SLOT"
 }

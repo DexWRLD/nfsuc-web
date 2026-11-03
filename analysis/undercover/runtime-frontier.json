@@ -1,5 +1,5 @@
 {
-  "phase": 40,
+  "phase": 41,
   "definitions": {
     "ENTERABLE": "All pre-entry required state establishable via primitives, static PE data, standard runtime, or proven ordinary init/ctor. Not merely IMPORT_READY.",
     "DEEPEST_ORDINARY_EXECUTION_CHAIN": "Max nested ordinary UC frames in one harness run.",
@@ -11,7 +11,10 @@
     "ENTERABLE_WITH_DEPTH_4_POTENTIAL": "Strict: >=4 nested ordinary frames, no pending imports/protected/unresolved-indirect/unlifted; contract defensible. Zero is acceptable.",
     "INDEPENDENT_OBJECT_FAMILIES_EXECUTED": "Distinct ordinary object contracts with actual constructor/initializer execution (not merely another method on an existing family).",
     "CLEAN_INDEPENDENT_OBJECT_LIFECYCLES": "Independent families with clean constructor/initializer \u2192 consumer sequence.",
-    "REAL_VTABLE_DISPATCHES_EXECUTED": "Ordinary generated virtual-call sites whose target was resolved and entered via guest DISPATCH_CALL (not harness direct entry)."
+    "REAL_VTABLE_DISPATCHES_EXECUTED": "Ordinary generated virtual-call sites whose target was resolved and entered via guest DISPATCH_CALL (not harness direct entry).",
+    "NONTRIVIAL_OBJECT_LIFECYCLES": "Independent families with validated state transform / setter-getter behavior beyond RTTI-only returns.",
+    "CLEAN_VIRTUAL_CALLS": "REAL_VTABLE_DISPATCH where the virtual callee returns and the caller continues without fault from that dispatch.",
+    "VIRTUAL_CALL_CONTINUATION_FAULTS": "REAL_VTABLE_DISPATCH followed by a fault or unsupported op before clean caller return."
   },
   "high_functions": 22779,
   "generated": 22770,
@@ -19,7 +22,7 @@
   "static_ready": 20762,
   "import_ready": 737,
   "runtime_ready": 72,
-  "enterable": 29,
+  "enterable": 31,
   "enterable_roots": [
     "0x00721050",
     "0x00721070",
@@ -46,12 +49,14 @@
     "0x009E98F0",
     "0x009E9980",
     "0x009E9990",
+    "0x009E9A30",
+    "0x009EB310",
     "0x009EB350",
     "0x009EB980",
     "0x009EBC70",
     "0x00B57CD0"
   ],
-  "unique_uc_functions_executed": 61,
+  "unique_uc_functions_executed": 64,
   "unique_uc_functions_executed_list": [
     "0x00721050",
     "0x00721070",
@@ -107,6 +112,9 @@
     "0x009E98F0",
     "0x009E9980",
     "0x009E9990",
+    "0x009E9A30",
+    "0x009E9CD0",
+    "0x009EB310",
     "0x009EB350",
     "0x009EB870",
     "0x009EB980",
@@ -115,7 +123,7 @@
     "0x00B57CD0",
     "0x00B57CF0"
   ],
-  "execution_runs": 221,
+  "execution_runs": 243,
   "deepest_ordinary_execution_chain": 4,
   "largest_executed_ordinary_closure": 18,
   "ordinary_execution_sequence_length": 5,
@@ -150,9 +158,13 @@
     "0x009EB350",
     "0x009EBC70"
   ],
-  "independent_object_families_executed": 2,
-  "clean_independent_object_lifecycles": 2,
+  "independent_object_families_executed": 3,
+  "clean_independent_object_lifecycles": 3,
+  "nontrivial_object_lifecycles": 2,
   "real_vtable_dispatches_executed": 1,
+  "clean_virtual_calls": 0,
+  "virtual_call_continuation_faults": 1,
+  "target_verification_status": "VERIFIED_UNDERCOVER_1_1_2_1",
   "enterable_with_depth_3_potential": 5,
   "enterable_with_depth_3_potential_roots": [
     "0x0097BB30",
@@ -176,10 +188,10 @@
     "STATIC_READY": 20762,
     "IMPORT_READY": 737,
     "RUNTIME_READY": 72,
-    "ENTERABLE": 29,
-    "EXECUTED": 61,
-    "UNIQUE": 61,
-    "EXECUTION_RUNS": 221,
+    "ENTERABLE": 31,
+    "EXECUTED": 64,
+    "UNIQUE": 64,
+    "EXECUTION_RUNS": 243,
     "CLEAN_ORDINARY_ROOTS": 13,
     "EXECUTED_ORDINARY_CONSTRUCTORS": 9,
     "DEEPEST": 4,
@@ -187,17 +199,21 @@
     "ORDINARY_EXECUTION_SEQUENCE_LENGTH": 5,
     "LARGEST_STATEFUL_SEQUENCE_COVERAGE": 22,
     "CLEAN_STATEFUL_SEQUENCES": 11,
-    "INDEPENDENT_OBJECT_FAMILIES_EXECUTED": 2,
-    "CLEAN_INDEPENDENT_OBJECT_LIFECYCLES": 2,
+    "INDEPENDENT_OBJECT_FAMILIES_EXECUTED": 3,
+    "CLEAN_INDEPENDENT_OBJECT_LIFECYCLES": 3,
+    "NONTRIVIAL_OBJECT_LIFECYCLES": 2,
     "REAL_VTABLE_DISPATCHES_EXECUTED": 1,
-    "LATEST_REAL_RUNTIME_BOUNDARY": "Independent POD family B clean; vtable=EXECUTED_VTABLE_DISPATCH; allocator/factory still closed",
+    "CLEAN_VIRTUAL_CALLS": 0,
+    "VIRTUAL_CALL_CONTINUATION_FAULTS": 1,
+    "TARGET_VERIFICATION": "VERIFIED_UNDERCOVER_1_1_2_1",
+    "LATEST_REAL_RUNTIME_BOUNDARY": "B export nontrivial; C RTTI lifecycle; vcall continuation INCORRECT_VTABLE_SLOT",
     "MOST_COMMON_REAL_BLOCKER": [
       "REQUIRED_STATE:UNKNOWN_OBJECT",
       2
     ]
   },
   "campaign_summary": {
-    "phase40_sequences": 9,
+    "phase41_sequences": 10,
     "clean_stateful_sequences": 8,
     "outcomes": {
       "EXECUTED_CHAIN": 8,
@@ -234,9 +250,13 @@
       2
     ],
     "family_a_getter_0x5a": true,
-    "family_b_lifecycle_clean": true,
-    "family_b_copy_clean": true,
-    "new_functions": [],
+    "family_b_export_clean": true,
+    "family_c_rtti_clean": true,
+    "new_functions": [
+      "0x009E9A30",
+      "0x009E9CD0",
+      "0x009EB310"
+    ],
     "tlsgetvalue_reached": false,
     "tlsfree_reached": false,
     "filesystem_reached": false,
@@ -262,403 +282,62 @@
     }
   },
   "object_families": {
-    "candidates_ranked": 15,
-    "executed": 2,
-    "clean_lifecycles": 2,
-    "strongest_new": "B_9E98F0_POD"
+    "executed": 3,
+    "clean_lifecycles": 3,
+    "nontrivial": 2,
+    "strongest_nontrivial_consumer": "0x009E9A30"
   },
   "virtual_dispatch": {
     "attempted": true,
-    "real_vtable_dispatches_executed": 1,
-    "status": "EXECUTED_VTABLE_DISPATCH",
-    "detail": "0x009E8E00 performs call [vt+0x14]; with arg==constructed Family-A object, slot5 resolves to 0x009E8E00 and sparse DISPATCH_CALL entered it. Continuation hits allocator 0x009E9460 (not counted as clean lifecycle).",
-    "uc_indirect_enters_on_9e8e00_attempt": 1,
-    "probe_90749e": {
-      "name": "vcall_probe_90749e_with_pod",
-      "result": "EXECUTED_STATEFUL_SEQUENCE",
-      "clean": true,
-      "sequence_length": 2,
-      "steps": [
-        {
-          "label": "ctor_b",
-          "root": "0x009E98F0",
-          "clean": true,
-          "eax": "0x03004300",
-          "blocked_kind": "NONE",
-          "blocked_va": null,
-          "depth_max": 2,
-          "entered_n": 3,
-          "uc_indirect_enters": 0
-        },
-        {
-          "label": "caller",
-          "root": "0x0090749E",
-          "clean": true,
-          "eax": "0x000003E9",
-          "blocked_kind": "NONE",
-          "blocked_va": null,
-          "depth_max": 3,
-          "entered_n": 7,
-          "uc_indirect_enters": 0
-        }
-      ],
-      "unique_entered": 7,
-      "entered": [
-        "0x0090749E",
-        "0x0090826A",
-        "0x0090827E",
-        "0x0090B452",
-        "0x009E0880",
-        "0x009E7710",
-        "0x009E98F0"
-      ],
-      "depth_max_nested": 3,
-      "blocker": null,
-      "uc_indirect_enters": 0,
-      "invocation_type": "DIRECT_GUEST_ENTRY",
-      "final_eax": "0x000003E9",
-      "family": "VTABLE_PROBE",
-      "virtual_dispatch": "NOT_TAKEN",
-      "reason": "[arg0+0x14]==0 after POD ctor; cmp vs 0x54 skips call [vt+8]",
-      "classification": "BLOCKED_REQUIRED_STATE",
-      "sleepex_done": 0,
-      "qpc_ticks": 0
-    },
-    "sites_sampled": [
-      {
-        "caller": "0x0090749E",
-        "site": "0x009074B2",
-        "slot_offset": "0x00000008",
-        "slot_index": 2,
-        "op": "dword ptr [eax + 8]",
-        "prev": [
-          "mov esi, ecx",
-          "jne 0x9074d0",
-          "mov eax, dword ptr [edi]",
-          "mov ecx, edi"
-        ],
-        "enterable_caller": false,
-        "eligible": false,
-        "blocker": "NO_ENTERABLE_VIRTUAL_CALLER_FOUND"
-      },
-      {
-        "caller": "0x00902DF0",
-        "site": "0x00902EA5",
-        "slot_offset": "0x0000001C",
-        "slot_index": 7,
-        "op": "dword ptr [edx + 0x1c]",
-        "prev": [
-          "push esi",
-          "je 0x902eaa",
-          "mov edx, dword ptr [eax]",
-          "mov ecx, eax"
-        ],
-        "enterable_caller": false,
-        "eligible": false,
-        "blocker": "NO_ENTERABLE_VIRTUAL_CALLER_FOUND"
-      },
-      {
-        "caller": "0x00902DF8",
-        "site": "0x00902EA5",
-        "slot_offset": "0x0000001C",
-        "slot_index": 7,
-        "op": "dword ptr [edx + 0x1c]",
-        "prev": [
-          "push esi",
-          "je 0x902eaa",
-          "mov edx, dword ptr [eax]",
-          "mov ecx, eax"
-        ],
-        "enterable_caller": false,
-        "eligible": false,
-        "blocker": "NO_ENTERABLE_VIRTUAL_CALLER_FOUND"
-      },
-      {
-        "caller": "0x00903107",
-        "site": "0x009031D4",
-        "slot_offset": "0x00000000",
-        "slot_index": 0,
-        "op": "dword ptr [eax]",
-        "prev": [
-          "mov edi, eax",
-          "je 0x9031dd",
-          "mov eax, dword ptr [ecx]",
-          "push 1"
-        ],
-        "enterable_caller": false,
-        "eligible": false,
-        "blocker": "NO_ENTERABLE_VIRTUAL_CALLER_FOUND"
-      },
-      {
-        "caller": "0x0090311F",
-        "site": "0x009031D4",
-        "slot_offset": "0x00000000",
-        "slot_index": 0,
-        "op": "dword ptr [eax]",
-        "prev": [
-          "mov edi, eax",
-          "je 0x9031dd",
-          "mov eax, dword ptr [ecx]",
-          "push 1"
-        ],
-        "enterable_caller": false,
-        "eligible": false,
-        "blocker": "NO_ENTERABLE_VIRTUAL_CALLER_FOUND"
-      },
-      {
-        "caller": "0x0090313C",
-        "site": "0x009031D4",
-        "slot_offset": "0x00000000",
-        "slot_index": 0,
-        "op": "dword ptr [eax]",
-        "prev": [
-          "mov edi, eax",
-          "je 0x9031dd",
-          "mov eax, dword ptr [ecx]",
-          "push 1"
-        ],
-        "enterable_caller": false,
-        "eligible": false,
-        "blocker": "NO_ENTERABLE_VIRTUAL_CALLER_FOUND"
-      },
-      {
-        "caller": "0x00903161",
-        "site": "0x009031D4",
-        "slot_offset": "0x00000000",
-        "slot_index": 0,
-        "op": "dword ptr [eax]",
-        "prev": [
-          "mov edi, eax",
-          "je 0x9031dd",
-          "mov eax, dword ptr [ecx]",
-          "push 1"
-        ],
-        "enterable_caller": false,
-        "eligible": false,
-        "blocker": "NO_ENTERABLE_VIRTUAL_CALLER_FOUND"
-      },
-      {
-        "caller": "0x00903178",
-        "site": "0x009031D4",
-        "slot_offset": "0x00000000",
-        "slot_index": 0,
-        "op": "dword ptr [eax]",
-        "prev": [
-          "mov edi, eax",
-          "je 0x9031dd",
-          "mov eax, dword ptr [ecx]",
-          "push 1"
-        ],
-        "enterable_caller": false,
-        "eligible": false,
-        "blocker": "NO_ENTERABLE_VIRTUAL_CALLER_FOUND"
-      },
-      {
-        "caller": "0x0090319D",
-        "site": "0x009031D4",
-        "slot_offset": "0x00000000",
-        "slot_index": 0,
-        "op": "dword ptr [eax]",
-        "prev": [
-          "mov edi, eax",
-          "je 0x9031dd",
-          "mov eax, dword ptr [ecx]",
-          "push 1"
-        ],
-        "enterable_caller": false,
-        "eligible": false,
-        "blocker": "NO_ENTERABLE_VIRTUAL_CALLER_FOUND"
-      },
-      {
-        "caller": "0x009031A3",
-        "site": "0x009031D4",
-        "slot_offset": "0x00000000",
-        "slot_index": 0,
-        "op": "dword ptr [eax]",
-        "prev": [
-          "mov edi, eax",
-          "je 0x9031dd",
-          "mov eax, dword ptr [ecx]",
-          "push 1"
-        ],
-        "enterable_caller": false,
-        "eligible": false,
-        "blocker": "NO_ENTERABLE_VIRTUAL_CALLER_FOUND"
-      },
-      {
-        "caller": "0x0090340C",
-        "site": "0x0090352C",
-        "slot_offset": "0x00000000",
-        "slot_index": 0,
-        "op": "dword ptr [eax]",
-        "prev": [
-          "call 0x90311f",
-          "mov ecx, dword ptr [ebp + 8]",
-          "mov eax, dword ptr [ecx]",
-          "push 1"
-        ],
-        "enterable_caller": false,
-        "eligible": false,
-        "blocker": "NO_ENTERABLE_VIRTUAL_CALLER_FOUND"
-      },
-      {
-        "caller": "0x009034AC",
-        "site": "0x0090352C",
-        "slot_offset": "0x00000000",
-        "slot_index": 0,
-        "op": "dword ptr [eax]",
-        "prev": [
-          "call 0x90311f",
-          "mov ecx, dword ptr [ebp + 8]",
-          "mov eax, dword ptr [ecx]",
-          "push 1"
-        ],
-        "enterable_caller": false,
-        "eligible": false,
-        "blocker": "NO_ENTERABLE_VIRTUAL_CALLER_FOUND"
-      },
-      {
-        "caller": "0x00904F8E",
-        "site": "0x0090508B",
-        "slot_offset": "0x00000000",
-        "slot_index": 0,
-        "op": "dword ptr [edx]",
-        "prev": [
-          "je 0x90508d",
-          "mov edx, dword ptr [eax]",
-          "push 1",
-          "mov ecx, eax"
-        ],
-        "enterable_caller": false,
-        "eligible": false,
-        "blocker": "NO_ENTERABLE_VIRTUAL_CALLER_FOUND"
-      },
-      {
-        "caller": "0x00905069",
-        "site": "0x0090508B",
-        "slot_offset": "0x00000000",
-        "slot_index": 0,
-        "op": "dword ptr [edx]",
-        "prev": [
-          "je 0x90508d",
-          "mov edx, dword ptr [eax]",
-          "push 1",
-          "mov ecx, eax"
-        ],
-        "enterable_caller": false,
-        "eligible": false,
-        "blocker": "NO_ENTERABLE_VIRTUAL_CALLER_FOUND"
-      },
-      {
-        "caller": "0x00905151",
-        "site": "0x0090526A",
-        "slot_offset": "0x00000008",
-        "slot_index": 2,
-        "op": "dword ptr [edx + 8]",
-        "prev": [
-          "call 0x90827e",
-          "push dword ptr [ebp + 8]",
-          "mov edx, dword ptr [eax]",
-          "mov ecx, eax"
-        ],
-        "enterable_caller": false,
-        "eligible": false,
-        "blocker": "NO_ENTERABLE_VIRTUAL_CALLER_FOUND"
-      },
-      {
-        "caller": "0x009051A8",
-        "site": "0x0090526A",
-        "slot_offset": "0x00000008",
-        "slot_index": 2,
-        "op": "dword ptr [edx + 8]",
-        "prev": [
-          "call 0x90827e",
-          "push dword ptr [ebp + 8]",
-          "mov edx, dword ptr [eax]",
-          "mov ecx, eax"
-        ],
-        "enterable_caller": false,
-        "eligible": false,
-        "blocker": "NO_ENTERABLE_VIRTUAL_CALLER_FOUND"
-      },
-      {
-        "caller": "0x0090520B",
-        "site": "0x0090526A",
-        "slot_offset": "0x00000008",
-        "slot_index": 2,
-        "op": "dword ptr [edx + 8]",
-        "prev": [
-          "call 0x90827e",
-          "push dword ptr [ebp + 8]",
-          "mov edx, dword ptr [eax]",
-          "mov ecx, eax"
-        ],
-        "enterable_caller": false,
-        "eligible": false,
-        "blocker": "NO_ENTERABLE_VIRTUAL_CALLER_FOUND"
-      },
-      {
-        "caller": "0x00905249",
-        "site": "0x0090526A",
-        "slot_offset": "0x00000008",
-        "slot_index": 2,
-        "op": "dword ptr [edx + 8]",
-        "prev": [
-          "call 0x90827e",
-          "push dword ptr [ebp + 8]",
-          "mov edx, dword ptr [eax]",
-          "mov ecx, eax"
-        ],
-        "enterable_caller": false,
-        "eligible": false,
-        "blocker": "NO_ENTERABLE_VIRTUAL_CALLER_FOUND"
-      },
-      {
-        "caller": "0x00905283",
-        "site": "0x0090530A",
-        "slot_offset": "0x00000000",
-        "slot_index": 0,
-        "op": "dword ptr [eax]",
-        "prev": [
-          "test ecx, ecx",
-          "je 0x90530c",
-          "mov eax, dword ptr [ecx]",
-          "push 1"
-        ],
-        "enterable_caller": false,
-        "eligible": false,
-        "blocker": "NO_ENTERABLE_VIRTUAL_CALLER_FOUND"
-      },
-      {
-        "caller": "0x0090531B",
-        "site": "0x0090536D",
-        "slot_offset": "0x00000010",
-        "slot_index": 4,
-        "op": "dword ptr [edx + 0x10]",
-        "prev": [
-          "mov ecx, edi",
-          "call 0x90827e",
-          "mov edx, dword ptr [eax]",
-          "mov ecx, eax"
-        ],
-        "enterable_caller": false,
-        "eligible": false,
-        "blocker": "NO_ENTERABLE_VIRTUAL_CALLER_FOUND"
-      }
-    ],
-    "eligible_ordinary_call_sites": 1,
-    "actual_virtual_caller": "0x009E8E00",
-    "vtable": "0x00C30E68",
-    "slot": 5,
+    "reproduced": true,
+    "ordinary_caller": "0x009E8E00",
+    "exact_call_site": "0x009E8E15",
+    "call_insn": "call edx  ; edx = [eax+0x14], eax = [[ebp]]",
+    "runtime_object": "0x03004000",
+    "vtable_va": "0x00C30E68",
+    "slot_index": 5,
     "slot_offset": "0x00000014",
     "resolved_target": "0x009E8E00",
-    "this_adjustment": "none (ecx=arg object)",
-    "abi_verified": true,
-    "continuation_blocker": {
-      "kind": "FAULT",
-      "va": null,
-      "at_step": "virt"
-    }
+    "same_function_caller_target": true,
+    "nested_frame_evidence": {
+      "uc_indirect_enters": 1,
+      "root_entry": "DIRECT_GUEST_ENTRY",
+      "nested_entry": "DISPATCH_CALL\u2192sparse UC",
+      "entered_unique_shows_once": true,
+      "note": "Unique entered[] dedupes; uc_indirect_enters proves second activation"
+    },
+    "thiscall_abi_at_call_site": {
+      "ecx": "arg object (ebp)",
+      "stack_args_pushed_by_site": 0,
+      "callee_9E8E00_ret": 4,
+      "abi_match_for_self_target": false
+    },
+    "vtable_dispatch_succeeded": true,
+    "virtual_call_completed": false,
+    "caller_returned_clean": false,
+    "continuation_classification": "INCORRECT_VTABLE_SLOT",
+    "continuation_detail": "Call site 0x009E8E15 invokes [vt+0x14] as thiscall with 0 stack args, expecting EAX string. Family-A slot5 resolves to 0x009E8E00 itself (ret 4). Nested activation therefore lacks the stack arg its prologue reads at [esp+0x20], loads EBP\u22480/garbage, then faults on `mov eax, dword ptr [ebp]` (unmapped guest access at 0). Not a clean virtual-method completion.",
+    "first_failing_operation": {
+      "ordinary_function": "0x009E8E00",
+      "instruction_va": "0x009E8E09",
+      "reason": "nested frame ebp invalid/null after ABI-mismatched self virtual call",
+      "fault_addr": "0x00000000",
+      "fault_why": "unmapped guest access",
+      "blocked_kind": "FAULT",
+      "eax_at_stop": "0x009E8E17",
+      "eip_at_stop": "0x00000000",
+      "esp_at_stop": "0x0300EFEC"
+    },
+    "clean_virtual_call": false,
+    "continuation_fault": true,
+    "result": "EXECUTED_VTABLE_DISPATCH"
+  },
+  "target_provenance": {
+    "status": "VERIFIED_UNDERCOVER_1_1_2_1",
+    "tooling_origin": "NFSU2-WEB",
+    "game_code_target": "NFS_UNDERCOVER_PC",
+    "sha256_match": true,
+    "ordinary_text_provenance": true
   },
   "synchronization": {
     "InitializeCriticalSection": "IMPLEMENTED",
@@ -702,6 +381,6 @@
   },
   "first_frame": "FIRST_FRAME_PATH_BLOCKED_BY_PROTECTED_BACKEND",
   "graphics_frozen": true,
-  "recommended_phase41": "Independent POD family 0x009E98F0\u21920x009E9980 is clean. Real vtable dispatch: EXECUTED_VTABLE_DISPATCH. Phase 41: EXPAND REAL UC EXECUTION on additional independent families with non-trivial stateful consumers, or find an enterable virtual caller whose object contract is fully constructor-produced without allocator dependence. Graphics frozen.",
+  "recommended_phase42": "Family B nontrivial export (`0x009E9A30`) and Family C RTTI lifecycle are proven. Virtual self-dispatch at `0x009E8E00` remains a continuation fault (INCORRECT_VTABLE_SLOT / ABI mismatch). Phase 42: EXPAND REAL UC EXECUTION on Family C nontrivial consumers or a correctly typed string-provider object for the 0x009E8E00 virtual call site. Graphics frozen.",
   "phase31_metric_corrections_preserved": true
 }

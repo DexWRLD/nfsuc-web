@@ -1,6 +1,6 @@
 {
-  "current_phase": 40,
-  "strategy": "Phase 40: independent POD object family + vtable dispatch attempt. Graphics frozen.",
+  "current_phase": 41,
+  "strategy": "Phase 41: nontrivial Family B export, Family C lifecycle, virtual continuation diagnosis, Undercover target verify. Graphics frozen.",
   "boundaries": {
     "0x00686000": {
       "status": "PROTECTED_OR_EXTERNAL_DEPENDENCY",
@@ -429,6 +429,11 @@
     {
       "phase": 40,
       "name": "Independent object family and real vtable dispatch",
+      "state": "completed"
+    },
+    {
+      "phase": 41,
+      "name": "Nontrivial lifecycles and virtual continuation",
       "state": "completed"
     }
   ],
