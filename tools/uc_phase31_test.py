@@ -214,10 +214,21 @@ class LiveCampaign(unittest.TestCase):
         self.assertEqual(row["subclass"], "ALLOCATOR_REQUIRED")
 
     def test_ctor_blocks_on_critical_section(self):
+        """Phase 31 proved the no-stub ctor reaches ICS.
+
+        After Phase 32+ HLE, ICS is implemented: require that the path still
+        enters the sync wrapper chain and no longer stops on ICS itself.
+        """
         row = next(r for r in self.rows if r["root"] == 0x9E9160)
-        self.assertEqual(row["import"], "InitializeCriticalSection")
-        self.assertEqual(row["result"], "EXECUTED_TO_NEXT_BLOCKER")
+        self.assertIn(0x00977420, row["entered"])
         self.assertGreaterEqual(row["depth_max"], 3)
+        if row.get("ics_calls", 0) >= 1:
+            self.assertNotEqual(row.get("import"), "InitializeCriticalSection")
+            self.assertIn(row["result"], ("EXECUTED_TO_NEXT_BLOCKER", "EXECUTED_CHAIN",
+                                          "EXECUTED_CLEAN"))
+        else:
+            self.assertEqual(row["import"], "InitializeCriticalSection")
+            self.assertEqual(row["result"], "EXECUTED_TO_NEXT_BLOCKER")
 
     def test_clean_chains_exist(self):
         cleans = [r for r in self.rows if r["result"] in ("EXECUTED_CLEAN", "EXECUTED_CHAIN")]

@@ -250,6 +250,10 @@ def run_campaign(specs=None, harness=None, fmap=None):
             "mutex_calls": getattr(out, "mutex_calls", 0),
             "cs_count": getattr(out, "cs_count", 0),
             "mutex_count": getattr(out, "mutex_count", 0),
+            "gpc_calls": getattr(out, "gpc_calls", 0),
+            "sem_calls": getattr(out, "sem_calls", 0),
+            "sem_count": getattr(out, "sem_count", 0),
+            "priority_class": getattr(out, "priority_class", 0),
             "stubs": [], "esp_delta_ok": out.esp == out.esp_expected,
         })
     return rows, harness
