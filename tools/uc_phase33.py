@@ -217,7 +217,7 @@ def main():
     ctors = camp.ctor_accounting(
         [{"entered": r["entered"]} for r in rows],
         {0x009E9160, 0x009E7710},
-        p31.CTOR_CENSUS | {0x009EBC70, 0x0097BB30, 0x00977860},
+        p31.CTOR_CENSUS | {0x009EBC70, 0x0097BB30},
     )
     deepest = max(r["depth_max"] for r in rows)
     largest = max(r["unique_entered"] for r in rows)

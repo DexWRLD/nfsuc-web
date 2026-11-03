@@ -70,7 +70,7 @@ Before: CreateSemaphoreA @ depth 4. After: **EXECUTED_CHAIN** clean=True depth=4
 
 ## N. Frontier delta
 
-UNIQUE **44**; ENTERABLE **21**; DEEPEST **4**; CLOSURE **11**; CLEAN **12**; RUNTIME_READY **63**.
+UNIQUE **44**; ENTERABLE **21**; DEEPEST **4**; CLOSURE **11**; CLEAN **12**; RUNTIME_READY **65**.
 
 ## O. Phase 34
 
