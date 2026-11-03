@@ -1,7 +1,7 @@
 {
   "project": {
     "name": "nfsuc-web",
-    "current_phase": 30,
+    "current_phase": 31,
     "strategy": "Phase 30: KERNEL32!TlsSetValue HLE at 0x00B611C8; ctor 0x009E9160 RETURNED_CLEAN. Graphics frozen."
   },
   "discovery": {
@@ -63,46 +63,102 @@
     "STATIC_READY": 20762,
     "IMPORT_READY": 737,
     "RUNTIME_READY": 58,
-    "ENTERABLE": 14,
-    "EXECUTED": 21,
+    "ENTERABLE": 19,
+    "EXECUTED": 34,
+    "UNIQUE": 34,
+    "EXECUTION_RUNS": 23,
+    "CLEAN_ORDINARY_ROOTS": 10,
+    "EXECUTED_ORDINARY_CONSTRUCTORS": 9,
     "DEEPEST": 3,
-    "LARGEST_CLOSURE": 11,
-    "ENTERABLE_WITH_DEPTH_3_POTENTIAL": 1,
+    "LARGEST_CLOSURE": 7,
+    "ENTERABLE_WITH_DEPTH_3_POTENTIAL": 5,
     "ENTERABLE_WITH_DEPTH_4_POTENTIAL": 0,
-    "LATEST_REAL_RUNTIME_BOUNDARY": "KERNEL32!TlsSetValue (ctor RETURNED_CLEAN)"
+    "ENTERABLE_WITH_DEPTH_5_POTENTIAL": 0,
+    "ORDINARY_INIT_RECOVERED": 10,
+    "INIT_BLOCKED_EXTERNAL": 0,
+    "INIT_BLOCKED_PROTECTED": 2,
+    "INIT_BLOCKED_UNKNOWN": 4,
+    "LATEST_REAL_RUNTIME_BOUNDARY": "KERNEL32!InitializeCriticalSection / CreateMutexA via 0x00977420",
+    "MOST_COMMON_REAL_BLOCKER": [
+      "InitializeCriticalSection",
+      4
+    ]
   },
   "top_ordinary_island": {},
   "campaign_summary": {
-    "phase30_attempted": 2,
+    "phase31_attempted": 12,
     "outcomes": {
-      "RETURNED_CLEAN": 1,
+      "EXECUTED_TO_NEXT_BLOCKER": 5,
+      "EXECUTED_CHAIN": 5,
+      "UNKNOWN": 1,
       "BLOCKED_REQUIRED_STATE": 1
     },
+    "real_blocker_histogram": {
+      "REQUIRED_STATE": 2,
+      "IMPORT": 5,
+      "INDIRECT": 0,
+      "MEMORY": 0,
+      "TLS": 0,
+      "FILESYSTEM": 0,
+      "TIMING": 0,
+      "EXTERNAL": 0,
+      "PROTECTED": 0,
+      "CLEAN_RETURN": 5
+    },
+    "required_state_histogram": {
+      "UNKNOWN_OBJECT": 0,
+      "UNKNOWN_PARENT": 0,
+      "UNKNOWN_GLOBAL": 0,
+      "UNKNOWN_BUFFER": 0,
+      "UNKNOWN_CALLBACK": 0,
+      "UNKNOWN_VTABLE": 0,
+      "ALLOCATOR_REQUIRED": 1,
+      "OTHER": 1
+    },
     "most_common_next_blocker": [
-      "BLOCKED_REQUIRED_STATE",
-      1
+      "InitializeCriticalSection",
+      4
     ],
     "deepest_chain": 3,
-    "largest_executed_closure": 11,
-    "latest_newly_executed_root": "0x00977800",
+    "largest_executed_closure": 7,
+    "clean_ordinary_roots": 10,
+    "executed_ordinary_constructors": 9,
+    "latest_newly_executed_root": "0x009E9160",
     "deepest_successful_sequence": [
       "0x009E9160",
+      "0x009E7710",
       "0x009E9990",
-      "0x009E7710"
+      "0x009E9460",
+      "0x009773C0",
+      "0x00977E20",
+      "0x00977420"
     ],
+    "allocator_classification": "PROTECTED_INITIALIZED_ALLOCATOR",
+    "allocator_target_resolved": "NO",
+    "allocator_init_path_ordinary": "NO",
+    "factory_9e9340_enterable": "NO",
+    "ctor_non_allocating_callers": 0,
+    "depth4_candidates": 0,
+    "depth5_candidates": 0,
     "tlsalloc_implemented": true,
     "tlssetvalue_implemented": true,
     "tlsgetvalue_implemented": false,
     "tlsfree_implemented": false,
-    "constructor_chain_clean_return": true,
+    "tlsgetvalue_reached": false,
+    "InitializeCriticalSection_reached": true,
+    "InitializeCriticalSection_implemented": false,
+    "CreateMutexA_reached": true,
+    "CreateMutexA_implemented": false,
     "CIpow_reached": false,
     "floor_reached": false,
     "malloc_free_reached": false,
     "filesystem_reached": false,
     "timing_reached": false,
-    "tls_reached": true,
-    "seh_required": false,
-    "pe_static_tls_required": false
+    "diagnostic_cs_noop": {
+      "counted_in_metrics": false,
+      "next_blocker": "GetCurrentProcess",
+      "depth_max": 3
+    }
   },
   "cisqrt": {},
   "harness_capability": {},
@@ -463,6 +519,11 @@
     {
       "phase": 30,
       "name": "TlsSetValue dynamic guest TLS",
+      "state": "completed"
+    },
+    {
+      "phase": 31,
+      "name": "Expand ordinary initialization / real UC execution",
       "state": "completed"
     }
   ],

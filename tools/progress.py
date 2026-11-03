@@ -707,12 +707,34 @@ def _real_uc_execution_badge(model):
     nxt = camp.get("most_common_next_blocker")
     if isinstance(nxt, (list, tuple)) and nxt:
         nxt = nxt[0]
-    return "uniq=%s deep=%s enter=%s next=%s" % (
-        orf.get("EXECUTED") or "?",
-        camp.get("deepest_chain") or orf.get("DEEPEST") or "?",
+    return "enter=%s uniq=%s clean=%s ctors=%s deep=%s clos=%s d4=%s blk=%s" % (
         orf.get("ENTERABLE") or "?",
+        orf.get("UNIQUE") or orf.get("EXECUTED") or "?",
+        orf.get("CLEAN_ORDINARY_ROOTS") or "?",
+        orf.get("EXECUTED_ORDINARY_CONSTRUCTORS") or "?",
+        camp.get("deepest_chain") or orf.get("DEEPEST") or "?",
+        camp.get("largest_executed_closure") or orf.get("LARGEST_CLOSURE") or "?",
+        orf.get("ENTERABLE_WITH_DEPTH_4_POTENTIAL") or "?",
         nxt or "?",
     )
+
+
+def _real_execution_html_table(model):
+    orf = model.get("ordinary_runtime_frontier") or {}
+    camp = model.get("campaign_summary") or {}
+    nxt = camp.get("most_common_next_blocker")
+    if isinstance(nxt, (list, tuple)) and nxt:
+        nxt = "%s ×%s" % (nxt[0], nxt[1] if len(nxt) > 1 else "?")
+    return html_table(("Metric", "Value"), [
+        ("ENTERABLE", orf.get("ENTERABLE") or "?"),
+        ("UNIQUE EXECUTED", orf.get("UNIQUE") or orf.get("EXECUTED") or "?"),
+        ("CLEAN ROOTS", orf.get("CLEAN_ORDINARY_ROOTS") or "?"),
+        ("EXECUTED CTORS", orf.get("EXECUTED_ORDINARY_CONSTRUCTORS") or "?"),
+        ("DEEPEST CHAIN", camp.get("deepest_chain") or orf.get("DEEPEST") or "?"),
+        ("LARGEST CLOSURE", camp.get("largest_executed_closure") or orf.get("LARGEST_CLOSURE") or "?"),
+        ("DEPTH-4 CANDIDATES", orf.get("ENTERABLE_WITH_DEPTH_4_POTENTIAL") or "?"),
+        ("MOST COMMON REAL BLOCKER", nxt or "?"),
+    ])
 
 
 def _ordinary_init_badge(model):
@@ -1143,18 +1165,7 @@ document.querySelectorAll("rect[data-addr]").forEach(function (node) {
                  if (model.get("top_ordinary_island") or {}).get("missing_imports") else "none"),
             ("missing imports", ", ".join((model.get("top_ordinary_island") or {}).get("missing_imports") or []) or "none"),
         ]),
-        html_table(("Field", "Value"), [
-            ("unique executed", (model.get("ordinary_runtime_frontier") or {}).get("EXECUTED") or "?"),
-            ("deepest chain", (model.get("campaign_summary") or {}).get("deepest_chain") or "?"),
-            ("largest executed closure", (model.get("campaign_summary") or {}).get("largest_executed_closure") or "?"),
-            ("enterable", (model.get("ordinary_runtime_frontier") or {}).get("ENTERABLE") or "?"),
-            ("depth-3 candidates", (model.get("ordinary_runtime_frontier") or {}).get("ENTERABLE_WITH_DEPTH_3_POTENTIAL") or "?"),
-            ("most common next blocker", (
-                (model.get("campaign_summary") or {}).get("most_common_next_blocker") or ("?", 0)
-            )[0] if isinstance((model.get("campaign_summary") or {}).get("most_common_next_blocker"), (list, tuple))
-            else ((model.get("campaign_summary") or {}).get("most_common_next_blocker") or "?")),
-            ("latest newly executed root", (model.get("campaign_summary") or {}).get("latest_newly_executed_root") or "?"),
-        ]),
+        _real_execution_html_table(model),
         html_table(("Metric", "Value"), [
             ("recovered", (model.get("ordinary_runtime_frontier") or {}).get("ORDINARY_INIT_RECOVERED") or "?"),
             ("external", (model.get("ordinary_runtime_frontier") or {}).get("INIT_BLOCKED_EXTERNAL") or "?"),
