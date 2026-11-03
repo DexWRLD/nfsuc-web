@@ -202,6 +202,10 @@ Renderer `0x017AA798` owns an MSVC-like vector at `+0x50/+0x54/+0x58` (8-byte el
 
 Ordinary code constructs/publishes **ENGINE_GFX_IFACE_00** (`0x007A1A20`, static VT `0x00BB1AAC`) and inserts via `0x007A40D0` / `0x007AF900`, but the insert primitive `0x004A26B0` and draw-submit `0x007A51B0` are encrypted `.text` islands. Method slots `+0x148/+0x14C/+0x154` resolve to ordinary wrappers whose terminus is **PROTECTED_BOUNDARY**. Publication **MIXED**; graphics boundary **PROTECTED_ENGINE_BACKEND**; seam still PARTIAL; D3D9/adapter not justified; first-frame UNBOUNDED. Details: `analysis/undercover/runtime-phase23.md`.
 
+## Phase 24
+
+Caller-side contracts for opaque submit `0x007A51B0` (**160** ordinary sites): size + stack record + paired `0x017A9xxx`/`0x01278xxx` descriptors; returns unused. Architecture **ORDINARY_FRONTEND_PROTECTED_BACKEND**. Present/Clear remain ordinary raw-DEVICE and do not share inventoried submit globals. **FIRST_FRAME_PATH_BLOCKED_BY_PROTECTED_BACKEND**. No protected bytes recovered. Details: `analysis/undercover/runtime-phase24.md`.
+
 ## Status
 
 STATIC CODE READINESS: established for the repaired ordinary high-confidence `.text` list. 22,770 of 22,779 generate, and every generated function compiles. The old 24-instruction discovery cap is gone.

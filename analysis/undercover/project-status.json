@@ -1,6 +1,6 @@
 {
-  "current_phase": 23,
-  "strategy": "Phase 23: vector inserts at 0x007A40D0/0x007AF900 via encrypted helper 0x004A26B0. Element +0x04 from ordinary ctor 0x007A1A20 with static VT 0x00BB1AAC; +148/+14C/+154 resolve to ordinary methods that call encrypted submit 0x007A51B0 (PROTECTED terminus). MIXED_INTERFACE_PUBLICATION; PROTECTED_ENGINE_BACKEND_BOUNDARY; PARTIAL seam; D3D9/adapter NOT justified; first-frame UNBOUNDED.",
+  "current_phase": 24,
+  "strategy": "Phase 24: ordinary frontend submits via opaque 0x007A51B0 (160 callers; size+record+paired 0x017A9xxx/0x01278xxx globals). METHOD_14x prefixes fully ordinary until that boundary. Architecture ORDINARY_FRONTEND_PROTECTED_BACKEND. No meaningful render seam without protected semantics. FIRST_FRAME_PATH_BLOCKED_BY_PROTECTED_BACKEND. D3D9/adapter NOT justified. Further protected-body analysis not allowed/needed.",
   "boundaries": {
     "0x00686000": {
       "status": "PROTECTED_OR_EXTERNAL_DEPENDENCY",
