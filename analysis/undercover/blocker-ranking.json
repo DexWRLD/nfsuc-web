@@ -1,11 +1,40 @@
 {
-  "phase": 30,
+  "phase": 31,
   "campaign_outcomes": {
-    "RETURNED_CLEAN": 1,
+    "EXECUTED_TO_NEXT_BLOCKER": 5,
+    "EXECUTED_CHAIN": 5,
+    "UNKNOWN": 1,
     "BLOCKED_REQUIRED_STATE": 1
   },
-  "latest_real_runtime_boundary": "KERNEL32!TlsSetValue @ 0x00B611C8 \u2014 resolved; ctor CLEAN",
-  "next_genuine_blocker": "0x009E9340 allocator / ORDINARY_GAME_ALLOCATOR vtable",
-  "tlsgetvalue_inventoried": true,
-  "tlsgetvalue_reached": false
+  "real_blocker_histogram": {
+    "REQUIRED_STATE": 2,
+    "IMPORT": 5,
+    "INDIRECT": 0,
+    "MEMORY": 0,
+    "TLS": 0,
+    "FILESYSTEM": 0,
+    "TIMING": 0,
+    "EXTERNAL": 0,
+    "PROTECTED": 0,
+    "CLEAN_RETURN": 5
+  },
+  "required_state_histogram": {
+    "UNKNOWN_OBJECT": 0,
+    "UNKNOWN_PARENT": 0,
+    "UNKNOWN_GLOBAL": 0,
+    "UNKNOWN_BUFFER": 0,
+    "UNKNOWN_CALLBACK": 0,
+    "UNKNOWN_VTABLE": 0,
+    "ALLOCATOR_REQUIRED": 1,
+    "OTHER": 1
+  },
+  "most_common_real_blocker": [
+    "InitializeCriticalSection",
+    4
+  ],
+  "latest_real_runtime_boundary": "KERNEL32!InitializeCriticalSection @ IAT path via 0x00977420",
+  "next_genuine_blocker": "threading/sync: InitializeCriticalSection / CreateMutexA",
+  "allocator_track_a_stopped": true,
+  "tlsgetvalue_reached": false,
+  "diagnostic_cs_noop_next": "GetCurrentProcess"
 }
