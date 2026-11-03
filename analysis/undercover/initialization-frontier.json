@@ -1,0 +1,204 @@
+{
+  "phase": 27,
+  "roots": [
+    {
+      "root": "0x0096CED0",
+      "required_state": [
+        {
+          "name": "esi/object",
+          "class": "THIS_POINTER",
+          "prov": "CALLER_ARGUMENT"
+        },
+        {
+          "name": "+0xb28",
+          "class": "COUNT",
+          "prov": "UNKNOWN"
+        },
+        {
+          "name": "+0x30",
+          "class": "OBJECT_FIELD",
+          "prov": "UNKNOWN"
+        },
+        {
+          "name": "+0x24",
+          "class": "OBJECT_FIELD",
+          "prov": "UNKNOWN"
+        }
+      ],
+      "producer": null,
+      "producer_type": "UNKNOWN",
+      "dependency": null,
+      "classification": "BLOCKED_UNKNOWN_STATE",
+      "depth": null,
+      "confidence": "WEAK",
+      "summary": "Reads [esi+0xb28] count/flag early via object at ESI from stack arg; needs object+0x24/+0x30/+0xb28. Multi-callee READY island. No ordinary ctor recovered in Phase 27 bound search."
+    },
+    {
+      "root": "0x00B01EB0",
+      "required_state": [
+        {
+          "name": "stack+8",
+          "class": "STACK_ARGUMENT",
+          "prov": "CALLER_ARGUMENT"
+        },
+        {
+          "name": "stack+0x14 struct",
+          "class": "BUFFER",
+          "prov": "UNKNOWN"
+        }
+      ],
+      "producer": null,
+      "producer_type": "UNKNOWN",
+      "dependency": null,
+      "classification": "BLOCKED_UNKNOWN_STATE",
+      "depth": null,
+      "confidence": "WEAK",
+      "summary": "stdcall-like multi-arg; stack [ebp+8..+20]; this-relative fields before call 0x00AFF2E0. Large READY root; init unknown."
+    },
+    {
+      "root": "0x00A52DF0",
+      "required_state": [
+        {
+          "name": "ecx/this",
+          "class": "THIS_POINTER",
+          "prov": "CALLER_ARGUMENT"
+        },
+        {
+          "name": "stack float",
+          "class": "STACK_ARGUMENT",
+          "prov": "CALLER_ARGUMENT"
+        },
+        {
+          "name": "+0x140/+0x150",
+          "class": "OBJECT_FIELD",
+          "prov": "UNKNOWN"
+        }
+      ],
+      "producer": null,
+      "producer_type": "UNKNOWN",
+      "dependency": null,
+      "classification": "BLOCKED_UNKNOWN_STATE",
+      "depth": null,
+      "confidence": "WEAK",
+      "summary": "Pre-entry: stack float [ebp+8] then _CIsin. Post-import reads this+0x140/+0x150 SIMD mats. No E8 callers; likely vtable method. Ctor not found; zero matrices are not claimed valid."
+    },
+    {
+      "root": "0x00949920",
+      "required_state": [
+        {
+          "name": "ecx/this",
+          "class": "THIS_POINTER",
+          "prov": "CALLER_ARGUMENT"
+        },
+        {
+          "name": "stack floats",
+          "class": "STACK_ARGUMENT",
+          "prov": "CALLER_ARGUMENT"
+        }
+      ],
+      "producer": null,
+      "producer_type": "PRIMITIVE/STATIC",
+      "dependency": null,
+      "classification": "ENTERABLE_DIRECT",
+      "depth": 0,
+      "confidence": "PROVEN",
+      "summary": "Pre-entry: this + stack floats; first import _CIcos. Writes this+0xa4. Caller 0x00950190 exists. Primitive float args OK; object fields beyond write sink not required pre-entry."
+    },
+    {
+      "root": "0x00A28720",
+      "required_state": [
+        {
+          "name": "stack+8 stream",
+          "class": "BUFFER",
+          "prov": "UNKNOWN"
+        },
+        {
+          "name": "0x00B71CF0",
+          "class": "STATIC_DATA",
+          "prov": "STATIC_DATA"
+        }
+      ],
+      "producer": null,
+      "producer_type": "UNKNOWN",
+      "dependency": null,
+      "classification": "BLOCKED_UNKNOWN_STATE",
+      "depth": null,
+      "confidence": "WEAK",
+      "summary": "Pre-entry reads stack+8/+0xc and statics 0x00B71CF0 / 0x0129FC24 before _CIsqrt. Packed word-stream semantics UNKNOWN."
+    },
+    {
+      "root": "0x0072EAE0",
+      "required_state": [
+        {
+          "name": "ecx/this",
+          "class": "THIS_POINTER",
+          "prov": "CALLER_ARGUMENT"
+        },
+        {
+          "name": "stack buffer",
+          "class": "BUFFER",
+          "prov": "CALLER_ARGUMENT"
+        },
+        {
+          "name": "+0x18 iface",
+          "class": "VTABLE",
+          "prov": "PROTECTED_INITIALIZED"
+        }
+      ],
+      "producer": null,
+      "producer_type": "PROTECTED",
+      "dependency": "0x023AF9C8",
+      "classification": "BLOCKED_PROTECTED_INIT",
+      "depth": null,
+      "confidence": "PROVEN",
+      "summary": "Reads this+0x18 as interface pointer; call [ [*+0x18] + 0x18 ]. Caller 0x00731320 obtains object via 0x007306C0 which does jmp dword ptr [0x023AF9C8] located in .securom."
+    },
+    {
+      "root": "0x00924D30",
+      "required_state": [],
+      "producer": null,
+      "producer_type": "PRIMITIVE/STATIC",
+      "dependency": null,
+      "classification": "ENTERABLE_DIRECT",
+      "depth": 0,
+      "confidence": "PROVEN",
+      "summary": "POD this+0/+4/+8 floats; stack two floats; already EXECUTED."
+    },
+    {
+      "root": "0x00929900",
+      "required_state": [
+        {
+          "name": "ecx/this",
+          "class": "THIS_POINTER",
+          "prov": "CALLER_ARGUMENT"
+        },
+        {
+          "name": "7 stack dwords",
+          "class": "STACK_ARGUMENT",
+          "prov": "CALLER_ARGUMENT"
+        },
+        {
+          "name": "0x00BD2250",
+          "class": "STATIC_DATA",
+          "prov": "STATIC_DATA"
+        }
+      ],
+      "producer": null,
+      "producer_type": "PRIMITIVE/STATIC",
+      "dependency": [
+        "0x00924D30"
+      ],
+      "classification": "ENTERABLE_DIRECT",
+      "depth": 0,
+      "confidence": "PROVEN",
+      "summary": "Parent of 0x00924D30 via lea ecx,[esi+0x7c]. Switch on (arg0-1); case 0 \u2192 call 0x00924D30. Static .rdata constants. Zeroed this sufficient for selected path (writes +0x4c/+0x88)."
+    }
+  ],
+  "counts": {
+    "ordinary_init_recovered": 4,
+    "init_blocked_external": 0,
+    "init_blocked_protected": 1,
+    "init_blocked_unknown": 4,
+    "enterable": 6
+  }
+}

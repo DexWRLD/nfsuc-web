@@ -1,0 +1,1161 @@
+{
+  "phase": 27,
+  "contracts": [
+    {
+      "object_id": "vec3_normalize_pod",
+      "target_root": "0x00924D30",
+      "required_fields": [
+        {
+          "off": "0x00",
+          "use": "write x",
+          "pre_entry_read": false
+        },
+        {
+          "off": "0x04",
+          "use": "write y",
+          "pre_entry_read": false
+        },
+        {
+          "off": "0x08",
+          "use": "write z",
+          "pre_entry_read": false
+        }
+      ],
+      "field_provenance": "CALLER_ARGUMENT / harness POD buffer",
+      "constructor": null,
+      "initializer": "none required pre-entry; method writes outputs",
+      "vtable": "none",
+      "allocation": "harness guest buffer OK (not ownership-sensitive)",
+      "enterability": "ENTERABLE_DIRECT",
+      "confidence": "PROVEN"
+    },
+    {
+      "object_id": "parent_of_vec3_at_7c",
+      "target_root": "0x00929900",
+      "required_fields": [
+        {
+          "off": "0x4C",
+          "use": "store arg",
+          "pre_entry_read": false
+        },
+        {
+          "off": "0x7C",
+          "use": "subobject this for 0x00924D30",
+          "pre_entry_read": false
+        },
+        {
+          "off": "0x88",
+          "use": "store float result",
+          "pre_entry_read": false
+        }
+      ],
+      "field_provenance": "CALLER_ARGUMENT / harness POD buffer",
+      "constructor": null,
+      "initializer": "zero buffer + primitive stack args (case edi=1)",
+      "vtable": "none on selected path",
+      "allocation": "harness guest buffer",
+      "enterability": "ENTERABLE_DIRECT",
+      "confidence": "STRONG"
+    },
+    {
+      "object_id": "iface_holder_72eae0",
+      "target_root": "0x0072EAE0",
+      "required_fields": [
+        {
+          "off": "0x18",
+          "use": "interface pointer \u2192 vtable+0x18 call",
+          "pre_entry_read": true
+        },
+        {
+          "off": "0x1C",
+          "use": "buffer for iface method",
+          "pre_entry_read": false
+        },
+        {
+          "off": "0x38",
+          "use": "store from arg",
+          "pre_entry_read": false
+        }
+      ],
+      "field_provenance": "PROTECTED_INITIALIZED via 0x007306C0 \u2192 [.securom 0x023AF9C8]",
+      "constructor": "0x007306C0 (PROTECTED jump)",
+      "initializer": null,
+      "vtable": "PROTECTED_VTABLE / unknown iface",
+      "allocation": "blocked",
+      "enterability": "BLOCKED_PROTECTED_INIT",
+      "confidence": "PROVEN"
+    },
+    {
+      "object_id": "math_a52df0",
+      "target_root": "0x00A52DF0",
+      "required_fields": [
+        {
+          "off": "0x140",
+          "use": "movaps matrix",
+          "pre_entry_read": false
+        },
+        {
+          "off": "0x150",
+          "use": "movaps matrix",
+          "pre_entry_read": false
+        }
+      ],
+      "field_provenance": "UNKNOWN",
+      "constructor": null,
+      "initializer": null,
+      "vtable": "UNKNOWN_VTABLE (no absolute E8 callers)",
+      "allocation": "unknown",
+      "enterability": "BLOCKED_UNKNOWN_STATE",
+      "confidence": "WEAK"
+    },
+    {
+      "object_id": "math_949920",
+      "target_root": "0x00949920",
+      "required_fields": [
+        {
+          "off": "0xA4",
+          "use": "fst result",
+          "pre_entry_read": false
+        }
+      ],
+      "field_provenance": "CALLER_ARGUMENT / harness POD",
+      "constructor": null,
+      "initializer": "zero buffer sufficient for write sink",
+      "vtable": "none observed pre-entry",
+      "allocation": "harness guest buffer",
+      "enterability": "ENTERABLE_DIRECT",
+      "confidence": "STRONG"
+    }
+  ],
+  "pre_entry": {
+    "0x0096CED0": {
+      "root": "0x0096CED0",
+      "stop_at": "0x0096CF3F",
+      "stop_why": "call",
+      "indirect": null,
+      "calls": [
+        "0x0096B790"
+      ],
+      "pre_entry_reads": [
+        {
+          "site": "0x0096CED5",
+          "mnem": "mov",
+          "op": "esi, dword ptr [esp + 0x14]",
+          "class": "STACK_ARGUMENT",
+          "disp": 20
+        },
+        {
+          "site": "0x0096CEDD",
+          "mnem": "cmp",
+          "op": "dword ptr [esi + 0xb28], ebx",
+          "class": "UNKNOWN",
+          "disp": 2856
+        },
+        {
+          "site": "0x0096CEE6",
+          "mnem": "movzx",
+          "op": "eax, byte ptr [esi + 0x30]",
+          "class": "UNKNOWN",
+          "disp": 48
+        },
+        {
+          "site": "0x0096CEEA",
+          "mnem": "mov",
+          "op": "ecx, dword ptr [esi + 0x24]",
+          "class": "UNKNOWN",
+          "disp": 36
+        },
+        {
+          "site": "0x0096CEF5",
+          "mnem": "cmp",
+          "op": "dword ptr [eax + 0xc], ebx",
+          "class": "UNKNOWN",
+          "disp": 12
+        },
+        {
+          "site": "0x0096CF02",
+          "mnem": "mov",
+          "op": "cl, byte ptr [esi + 0x30]",
+          "class": "UNKNOWN",
+          "disp": 48
+        },
+        {
+          "site": "0x0096CF05",
+          "mnem": "cmp",
+          "op": "cl, byte ptr [esi + 0x32]",
+          "class": "UNKNOWN",
+          "disp": 50
+        },
+        {
+          "site": "0x0096CF0D",
+          "mnem": "cmp",
+          "op": "byte ptr [eax + 0x14], bl",
+          "class": "UNKNOWN",
+          "disp": 20
+        },
+        {
+          "site": "0x0096CF12",
+          "mnem": "mov",
+          "op": "edx, dword ptr [esi + 0x54]",
+          "class": "UNKNOWN",
+          "disp": 84
+        },
+        {
+          "site": "0x0096CF20",
+          "mnem": "mov",
+          "op": "ecx, dword ptr [eax]",
+          "class": "UNKNOWN",
+          "disp": 0
+        },
+        {
+          "site": "0x0096CF28",
+          "mnem": "mov",
+          "op": "eax, dword ptr [eax + 0xc]",
+          "class": "UNKNOWN",
+          "disp": 12
+        },
+        {
+          "site": "0x0096CF33",
+          "mnem": "mov",
+          "op": "eax, dword ptr [esi + 0xb24]",
+          "class": "UNKNOWN",
+          "disp": 2852
+        }
+      ],
+      "pre_entry_writes": [
+        {
+          "site": "0x0096CEFE",
+          "mnem": "add",
+          "op": "byte ptr [esi + 0x30], 1",
+          "class": "UNKNOWN",
+          "disp": 48
+        },
+        {
+          "site": "0x0096CF0A",
+          "mnem": "mov",
+          "op": "byte ptr [esi + 0x30], bl",
+          "class": "UNKNOWN",
+          "disp": 48
+        },
+        {
+          "site": "0x0096CF15",
+          "mnem": "mov",
+          "op": "dword ptr [esi + 0x5c], edx",
+          "class": "UNKNOWN",
+          "disp": 92
+        },
+        {
+          "site": "0x0096CF18",
+          "mnem": "mov",
+          "op": "dword ptr [esi + 0x60], ebx",
+          "class": "UNKNOWN",
+          "disp": 96
+        },
+        {
+          "site": "0x0096CF1B",
+          "mnem": "mov",
+          "op": "dword ptr [esi + 0x64], ebx",
+          "class": "UNKNOWN",
+          "disp": 100
+        },
+        {
+          "site": "0x0096CF22",
+          "mnem": "mov",
+          "op": "dword ptr [esi + 0xb24], ecx",
+          "class": "UNKNOWN",
+          "disp": 2852
+        },
+        {
+          "site": "0x0096CF2B",
+          "mnem": "mov",
+          "op": "dword ptr [esi + 0xb28], eax",
+          "class": "UNKNOWN",
+          "disp": 2856
+        }
+      ],
+      "this_fields_touched": [],
+      "this_field_disps": [],
+      "stack_arg_disps": [
+        20
+      ],
+      "static_data": []
+    },
+    "0x00B01EB0": {
+      "root": "0x00B01EB0",
+      "stop_at": "0x00B01FC5",
+      "stop_why": "call",
+      "indirect": null,
+      "calls": [
+        "0x00AFF2E0"
+      ],
+      "pre_entry_reads": [
+        {
+          "site": "0x00B01EBC",
+          "mnem": "mov",
+          "op": "ecx, dword ptr [ebp + 0x14]",
+          "class": "STACK_ARGUMENT",
+          "disp": 20
+        },
+        {
+          "site": "0x00B01EBF",
+          "mnem": "mov",
+          "op": "eax, dword ptr [ebp + 8]",
+          "class": "STACK_ARGUMENT",
+          "disp": 8
+        },
+        {
+          "site": "0x00B01EC8",
+          "mnem": "movzx",
+          "op": "eax, word ptr [ecx + 4]",
+          "class": "OBJECT_FIELD",
+          "disp": 4
+        },
+        {
+          "site": "0x00B01EEE",
+          "mnem": "mov",
+          "op": "esi, dword ptr [ebp + 0x10]",
+          "class": "STACK_ARGUMENT",
+          "disp": 16
+        },
+        {
+          "site": "0x00B01F08",
+          "mnem": "movss",
+          "op": "xmm0, dword ptr [ecx + 0x18]",
+          "class": "OBJECT_FIELD",
+          "disp": 24
+        },
+        {
+          "site": "0x00B01F3A",
+          "mnem": "movss",
+          "op": "xmm0, dword ptr [ecx + 0x1c]",
+          "class": "OBJECT_FIELD",
+          "disp": 28
+        },
+        {
+          "site": "0x00B01F65",
+          "mnem": "mov",
+          "op": "edx, dword ptr [ebp + 0xc]",
+          "class": "STACK_ARGUMENT",
+          "disp": 12
+        },
+        {
+          "site": "0x00B01F6D",
+          "mnem": "mov",
+          "op": "edi, dword ptr [esp + 0x84]",
+          "class": "STACK_ARGUMENT",
+          "disp": 132
+        },
+        {
+          "site": "0x00B01F74",
+          "mnem": "fld",
+          "op": "dword ptr [ecx + edi + 0xc]",
+          "class": "OBJECT_FIELD",
+          "disp": 12
+        },
+        {
+          "site": "0x00B01F7B",
+          "mnem": "fmul",
+          "op": "dword ptr [edx + 4]",
+          "class": "UNKNOWN",
+          "disp": 4
+        },
+        {
+          "site": "0x00B01F84",
+          "mnem": "fadd",
+          "op": "dword ptr [eax - 0x80]",
+          "class": "UNKNOWN",
+          "disp": -128
+        },
+        {
+          "site": "0x00B01F8A",
+          "mnem": "mov",
+          "op": "edi, dword ptr [esp + 0x84]",
+          "class": "STACK_ARGUMENT",
+          "disp": 132
+        },
+        {
+          "site": "0x00B01F91",
+          "mnem": "fld",
+          "op": "dword ptr [ecx + edi - 0x20]",
+          "class": "OBJECT_FIELD",
+          "disp": -32
+        },
+        {
+          "site": "0x00B01F95",
+          "mnem": "fmul",
+          "op": "dword ptr [edx + 4]",
+          "class": "UNKNOWN",
+          "disp": 4
+        },
+        {
+          "site": "0x00B01F98",
+          "mnem": "fadd",
+          "op": "dword ptr [eax - 0x60]",
+          "class": "UNKNOWN",
+          "disp": -96
+        },
+        {
+          "site": "0x00B01F9E",
+          "mnem": "mov",
+          "op": "edi, dword ptr [esp + 0x84]",
+          "class": "STACK_ARGUMENT",
+          "disp": 132
+        },
+        {
+          "site": "0x00B01FA5",
+          "mnem": "fld",
+          "op": "dword ptr [ecx + edi - 0xc]",
+          "class": "OBJECT_FIELD",
+          "disp": -12
+        },
+        {
+          "site": "0x00B01FA9",
+          "mnem": "fmul",
+          "op": "dword ptr [edx + 4]",
+          "class": "UNKNOWN",
+          "disp": 4
+        },
+        {
+          "site": "0x00B01FAC",
+          "mnem": "fadd",
+          "op": "dword ptr [eax - 0x40]",
+          "class": "UNKNOWN",
+          "disp": -64
+        },
+        {
+          "site": "0x00B01FB2",
+          "mnem": "cmp",
+          "op": "esi, dword ptr [esp + 0x64]",
+          "class": "STACK_ARGUMENT",
+          "disp": 100
+        },
+        {
+          "site": "0x00B01FB8",
+          "mnem": "mov",
+          "op": "edx, dword ptr [esp + 0x8c]",
+          "class": "STACK_ARGUMENT",
+          "disp": 140
+        }
+      ],
+      "pre_entry_writes": [
+        {
+          "site": "0x00B01EC4",
+          "mnem": "mov",
+          "op": "dword ptr [esp + 0x5c], eax",
+          "class": "STACK_ARGUMENT",
+          "disp": 92
+        },
+        {
+          "site": "0x00B01ECF",
+          "mnem": "mov",
+          "op": "dword ptr [esp + 0x6c], esi",
+          "class": "STACK_ARGUMENT",
+          "disp": 108
+        },
+        {
+          "site": "0x00B01EEA",
+          "mnem": "mov",
+          "op": "dword ptr [esp + 0x78], esi",
+          "class": "STACK_ARGUMENT",
+          "disp": 120
+        },
+        {
+          "site": "0x00B01EF1",
+          "mnem": "mov",
+          "op": "dword ptr [esp + 0x7c], esi",
+          "class": "STACK_ARGUMENT",
+          "disp": 124
+        },
+        {
+          "site": "0x00B01F01",
+          "mnem": "mov",
+          "op": "dword ptr [esp + 0x80], esi",
+          "class": "STACK_ARGUMENT",
+          "disp": 128
+        },
+        {
+          "site": "0x00B01F19",
+          "mnem": "mov",
+          "op": "dword ptr [esp + 0x84], esi",
+          "class": "STACK_ARGUMENT",
+          "disp": 132
+        },
+        {
+          "site": "0x00B01F34",
+          "mnem": "movss",
+          "op": "dword ptr [esp + 0x68], xmm0",
+          "class": "STACK_ARGUMENT",
+          "disp": 104
+        },
+        {
+          "site": "0x00B01F3F",
+          "mnem": "mov",
+          "op": "dword ptr [esp + 0x88], esi",
+          "class": "STACK_ARGUMENT",
+          "disp": 136
+        },
+        {
+          "site": "0x00B01F4E",
+          "mnem": "mov",
+          "op": "dword ptr [esp + 0x64], edx",
+          "class": "STACK_ARGUMENT",
+          "disp": 100
+        },
+        {
+          "site": "0x00B01F52",
+          "mnem": "movss",
+          "op": "dword ptr [esp + 0x6c], xmm0",
+          "class": "STACK_ARGUMENT",
+          "disp": 108
+        },
+        {
+          "site": "0x00B01F58",
+          "mnem": "mov",
+          "op": "dword ptr [esp + 0x74], edi",
+          "class": "STACK_ARGUMENT",
+          "disp": 116
+        },
+        {
+          "site": "0x00B01F5C",
+          "mnem": "mov",
+          "op": "dword ptr [esp + 0x8c], ecx",
+          "class": "STACK_ARGUMENT",
+          "disp": 140
+        },
+        {
+          "site": "0x00B01F87",
+          "mnem": "fstp",
+          "op": "dword ptr [eax - 0x80]",
+          "class": "UNKNOWN",
+          "disp": -128
+        },
+        {
+          "site": "0x00B01F9B",
+          "mnem": "fstp",
+          "op": "dword ptr [eax - 0x60]",
+          "class": "UNKNOWN",
+          "disp": -96
+        },
+        {
+          "site": "0x00B01FAF",
+          "mnem": "fstp",
+          "op": "dword ptr [eax - 0x40]",
+          "class": "UNKNOWN",
+          "disp": -64
+        }
+      ],
+      "this_fields_touched": [
+        "+0x-20",
+        "+0x-C",
+        "+0x4",
+        "+0xC",
+        "+0x18",
+        "+0x1C"
+      ],
+      "this_field_disps": [
+        -32,
+        -12,
+        4,
+        12,
+        24,
+        28
+      ],
+      "stack_arg_disps": [
+        8,
+        12,
+        16,
+        20,
+        100,
+        132,
+        140
+      ],
+      "static_data": []
+    },
+    "0x00A52DF0": {
+      "root": "0x00A52DF0",
+      "stop_at": "0x00A52DFF",
+      "stop_why": "call",
+      "indirect": null,
+      "calls": [
+        "0x00AE5140"
+      ],
+      "pre_entry_reads": [
+        {
+          "site": "0x00A52DF9",
+          "mnem": "fld",
+          "op": "dword ptr [ebp + 8]",
+          "class": "STACK_ARGUMENT",
+          "disp": 8
+        }
+      ],
+      "pre_entry_writes": [],
+      "this_fields_touched": [],
+      "this_field_disps": [],
+      "stack_arg_disps": [
+        8
+      ],
+      "static_data": []
+    },
+    "0x00949920": {
+      "root": "0x00949920",
+      "stop_at": "0x00949928",
+      "stop_why": "call",
+      "indirect": null,
+      "calls": [
+        "0x00AE5110"
+      ],
+      "pre_entry_reads": [
+        {
+          "site": "0x00949921",
+          "mnem": "fld",
+          "op": "dword ptr [esp + 8]",
+          "class": "STACK_ARGUMENT",
+          "disp": 8
+        }
+      ],
+      "pre_entry_writes": [],
+      "this_fields_touched": [],
+      "this_field_disps": [],
+      "stack_arg_disps": [
+        8
+      ],
+      "static_data": []
+    },
+    "0x00A28720": {
+      "root": "0x00A28720",
+      "stop_at": "0x00A2879C",
+      "stop_why": "call",
+      "indirect": null,
+      "calls": [
+        "0x00AE5116"
+      ],
+      "pre_entry_reads": [
+        {
+          "site": "0x00A28729",
+          "mnem": "mov",
+          "op": "eax, dword ptr [ebp + 0xc]",
+          "class": "STACK_ARGUMENT",
+          "disp": 12
+        },
+        {
+          "site": "0x00A2873E",
+          "mnem": "mov",
+          "op": "eax, dword ptr [ebp + 8]",
+          "class": "STACK_ARGUMENT",
+          "disp": 8
+        },
+        {
+          "site": "0x00A28741",
+          "mnem": "movzx",
+          "op": "ecx, word ptr [eax]",
+          "class": "UNKNOWN",
+          "disp": 0
+        },
+        {
+          "site": "0x00A28753",
+          "mnem": "fild",
+          "op": "dword ptr [esp + 0x10]",
+          "class": "STACK_ARGUMENT",
+          "disp": 16
+        },
+        {
+          "site": "0x00A28760",
+          "mnem": "fadd",
+          "op": "qword ptr [0xb71cf0]",
+          "class": "STATIC_DATA",
+          "disp": 12000496
+        },
+        {
+          "site": "0x00A28775",
+          "mnem": "fld",
+          "op": "dword ptr [esp + 0x10]",
+          "class": "STACK_ARGUMENT",
+          "disp": 16
+        },
+        {
+          "site": "0x00A2877C",
+          "mnem": "fmul",
+          "op": "dword ptr [0x129fc24]",
+          "class": "STATIC_DATA",
+          "disp": 19528740
+        },
+        {
+          "site": "0x00A2878A",
+          "mnem": "fld",
+          "op": "dword ptr [esp + 0xc]",
+          "class": "STACK_ARGUMENT",
+          "disp": 12
+        },
+        {
+          "site": "0x00A28798",
+          "mnem": "fld",
+          "op": "dword ptr [esp + 0x10]",
+          "class": "STACK_ARGUMENT",
+          "disp": 16
+        }
+      ],
+      "pre_entry_writes": [
+        {
+          "site": "0x00A28734",
+          "mnem": "mov",
+          "op": "dword ptr [esp + 0x14], eax",
+          "class": "STACK_ARGUMENT",
+          "disp": 20
+        },
+        {
+          "site": "0x00A2874A",
+          "mnem": "mov",
+          "op": "dword ptr [esp + 0x10], ecx",
+          "class": "STACK_ARGUMENT",
+          "disp": 16
+        },
+        {
+          "site": "0x00A2875A",
+          "mnem": "mov",
+          "op": "dword ptr [esp + 0x18], eax",
+          "class": "STACK_ARGUMENT",
+          "disp": 24
+        },
+        {
+          "site": "0x00A2876E",
+          "mnem": "fstp",
+          "op": "dword ptr [esp + 0x10]",
+          "class": "STACK_ARGUMENT",
+          "disp": 16
+        },
+        {
+          "site": "0x00A28782",
+          "mnem": "mov",
+          "op": "dword ptr [esp + 0x1c], eax",
+          "class": "STACK_ARGUMENT",
+          "disp": 28
+        },
+        {
+          "site": "0x00A28786",
+          "mnem": "fstp",
+          "op": "dword ptr [esp + 0xc]",
+          "class": "STACK_ARGUMENT",
+          "disp": 12
+        },
+        {
+          "site": "0x00A28794",
+          "mnem": "fstp",
+          "op": "dword ptr [esp + 0x10]",
+          "class": "STACK_ARGUMENT",
+          "disp": 16
+        }
+      ],
+      "this_fields_touched": [],
+      "this_field_disps": [],
+      "stack_arg_disps": [
+        8,
+        12,
+        16
+      ],
+      "static_data": [
+        "0x00B71CF0",
+        "0x0129FC24"
+      ]
+    },
+    "0x0072EAE0": {
+      "root": "0x0072EAE0",
+      "stop_at": "0x0072EB12",
+      "stop_why": "indirect",
+      "indirect": "eax",
+      "calls": [],
+      "pre_entry_reads": [
+        {
+          "site": "0x0072EAE4",
+          "mnem": "mov",
+          "op": "edi, dword ptr [esp + 0xc]",
+          "class": "STACK_ARGUMENT",
+          "disp": 12
+        },
+        {
+          "site": "0x0072EAE8",
+          "mnem": "mov",
+          "op": "eax, dword ptr [edi]",
+          "class": "UNKNOWN",
+          "disp": 0
+        },
+        {
+          "site": "0x0072EAF0",
+          "mnem": "mov",
+          "op": "eax, dword ptr [esi + 0x18]",
+          "class": "UNKNOWN",
+          "disp": 24
+        },
+        {
+          "site": "0x0072EB0B",
+          "mnem": "mov",
+          "op": "ecx, dword ptr [eax]",
+          "class": "UNKNOWN",
+          "disp": 0
+        },
+        {
+          "site": "0x0072EB0F",
+          "mnem": "mov",
+          "op": "eax, dword ptr [ecx + 0x18]",
+          "class": "OBJECT_FIELD",
+          "disp": 24
+        }
+      ],
+      "pre_entry_writes": [
+        {
+          "site": "0x0072EAED",
+          "mnem": "mov",
+          "op": "dword ptr [esi + 0x38], eax",
+          "class": "UNKNOWN",
+          "disp": 56
+        },
+        {
+          "site": "0x0072EAF3",
+          "mnem": "mov",
+          "op": "dword ptr [esi + 0x4c], edx",
+          "class": "UNKNOWN",
+          "disp": 76
+        },
+        {
+          "site": "0x0072EB01",
+          "mnem": "mov",
+          "op": "dword ptr [esi + 0x44], ecx",
+          "class": "UNKNOWN",
+          "disp": 68
+        },
+        {
+          "site": "0x0072EB04",
+          "mnem": "mov",
+          "op": "dword ptr [esi + 0x48], 4",
+          "class": "UNKNOWN",
+          "disp": 72
+        }
+      ],
+      "this_fields_touched": [
+        "+0x18"
+      ],
+      "this_field_disps": [
+        24
+      ],
+      "stack_arg_disps": [
+        12
+      ],
+      "static_data": []
+    },
+    "0x00924D30": {
+      "root": "0x00924D30",
+      "stop_at": "0x00924D5F",
+      "stop_why": "call",
+      "indirect": null,
+      "calls": [
+        "0x00AE5116"
+      ],
+      "pre_entry_reads": [
+        {
+          "site": "0x00924D31",
+          "mnem": "fld",
+          "op": "dword ptr [esp + 8]",
+          "class": "STACK_ARGUMENT",
+          "disp": 8
+        },
+        {
+          "site": "0x00924D3A",
+          "mnem": "fld",
+          "op": "dword ptr [esp + 0x10]",
+          "class": "STACK_ARGUMENT",
+          "disp": 16
+        },
+        {
+          "site": "0x00924D4D",
+          "mnem": "fld",
+          "op": "dword ptr [esp + 4]",
+          "class": "STACK_ARGUMENT",
+          "disp": 4
+        }
+      ],
+      "pre_entry_writes": [
+        {
+          "site": "0x00924D38",
+          "mnem": "fst",
+          "op": "dword ptr [esi]",
+          "class": "UNKNOWN",
+          "disp": 0
+        },
+        {
+          "site": "0x00924D3E",
+          "mnem": "fst",
+          "op": "dword ptr [esi + 4]",
+          "class": "UNKNOWN",
+          "disp": 4
+        },
+        {
+          "site": "0x00924D49",
+          "mnem": "fstp",
+          "op": "dword ptr [esp + 4]",
+          "class": "STACK_ARGUMENT",
+          "disp": 4
+        },
+        {
+          "site": "0x00924D51",
+          "mnem": "fst",
+          "op": "dword ptr [esi + 8]",
+          "class": "UNKNOWN",
+          "disp": 8
+        }
+      ],
+      "this_fields_touched": [],
+      "this_field_disps": [],
+      "stack_arg_disps": [
+        4,
+        8,
+        16
+      ],
+      "static_data": []
+    },
+    "0x00929900": {
+      "root": "0x00929900",
+      "stop_at": "0x0092992C",
+      "stop_why": "call",
+      "indirect": null,
+      "calls": [
+        "0x00AE5110"
+      ],
+      "pre_entry_reads": [
+        {
+          "site": "0x00929903",
+          "mnem": "fld",
+          "op": "dword ptr [esp + 0x2c]",
+          "class": "STACK_ARGUMENT",
+          "disp": 44
+        },
+        {
+          "site": "0x00929908",
+          "mnem": "fld",
+          "op": "qword ptr [0xbd2250]",
+          "class": "STATIC_DATA",
+          "disp": 12395088
+        },
+        {
+          "site": "0x0092990F",
+          "mnem": "mov",
+          "op": "edi, dword ptr [esp + 0x28]",
+          "class": "STACK_ARGUMENT",
+          "disp": 40
+        },
+        {
+          "site": "0x00929920",
+          "mnem": "fmul",
+          "op": "dword ptr [esp + 0x40]",
+          "class": "STACK_ARGUMENT",
+          "disp": 64
+        },
+        {
+          "site": "0x00929928",
+          "mnem": "fld",
+          "op": "dword ptr [esp + 0x34]",
+          "class": "STACK_ARGUMENT",
+          "disp": 52
+        }
+      ],
+      "pre_entry_writes": [
+        {
+          "site": "0x00929919",
+          "mnem": "mov",
+          "op": "dword ptr [esi + 0x4c], edi",
+          "class": "UNKNOWN",
+          "disp": 76
+        },
+        {
+          "site": "0x0092991C",
+          "mnem": "fstp",
+          "op": "dword ptr [esp + 0x34]",
+          "class": "STACK_ARGUMENT",
+          "disp": 52
+        },
+        {
+          "site": "0x00929924",
+          "mnem": "fstp",
+          "op": "dword ptr [esp + 0x40]",
+          "class": "STACK_ARGUMENT",
+          "disp": 64
+        }
+      ],
+      "this_fields_touched": [],
+      "this_field_disps": [],
+      "stack_arg_disps": [
+        40,
+        44,
+        52,
+        64
+      ],
+      "static_data": [
+        "0x00BD2250"
+      ]
+    }
+  },
+  "provenance": {
+    "0x0096CED0": {
+      "summary": "Reads [esi+0xb28] count/flag early via object at ESI from stack arg; needs object+0x24/+0x30/+0xb28. Multi-callee READY island. No ordinary ctor recovered in Phase 27 bound search.",
+      "required": [
+        {
+          "name": "esi/object",
+          "class": "THIS_POINTER",
+          "prov": "CALLER_ARGUMENT"
+        },
+        {
+          "name": "+0xb28",
+          "class": "COUNT",
+          "prov": "UNKNOWN"
+        },
+        {
+          "name": "+0x30",
+          "class": "OBJECT_FIELD",
+          "prov": "UNKNOWN"
+        },
+        {
+          "name": "+0x24",
+          "class": "OBJECT_FIELD",
+          "prov": "UNKNOWN"
+        }
+      ],
+      "unknown": true,
+      "enterability": "BLOCKED_UNKNOWN_STATE"
+    },
+    "0x00B01EB0": {
+      "summary": "stdcall-like multi-arg; stack [ebp+8..+20]; this-relative fields before call 0x00AFF2E0. Large READY root; init unknown.",
+      "required": [
+        {
+          "name": "stack+8",
+          "class": "STACK_ARGUMENT",
+          "prov": "CALLER_ARGUMENT"
+        },
+        {
+          "name": "stack+0x14 struct",
+          "class": "BUFFER",
+          "prov": "UNKNOWN"
+        }
+      ],
+      "unknown": true,
+      "enterability": "BLOCKED_UNKNOWN_STATE"
+    },
+    "0x00A52DF0": {
+      "summary": "Pre-entry: stack float [ebp+8] then _CIsin. Post-import reads this+0x140/+0x150 SIMD mats. No E8 callers; likely vtable method. Ctor not found; zero matrices are not claimed valid.",
+      "required": [
+        {
+          "name": "ecx/this",
+          "class": "THIS_POINTER",
+          "prov": "CALLER_ARGUMENT"
+        },
+        {
+          "name": "stack float",
+          "class": "STACK_ARGUMENT",
+          "prov": "CALLER_ARGUMENT"
+        },
+        {
+          "name": "+0x140/+0x150",
+          "class": "OBJECT_FIELD",
+          "prov": "UNKNOWN"
+        }
+      ],
+      "unknown": true,
+      "needs_ctor": true,
+      "enterability": "BLOCKED_UNKNOWN_STATE"
+    },
+    "0x00949920": {
+      "summary": "Pre-entry: this + stack floats; first import _CIcos. Writes this+0xa4. Caller 0x00950190 exists. Primitive float args OK; object fields beyond write sink not required pre-entry.",
+      "required": [
+        {
+          "name": "ecx/this",
+          "class": "THIS_POINTER",
+          "prov": "CALLER_ARGUMENT"
+        },
+        {
+          "name": "stack floats",
+          "class": "STACK_ARGUMENT",
+          "prov": "CALLER_ARGUMENT"
+        }
+      ],
+      "primitive_ok": true,
+      "ctor_confidence": "WEAK",
+      "enterability": "ENTERABLE_DIRECT",
+      "note": "POD this buffer + float args; method writes results into object"
+    },
+    "0x00A28720": {
+      "summary": "Pre-entry reads stack+8/+0xc and statics 0x00B71CF0 / 0x0129FC24 before _CIsqrt. Packed word-stream semantics UNKNOWN.",
+      "required": [
+        {
+          "name": "stack+8 stream",
+          "class": "BUFFER",
+          "prov": "UNKNOWN"
+        },
+        {
+          "name": "0x00B71CF0",
+          "class": "STATIC_DATA",
+          "prov": "STATIC_DATA"
+        }
+      ],
+      "unknown": true,
+      "enterability": "BLOCKED_UNKNOWN_STATE"
+    },
+    "0x0072EAE0": {
+      "summary": "Reads this+0x18 as interface pointer; call [ [*+0x18] + 0x18 ]. Caller 0x00731320 obtains object via 0x007306C0 which does jmp dword ptr [0x023AF9C8] located in .securom.",
+      "required": [
+        {
+          "name": "ecx/this",
+          "class": "THIS_POINTER",
+          "prov": "CALLER_ARGUMENT"
+        },
+        {
+          "name": "stack buffer",
+          "class": "BUFFER",
+          "prov": "CALLER_ARGUMENT"
+        },
+        {
+          "name": "+0x18 iface",
+          "class": "VTABLE",
+          "prov": "PROTECTED_INITIALIZED"
+        }
+      ],
+      "protected": true,
+      "indirect_class": "PROTECTED_INITIALIZED_CALLBACK",
+      "indirect_slot": "0x023AF9C8",
+      "indirect_slot_section": ".securom",
+      "enterability": "BLOCKED_PROTECTED_INIT",
+      "enterable": false
+    },
+    "0x00924D30": {
+      "summary": "POD this+0/+4/+8 floats; stack two floats; already EXECUTED.",
+      "primitive_ok": true,
+      "ctor_confidence": "STRONG",
+      "enterability": "ENTERABLE_DIRECT",
+      "enterable": true
+    },
+    "0x00929900": {
+      "summary": "Parent of 0x00924D30 via lea ecx,[esi+0x7c]. Switch on (arg0-1); case 0 \u2192 call 0x00924D30. Static .rdata constants. Zeroed this sufficient for selected path (writes +0x4c/+0x88).",
+      "required": [
+        {
+          "name": "ecx/this",
+          "class": "THIS_POINTER",
+          "prov": "CALLER_ARGUMENT"
+        },
+        {
+          "name": "7 stack dwords",
+          "class": "STACK_ARGUMENT",
+          "prov": "CALLER_ARGUMENT"
+        },
+        {
+          "name": "0x00BD2250",
+          "class": "STATIC_DATA",
+          "prov": "STATIC_DATA"
+        }
+      ],
+      "primitive_ok": true,
+      "ctor_confidence": "STRONG",
+      "enterability": "ENTERABLE_DIRECT",
+      "enterable": true,
+      "downstream": [
+        "0x00924D30"
+      ],
+      "init_depth": 0
+    }
+  }
+}
