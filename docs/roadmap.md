@@ -29,8 +29,9 @@ The order from here:
 7. FACTORY PREFIX FROZEN. `0x00B615C4` / `Direct3DCreate9` create path is `BLOCKED_EXTERNAL_PROTECTED_INITIALIZATION`. Resolving that slot is no longer an active objective.
 8. POST-INIT GRAPHICS FRONTIER. Phase 20: DEFINITE device publication via `0x00725200` COM out-param (`CREATEDEVICE_STRONG_CANDIDATE` at VT `+0x40`), but EXTERNAL/BLOCKED (`0x00686000` before publish; factory field needs frozen `0x00B615C4`). PRESENT CODE FOUND; PRESENT RUNTIME BLOCKED. DRAW CODE FOUND via renderer `0x017AA798` (not DEVICE-aliased). RESET/RECOVERY NOT FOUND. PARTIAL post-init seam. D3D9 NOT justified. Estimate UNBOUNDED.
 9. Phase 21: optional angr oracle + UC consensus. Device↔renderer **NO_RELATION_FOUND**. Draw is **ENGINE_COM_DRAW** via helper `0x0079E4A0`, not raw DEVICE. Present control PASS / Clear PARTIAL under angr. Seam stays PARTIAL; D3D9 NOT justified; estimate UNBOUNDED.
-10. Expand renderer list/COM provenance (`0x0079E4A0` / `[renderer+0x50]..[+0x54]`) for a DEVICE alias. Do not invent SecuROM callbacks. Do not implement D3D9 until that relationship is understood.
-11. FIRST FRAME remains UNBOUNDED until a clean(er) seam and mapped draw state exist.
+10. Phase 22: renderer list is an MSVC-like vector at `+0x50/+0x54/+0x58` (elem size 8; COM at `+4`). Helper selects **ENGINE_GFX_IFACE_00**. Draw termini **ENGINE_BACKEND**; no ordinary DEVICE bridge. Durable `+0x1B0` corrected as false alias. MIXED boundary; PARTIAL seam; D3D9/adapter NOT justified; UNBOUNDED.
+11. Map vector insert sites and concrete iface vtables/method bodies. Do not invent SecuROM callbacks. Do not implement D3D9/adapter until a backend→device handoff exists.
+12. FIRST FRAME remains UNBOUNDED until a clean(er) seam and mapped draw state exist.
 
 The strategy is ordinary static recompilation, then ordinary runtime islands, then this dependency cut, then independent subsystem frontiers, then a first-frame path if one is available.
 

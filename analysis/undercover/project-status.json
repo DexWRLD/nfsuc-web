@@ -1,6 +1,6 @@
 {
-  "current_phase": 21,
-  "strategy": "Phase 21: optional angr oracle + UC consensus on device\u2192renderer\u2192Draw. DEVICE proven; publication EXTERNAL/BLOCKED. Renderer 0x017AA798 is an engine object pointer (ordinary publishers). Consensus device\u2194renderer: NO_RELATION_FOUND. Draw remains ENGINE_COM_DRAW (helper COM from renderer list), not raw DEVICE. PARTIAL seam; D3D9 NOT justified; first-frame UNBOUNDED.",
+  "current_phase": 22,
+  "strategy": "Phase 22: renderer 0x017AA798 holds an MSVC-like vector at +0x50/+0x54/+0x58 of 8-byte elements; [elem+4] is ENGINE_GFX_IFACE_00 (dynamic COM). Helper 0x0079E4A0 selects from that list. Draw remains ENGINE_COM_DRAW terminating at ENGINE_BACKEND with no ordinary DEVICE bridge. Phase21 durable +0x1B0 corrected as false alias. PARTIAL seam; D3D9/adapter NOT justified; first-frame UNBOUNDED.",
   "boundaries": {
     "0x00686000": {
       "status": "PROTECTED_OR_EXTERNAL_DEPENDENCY",
@@ -100,13 +100,13 @@
     "enterable_now": "NO",
     "object": "0x01318170",
     "esi_slot": "0x00B615C4",
-    "active_objective": "Map renderer helper 0x0079E4A0 list objects to DEVICE fields; keep angr optional",
+    "active_objective": "Recover constructors/vtables of renderer vector element COM objects; find insert sites",
     "blockers": [
-      "In-game DEVICE publication needs 0x00686000 before 0x00725200 and factory field from frozen 0x00B615C4",
-      "No proven DEVICE\u2194renderer alias (consensus NO_RELATION_FOUND)",
-      "Draw is ENGINE_COM_DRAW via 0x017AA798 helper, not raw DEVICE",
-      "Renderer list/COM field provenance unmapped",
-      "D3D9 not implemented"
+      "In-game DEVICE publication EXTERNAL/BLOCKED",
+      "ENGINE_GFX_IFACE_00 vtables runtime-only; no ordinary method bodies mapped",
+      "No DEVICE bridge from engine Draw path",
+      "List element publishers not fully mapped",
+      "D3D9 / engine-backend adapter not justified"
     ],
     "angr": "AVAILABLE",
     "angr_version": "10.0.5",
@@ -114,14 +114,22 @@
     "angr_clear_control": "PARTIAL",
     "device_to_renderer": "NO_RELATION_FOUND",
     "draw_consensus": "ENGINE_COM_DRAW",
-    "renderer_classification": "POINTER_TO_ENGINE_OBJECT"
+    "renderer_classification": "PROVEN_ENGINE_OBJECT",
+    "renderer_list": "MAPPED",
+    "engine_draw": "FOUND",
+    "backend_handoff": "UNKNOWN",
+    "raw_device_draw": "NOT FOUND",
+    "durable_device_alias": "UNMAPPED",
+    "frame_root": "UNKNOWN",
+    "graphics_boundary": "MIXED",
+    "engine_backend_adapter_justified": false
   },
   "first_frame_estimate": {
     "best_case_phase": "UNBOUNDED",
     "likely_low": "UNBOUNDED",
     "likely_high": "UNBOUNDED",
     "is_estimate": true,
-    "uncertainty": "Renderer/Draw not tied to proven DEVICE; seam remains PARTIAL."
+    "uncertainty": "Engine Draw mapped to dynamic COM list without backend\u2192device handoff."
   },
   "recorded_execution": [
     {
@@ -259,6 +267,11 @@
     {
       "phase": 21,
       "name": "Angr oracle and device-renderer consensus",
+      "state": "completed"
+    },
+    {
+      "phase": 22,
+      "name": "Renderer COM container and backend handoff",
       "state": "current"
     }
   ],

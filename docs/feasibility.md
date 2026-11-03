@@ -194,6 +194,10 @@ Device publication is DEFINITE: `push 0x013C6510` into wrapper-shaped CreateDevi
 
 Optional `angr` 10.0.5 oracle (Python 3.12) compares against the UC analyzer without becoming the lift backend. Present control PASS; Clear PARTIAL. Device↔renderer consensus: **NO_RELATION_FOUND**. Draw candidates remain **ENGINE_COM_DRAW** via helper `0x0079E4A0`, not raw DEVICE. Seam stays PARTIAL; D3D9 not justified; first-frame UNBOUNDED. Details: `analysis/undercover/runtime-phase21.md`, `angr-oracle.md`.
 
+## Phase 22
+
+Renderer `0x017AA798` owns an MSVC-like vector at `+0x50/+0x54/+0x58` (8-byte elements; COM at `+4`). `0x0079E4A0` selects **ENGINE_GFX_IFACE_00**. All five engine Draw paths terminate at **ENGINE_BACKEND** with no ordinary `0x013C6510` bridge. Phase 21’s durable `this+0x1B0` device alias was a false positive. Graphics boundary **MIXED**; seam PARTIAL; D3D9 and engine-backend adapter not justified. Details: `analysis/undercover/runtime-phase22.md`.
+
 ## Status
 
 STATIC CODE READINESS: established for the repaired ordinary high-confidence `.text` list. 22,770 of 22,779 generate, and every generated function compiles. The old 24-instruction discovery cap is gone.
