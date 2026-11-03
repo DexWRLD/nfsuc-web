@@ -6,20 +6,19 @@ Counts use the reachable high-confidence graph. A function is unlocked by one mi
 
 | symbol | DLL | convention | direct sites | closures blocked only by it | functions in those closures | high roots whose closure also contains it |
 | --- | --- | --- | --- | --- | --- | --- |
-| `strncpy` | MSVCR80.dll | cdecl | 244 | 66 | 90 | 1026 |
 | `_CIsqrt` | MSVCR80.dll | cdecl | 116 | 55 | 88 | 191 |
 | `_wassert` | MSVCR80.dll | cdecl | 1 | 13 | 22 | 48 |
-| `sprintf` | MSVCR80.dll | cdecl | 430 | 14 | 19 | 662 |
-| `tolower` | MSVCR80.dll | cdecl | 10 | 11 | 16 | 67 |
+| `sprintf` | MSVCR80.dll | cdecl | 430 | 16 | 21 | 662 |
+| `tolower` | MSVCR80.dll | cdecl | 10 | 12 | 21 | 67 |
+| `sscanf` | MSVCR80.dll | cdecl | 51 | 7 | 15 | 103 |
+| `strchr` | MSVCR80.dll | cdecl | 50 | 6 | 13 | 476 |
 | `_snprintf` | MSVCR80.dll | cdecl | 34 | 7 | 13 | 169 |
-| `sscanf` | MSVCR80.dll | cdecl | 51 | 6 | 12 | 103 |
+| `strtok` | MSVCR80.dll | cdecl | 26 | 6 | 12 | 61 |
+| `_stricmp` | MSVCR80.dll | cdecl | 65 | 11 | 11 | 95 |
 | `_CIpow` | MSVCR80.dll | cdecl | 18 | 6 | 11 | 16 |
-| `_stricmp` | MSVCR80.dll | cdecl | 65 | 10 | 10 | 95 |
 | `floor` | MSVCR80.dll | cdecl | 9 | 4 | 9 | 13 |
 | `ldexp` | MSVCR80.dll | cdecl | 4 | 7 | 9 | 8 |
 | `_vsnprintf` | MSVCR80.dll | cdecl | 7 | 7 | 8 | 316 |
-| `strchr` | MSVCR80.dll | cdecl | 50 | 3 | 7 | 476 |
-| `strtok` | MSVCR80.dll | cdecl | 26 | 2 | 7 | 61 |
 | `D3DXVec4Transform` | d3dx9_34.dll | unknown | 2 | 6 | 6 | 71 |
 | `fopen` | MSVCR80.dll | cdecl | 5 | 4 | 5 | 141 |
 | `printf` | MSVCR80.dll | cdecl | 277 | 3 | 4 | 1478 |
@@ -30,6 +29,7 @@ Counts use the reachable high-confidence graph. A function is unlocked by one mi
 | `strtoul` | MSVCR80.dll | cdecl | 4 | 2 | 3 | 65 |
 | `fclose` | MSVCR80.dll | cdecl | 5 | 2 | 2 | 143 |
 | `ordinal 3` | WS2_32.dll / WSOCK32.dll | unknown | 4 | 2 | 2 | 143 |
+| `strstr` | MSVCR80.dll | cdecl | 16 | 1 | 2 | 54 |
 | `D3DXVec3Transform` | d3dx9_34.dll | unknown | 1 | 2 | 2 | 31 |
 | `__libm_sse2_exp` | MSVCR80.dll | cdecl | 4 | 2 | 2 | 12 |
 | `_CItan` | MSVCR80.dll | cdecl | 5 | 2 | 2 | 10 |
@@ -53,6 +53,7 @@ Counts use the reachable high-confidence graph. A function is unlocked by one mi
 | `_localtime32` | MSVCR80.dll | cdecl | 1 | 1 | 1 | 7 |
 | `strcat_s` | MSVCR80.dll | cdecl | 1 | 1 | 1 | 6 |
 | `strrchr` | MSVCR80.dll | cdecl | 1 | 1 | 1 | 5 |
+| `qsort` | MSVCR80.dll | cdecl | 4 | 1 | 1 | 4 |
 | `_mkdir` | MSVCR80.dll | cdecl | 1 | 1 | 1 | 4 |
 | `strcoll` | MSVCR80.dll | cdecl | 2 | 1 | 1 | 3 |
 | `fflush` | MSVCR80.dll | cdecl | 1 | 1 | 1 | 3 |
@@ -88,7 +89,6 @@ Counts use the reachable high-confidence graph. A function is unlocked by one mi
 | `WSACreateEvent` | WS2_32.dll | stdcall | 2 | 0 | 0 | 73 |
 | `ordinal 10` | WS2_32.dll | unknown | 2 | 0 | 0 | 73 |
 | `isspace` | MSVCR80.dll | cdecl | 5 | 0 | 0 | 59 |
-| `strstr` | MSVCR80.dll | cdecl | 16 | 0 | 0 | 54 |
 | `ordinal 16` | WS2_32.dll / WSOCK32.dll | unknown | 2 | 0 | 0 | 53 |
 | `ordinal 17` | WS2_32.dll | unknown | 1 | 0 | 0 | 52 |
 | `isdigit` | MSVCR80.dll | cdecl | 13 | 0 | 0 | 46 |
@@ -123,7 +123,6 @@ Counts use the reachable high-confidence graph. A function is unlocked by one mi
 | `VerQueryValueA` | VERSION.dll | stdcall | 1 | 0 | 0 | 5 |
 | `GetFileVersionInfoA` | VERSION.dll | stdcall | 1 | 0 | 0 | 5 |
 | `GetFileVersionInfoSizeA` | VERSION.dll | stdcall | 1 | 0 | 0 | 5 |
-| `qsort` | MSVCR80.dll | cdecl | 4 | 0 | 0 | 4 |
 | `getenv` | MSVCR80.dll | cdecl | 4 | 0 | 0 | 4 |
 | `toupper` | MSVCR80.dll | cdecl | 3 | 0 | 0 | 4 |
 | `D3DXGetShaderConstantTable` | d3dx9_34.dll | unknown | 2 | 0 | 0 | 4 |
@@ -173,12 +172,12 @@ Only sets that account for a closure of at least 8 functions are listed.
 | --- | --- |
 | `_CIsqrt`, `_CItan`, `floor` | 25 |
 | `_wassert` | 16 |
-| `_vsnprintf`, `strncpy`, `tolower` | 14 |
+| `_vsnprintf`, `tolower` | 14 |
 | `strchr`, `tolower` | 10 |
 | `tolower` | 9 |
 | `_CIsqrt` | 8 |
 | `_CIpow` | 8 |
 | `atoi`, `isdigit` | 8 |
-| `atof`, `sprintf`, `strncpy` | 8 |
+| `atof`, `sprintf` | 8 |
 | `floor` | 8 |
 | `sscanf` | 8 |

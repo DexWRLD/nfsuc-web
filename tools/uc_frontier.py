@@ -19,12 +19,13 @@ ROOT = p7.ROOT
 GAME = r"C:\Games\Need For Speed Undercover\nfs.exe"
 IMPLEMENTED = {
     "memcpy", "memmove", "memset", "memcmp", "strlen", "strcmp", "strncmp",
+    "strncpy",
     "_CIsin", "_CIcos", "_CIacos",
 }
 # Deterministic helpers whose convention is already recorded as cdecl and whose
 # operation is a pure value transform. Not a promise they are implemented.
 SIMPLE_CDECL = {
-    "strncpy", "strchr", "strrchr", "strnlen", "strcpy", "strcat", "strstr",
+    "strchr", "strrchr", "strnlen", "strcpy", "strcat", "strstr",
     "strncat", "_stricmp", "_strnicmp", "tolower", "toupper", "isspace",
     "isdigit", "isxdigit", "isalnum", "isprint", "isalpha", "iscntrl",
     "atoi", "abs", "_isnan", "strtol", "strtoul", "strtod", "atof",

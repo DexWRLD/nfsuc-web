@@ -1,3159 +1,30 @@
 {
-  "high": 22607,
-  "sources": 11174,
-  "largest": [
-    {
-      "root": "0x9ea130",
-      "size": 794,
-      "depth": 37,
-      "label": "PROTECTED_BOUNDARY",
-      "imports": [
-        [
-          "memset",
-          9
-        ],
-        [
-          "memcpy",
-          8
-        ],
-        [
-          "memmove",
-          5
-        ],
-        [
-          "strlen",
-          4
-        ],
-        [
-          "strcmp",
-          4
-        ],
-        [
-          "strcpy",
-          2
-        ],
-        [
-          "sprintf",
-          2
-        ],
-        [
-          "_wassert",
-          1
-        ],
-        [
-          "strncpy",
-          1
-        ],
-        [
-          "memcmp",
-          1
-        ],
-        [
-          "_snprintf",
-          1
-        ],
-        [
-          "vsprintf",
-          1
-        ]
-      ],
-      "indirect": 1037,
-      "unknown": 21,
-      "protected": 0,
-      "pmem": 1
-    },
-    {
-      "root": "0x9bbec0",
-      "size": 479,
-      "depth": 31,
-      "label": "PROTECTED_BOUNDARY",
-      "imports": [
-        [
-          "memset",
-          6
-        ],
-        [
-          "memcpy",
-          4
-        ],
-        [
-          "strcmp",
-          3
-        ],
-        [
-          "memmove",
-          2
-        ],
-        [
-          "strlen",
-          2
-        ],
-        [
-          "strcpy",
-          1
-        ],
-        [
-          "vsprintf",
-          1
-        ],
-        [
-          "sprintf",
-          1
-        ],
-        [
-          "_crt_debugger_hook",
-          1
-        ],
-        [
-          "strncpy",
-          1
-        ],
-        [
-          "memcmp",
-          1
-        ]
-      ],
-      "indirect": 555,
-      "unknown": 5,
-      "protected": 0,
-      "pmem": 1
-    },
-    {
-      "root": "0x99e270",
-      "size": 478,
-      "depth": 31,
-      "label": "PROTECTED_BOUNDARY",
-      "imports": [
-        [
-          "memset",
-          6
-        ],
-        [
-          "memcpy",
-          4
-        ],
-        [
-          "strcmp",
-          3
-        ],
-        [
-          "memmove",
-          2
-        ],
-        [
-          "strlen",
-          2
-        ],
-        [
-          "strcpy",
-          1
-        ],
-        [
-          "vsprintf",
-          1
-        ],
-        [
-          "sprintf",
-          1
-        ],
-        [
-          "_crt_debugger_hook",
-          1
-        ],
-        [
-          "strncpy",
-          1
-        ],
-        [
-          "memcmp",
-          1
-        ]
-      ],
-      "indirect": 555,
-      "unknown": 5,
-      "protected": 0,
-      "pmem": 1
-    },
-    {
-      "root": "0x99de70",
-      "size": 476,
-      "depth": 30,
-      "label": "PROTECTED_BOUNDARY",
-      "imports": [
-        [
-          "memset",
-          6
-        ],
-        [
-          "memcpy",
-          4
-        ],
-        [
-          "strcmp",
-          3
-        ],
-        [
-          "memmove",
-          2
-        ],
-        [
-          "strlen",
-          2
-        ],
-        [
-          "strcpy",
-          1
-        ],
-        [
-          "strncpy",
-          1
-        ],
-        [
-          "memcmp",
-          1
-        ],
-        [
-          "vsprintf",
-          1
-        ],
-        [
-          "sprintf",
-          1
-        ],
-        [
-          "_crt_debugger_hook",
-          1
-        ]
-      ],
-      "indirect": 552,
-      "unknown": 5,
-      "protected": 0,
-      "pmem": 1
-    },
-    {
-      "root": "0x9bff30",
-      "size": 467,
-      "depth": 28,
-      "label": "PROTECTED_BOUNDARY",
-      "imports": [
-        [
-          "memset",
-          6
-        ],
-        [
-          "memcpy",
-          4
-        ],
-        [
-          "strcmp",
-          3
-        ],
-        [
-          "memmove",
-          2
-        ],
-        [
-          "strlen",
-          2
-        ],
-        [
-          "strcpy",
-          1
-        ],
-        [
-          "vsprintf",
-          1
-        ],
-        [
-          "sprintf",
-          1
-        ],
-        [
-          "_crt_debugger_hook",
-          1
-        ],
-        [
-          "strncpy",
-          1
-        ],
-        [
-          "memcmp",
-          1
-        ]
-      ],
-      "indirect": 541,
-      "unknown": 5,
-      "protected": 0,
-      "pmem": 1
-    },
-    {
-      "root": "0x99de30",
-      "size": 465,
-      "depth": 29,
-      "label": "PROTECTED_BOUNDARY",
-      "imports": [
-        [
-          "memset",
-          6
-        ],
-        [
-          "memcpy",
-          4
-        ],
-        [
-          "strcmp",
-          3
-        ],
-        [
-          "memmove",
-          2
-        ],
-        [
-          "strlen",
-          2
-        ],
-        [
-          "strcpy",
-          1
-        ],
-        [
-          "vsprintf",
-          1
-        ],
-        [
-          "sprintf",
-          1
-        ],
-        [
-          "_crt_debugger_hook",
-          1
-        ],
-        [
-          "strncpy",
-          1
-        ],
-        [
-          "memcmp",
-          1
-        ]
-      ],
-      "indirect": 539,
-      "unknown": 5,
-      "protected": 0,
-      "pmem": 1
-    },
-    {
-      "root": "0x99de50",
-      "size": 465,
-      "depth": 29,
-      "label": "PROTECTED_BOUNDARY",
-      "imports": [
-        [
-          "memset",
-          6
-        ],
-        [
-          "memcpy",
-          4
-        ],
-        [
-          "strcmp",
-          3
-        ],
-        [
-          "memmove",
-          2
-        ],
-        [
-          "strlen",
-          2
-        ],
-        [
-          "strcpy",
-          1
-        ],
-        [
-          "vsprintf",
-          1
-        ],
-        [
-          "sprintf",
-          1
-        ],
-        [
-          "_crt_debugger_hook",
-          1
-        ],
-        [
-          "strncpy",
-          1
-        ],
-        [
-          "memcmp",
-          1
-        ]
-      ],
-      "indirect": 539,
-      "unknown": 5,
-      "protected": 0,
-      "pmem": 1
-    },
-    {
-      "root": "0x9bf760",
-      "size": 463,
-      "depth": 28,
-      "label": "PROTECTED_BOUNDARY",
-      "imports": [
-        [
-          "memset",
-          6
-        ],
-        [
-          "memcpy",
-          4
-        ],
-        [
-          "strcmp",
-          3
-        ],
-        [
-          "memmove",
-          2
-        ],
-        [
-          "strlen",
-          2
-        ],
-        [
-          "strcpy",
-          1
-        ],
-        [
-          "vsprintf",
-          1
-        ],
-        [
-          "sprintf",
-          1
-        ],
-        [
-          "_crt_debugger_hook",
-          1
-        ],
-        [
-          "strncpy",
-          1
-        ],
-        [
-          "memcmp",
-          1
-        ]
-      ],
-      "indirect": 539,
-      "unknown": 5,
-      "protected": 0,
-      "pmem": 1
-    },
-    {
-      "root": "0x9bf360",
-      "size": 462,
-      "depth": 28,
-      "label": "PROTECTED_BOUNDARY",
-      "imports": [
-        [
-          "memset",
-          6
-        ],
-        [
-          "memcpy",
-          4
-        ],
-        [
-          "strcmp",
-          3
-        ],
-        [
-          "memmove",
-          2
-        ],
-        [
-          "strlen",
-          2
-        ],
-        [
-          "strcpy",
-          1
-        ],
-        [
-          "vsprintf",
-          1
-        ],
-        [
-          "sprintf",
-          1
-        ],
-        [
-          "_crt_debugger_hook",
-          1
-        ],
-        [
-          "strncpy",
-          1
-        ],
-        [
-          "memcmp",
-          1
-        ]
-      ],
-      "indirect": 539,
-      "unknown": 5,
-      "protected": 0,
-      "pmem": 1
-    },
-    {
-      "root": "0x99f120",
-      "size": 461,
-      "depth": 28,
-      "label": "PROTECTED_BOUNDARY",
-      "imports": [
-        [
-          "memset",
-          6
-        ],
-        [
-          "memcpy",
-          4
-        ],
-        [
-          "strcmp",
-          3
-        ],
-        [
-          "memmove",
-          2
-        ],
-        [
-          "strlen",
-          2
-        ],
-        [
-          "strcpy",
-          1
-        ],
-        [
-          "vsprintf",
-          1
-        ],
-        [
-          "sprintf",
-          1
-        ],
-        [
-          "_crt_debugger_hook",
-          1
-        ],
-        [
-          "strncpy",
-          1
-        ],
-        [
-          "memcmp",
-          1
-        ]
-      ],
-      "indirect": 538,
-      "unknown": 5,
-      "protected": 0,
-      "pmem": 1
-    },
-    {
-      "root": "0x99f170",
-      "size": 461,
-      "depth": 28,
-      "label": "PROTECTED_BOUNDARY",
-      "imports": [
-        [
-          "memset",
-          6
-        ],
-        [
-          "memcpy",
-          4
-        ],
-        [
-          "strcmp",
-          3
-        ],
-        [
-          "memmove",
-          2
-        ],
-        [
-          "strlen",
-          2
-        ],
-        [
-          "strcpy",
-          1
-        ],
-        [
-          "vsprintf",
-          1
-        ],
-        [
-          "sprintf",
-          1
-        ],
-        [
-          "_crt_debugger_hook",
-          1
-        ],
-        [
-          "strncpy",
-          1
-        ],
-        [
-          "memcmp",
-          1
-        ]
-      ],
-      "indirect": 538,
-      "unknown": 5,
-      "protected": 0,
-      "pmem": 1
-    },
-    {
-      "root": "0x9bac90",
-      "size": 461,
-      "depth": 28,
-      "label": "PROTECTED_BOUNDARY",
-      "imports": [
-        [
-          "memset",
-          6
-        ],
-        [
-          "memcpy",
-          4
-        ],
-        [
-          "strcmp",
-          3
-        ],
-        [
-          "memmove",
-          2
-        ],
-        [
-          "strlen",
-          2
-        ],
-        [
-          "strcpy",
-          1
-        ],
-        [
-          "vsprintf",
-          1
-        ],
-        [
-          "sprintf",
-          1
-        ],
-        [
-          "_crt_debugger_hook",
-          1
-        ],
-        [
-          "strncpy",
-          1
-        ],
-        [
-          "memcmp",
-          1
-        ]
-      ],
-      "indirect": 538,
-      "unknown": 5,
-      "protected": 0,
-      "pmem": 1
-    },
-    {
-      "root": "0x9bacd0",
-      "size": 461,
-      "depth": 28,
-      "label": "PROTECTED_BOUNDARY",
-      "imports": [
-        [
-          "memset",
-          6
-        ],
-        [
-          "memcpy",
-          4
-        ],
-        [
-          "strcmp",
-          3
-        ],
-        [
-          "memmove",
-          2
-        ],
-        [
-          "strlen",
-          2
-        ],
-        [
-          "strcpy",
-          1
-        ],
-        [
-          "vsprintf",
-          1
-        ],
-        [
-          "sprintf",
-          1
-        ],
-        [
-          "_crt_debugger_hook",
-          1
-        ],
-        [
-          "strncpy",
-          1
-        ],
-        [
-          "memcmp",
-          1
-        ]
-      ],
-      "indirect": 538,
-      "unknown": 5,
-      "protected": 0,
-      "pmem": 1
-    },
-    {
-      "root": "0x99e410",
-      "size": 437,
-      "depth": 23,
-      "label": "PROTECTED_BOUNDARY",
-      "imports": [
-        [
-          "memset",
-          7
-        ],
-        [
-          "memcpy",
-          4
-        ],
-        [
-          "memmove",
-          2
-        ],
-        [
-          "strcmp",
-          2
-        ],
-        [
-          "strlen",
-          2
-        ],
-        [
-          "strcpy",
-          1
-        ],
-        [
-          "vsprintf",
-          1
-        ],
-        [
-          "sprintf",
-          1
-        ],
-        [
-          "_crt_debugger_hook",
-          1
-        ],
-        [
-          "strncpy",
-          1
-        ],
-        [
-          "memcmp",
-          1
-        ]
-      ],
-      "indirect": 515,
-      "unknown": 4,
-      "protected": 0,
-      "pmem": 1
-    },
-    {
-      "root": "0x9a0730",
-      "size": 436,
-      "depth": 23,
-      "label": "PROTECTED_BOUNDARY",
-      "imports": [
-        [
-          "memset",
-          7
-        ],
-        [
-          "memcpy",
-          4
-        ],
-        [
-          "memmove",
-          4
-        ],
-        [
-          "strlen",
-          3
-        ],
-        [
-          "strcpy",
-          1
-        ],
-        [
-          "strcmp",
-          1
-        ],
-        [
-          "vsprintf",
-          1
-        ],
-        [
-          "sprintf",
-          1
-        ],
-        [
-          "_crt_debugger_hook",
-          1
-        ],
-        [
-          "memcmp",
-          1
-        ],
-        [
-          "strncpy",
-          1
-        ]
-      ],
-      "indirect": 646,
-      "unknown": 3,
-      "protected": 0,
-      "pmem": 1
-    },
-    {
-      "root": "0x9b3c00",
-      "size": 433,
-      "depth": 24,
-      "label": "PROTECTED_BOUNDARY",
-      "imports": [
-        [
-          "memset",
-          6
-        ],
-        [
-          "memcpy",
-          4
-        ],
-        [
-          "memmove",
-          2
-        ],
-        [
-          "strcmp",
-          2
-        ],
-        [
-          "strlen",
-          2
-        ],
-        [
-          "strcpy",
-          1
-        ],
-        [
-          "atoi",
-          1
-        ],
-        [
-          "isdigit",
-          1
-        ],
-        [
-          "vsprintf",
-          1
-        ],
-        [
-          "sprintf",
-          1
-        ],
-        [
-          "_crt_debugger_hook",
-          1
-        ],
-        [
-          "strncpy",
-          1
-        ]
-      ],
-      "indirect": 526,
-      "unknown": 4,
-      "protected": 0,
-      "pmem": 1
-    },
-    {
-      "root": "0x99ef00",
-      "size": 430,
-      "depth": 23,
-      "label": "PROTECTED_BOUNDARY",
-      "imports": [
-        [
-          "memset",
-          7
-        ],
-        [
-          "memcpy",
-          4
-        ],
-        [
-          "memmove",
-          2
-        ],
-        [
-          "strcmp",
-          2
-        ],
-        [
-          "strlen",
-          2
-        ],
-        [
-          "strcpy",
-          1
-        ],
-        [
-          "vsprintf",
-          1
-        ],
-        [
-          "sprintf",
-          1
-        ],
-        [
-          "_crt_debugger_hook",
-          1
-        ],
-        [
-          "strncpy",
-          1
-        ],
-        [
-          "memcmp",
-          1
-        ]
-      ],
-      "indirect": 517,
-      "unknown": 4,
-      "protected": 0,
-      "pmem": 1
-    },
-    {
-      "root": "0x9cdd30",
-      "size": 428,
-      "depth": 23,
-      "label": "PROTECTED_BOUNDARY",
-      "imports": [
-        [
-          "memset",
-          6
-        ],
-        [
-          "memcpy",
-          4
-        ],
-        [
-          "memmove",
-          2
-        ],
-        [
-          "strcmp",
-          2
-        ],
-        [
-          "strlen",
-          2
-        ],
-        [
-          "strcpy",
-          1
-        ],
-        [
-          "vsprintf",
-          1
-        ],
-        [
-          "sprintf",
-          1
-        ],
-        [
-          "_crt_debugger_hook",
-          1
-        ],
-        [
-          "strncpy",
-          1
-        ],
-        [
-          "memcmp",
-          1
-        ]
-      ],
-      "indirect": 519,
-      "unknown": 4,
-      "protected": 0,
-      "pmem": 1
-    },
-    {
-      "root": "0x9b2f50",
-      "size": 413,
-      "depth": 24,
-      "label": "PROTECTED_BOUNDARY",
-      "imports": [
-        [
-          "memset",
-          8
-        ],
-        [
-          "memcpy",
-          4
-        ],
-        [
-          "strlen",
-          3
-        ],
-        [
-          "memmove",
-          3
-        ],
-        [
-          "memcmp",
-          1
-        ],
-        [
-          "vsprintf",
-          1
-        ],
-        [
-          "_crt_debugger_hook",
-          1
-        ]
-      ],
-      "indirect": 1348,
-      "unknown": 17,
-      "protected": 0,
-      "pmem": 1
-    },
-    {
-      "root": "0x99f9f0",
-      "size": 399,
-      "depth": 21,
-      "label": "PROTECTED_BOUNDARY",
-      "imports": [
-        [
-          "memset",
-          5
-        ],
-        [
-          "memcpy",
-          4
-        ],
-        [
-          "memmove",
-          4
-        ],
-        [
-          "strlen",
-          3
-        ],
-        [
-          "strcpy",
-          1
-        ],
-        [
-          "strcmp",
-          1
-        ],
-        [
-          "vsprintf",
-          1
-        ],
-        [
-          "sprintf",
-          1
-        ],
-        [
-          "_crt_debugger_hook",
-          1
-        ],
-        [
-          "strncpy",
-          1
-        ],
-        [
-          "memcmp",
-          1
-        ]
-      ],
-      "indirect": 556,
-      "unknown": 3,
-      "protected": 0,
-      "pmem": 1
-    }
-  ],
-  "all_node_extremes": {
-    "UNRESOLVED_INDIRECT_CALL": {
-      "root": "0x009E9440",
-      "size": 334,
-      "depth": 29,
-      "label": "UNRESOLVED_INDIRECT_CALL",
-      "imports": [
-        [
-          "memcpy",
-          3
-        ],
-        [
-          "strlen",
-          3
-        ],
-        [
-          "memset",
-          3
-        ],
-        [
-          "memmove",
-          2
-        ],
-        [
-          "vsprintf",
-          1
-        ],
-        [
-          "_crt_debugger_hook",
-          1
-        ],
-        [
-          "memcmp",
-          1
-        ]
-      ],
-      "missing": [
-        "_crt_debugger_hook",
-        "vsprintf"
-      ],
-      "indirect": 1220,
-      "unknown": 9,
-      "protected_edges": 0,
-      "protected_mem": 0,
-      "functions": [
-        "0x007377E0",
-        "0x00804070",
-        "0x00804090",
-        "0x008040B0",
-        "0x008040C0",
-        "0x008040E0",
-        "0x0087B350",
-        "0x0087B570",
-        "0x0087BDAC",
-        "0x008811F2",
-        "0x00977400",
-        "0x00977480",
-        "0x00977540",
-        "0x00978890",
-        "0x00992000",
-        "0x00992920",
-        "0x00993BE0",
-        "0x00994AC0",
-        "0x009951C0",
-        "0x00995B20",
-        "0x00995C20",
-        "0x00996430",
-        "0x00996FD0",
-        "0x00997E40",
-        "0x00998DB0",
-        "0x00999780",
-        "0x0099A6A0",
-        "0x0099C5E0",
-        "0x0099C830",
-        "0x0099C8B0",
-        "0x0099F3C0",
-        "0x009A7DF0",
-        "0x009A7F80",
-        "0x009A80E0",
-        "0x009A8240",
-        "0x009A8440",
-        "0x009A8740",
-        "0x009A9FE0",
-        "0x009AA540",
-        "0x009AA660",
-        "0x009AA790",
-        "0x009AA7F0",
-        "0x009AC770",
-        "0x009ACAC0",
-        "0x009AD970",
-        "0x009AD9C0",
-        "0x009ADAA0",
-        "0x009ADB90",
-        "0x009AE120",
-        "0x009AE140",
-        "0x009AE160",
-        "0x009AE1A0",
-        "0x009AE1C0",
-        "0x009AE1E0",
-        "0x009AE200",
-        "0x009AE240",
-        "0x009AE260",
-        "0x009AE280",
-        "0x009AE2A0",
-        "0x009AE2C0",
-        "0x009AE4D0",
-        "0x009AE500",
-        "0x009AE780",
-        "0x009AE790",
-        "0x009AE880",
-        "0x009AE8A0",
-        "0x009AE8D0",
-        "0x009AE960",
-        "0x009AE9A0",
-        "0x009AEA80",
-        "0x009AEAE0",
-        "0x009AEB70",
-        "0x009AEBD0",
-        "0x009AEFD0",
-        "0x009AF150",
-        "0x009AF1B0",
-        "0x009AF210",
-        "0x009AF2B0",
-        "0x009B1BA0",
-        "0x009B1C40",
-        "0x009B1D20",
-        "0x009B2370",
-        "0x009B2450",
-        "0x009B24C0",
-        "0x009B2530",
-        "0x009B3110",
-        "0x009B3130",
-        "0x009B32F0",
-        "0x009B3370",
-        "0x009B3420",
-        "0x009B3440",
-        "0x009B3630",
-        "0x009B3920",
-        "0x009B5A00",
-        "0x009B5B20",
-        "0x009B5EF0",
-        "0x009B60B0",
-        "0x009B6130",
-        "0x009B6160",
-        "0x009B64E0",
-        "0x009B6880",
-        "0x009C1930",
-        "0x009C29A0",
-        "0x009C2A10",
-        "0x009C2A60",
-        "0x009C6900",
-        "0x009C6A50",
-        "0x009C6CA0",
-        "0x009C6D60",
-        "0x009C7E10",
-        "0x009C8040",
-        "0x009C83D0",
-        "0x009C8A80",
-        "0x009C90E0",
-        "0x009C9140",
-        "0x009C91D0",
-        "0x009C9E10",
-        "0x009C9F80",
-        "0x009CA090",
-        "0x009CB9F0",
-        "0x009CC820",
-        "0x009CE1E0",
-        "0x009CE350",
-        "0x009CEC80",
-        "0x009CED30",
-        "0x009CF8D0",
-        "0x009CFB60",
-        "0x009D0020",
-        "0x009D0840",
-        "0x009D0860",
-        "0x009D0870",
-        "0x009D0980",
-        "0x009D0F20",
-        "0x009D1070",
-        "0x009D1120",
-        "0x009D11E0",
-        "0x009D1850",
-        "0x009D2C40",
-        "0x009D2C60",
-        "0x009D2C80",
-        "0x009D2CC0",
-        "0x009D2CE0",
-        "0x009D3FC0",
-        "0x009D4000",
-        "0x009D4250",
-        "0x009D4340",
-        "0x009D43D0",
-        "0x009D44F0",
-        "0x009D45C0",
-        "0x009D4EB0",
-        "0x009D5200",
-        "0x009D5400",
-        "0x009D7350",
-        "0x009D7420",
-        "0x009D94D0",
-        "0x009D9610",
-        "0x009D96B0",
-        "0x009D99A0",
-        "0x009D9B50",
-        "0x009D9BA0",
-        "0x009D9BD0",
-        "0x009D9C30",
-        "0x009D9CA0",
-        "0x009D9D90",
-        "0x009D9E60",
-        "0x009D9F00",
-        "0x009D9FC0",
-        "0x009DA240",
-        "0x009DA260",
-        "0x009DA500",
-        "0x009DB000",
-        "0x009DB160",
-        "0x009DB1F0",
-        "0x009DB350",
-        "0x009DBE40",
-        "0x009DBE70",
-        "0x009DC110",
-        "0x009DC1D0",
-        "0x009DC210",
-        "0x009DC250",
-        "0x009DC2B0",
-        "0x009DC310",
-        "0x009DC5A0",
-        "0x009DC770",
-        "0x009DC810",
-        "0x009DC8C0",
-        "0x009DC900",
-        "0x009DCC50",
-        "0x009DCF50",
-        "0x009DD010",
-        "0x009DD070",
-        "0x009DD090",
-        "0x009DD0B0",
-        "0x009DD240",
-        "0x009DD280",
-        "0x009DD8B0",
-        "0x009DD920",
-        "0x009DD940",
-        "0x009DDA30",
-        "0x009DDA50",
-        "0x009DDA70",
-        "0x009DDAF0",
-        "0x009DEA40",
-        "0x009DEC60",
-        "0x009DECA0",
-        "0x009DEF60",
-        "0x009DF150",
-        "0x009DF180",
-        "0x009DF220",
-        "0x009DF240",
-        "0x009DF340",
-        "0x009DF370",
-        "0x009DF390",
-        "0x009DF480",
-        "0x009DF500",
-        "0x009DFB00",
-        "0x009E0170",
-        "0x009E06B0",
-        "0x009E06F0",
-        "0x009E0730",
-        "0x009E0860",
-        "0x009E0970",
-        "0x009E09C0",
-        "0x009E09F0",
-        "0x009E0A10",
-        "0x009E0A40",
-        "0x009E0AA0",
-        "0x009E0B30",
-        "0x009E0BC0",
-        "0x009E0BF0",
-        "0x009E0C20",
-        "0x009E0C40",
-        "0x009E0CA0",
-        "0x009E0CE0",
-        "0x009E0D80",
-        "0x009E1800",
-        "0x009E1820",
-        "0x009E1890",
-        "0x009E1910",
-        "0x009E1930",
-        "0x009E1960",
-        "0x009E1CC0",
-        "0x009E1DB0",
-        "0x009E1DD0",
-        "0x009E1F20",
-        "0x009E2730",
-        "0x009E2930",
-        "0x009E2AC0",
-        "0x009E2D20",
-        "0x009E2D50",
-        "0x009E2D70",
-        "0x009E3810",
-        "0x009E38D0",
-        "0x009E39F0",
-        "0x009E3BA0",
-        "0x009E3BD0",
-        "0x009E3C00",
-        "0x009E3CD0",
-        "0x009E3CF0",
-        "0x009E3D40",
-        "0x009E3DA0",
-        "0x009E3DD0",
-        "0x009E3E30",
-        "0x009E3EB0",
-        "0x009E3FF0",
-        "0x009E4020",
-        "0x009E4050",
-        "0x009E4080",
-        "0x009E4180",
-        "0x009E41E0",
-        "0x009E4200",
-        "0x009E4240",
-        "0x009E42D0",
-        "0x009E4300",
-        "0x009E4320",
-        "0x009E4330",
-        "0x009E4350",
-        "0x009E4390",
-        "0x009E43B0",
-        "0x009E4470",
-        "0x009E44A0",
-        "0x009E44D0",
-        "0x009E4530",
-        "0x009E4560",
-        "0x009E4570",
-        "0x009E46D0",
-        "0x009E4C30",
-        "0x009E4CF0",
-        "0x009E4DA0",
-        "0x009E4E20",
-        "0x009E4E70",
-        "0x009E4F60",
-        "0x009E5110",
-        "0x009E5190",
-        "0x009E51D0",
-        "0x009E51F0",
-        "0x009E5240",
-        "0x009E52C0",
-        "0x009E5340",
-        "0x009E5360",
-        "0x009E5460",
-        "0x009E56D0",
-        "0x009E5730",
-        "0x009E5750",
-        "0x009E57D0",
-        "0x009E5860",
-        "0x009E5C10",
-        "0x009E5CE0",
-        "0x009E5D80",
-        "0x009E5E40",
-        "0x009E5F40",
-        "0x009E5F70",
-        "0x009E5FA0",
-        "0x009E6060",
-        "0x009E60A0",
-        "0x009E60D0",
-        "0x009E6100",
-        "0x009E6160",
-        "0x009E6210",
-        "0x009E6250",
-        "0x009E6270",
-        "0x009E6370",
-        "0x009E6460",
-        "0x009E6560",
-        "0x009E6A00",
-        "0x009E6BE0",
-        "0x009E6DC0",
-        "0x009E6E30",
-        "0x009E6EA0",
-        "0x009E7C90",
-        "0x009E7CE0",
-        "0x009E9440",
-        "0x009E9450",
-        "0x009E9460"
-      ]
-    },
-    "READY": {
-      "root": "0x00B01EB0",
-      "size": 19,
-      "depth": 5,
-      "label": "READY",
-      "imports": [],
-      "missing": [],
-      "indirect": 0,
-      "unknown": 0,
-      "protected_edges": 0,
-      "protected_mem": 0,
-      "functions": [
-        "0x00A128A0",
-        "0x00A12DE0",
-        "0x00AFECC0",
-        "0x00AFEE00",
-        "0x00AFEE50",
-        "0x00AFEEA0",
-        "0x00AFF2E0",
-        "0x00AFF620",
-        "0x00AFF770",
-        "0x00AFF830",
-        "0x00AFFA00",
-        "0x00B00650",
-        "0x00B01EB0",
-        "0x00B1A820",
-        "0x00B1A950",
-        "0x00B1AA40",
-        "0x00B1AAE0",
-        "0x00B1ABF0",
-        "0x00B1AEE0"
-      ]
-    },
-    "UNKNOWN_RUNTIME_DEPENDENCY": {
-      "root": "0x009D0EE0",
-      "size": 16,
-      "depth": 6,
-      "label": "UNKNOWN_RUNTIME_DEPENDENCY",
-      "imports": [
-        [
-          "_wassert",
-          1
-        ]
-      ],
-      "missing": [
-        "_wassert"
-      ],
-      "indirect": 0,
-      "unknown": 0,
-      "protected_edges": 0,
-      "protected_mem": 0,
-      "functions": [
-        "0x009D0C80",
-        "0x009D0EE0",
-        "0x009E1F20",
-        "0x009E5A10",
-        "0x009E5A50",
-        "0x009E5DF0",
-        "0x009E5E10",
-        "0x009E5E60",
-        "0x009E61B0",
-        "0x009E61E0",
-        "0x009E6290",
-        "0x009E62F0",
-        "0x009E6320",
-        "0x009E6390",
-        "0x009E6480",
-        "0x009E64B0"
-      ]
-    },
-    "TLS_BOUNDARY": {
-      "root": "0x0080E770",
-      "size": 340,
-      "depth": 31,
-      "label": "TLS_BOUNDARY",
-      "imports": [
-        [
-          "memcpy",
-          3
-        ],
-        [
-          "strlen",
-          3
-        ],
-        [
-          "memset",
-          3
-        ],
-        [
-          "memmove",
-          2
-        ],
-        [
-          "vsprintf",
-          1
-        ],
-        [
-          "_crt_debugger_hook",
-          1
-        ],
-        [
-          "memcmp",
-          1
-        ]
-      ],
-      "missing": [
-        "_crt_debugger_hook",
-        "vsprintf"
-      ],
-      "indirect": 1321,
-      "unknown": 15,
-      "protected_edges": 0,
-      "protected_mem": 0,
-      "functions": [
-        "0x007377E0",
-        "0x00804070",
-        "0x00804090",
-        "0x008040B0",
-        "0x008040C0",
-        "0x008040E0",
-        "0x00805070",
-        "0x00808800",
-        "0x0080BBC0",
-        "0x0080D810",
-        "0x0080E770",
-        "0x0087B350",
-        "0x0087B570",
-        "0x0087BDAC",
-        "0x008811F2",
-        "0x00977400",
-        "0x00977480",
-        "0x00977540",
-        "0x00978890",
-        "0x00992000",
-        "0x00992920",
-        "0x00993BE0",
-        "0x00994AC0",
-        "0x009951C0",
-        "0x00995B20",
-        "0x00995C20",
-        "0x00996430",
-        "0x00996FD0",
-        "0x00997E40",
-        "0x00998DB0",
-        "0x00999780",
-        "0x0099A6A0",
-        "0x0099C5E0",
-        "0x0099C830",
-        "0x0099C8B0",
-        "0x0099F3C0",
-        "0x009A7DF0",
-        "0x009A7F80",
-        "0x009A80E0",
-        "0x009A8240",
-        "0x009A8440",
-        "0x009A8740",
-        "0x009A9FE0",
-        "0x009AA540",
-        "0x009AA660",
-        "0x009AA790",
-        "0x009AA7F0",
-        "0x009AC770",
-        "0x009ACAC0",
-        "0x009AD970",
-        "0x009AD9C0",
-        "0x009ADAA0",
-        "0x009ADB90",
-        "0x009AE120",
-        "0x009AE140",
-        "0x009AE160",
-        "0x009AE1A0",
-        "0x009AE1C0",
-        "0x009AE1E0",
-        "0x009AE200",
-        "0x009AE240",
-        "0x009AE260",
-        "0x009AE280",
-        "0x009AE2A0",
-        "0x009AE2C0",
-        "0x009AE4D0",
-        "0x009AE500",
-        "0x009AE780",
-        "0x009AE790",
-        "0x009AE880",
-        "0x009AE8A0",
-        "0x009AE8D0",
-        "0x009AE960",
-        "0x009AE9A0",
-        "0x009AEA80",
-        "0x009AEAE0",
-        "0x009AEB70",
-        "0x009AEBD0",
-        "0x009AEFD0",
-        "0x009AF150",
-        "0x009AF1B0",
-        "0x009AF210",
-        "0x009AF2B0",
-        "0x009B1BA0",
-        "0x009B1C40",
-        "0x009B1D20",
-        "0x009B2370",
-        "0x009B2450",
-        "0x009B24C0",
-        "0x009B2530",
-        "0x009B3110",
-        "0x009B3130",
-        "0x009B32F0",
-        "0x009B3370",
-        "0x009B3420",
-        "0x009B3440",
-        "0x009B3630",
-        "0x009B3920",
-        "0x009B5A00",
-        "0x009B5B20",
-        "0x009B5EF0",
-        "0x009B60B0",
-        "0x009B6130",
-        "0x009B6160",
-        "0x009B64E0",
-        "0x009B6880",
-        "0x009C1930",
-        "0x009C29A0",
-        "0x009C2A10",
-        "0x009C2A60",
-        "0x009C6900",
-        "0x009C6A50",
-        "0x009C6CA0",
-        "0x009C6D60",
-        "0x009C7E10",
-        "0x009C8040",
-        "0x009C83D0",
-        "0x009C8A80",
-        "0x009C90E0",
-        "0x009C9140",
-        "0x009C91D0",
-        "0x009C9E10",
-        "0x009C9F80",
-        "0x009CA090",
-        "0x009CB9F0",
-        "0x009CC820",
-        "0x009CE1E0",
-        "0x009CE350",
-        "0x009CEC80",
-        "0x009CED30",
-        "0x009CF8D0",
-        "0x009CFB60",
-        "0x009D0020",
-        "0x009D0840",
-        "0x009D0860",
-        "0x009D0870",
-        "0x009D0980",
-        "0x009D0F20",
-        "0x009D1070",
-        "0x009D1120",
-        "0x009D11E0",
-        "0x009D1850",
-        "0x009D2C40",
-        "0x009D2C60",
-        "0x009D2C80",
-        "0x009D2CC0",
-        "0x009D2CE0",
-        "0x009D3FC0",
-        "0x009D4000",
-        "0x009D4250",
-        "0x009D4340",
-        "0x009D43D0",
-        "0x009D44F0",
-        "0x009D45C0",
-        "0x009D4EB0",
-        "0x009D5200",
-        "0x009D5400",
-        "0x009D7350",
-        "0x009D7420",
-        "0x009D94D0",
-        "0x009D9610",
-        "0x009D96B0",
-        "0x009D99A0",
-        "0x009D9B50",
-        "0x009D9BA0",
-        "0x009D9BD0",
-        "0x009D9C30",
-        "0x009D9CA0",
-        "0x009D9D90",
-        "0x009D9E60",
-        "0x009D9F00",
-        "0x009D9FC0",
-        "0x009DA240",
-        "0x009DA260",
-        "0x009DA500",
-        "0x009DB000",
-        "0x009DB160",
-        "0x009DB1F0",
-        "0x009DB350",
-        "0x009DBE40",
-        "0x009DBE70",
-        "0x009DC110",
-        "0x009DC1D0",
-        "0x009DC210",
-        "0x009DC250",
-        "0x009DC2B0",
-        "0x009DC310",
-        "0x009DC5A0",
-        "0x009DC770",
-        "0x009DC810",
-        "0x009DC8C0",
-        "0x009DC900",
-        "0x009DCC50",
-        "0x009DCF50",
-        "0x009DD010",
-        "0x009DD070",
-        "0x009DD090",
-        "0x009DD0B0",
-        "0x009DD240",
-        "0x009DD280",
-        "0x009DD8B0",
-        "0x009DD920",
-        "0x009DD940",
-        "0x009DDA30",
-        "0x009DDA50",
-        "0x009DDA70",
-        "0x009DDAF0",
-        "0x009DEA40",
-        "0x009DEC60",
-        "0x009DECA0",
-        "0x009DEF60",
-        "0x009DF150",
-        "0x009DF180",
-        "0x009DF220",
-        "0x009DF240",
-        "0x009DF340",
-        "0x009DF370",
-        "0x009DF390",
-        "0x009DF480",
-        "0x009DF500",
-        "0x009DFB00",
-        "0x009E0170",
-        "0x009E06B0",
-        "0x009E06F0",
-        "0x009E0730",
-        "0x009E0860",
-        "0x009E0970",
-        "0x009E09C0",
-        "0x009E09F0",
-        "0x009E0A10",
-        "0x009E0A40",
-        "0x009E0AA0",
-        "0x009E0B30",
-        "0x009E0BC0",
-        "0x009E0BF0",
-        "0x009E0C20",
-        "0x009E0C40",
-        "0x009E0CA0",
-        "0x009E0CE0",
-        "0x009E0D80",
-        "0x009E1800",
-        "0x009E1820",
-        "0x009E1890",
-        "0x009E1910",
-        "0x009E1930",
-        "0x009E1960",
-        "0x009E1CC0",
-        "0x009E1DB0",
-        "0x009E1DD0",
-        "0x009E1F20",
-        "0x009E2730",
-        "0x009E2930",
-        "0x009E2AC0",
-        "0x009E2D20",
-        "0x009E2D50",
-        "0x009E2D70",
-        "0x009E3810",
-        "0x009E38D0",
-        "0x009E39F0",
-        "0x009E3BA0",
-        "0x009E3BD0",
-        "0x009E3C00",
-        "0x009E3CD0",
-        "0x009E3CF0",
-        "0x009E3D40",
-        "0x009E3DA0",
-        "0x009E3DD0",
-        "0x009E3E30",
-        "0x009E3EB0",
-        "0x009E3FF0",
-        "0x009E4020",
-        "0x009E4050",
-        "0x009E4080",
-        "0x009E4180",
-        "0x009E41E0",
-        "0x009E4200",
-        "0x009E4240",
-        "0x009E42D0",
-        "0x009E4300",
-        "0x009E4320",
-        "0x009E4330",
-        "0x009E4350",
-        "0x009E4390",
-        "0x009E43B0",
-        "0x009E4470",
-        "0x009E44A0",
-        "0x009E44D0",
-        "0x009E4530",
-        "0x009E4560",
-        "0x009E4570",
-        "0x009E46D0",
-        "0x009E4C30",
-        "0x009E4CF0",
-        "0x009E4DA0",
-        "0x009E4E20",
-        "0x009E4E70",
-        "0x009E4F60",
-        "0x009E5110",
-        "0x009E5190",
-        "0x009E51D0",
-        "0x009E51F0",
-        "0x009E5240",
-        "0x009E52C0",
-        "0x009E5340",
-        "0x009E5360",
-        "0x009E5460",
-        "0x009E56D0",
-        "0x009E5730",
-        "0x009E5750",
-        "0x009E57D0",
-        "0x009E5860",
-        "0x009E5C10",
-        "0x009E5CE0",
-        "0x009E5D80",
-        "0x009E5E40",
-        "0x009E5F40",
-        "0x009E5F70",
-        "0x009E5FA0",
-        "0x009E6060",
-        "0x009E60A0",
-        "0x009E60D0",
-        "0x009E6100",
-        "0x009E6160",
-        "0x009E6210",
-        "0x009E6250",
-        "0x009E6270",
-        "0x009E6370",
-        "0x009E6460",
-        "0x009E6560",
-        "0x009E6A00",
-        "0x009E6BE0",
-        "0x009E6DC0",
-        "0x009E6E30",
-        "0x009E6EA0",
-        "0x009E7730",
-        "0x009E7C90",
-        "0x009E7CE0",
-        "0x009E9440",
-        "0x009E9450",
-        "0x009E9460"
-      ]
-    },
-    "KNOWN_IMPORT_MISSING_HLE": {
-      "root": "0x0094FFD0",
-      "size": 25,
-      "depth": 6,
-      "label": "KNOWN_IMPORT_MISSING_HLE",
-      "imports": [
-        [
-          "floor",
-          4
-        ],
-        [
-          "_CItan",
-          2
-        ],
-        [
-          "_CIcos",
-          2
-        ],
-        [
-          "_CIsin",
-          2
-        ],
-        [
-          "_CIsqrt",
-          1
-        ]
-      ],
-      "missing": [
-        "_CIsqrt",
-        "_CItan",
-        "floor"
-      ],
-      "indirect": 0,
-      "unknown": 0,
-      "protected_edges": 0,
-      "protected_mem": 0,
-      "functions": [
-        "0x0087B4C0",
-        "0x0091F660",
-        "0x0091F6C0",
-        "0x00947B10",
-        "0x009480A0",
-        "0x00948160",
-        "0x00948260",
-        "0x00948310",
-        "0x00948450",
-        "0x009485A0",
-        "0x00948630",
-        "0x00948680",
-        "0x00948750",
-        "0x00948870",
-        "0x009488F0",
-        "0x00948A60",
-        "0x00948CE0",
-        "0x00948D60",
-        "0x00948EB0",
-        "0x00948F10",
-        "0x009493E0",
-        "0x0094FE30",
-        "0x0094FFD0",
-        "0x009787A0",
-        "0x009795A0"
-      ]
-    },
-    "PROTECTED_BOUNDARY": {
-      "root": "0x009EA130",
-      "size": 794,
-      "depth": 37,
-      "label": "PROTECTED_BOUNDARY",
-      "imports": [
-        [
-          "memset",
-          9
-        ],
-        [
-          "memcpy",
-          8
-        ],
-        [
-          "memmove",
-          5
-        ],
-        [
-          "strlen",
-          4
-        ],
-        [
-          "strcmp",
-          4
-        ],
-        [
-          "strcpy",
-          2
-        ],
-        [
-          "sprintf",
-          2
-        ],
-        [
-          "_wassert",
-          1
-        ],
-        [
-          "strncpy",
-          1
-        ],
-        [
-          "memcmp",
-          1
-        ],
-        [
-          "_snprintf",
-          1
-        ],
-        [
-          "vsprintf",
-          1
-        ],
-        [
-          "_crt_debugger_hook",
-          1
-        ]
-      ],
-      "missing": [
-        "_crt_debugger_hook",
-        "_snprintf",
-        "_wassert",
-        "sprintf",
-        "strcpy",
-        "strncpy",
-        "vsprintf"
-      ],
-      "indirect": 1037,
-      "unknown": 21,
-      "protected_edges": 0,
-      "protected_mem": 1,
-      "functions": [
-        "0x007377E0",
-        "0x00804070",
-        "0x00804080",
-        "0x00804090",
-        "0x008040B0",
-        "0x008040C0",
-        "0x008040D0",
-        "0x008040E0",
-        "0x008040F0",
-        "0x008041B0",
-        "0x0087B350",
-        "0x0087B4C0",
-        "0x0087B570",
-        "0x0087BDAC",
-        "0x008811F2",
-        "0x00977480",
-        "0x00977540",
-        "0x00977800",
-        "0x00978890",
-        "0x0097FA60",
-        "0x0098EAD0",
-        "0x0098EB00",
-        "0x0098ECD0",
-        "0x0098ED00",
-        "0x0098ED60",
-        "0x0098ED90",
-        "0x0098EDD0",
-        "0x00991D70",
-        "0x00991DB0",
-        "0x009970A0",
-        "0x00997120",
-        "0x009971F0",
-        "0x009974D0",
-        "0x00997D00",
-        "0x009981F0",
-        "0x0099C6B0",
-        "0x0099C6F0",
-        "0x0099C730",
-        "0x0099C7B0",
-        "0x0099C7F0",
-        "0x0099C830",
-        "0x0099C8B0",
-        "0x0099C910",
-        "0x0099C950",
-        "0x0099CA10",
-        "0x0099CB10",
-        "0x0099CB50",
-        "0x0099CB90",
-        "0x0099CBD0",
-        "0x0099CC10",
-        "0x0099CC50",
-        "0x0099CC90",
-        "0x0099CCD0",
-        "0x0099CD10",
-        "0x0099CD50",
-        "0x0099CDD0",
-        "0x0099CEA0",
-        "0x0099CEC0",
-        "0x0099CEE0",
-        "0x0099CF20",
-        "0x0099CF60",
-        "0x0099CFA0",
-        "0x0099CFE0",
-        "0x0099D030",
-        "0x0099D080",
-        "0x0099D0C0",
-        "0x0099D100",
-        "0x0099D120",
-        "0x0099D160",
-        "0x0099D1A0",
-        "0x0099D1E0",
-        "0x0099D670",
-        "0x0099F8D0",
-        "0x0099FB30",
-        "0x0099FBD0",
-        "0x0099FE50",
-        "0x009A0670",
-        "0x009A06E0",
-        "0x009A0830",
-        "0x009A4030",
-        "0x009A4260",
-        "0x009A43F0",
-        "0x009A4A50",
-        "0x009A5840",
-        "0x009A5930",
-        "0x009A5B40",
-        "0x009A5B90",
-        "0x009A5BB0",
-        "0x009A5CF0",
-        "0x009A6290",
-        "0x009A6560",
-        "0x009A7140",
-        "0x009A71D0",
-        "0x009A7210",
-        "0x009A7290",
-        "0x009A7300",
-        "0x009A7360",
-        "0x009A73C0",
-        "0x009A7960",
-        "0x009A7A30",
-        "0x009A7F80",
-        "0x009A7FF0",
-        "0x009A80E0",
-        "0x009A8680",
-        "0x009A86A0",
-        "0x009A9BB0",
-        "0x009A9CF0",
-        "0x009A9F60",
-        "0x009A9FA0",
-        "0x009A9FE0",
-        "0x009AA3E0",
-        "0x009AA490",
-        "0x009AA510",
-        "0x009AA540",
-        "0x009AA590",
-        "0x009AA600",
-        "0x009AA630",
-        "0x009AA660",
-        "0x009AA7B0",
-        "0x009AA7D0",
-        "0x009AA7F0",
-        "0x009AA810",
-        "0x009AAD60",
-        "0x009ACDF0",
-        "0x009AD860",
-        "0x009AD970",
-        "0x009AD9C0",
-        "0x009AD9E0",
-        "0x009ADAF0",
-        "0x009ADB90",
-        "0x009AE120",
-        "0x009AE140",
-        "0x009AE160",
-        "0x009AE1A0",
-        "0x009AE1C0",
-        "0x009AE1E0",
-        "0x009AE200",
-        "0x009AE240",
-        "0x009AE260",
-        "0x009AE280",
-        "0x009AE2A0",
-        "0x009AE2C0",
-        "0x009AE4D0",
-        "0x009AE5A0",
-        "0x009AE710",
-        "0x009AE790",
-        "0x009AE830",
-        "0x009AE880",
-        "0x009AE8A0",
-        "0x009AE8D0",
-        "0x009AE960",
-        "0x009AE9A0",
-        "0x009AEA80",
-        "0x009AEAE0",
-        "0x009AEB70",
-        "0x009AEBD0",
-        "0x009AEFD0",
-        "0x009AF150",
-        "0x009AF1B0",
-        "0x009AF210",
-        "0x009AF2B0",
-        "0x009AFFF0",
-        "0x009B1A10",
-        "0x009B1BA0",
-        "0x009B1C40",
-        "0x009B2370",
-        "0x009B2530",
-        "0x009B3970",
-        "0x009B39D0",
-        "0x009B3C40",
-        "0x009B3F30",
-        "0x009B4010",
-        "0x009B41E0",
-        "0x009B4250",
-        "0x009B4520",
-        "0x009B4BC0",
-        "0x009B4C30",
-        "0x009B4CB0",
-        "0x009B5A00",
-        "0x009B5A10",
-        "0x009B5A20",
-        "0x009B5B20",
-        "0x009B5EF0",
-        "0x009B6030",
-        "0x009B60B0",
-        "0x009B6130",
-        "0x009B6160",
-        "0x009B62D0",
-        "0x009B6480",
-        "0x009B64E0",
-        "0x009B7710",
-        "0x009B7820",
-        "0x009B7AC0",
-        "0x009B8D10",
-        "0x009B9160",
-        "0x009B9600",
-        "0x009B9730",
-        "0x009BA600",
-        "0x009C1A30",
-        "0x009C1A90",
-        "0x009C1AF0",
-        "0x009C1BC0",
-        "0x009C1C50",
-        "0x009C2090",
-        "0x009C20C0",
-        "0x009C20F0",
-        "0x009C2920",
-        "0x009C29A0",
-        "0x009C2A10",
-        "0x009C2A60",
-        "0x009C33F0",
-        "0x009C34E0",
-        "0x009C3550",
-        "0x009C3930",
-        "0x009C39B0",
-        "0x009C3A40",
-        "0x009C3B50",
-        "0x009C3DC0",
-        "0x009C3F40",
-        "0x009C4150",
-        "0x009C4460",
-        "0x009C4950",
-        "0x009C4AC0",
-        "0x009C4B70",
-        "0x009C4BE0",
-        "0x009C4C50",
-        "0x009C4D00",
-        "0x009C4EE0",
-        "0x009C5210",
-        "0x009C59E0",
-        "0x009C5C70",
-        "0x009C5E20",
-        "0x009C5E70",
-        "0x009C5F60",
-        "0x009C6270",
-        "0x009C6970",
-        "0x009C6A50",
-        "0x009C7040",
-        "0x009C7360",
-        "0x009C7480",
-        "0x009C78A0",
-        "0x009C7B60",
-        "0x009C7BF0",
-        "0x009C7C70",
-        "0x009C7CB0",
-        "0x009C7E10",
-        "0x009C7F10",
-        "0x009C7FF0",
-        "0x009C8040",
-        "0x009C83D0",
-        "0x009C8950",
-        "0x009C8A80",
-        "0x009C8AF0",
-        "0x009C8BD0",
-        "0x009C8CA0",
-        "0x009C8D70",
-        "0x009C8E60",
-        "0x009C8F50",
-        "0x009C90E0",
-        "0x009C9140",
-        "0x009C91D0",
-        "0x009C9C00",
-        "0x009C9C20",
-        "0x009C9C70",
-        "0x009C9C90",
-        "0x009C9D20",
-        "0x009C9E40",
-        "0x009C9F80",
-        "0x009CA090",
-        "0x009CA6E0",
-        "0x009CA760",
-        "0x009CA790",
-        "0x009CA7E0",
-        "0x009CA9E0",
-        "0x009CABA0",
-        "0x009CABC0",
-        "0x009CABE0",
-        "0x009CACF0",
-        "0x009CAD10",
-        "0x009CAD30",
-        "0x009CAD50",
-        "0x009CAD80",
-        "0x009CADE0",
-        "0x009CAE10",
-        "0x009CAE30",
-        "0x009CAE70",
-        "0x009CAE90",
-        "0x009CAEB0",
-        "0x009CAED0",
-        "0x009CAEF0",
-        "0x009CAF10",
-        "0x009CAF40",
-        "0x009CAF90",
-        "0x009CB040",
-        "0x009CB060",
-        "0x009CB080",
-        "0x009CB0C0",
-        "0x009CB280",
-        "0x009CB2C0",
-        "0x009CB3A0",
-        "0x009CB4D0",
-        "0x009CB4F0",
-        "0x009CB650",
-        "0x009CB690",
-        "0x009CB6B0",
-        "0x009CB890",
-        "0x009CB9F0",
-        "0x009CBA80",
-        "0x009CBB10",
-        "0x009CBB40",
-        "0x009CBBC0",
-        "0x009CBD00",
-        "0x009CBD60",
-        "0x009CC040",
-        "0x009CC0B0",
-        "0x009CC1B0",
-        "0x009CC240",
-        "0x009CC600",
-        "0x009CC760",
-        "0x009CC820",
-        "0x009CCB40",
-        "0x009CCDF0",
-        "0x009CCEA0",
-        "0x009CD1B0",
-        "0x009CD2C0",
-        "0x009CD320",
-        "0x009CD390",
-        "0x009CD890",
-        "0x009CD960",
-        "0x009CDB50",
-        "0x009CE0F0",
-        "0x009CE1E0",
-        "0x009CE310",
-        "0x009CEAC0",
-        "0x009CEB40",
-        "0x009CEC00",
-        "0x009CEC80",
-        "0x009CEDB0",
-        "0x009CEDE0",
-        "0x009CEE00",
-        "0x009CF020",
-        "0x009CF210",
-        "0x009CF8B0",
-        "0x009CF990",
-        "0x009D0020",
-        "0x009D0560",
-        "0x009D0740",
-        "0x009D0840",
-        "0x009D0860",
-        "0x009D0870",
-        "0x009D0980",
-        "0x009D0A40",
-        "0x009D0B70",
-        "0x009D0C80",
-        "0x009D0E90",
-        "0x009D0EB0",
-        "0x009D0EE0",
-        "0x009D0F00",
-        "0x009D0FC0",
-        "0x009D1070",
-        "0x009D11E0",
-        "0x009D12E0",
-        "0x009D1310",
-        "0x009D13B0",
-        "0x009D1470",
-        "0x009D1530",
-        "0x009D1750",
-        "0x009D1B70",
-        "0x009D21D0",
-        "0x009D2260",
-        "0x009D2980",
-        "0x009D2C40",
-        "0x009D2C60",
-        "0x009D2C80",
-        "0x009D2CA0",
-        "0x009D2CC0",
-        "0x009D2CE0",
-        "0x009D2D20",
-        "0x009D3550",
-        "0x009D38F0",
-        "0x009D3D70",
-        "0x009D3E40",
-        "0x009D3FC0",
-        "0x009D4000",
-        "0x009D40F0",
-        "0x009D41C0",
-        "0x009D4250",
-        "0x009D42F0",
-        "0x009D4340",
-        "0x009D4380",
-        "0x009D43D0",
-        "0x009D4410",
-        "0x009D44F0",
-        "0x009D45C0",
-        "0x009D4670",
-        "0x009D48A0",
-        "0x009D4920",
-        "0x009D49C0",
-        "0x009D4A50",
-        "0x009D4B30",
-        "0x009D4EB0",
-        "0x009D5140",
-        "0x009D5200",
-        "0x009D6150",
-        "0x009D6252",
-        "0x009D62C0",
-        "0x009D66C0",
-        "0x009D6E90",
-        "0x009D6F10",
-        "0x009D6F70",
-        "0x009D6FA0",
-        "0x009D70A0",
-        "0x009D70B0",
-        "0x009D7300",
-        "0x009D7350",
-        "0x009D7420",
-        "0x009D7490",
-        "0x009D75B0",
-        "0x009D77A0",
-        "0x009D78F0",
-        "0x009D7AF0",
-        "0x009D7B70",
-        "0x009D7DA0",
-        "0x009D81A0",
-        "0x009D8220",
-        "0x009D86E0",
-        "0x009D8760",
-        "0x009D87E0",
-        "0x009D9180",
-        "0x009D9390",
-        "0x009D94D0",
-        "0x009D9610",
-        "0x009D96B0",
-        "0x009D96E0",
-        "0x009D9760",
-        "0x009D9820",
-        "0x009D9840",
-        "0x009D9A70",
-        "0x009D9AC0",
-        "0x009D9B50",
-        "0x009D9BA0",
-        "0x009D9BD0",
-        "0x009D9C30",
-        "0x009D9CA0",
-        "0x009D9E40",
-        "0x009D9E60",
-        "0x009D9EC0",
-        "0x009DA500",
-        "0x009DA5F0",
-        "0x009DA770",
-        "0x009DA970",
-        "0x009DAA50",
-        "0x009DAAA0",
-        "0x009DAAF0",
-        "0x009DAEE0",
-        "0x009DB000",
-        "0x009DB160",
-        "0x009DB1F0",
-        "0x009DB350",
-        "0x009DBE40",
-        "0x009DC1D0",
-        "0x009DC210",
-        "0x009DC250",
-        "0x009DC2B0",
-        "0x009DC310",
-        "0x009DC5A0",
-        "0x009DC770",
-        "0x009DC810",
-        "0x009DC8C0",
-        "0x009DCC50",
-        "0x009DCC70",
-        "0x009DCD90",
-        "0x009DCDB0",
-        "0x009DCDD0",
-        "0x009DCEF0",
-        "0x009DCF10",
-        "0x009DCF30",
-        "0x009DCF50",
-        "0x009DD010",
-        "0x009DD070",
-        "0x009DD090",
-        "0x009DD0B0",
-        "0x009DD240",
-        "0x009DD260",
-        "0x009DD280",
-        "0x009DD2A0",
-        "0x009DD450",
-        "0x009DD4B0",
-        "0x009DD520",
-        "0x009DD8B0",
-        "0x009DD920",
-        "0x009DD940",
-        "0x009DD960",
-        "0x009DD9E0",
-        "0x009DDA30",
-        "0x009DDA50",
-        "0x009DDA70",
-        "0x009DDAF0",
-        "0x009DDB40",
-        "0x009DDBD0",
-        "0x009DDC40",
-        "0x009DDD00",
-        "0x009DDD50",
-        "0x009DDF70",
-        "0x009DE1B0",
-        "0x009DE390",
-        "0x009DE7F0",
-        "0x009DE880",
-        "0x009DE9C0",
-        "0x009DEA00",
-        "0x009DEA40",
-        "0x009DEA60",
-        "0x009DEAA0",
-        "0x009DEAE0",
-        "0x009DEB20",
-        "0x009DEB80",
-        "0x009DEBA0",
-        "0x009DEBE0",
-        "0x009DEC00",
-        "0x009DEC40",
-        "0x009DEC60",
-        "0x009DECA0",
-        "0x009DED00",
-        "0x009DED50",
-        "0x009DED90",
-        "0x009DEDB0",
-        "0x009DEE80",
-        "0x009DEF60",
-        "0x009DF150",
-        "0x009DF180",
-        "0x009DF1A0",
-        "0x009DF220",
-        "0x009DF240",
-        "0x009DF260",
-        "0x009DF280",
-        "0x009DF2A0",
-        "0x009DF2D0",
-        "0x009DF340",
-        "0x009DF370",
-        "0x009DF390",
-        "0x009DF3C0",
-        "0x009DF3D0",
-        "0x009DF3E0",
-        "0x009DF400",
-        "0x009DF420",
-        "0x009DF440",
-        "0x009DF460",
-        "0x009DF480",
-        "0x009DF4B0",
-        "0x009DF500",
-        "0x009DF520",
-        "0x009DF580",
-        "0x009DF5B0",
-        "0x009DF5F0",
-        "0x009DF620",
-        "0x009DF690",
-        "0x009DF6C0",
-        "0x009DF6F0",
-        "0x009DF710",
-        "0x009DF730",
-        "0x009DF760",
-        "0x009DF790",
-        "0x009DF7C0",
-        "0x009DFA10",
-        "0x009DFB00",
-        "0x009DFC80",
-        "0x009DFD40",
-        "0x009DFDD0",
-        "0x009DFE30",
-        "0x009DFE90",
-        "0x009E0170",
-        "0x009E01B0",
-        "0x009E06B0",
-        "0x009E07C0",
-        "0x009E0860",
-        "0x009E0C60",
-        "0x009E0C70",
-        "0x009E0CA0",
-        "0x009E0CE0",
-        "0x009E0D80",
-        "0x009E0DE0",
-        "0x009E0E20",
-        "0x009E0E70",
-        "0x009E0ED0",
-        "0x009E0F20",
-        "0x009E0F70",
-        "0x009E0F90",
-        "0x009E0FB0",
-        "0x009E0FF0",
-        "0x009E1010",
-        "0x009E12F0",
-        "0x009E16D0",
-        "0x009E16F0",
-        "0x009E1800",
-        "0x009E18B0",
-        "0x009E1910",
-        "0x009E1990",
-        "0x009E19B0",
-        "0x009E19D0",
-        "0x009E19F0",
-        "0x009E1A50",
-        "0x009E1AB0",
-        "0x009E1B20",
-        "0x009E1B70",
-        "0x009E1B90",
-        "0x009E1C30",
-        "0x009E1DB0",
-        "0x009E1DD0",
-        "0x009E1EC0",
-        "0x009E1EE0",
-        "0x009E1F00",
-        "0x009E1F20",
-        "0x009E1F40",
-        "0x009E1F60",
-        "0x009E1FA0",
-        "0x009E1FC0",
-        "0x009E1FE0",
-        "0x009E2000",
-        "0x009E2020",
-        "0x009E2040",
-        "0x009E2160",
-        "0x009E21B0",
-        "0x009E21E0",
-        "0x009E22B0",
-        "0x009E22D0",
-        "0x009E2310",
-        "0x009E2470",
-        "0x009E24C0",
-        "0x009E2510",
-        "0x009E2570",
-        "0x009E25D0",
-        "0x009E2730",
-        "0x009E2790",
-        "0x009E27C0",
-        "0x009E27D0",
-        "0x009E2800",
-        "0x009E2830",
-        "0x009E2870",
-        "0x009E28B0",
-        "0x009E2910",
-        "0x009E2960",
-        "0x009E2980",
-        "0x009E29A0",
-        "0x009E29C0",
-        "0x009E29E0",
-        "0x009E29F0",
-        "0x009E2A20",
-        "0x009E2A90",
-        "0x009E2BA0",
-        "0x009E2CC0",
-        "0x009E2CE0",
-        "0x009E2D00",
-        "0x009E2D20",
-        "0x009E2D50",
-        "0x009E2D70",
-        "0x009E2F60",
-        "0x009E30A0",
-        "0x009E30E0",
-        "0x009E3130",
-        "0x009E3810",
-        "0x009E38D0",
-        "0x009E39F0",
-        "0x009E3BA0",
-        "0x009E3BD0",
-        "0x009E3C00",
-        "0x009E3D40",
-        "0x009E3DA0",
-        "0x009E3DD0",
-        "0x009E3E30",
-        "0x009E40C0",
-        "0x009E4100",
-        "0x009E4180",
-        "0x009E41E0",
-        "0x009E4200",
-        "0x009E4240",
-        "0x009E42D0",
-        "0x009E4300",
-        "0x009E4320",
-        "0x009E4330",
-        "0x009E4350",
-        "0x009E43B0",
-        "0x009E43D0",
-        "0x009E4450",
-        "0x009E4470",
-        "0x009E44A0",
-        "0x009E44D0",
-        "0x009E4530",
-        "0x009E4560",
-        "0x009E4570",
-        "0x009E4760",
-        "0x009E47D0",
-        "0x009E4820",
-        "0x009E4890",
-        "0x009E4990",
-        "0x009E4B10",
-        "0x009E4D40",
-        "0x009E4DA0",
-        "0x009E4E20",
-        "0x009E4E70",
-        "0x009E4FF0",
-        "0x009E5040",
-        "0x009E50F0",
-        "0x009E5130",
-        "0x009E5190",
-        "0x009E51D0",
-        "0x009E51F0",
-        "0x009E5340",
-        "0x009E5360",
-        "0x009E5380",
-        "0x009E5420",
-        "0x009E5460",
-        "0x009E54B0",
-        "0x009E5610",
-        "0x009E5650",
-        "0x009E5690",
-        "0x009E56D0",
-        "0x009E56F0",
-        "0x009E5750",
-        "0x009E57A0",
-        "0x009E57D0",
-        "0x009E5800",
-        "0x009E5840",
-        "0x009E5860",
-        "0x009E58B0",
-        "0x009E5A10",
-        "0x009E5A50",
-        "0x009E5A90",
-        "0x009E5B30",
-        "0x009E5C10",
-        "0x009E5D80",
-        "0x009E5DA0",
-        "0x009E5DF0",
-        "0x009E5E10",
-        "0x009E5E40",
-        "0x009E5E60",
-        "0x009E5E80",
-        "0x009E5EF0",
-        "0x009E5F20",
-        "0x009E5F40",
-        "0x009E5F70",
-        "0x009E5FA0",
-        "0x009E5FF0",
-        "0x009E6060",
-        "0x009E6100",
-        "0x009E6160",
-        "0x009E6180",
-        "0x009E61B0",
-        "0x009E61E0",
-        "0x009E6210",
-        "0x009E6250",
-        "0x009E6270",
-        "0x009E6290",
-        "0x009E62F0",
-        "0x009E6320",
-        "0x009E6370",
-        "0x009E6390",
-        "0x009E63E0",
-        "0x009E6410",
-        "0x009E6460",
-        "0x009E6480",
-        "0x009E64B0",
-        "0x009E64E0",
-        "0x009E6560",
-        "0x009E65D0",
-        "0x009E67E0",
-        "0x009E67F0",
-        "0x009E6A00",
-        "0x009E6BE0",
-        "0x009E6DC0",
-        "0x009E6E30",
-        "0x009E6EA0",
-        "0x009E6EC0",
-        "0x009E6FC0",
-        "0x009E70C0",
-        "0x009E70F0",
-        "0x009E7130",
-        "0x009E7160",
-        "0x009E71A0",
-        "0x009E7240",
-        "0x009E7360",
-        "0x009E73C0",
-        "0x009E7410",
-        "0x009E7480",
-        "0x009E74F0",
-        "0x009E7CE0",
-        "0x009E7CF0",
-        "0x009E9460",
-        "0x009E9DB0",
-        "0x009E9F60",
-        "0x009EA050",
-        "0x009EA130",
-        "0x009EB2B0",
-        "0x009EB2D0",
-        "0x009EB720"
-      ]
-    },
-    "READY_WITH_IMPLEMENTED_IMPORTS": {
-      "root": "0x0096CED0",
-      "size": 35,
-      "depth": 5,
-      "label": "READY_WITH_IMPLEMENTED_IMPORTS",
-      "imports": [
-        [
-          "memset",
-          1
-        ]
-      ],
-      "missing": [],
-      "indirect": 0,
-      "unknown": 0,
-      "protected_edges": 0,
-      "protected_mem": 0,
-      "functions": [
-        "0x0087B570",
-        "0x00925C90",
-        "0x00936CC0",
-        "0x009600B0",
-        "0x009605B0",
-        "0x00960920",
-        "0x00961260",
-        "0x009614C0",
-        "0x00962A50",
-        "0x00962C20",
-        "0x00962E70",
-        "0x00962FD0",
-        "0x00963050",
-        "0x00963D00",
-        "0x009641F0",
-        "0x00964420",
-        "0x00964DC0",
-        "0x00965790",
-        "0x009659A0",
-        "0x00965B30",
-        "0x00966AD0",
-        "0x009674B0",
-        "0x00967680",
-        "0x009676E0",
-        "0x00967750",
-        "0x009677E0",
-        "0x00967B80",
-        "0x00968020",
-        "0x00968260",
-        "0x009683D0",
-        "0x00968D10",
-        "0x00969170",
-        "0x0096B790",
-        "0x0096CED0",
-        "0x009787A0"
-      ]
-    },
-    "FILESYSTEM_BOUNDARY": {
-      "root": "0x00944EC0",
-      "size": 5,
-      "depth": 4,
-      "label": "FILESYSTEM_BOUNDARY",
-      "imports": [
-        [
-          "strncpy",
-          1
-        ],
-        [
-          "fclose",
-          1
-        ],
-        [
-          "fwrite",
-          1
-        ],
-        [
-          "fseek",
-          1
-        ]
-      ],
-      "missing": [
-        "fclose",
-        "fseek",
-        "fwrite",
-        "strncpy"
-      ],
-      "indirect": 0,
-      "unknown": 0,
-      "protected_edges": 0,
-      "protected_mem": 0,
-      "functions": [
-        "0x00926930",
-        "0x0092A550",
-        "0x0092B710",
-        "0x00944E50",
-        "0x00944EC0"
-      ]
-    },
-    "MEMORY_BOUNDARY": {
-      "root": "0x00A07C50",
-      "size": 1,
-      "depth": 1,
-      "label": "MEMORY_BOUNDARY",
-      "imports": [
-        [
-          "free",
-          1
-        ]
-      ],
-      "missing": [
-        "free"
-      ],
-      "indirect": 0,
-      "unknown": 0,
-      "protected_edges": 0,
-      "protected_mem": 0,
-      "functions": [
-        "0x00A07C50"
-      ]
-    },
-    "RESOLVABLE_INDIRECT_CALL": {
-      "root": "0x00906973",
-      "size": 18,
-      "depth": 7,
-      "label": "RESOLVABLE_INDIRECT_CALL",
-      "imports": [
-        [
-          "strnlen",
-          2
-        ],
-        [
-          "strncpy",
-          1
-        ]
-      ],
-      "missing": [
-        "strncpy",
-        "strnlen"
-      ],
-      "indirect": 3,
-      "unknown": 0,
-      "protected_edges": 0,
-      "protected_mem": 0,
-      "functions": [
-        "0x00902FFC",
-        "0x00903107",
-        "0x0090319D",
-        "0x00903574",
-        "0x009035A5",
-        "0x00905F74",
-        "0x00906164",
-        "0x00906973",
-        "0x0090757D",
-        "0x00908128",
-        "0x00908152",
-        "0x00908168",
-        "0x00908172",
-        "0x00908204",
-        "0x0090A81F",
-        "0x0090E4C5",
-        "0x0090E544",
-        "0x0090E592"
-      ]
-    },
-    "NETWORK_BOUNDARY": {
-      "root": "0x0088B7E0",
-      "size": 7,
-      "depth": 4,
-      "label": "NETWORK_BOUNDARY",
-      "imports": [
-        [
-          "ordinal 111",
-          2
-        ],
-        [
-          "WSASetEvent",
-          2
-        ],
-        [
-          "ordinal 4",
-          1
-        ],
-        [
-          "ordinal 3",
-          1
-        ],
-        [
-          "ordinal 22",
-          1
-        ],
-        [
-          "ordinal 2",
-          1
-        ]
-      ],
-      "missing": [
-        "WSASetEvent",
-        "ordinal 111",
-        "ordinal 2",
-        "ordinal 22",
-        "ordinal 3",
-        "ordinal 4"
-      ],
-      "indirect": 0,
-      "unknown": 0,
-      "protected_edges": 0,
-      "protected_mem": 0,
-      "functions": [
-        "0x0088AC30",
-        "0x0088AD30",
-        "0x0088AD70",
-        "0x0088AE70",
-        "0x0088B6A0",
-        "0x0088B7E0",
-        "0x0088CEF0"
-      ]
-    },
-    "TIMING_BOUNDARY": {
-      "root": "0x00883718",
-      "size": 1,
-      "depth": 1,
-      "label": "TIMING_BOUNDARY",
-      "imports": [
-        [
-          "_localtime32",
-          1
-        ]
-      ],
-      "missing": [
-        "_localtime32"
-      ],
-      "indirect": 0,
-      "unknown": 0,
-      "protected_edges": 0,
-      "protected_mem": 0,
-      "functions": [
-        "0x00883718"
-      ]
-    },
-    "UNKNOWN_IMPORT_ABI": {
-      "root": "0x0074D3B0",
-      "size": 3,
-      "depth": 3,
-      "label": "UNKNOWN_IMPORT_ABI",
-      "imports": [
-        [
-          "D3DXVec4Transform",
-          1
-        ]
-      ],
-      "missing": [
-        "D3DXVec4Transform"
-      ],
-      "indirect": 0,
-      "unknown": 0,
-      "protected_edges": 0,
-      "protected_mem": 0,
-      "functions": [
-        "0x0071B870",
-        "0x0073B970",
-        "0x0074D3B0"
-      ]
-    }
-  },
-  "only_indirect": {
-    "root": "0x0099DCD0",
-    "size": 102,
-    "depth": 14,
-    "label": "UNRESOLVED_INDIRECT_CALL",
+  "phase": 25,
+  "high_functions": 22779,
+  "generated": 22770,
+  "compiled": 22770,
+  "runtime_ready_estimate": 54,
+  "runtime_ready_note": "RUNTIME_READY uses largest READY + READY_WITH_IMPLEMENTED_IMPORTS closure sizes from uc_frontier (not compilation). Per-function call-list heuristic was 21446 (overcounts leaves).",
+  "executed": 6,
+  "executed_note": "Harness-logged only: prior phases 5 recorded + Phase 25 consumer 0x0088390D. COMPILED is not EXECUTED.",
+  "blocked_graphics": 124,
+  "blocked_protected": 585,
+  "blocked_standard_runtime": 733,
+  "unknown_blocker": 79,
+  "execution_islands": 7085,
+  "non_graphics_islands": 6996,
+  "largest_non_graphics_island": {
+    "root": "0x009F0D20",
+    "representative": "0x009F0D20",
+    "function_count": 274,
+    "edge_count": 774,
     "imports": [
       [
-        "memset",
+        "strchr",
+        5
+      ],
+      [
+        "sprintf",
         3
       ],
       [
@@ -3161,246 +32,1468 @@
         3
       ],
       [
-        "strlen",
+        "isdigit",
+        3
+      ],
+      [
+        "isspace",
+        2
+      ],
+      [
+        "longjmp",
+        2
+      ],
+      [
+        "iscntrl",
+        2
+      ],
+      [
+        "isalnum",
+        2
+      ],
+      [
+        "strtoul",
+        1
+      ],
+      [
+        "strncpy",
+        1
+      ],
+      [
+        "strncat",
+        1
+      ],
+      [
+        "strcspn",
         1
       ]
     ],
-    "missing": [],
-    "indirect": 141,
-    "unknown": 0,
-    "protected_edges": 0,
-    "protected_mem": 0,
-    "functions": [
-      "0x00804090",
-      "0x008040B0",
-      "0x008040C0",
-      "0x008040E0",
-      "0x00804180",
-      "0x00978890",
-      "0x00995F20",
-      "0x00995F40",
-      "0x0099D160",
-      "0x0099DCD0",
-      "0x009A7E90",
-      "0x009A9EE0",
-      "0x009A9FE0",
-      "0x009AA160",
-      "0x009AA3E0",
-      "0x009AA510",
-      "0x009AA540",
-      "0x009AA590",
-      "0x009AA600",
-      "0x009AA630",
-      "0x009AA660",
-      "0x009AA7B0",
-      "0x009AA7D0",
-      "0x009AA7F0",
-      "0x009ADAF0",
-      "0x009AE120",
-      "0x009AE140",
-      "0x009AE160",
-      "0x009AE1A0",
-      "0x009AE1C0",
-      "0x009AE200",
-      "0x009AE240",
-      "0x009AE2A0",
-      "0x009AE2C0",
-      "0x009AE4D0",
-      "0x009AE790",
-      "0x009AE830",
-      "0x009AE880",
-      "0x009AE8A0",
-      "0x009AE8D0",
-      "0x009AE960",
-      "0x009AEA80",
-      "0x009AEAE0",
-      "0x009AEB70",
-      "0x009AF150",
-      "0x009AF1B0",
-      "0x009AF210",
-      "0x009AF2B0",
-      "0x009B1BA0",
-      "0x009B1C40",
-      "0x009B6290",
-      "0x009CA760",
-      "0x009CABA0",
-      "0x009D3E40",
-      "0x009D3FC0",
-      "0x009D4000",
-      "0x009D40F0",
-      "0x009D41C0",
-      "0x009D4250",
-      "0x009D42F0",
-      "0x009D4340",
-      "0x009D4380",
-      "0x009D43D0",
-      "0x009D4410",
-      "0x009D44F0",
-      "0x009D45C0",
-      "0x009D49C0",
-      "0x009D4A50",
-      "0x009D4B30",
-      "0x009D4EB0",
-      "0x009D6150",
-      "0x009D6252",
-      "0x009D6F70",
-      "0x009DBE40",
-      "0x009DC250",
-      "0x009DC2B0",
-      "0x009DC310",
-      "0x009DC5A0",
-      "0x009DC770",
-      "0x009DC810",
-      "0x009DC8C0",
-      "0x009DD8B0",
-      "0x009DDA50",
-      "0x009DDA70",
-      "0x009DDAF0",
-      "0x009DDB70",
-      "0x009DE880",
-      "0x009DEFF0",
-      "0x009DF220",
-      "0x009DF240",
-      "0x009DF970",
-      "0x009E0170",
-      "0x009E07C0",
-      "0x009E2D70",
-      "0x009E2F60",
-      "0x009E4200",
-      "0x009E42D0",
-      "0x009E4300",
-      "0x009E4320",
-      "0x009E4330",
-      "0x009E4350",
-      "0x009E4B10"
+    "missing_imports": [
+      "_CIpow",
+      "_setjmp3",
+      "floor",
+      "isalnum",
+      "isalpha",
+      "iscntrl",
+      "isdigit",
+      "isspace",
+      "localeconv",
+      "longjmp",
+      "sprintf",
+      "strchr",
+      "strcoll",
+      "strcspn",
+      "strncat",
+      "strtoul"
+    ],
+    "indirect_calls": 0,
+    "protected_deps": 0,
+    "graphics_deps": 0,
+    "tls_members": 0,
+    "blockers": {
+      "BLOCKED_IMPORT": 23,
+      "BLOCKED_EXTERNAL": 5
+    },
+    "enterable": false,
+    "executed_member": false,
+    "members_sample": [
+      "0x009F0D20",
+      "0x009F0DE0",
+      "0x009F0E70",
+      "0x009F0EA0",
+      "0x009F0EC0",
+      "0x009F0EE0",
+      "0x009F0F20",
+      "0x009F0F50"
+    ],
+    "non_graphics": true,
+    "leverage": 692
+  },
+  "largest_runtime_ready_island": {
+    "root": "0x0096CED0",
+    "function_count": 54,
+    "ready_closure": 19,
+    "ready_with_imports_closure": 35
+  },
+  "blocker_histogram_functions": {
+    "RUNTIME_READY": 21446,
+    "BLOCKED_STANDARD_RUNTIME": 733,
+    "UNKNOWN": 79,
+    "BLOCKED_PROTECTED": 585,
+    "BLOCKED_GRAPHICS": 141,
+    "BLOCKED_IMPORT": 32
+  },
+  "import_frontier": {
+    "total_thunks": 199,
+    "implemented_hle": 11,
+    "convention_unknown": 42,
+    "top_missing_by_prior_unlock": [
+      {
+        "symbol": "_CIsqrt",
+        "dll": "MSVCR80.dll",
+        "convention": "cdecl",
+        "call_sites": 116,
+        "status": "KNOWN_ABI_UNIMPLEMENTED",
+        "single_unlock_functions_pre_phase25": 88,
+        "single_unlock_functions_post": 88
+      },
+      {
+        "symbol": "_wassert",
+        "dll": "MSVCR80.dll",
+        "convention": "cdecl",
+        "call_sites": 1,
+        "status": "CONVENTION_KNOWN_NO_HLE",
+        "single_unlock_functions_pre_phase25": 22,
+        "single_unlock_functions_post": 22
+      },
+      {
+        "symbol": "sprintf",
+        "dll": "MSVCR80.dll",
+        "convention": "cdecl",
+        "call_sites": 430,
+        "status": "KNOWN_ABI_UNIMPLEMENTED",
+        "single_unlock_functions_pre_phase25": 21,
+        "single_unlock_functions_post": 21
+      },
+      {
+        "symbol": "tolower",
+        "dll": "MSVCR80.dll",
+        "convention": "cdecl",
+        "call_sites": 10,
+        "status": "KNOWN_ABI_UNIMPLEMENTED",
+        "single_unlock_functions_pre_phase25": 21,
+        "single_unlock_functions_post": 21
+      },
+      {
+        "symbol": "sscanf",
+        "dll": "MSVCR80.dll",
+        "convention": "cdecl",
+        "call_sites": 51,
+        "status": "KNOWN_ABI_UNIMPLEMENTED",
+        "single_unlock_functions_pre_phase25": 15,
+        "single_unlock_functions_post": 15
+      },
+      {
+        "symbol": "strchr",
+        "dll": "MSVCR80.dll",
+        "convention": "cdecl",
+        "call_sites": 50,
+        "status": "KNOWN_ABI_UNIMPLEMENTED",
+        "single_unlock_functions_pre_phase25": 13,
+        "single_unlock_functions_post": 13
+      },
+      {
+        "symbol": "_snprintf",
+        "dll": "MSVCR80.dll",
+        "convention": "cdecl",
+        "call_sites": 34,
+        "status": "KNOWN_ABI_UNIMPLEMENTED",
+        "single_unlock_functions_pre_phase25": 13,
+        "single_unlock_functions_post": 13
+      },
+      {
+        "symbol": "strtok",
+        "dll": "MSVCR80.dll",
+        "convention": "cdecl",
+        "call_sites": 26,
+        "status": "CONVENTION_KNOWN_NO_HLE",
+        "single_unlock_functions_pre_phase25": 12,
+        "single_unlock_functions_post": 12
+      },
+      {
+        "symbol": "_stricmp",
+        "dll": "MSVCR80.dll",
+        "convention": "cdecl",
+        "call_sites": 65,
+        "status": "KNOWN_ABI_UNIMPLEMENTED",
+        "single_unlock_functions_pre_phase25": 11,
+        "single_unlock_functions_post": 11
+      },
+      {
+        "symbol": "_CIpow",
+        "dll": "MSVCR80.dll",
+        "convention": "cdecl",
+        "call_sites": 18,
+        "status": "KNOWN_ABI_UNIMPLEMENTED",
+        "single_unlock_functions_pre_phase25": 11,
+        "single_unlock_functions_post": 11
+      },
+      {
+        "symbol": "floor",
+        "dll": "MSVCR80.dll",
+        "convention": "cdecl",
+        "call_sites": 9,
+        "status": "KNOWN_ABI_UNIMPLEMENTED",
+        "single_unlock_functions_pre_phase25": 9,
+        "single_unlock_functions_post": 9
+      },
+      {
+        "symbol": "ldexp",
+        "dll": "MSVCR80.dll",
+        "convention": "cdecl",
+        "call_sites": 4,
+        "status": "KNOWN_ABI_UNIMPLEMENTED",
+        "single_unlock_functions_pre_phase25": 9,
+        "single_unlock_functions_post": 9
+      }
     ]
   },
-  "only_missing_import": {
-    "root": "0x0094FFD0",
-    "size": 25,
-    "depth": 6,
-    "label": "KNOWN_IMPORT_MISSING_HLE",
+  "crt_frontier": {
     "imports": [
-      [
-        "floor",
-        4
-      ],
-      [
-        "_CItan",
-        2
-      ],
-      [
-        "_CIcos",
-        2
-      ],
-      [
-        "_CIsin",
-        2
-      ],
-      [
-        "_CIsqrt",
-        1
-      ]
+      {
+        "symbol": "memset",
+        "call_sites": 597,
+        "convention": "cdecl",
+        "implemented": true
+      },
+      {
+        "symbol": "sprintf",
+        "call_sites": 430,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "memcpy",
+        "call_sites": 357,
+        "convention": "cdecl",
+        "implemented": true
+      },
+      {
+        "symbol": "printf",
+        "call_sites": 277,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "strncpy",
+        "call_sites": 244,
+        "convention": "cdecl",
+        "implemented": true
+      },
+      {
+        "symbol": "strlen",
+        "call_sites": 123,
+        "convention": "cdecl",
+        "implemented": true
+      },
+      {
+        "symbol": "_CIsqrt",
+        "call_sites": 116,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "free",
+        "call_sites": 106,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "memmove",
+        "call_sites": 98,
+        "convention": "cdecl",
+        "implemented": true
+      },
+      {
+        "symbol": "malloc",
+        "call_sites": 66,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "_stricmp",
+        "call_sites": 65,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "sscanf",
+        "call_sites": 51,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "strchr",
+        "call_sites": 50,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "strnlen",
+        "call_sites": 41,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "_CIsin",
+        "call_sites": 39,
+        "convention": "cdecl",
+        "implemented": true
+      },
+      {
+        "symbol": "_CIcos",
+        "call_sites": 38,
+        "convention": "cdecl",
+        "implemented": true
+      },
+      {
+        "symbol": "__libm_sse2_sin",
+        "call_sites": 34,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "_snprintf",
+        "call_sites": 34,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "strcmp",
+        "call_sites": 33,
+        "convention": "cdecl",
+        "implemented": true
+      },
+      {
+        "symbol": "strtok",
+        "call_sites": 26,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "_isnan",
+        "call_sites": 24,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "__libm_sse2_atan2",
+        "call_sites": 21,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "__libm_sse2_cos",
+        "call_sites": 19,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "_CIpow",
+        "call_sites": 18,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "strstr",
+        "call_sites": 16,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "atoi",
+        "call_sites": 15,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "__libm_sse2_pow",
+        "call_sites": 13,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "fwrite",
+        "call_sites": 13,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "isdigit",
+        "call_sites": 13,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "tolower",
+        "call_sites": 10,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "strncat",
+        "call_sites": 10,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "floor",
+        "call_sites": 9,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "_CIatan2",
+        "call_sites": 9,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "__libm_sse2_acos",
+        "call_sites": 8,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "_time64",
+        "call_sites": 8,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "strncmp",
+        "call_sites": 8,
+        "convention": "cdecl",
+        "implemented": true
+      },
+      {
+        "symbol": "_snprintf_s",
+        "call_sites": 8,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "memcmp",
+        "call_sites": 8,
+        "convention": "cdecl",
+        "implemented": true
+      },
+      {
+        "symbol": "ceil",
+        "call_sites": 7,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "_vsnprintf",
+        "call_sites": 7,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "strtol",
+        "call_sites": 6,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "strcpy",
+        "call_sites": 6,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "__libm_sse2_asin",
+        "call_sites": 5,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "isspace",
+        "call_sites": 5,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "atof",
+        "call_sites": 5,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "fclose",
+        "call_sites": 5,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "fopen",
+        "call_sites": 5,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "_CItan",
+        "call_sites": 5,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "abs",
+        "call_sites": 5,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "_CIacos",
+        "call_sites": 4,
+        "convention": "cdecl",
+        "implemented": true
+      },
+      {
+        "symbol": "_CxxThrowException",
+        "call_sites": 4,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "__libm_sse2_exp",
+        "call_sites": 4,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "qsort",
+        "call_sites": 4,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "vsprintf",
+        "call_sites": 4,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "getenv",
+        "call_sites": 4,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "_read",
+        "call_sites": 4,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "_localtime64",
+        "call_sites": 4,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "isprint",
+        "call_sites": 4,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "_itoa_s",
+        "call_sites": 4,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "ldexp",
+        "call_sites": 4,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "strtoul",
+        "call_sites": 4,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "toupper",
+        "call_sites": 3,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "fseek",
+        "call_sites": 3,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "isalnum",
+        "call_sites": 3,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "_beginthreadex",
+        "call_sites": 3,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "bsearch",
+        "call_sites": 3,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "_findclose",
+        "call_sites": 3,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "_write",
+        "call_sites": 3,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "sscanf_s",
+        "call_sites": 3,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "_CIlog10",
+        "call_sites": 3,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "_control87",
+        "call_sites": 3,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "strtod",
+        "call_sites": 3,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "_CIasin",
+        "call_sites": 2,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "ftell",
+        "call_sites": 2,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "_gmtime64",
+        "call_sites": 2,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "isxdigit",
+        "call_sites": 2,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "?terminate@@YAXXZ",
+        "call_sites": 2,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "_amsg_exit",
+        "call_sites": 2,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "_crt_debugger_hook",
+        "call_sites": 2,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "_close",
+        "call_sites": 2,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "_open",
+        "call_sites": 2,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "asctime",
+        "call_sites": 2,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "_CIlog",
+        "call_sites": 2,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "_aligned_malloc",
+        "call_sites": 2,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "longjmp",
+        "call_sites": 2,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "strcoll",
+        "call_sites": 2,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "iscntrl",
+        "call_sites": 2,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "setvbuf",
+        "call_sites": 2,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "rand",
+        "call_sites": 1,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "_CIfmod",
+        "call_sites": 1,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "strrchr",
+        "call_sites": 1,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "exit",
+        "call_sites": 1,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "__iob_func",
+        "call_sites": 1,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "_controlfp_s",
+        "call_sites": 1,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "__libm_sse2_log",
+        "call_sites": 1,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "_strupr",
+        "call_sites": 1,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "fread",
+        "call_sites": 1,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "remove",
+        "call_sites": 1,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "strcat_s",
+        "call_sites": 1,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "fflush",
+        "call_sites": 1,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "_strnicmp",
+        "call_sites": 1,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "_mkdir",
+        "call_sites": 1,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "_unlock",
+        "call_sites": 1,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "__dllonexit",
+        "call_sites": 1,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "_lock",
+        "call_sites": 1,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "_XcptFilter",
+        "call_sites": 1,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "_initterm",
+        "call_sites": 1,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "_initterm_e",
+        "call_sites": 1,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "?_type_info_dtor_internal_method@type_info@@QAEXXZ",
+        "call_sites": 1,
+        "convention": "thiscall",
+        "implemented": false
+      },
+      {
+        "symbol": "_except_handler4_common",
+        "call_sites": 1,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "_invoke_watson",
+        "call_sites": 1,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "_endthreadex",
+        "call_sites": 1,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "_vsnwprintf",
+        "call_sites": 1,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "_getdiskfree",
+        "call_sites": 1,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "_getdrive",
+        "call_sites": 1,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "_fullpath",
+        "call_sites": 1,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "_lseek",
+        "call_sites": 1,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "_filelength",
+        "call_sites": 1,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "_rmdir",
+        "call_sites": 1,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "_mktime64",
+        "call_sites": 1,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "_mkgmtime64",
+        "call_sites": 1,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "strpbrk",
+        "call_sites": 1,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "_difftime64",
+        "call_sites": 1,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "srand",
+        "call_sites": 1,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "_aligned_free",
+        "call_sites": 1,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "atan",
+        "call_sites": 1,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "strcat",
+        "call_sites": 1,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "_wassert",
+        "call_sites": 1,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "strcspn",
+        "call_sites": 1,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "_setjmp3",
+        "call_sites": 1,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "localeconv",
+        "call_sites": 1,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "isalpha",
+        "call_sites": 1,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "_strlwr",
+        "call_sites": 1,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "_localtime32",
+        "call_sites": 1,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "_findnext32",
+        "call_sites": 1,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "_findfirst32",
+        "call_sites": 1,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "__CxxFrameHandler3",
+        "call_sites": 0,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "__CxxFrameHandler",
+        "call_sites": 0,
+        "convention": "cdecl",
+        "implemented": false
+      }
     ],
-    "missing": [
-      "_CIsqrt",
-      "_CItan",
-      "floor"
-    ],
-    "indirect": 0,
-    "unknown": 0,
-    "protected_edges": 0,
-    "protected_mem": 0,
-    "functions": [
-      "0x0087B4C0",
-      "0x0091F660",
-      "0x0091F6C0",
-      "0x00947B10",
-      "0x009480A0",
-      "0x00948160",
-      "0x00948260",
-      "0x00948310",
-      "0x00948450",
-      "0x009485A0",
-      "0x00948630",
-      "0x00948680",
-      "0x00948750",
-      "0x00948870",
-      "0x009488F0",
-      "0x00948A60",
-      "0x00948CE0",
-      "0x00948D60",
-      "0x00948EB0",
-      "0x00948F10",
-      "0x009493E0",
-      "0x0094FE30",
-      "0x0094FFD0",
-      "0x009787A0",
-      "0x009795A0"
-    ]
+    "total_call_sites": 3277,
+    "unimplemented": 127
   },
-  "indirect_kinds": {
+  "allocation_frontier": {
+    "imports": [
+      {
+        "symbol": "free",
+        "call_sites": 106,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "malloc",
+        "call_sites": 66,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "_aligned_malloc",
+        "call_sites": 2,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "_aligned_free",
+        "call_sites": 1,
+        "convention": "cdecl",
+        "implemented": false
+      }
+    ],
+    "total_call_sites": 175,
+    "unimplemented": 4
+  },
+  "filesystem_frontier": {
+    "imports": [
+      {
+        "symbol": "fwrite",
+        "call_sites": 13,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "fclose",
+        "call_sites": 5,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "fopen",
+        "call_sites": 5,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "_read",
+        "call_sites": 4,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "fseek",
+        "call_sites": 3,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "_findclose",
+        "call_sites": 3,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "_write",
+        "call_sites": 3,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "ftell",
+        "call_sites": 2,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "_close",
+        "call_sites": 2,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "_open",
+        "call_sites": 2,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "setvbuf",
+        "call_sites": 2,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "VerQueryValueA",
+        "call_sites": 1,
+        "convention": "stdcall",
+        "implemented": false
+      },
+      {
+        "symbol": "GetFileVersionInfoA",
+        "call_sites": 1,
+        "convention": "stdcall",
+        "implemented": false
+      },
+      {
+        "symbol": "GetFileVersionInfoSizeA",
+        "call_sites": 1,
+        "convention": "stdcall",
+        "implemented": false
+      },
+      {
+        "symbol": "fread",
+        "call_sites": 1,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "remove",
+        "call_sites": 1,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "fflush",
+        "call_sites": 1,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "_mkdir",
+        "call_sites": 1,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "_getdiskfree",
+        "call_sites": 1,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "_getdrive",
+        "call_sites": 1,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "_fullpath",
+        "call_sites": 1,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "_lseek",
+        "call_sites": 1,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "_filelength",
+        "call_sites": 1,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "_rmdir",
+        "call_sites": 1,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "_findnext32",
+        "call_sites": 1,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "_findfirst32",
+        "call_sites": 1,
+        "convention": "cdecl",
+        "implemented": false
+      }
+    ],
+    "total_call_sites": 59,
+    "unimplemented": 26
+  },
+  "timing_frontier": {
+    "imports": [
+      {
+        "symbol": "_time64",
+        "call_sites": 8,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "_localtime64",
+        "call_sites": 4,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "_gmtime64",
+        "call_sites": 2,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "GetTickCount",
+        "call_sites": 2,
+        "convention": "stdcall",
+        "implemented": false
+      },
+      {
+        "symbol": "asctime",
+        "call_sites": 2,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "_mktime64",
+        "call_sites": 1,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "_mkgmtime64",
+        "call_sites": 1,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "_difftime64",
+        "call_sites": 1,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "_localtime32",
+        "call_sites": 1,
+        "convention": "cdecl",
+        "implemented": false
+      }
+    ],
+    "total_call_sites": 22,
+    "unimplemented": 9
+  },
+  "threading_frontier": {
+    "imports": [
+      {
+        "symbol": "_beginthreadex",
+        "call_sites": 3,
+        "convention": "cdecl",
+        "implemented": false
+      },
+      {
+        "symbol": "_endthreadex",
+        "call_sites": 1,
+        "convention": "cdecl",
+        "implemented": false
+      }
+    ],
+    "total_call_sites": 4,
+    "unimplemented": 2
+  },
+  "tls_frontier": {
+    "status": "STUB",
+    "note": "Prior phases observed substantial fs:[0x2C]/TLS traffic; no fabricated TLS init this phase. Not the selected unlock."
+  },
+  "seh_frontier": {
+    "status": "STUB",
+    "note": "Ordinary fs:[0] bookkeeping appears in .text; full exception delivery/unwind is not implemented. Not selected this phase."
+  },
+  "indirect_call_frontier": {
     "D_REGISTER": 30614,
     "D_UNKNOWN": 8972,
     "E_PROTECTED_SLOT": 241,
     "B_GENERATED_TARGET": 50,
     "B_IMPORT_SLOT": 110
   },
-  "single_unlock": {
-    "strncpy": 90,
-    "tolower": 16,
-    "sprintf": 19,
-    "_snprintf": 13,
-    "_CIlog": 1,
-    "__libm_sse2_exp": 2,
-    "strncat": 1,
-    "strchr": 7,
-    "strtok": 7,
-    "printf": 4,
-    "_CIsqrt": 88,
-    "_fullpath": 2,
-    "strnlen": 3,
-    "__libm_sse2_pow": 1,
-    "_localtime32": 1,
-    "_mkdir": 1,
-    "fwrite": 4,
-    "_CIpow": 11,
-    "_wassert": 22,
-    "strrchr": 1,
-    "strtoul": 3,
-    "_vsnprintf": 8,
-    "Netbios": 1,
-    "free": 1,
-    "fopen": 5,
-    "strcat_s": 1,
-    "floor": 9,
-    "_CItan": 2,
-    "ldexp": 9,
-    "_time64": 3,
-    "_stricmp": 10,
-    "vsprintf": 1,
-    "strtod": 1,
-    "D3DXVec4Transform": 6,
-    "sscanf": 12,
-    "_CIlog10": 2,
-    "strtol": 1,
-    "ordinal 2": 1,
-    "ordinal 4": 1,
-    "malloc": 1,
-    "D3DXVec3Transform": 2,
-    "fseek": 2,
-    "fclose": 2,
-    "fflush": 1,
-    "_mkgmtime64": 1,
-    "atof": 1,
-    "strcoll": 1,
-    "ordinal 3": 2,
-    "atoi": 1,
-    "_unlock": 1,
-    "D3DXMatrixMultiply": 3,
-    "_aligned_malloc": 1,
-    "_aligned_free": 1,
-    "bsearch": 2,
-    "atan": 1
+  "ordinary_initialization_frontier": {
+    "note": "Prefer enterable non-graphics islands as harness roots.",
+    "top_enterable": [
+      {
+        "root": "0x0072EAE0",
+        "functions": 41
+      },
+      {
+        "root": "0x00B182F0",
+        "functions": 21
+      },
+      {
+        "root": "0x00721050",
+        "functions": 11
+      },
+      {
+        "root": "0x00820E20",
+        "functions": 13
+      },
+      {
+        "root": "0x00757B40",
+        "functions": 12
+      },
+      {
+        "root": "0x009FF620",
+        "functions": 11
+      },
+      {
+        "root": "0x008833FA",
+        "functions": 11
+      },
+      {
+        "root": "0x00A07E00",
+        "functions": 11
+      }
+    ]
+  },
+  "harness_capability": {
+    "mapped_ordinary_sections": "IMPLEMENTED",
+    "guest_stack": "IMPLEMENTED",
+    "direct_uc_calls": "IMPLEMENTED",
+    "nested_uc_calls": "IMPLEMENTED",
+    "imports_hle": "PARTIAL",
+    "x87": "PARTIAL",
+    "simd": "PARTIAL",
+    "atomics": "PARTIAL",
+    "memory_validation": "IMPLEMENTED",
+    "indirect_dispatch": "PARTIAL",
+    "tls": "STUB",
+    "filesystem": "MISSING",
+    "threads": "MISSING",
+    "timing": "MISSING",
+    "seh": "STUB",
+    "notes": "Native UC harness maps ordinary PE sections and runs lifted HIGH functions with import HLE for CRT mem/string and a few x87 helpers. NFSU2 win32/fileio/thread helpers exist in the broader tree but are not wired as the Undercover native UC import path. Atomics suffice for single-thread controlled execution.",
+    "atomic_correctness": "SUFFICIENT_FOR_SINGLE_THREAD"
+  },
+  "selected_implementation": {
+    "implementation": "strncpy CRT HLE",
+    "symbol": "strncpy",
+    "thunk": "0x0087B6A0",
+    "why": "Highest single-missing-import unlock in prior frontier (90 HIGH functions / 66 closures / 244 call sites); cdecl; standard public CRT semantics; no protected behavior.",
+    "standard_public_semantics": true,
+    "protected_dependency": false
+  },
+  "phase25_delta": {
+    "newly_runtime_ready_functions_estimate": 90,
+    "newly_runtime_ready_note": "Prior single_unlock[strncpy]=90 HIGH functions in otherwise-clean closures.",
+    "consumer_under_test": "0x0088390D"
+  },
+  "first_frame": "FIRST_FRAME_PATH_BLOCKED_BY_PROTECTED_BACKEND",
+  "graphics_frozen": true,
+  "ordinary_runtime_frontier": {
+    "HIGH": 22779,
+    "COMPILED": 22770,
+    "RUNTIME_READY_EST": 54,
+    "EXECUTED": 6,
+    "BLOCKED_STANDARD_RUNTIME": 733,
+    "BLOCKED_PROTECTED": 585,
+    "BLOCKED_GRAPHICS": 124,
+    "UNKNOWN": 79
+  },
+  "top_ordinary_island": {
+    "root": "0x009F0D20",
+    "function_count": 274,
+    "edge_count": 774,
+    "imports": [
+      [
+        "strchr",
+        5
+      ],
+      [
+        "sprintf",
+        3
+      ],
+      [
+        "memcpy",
+        3
+      ],
+      [
+        "isdigit",
+        3
+      ],
+      [
+        "isspace",
+        2
+      ],
+      [
+        "longjmp",
+        2
+      ],
+      [
+        "iscntrl",
+        2
+      ],
+      [
+        "isalnum",
+        2
+      ]
+    ],
+    "missing_imports": [
+      "_CIpow",
+      "_setjmp3",
+      "floor",
+      "isalnum",
+      "isalpha",
+      "iscntrl",
+      "isdigit",
+      "isspace"
+    ],
+    "indirects": 0,
+    "initialization": "UNKNOWN",
+    "subsystem_guess": "CRT/string",
+    "exact_blockers": [
+      "BLOCKED_EXTERNAL",
+      "BLOCKED_IMPORT"
+    ],
+    "estimated_runtime_work": "import HLE only",
+    "leverage": 692
   }
 }

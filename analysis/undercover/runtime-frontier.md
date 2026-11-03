@@ -15,8 +15,8 @@ Executed paths are smaller than these static closures. `analysis/undercover/runt
 | UNKNOWN_RUNTIME_DEPENDENCY | 1862 |
 | TLS_BOUNDARY | 1383 |
 | PROTECTED_BOUNDARY | 585 |
-| KNOWN_IMPORT_MISSING_HLE | 100 |
-| READY_WITH_IMPLEMENTED_IMPORTS | 47 |
+| READY_WITH_IMPLEMENTED_IMPORTS | 76 |
+| KNOWN_IMPORT_MISSING_HLE | 71 |
 | RESOLVABLE_INDIRECT_CALL | 36 |
 | UNKNOWN_IMPORT_ABI | 5 |
 | FILESYSTEM_BOUNDARY | 5 |
@@ -87,16 +87,16 @@ Examples are guest addresses, not names invented for the code.
 
 ## Largest closure of each label, any high-confidence root
 
-- PROTECTED_BOUNDARY: `794` functions at `0x009EA130` (depth 37, missing imports strcpy, sprintf, _wassert, strncpy, _snprintf, vsprintf, _crt_debugger_hook).
+- PROTECTED_BOUNDARY: `794` functions at `0x009EA130` (depth 37, missing imports strcpy, sprintf, _wassert, _snprintf, vsprintf, _crt_debugger_hook).
 - TLS_BOUNDARY: `340` functions at `0x0080E770` (depth 31, missing imports vsprintf, _crt_debugger_hook).
 - UNRESOLVED_INDIRECT_CALL: `334` functions at `0x009E9440` (depth 29, missing imports vsprintf, _crt_debugger_hook).
 - READY_WITH_IMPLEMENTED_IMPORTS: `35` functions at `0x0096CED0` (depth 5, missing imports none).
 - KNOWN_IMPORT_MISSING_HLE: `25` functions at `0x0094FFD0` (depth 6, missing imports _CItan, floor, _CIsqrt).
 - READY: `19` functions at `0x00B01EB0` (depth 5, missing imports none).
-- RESOLVABLE_INDIRECT_CALL: `18` functions at `0x00906973` (depth 7, missing imports strnlen, strncpy).
+- RESOLVABLE_INDIRECT_CALL: `18` functions at `0x00906973` (depth 7, missing imports strnlen).
 - UNKNOWN_RUNTIME_DEPENDENCY: `16` functions at `0x009D0EE0` (depth 6, missing imports _wassert).
 - NETWORK_BOUNDARY: `7` functions at `0x0088B7E0` (depth 4, missing imports ordinal 111, WSASetEvent, ordinal 4, ordinal 3, ordinal 22, ordinal 2).
-- FILESYSTEM_BOUNDARY: `5` functions at `0x00944EC0` (depth 4, missing imports strncpy, fclose, fwrite, fseek).
+- FILESYSTEM_BOUNDARY: `5` functions at `0x00944EC0` (depth 4, missing imports fclose, fwrite, fseek).
 - UNKNOWN_IMPORT_ABI: `3` functions at `0x0074D3B0` (depth 3, missing imports D3DXVec4Transform).
 - MEMORY_BOUNDARY: `1` functions at `0x00A07C50` (depth 1, missing imports free).
 - TIMING_BOUNDARY: `1` functions at `0x00883718` (depth 1, missing imports _localtime32).

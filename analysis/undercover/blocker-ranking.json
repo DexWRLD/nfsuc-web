@@ -1,0 +1,336 @@
+{
+  "phase": 25,
+  "top_10_blockers": [
+    {
+      "blocker": "BLOCKED_IMPORT",
+      "affected_high_functions": 495,
+      "affected_components": 63,
+      "largest_component_unlocked": 274,
+      "largest_component_root": "0x009F0D20",
+      "implementation_difficulty": "MEDIUM",
+      "correctness_risk": "MEDIUM",
+      "protected_dependency_risk": "NO",
+      "recommended_now": "NO"
+    },
+    {
+      "blocker": "BLOCKED_EXTERNAL",
+      "affected_high_functions": 316,
+      "affected_components": 22,
+      "largest_component_unlocked": 274,
+      "largest_component_root": "0x009F0D20",
+      "implementation_difficulty": "MEDIUM",
+      "correctness_risk": "MEDIUM",
+      "protected_dependency_risk": "NO",
+      "recommended_now": "NO"
+    },
+    {
+      "blocker": "IMPORT:_CIpow",
+      "affected_high_functions": 277,
+      "affected_components": 2,
+      "largest_component_unlocked": 274,
+      "largest_component_root": "0x009F0D20",
+      "implementation_difficulty": "LOW",
+      "correctness_risk": "LOW",
+      "protected_dependency_risk": "NO",
+      "recommended_now": "CANDIDATE"
+    },
+    {
+      "blocker": "IMPORT:_setjmp3",
+      "affected_high_functions": 274,
+      "affected_components": 1,
+      "largest_component_unlocked": 274,
+      "largest_component_root": "0x009F0D20",
+      "implementation_difficulty": "MEDIUM",
+      "correctness_risk": "LOW",
+      "protected_dependency_risk": "NO",
+      "recommended_now": "NO"
+    },
+    {
+      "blocker": "IMPORT:floor",
+      "affected_high_functions": 274,
+      "affected_components": 1,
+      "largest_component_unlocked": 274,
+      "largest_component_root": "0x009F0D20",
+      "implementation_difficulty": "LOW",
+      "correctness_risk": "LOW",
+      "protected_dependency_risk": "NO",
+      "recommended_now": "CANDIDATE"
+    },
+    {
+      "blocker": "BLOCKED_PROTECTED",
+      "affected_high_functions": 249,
+      "affected_components": 188,
+      "largest_component_unlocked": 19,
+      "largest_component_root": "0x0085AD60",
+      "implementation_difficulty": "MEDIUM",
+      "correctness_risk": "MEDIUM",
+      "protected_dependency_risk": "YES",
+      "recommended_now": "NO"
+    },
+    {
+      "blocker": "BLOCKED_FILESYSTEM",
+      "affected_high_functions": 115,
+      "affected_components": 5,
+      "largest_component_unlocked": 111,
+      "largest_component_root": "0x00883012",
+      "implementation_difficulty": "MEDIUM",
+      "correctness_risk": "MEDIUM",
+      "protected_dependency_risk": "NO",
+      "recommended_now": "NO"
+    },
+    {
+      "blocker": "BLOCKED_TIMING",
+      "affected_high_functions": 113,
+      "affected_components": 3,
+      "largest_component_unlocked": 111,
+      "largest_component_root": "0x00883012",
+      "implementation_difficulty": "MEDIUM",
+      "correctness_risk": "MEDIUM",
+      "protected_dependency_risk": "NO",
+      "recommended_now": "NO"
+    },
+    {
+      "blocker": "IMPORT:_close",
+      "affected_high_functions": 111,
+      "affected_components": 1,
+      "largest_component_unlocked": 111,
+      "largest_component_root": "0x00883012",
+      "implementation_difficulty": "MEDIUM",
+      "correctness_risk": "LOW",
+      "protected_dependency_risk": "NO",
+      "recommended_now": "NO"
+    },
+    {
+      "blocker": "IMPORT:_filelength",
+      "affected_high_functions": 111,
+      "affected_components": 1,
+      "largest_component_unlocked": 111,
+      "largest_component_root": "0x00883012",
+      "implementation_difficulty": "MEDIUM",
+      "correctness_risk": "LOW",
+      "protected_dependency_risk": "NO",
+      "recommended_now": "NO"
+    }
+  ],
+  "top_10_execution_islands": [
+    {
+      "root": "0x009F0D20",
+      "function_count": 274,
+      "edge_count": 774,
+      "imports": [
+        [
+          "strchr",
+          5
+        ],
+        [
+          "sprintf",
+          3
+        ],
+        [
+          "memcpy",
+          3
+        ],
+        [
+          "isdigit",
+          3
+        ],
+        [
+          "isspace",
+          2
+        ],
+        [
+          "longjmp",
+          2
+        ],
+        [
+          "iscntrl",
+          2
+        ],
+        [
+          "isalnum",
+          2
+        ]
+      ],
+      "missing_imports": [
+        "_CIpow",
+        "_setjmp3",
+        "floor",
+        "isalnum",
+        "isalpha",
+        "iscntrl",
+        "isdigit",
+        "isspace"
+      ],
+      "indirects": 0,
+      "initialization": "UNKNOWN",
+      "subsystem_guess": "CRT/string",
+      "exact_blockers": [
+        "BLOCKED_EXTERNAL",
+        "BLOCKED_IMPORT"
+      ],
+      "estimated_runtime_work": "import HLE only",
+      "leverage": 692
+    },
+    {
+      "root": "0x0072EAE0",
+      "function_count": 41,
+      "edge_count": 83,
+      "imports": [],
+      "missing_imports": [],
+      "indirects": 0,
+      "initialization": "UNKNOWN",
+      "subsystem_guess": "ordinary",
+      "exact_blockers": [
+        "RUNTIME_READY"
+      ],
+      "estimated_runtime_work": "enterable",
+      "leverage": 295
+    },
+    {
+      "root": "0x00B182F0",
+      "function_count": 21,
+      "edge_count": 23,
+      "imports": [
+        [
+          "memcpy",
+          4
+        ]
+      ],
+      "missing_imports": [],
+      "indirects": 0,
+      "initialization": "UNKNOWN",
+      "subsystem_guess": "ordinary",
+      "exact_blockers": [
+        "RUNTIME_READY"
+      ],
+      "estimated_runtime_work": "enterable",
+      "leverage": 195
+    },
+    {
+      "root": "0x00721050",
+      "function_count": 11,
+      "edge_count": 20,
+      "imports": [],
+      "missing_imports": [],
+      "indirects": 0,
+      "initialization": "UNKNOWN",
+      "subsystem_guess": "ordinary",
+      "exact_blockers": [
+        "RUNTIME_READY"
+      ],
+      "estimated_runtime_work": "enterable",
+      "leverage": 172
+    },
+    {
+      "root": "0x00820E20",
+      "function_count": 13,
+      "edge_count": 15,
+      "imports": [],
+      "missing_imports": [],
+      "indirects": 0,
+      "initialization": "UNKNOWN",
+      "subsystem_guess": "ordinary",
+      "exact_blockers": [
+        "RUNTIME_READY"
+      ],
+      "estimated_runtime_work": "enterable",
+      "leverage": 171
+    },
+    {
+      "root": "0x00757B40",
+      "function_count": 12,
+      "edge_count": 12,
+      "imports": [],
+      "missing_imports": [],
+      "indirects": 0,
+      "initialization": "UNKNOWN",
+      "subsystem_guess": "ordinary",
+      "exact_blockers": [
+        "RUNTIME_READY"
+      ],
+      "estimated_runtime_work": "enterable",
+      "leverage": 166
+    },
+    {
+      "root": "0x009FF620",
+      "function_count": 11,
+      "edge_count": 13,
+      "imports": [
+        [
+          "memset",
+          1
+        ]
+      ],
+      "missing_imports": [],
+      "indirects": 0,
+      "initialization": "UNKNOWN",
+      "subsystem_guess": "ordinary",
+      "exact_blockers": [
+        "RUNTIME_READY"
+      ],
+      "estimated_runtime_work": "enterable",
+      "leverage": 165
+    },
+    {
+      "root": "0x008833FA",
+      "function_count": 11,
+      "edge_count": 12,
+      "imports": [],
+      "missing_imports": [],
+      "indirects": 0,
+      "initialization": "UNKNOWN",
+      "subsystem_guess": "ordinary",
+      "exact_blockers": [
+        "RUNTIME_READY"
+      ],
+      "estimated_runtime_work": "enterable",
+      "leverage": 164
+    },
+    {
+      "root": "0x00A07E00",
+      "function_count": 11,
+      "edge_count": 10,
+      "imports": [],
+      "missing_imports": [],
+      "indirects": 0,
+      "initialization": "UNKNOWN",
+      "subsystem_guess": "ordinary",
+      "exact_blockers": [
+        "RUNTIME_READY"
+      ],
+      "estimated_runtime_work": "enterable",
+      "leverage": 162
+    },
+    {
+      "root": "0x00A52A90",
+      "function_count": 11,
+      "edge_count": 10,
+      "imports": [],
+      "missing_imports": [],
+      "indirects": 0,
+      "initialization": "UNKNOWN",
+      "subsystem_guess": "ordinary",
+      "exact_blockers": [
+        "RUNTIME_READY"
+      ],
+      "estimated_runtime_work": "enterable",
+      "leverage": 162
+    }
+  ],
+  "histogram_functions": {
+    "RUNTIME_READY": 21446,
+    "BLOCKED_STANDARD_RUNTIME": 733,
+    "UNKNOWN": 79,
+    "BLOCKED_PROTECTED": 585,
+    "BLOCKED_GRAPHICS": 141,
+    "BLOCKED_IMPORT": 32
+  },
+  "selected": {
+    "implementation": "strncpy CRT HLE",
+    "symbol": "strncpy",
+    "thunk": "0x0087B6A0",
+    "why": "Highest single-missing-import unlock in prior frontier (90 HIGH functions / 66 closures / 244 call sites); cdecl; standard public CRT semantics; no protected behavior.",
+    "standard_public_semantics": true,
+    "protected_dependency": false
+  }
+}
