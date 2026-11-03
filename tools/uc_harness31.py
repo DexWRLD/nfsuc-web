@@ -270,29 +270,51 @@ __declspec(dllexport) int uc_p31_setup(
     return 0;
 }
 
-__declspec(dllexport) int uc_p31_run(const Spec *s, Out *out) {
+/* flags for uc_p31_step: default 0 == full fresh step (campaign-compatible). */
+enum {
+    UC_P31_PRESERVE_RUNTIME = 1, /* keep TLS/sync/process/thread/clock/wait */
+    UC_P31_PRESERVE_OBJ     = 2, /* keep caller-owned object scratch */
+    UC_P31_ACCUM_ENTERED    = 4  /* append entered[]; keep depth_max peak */
+};
+
+__declspec(dllexport) int uc_p31_step(const Spec *s, Out *out, uint32_t flags) {
     CPU cpu, *c = &cpu;
     uint32_t i, esp0, argn;
+    int preserve_rt = (flags & UC_P31_PRESERVE_RUNTIME) != 0;
+    int preserve_obj = (flags & UC_P31_PRESERVE_OBJ) != 0;
+    int accum = (flags & UC_P31_ACCUM_ENTERED) != 0;
     zero_bytes(out, sizeof *out);
     zero_bytes(c, sizeof *c);
-    uc_tls_reset();
-    uc_sync_reset();
-    uc_process_reset();
-    uc_thread_reset();
-    uc_guest_clock_reset();
-    uc_wait_reset();
+    if (!preserve_rt) {
+        uc_tls_reset();
+        uc_sync_reset();
+        uc_process_reset();
+        uc_thread_reset();
+        uc_guest_clock_reset();
+        uc_wait_reset();
+    }
     uc_access_fault.active = 0;
     uc_import_fault.active = 0;
     uc_current_fn = 0;
-    entered_n = depth_now = depth_max = nimp = 0;
+    if (!accum) {
+        entered_n = depth_now = depth_max = 0;
+    } else {
+        depth_now = 0;
+    }
+    nimp = 0;
     abort_run = blocked_kind = 0; blocked_va = blocked_fn = 0;
-    tls_alloc_calls = tls_set_calls = 0;
-    ics_calls = mutex_calls = gpc_calls = sem_calls = 0;
-    gct_calls = gtp_calls = spc_calls = stp_calls = 0;
-    qpc_calls = qpf_calls = sleepex_calls = 0;
+    if (!preserve_rt) {
+        tls_alloc_calls = tls_set_calls = 0;
+        ics_calls = mutex_calls = gpc_calls = sem_calls = 0;
+        gct_calls = gtp_calls = spc_calls = stp_calls = 0;
+        qpc_calls = qpf_calls = sleepex_calls = 0;
+        diag_hits = 0;
+    }
     unsup_why[0] = 0;
-    diag_noop_target = s->noop_target; diag_noop_args = s->noop_args; diag_hits = 0;
-    for (i = 0; i < 0x1000; i++) uc_guest_store8(0x03004000u + i, 0);
+    diag_noop_target = s->noop_target; diag_noop_args = s->noop_args;
+    if (!preserve_obj) {
+        for (i = 0; i < 0x1000; i++) uc_guest_store8(0x03004000u + i, 0);
+    }
     for (i = 0; i < s->nzero; i++) { uint32_t k; for (k = 0; k < s->zero_len[i]; k++) uc_guest_store8(s->zero_addr[i] + k, 0); }
     for (i = 0; i < s->ninit; i++) wr32(s->init_addr[i], s->init_val[i]);
     if (s->teb) {
@@ -343,6 +365,11 @@ __declspec(dllexport) int uc_p31_run(const Spec *s, Out *out) {
     out->sleepex_done = uc_wait_sleepex_completions();
     for (i = 0; i < 47 && unsup_why[i]; i++) out->unsupported_why[i] = unsup_why[i];
     return 0;
+}
+
+__declspec(dllexport) int uc_p31_run(const Spec *s, Out *out) {
+    /* Independent campaign root: fresh runtime + object scratch. */
+    return uc_p31_step(s, out, 0);
 }
 '''
 
@@ -401,6 +428,9 @@ class Harness:
         self.lib.uc_p31_setup.restype = ctypes.c_int
         self.lib.uc_p31_run.restype = ctypes.c_int
         self.lib.uc_p31_run.argtypes = [ctypes.POINTER(Spec), ctypes.POINTER(Out)]
+        self.lib.uc_p31_step.restype = ctypes.c_int
+        self.lib.uc_p31_step.argtypes = [
+            ctypes.POINTER(Spec), ctypes.POINTER(Out), ctypes.c_uint32]
         self.mem = (ctypes.c_uint8 * p7.MEM_SIZE)()
         items, self.keep = [], []
         for sec in self.image["sections"]:
@@ -417,6 +447,12 @@ class Harness:
             items.append(item)
         self.items = (p7.Section * len(items))(*items)
         self.nitems = len(items)
+        self._seq_active = False
+
+    # Step flags (must match C enum).
+    PRESERVE_RUNTIME = 1
+    PRESERVE_OBJ = 2
+    ACCUM_ENTERED = 4
 
     def setup(self):
         ctypes.memset(self.mem, 0, len(self.mem))
@@ -425,6 +461,7 @@ class Harness:
             self.items, self.nitems)
         if rc:
             raise RuntimeError("setup rc %d" % rc)
+        self._seq_active = False
 
     def run(self, spec):
         """Fresh image per run so writes never leak between roots."""
@@ -434,6 +471,42 @@ class Harness:
         if rc:
             raise RuntimeError("run rc %d" % rc)
         return out
+
+    def begin_sequence(self):
+        """Start a stateful multi-entry sequence (fresh image + runtime)."""
+        self.setup()
+        self._seq_active = True
+
+    def step(self, spec, *, continue_state=False):
+        """Run one guest entry. continue_state keeps object/runtime across steps."""
+        if continue_state and not self._seq_active:
+            raise RuntimeError("step(continue_state=True) requires begin_sequence()")
+        flags = 0
+        if continue_state:
+            flags = self.PRESERVE_RUNTIME | self.PRESERVE_OBJ | self.ACCUM_ENTERED
+        elif self._seq_active:
+            # First step of an open sequence: runtime/object already mapped by setup;
+            # still need a fresh runtime wipe + object zero (flags=0).
+            pass
+        else:
+            self.setup()
+        out = Out()
+        rc = self.lib.uc_p31_step(ctypes.byref(spec), ctypes.byref(out), flags)
+        if rc:
+            raise RuntimeError("step rc %d" % rc)
+        return out
+
+    def end_sequence(self):
+        self._seq_active = False
+
+    def read_u8(self, va):
+        return int(self.mem[va])
+
+    def read_u32(self, va):
+        return struct.unpack_from("<I", self.mem, va)[0]
+
+    def read_bytes(self, va, n):
+        return bytes(self.mem[va:va + n])
 
 
 def make_spec(root, ecx=0, edx=0, args=(), init=(), zero=(), teb=False, ret_pop=0,
