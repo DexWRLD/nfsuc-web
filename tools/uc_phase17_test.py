@@ -85,7 +85,7 @@ def main():
     expect(raw["execution"]["ran"] is False, "no exec")
 
     status = json.load(open(os.path.join(ANALYSIS, "project-status.json"), encoding="utf-8"))
-    expect(status["current_phase"] == 17, "status phase")
+    expect(status["current_phase"] >= 17, "status phase")
     expect(status["graphics"]["reachable_from_high_graph"] == "YES", "static reachable")
     expect(status["graphics"]["enterable_now"] == "NO", "not enterable")
     expect(status["graphics"].get("factory_frontier_ready") is False, "frontier ready flag")
