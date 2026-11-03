@@ -1,0 +1,3722 @@
+{
+  "factory_boundary": {
+    "path": [
+      "0x0072E340",
+      "three call esi via [0x00B615C4]",
+      "ordinary helpers",
+      "Direct3DCreate9 @ 0x0087A79C",
+      "store [object+0x10]"
+    ],
+    "classification": "BLOCKED_EXTERNAL_PROTECTED_INITIALIZATION",
+    "slot": "0x00B615C4",
+    "table": "0x00B61528-0x00B615E4",
+    "note": "Phase 18 boundary. Do not reconstruct publication, invent callbacks, or patch .rdata."
+  },
+  "factory_result_field": {
+    "va": "0x01318180",
+    "absolute_consumers": [
+      {
+        "kind": "READ",
+        "eip": "0x00722E61",
+        "text": "mov eax, dword ptr [0x01318180]",
+        "owner": "0x00722DB0",
+        "owner_label": "HIGH_CONFIDENCE",
+        "discovered_high": true,
+        "call_graph_reachable": true,
+        "window": [
+          "mov eax, dword ptr [0x1318180]",
+          "mov edx, dword ptr [0x13181d4]",
+          "mov ecx, dword ptr [eax]",
+          "push 0",
+          "push 2",
+          "push 0",
+          "push 0x72",
+          "push 1",
+          "push edx",
+          "push eax",
+          "mov eax, dword ptr [ecx + 0x2c]",
+          "call eax",
+          "test eax, eax",
+          "setge cl",
+          "mov byte ptr [esi + 0x1b5], cl",
+          "call 0x71e880",
+          "test eax, eax",
+          "jne 0x722ea5",
+          "cmp dword ptr [0x1318600], 0x10de",
+          "jne 0x722ea5"
+        ]
+      },
+      {
+        "kind": "READ",
+        "eip": "0x00725402",
+        "text": "mov eax, dword ptr [0x01318180]",
+        "owner": "0x00725200",
+        "owner_label": "HIGH_CONFIDENCE",
+        "discovered_high": true,
+        "call_graph_reachable": true,
+        "window": [
+          "mov eax, dword ptr [0x1318180]",
+          "mov ecx, dword ptr [eax]",
+          "mov edx, dword ptr [ecx + 0x28]",
+          "push 0x54534e49",
+          "push 1",
+          "push edi",
+          "push 0x16",
+          "push 1",
+          "push edi",
+          "push eax",
+          "call edx",
+          "test eax, eax",
+          "jne 0x725445",
+          "mov eax, dword ptr [0x13c6510]",
+          "mov ecx, dword ptr [eax]",
+          "mov edx, dword ptr [ecx + 0xe4]",
+          "push 0x54534e49",
+          "push 0x9a",
+          "push eax",
+          "call edx"
+        ]
+      }
+    ],
+    "absolute_consumer_count": 2,
+    "create_alias_write": {
+      "kind": "ALIAS_WRITE_IN_CREATE",
+      "eip": "0x0072E3C2",
+      "text": "mov dword ptr [ebx + 0x10], eax",
+      "owner": "0x0072E340",
+      "note": "EAX = Direct3DCreate9 return; EBX = ECX graphics object"
+    }
+  },
+  "direct3dcreate9_sites": {
+    "additional_Direct3DCreate9_sites": [
+      "0x0072E3B9"
+    ],
+    "count": 1,
+    "still_single_site": true
+  },
+  "device": {
+    "va": "0x013C6510",
+    "mapped": {
+      "section": ".data",
+      "value": 0,
+      "reason": "virtual tail zero"
+    },
+    "confidence": "PROVEN_D3D9_DEVICE",
+    "ref_count": 167,
+    "ref_kinds": {
+      "READ": 165,
+      "ADDRESS_TAKEN": 2
+    },
+    "out_param_sites": [
+      {
+        "eip": "0x007252B6",
+        "text": "push 0x013C6510",
+        "owner": "0x00725200",
+        "owner_label": "HIGH_CONFIDENCE",
+        "discovered_high": true
+      },
+      {
+        "eip": "0x007252E8",
+        "text": "push 0x013C6510",
+        "owner": "0x00725200",
+        "owner_label": "HIGH_CONFIDENCE",
+        "discovered_high": true
+      }
+    ],
+    "writer": "No absolute MOV store. Published as out-parameter of COM call in 0x00725200 (caller 0x007297D0).",
+    "consumer_owner_count": 64,
+    "create_device_candidate": {
+      "location": "0x007252CF / 0x007252F5",
+      "owner": "0x00725200",
+      "shape": "push &0x013C6510; push present-params-like; push 0x40; ...; call [vtable+0x40] on stack COM object in EBP",
+      "vtable_offset": "0x40",
+      "note": "Offset is +0x40, one slot past IDirect3D9::CreateDevice (+0x3C). Likely a wrapper method or non-raw IDirect3D9. Out-parameter is the device global. Not labeled CreateDevice as proven.",
+      "confidence": "STRONG_DEVICE_PUBLICATION_CANDIDATE",
+      "caller": "0x007297D0",
+      "caller_hits_00686000": true
+    }
+  },
+  "vtable_histogram": [
+    {
+      "offset": "0x0000015C",
+      "calls": 22,
+      "owners": 20,
+      "soft_name": null,
+      "sites": [
+        {
+          "call_va": "0x0075ECE9",
+          "load_va": "0x0075ECD4",
+          "owner": "0x0075EBF0",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": null
+        },
+        {
+          "call_va": "0x0075EF3F",
+          "load_va": "0x0075EF2A",
+          "owner": "0x0075EF20",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": null
+        },
+        {
+          "call_va": "0x00764E62",
+          "load_va": "0x00764E4D",
+          "owner": "0x00764B40",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": null
+        },
+        {
+          "call_va": "0x00764F1C",
+          "load_va": "0x00764F07",
+          "owner": "0x00764B40",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": null
+        },
+        {
+          "call_va": "0x0076534D",
+          "load_va": "0x00765338",
+          "owner": "0x00764F70",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": null
+        },
+        {
+          "call_va": "0x0076569D",
+          "load_va": "0x00765688",
+          "owner": "0x00765510",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": null
+        },
+        {
+          "call_va": "0x007660C4",
+          "load_va": "0x007660AF",
+          "owner": "0x00765D90",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": null
+        },
+        {
+          "call_va": "0x007666E4",
+          "load_va": "0x007666CF",
+          "owner": "0x00766400",
+          "owner_label": "REJECTED_DATA_LIKE",
+          "discovered_high": false,
+          "soft_name": null
+        },
+        {
+          "call_va": "0x00766E5E",
+          "load_va": "0x00766E49",
+          "owner": "0x00766BE0",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": null
+        },
+        {
+          "call_va": "0x00767149",
+          "load_va": "0x00767134",
+          "owner": "0x00766ED0",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": null
+        },
+        {
+          "call_va": "0x0076741D",
+          "load_va": "0x00767408",
+          "owner": "0x00767180",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": null
+        },
+        {
+          "call_va": "0x00767732",
+          "load_va": "0x0076771D",
+          "owner": "0x00767440",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": null
+        }
+      ]
+    },
+    {
+      "offset": "0x000000AC",
+      "calls": 15,
+      "owners": 5,
+      "soft_name": "Clear",
+      "sites": [
+        {
+          "call_va": "0x0072532F",
+          "load_va": "0x00725305",
+          "owner": "0x00725200",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": "Clear"
+        },
+        {
+          "call_va": "0x0072532F",
+          "load_va": "0x00725317",
+          "owner": "0x00725200",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": "Clear"
+        },
+        {
+          "call_va": "0x0072532F",
+          "load_va": "0x00725317",
+          "owner": "0x00725200",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": "Clear"
+        },
+        {
+          "call_va": "0x0074289F",
+          "load_va": "0x00742883",
+          "owner": "0x00742810",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": "Clear"
+        },
+        {
+          "call_va": "0x0074289F",
+          "load_va": "0x00742883",
+          "owner": "0x00742810",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": "Clear"
+        },
+        {
+          "call_va": "0x0074289F",
+          "load_va": "0x00742883",
+          "owner": "0x00742810",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": "Clear"
+        },
+        {
+          "call_va": "0x00766F69",
+          "load_va": "0x00766F51",
+          "owner": "0x00766ED0",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": "Clear"
+        },
+        {
+          "call_va": "0x00766F69",
+          "load_va": "0x00766F51",
+          "owner": "0x00766ED0",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": "Clear"
+        },
+        {
+          "call_va": "0x00766F69",
+          "load_va": "0x00766F51",
+          "owner": "0x00766ED0",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": "Clear"
+        },
+        {
+          "call_va": "0x007671FD",
+          "load_va": "0x007671E5",
+          "owner": "0x00767180",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": "Clear"
+        },
+        {
+          "call_va": "0x007671FD",
+          "load_va": "0x007671E5",
+          "owner": "0x00767180",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": "Clear"
+        },
+        {
+          "call_va": "0x007671FD",
+          "load_va": "0x007671E5",
+          "owner": "0x00767180",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": "Clear"
+        }
+      ]
+    },
+    {
+      "offset": "0x000000E4",
+      "calls": 13,
+      "owners": 6,
+      "soft_name": null,
+      "sites": [
+        {
+          "call_va": "0x007253E5",
+          "load_va": "0x007253C2",
+          "owner": "0x00725200",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": null
+        },
+        {
+          "call_va": "0x007253E5",
+          "load_va": "0x007253C2",
+          "owner": "0x00725200",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": null
+        },
+        {
+          "call_va": "0x007253E5",
+          "load_va": "0x007253C2",
+          "owner": "0x00725200",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": null
+        },
+        {
+          "call_va": "0x00725438",
+          "load_va": "0x00725420",
+          "owner": "0x00725200",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": null
+        },
+        {
+          "call_va": "0x00725438",
+          "load_va": "0x00725420",
+          "owner": "0x00725200",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": null
+        },
+        {
+          "call_va": "0x00725521",
+          "load_va": "0x0072550C",
+          "owner": "0x007254A0",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": null
+        },
+        {
+          "call_va": "0x00725521",
+          "load_va": "0x0072550C",
+          "owner": "0x007254A0",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": null
+        },
+        {
+          "call_va": "0x0074D162",
+          "load_va": "0x0074D151",
+          "owner": "0x0074D0F0",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": null
+        },
+        {
+          "call_va": "0x0074D253",
+          "load_va": "0x0074D241",
+          "owner": "0x0074D230",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": null
+        },
+        {
+          "call_va": "0x007509E5",
+          "load_va": "0x007509CB",
+          "owner": "0x007509B0",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": null
+        },
+        {
+          "call_va": "0x00750A4C",
+          "load_va": "0x00750A3A",
+          "owner": "0x007509B0",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": null
+        },
+        {
+          "call_va": "0x00750A4C",
+          "load_va": "0x00750A3A",
+          "owner": "0x007509B0",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": null
+        }
+      ]
+    },
+    {
+      "offset": "0x000001A0",
+      "calls": 13,
+      "owners": 7,
+      "soft_name": null,
+      "sites": [
+        {
+          "call_va": "0x00725902",
+          "load_va": "0x007258ED",
+          "owner": "0x00725580",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": null
+        },
+        {
+          "call_va": "0x00752B91",
+          "load_va": "0x00752B7C",
+          "owner": "0x00752AF0",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": null
+        },
+        {
+          "call_va": "0x00752B91",
+          "load_va": "0x00752B7C",
+          "owner": "0x00752AF0",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": null
+        },
+        {
+          "call_va": "0x00752B91",
+          "load_va": "0x00752B7C",
+          "owner": "0x00752AF0",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": null
+        },
+        {
+          "call_va": "0x00754BE0",
+          "load_va": "0x00754BCB",
+          "owner": "0x00754B60",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": null
+        },
+        {
+          "call_va": "0x00754BE0",
+          "load_va": "0x00754BCB",
+          "owner": "0x00754B60",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": null
+        },
+        {
+          "call_va": "0x00757A14",
+          "load_va": "0x007579FF",
+          "owner": "0x00757960",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": null
+        },
+        {
+          "call_va": "0x00757A14",
+          "load_va": "0x007579FF",
+          "owner": "0x00757960",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": null
+        },
+        {
+          "call_va": "0x00757B06",
+          "load_va": "0x00757AF1",
+          "owner": "0x00757A50",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": null
+        },
+        {
+          "call_va": "0x00757B06",
+          "load_va": "0x00757AF1",
+          "owner": "0x00757A50",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": null
+        },
+        {
+          "call_va": "0x0075EB0B",
+          "load_va": "0x0075EAF6",
+          "owner": "0x0075E920",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": null
+        },
+        {
+          "call_va": "0x0075ED25",
+          "load_va": "0x0075ED10",
+          "owner": "0x0075EBF0",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": null
+        }
+      ]
+    },
+    {
+      "offset": "0x00000198",
+      "calls": 12,
+      "owners": 3,
+      "soft_name": null,
+      "sites": [
+        {
+          "call_va": "0x00733768",
+          "load_va": "0x00733757",
+          "owner": "0x00733700",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": null
+        },
+        {
+          "call_va": "0x0073377F",
+          "load_va": "0x0073376A",
+          "owner": "0x00733700",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": null
+        },
+        {
+          "call_va": "0x0073377F",
+          "load_va": "0x0073376A",
+          "owner": "0x00733700",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": null
+        },
+        {
+          "call_va": "0x00733859",
+          "load_va": "0x00733848",
+          "owner": "0x007337F0",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": null
+        },
+        {
+          "call_va": "0x0073386D",
+          "load_va": "0x0073385B",
+          "owner": "0x007337F0",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": null
+        },
+        {
+          "call_va": "0x0073386D",
+          "load_va": "0x0073385B",
+          "owner": "0x007337F0",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": null
+        },
+        {
+          "call_va": "0x00734C30",
+          "load_va": "0x00734C1E",
+          "owner": "0x00734B20",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": null
+        },
+        {
+          "call_va": "0x00734C68",
+          "load_va": "0x00734C56",
+          "owner": "0x00734B20",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": null
+        },
+        {
+          "call_va": "0x00734C7C",
+          "load_va": "0x00734C6A",
+          "owner": "0x00734B20",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": null
+        },
+        {
+          "call_va": "0x00734C68",
+          "load_va": "0x00734C56",
+          "owner": "0x00734B20",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": null
+        },
+        {
+          "call_va": "0x00734C7C",
+          "load_va": "0x00734C6A",
+          "owner": "0x00734B20",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": null
+        },
+        {
+          "call_va": "0x00734C7C",
+          "load_va": "0x00734C6A",
+          "owner": "0x00734B20",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": null
+        }
+      ]
+    },
+    {
+      "offset": "0x0000009C",
+      "calls": 12,
+      "owners": 6,
+      "soft_name": null,
+      "sites": [
+        {
+          "call_va": "0x0074287F",
+          "load_va": "0x0074286F",
+          "owner": "0x00742810",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": null
+        },
+        {
+          "call_va": "0x0074287F",
+          "load_va": "0x0074286F",
+          "owner": "0x00742810",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": null
+        },
+        {
+          "call_va": "0x007543C2",
+          "load_va": "0x007543B0",
+          "owner": "0x00754390",
+          "owner_label": "MEDIUM_CONFIDENCE",
+          "discovered_high": false,
+          "soft_name": null
+        },
+        {
+          "call_va": "0x00766F4D",
+          "load_va": "0x00766F3E",
+          "owner": "0x00766ED0",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": null
+        },
+        {
+          "call_va": "0x00766F4D",
+          "load_va": "0x00766F3E",
+          "owner": "0x00766ED0",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": null
+        },
+        {
+          "call_va": "0x007671E1",
+          "load_va": "0x007671D2",
+          "owner": "0x00767180",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": null
+        },
+        {
+          "call_va": "0x007671E1",
+          "load_va": "0x007671D2",
+          "owner": "0x00767180",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": null
+        },
+        {
+          "call_va": "0x007674FB",
+          "load_va": "0x007674EC",
+          "owner": "0x00767440",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": null
+        },
+        {
+          "call_va": "0x007674FB",
+          "load_va": "0x007674EC",
+          "owner": "0x00767440",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": null
+        },
+        {
+          "call_va": "0x00770803",
+          "load_va": "0x007707F3",
+          "owner": "0x00770750",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": null
+        },
+        {
+          "call_va": "0x00770803",
+          "load_va": "0x007707F3",
+          "owner": "0x00770750",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": null
+        },
+        {
+          "call_va": "0x00770803",
+          "load_va": "0x007707F3",
+          "owner": "0x00770750",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": null
+        }
+      ]
+    },
+    {
+      "offset": "0x00000044",
+      "calls": 9,
+      "owners": 2,
+      "soft_name": "Present",
+      "sites": [
+        {
+          "call_va": "0x00725350",
+          "load_va": "0x00725331",
+          "owner": "0x00725200",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": "Present"
+        },
+        {
+          "call_va": "0x00725350",
+          "load_va": "0x00725341",
+          "owner": "0x00725200",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": "Present"
+        },
+        {
+          "call_va": "0x00725350",
+          "load_va": "0x00725331",
+          "owner": "0x00725200",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": "Present"
+        },
+        {
+          "call_va": "0x00725350",
+          "load_va": "0x00725341",
+          "owner": "0x00725200",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": "Present"
+        },
+        {
+          "call_va": "0x00725350",
+          "load_va": "0x00725331",
+          "owner": "0x00725200",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": "Present"
+        },
+        {
+          "call_va": "0x00725350",
+          "load_va": "0x00725341",
+          "owner": "0x00725200",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": "Present"
+        },
+        {
+          "call_va": "0x00725350",
+          "load_va": "0x00725341",
+          "owner": "0x00725200",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": "Present"
+        },
+        {
+          "call_va": "0x00752B14",
+          "load_va": "0x00752B03",
+          "owner": "0x00752AF0",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": "Present"
+        },
+        {
+          "call_va": "0x00752B14",
+          "load_va": "0x00752B03",
+          "owner": "0x00752AF0",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": "Present"
+        }
+      ]
+    },
+    {
+      "offset": "0x000001AC",
+      "calls": 7,
+      "owners": 3,
+      "soft_name": null,
+      "sites": [
+        {
+          "call_va": "0x00752BFB",
+          "load_va": "0x00752BE6",
+          "owner": "0x00752AF0",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": null
+        },
+        {
+          "call_va": "0x00752BFB",
+          "load_va": "0x00752BE6",
+          "owner": "0x00752AF0",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": null
+        },
+        {
+          "call_va": "0x00752BFB",
+          "load_va": "0x00752BE6",
+          "owner": "0x00752AF0",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": null
+        },
+        {
+          "call_va": "0x00752BFB",
+          "load_va": "0x00752BE6",
+          "owner": "0x00752AF0",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": null
+        },
+        {
+          "call_va": "0x00752BFB",
+          "load_va": "0x00752BE6",
+          "owner": "0x00752AF0",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": null
+        },
+        {
+          "call_va": "0x0075DBED",
+          "load_va": "0x0075DBD8",
+          "owner": "0x0075DBC0",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": null
+        },
+        {
+          "call_va": "0x00764AFB",
+          "load_va": "0x00764AE1",
+          "owner": "0x007649A0",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": null
+        }
+      ]
+    },
+    {
+      "offset": "0x00000068",
+      "calls": 6,
+      "owners": 4,
+      "soft_name": null,
+      "sites": [
+        {
+          "call_va": "0x0071CDCC",
+          "load_va": "0x0071CDB0",
+          "owner": "0x0071CDA0",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": null
+        },
+        {
+          "call_va": "0x00747790",
+          "load_va": "0x00747770",
+          "owner": "0x00747770",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": null
+        },
+        {
+          "call_va": "0x007511A0",
+          "load_va": "0x00751184",
+          "owner": "0x00751170",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": null
+        },
+        {
+          "call_va": "0x007511C2",
+          "load_va": "0x007511A6",
+          "owner": "0x00751170",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": null
+        },
+        {
+          "call_va": "0x007511C2",
+          "load_va": "0x007511A6",
+          "owner": "0x00751170",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": null
+        },
+        {
+          "call_va": "0x00772062",
+          "load_va": "0x0077204D",
+          "owner": "0x00771FB0",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": null
+        }
+      ]
+    },
+    {
+      "offset": "0x00000190",
+      "calls": 6,
+      "owners": 3,
+      "soft_name": null,
+      "sites": [
+        {
+          "call_va": "0x00725A9A",
+          "load_va": "0x00725A71",
+          "owner": "0x00725580",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": null
+        },
+        {
+          "call_va": "0x007338AC",
+          "load_va": "0x00733887",
+          "owner": "0x007337F0",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": null
+        },
+        {
+          "call_va": "0x007338AC",
+          "load_va": "0x00733887",
+          "owner": "0x007337F0",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": null
+        },
+        {
+          "call_va": "0x007338AC",
+          "load_va": "0x00733887",
+          "owner": "0x007337F0",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": null
+        },
+        {
+          "call_va": "0x0075EFAE",
+          "load_va": "0x0075EF8E",
+          "owner": "0x0075EF20",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": null
+        },
+        {
+          "call_va": "0x0075EFAE",
+          "load_va": "0x0075EF8E",
+          "owner": "0x0075EF20",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": null
+        }
+      ]
+    },
+    {
+      "offset": "0x000001D8",
+      "calls": 6,
+      "owners": 6,
+      "soft_name": null,
+      "sites": [
+        {
+          "call_va": "0x00729891",
+          "load_va": "0x0072987A",
+          "owner": "0x007297D0",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": null
+        },
+        {
+          "call_va": "0x0072E23F",
+          "load_va": "0x0072E228",
+          "owner": "0x0072E050",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": null
+        },
+        {
+          "call_va": "0x0072E676",
+          "load_va": "0x0072E664",
+          "owner": "0x0072E5D0",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": null
+        },
+        {
+          "call_va": "0x0073DA55",
+          "load_va": "0x0073DA44",
+          "owner": "0x0073DA00",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": null
+        },
+        {
+          "call_va": "0x00747FCB",
+          "load_va": "0x00747FB4",
+          "owner": "0x00747FB0",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": null
+        },
+        {
+          "call_va": "0x0076C908",
+          "load_va": "0x0076C8F8",
+          "owner": "0x0076C8D0",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": null
+        }
+      ]
+    },
+    {
+      "offset": "0x00000094",
+      "calls": 6,
+      "owners": 5,
+      "soft_name": null,
+      "sites": [
+        {
+          "call_va": "0x0074286D",
+          "load_va": "0x0074285C",
+          "owner": "0x00742810",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": null
+        },
+        {
+          "call_va": "0x00766F3C",
+          "load_va": "0x00766F2A",
+          "owner": "0x00766ED0",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": null
+        },
+        {
+          "call_va": "0x007671D0",
+          "load_va": "0x007671BE",
+          "owner": "0x00767180",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": null
+        },
+        {
+          "call_va": "0x007674EA",
+          "load_va": "0x007674DA",
+          "owner": "0x00767440",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": null
+        },
+        {
+          "call_va": "0x007677EB",
+          "load_va": "0x007677DB",
+          "owner": "0x00767760",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": null
+        },
+        {
+          "call_va": "0x007677EB",
+          "load_va": "0x007677DB",
+          "owner": "0x00767760",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": null
+        }
+      ]
+    },
+    {
+      "offset": "0x0000006C",
+      "calls": 5,
+      "owners": 2,
+      "soft_name": null,
+      "sites": [
+        {
+          "call_va": "0x0075123C",
+          "load_va": "0x00751220",
+          "owner": "0x00751170",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": null
+        },
+        {
+          "call_va": "0x0075123C",
+          "load_va": "0x00751220",
+          "owner": "0x00751170",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": null
+        },
+        {
+          "call_va": "0x0075125E",
+          "load_va": "0x00751242",
+          "owner": "0x00751170",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": null
+        },
+        {
+          "call_va": "0x0075125E",
+          "load_va": "0x00751242",
+          "owner": "0x00751170",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": null
+        },
+        {
+          "call_va": "0x0077248E",
+          "load_va": "0x00772479",
+          "owner": "0x007723E0",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": null
+        }
+      ]
+    },
+    {
+      "offset": "0x00000170",
+      "calls": 5,
+      "owners": 2,
+      "soft_name": null,
+      "sites": [
+        {
+          "call_va": "0x00752BDC",
+          "load_va": "0x00752BC7",
+          "owner": "0x00752AF0",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": null
+        },
+        {
+          "call_va": "0x00752BDC",
+          "load_va": "0x00752BC7",
+          "owner": "0x00752AF0",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": null
+        },
+        {
+          "call_va": "0x00752BDC",
+          "load_va": "0x00752BC7",
+          "owner": "0x00752AF0",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": null
+        },
+        {
+          "call_va": "0x00752BDC",
+          "load_va": "0x00752BC7",
+          "owner": "0x00752AF0",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": null
+        },
+        {
+          "call_va": "0x00764AC1",
+          "load_va": "0x00764AAC",
+          "owner": "0x007649A0",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": null
+        }
+      ]
+    },
+    {
+      "offset": "0x000000A8",
+      "calls": 4,
+      "owners": 2,
+      "soft_name": "EndScene",
+      "sites": [
+        {
+          "call_va": "0x0072533F",
+          "load_va": "0x00725331",
+          "owner": "0x00725200",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": "EndScene"
+        },
+        {
+          "call_va": "0x0072533F",
+          "load_va": "0x00725331",
+          "owner": "0x00725200",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": "EndScene"
+        },
+        {
+          "call_va": "0x0072533F",
+          "load_va": "0x00725331",
+          "owner": "0x00725200",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": "EndScene"
+        },
+        {
+          "call_va": "0x00752B01",
+          "load_va": "0x00752AF0",
+          "owner": "0x00752AF0",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": "EndScene"
+        }
+      ]
+    },
+    {
+      "offset": "0x00000104",
+      "calls": 4,
+      "owners": 2,
+      "soft_name": null,
+      "sites": [
+        {
+          "call_va": "0x0073EB48",
+          "load_va": "0x0073EB2F",
+          "owner": "0x0073EB10",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": null
+        },
+        {
+          "call_va": "0x00752BB5",
+          "load_va": "0x00752B9E",
+          "owner": "0x00752AF0",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": null
+        },
+        {
+          "call_va": "0x00752BB5",
+          "load_va": "0x00752B9E",
+          "owner": "0x00752AF0",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": null
+        },
+        {
+          "call_va": "0x00752BB5",
+          "load_va": "0x00752B9E",
+          "owner": "0x00752AF0",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": null
+        }
+      ]
+    },
+    {
+      "offset": "0x00000054",
+      "calls": 4,
+      "owners": 2,
+      "soft_name": null,
+      "sites": [
+        {
+          "call_va": "0x00752B68",
+          "load_va": "0x00752B53",
+          "owner": "0x00752AF0",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": null
+        },
+        {
+          "call_va": "0x00752B68",
+          "load_va": "0x00752B53",
+          "owner": "0x00752AF0",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": null
+        },
+        {
+          "call_va": "0x00752B68",
+          "load_va": "0x00752B53",
+          "owner": "0x00752AF0",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": null
+        },
+        {
+          "call_va": "0x0075F2BC",
+          "load_va": "0x0075F2A5",
+          "owner": "0x0075F240",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": null
+        }
+      ]
+    },
+    {
+      "offset": "0x000000BC",
+      "calls": 3,
+      "owners": 2,
+      "soft_name": null,
+      "sites": [
+        {
+          "call_va": "0x0075442D",
+          "load_va": "0x00754402",
+          "owner": "0x00754390",
+          "owner_label": "MEDIUM_CONFIDENCE",
+          "discovered_high": false,
+          "soft_name": null
+        },
+        {
+          "call_va": "0x0075442D",
+          "load_va": "0x00754402",
+          "owner": "0x00754390",
+          "owner_label": "MEDIUM_CONFIDENCE",
+          "discovered_high": false,
+          "soft_name": null
+        },
+        {
+          "call_va": "0x00766B26",
+          "load_va": "0x00766AF7",
+          "owner": "0x00766AC0",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": null
+        }
+      ]
+    },
+    {
+      "offset": "0x000000A4",
+      "calls": 2,
+      "owners": 2,
+      "soft_name": "BeginScene",
+      "sites": [
+        {
+          "call_va": "0x00725313",
+          "load_va": "0x00725305",
+          "owner": "0x00725200",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": "BeginScene"
+        },
+        {
+          "call_va": "0x0076A62E",
+          "load_va": "0x0076A620",
+          "owner": "0x0076A600",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": "BeginScene"
+        }
+      ]
+    },
+    {
+      "offset": "0x00000158",
+      "calls": 2,
+      "owners": 2,
+      "soft_name": null,
+      "sites": [
+        {
+          "call_va": "0x0073015D",
+          "load_va": "0x00730145",
+          "owner": "0x00730040",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": null
+        },
+        {
+          "call_va": "0x0074D590",
+          "load_va": "0x0074D57C",
+          "owner": "0x0074D540",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": null
+        }
+      ]
+    },
+    {
+      "offset": "0x000000A0",
+      "calls": 2,
+      "owners": 1,
+      "soft_name": null,
+      "sites": [
+        {
+          "call_va": "0x0075411D",
+          "load_va": "0x0075410A",
+          "owner": "0x007540E0",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": null
+        },
+        {
+          "call_va": "0x0075411D",
+          "load_va": "0x0075410A",
+          "owner": "0x007540E0",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": null
+        }
+      ]
+    },
+    {
+      "offset": "0x0000000C",
+      "calls": 1,
+      "owners": 1,
+      "soft_name": null,
+      "sites": [
+        {
+          "call_va": "0x0071E63E",
+          "load_va": "0x0071E630",
+          "owner": "0x0071E630",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": null
+        }
+      ]
+    },
+    {
+      "offset": "0x00000040",
+      "calls": 1,
+      "owners": 1,
+      "soft_name": null,
+      "sites": [
+        {
+          "call_va": "0x007254C1",
+          "load_va": "0x007254AF",
+          "owner": "0x007254A0",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": null
+        }
+      ]
+    },
+    {
+      "offset": "0x00000008",
+      "calls": 1,
+      "owners": 1,
+      "soft_name": "Release",
+      "sites": [
+        {
+          "call_va": "0x00727F31",
+          "load_va": "0x00727F21",
+          "owner": "0x00727ED0",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": "Release"
+        }
+      ]
+    },
+    {
+      "offset": "0x0000016C",
+      "calls": 1,
+      "owners": 1,
+      "soft_name": null,
+      "sites": [
+        {
+          "call_va": "0x007508B9",
+          "load_va": "0x007508A5",
+          "owner": "0x00750870",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": null
+        }
+      ]
+    },
+    {
+      "offset": "0x000001A8",
+      "calls": 1,
+      "owners": 1,
+      "soft_name": null,
+      "sites": [
+        {
+          "call_va": "0x00750939",
+          "load_va": "0x00750925",
+          "owner": "0x007508F0",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": null
+        }
+      ]
+    },
+    {
+      "offset": "0x00000088",
+      "calls": 1,
+      "owners": 1,
+      "soft_name": null,
+      "sites": [
+        {
+          "call_va": "0x0075317F",
+          "load_va": "0x00753164",
+          "owner": "0x007530E0",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": null
+        }
+      ]
+    },
+    {
+      "offset": "0x0000005C",
+      "calls": 1,
+      "owners": 1,
+      "soft_name": null,
+      "sites": [
+        {
+          "call_va": "0x007532BD",
+          "load_va": "0x007532B0",
+          "owner": "0x00753240",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "soft_name": null
+        }
+      ]
+    }
+  ],
+  "vtable_offset_count": 28,
+  "present": {
+    "confidence": "PRESENT_STRONG_CANDIDATE",
+    "offset": "0x44",
+    "sites": [
+      {
+        "call_va": "0x00725350",
+        "load_va": "0x00725331",
+        "owner": "0x00725200",
+        "owner_label": "HIGH_CONFIDENCE",
+        "discovered_high": true,
+        "soft_name": "Present"
+      },
+      {
+        "call_va": "0x00725350",
+        "load_va": "0x00725341",
+        "owner": "0x00725200",
+        "owner_label": "HIGH_CONFIDENCE",
+        "discovered_high": true,
+        "soft_name": "Present"
+      },
+      {
+        "call_va": "0x00725350",
+        "load_va": "0x00725331",
+        "owner": "0x00725200",
+        "owner_label": "HIGH_CONFIDENCE",
+        "discovered_high": true,
+        "soft_name": "Present"
+      },
+      {
+        "call_va": "0x00725350",
+        "load_va": "0x00725341",
+        "owner": "0x00725200",
+        "owner_label": "HIGH_CONFIDENCE",
+        "discovered_high": true,
+        "soft_name": "Present"
+      },
+      {
+        "call_va": "0x00725350",
+        "load_va": "0x00725331",
+        "owner": "0x00725200",
+        "owner_label": "HIGH_CONFIDENCE",
+        "discovered_high": true,
+        "soft_name": "Present"
+      },
+      {
+        "call_va": "0x00725350",
+        "load_va": "0x00725341",
+        "owner": "0x00725200",
+        "owner_label": "HIGH_CONFIDENCE",
+        "discovered_high": true,
+        "soft_name": "Present"
+      },
+      {
+        "call_va": "0x00725350",
+        "load_va": "0x00725341",
+        "owner": "0x00725200",
+        "owner_label": "HIGH_CONFIDENCE",
+        "discovered_high": true,
+        "soft_name": "Present"
+      },
+      {
+        "call_va": "0x00752B14",
+        "load_va": "0x00752B03",
+        "owner": "0x00752AF0",
+        "owner_label": "HIGH_CONFIDENCE",
+        "discovered_high": true,
+        "soft_name": "Present"
+      },
+      {
+        "call_va": "0x00752B14",
+        "load_va": "0x00752B03",
+        "owner": "0x00752AF0",
+        "owner_label": "HIGH_CONFIDENCE",
+        "discovered_high": true,
+        "soft_name": "Present"
+      }
+    ],
+    "best": {
+      "owner": "0x00752AF0",
+      "call_va": "0x00752B14",
+      "hits_00686000_closure": true,
+      "present_at_entry_prefix": true,
+      "note": "EndScene+Present at function entry; later callees may hit 0x00686000, but the present prefix itself only needs DEVICE state."
+    }
+  },
+  "begin_scene": {
+    "confidence": "STRONG_CANDIDATE",
+    "offset": "0xA4",
+    "sites": [
+      {
+        "call_va": "0x00725313",
+        "load_va": "0x00725305",
+        "owner": "0x00725200",
+        "owner_label": "HIGH_CONFIDENCE",
+        "discovered_high": true,
+        "soft_name": "BeginScene"
+      },
+      {
+        "call_va": "0x0076A62E",
+        "load_va": "0x0076A620",
+        "owner": "0x0076A600",
+        "owner_label": "HIGH_CONFIDENCE",
+        "discovered_high": true,
+        "soft_name": "BeginScene"
+      }
+    ]
+  },
+  "end_scene": {
+    "confidence": "STRONG_CANDIDATE",
+    "offset": "0xA8",
+    "sites": [
+      {
+        "call_va": "0x0072533F",
+        "load_va": "0x00725331",
+        "owner": "0x00725200",
+        "owner_label": "HIGH_CONFIDENCE",
+        "discovered_high": true,
+        "soft_name": "EndScene"
+      },
+      {
+        "call_va": "0x0072533F",
+        "load_va": "0x00725331",
+        "owner": "0x00725200",
+        "owner_label": "HIGH_CONFIDENCE",
+        "discovered_high": true,
+        "soft_name": "EndScene"
+      },
+      {
+        "call_va": "0x0072533F",
+        "load_va": "0x00725331",
+        "owner": "0x00725200",
+        "owner_label": "HIGH_CONFIDENCE",
+        "discovered_high": true,
+        "soft_name": "EndScene"
+      },
+      {
+        "call_va": "0x00752B01",
+        "load_va": "0x00752AF0",
+        "owner": "0x00752AF0",
+        "owner_label": "HIGH_CONFIDENCE",
+        "discovered_high": true,
+        "soft_name": "EndScene"
+      }
+    ]
+  },
+  "clear": {
+    "confidence": "STRONG_CANDIDATE",
+    "offset": "0xAC",
+    "sites": [
+      {
+        "call_va": "0x0072532F",
+        "load_va": "0x00725305",
+        "owner": "0x00725200",
+        "owner_label": "HIGH_CONFIDENCE",
+        "discovered_high": true,
+        "soft_name": "Clear"
+      },
+      {
+        "call_va": "0x0072532F",
+        "load_va": "0x00725317",
+        "owner": "0x00725200",
+        "owner_label": "HIGH_CONFIDENCE",
+        "discovered_high": true,
+        "soft_name": "Clear"
+      },
+      {
+        "call_va": "0x0072532F",
+        "load_va": "0x00725317",
+        "owner": "0x00725200",
+        "owner_label": "HIGH_CONFIDENCE",
+        "discovered_high": true,
+        "soft_name": "Clear"
+      },
+      {
+        "call_va": "0x0074289F",
+        "load_va": "0x00742883",
+        "owner": "0x00742810",
+        "owner_label": "HIGH_CONFIDENCE",
+        "discovered_high": true,
+        "soft_name": "Clear"
+      },
+      {
+        "call_va": "0x0074289F",
+        "load_va": "0x00742883",
+        "owner": "0x00742810",
+        "owner_label": "HIGH_CONFIDENCE",
+        "discovered_high": true,
+        "soft_name": "Clear"
+      },
+      {
+        "call_va": "0x0074289F",
+        "load_va": "0x00742883",
+        "owner": "0x00742810",
+        "owner_label": "HIGH_CONFIDENCE",
+        "discovered_high": true,
+        "soft_name": "Clear"
+      },
+      {
+        "call_va": "0x00766F69",
+        "load_va": "0x00766F51",
+        "owner": "0x00766ED0",
+        "owner_label": "HIGH_CONFIDENCE",
+        "discovered_high": true,
+        "soft_name": "Clear"
+      },
+      {
+        "call_va": "0x00766F69",
+        "load_va": "0x00766F51",
+        "owner": "0x00766ED0",
+        "owner_label": "HIGH_CONFIDENCE",
+        "discovered_high": true,
+        "soft_name": "Clear"
+      },
+      {
+        "call_va": "0x00766F69",
+        "load_va": "0x00766F51",
+        "owner": "0x00766ED0",
+        "owner_label": "HIGH_CONFIDENCE",
+        "discovered_high": true,
+        "soft_name": "Clear"
+      },
+      {
+        "call_va": "0x007671FD",
+        "load_va": "0x007671E5",
+        "owner": "0x00767180",
+        "owner_label": "HIGH_CONFIDENCE",
+        "discovered_high": true,
+        "soft_name": "Clear"
+      },
+      {
+        "call_va": "0x007671FD",
+        "load_va": "0x007671E5",
+        "owner": "0x00767180",
+        "owner_label": "HIGH_CONFIDENCE",
+        "discovered_high": true,
+        "soft_name": "Clear"
+      },
+      {
+        "call_va": "0x007671FD",
+        "load_va": "0x007671E5",
+        "owner": "0x00767180",
+        "owner_label": "HIGH_CONFIDENCE",
+        "discovered_high": true,
+        "soft_name": "Clear"
+      },
+      {
+        "call_va": "0x00767517",
+        "load_va": "0x007674FF",
+        "owner": "0x00767440",
+        "owner_label": "HIGH_CONFIDENCE",
+        "discovered_high": true,
+        "soft_name": "Clear"
+      },
+      {
+        "call_va": "0x00767517",
+        "load_va": "0x007674FF",
+        "owner": "0x00767440",
+        "owner_label": "HIGH_CONFIDENCE",
+        "discovered_high": true,
+        "soft_name": "Clear"
+      },
+      {
+        "call_va": "0x00767517",
+        "load_va": "0x007674FF",
+        "owner": "0x00767440",
+        "owner_label": "HIGH_CONFIDENCE",
+        "discovered_high": true,
+        "soft_name": "Clear"
+      }
+    ],
+    "manual": [
+      {
+        "owner": "0x00725200",
+        "va": "0x0072531E",
+        "text": "mov edx, dword ptr [ecx + 0xac]"
+      }
+    ]
+  },
+  "draw": {
+    "confidence": "UNKNOWN",
+    "sites": [],
+    "count": 0
+  },
+  "device_lost": [
+    {
+      "eip": "0x007252FB",
+      "text": "immediate 0x8876086C inside an unclassified encoding",
+      "owner": "0x00725200",
+      "label": "HIGH_CONFIDENCE"
+    }
+  ],
+  "reset_candidates": {
+    "vt_0x38_sites": [],
+    "found": true,
+    "note": "DEVICELOST constant compared in 0x00725200. No DEVICE VT +0x38 (Reset) sites matched the load pattern in this pass."
+  },
+  "d3dx": [
+    {
+      "dll": "d3dx9_34.dll",
+      "symbol": "D3DXMatrixMultiply",
+      "thunk": "0x0087A7AE",
+      "calling_convention": "unknown",
+      "confidence": "low",
+      "call_sites_meta": 9,
+      "high_callers": [
+        "0x0071B850",
+        "0x0071BAA0",
+        "0x0071BB50",
+        "0x0071BC00",
+        "0x0071BCB0",
+        "0x0071CB70",
+        "0x00721890",
+        "0x007224F0"
+      ],
+      "high_caller_count": 8
+    },
+    {
+      "dll": "d3dx9_34.dll",
+      "symbol": "D3DXVec4Transform",
+      "thunk": "0x0087A7B4",
+      "calling_convention": "unknown",
+      "confidence": "low",
+      "call_sites_meta": 2,
+      "high_callers": [
+        "0x0071B870",
+        "0x0071CA70"
+      ],
+      "high_caller_count": 2
+    },
+    {
+      "dll": "d3dx9_34.dll",
+      "symbol": "D3DXVec3Transform",
+      "thunk": "0x0087A7BA",
+      "calling_convention": "unknown",
+      "confidence": "low",
+      "call_sites_meta": 1,
+      "high_callers": [
+        "0x0071B890"
+      ],
+      "high_caller_count": 1
+    },
+    {
+      "dll": "d3dx9_34.dll",
+      "symbol": "D3DXGetPixelShaderProfile",
+      "thunk": "0x0087A7C0",
+      "calling_convention": "unknown",
+      "confidence": "low",
+      "call_sites_meta": 1,
+      "high_callers": [
+        "0x0071D300"
+      ],
+      "high_caller_count": 1
+    },
+    {
+      "dll": "d3dx9_34.dll",
+      "symbol": "D3DXGetVertexShaderProfile",
+      "thunk": "0x0087A7C6",
+      "calling_convention": "unknown",
+      "confidence": "low",
+      "call_sites_meta": 1,
+      "high_callers": [
+        "0x0071D300"
+      ],
+      "high_caller_count": 1
+    },
+    {
+      "dll": "d3dx9_34.dll",
+      "symbol": "D3DXFillVolumeTexture",
+      "thunk": "0x0087A7CC",
+      "calling_convention": "unknown",
+      "confidence": "low",
+      "call_sites_meta": 2,
+      "high_callers": [
+        "0x0073E770"
+      ],
+      "high_caller_count": 1
+    },
+    {
+      "dll": "d3dx9_34.dll",
+      "symbol": "D3DXCreateVolumeTextureFromFileInMemory",
+      "thunk": "0x0087A7D2",
+      "calling_convention": "unknown",
+      "confidence": "low",
+      "call_sites_meta": 1,
+      "high_callers": [
+        "0x00747FF0"
+      ],
+      "high_caller_count": 1
+    },
+    {
+      "dll": "d3dx9_34.dll",
+      "symbol": "D3DXCreateCubeTextureFromFileInMemory",
+      "thunk": "0x0087A7D8",
+      "calling_convention": "unknown",
+      "confidence": "low",
+      "call_sites_meta": 1,
+      "high_callers": [
+        "0x00747FF0"
+      ],
+      "high_caller_count": 1
+    },
+    {
+      "dll": "d3dx9_34.dll",
+      "symbol": "D3DXGetShaderConstantTable",
+      "thunk": "0x0087A7DE",
+      "calling_convention": "unknown",
+      "confidence": "low",
+      "call_sites_meta": 2,
+      "high_callers": [
+        "0x00750870",
+        "0x007508F0"
+      ],
+      "high_caller_count": 2
+    },
+    {
+      "dll": "d3dx9_34.dll",
+      "symbol": "D3DXSaveSurfaceToFileInMemory",
+      "thunk": "0x0087A7E4",
+      "calling_convention": "unknown",
+      "confidence": "low",
+      "call_sites_meta": 1,
+      "high_callers": [],
+      "high_caller_count": 0
+    }
+  ],
+  "shader_frontier": {
+    "d3dx_shader_related": [
+      {
+        "dll": "d3dx9_34.dll",
+        "symbol": "D3DXGetPixelShaderProfile",
+        "thunk": "0x0087A7C0",
+        "calling_convention": "unknown",
+        "confidence": "low",
+        "call_sites_meta": 1,
+        "high_callers": [
+          "0x0071D300"
+        ],
+        "high_caller_count": 1
+      },
+      {
+        "dll": "d3dx9_34.dll",
+        "symbol": "D3DXGetVertexShaderProfile",
+        "thunk": "0x0087A7C6",
+        "calling_convention": "unknown",
+        "confidence": "low",
+        "call_sites_meta": 1,
+        "high_callers": [
+          "0x0071D300"
+        ],
+        "high_caller_count": 1
+      },
+      {
+        "dll": "d3dx9_34.dll",
+        "symbol": "D3DXFillVolumeTexture",
+        "thunk": "0x0087A7CC",
+        "calling_convention": "unknown",
+        "confidence": "low",
+        "call_sites_meta": 2,
+        "high_callers": [
+          "0x0073E770"
+        ],
+        "high_caller_count": 1
+      },
+      {
+        "dll": "d3dx9_34.dll",
+        "symbol": "D3DXCreateVolumeTextureFromFileInMemory",
+        "thunk": "0x0087A7D2",
+        "calling_convention": "unknown",
+        "confidence": "low",
+        "call_sites_meta": 1,
+        "high_callers": [
+          "0x00747FF0"
+        ],
+        "high_caller_count": 1
+      },
+      {
+        "dll": "d3dx9_34.dll",
+        "symbol": "D3DXCreateCubeTextureFromFileInMemory",
+        "thunk": "0x0087A7D8",
+        "calling_convention": "unknown",
+        "confidence": "low",
+        "call_sites_meta": 1,
+        "high_callers": [
+          "0x00747FF0"
+        ],
+        "high_caller_count": 1
+      },
+      {
+        "dll": "d3dx9_34.dll",
+        "symbol": "D3DXGetShaderConstantTable",
+        "thunk": "0x0087A7DE",
+        "calling_convention": "unknown",
+        "confidence": "low",
+        "call_sites_meta": 2,
+        "high_callers": [
+          "0x00750870",
+          "0x007508F0"
+        ],
+        "high_caller_count": 2
+      },
+      {
+        "dll": "d3dx9_34.dll",
+        "symbol": "D3DXSaveSurfaceToFileInMemory",
+        "thunk": "0x0087A7E4",
+        "calling_convention": "unknown",
+        "confidence": "low",
+        "call_sites_meta": 1,
+        "high_callers": [],
+        "high_caller_count": 0
+      }
+    ],
+    "device_shader_vt_observed": [
+      {
+        "offset": "0x000001A0",
+        "calls": 13,
+        "owners": 7,
+        "soft_name": null,
+        "sites": [
+          {
+            "call_va": "0x00725902",
+            "load_va": "0x007258ED",
+            "owner": "0x00725580",
+            "owner_label": "HIGH_CONFIDENCE",
+            "discovered_high": true,
+            "soft_name": null
+          },
+          {
+            "call_va": "0x00752B91",
+            "load_va": "0x00752B7C",
+            "owner": "0x00752AF0",
+            "owner_label": "HIGH_CONFIDENCE",
+            "discovered_high": true,
+            "soft_name": null
+          },
+          {
+            "call_va": "0x00752B91",
+            "load_va": "0x00752B7C",
+            "owner": "0x00752AF0",
+            "owner_label": "HIGH_CONFIDENCE",
+            "discovered_high": true,
+            "soft_name": null
+          },
+          {
+            "call_va": "0x00752B91",
+            "load_va": "0x00752B7C",
+            "owner": "0x00752AF0",
+            "owner_label": "HIGH_CONFIDENCE",
+            "discovered_high": true,
+            "soft_name": null
+          },
+          {
+            "call_va": "0x00754BE0",
+            "load_va": "0x00754BCB",
+            "owner": "0x00754B60",
+            "owner_label": "HIGH_CONFIDENCE",
+            "discovered_high": true,
+            "soft_name": null
+          },
+          {
+            "call_va": "0x00754BE0",
+            "load_va": "0x00754BCB",
+            "owner": "0x00754B60",
+            "owner_label": "HIGH_CONFIDENCE",
+            "discovered_high": true,
+            "soft_name": null
+          },
+          {
+            "call_va": "0x00757A14",
+            "load_va": "0x007579FF",
+            "owner": "0x00757960",
+            "owner_label": "HIGH_CONFIDENCE",
+            "discovered_high": true,
+            "soft_name": null
+          },
+          {
+            "call_va": "0x00757A14",
+            "load_va": "0x007579FF",
+            "owner": "0x00757960",
+            "owner_label": "HIGH_CONFIDENCE",
+            "discovered_high": true,
+            "soft_name": null
+          },
+          {
+            "call_va": "0x00757B06",
+            "load_va": "0x00757AF1",
+            "owner": "0x00757A50",
+            "owner_label": "HIGH_CONFIDENCE",
+            "discovered_high": true,
+            "soft_name": null
+          },
+          {
+            "call_va": "0x00757B06",
+            "load_va": "0x00757AF1",
+            "owner": "0x00757A50",
+            "owner_label": "HIGH_CONFIDENCE",
+            "discovered_high": true,
+            "soft_name": null
+          },
+          {
+            "call_va": "0x0075EB0B",
+            "load_va": "0x0075EAF6",
+            "owner": "0x0075E920",
+            "owner_label": "HIGH_CONFIDENCE",
+            "discovered_high": true,
+            "soft_name": null
+          },
+          {
+            "call_va": "0x0075ED25",
+            "load_va": "0x0075ED10",
+            "owner": "0x0075EBF0",
+            "owner_label": "HIGH_CONFIDENCE",
+            "discovered_high": true,
+            "soft_name": null
+          }
+        ]
+      },
+      {
+        "offset": "0x00000198",
+        "calls": 12,
+        "owners": 3,
+        "soft_name": null,
+        "sites": [
+          {
+            "call_va": "0x00733768",
+            "load_va": "0x00733757",
+            "owner": "0x00733700",
+            "owner_label": "HIGH_CONFIDENCE",
+            "discovered_high": true,
+            "soft_name": null
+          },
+          {
+            "call_va": "0x0073377F",
+            "load_va": "0x0073376A",
+            "owner": "0x00733700",
+            "owner_label": "HIGH_CONFIDENCE",
+            "discovered_high": true,
+            "soft_name": null
+          },
+          {
+            "call_va": "0x0073377F",
+            "load_va": "0x0073376A",
+            "owner": "0x00733700",
+            "owner_label": "HIGH_CONFIDENCE",
+            "discovered_high": true,
+            "soft_name": null
+          },
+          {
+            "call_va": "0x00733859",
+            "load_va": "0x00733848",
+            "owner": "0x007337F0",
+            "owner_label": "HIGH_CONFIDENCE",
+            "discovered_high": true,
+            "soft_name": null
+          },
+          {
+            "call_va": "0x0073386D",
+            "load_va": "0x0073385B",
+            "owner": "0x007337F0",
+            "owner_label": "HIGH_CONFIDENCE",
+            "discovered_high": true,
+            "soft_name": null
+          },
+          {
+            "call_va": "0x0073386D",
+            "load_va": "0x0073385B",
+            "owner": "0x007337F0",
+            "owner_label": "HIGH_CONFIDENCE",
+            "discovered_high": true,
+            "soft_name": null
+          },
+          {
+            "call_va": "0x00734C30",
+            "load_va": "0x00734C1E",
+            "owner": "0x00734B20",
+            "owner_label": "HIGH_CONFIDENCE",
+            "discovered_high": true,
+            "soft_name": null
+          },
+          {
+            "call_va": "0x00734C68",
+            "load_va": "0x00734C56",
+            "owner": "0x00734B20",
+            "owner_label": "HIGH_CONFIDENCE",
+            "discovered_high": true,
+            "soft_name": null
+          },
+          {
+            "call_va": "0x00734C7C",
+            "load_va": "0x00734C6A",
+            "owner": "0x00734B20",
+            "owner_label": "HIGH_CONFIDENCE",
+            "discovered_high": true,
+            "soft_name": null
+          },
+          {
+            "call_va": "0x00734C68",
+            "load_va": "0x00734C56",
+            "owner": "0x00734B20",
+            "owner_label": "HIGH_CONFIDENCE",
+            "discovered_high": true,
+            "soft_name": null
+          },
+          {
+            "call_va": "0x00734C7C",
+            "load_va": "0x00734C6A",
+            "owner": "0x00734B20",
+            "owner_label": "HIGH_CONFIDENCE",
+            "discovered_high": true,
+            "soft_name": null
+          },
+          {
+            "call_va": "0x00734C7C",
+            "load_va": "0x00734C6A",
+            "owner": "0x00734B20",
+            "owner_label": "HIGH_CONFIDENCE",
+            "discovered_high": true,
+            "soft_name": null
+          }
+        ]
+      },
+      {
+        "offset": "0x000001AC",
+        "calls": 7,
+        "owners": 3,
+        "soft_name": null,
+        "sites": [
+          {
+            "call_va": "0x00752BFB",
+            "load_va": "0x00752BE6",
+            "owner": "0x00752AF0",
+            "owner_label": "HIGH_CONFIDENCE",
+            "discovered_high": true,
+            "soft_name": null
+          },
+          {
+            "call_va": "0x00752BFB",
+            "load_va": "0x00752BE6",
+            "owner": "0x00752AF0",
+            "owner_label": "HIGH_CONFIDENCE",
+            "discovered_high": true,
+            "soft_name": null
+          },
+          {
+            "call_va": "0x00752BFB",
+            "load_va": "0x00752BE6",
+            "owner": "0x00752AF0",
+            "owner_label": "HIGH_CONFIDENCE",
+            "discovered_high": true,
+            "soft_name": null
+          },
+          {
+            "call_va": "0x00752BFB",
+            "load_va": "0x00752BE6",
+            "owner": "0x00752AF0",
+            "owner_label": "HIGH_CONFIDENCE",
+            "discovered_high": true,
+            "soft_name": null
+          },
+          {
+            "call_va": "0x00752BFB",
+            "load_va": "0x00752BE6",
+            "owner": "0x00752AF0",
+            "owner_label": "HIGH_CONFIDENCE",
+            "discovered_high": true,
+            "soft_name": null
+          },
+          {
+            "call_va": "0x0075DBED",
+            "load_va": "0x0075DBD8",
+            "owner": "0x0075DBC0",
+            "owner_label": "HIGH_CONFIDENCE",
+            "discovered_high": true,
+            "soft_name": null
+          },
+          {
+            "call_va": "0x00764AFB",
+            "load_va": "0x00764AE1",
+            "owner": "0x007649A0",
+            "owner_label": "HIGH_CONFIDENCE",
+            "discovered_high": true,
+            "soft_name": null
+          }
+        ]
+      },
+      {
+        "offset": "0x00000190",
+        "calls": 6,
+        "owners": 3,
+        "soft_name": null,
+        "sites": [
+          {
+            "call_va": "0x00725A9A",
+            "load_va": "0x00725A71",
+            "owner": "0x00725580",
+            "owner_label": "HIGH_CONFIDENCE",
+            "discovered_high": true,
+            "soft_name": null
+          },
+          {
+            "call_va": "0x007338AC",
+            "load_va": "0x00733887",
+            "owner": "0x007337F0",
+            "owner_label": "HIGH_CONFIDENCE",
+            "discovered_high": true,
+            "soft_name": null
+          },
+          {
+            "call_va": "0x007338AC",
+            "load_va": "0x00733887",
+            "owner": "0x007337F0",
+            "owner_label": "HIGH_CONFIDENCE",
+            "discovered_high": true,
+            "soft_name": null
+          },
+          {
+            "call_va": "0x007338AC",
+            "load_va": "0x00733887",
+            "owner": "0x007337F0",
+            "owner_label": "HIGH_CONFIDENCE",
+            "discovered_high": true,
+            "soft_name": null
+          },
+          {
+            "call_va": "0x0075EFAE",
+            "load_va": "0x0075EF8E",
+            "owner": "0x0075EF20",
+            "owner_label": "HIGH_CONFIDENCE",
+            "discovered_high": true,
+            "soft_name": null
+          },
+          {
+            "call_va": "0x0075EFAE",
+            "load_va": "0x0075EF8E",
+            "owner": "0x0075EF20",
+            "owner_label": "HIGH_CONFIDENCE",
+            "discovered_high": true,
+            "soft_name": null
+          }
+        ]
+      },
+      {
+        "offset": "0x000001A8",
+        "calls": 1,
+        "owners": 1,
+        "soft_name": null,
+        "sites": [
+          {
+            "call_va": "0x00750939",
+            "load_va": "0x00750925",
+            "owner": "0x007508F0",
+            "owner_label": "HIGH_CONFIDENCE",
+            "discovered_high": true,
+            "soft_name": null
+          }
+        ]
+      }
+    ],
+    "note": "Metadata only; no shader blobs extracted."
+  },
+  "frame_loop_candidates": [
+    {
+      "entry": "0x00752AF0",
+      "label": "HIGH_CONFIDENCE",
+      "distinct_device_vtable_offsets": 7,
+      "hits_00686000": true,
+      "preds": 1
+    },
+    {
+      "entry": "0x00725200",
+      "label": "HIGH_CONFIDENCE",
+      "distinct_device_vtable_offsets": 5,
+      "hits_00686000": false,
+      "preds": 1
+    }
+  ],
+  "post_init_islands": [
+    {
+      "entry": "0x0071CDA0",
+      "label": "HIGH_CONFIDENCE",
+      "discovered_high": true,
+      "class": "POST_INIT_GRAPHICS_EXTERNAL_STATE_ONLY",
+      "hits_00686000": false,
+      "hits_create_0x0072E340": false,
+      "uses_device_global": true,
+      "direct_calls": 0
+    },
+    {
+      "entry": "0x0071E630",
+      "label": "HIGH_CONFIDENCE",
+      "discovered_high": true,
+      "class": "POST_INIT_GRAPHICS_EXTERNAL_STATE_ONLY",
+      "hits_00686000": false,
+      "hits_create_0x0072E340": false,
+      "uses_device_global": true,
+      "direct_calls": 0
+    },
+    {
+      "entry": "0x00725200",
+      "label": "HIGH_CONFIDENCE",
+      "discovered_high": true,
+      "class": "POST_INIT_GRAPHICS_EXTERNAL_STATE_ONLY",
+      "hits_00686000": false,
+      "hits_create_0x0072E340": false,
+      "uses_device_global": true,
+      "direct_calls": 5
+    },
+    {
+      "entry": "0x007254A0",
+      "label": "HIGH_CONFIDENCE",
+      "discovered_high": true,
+      "class": "POST_INIT_GRAPHICS_EXTERNAL_STATE_ONLY",
+      "hits_00686000": false,
+      "hits_create_0x0072E340": false,
+      "uses_device_global": true,
+      "direct_calls": 3
+    },
+    {
+      "entry": "0x00725580",
+      "label": "HIGH_CONFIDENCE",
+      "discovered_high": true,
+      "class": "POST_INIT_GRAPHICS_EXTERNAL_STATE_ONLY",
+      "hits_00686000": false,
+      "hits_create_0x0072E340": false,
+      "uses_device_global": true,
+      "direct_calls": 14
+    },
+    {
+      "entry": "0x00727ED0",
+      "label": "HIGH_CONFIDENCE",
+      "discovered_high": true,
+      "class": "POST_INIT_GRAPHICS_EXTERNAL_STATE_ONLY",
+      "hits_00686000": false,
+      "hits_create_0x0072E340": false,
+      "uses_device_global": true,
+      "direct_calls": 6
+    },
+    {
+      "entry": "0x007297D0",
+      "label": "HIGH_CONFIDENCE",
+      "discovered_high": true,
+      "class": "PROTECTED_DEPENDENT",
+      "hits_00686000": true,
+      "hits_create_0x0072E340": false,
+      "uses_device_global": true,
+      "direct_calls": 15
+    },
+    {
+      "entry": "0x0072E050",
+      "label": "HIGH_CONFIDENCE",
+      "discovered_high": true,
+      "class": "PROTECTED_DEPENDENT",
+      "hits_00686000": true,
+      "hits_create_0x0072E340": false,
+      "uses_device_global": true,
+      "direct_calls": 33
+    },
+    {
+      "entry": "0x0072E5D0",
+      "label": "HIGH_CONFIDENCE",
+      "discovered_high": true,
+      "class": "PROTECTED_DEPENDENT",
+      "hits_00686000": true,
+      "hits_create_0x0072E340": true,
+      "uses_device_global": true,
+      "direct_calls": 9
+    },
+    {
+      "entry": "0x00730040",
+      "label": "HIGH_CONFIDENCE",
+      "discovered_high": true,
+      "class": "POST_INIT_GRAPHICS_EXTERNAL_STATE_ONLY",
+      "hits_00686000": false,
+      "hits_create_0x0072E340": false,
+      "uses_device_global": true,
+      "direct_calls": 4
+    },
+    {
+      "entry": "0x00733700",
+      "label": "HIGH_CONFIDENCE",
+      "discovered_high": true,
+      "class": "POST_INIT_GRAPHICS_EXTERNAL_STATE_ONLY",
+      "hits_00686000": false,
+      "hits_create_0x0072E340": false,
+      "uses_device_global": true,
+      "direct_calls": 0
+    },
+    {
+      "entry": "0x007337F0",
+      "label": "HIGH_CONFIDENCE",
+      "discovered_high": true,
+      "class": "POST_INIT_GRAPHICS_EXTERNAL_STATE_ONLY",
+      "hits_00686000": false,
+      "hits_create_0x0072E340": false,
+      "uses_device_global": true,
+      "direct_calls": 1
+    },
+    {
+      "entry": "0x00734B20",
+      "label": "HIGH_CONFIDENCE",
+      "discovered_high": true,
+      "class": "POST_INIT_GRAPHICS_EXTERNAL_STATE_ONLY",
+      "hits_00686000": false,
+      "hits_create_0x0072E340": false,
+      "uses_device_global": true,
+      "direct_calls": 6
+    },
+    {
+      "entry": "0x0073DA00",
+      "label": "HIGH_CONFIDENCE",
+      "discovered_high": true,
+      "class": "POST_INIT_GRAPHICS_EXTERNAL_STATE_ONLY",
+      "hits_00686000": false,
+      "hits_create_0x0072E340": false,
+      "uses_device_global": true,
+      "direct_calls": 1
+    },
+    {
+      "entry": "0x0073EB10",
+      "label": "HIGH_CONFIDENCE",
+      "discovered_high": true,
+      "class": "POST_INIT_GRAPHICS_EXTERNAL_STATE_ONLY",
+      "hits_00686000": false,
+      "hits_create_0x0072E340": false,
+      "uses_device_global": true,
+      "direct_calls": 0
+    },
+    {
+      "entry": "0x00742810",
+      "label": "HIGH_CONFIDENCE",
+      "discovered_high": true,
+      "class": "POST_INIT_GRAPHICS_EXTERNAL_STATE_ONLY",
+      "hits_00686000": false,
+      "hits_create_0x0072E340": false,
+      "uses_device_global": true,
+      "direct_calls": 0
+    },
+    {
+      "entry": "0x00747770",
+      "label": "HIGH_CONFIDENCE",
+      "discovered_high": true,
+      "class": "POST_INIT_GRAPHICS_EXTERNAL_STATE_ONLY",
+      "hits_00686000": false,
+      "hits_create_0x0072E340": false,
+      "uses_device_global": true,
+      "direct_calls": 0
+    },
+    {
+      "entry": "0x00747FB0",
+      "label": "HIGH_CONFIDENCE",
+      "discovered_high": true,
+      "class": "POST_INIT_GRAPHICS_EXTERNAL_STATE_ONLY",
+      "hits_00686000": false,
+      "hits_create_0x0072E340": false,
+      "uses_device_global": true,
+      "direct_calls": 0
+    },
+    {
+      "entry": "0x0074D0F0",
+      "label": "HIGH_CONFIDENCE",
+      "discovered_high": true,
+      "class": "POST_INIT_GRAPHICS_EXTERNAL_STATE_ONLY",
+      "hits_00686000": false,
+      "hits_create_0x0072E340": false,
+      "uses_device_global": true,
+      "direct_calls": 0
+    },
+    {
+      "entry": "0x0074D230",
+      "label": "HIGH_CONFIDENCE",
+      "discovered_high": true,
+      "class": "POST_INIT_GRAPHICS_EXTERNAL_STATE_ONLY",
+      "hits_00686000": false,
+      "hits_create_0x0072E340": false,
+      "uses_device_global": true,
+      "direct_calls": 0
+    },
+    {
+      "entry": "0x0074D540",
+      "label": "HIGH_CONFIDENCE",
+      "discovered_high": true,
+      "class": "POST_INIT_GRAPHICS_EXTERNAL_STATE_ONLY",
+      "hits_00686000": false,
+      "hits_create_0x0072E340": false,
+      "uses_device_global": true,
+      "direct_calls": 1
+    },
+    {
+      "entry": "0x00750870",
+      "label": "HIGH_CONFIDENCE",
+      "discovered_high": true,
+      "class": "PROTECTED_DEPENDENT",
+      "hits_00686000": true,
+      "hits_create_0x0072E340": false,
+      "uses_device_global": true,
+      "direct_calls": 4
+    },
+    {
+      "entry": "0x007508F0",
+      "label": "HIGH_CONFIDENCE",
+      "discovered_high": true,
+      "class": "PROTECTED_DEPENDENT",
+      "hits_00686000": true,
+      "hits_create_0x0072E340": false,
+      "uses_device_global": true,
+      "direct_calls": 4
+    },
+    {
+      "entry": "0x007509B0",
+      "label": "HIGH_CONFIDENCE",
+      "discovered_high": true,
+      "class": "POST_INIT_GRAPHICS_EXTERNAL_STATE_ONLY",
+      "hits_00686000": false,
+      "hits_create_0x0072E340": false,
+      "uses_device_global": true,
+      "direct_calls": 0
+    },
+    {
+      "entry": "0x00750B60",
+      "label": "HIGH_CONFIDENCE",
+      "discovered_high": true,
+      "class": "POST_INIT_GRAPHICS_EXTERNAL_STATE_ONLY",
+      "hits_00686000": false,
+      "hits_create_0x0072E340": false,
+      "uses_device_global": true,
+      "direct_calls": 0
+    },
+    {
+      "entry": "0x00751170",
+      "label": "HIGH_CONFIDENCE",
+      "discovered_high": true,
+      "class": "POST_INIT_GRAPHICS_EXTERNAL_STATE_ONLY",
+      "hits_00686000": false,
+      "hits_create_0x0072E340": false,
+      "uses_device_global": true,
+      "direct_calls": 1
+    },
+    {
+      "entry": "0x00752AF0",
+      "label": "HIGH_CONFIDENCE",
+      "discovered_high": true,
+      "class": "PROTECTED_DEPENDENT",
+      "hits_00686000": true,
+      "hits_create_0x0072E340": false,
+      "uses_device_global": true,
+      "direct_calls": 4
+    },
+    {
+      "entry": "0x007530E0",
+      "label": "HIGH_CONFIDENCE",
+      "discovered_high": true,
+      "class": "POST_INIT_GRAPHICS_EXTERNAL_STATE_ONLY",
+      "hits_00686000": false,
+      "hits_create_0x0072E340": false,
+      "uses_device_global": true,
+      "direct_calls": 0
+    },
+    {
+      "entry": "0x00753240",
+      "label": "HIGH_CONFIDENCE",
+      "discovered_high": true,
+      "class": "POST_INIT_GRAPHICS_EXTERNAL_STATE_ONLY",
+      "hits_00686000": false,
+      "hits_create_0x0072E340": false,
+      "uses_device_global": true,
+      "direct_calls": 2
+    },
+    {
+      "entry": "0x007540E0",
+      "label": "HIGH_CONFIDENCE",
+      "discovered_high": true,
+      "class": "POST_INIT_GRAPHICS_EXTERNAL_STATE_ONLY",
+      "hits_00686000": false,
+      "hits_create_0x0072E340": false,
+      "uses_device_global": true,
+      "direct_calls": 4
+    },
+    {
+      "entry": "0x00754390",
+      "label": "MEDIUM_CONFIDENCE",
+      "discovered_high": false,
+      "class": "POST_INIT_GRAPHICS_EXTERNAL_STATE_ONLY",
+      "hits_00686000": false,
+      "hits_create_0x0072E340": false,
+      "uses_device_global": true,
+      "direct_calls": 0
+    },
+    {
+      "entry": "0x00754B60",
+      "label": "HIGH_CONFIDENCE",
+      "discovered_high": true,
+      "class": "POST_INIT_GRAPHICS_EXTERNAL_STATE_ONLY",
+      "hits_00686000": false,
+      "hits_create_0x0072E340": false,
+      "uses_device_global": true,
+      "direct_calls": 2
+    },
+    {
+      "entry": "0x00757960",
+      "label": "HIGH_CONFIDENCE",
+      "discovered_high": true,
+      "class": "POST_INIT_GRAPHICS_EXTERNAL_STATE_ONLY",
+      "hits_00686000": false,
+      "hits_create_0x0072E340": false,
+      "uses_device_global": true,
+      "direct_calls": 3
+    },
+    {
+      "entry": "0x00757A50",
+      "label": "HIGH_CONFIDENCE",
+      "discovered_high": true,
+      "class": "POST_INIT_GRAPHICS_EXTERNAL_STATE_ONLY",
+      "hits_00686000": false,
+      "hits_create_0x0072E340": false,
+      "uses_device_global": true,
+      "direct_calls": 3
+    },
+    {
+      "entry": "0x0075DBC0",
+      "label": "HIGH_CONFIDENCE",
+      "discovered_high": true,
+      "class": "POST_INIT_GRAPHICS_EXTERNAL_STATE_ONLY",
+      "hits_00686000": false,
+      "hits_create_0x0072E340": false,
+      "uses_device_global": true,
+      "direct_calls": 1
+    },
+    {
+      "entry": "0x0075E920",
+      "label": "HIGH_CONFIDENCE",
+      "discovered_high": true,
+      "class": "POST_INIT_GRAPHICS_EXTERNAL_STATE_ONLY",
+      "hits_00686000": false,
+      "hits_create_0x0072E340": false,
+      "uses_device_global": true,
+      "direct_calls": 0
+    },
+    {
+      "entry": "0x0075EBF0",
+      "label": "HIGH_CONFIDENCE",
+      "discovered_high": true,
+      "class": "POST_INIT_GRAPHICS_EXTERNAL_STATE_ONLY",
+      "hits_00686000": false,
+      "hits_create_0x0072E340": false,
+      "uses_device_global": true,
+      "direct_calls": 2
+    },
+    {
+      "entry": "0x0075EF20",
+      "label": "HIGH_CONFIDENCE",
+      "discovered_high": true,
+      "class": "POST_INIT_GRAPHICS_EXTERNAL_STATE_ONLY",
+      "hits_00686000": false,
+      "hits_create_0x0072E340": false,
+      "uses_device_global": true,
+      "direct_calls": 0
+    },
+    {
+      "entry": "0x0075F240",
+      "label": "HIGH_CONFIDENCE",
+      "discovered_high": true,
+      "class": "PROTECTED_DEPENDENT",
+      "hits_00686000": true,
+      "hits_create_0x0072E340": false,
+      "uses_device_global": true,
+      "direct_calls": 2
+    },
+    {
+      "entry": "0x007649A0",
+      "label": "HIGH_CONFIDENCE",
+      "discovered_high": true,
+      "class": "POST_INIT_GRAPHICS_EXTERNAL_STATE_ONLY",
+      "hits_00686000": false,
+      "hits_create_0x0072E340": false,
+      "uses_device_global": true,
+      "direct_calls": 7
+    },
+    {
+      "entry": "0x00764B40",
+      "label": "HIGH_CONFIDENCE",
+      "discovered_high": true,
+      "class": "POST_INIT_GRAPHICS_EXTERNAL_STATE_ONLY",
+      "hits_00686000": false,
+      "hits_create_0x0072E340": false,
+      "uses_device_global": true,
+      "direct_calls": 10
+    },
+    {
+      "entry": "0x00764F70",
+      "label": "HIGH_CONFIDENCE",
+      "discovered_high": true,
+      "class": "POST_INIT_GRAPHICS_EXTERNAL_STATE_ONLY",
+      "hits_00686000": false,
+      "hits_create_0x0072E340": false,
+      "uses_device_global": true,
+      "direct_calls": 12
+    },
+    {
+      "entry": "0x00765510",
+      "label": "HIGH_CONFIDENCE",
+      "discovered_high": true,
+      "class": "POST_INIT_GRAPHICS_EXTERNAL_STATE_ONLY",
+      "hits_00686000": false,
+      "hits_create_0x0072E340": false,
+      "uses_device_global": true,
+      "direct_calls": 6
+    },
+    {
+      "entry": "0x00765D90",
+      "label": "HIGH_CONFIDENCE",
+      "discovered_high": true,
+      "class": "POST_INIT_GRAPHICS_EXTERNAL_STATE_ONLY",
+      "hits_00686000": false,
+      "hits_create_0x0072E340": false,
+      "uses_device_global": true,
+      "direct_calls": 10
+    },
+    {
+      "entry": "0x00766400",
+      "label": "REJECTED_DATA_LIKE",
+      "discovered_high": false,
+      "class": "POST_INIT_GRAPHICS_EXTERNAL_STATE_ONLY",
+      "hits_00686000": false,
+      "hits_create_0x0072E340": false,
+      "uses_device_global": true,
+      "direct_calls": 0
+    },
+    {
+      "entry": "0x00766AC0",
+      "label": "HIGH_CONFIDENCE",
+      "discovered_high": true,
+      "class": "POST_INIT_GRAPHICS_EXTERNAL_STATE_ONLY",
+      "hits_00686000": false,
+      "hits_create_0x0072E340": false,
+      "uses_device_global": true,
+      "direct_calls": 1
+    },
+    {
+      "entry": "0x00766BE0",
+      "label": "HIGH_CONFIDENCE",
+      "discovered_high": true,
+      "class": "POST_INIT_GRAPHICS_EXTERNAL_STATE_ONLY",
+      "hits_00686000": false,
+      "hits_create_0x0072E340": false,
+      "uses_device_global": true,
+      "direct_calls": 10
+    },
+    {
+      "entry": "0x00766ED0",
+      "label": "HIGH_CONFIDENCE",
+      "discovered_high": true,
+      "class": "POST_INIT_GRAPHICS_EXTERNAL_STATE_ONLY",
+      "hits_00686000": false,
+      "hits_create_0x0072E340": false,
+      "uses_device_global": true,
+      "direct_calls": 9
+    },
+    {
+      "entry": "0x00767180",
+      "label": "HIGH_CONFIDENCE",
+      "discovered_high": true,
+      "class": "POST_INIT_GRAPHICS_EXTERNAL_STATE_ONLY",
+      "hits_00686000": false,
+      "hits_create_0x0072E340": false,
+      "uses_device_global": true,
+      "direct_calls": 0
+    },
+    {
+      "entry": "0x00767440",
+      "label": "HIGH_CONFIDENCE",
+      "discovered_high": true,
+      "class": "POST_INIT_GRAPHICS_EXTERNAL_STATE_ONLY",
+      "hits_00686000": false,
+      "hits_create_0x0072E340": false,
+      "uses_device_global": true,
+      "direct_calls": 11
+    },
+    {
+      "entry": "0x00767760",
+      "label": "HIGH_CONFIDENCE",
+      "discovered_high": true,
+      "class": "POST_INIT_GRAPHICS_EXTERNAL_STATE_ONLY",
+      "hits_00686000": false,
+      "hits_create_0x0072E340": false,
+      "uses_device_global": true,
+      "direct_calls": 11
+    },
+    {
+      "entry": "0x00767BC0",
+      "label": "HIGH_CONFIDENCE",
+      "discovered_high": true,
+      "class": "POST_INIT_GRAPHICS_EXTERNAL_STATE_ONLY",
+      "hits_00686000": false,
+      "hits_create_0x0072E340": false,
+      "uses_device_global": true,
+      "direct_calls": 12
+    },
+    {
+      "entry": "0x00767E90",
+      "label": "HIGH_CONFIDENCE",
+      "discovered_high": true,
+      "class": "POST_INIT_GRAPHICS_EXTERNAL_STATE_ONLY",
+      "hits_00686000": false,
+      "hits_create_0x0072E340": false,
+      "uses_device_global": true,
+      "direct_calls": 10
+    },
+    {
+      "entry": "0x00768180",
+      "label": "HIGH_CONFIDENCE",
+      "discovered_high": true,
+      "class": "POST_INIT_GRAPHICS_EXTERNAL_STATE_ONLY",
+      "hits_00686000": false,
+      "hits_create_0x0072E340": false,
+      "uses_device_global": true,
+      "direct_calls": 12
+    },
+    {
+      "entry": "0x00768990",
+      "label": "HIGH_CONFIDENCE",
+      "discovered_high": true,
+      "class": "POST_INIT_GRAPHICS_EXTERNAL_STATE_ONLY",
+      "hits_00686000": false,
+      "hits_create_0x0072E340": false,
+      "uses_device_global": true,
+      "direct_calls": 5
+    },
+    {
+      "entry": "0x00768EC0",
+      "label": "HIGH_CONFIDENCE",
+      "discovered_high": true,
+      "class": "POST_INIT_GRAPHICS_EXTERNAL_STATE_ONLY",
+      "hits_00686000": false,
+      "hits_create_0x0072E340": false,
+      "uses_device_global": true,
+      "direct_calls": 9
+    },
+    {
+      "entry": "0x0076A600",
+      "label": "HIGH_CONFIDENCE",
+      "discovered_high": true,
+      "class": "POST_INIT_GRAPHICS_EXTERNAL_STATE_ONLY",
+      "hits_00686000": false,
+      "hits_create_0x0072E340": false,
+      "uses_device_global": true,
+      "direct_calls": 1
+    },
+    {
+      "entry": "0x0076AFC0",
+      "label": "HIGH_CONFIDENCE",
+      "discovered_high": true,
+      "class": "POST_INIT_GRAPHICS_EXTERNAL_STATE_ONLY",
+      "hits_00686000": false,
+      "hits_create_0x0072E340": false,
+      "uses_device_global": true,
+      "direct_calls": 7
+    },
+    {
+      "entry": "0x0076B3D0",
+      "label": "HIGH_CONFIDENCE",
+      "discovered_high": true,
+      "class": "POST_INIT_GRAPHICS_EXTERNAL_STATE_ONLY",
+      "hits_00686000": false,
+      "hits_create_0x0072E340": false,
+      "uses_device_global": true,
+      "direct_calls": 7
+    },
+    {
+      "entry": "0x0076C8D0",
+      "label": "HIGH_CONFIDENCE",
+      "discovered_high": true,
+      "class": "POST_INIT_GRAPHICS_EXTERNAL_STATE_ONLY",
+      "hits_00686000": false,
+      "hits_create_0x0072E340": false,
+      "uses_device_global": true,
+      "direct_calls": 1
+    },
+    {
+      "entry": "0x0076CEB0",
+      "label": "HIGH_CONFIDENCE",
+      "discovered_high": true,
+      "class": "POST_INIT_GRAPHICS_EXTERNAL_STATE_ONLY",
+      "hits_00686000": false,
+      "hits_create_0x0072E340": false,
+      "uses_device_global": true,
+      "direct_calls": 7
+    },
+    {
+      "entry": "0x00770750",
+      "label": "HIGH_CONFIDENCE",
+      "discovered_high": true,
+      "class": "POST_INIT_GRAPHICS_EXTERNAL_STATE_ONLY",
+      "hits_00686000": false,
+      "hits_create_0x0072E340": false,
+      "uses_device_global": true,
+      "direct_calls": 5
+    },
+    {
+      "entry": "0x00771FB0",
+      "label": "HIGH_CONFIDENCE",
+      "discovered_high": true,
+      "class": "PROTECTED_DEPENDENT",
+      "hits_00686000": true,
+      "hits_create_0x0072E340": false,
+      "uses_device_global": true,
+      "direct_calls": 5
+    },
+    {
+      "entry": "0x007723E0",
+      "label": "HIGH_CONFIDENCE",
+      "discovered_high": true,
+      "class": "PROTECTED_DEPENDENT",
+      "hits_00686000": true,
+      "hits_create_0x0072E340": false,
+      "uses_device_global": true,
+      "direct_calls": 5
+    }
+  ],
+  "island_class_counts": {
+    "POST_INIT_GRAPHICS_EXTERNAL_STATE_ONLY": 55,
+    "PROTECTED_DEPENDENT": 9
+  },
+  "island_scores": [
+    {
+      "entry": "0x00725200",
+      "label": "HIGH_CONFIDENCE",
+      "discovered_high": true,
+      "class": "POST_INIT_GRAPHICS_EXTERNAL_STATE_ONLY",
+      "hits_00686000": false,
+      "hits_create_0x0072E340": false,
+      "uses_device_global": true,
+      "direct_calls": 5,
+      "distinct_vt_offsets": 5,
+      "milestone_score": 7
+    },
+    {
+      "entry": "0x00766ED0",
+      "label": "HIGH_CONFIDENCE",
+      "discovered_high": true,
+      "class": "POST_INIT_GRAPHICS_EXTERNAL_STATE_ONLY",
+      "hits_00686000": false,
+      "hits_create_0x0072E340": false,
+      "uses_device_global": true,
+      "direct_calls": 9,
+      "distinct_vt_offsets": 4,
+      "milestone_score": 4
+    },
+    {
+      "entry": "0x00767180",
+      "label": "HIGH_CONFIDENCE",
+      "discovered_high": true,
+      "class": "POST_INIT_GRAPHICS_EXTERNAL_STATE_ONLY",
+      "hits_00686000": false,
+      "hits_create_0x0072E340": false,
+      "uses_device_global": true,
+      "direct_calls": 0,
+      "distinct_vt_offsets": 4,
+      "milestone_score": 4
+    },
+    {
+      "entry": "0x00767440",
+      "label": "HIGH_CONFIDENCE",
+      "discovered_high": true,
+      "class": "POST_INIT_GRAPHICS_EXTERNAL_STATE_ONLY",
+      "hits_00686000": false,
+      "hits_create_0x0072E340": false,
+      "uses_device_global": true,
+      "direct_calls": 11,
+      "distinct_vt_offsets": 4,
+      "milestone_score": 4
+    },
+    {
+      "entry": "0x00742810",
+      "label": "HIGH_CONFIDENCE",
+      "discovered_high": true,
+      "class": "POST_INIT_GRAPHICS_EXTERNAL_STATE_ONLY",
+      "hits_00686000": false,
+      "hits_create_0x0072E340": false,
+      "uses_device_global": true,
+      "direct_calls": 0,
+      "distinct_vt_offsets": 3,
+      "milestone_score": 4
+    },
+    {
+      "entry": "0x007254A0",
+      "label": "HIGH_CONFIDENCE",
+      "discovered_high": true,
+      "class": "POST_INIT_GRAPHICS_EXTERNAL_STATE_ONLY",
+      "hits_00686000": false,
+      "hits_create_0x0072E340": false,
+      "uses_device_global": true,
+      "direct_calls": 3,
+      "distinct_vt_offsets": 2,
+      "milestone_score": 2
+    },
+    {
+      "entry": "0x00725580",
+      "label": "HIGH_CONFIDENCE",
+      "discovered_high": true,
+      "class": "POST_INIT_GRAPHICS_EXTERNAL_STATE_ONLY",
+      "hits_00686000": false,
+      "hits_create_0x0072E340": false,
+      "uses_device_global": true,
+      "direct_calls": 14,
+      "distinct_vt_offsets": 2,
+      "milestone_score": 2
+    },
+    {
+      "entry": "0x007337F0",
+      "label": "HIGH_CONFIDENCE",
+      "discovered_high": true,
+      "class": "POST_INIT_GRAPHICS_EXTERNAL_STATE_ONLY",
+      "hits_00686000": false,
+      "hits_create_0x0072E340": false,
+      "uses_device_global": true,
+      "direct_calls": 1,
+      "distinct_vt_offsets": 2,
+      "milestone_score": 2
+    },
+    {
+      "entry": "0x00751170",
+      "label": "HIGH_CONFIDENCE",
+      "discovered_high": true,
+      "class": "POST_INIT_GRAPHICS_EXTERNAL_STATE_ONLY",
+      "hits_00686000": false,
+      "hits_create_0x0072E340": false,
+      "uses_device_global": true,
+      "direct_calls": 1,
+      "distinct_vt_offsets": 2,
+      "milestone_score": 2
+    },
+    {
+      "entry": "0x00754390",
+      "label": "MEDIUM_CONFIDENCE",
+      "discovered_high": false,
+      "class": "POST_INIT_GRAPHICS_EXTERNAL_STATE_ONLY",
+      "hits_00686000": false,
+      "hits_create_0x0072E340": false,
+      "uses_device_global": true,
+      "direct_calls": 0,
+      "distinct_vt_offsets": 2,
+      "milestone_score": 2
+    },
+    {
+      "entry": "0x0075EBF0",
+      "label": "HIGH_CONFIDENCE",
+      "discovered_high": true,
+      "class": "POST_INIT_GRAPHICS_EXTERNAL_STATE_ONLY",
+      "hits_00686000": false,
+      "hits_create_0x0072E340": false,
+      "uses_device_global": true,
+      "direct_calls": 2,
+      "distinct_vt_offsets": 2,
+      "milestone_score": 2
+    },
+    {
+      "entry": "0x0075EF20",
+      "label": "HIGH_CONFIDENCE",
+      "discovered_high": true,
+      "class": "POST_INIT_GRAPHICS_EXTERNAL_STATE_ONLY",
+      "hits_00686000": false,
+      "hits_create_0x0072E340": false,
+      "uses_device_global": true,
+      "direct_calls": 0,
+      "distinct_vt_offsets": 2,
+      "milestone_score": 2
+    },
+    {
+      "entry": "0x007649A0",
+      "label": "HIGH_CONFIDENCE",
+      "discovered_high": true,
+      "class": "POST_INIT_GRAPHICS_EXTERNAL_STATE_ONLY",
+      "hits_00686000": false,
+      "hits_create_0x0072E340": false,
+      "uses_device_global": true,
+      "direct_calls": 7,
+      "distinct_vt_offsets": 2,
+      "milestone_score": 2
+    },
+    {
+      "entry": "0x00767760",
+      "label": "HIGH_CONFIDENCE",
+      "discovered_high": true,
+      "class": "POST_INIT_GRAPHICS_EXTERNAL_STATE_ONLY",
+      "hits_00686000": false,
+      "hits_create_0x0072E340": false,
+      "uses_device_global": true,
+      "direct_calls": 11,
+      "distinct_vt_offsets": 2,
+      "milestone_score": 2
+    },
+    {
+      "entry": "0x0071CDA0",
+      "label": "HIGH_CONFIDENCE",
+      "discovered_high": true,
+      "class": "POST_INIT_GRAPHICS_EXTERNAL_STATE_ONLY",
+      "hits_00686000": false,
+      "hits_create_0x0072E340": false,
+      "uses_device_global": true,
+      "direct_calls": 0,
+      "distinct_vt_offsets": 1,
+      "milestone_score": 2
+    },
+    {
+      "entry": "0x0071E630",
+      "label": "HIGH_CONFIDENCE",
+      "discovered_high": true,
+      "class": "POST_INIT_GRAPHICS_EXTERNAL_STATE_ONLY",
+      "hits_00686000": false,
+      "hits_create_0x0072E340": false,
+      "uses_device_global": true,
+      "direct_calls": 0,
+      "distinct_vt_offsets": 1,
+      "milestone_score": 2
+    },
+    {
+      "entry": "0x00727ED0",
+      "label": "HIGH_CONFIDENCE",
+      "discovered_high": true,
+      "class": "POST_INIT_GRAPHICS_EXTERNAL_STATE_ONLY",
+      "hits_00686000": false,
+      "hits_create_0x0072E340": false,
+      "uses_device_global": true,
+      "direct_calls": 6,
+      "distinct_vt_offsets": 1,
+      "milestone_score": 2
+    },
+    {
+      "entry": "0x00730040",
+      "label": "HIGH_CONFIDENCE",
+      "discovered_high": true,
+      "class": "POST_INIT_GRAPHICS_EXTERNAL_STATE_ONLY",
+      "hits_00686000": false,
+      "hits_create_0x0072E340": false,
+      "uses_device_global": true,
+      "direct_calls": 4,
+      "distinct_vt_offsets": 1,
+      "milestone_score": 2
+    },
+    {
+      "entry": "0x00733700",
+      "label": "HIGH_CONFIDENCE",
+      "discovered_high": true,
+      "class": "POST_INIT_GRAPHICS_EXTERNAL_STATE_ONLY",
+      "hits_00686000": false,
+      "hits_create_0x0072E340": false,
+      "uses_device_global": true,
+      "direct_calls": 0,
+      "distinct_vt_offsets": 1,
+      "milestone_score": 2
+    },
+    {
+      "entry": "0x00734B20",
+      "label": "HIGH_CONFIDENCE",
+      "discovered_high": true,
+      "class": "POST_INIT_GRAPHICS_EXTERNAL_STATE_ONLY",
+      "hits_00686000": false,
+      "hits_create_0x0072E340": false,
+      "uses_device_global": true,
+      "direct_calls": 6,
+      "distinct_vt_offsets": 1,
+      "milestone_score": 2
+    },
+    {
+      "entry": "0x0073DA00",
+      "label": "HIGH_CONFIDENCE",
+      "discovered_high": true,
+      "class": "POST_INIT_GRAPHICS_EXTERNAL_STATE_ONLY",
+      "hits_00686000": false,
+      "hits_create_0x0072E340": false,
+      "uses_device_global": true,
+      "direct_calls": 1,
+      "distinct_vt_offsets": 1,
+      "milestone_score": 2
+    },
+    {
+      "entry": "0x0073EB10",
+      "label": "HIGH_CONFIDENCE",
+      "discovered_high": true,
+      "class": "POST_INIT_GRAPHICS_EXTERNAL_STATE_ONLY",
+      "hits_00686000": false,
+      "hits_create_0x0072E340": false,
+      "uses_device_global": true,
+      "direct_calls": 0,
+      "distinct_vt_offsets": 1,
+      "milestone_score": 2
+    },
+    {
+      "entry": "0x00747770",
+      "label": "HIGH_CONFIDENCE",
+      "discovered_high": true,
+      "class": "POST_INIT_GRAPHICS_EXTERNAL_STATE_ONLY",
+      "hits_00686000": false,
+      "hits_create_0x0072E340": false,
+      "uses_device_global": true,
+      "direct_calls": 0,
+      "distinct_vt_offsets": 1,
+      "milestone_score": 2
+    },
+    {
+      "entry": "0x00747FB0",
+      "label": "HIGH_CONFIDENCE",
+      "discovered_high": true,
+      "class": "POST_INIT_GRAPHICS_EXTERNAL_STATE_ONLY",
+      "hits_00686000": false,
+      "hits_create_0x0072E340": false,
+      "uses_device_global": true,
+      "direct_calls": 0,
+      "distinct_vt_offsets": 1,
+      "milestone_score": 2
+    },
+    {
+      "entry": "0x0074D0F0",
+      "label": "HIGH_CONFIDENCE",
+      "discovered_high": true,
+      "class": "POST_INIT_GRAPHICS_EXTERNAL_STATE_ONLY",
+      "hits_00686000": false,
+      "hits_create_0x0072E340": false,
+      "uses_device_global": true,
+      "direct_calls": 0,
+      "distinct_vt_offsets": 1,
+      "milestone_score": 2
+    }
+  ],
+  "best_post_init_entry": {
+    "entry": "0x00725200",
+    "label": "HIGH_CONFIDENCE",
+    "discovered_high": true,
+    "class": "POST_INIT_GRAPHICS_EXTERNAL_STATE_ONLY",
+    "hits_00686000": false,
+    "hits_create_0x0072E340": false,
+    "uses_device_global": true,
+    "direct_calls": 5,
+    "distinct_vt_offsets": 5,
+    "milestone_score": 7
+  },
+  "external_state_vs_code": {
+    "external_code_required_for_device_publication": true,
+    "external_state_only_for_present_prefix": true,
+    "note": "Ordinary Present/EndScene code consumes DEVICE state without calling the factory slot publisher. Obtaining a non-NULL DEVICE still requires unavailable external/protected publication code."
+  },
+  "runtime_contract": [
+    {
+      "item": "IDirect3DDevice9-like pointer at 0x013C6510",
+      "status": "REQUIRED",
+      "evidence": "125 COM calls; Present/BeginScene/EndScene (+ Clear manual); DEVICELOST constant"
+    },
+    {
+      "item": "IDirect3D9-like at [0x01318170+0x10]",
+      "status": "REQUIRED",
+      "evidence": "Written by Direct3DCreate9 on blocked factory path; few absolute readers"
+    },
+    {
+      "item": "Graphics object 0x01318170",
+      "status": "REQUIRED",
+      "evidence": "Factory thiscall ECX; address-taken widely"
+    },
+    {
+      "item": "Callback table slot 0x00B615C4",
+      "status": "REQUIRED",
+      "evidence": "Blocked factory prefix only; not required by pure device Present consumers"
+    },
+    {
+      "item": "HWND / focus window",
+      "status": "UNKNOWN",
+      "evidence": "Appears among CreateDevice-like args in 0x00725200; not proven for Present-only"
+    },
+    {
+      "item": "Presentation parameters buffer",
+      "status": "UNKNOWN",
+      "evidence": "lea [esi+0x130] pushed beside device out-param"
+    },
+    {
+      "item": "TLS index 0x01882C34",
+      "status": "OPTIONAL",
+      "evidence": "Outer orchestration only (Phase 17/18)"
+    },
+    {
+      "item": "Flag 0x01311E1C == 1",
+      "status": "OPTIONAL",
+      "evidence": "Gates factory path; not read on Present-at-entry leaf 0x00752AF0"
+    }
+  ],
+  "window_imports": [],
+  "minimum_d3d9_surface": {
+    "TIER_0": [
+      "Direct3DCreate9",
+      "IDirect3D9::CreateDevice (or wrapper equivalent publishing 0x013C6510)"
+    ],
+    "TIER_1": [
+      "IDirect3DDevice9::BeginScene",
+      "IDirect3DDevice9::Clear",
+      "IDirect3DDevice9::EndScene",
+      "IDirect3DDevice9::Present"
+    ],
+    "TIER_2": [
+      "vertex/index/texture creation methods (offsets observed but unnamed)",
+      "SetRenderState/SetTransform-family offsets in histogram"
+    ],
+    "TIER_3": [
+      "D3DX math/helpers",
+      "shader constant table helpers",
+      "volume/cube texture helpers"
+    ]
+  },
+  "FIRST_CLEAR_FRONTIER": {
+    "status": "BLOCKED_EXTERNAL",
+    "sites": [
+      {
+        "call_va": "0x0072532F",
+        "load_va": "0x00725305",
+        "owner": "0x00725200",
+        "owner_label": "HIGH_CONFIDENCE",
+        "discovered_high": true,
+        "soft_name": "Clear"
+      },
+      {
+        "call_va": "0x0072532F",
+        "load_va": "0x00725317",
+        "owner": "0x00725200",
+        "owner_label": "HIGH_CONFIDENCE",
+        "discovered_high": true,
+        "soft_name": "Clear"
+      },
+      {
+        "call_va": "0x0072532F",
+        "load_va": "0x00725317",
+        "owner": "0x00725200",
+        "owner_label": "HIGH_CONFIDENCE",
+        "discovered_high": true,
+        "soft_name": "Clear"
+      },
+      {
+        "call_va": "0x0074289F",
+        "load_va": "0x00742883",
+        "owner": "0x00742810",
+        "owner_label": "HIGH_CONFIDENCE",
+        "discovered_high": true,
+        "soft_name": "Clear"
+      },
+      {
+        "call_va": "0x0074289F",
+        "load_va": "0x00742883",
+        "owner": "0x00742810",
+        "owner_label": "HIGH_CONFIDENCE",
+        "discovered_high": true,
+        "soft_name": "Clear"
+      },
+      {
+        "call_va": "0x0074289F",
+        "load_va": "0x00742883",
+        "owner": "0x00742810",
+        "owner_label": "HIGH_CONFIDENCE",
+        "discovered_high": true,
+        "soft_name": "Clear"
+      },
+      {
+        "call_va": "0x00766F69",
+        "load_va": "0x00766F51",
+        "owner": "0x00766ED0",
+        "owner_label": "HIGH_CONFIDENCE",
+        "discovered_high": true,
+        "soft_name": "Clear"
+      },
+      {
+        "call_va": "0x00766F69",
+        "load_va": "0x00766F51",
+        "owner": "0x00766ED0",
+        "owner_label": "HIGH_CONFIDENCE",
+        "discovered_high": true,
+        "soft_name": "Clear"
+      }
+    ],
+    "manual": [
+      {
+        "owner": "0x00725200",
+        "va": "0x0072531E",
+        "text": "mov edx, dword ptr [ecx + 0xac]"
+      }
+    ],
+    "best": "0x00725200",
+    "dependency": "EXTERNAL_STATE_REQUIRED (device); publication path via 0x00725200 caller hits 0x00686000",
+    "note": "Clear-shaped call exists on ordinary code using DEVICE, but DEVICE is only published through a path whose caller closure includes 0x00686000 / blocked factory."
+  },
+  "FIRST_DRAW_FRONTIER": {
+    "status": "NOT_FOUND",
+    "sites": [],
+    "note": "No DrawPrimitive/DrawIndexedPrimitive/UP-shaped VT offsets observed on the DEVICE global load pattern in this pass."
+  },
+  "FIRST_PRESENT_FRONTIER": {
+    "status": "BLOCKED_EXTERNAL",
+    "sites": [
+      {
+        "call_va": "0x00725350",
+        "load_va": "0x00725331",
+        "owner": "0x00725200",
+        "owner_label": "HIGH_CONFIDENCE",
+        "discovered_high": true,
+        "soft_name": "Present"
+      },
+      {
+        "call_va": "0x00725350",
+        "load_va": "0x00725341",
+        "owner": "0x00725200",
+        "owner_label": "HIGH_CONFIDENCE",
+        "discovered_high": true,
+        "soft_name": "Present"
+      },
+      {
+        "call_va": "0x00725350",
+        "load_va": "0x00725331",
+        "owner": "0x00725200",
+        "owner_label": "HIGH_CONFIDENCE",
+        "discovered_high": true,
+        "soft_name": "Present"
+      },
+      {
+        "call_va": "0x00725350",
+        "load_va": "0x00725341",
+        "owner": "0x00725200",
+        "owner_label": "HIGH_CONFIDENCE",
+        "discovered_high": true,
+        "soft_name": "Present"
+      },
+      {
+        "call_va": "0x00725350",
+        "load_va": "0x00725331",
+        "owner": "0x00725200",
+        "owner_label": "HIGH_CONFIDENCE",
+        "discovered_high": true,
+        "soft_name": "Present"
+      },
+      {
+        "call_va": "0x00725350",
+        "load_va": "0x00725341",
+        "owner": "0x00725200",
+        "owner_label": "HIGH_CONFIDENCE",
+        "discovered_high": true,
+        "soft_name": "Present"
+      },
+      {
+        "call_va": "0x00725350",
+        "load_va": "0x00725341",
+        "owner": "0x00725200",
+        "owner_label": "HIGH_CONFIDENCE",
+        "discovered_high": true,
+        "soft_name": "Present"
+      },
+      {
+        "call_va": "0x00752B14",
+        "load_va": "0x00752B03",
+        "owner": "0x00752AF0",
+        "owner_label": "HIGH_CONFIDENCE",
+        "discovered_high": true,
+        "soft_name": "Present"
+      },
+      {
+        "call_va": "0x00752B14",
+        "load_va": "0x00752B03",
+        "owner": "0x00752AF0",
+        "owner_label": "HIGH_CONFIDENCE",
+        "discovered_high": true,
+        "soft_name": "Present"
+      }
+    ],
+    "best_entry": {
+      "owner": "0x00752AF0",
+      "call_va": "0x00752B14",
+      "hits_00686000_closure": true,
+      "present_at_entry_prefix": true,
+      "note": "EndScene+Present at function entry; later callees may hit 0x00686000, but the present prefix itself only needs DEVICE state."
+    },
+    "note": "Present-shaped calls found (VT +0x44). Ordinary Present consumers require EXTERNAL STATE at 0x013C6510. No ordinary writer of that global; publication is out-param of COM call under a helper-dependent caller."
+  },
+  "first_frame_graph": {
+    "exists_as_ordinary_candidate": true,
+    "edges": [
+      {
+        "from": "external/protected startup",
+        "to": "device at 0x013C6510",
+        "class": "EXTERNAL_CODE_REQUIRED"
+      },
+      {
+        "from": "blocked factory 0x0072E340",
+        "to": "IDirect3D9 at [obj+0x10]",
+        "class": "EXTERNAL_CODE_REQUIRED"
+      },
+      {
+        "from": "0x007297D0",
+        "to": "0x00725200",
+        "class": "ORDINARY_DIRECT"
+      },
+      {
+        "from": "0x007297D0",
+        "to": "0x00686000",
+        "class": "PROTECTED_BOUNDARY"
+      },
+      {
+        "from": "0x00725200",
+        "to": "publish 0x013C6510",
+        "class": "ORDINARY_INDIRECT_PROVEN"
+      },
+      {
+        "from": "0x00725200",
+        "to": "Clear/Begin/End/Present demo",
+        "class": "ORDINARY_INDIRECT_PROVEN"
+      },
+      {
+        "from": "0x00752AF0",
+        "to": "EndScene+Present",
+        "class": "ORDINARY_INDIRECT_PROVEN"
+      },
+      {
+        "from": "0x00752AF0",
+        "to": "later callees",
+        "class": "PROTECTED_BOUNDARY"
+      },
+      {
+        "from": "any Present consumer",
+        "to": "[0x013C6510]",
+        "class": "EXTERNAL_STATE_REQUIRED"
+      }
+    ],
+    "blockers": [
+      "No ordinary publication of 0x013C6510",
+      "Device publication caller 0x007297D0 hits 0x00686000",
+      "Factory prefix blocked on 0x00B615C4 external publication",
+      "No draw-shaped DEVICE calls found in this scan"
+    ]
+  },
+  "d3d9_implementation_justified": false,
+  "execution": {
+    "ran": false,
+    "reason": "would require nonexistent D3D interfaces / fabricated state"
+  },
+  "first_frame_estimate": {
+    "best_case_phase": "UNBOUNDED",
+    "likely_range": "UNBOUNDED",
+    "note": "Post-init graphics interfaces and Present/Clear-shaped calls are identified, but device publication has no ordinary writer and the known publisher caller hits protected helper 0x00686000. Optimistic phase numbers removed."
+  },
+  "phase20": {
+    "recommendation": "EXPAND_POST_INIT_GRAPHICS_ANALYSIS",
+    "actions": [
+      "Deepen device-publication COM identity at 0x00725200 (wrapper vs CreateDevice)",
+      "Map full Present caller chain and any reset/recreate ordinary path that avoids 0x00686000",
+      "Extend draw/resource VT naming only after interface identity is proven",
+      "Do not implement D3D9 until an ordinary publication or clean external-state contract is accepted as a project decision"
+    ]
+  },
+  "dashboard": {
+    "FACTORY_INITIALIZATION": "EXTERNAL/PROTECTED BLOCKED",
+    "POST_INIT_GRAPHICS_FRONTIER": "FOUND",
+    "DEVICE_POINTER": "PROVEN",
+    "FIRST_CLEAR": "BLOCKED_EXTERNAL",
+    "FIRST_DRAW": "NOT_FOUND",
+    "FIRST_PRESENT": "BLOCKED_EXTERNAL"
+  }
+}
