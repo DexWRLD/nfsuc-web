@@ -1,6 +1,6 @@
 {
-  "current_phase": 24,
-  "strategy": "Phase 24: ordinary frontend submits via opaque 0x007A51B0 (160 callers; size+record+paired 0x017A9xxx/0x01278xxx globals). METHOD_14x prefixes fully ordinary until that boundary. Architecture ORDINARY_FRONTEND_PROTECTED_BACKEND. No meaningful render seam without protected semantics. FIRST_FRAME_PATH_BLOCKED_BY_PROTECTED_BACKEND. D3D9/adapter NOT justified. Further protected-body analysis not allowed/needed.",
+  "current_phase": 25,
+  "strategy": "Phase 25: graphics frozen (FIRST_FRAME_PATH_BLOCKED_BY_PROTECTED_BACKEND). Ordinary runtime frontier ranked; implemented MSVCR80 strncpy HLE (0x0087B6A0). Post-strncpy top single-unlock is _CIsqrt (88). Do not reopen protected submit/backend.",
   "boundaries": {
     "0x00686000": {
       "status": "PROTECTED_OR_EXTERNAL_DEPENDENCY",
@@ -100,12 +100,11 @@
     "enterable_now": "NO",
     "object": "0x01318170",
     "esi_slot": "0x00B615C4",
-    "active_objective": "Recover constructors/vtables of renderer vector element COM objects; find insert sites",
+    "active_objective": "FROZEN: do not recover first-frame / D3D9 / protected submit. Expand ordinary CRT/runtime.",
     "blockers": [
-      "In-game DEVICE publication EXTERNAL/BLOCKED",
-      "ENGINE_GFX_IFACE_00 vtables runtime-only; no ordinary method bodies mapped",
-      "No DEVICE bridge from engine Draw path",
-      "List element publishers not fully mapped",
+      "FIRST_FRAME_PATH_BLOCKED_BY_PROTECTED_BACKEND",
+      "ORDINARY_FRONTEND_PROTECTED_BACKEND",
+      "NO_MEANINGFUL_RENDER_SEAM",
       "D3D9 / engine-backend adapter not justified"
     ],
     "angr": "AVAILABLE",
@@ -125,11 +124,11 @@
     "engine_backend_adapter_justified": false
   },
   "first_frame_estimate": {
-    "best_case_phase": "UNBOUNDED",
-    "likely_low": "UNBOUNDED",
-    "likely_high": "UNBOUNDED",
-    "is_estimate": true,
-    "uncertainty": "Engine Draw mapped to dynamic COM list without backend\u2192device handoff."
+    "best_case_phase": "BLOCKED",
+    "likely_low": "BLOCKED",
+    "likely_high": "BLOCKED",
+    "is_estimate": false,
+    "uncertainty": "FIRST_FRAME_PATH_BLOCKED_BY_PROTECTED_BACKEND \u2014 Phase 24 final; not an open estimate."
   },
   "recorded_execution": [
     {
@@ -161,6 +160,12 @@
       "phase": 11,
       "completed": false,
       "evidence": "Phase 11 harness enters this function. The continuation faults at 0x009E4B49"
+    },
+    {
+      "address": "0x0088390D",
+      "phase": 25,
+      "completed": true,
+      "evidence": "Phase 25 test runs this strncpy consumer; strncpy HLE must succeed"
     }
   ],
   "phases": [
@@ -273,6 +278,11 @@
       "phase": 22,
       "name": "Renderer COM container and backend handoff",
       "state": "current"
+    },
+    {
+      "phase": 25,
+      "name": "Ordinary runtime frontier + strncpy HLE",
+      "state": "completed"
     }
   ],
   "milestones": [
