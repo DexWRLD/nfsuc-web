@@ -1,6 +1,6 @@
 {
-  "current_phase": 36,
-  "strategy": "Phase 36: SleepEx timeout-only; ctor \u2192 jump-table INDIRECT in 0x97F9E0. Graphics frozen.",
+  "current_phase": 37,
+  "strategy": "Phase 37: JTSWITCH harness enablement; ctor 0x009E9160 RETURNED_CLEAN. Graphics frozen.",
   "boundaries": {
     "0x00686000": {
       "status": "PROTECTED_OR_EXTERNAL_DEPENDENCY",
@@ -409,6 +409,11 @@
     {
       "phase": 36,
       "name": "Deterministic SleepEx timeout",
+      "state": "completed"
+    },
+    {
+      "phase": 37,
+      "name": "MSVC jump-table dispatch (JTSWITCH)",
       "state": "completed"
     }
   ],
