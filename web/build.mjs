@@ -56,6 +56,17 @@ function copyStatic(src, dst) {
   }
 }
 copyStatic('src/static', DIST);
+const auditDir = '../analysis/undercover';
+const compilation = JSON.parse(fs.readFileSync(path.join(auditDir, 'progress.json'), 'utf8')).translation;
+const execution = JSON.parse(fs.readFileSync(path.join(auditDir, 'phase51-execution.json'), 'utf8')).metrics_delta;
+fs.writeFileSync(path.join(DIST, 'uc-project-evidence.json'), JSON.stringify({
+  compiled: compilation.compiled,
+  targets: compilation.attempted,
+  unique: execution.unique_after,
+  enterable: execution.enterable_after,
+  runs: execution.runs_after,
+}));
+
 // the start page's languages (src/app/lang, i18n.ts): /lang/<language>.json, fetched once a player picks one
 fs.rmSync(path.join(DIST, 'lang'), { recursive: true, force: true });
 fs.mkdirSync(path.join(DIST, 'lang'));

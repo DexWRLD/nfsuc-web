@@ -1,0 +1,29 @@
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+:root { color-scheme: dark; background: #111315; color: #f5f0e8; font: 16px/1.55 system-ui, sans-serif; --accent: #ffc15d; }
+body { margin: 0; }
+a { color: inherit; }
+.nav, main, footer { max-width: 75rem; margin: auto; padding-inline: clamp(1rem, 5vw, 4rem); }
+.nav { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding-block: 1.25rem; flex-wrap: wrap; }
+.nav a { text-decoration: none; }
+.nav > a, .eyebrow { color: var(--accent); font-weight: 750; letter-spacing: .14em; font-size: .76rem; }
+nav { display: flex; gap: 1.25rem; }
+main > section { padding-block: clamp(2rem, 6vw, 4.5rem); border-top: 1px solid #393837; }
+.hero { background: radial-gradient(ellipse at 80% 100%, #442d18, transparent 58%), repeating-linear-gradient(117deg, transparent 0 46px, #ffffff07 47px 48px); }
+h1 { font-size: clamp(2.55rem, 9vw, 7rem); line-height: .96; letter-spacing: -.065em; margin: .25em 0; }
+h1 strong { display: block; color: var(--accent); text-transform: uppercase; overflow-wrap: anywhere; }
+h2 { line-height: 1.12; }
+.intro { max-width: 39rem; font-size: 1.15rem; }
+.actions, .row { display: flex; flex-wrap: wrap; gap: .65rem; }
+button { font: inherit; font-weight: 700; color: #15110b; background: var(--accent); border: 0; border-radius: .25rem; padding: .65rem 1rem; cursor: pointer; }
+button:disabled { background: #303236; color: #c2bec0; cursor: default; }
+:focus-visible { outline: 3px solid #fff; outline-offset: 4px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr)); gap: 1rem; }
+.panel, .metrics > div { min-width: 0; border: 1px solid #3b3a37; padding: 1rem; background: #191b1e; border-radius: .4rem; overflow-wrap: anywhere; }
+.panel video, .panel img, .panel canvas { display: block; max-width: 100%; object-fit: contain; }
+.panel img { max-height: 10rem; }
+dt { color: var(--accent); font-weight: 700; }
+dd { margin: .3rem 0 0; }
+.bar { height: .35rem; background: #383838; }
+.bar-fill { height: 100%; background: var(--accent); }
+footer { color: #c2bec0; padding-block: 2rem; }

@@ -18,7 +18,7 @@ export interface Loaded {
 async function fetchModule(signal?: AbortSignal) {
   for (let tries = 1; ; tries++) {
     const ir = await fetch('/game.json', { cache: 'no-store', signal });
-    if (!ir.ok) throw new Error(`/game.json: HTTP ${ir.status} (build the game module on the Mac: web/build.sh)`);
+    if (!ir.ok) throw new Error(`/game.json: HTTP ${ir.status} (a compatible game module is unavailable)`);
     const info = await ir.json() as GameInfo;
     const url = new URL(info.module ? `/game.wasm?v=${encodeURIComponent(info.module)}` : '/game.wasm', location.href).href;
     const r = await fetch(url, { cache: info.module ? 'default' : 'no-cache', signal });
