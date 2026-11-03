@@ -1,6 +1,6 @@
 {
-  "current_phase": 55,
-  "strategy": "Backing-storage publisher verified statically. Browser preserves the connected startup fault and captures its original operands. Allocation, full boot and gameplay remain blocked.",
+  "current_phase": 56,
+  "strategy": "Apt header constructor and synthetic stack ABI verified in Edge. Historical empty-stack trace classified as fixture failure. Allocation and native method dispatch remain unverified.",
   "boundaries": {
     "0x00686000": {
       "status": "PROTECTED_OR_EXTERNAL_DEPENDENCY",
