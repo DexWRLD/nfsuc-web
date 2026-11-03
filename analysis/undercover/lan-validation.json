@@ -1,0 +1,51 @@
+{
+  "phase": 49,
+  "layers": {
+    "python_regression": "see test run",
+    "node_uc_assets": "PASS",
+    "node_lan_server": "PASS",
+    "playwright_https_loopback": "PASS",
+    "physical_two_pc": "NOT_RUN_IN_AGENT_ENVIRONMENT",
+    "guest_execution": "PASS (regression)",
+    "synthetic_graphics": "SYNTHETIC_CLEAR_SMOKE_ONLY",
+    "authentic_gameplay": "NOT_READY"
+  },
+  "node": {
+    "node_path": "C:\\Users\\999\\AppData\\Local\\Microsoft\\WinGet\\Packages\\OpenJS.NodeJS.LTS_Microsoft.Winget.Source_8wekyb3d8bbwe\\node-v24.20.0-win-x64\\node.exe",
+    "node_version": "v24.20.0",
+    "uc_assets_test": {
+      "exit_code": 0,
+      "passed": true,
+      "skipped": false,
+      "tail": "\u2714 shipped manifest parses and marks production unauthorized (1.7591ms)\n\u2714 invalid manifest rejected (0.4144ms)\n\u2714 copyrighted-unavailable refused without authorization (0.2621ms)\n\u2714 download + hash verify + cache hit (25.6224ms)\n\u2714 hash mismatch rejected (2.4414ms)\n\u2714 partial download rejected (0.856ms)\n\u2714 cancel aborts in-flight download (0.3921ms)\n\u2714 insufficient storage (0.2397ms)\n\u2714 offline cached (1.6046ms)\n\u2714 changed manifest prunes stale and downloads new (1.8657ms)\n\u2714 filesystem bridge maps virtual paths (1.4357ms)\n\u2714 clear smoke command sequence is BeginScene Clear EndScene Present (0.8308ms)\n\u2714 clear smoke with fake canvas2d (0.2848ms)\n\u2714 launch UI never enables authentic play (0.1261ms)\n\u2714 source unavailable mode (0.1574ms)\n\u2714 path traversal rejected in manifest (0.1776ms)\n\u2714 duplicate asset id rejected (0.1257ms)\n\u2714 cross-origin absolute URL rejected with pageOrigin (0.2218ms)\n\u2714 filesystem rejects path traversal (3.722ms)\n\u2714 cache corruption detected on reverify (1.8534ms)\n\u2139 tests 20\n\u2139 suites 0\n\u2139 pass 20\n\u2139 fail 0\n\u2139 cancelled 0\n\u2139 skipped 0\n\u2139 todo 0\n\u2139 duration_ms 159.4126\n"
+    },
+    "uc_lan_server_test": {
+      "exit_code": 0,
+      "passed": true,
+      "skipped": false,
+      "tail": "\u2714 manifest generator hashes allowlisted files only (5.4557ms)\n2026-11-03T19:57:09.493Z 127.0.0.1 GET /uc-lan-status.json\n2026-11-03T19:57:09.496Z 127.0.0.1 GET /uc-asset-manifest.json\n2026-11-03T19:57:09.499Z 127.0.0.1 GET /uc-assets/startup/extra.txt\n2026-11-03T19:57:09.501Z 127.0.0.1 GET /uc-assets/startup/extra.txt\n2026-11-03T19:57:09.503Z 127.0.0.1 GET /package.json\n2026-11-03T19:57:09.504Z 127.0.0.1 GET /uc-assets/nope.bin\n\u2714 LAN HTTPS server: fixtures, range, allowlist, traversal (148.2364ms)\n\u2714 secure context report warns on LAN HTTP (17.9565ms)\n\u2714 boot stages reach READY_OR_BLOCKED with fixtures (11.23ms)\n\u2139 tests 4\n\u2139 suites 0\n\u2139 pass 4\n\u2139 fail 0\n\u2139 cancelled 0\n\u2139 skipped 0\n\u2139 todo 0\n\u2139 duration_ms 252.4105\n"
+    },
+    "uc_lan_https_browser_test": {
+      "exit_code": 0,
+      "passed": true,
+      "skipped": false,
+      "tail": "2026-11-03T19:57:12.837Z 127.0.0.1 GET /\n2026-11-03T19:57:12.850Z 127.0.0.1 GET /main.css\n2026-11-03T19:57:12.852Z 127.0.0.1 GET /main.js\n2026-11-03T19:57:12.950Z 127.0.0.1 GET /players\n2026-11-03T19:57:12.976Z 127.0.0.1 GET /vault\n2026-11-03T19:57:12.996Z 127.0.0.1 GET /data-manifest\n2026-11-03T19:57:13.004Z 127.0.0.1 GET /uc-asset-manifest.json\n2026-11-03T19:57:13.036Z 127.0.0.1 GET /seen\n2026-11-03T19:57:13.038Z 127.0.0.1 GET /players\n2026-11-03T19:57:13.041Z 127.0.0.1 GET /uc-fixtures/startup/readme.txt\n2026-11-03T19:57:13.042Z 127.0.0.1 GET /uc-fixtures/startup/boot-marker.json\n2026-11-03T19:57:13.044Z 127.0.0.1 GET /data-manifest\n2026-11-03T19:57:13.072Z 127.0.0.1 GET /uc-lan-status.json\n\u2714 HTTPS LAN origin: secure context, assets ready, play disabled (745.7974ms)\n\u2139 tests 1\n\u2139 suites 0\n\u2139 pass 1\n\u2139 fail 0\n\u2139 cancelled 0\n\u2139 skipped 0\n\u2139 todo 0\n\u2139 duration_ms 809.2308\n"
+    },
+    "uc_browser_clean_test": {
+      "exit_code": 0,
+      "passed": true,
+      "skipped": false,
+      "tail": "\u2714 clean browser profile: download, verify, clear smoke (1730.3687ms)\n\u2139 tests 1\n\u2139 suites 0\n\u2139 pass 1\n\u2139 fail 0\n\u2139 cancelled 0\n\u2139 skipped 0\n\u2139 todo 0\n\u2139 duration_ms 1807.0765\n"
+    },
+    "tsc_check": {
+      "exit_code": 0,
+      "passed": true,
+      "tail": "\n> nfsu2-web@0.0.0 check\n> tsc -p .\n\nnpm warn Unknown env config \"devdir\". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.\n"
+    },
+    "esbuild_build": {
+      "exit_code": 0,
+      "passed": true,
+      "tail": "\n> nfsu2-web@0.0.0 build\n> node build.mjs\n\nnpm warn Unknown env config \"devdir\". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.\n\n  dist\\main.js            515.9kb\n  dist\\test\\play.js        83.3kb\n  dist\\main.css            66.2kb\n  dist\\test\\aicheck.js     46.6kb\n  dist\\test\\hostcheck.js   30.5kb\n  ...and 19 more output files...\n\nDone in 39ms\n"
+    }
+  }
+}

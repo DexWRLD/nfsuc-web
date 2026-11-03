@@ -1,6 +1,6 @@
 {
-  "current_phase": 48,
-  "strategy": "Phase 48: Node-validated clean-PC fixture pipeline hardening; browser smoke; guest float/finite expansion; FIRST_FRAME frozen.",
+  "current_phase": 49,
+  "strategy": "Phase 49: private LAN HTTPS hosting, curated asset endpoint, boot-stage diagnostics; FIRST_FRAME frozen.",
   "boundaries": {
     "0x00686000": {
       "status": "PROTECTED_OR_EXTERNAL_DEPENDENCY",
@@ -470,6 +470,11 @@
       "phase": 48,
       "name": "Clean-PC validation & asset hardening",
       "state": "completed"
+    },
+    {
+      "phase": 49,
+      "title": "Private LAN asset host & clean-PC boot",
+      "status": "complete"
     }
   ],
   "milestones": [

@@ -1,29 +1,40 @@
 {
-  "phase": 48,
-  "asset_distribution_readiness": "FIXTURE_PIPELINE_HARDENED",
+  "phase": 49,
+  "asset_distribution_readiness": "PRIVATE_LAN_FIXTURE_HOST_READY",
+  "lan_testing_readiness": "PRIVATE_LAN_HTTPS_READY",
   "production_undercover_assets": "UNAVAILABLE_PENDING_AUTHORIZED_SOURCE",
   "browser_renderer_readiness": "SYNTHETIC_CLEAR_SMOKE_ONLY",
   "first_frame": "FIRST_FRAME_PATH_BLOCKED_BY_PROTECTED_BACKEND",
+  "startup_script": "Start-UndercoverLAN.ps1",
+  "lan_server": "web/tools/uc-lan-server.mjs",
+  "cert_tool": "web/tools/uc-lan-certs.mjs",
+  "manifest_gen": "web/tools/uc-manifest-gen.mjs",
+  "deploy_doc": "web/docs/uc-private-lan.md",
   "node_validation": {
     "uc_assets_test": true,
+    "lan_server_test": true,
+    "lan_https_browser": true,
     "build": true,
-    "browser_clean": true,
     "node_version": "v24.20.0"
   },
-  "hardening": [
-    "path traversal rejection",
-    "duplicate id/path rejection",
-    "URL host restrictions",
-    "atomic staged cache publish",
-    "retry backoff",
-    "content-length checks",
-    "cache re-hash verification",
-    "retry/cancel UI controls"
-  ],
-  "deploy_doc": "web/docs/uc-clean-pc-deploy.md",
   "clean_pc_ux": {
     "no_game_install_required_for_fixtures": true,
     "automatic_download": true,
-    "authentic_play_enabled": false
+    "authentic_play_enabled": false,
+    "boot_stages": [
+      "BOOT",
+      "MANIFEST",
+      "CACHE_CHECK",
+      "DOWNLOAD",
+      "VERIFY",
+      "FS_MOUNT",
+      "RUNTIME_INIT",
+      "READY_OR_BLOCKED"
+    ]
+  },
+  "two_pc_validation": {
+    "automated_https_loopback": "PASS",
+    "physical_second_pc": "MANUAL_REQUIRED",
+    "certificate_trust_on_second_pc": "DOCUMENTED"
   }
 }
