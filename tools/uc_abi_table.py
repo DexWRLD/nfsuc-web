@@ -24,6 +24,7 @@ KNOWN = {
     "strlen": (1, "UC_HLE_STRLEN"),
     "strcmp": (2, "UC_HLE_STRCMP"),
     "strncmp": (3, "UC_HLE_STRNCMP"),
+    "strncpy": (3, "UC_HLE_STRNCPY"),
 }
 # public: void type_info::_type_info_dtor_internal_method(void)
 THISCALL_NO_STACK = "?_type_info_dtor_internal_method@type_info@@QAEXXZ"

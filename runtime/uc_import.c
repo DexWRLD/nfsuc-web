@@ -155,6 +155,25 @@ static uint32_t hle_run(struct CPU *c, const UcImport *imp, const UcDecoded *in,
         diff = (int)MR8(a + i) - (int)MR8(b + i);
         *ok = 1;
         return (uint32_t)diff;
+    case UC_HLE_STRNCPY:
+        /* Standard CRT: copy at most n bytes; pad with NULs when src is shorter.
+         * Dest need not be NUL-terminated when src length >= n. */
+        if (in->stack_dwords < 3) return 0;
+        b = in->stack[1];
+        n = in->stack[2];
+        if (!range_ok(a, n)) return 0;
+        for (i = 0; i < n; i++) {
+            uint8_t ch;
+            if (!range_ok(b + i, 1)) return 0;
+            ch = MR8(b + i);
+            UC_ST8(a + i, ch);
+            if (ch == 0) {
+                for (i++; i < n; i++) UC_ST8(a + i, 0);
+                break;
+            }
+        }
+        *ok = 1;
+        return a;
     default:
         break;
     }

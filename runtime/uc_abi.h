@@ -44,6 +44,7 @@ typedef enum UcHle {
     UC_HLE_STRLEN,
     UC_HLE_STRCMP,
     UC_HLE_STRNCMP,
+    UC_HLE_STRNCPY,
     UC_HLE_CISIN,
     UC_HLE_CICOS,
     UC_HLE_CIACOS
