@@ -1,0 +1,264 @@
+{
+  "priority": {
+    "0x00752AF0": {
+      "address": "0x00752AF0",
+      "class": "AGREE",
+      "UC_ANALYZER": {
+        "present": true,
+        "label": "HIGH_CONFIDENCE",
+        "insns": 125,
+        "reachable": true
+      },
+      "ANGR": {
+        "function": true,
+        "size": 19,
+        "block_count": 1,
+        "status": "OK"
+      }
+    },
+    "0x00725200": {
+      "address": "0x00725200",
+      "class": "AGREE",
+      "UC_ANALYZER": {
+        "present": true,
+        "label": "HIGH_CONFIDENCE",
+        "insns": 303,
+        "reachable": true
+      },
+      "ANGR": {
+        "function": true,
+        "size": 78,
+        "block_count": 1,
+        "status": "OK"
+      }
+    },
+    "0x0072E340": {
+      "address": "0x0072E340",
+      "class": "AGREE",
+      "UC_ANALYZER": {
+        "present": true,
+        "label": "HIGH_CONFIDENCE",
+        "insns": 351,
+        "reachable": true
+      },
+      "ANGR": {
+        "function": true,
+        "size": 30,
+        "block_count": 1,
+        "status": "OK"
+      }
+    },
+    "0x00766730": {
+      "address": "0x00766730",
+      "class": "AGREE",
+      "UC_ANALYZER": {
+        "present": true,
+        "label": "HIGH_CONFIDENCE",
+        "insns": 227,
+        "reachable": true
+      },
+      "ANGR": {
+        "function": true,
+        "size": 20,
+        "block_count": 1,
+        "status": "OK"
+      }
+    },
+    "0x0072DD00": {
+      "address": "0x0072DD00",
+      "class": "AGREE",
+      "UC_ANALYZER": {
+        "present": true,
+        "label": "HIGH_CONFIDENCE",
+        "insns": 33,
+        "reachable": true
+      },
+      "ANGR": {
+        "function": true,
+        "size": 75,
+        "block_count": 5,
+        "status": "OK"
+      }
+    },
+    "0x007B2AC0": {
+      "address": "0x007B2AC0",
+      "class": "AGREE",
+      "UC_ANALYZER": {
+        "present": true,
+        "label": "HIGH_CONFIDENCE",
+        "insns": 51,
+        "reachable": true
+      },
+      "ANGR": {
+        "function": true,
+        "size": 66,
+        "block_count": 7,
+        "status": "OK"
+      }
+    },
+    "0x007B36A0": {
+      "address": "0x007B36A0",
+      "class": "AGREE",
+      "UC_ANALYZER": {
+        "present": true,
+        "label": "HIGH_CONFIDENCE",
+        "insns": 1002,
+        "reachable": true
+      },
+      "ANGR": {
+        "function": true,
+        "size": 215,
+        "block_count": 9,
+        "status": "OK"
+      }
+    },
+    "0x007A1400": {
+      "address": "0x007A1400",
+      "class": "AGREE",
+      "UC_ANALYZER": {
+        "present": true,
+        "label": "HIGH_CONFIDENCE",
+        "insns": 115,
+        "reachable": true
+      },
+      "ANGR": {
+        "function": true,
+        "size": 102,
+        "block_count": 9,
+        "status": "OK"
+      }
+    },
+    "0x007B2930": {
+      "address": "0x007B2930",
+      "class": "AGREE",
+      "UC_ANALYZER": {
+        "present": true,
+        "label": "HIGH_CONFIDENCE",
+        "insns": 169,
+        "reachable": true
+      },
+      "ANGR": {
+        "function": true,
+        "size": 332,
+        "block_count": 31,
+        "status": "OK"
+      }
+    },
+    "0x007B17C0": {
+      "address": "0x007B17C0",
+      "class": "AGREE",
+      "UC_ANALYZER": {
+        "present": true,
+        "label": "HIGH_CONFIDENCE",
+        "insns": 54,
+        "reachable": true
+      },
+      "ANGR": {
+        "function": true,
+        "size": 143,
+        "block_count": 19,
+        "status": "OK"
+      }
+    },
+    "0x007A06E0": {
+      "address": "0x007A06E0",
+      "class": "AGREE",
+      "UC_ANALYZER": {
+        "present": true,
+        "label": "HIGH_CONFIDENCE",
+        "insns": 333,
+        "reachable": true
+      },
+      "ANGR": {
+        "function": true,
+        "size": 770,
+        "block_count": 60,
+        "status": "OK"
+      }
+    },
+    "0x007B5020": {
+      "address": "0x007B5020",
+      "class": "AGREE",
+      "UC_ANALYZER": {
+        "present": true,
+        "label": "HIGH_CONFIDENCE",
+        "insns": 865,
+        "reachable": true
+      },
+      "ANGR": {
+        "function": true,
+        "size": 2097,
+        "block_count": 82,
+        "status": "OK"
+      }
+    },
+    "0x0071E630": {
+      "address": "0x0071E630",
+      "class": "AGREE",
+      "UC_ANALYZER": {
+        "present": true,
+        "label": "HIGH_CONFIDENCE",
+        "insns": 10,
+        "reachable": true
+      },
+      "ANGR": {
+        "function": true,
+        "size": 16,
+        "block_count": 1,
+        "status": "OK"
+      }
+    },
+    "0x007297D0": {
+      "address": "0x007297D0",
+      "class": "AGREE",
+      "UC_ANALYZER": {
+        "present": true,
+        "label": "HIGH_CONFIDENCE",
+        "insns": 222,
+        "reachable": true
+      },
+      "ANGR": {
+        "function": true,
+        "size": 195,
+        "block_count": 8,
+        "status": "OK"
+      }
+    }
+  },
+  "overlap": {
+    "uc_high_total": 22779,
+    "angr_priority_recovered": 14,
+    "priority_class_counts": {
+      "AGREE": 14
+    },
+    "full_map_compared": false,
+    "major_boundary_disagreements": []
+  },
+  "non_functions": {
+    "0x00686000": {
+      "address": "0x00686000",
+      "natural": "NO_FUNCTION",
+      "forced": false,
+      "uc_label": "LOW_CONFIDENCE",
+      "angr": {
+        "status": "ANGR_MISSING",
+        "size": null,
+        "block_count": 0,
+        "boundary_hits": []
+      }
+    },
+    "0x0055FF30": {
+      "address": "0x0055FF30",
+      "natural": "NO_FUNCTION",
+      "forced": false,
+      "uc_label": "REJECTED_DATA_LIKE",
+      "angr": {
+        "status": "ANGR_MISSING",
+        "size": null,
+        "block_count": 0,
+        "boundary_hits": []
+      }
+    }
+  },
+  "note": "UC confidence never auto-changed from angr output"
+}

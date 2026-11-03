@@ -1,0 +1,32 @@
+{
+  "angr_available": true,
+  "angr_version": "10.0.5",
+  "pinned": "10.0.5",
+  "python": "3.12.10",
+  "load_ok": true,
+  "cfg_ok": true,
+  "mode": "static_shellcode_windows",
+  "symbolic_execution": false,
+  "present_control": "ANGR_PRESENT_CONTROL_PASS",
+  "clear_control": "ANGR_CLEAR_CONTROL_PARTIAL",
+  "control_weight": "USEFUL",
+  "priority_functions": [
+    "0x00752AF0",
+    "0x00725200",
+    "0x0072E340",
+    "0x00766730",
+    "0x0072DD00",
+    "0x007B2AC0",
+    "0x007B36A0",
+    "0x007A1400",
+    "0x007B2930",
+    "0x007B17C0",
+    "0x007A06E0",
+    "0x007B5020",
+    "0x0071E630",
+    "0x007297D0"
+  ],
+  "optional_dependency": true,
+  "install": "pip install angr==10.0.5 bitstring>=4.1,<4.3",
+  "authority": "UC analyzer/lifter is recompilation authority; angr is comparison oracle only"
+}
