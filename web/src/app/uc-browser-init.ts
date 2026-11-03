@@ -1,5 +1,7 @@
 interface InitializerExports {
   run_init(): number;
+  run_boot_callback(mode: number): number;
+  boot_flag_value(mode: number): number;
   run_queue(mode: number): number;
   queue_word(address: number): number;
   queue_stop(): number;
@@ -124,4 +126,37 @@ export async function runFrontendQueue() {
       + (mode === 6 ? ' · entry ' + hex(entry) + ', state 1, selected index 7, fixture numeric field 900' : ''));
   }
   return results;
+}
+
+export async function runBootCallbacks() {
+  const guest = await loadInitializer();
+  for (const mode of [0, 1]) {
+    if (guest.boot_flag_value(mode) !== 0) throw new Error('Unexpected initial callback flag');
+    for (let run = 0; run < 2; run++) {
+      if (guest.run_boot_callback(mode) !== 0x13572468 || guest.boot_flag_value(mode) !== 1
+          || guest.boot_flag_value(1 - mode) !== mode) {
+        throw new Error('Unexpected callback state or return value');
+      }
+    }
+  }
+  const invalid = await loadInitializer();
+  for (const [mode, address] of [[2, 0x6c], [3, 0xdead006c]]) {
+    let trapped = false;
+    try {
+      invalid.run_boot_callback(mode);
+    } catch (error) {
+      if (!(error instanceof WebAssembly.RuntimeError)) throw error;
+      trapped = true;
+    }
+    if (!trapped || (invalid.prefix_fault() >>> 0) !== address || invalid.boot_flag_value(1) !== 0) {
+      throw new Error('Unexpected invalid manager behavior');
+    }
+  }
+  return [
+    'BootLoadScreenLoaded 0x008062A0: [0x01873177] 0 → 1; repeat remains 1.',
+    'MainScreenLoaded 0x00806290: fixture manager +0x6C 0 → 1 at 0x00806295; repeat remains 1.',
+    'Both tail paths reached 0x009ADC50 and returned fixture EAX 0x13572468 at 0x009ADC59.',
+    'Two caller-cleaned arguments preserved. Null and unmapped manager writes rejected.',
+    'Fixture entry only. Original CmdUtil registration and Apt dispatch remain unverified.',
+  ];
 }

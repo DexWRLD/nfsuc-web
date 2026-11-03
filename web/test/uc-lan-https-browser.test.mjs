@@ -136,6 +136,12 @@ test('authorized EA bumper plays over the LAN asset pipeline', { skip: !process.
     await page.waitForFunction(() => document.querySelector('#apt-result')?.textContent.includes('18 zeroed'));
     await page.locator('#apt-fixture').click();
     await page.waitForFunction(() => document.querySelector('#apt-result')?.textContent.includes('Both calls restored ESP'));
+    await page.locator('#boot-callbacks').click();
+    await page.waitForFunction(() => document.querySelector('#boot-callback-result')?.textContent.includes('Fixture entry only'));
+    const callbacks = await page.locator('#boot-callback-result').innerText();
+    assert.match(callbacks, /BootLoadScreenLoaded.*0x01873177/);
+    assert.match(callbacks, /MainScreenLoaded.*0x00806295/);
+    assert.match(callbacks, /0x009ADC50.*0x13572468/);
     for (let attempt = 0; attempt < 2; attempt++) {
       await page.locator('#frontend-queue').click();
       await page.waitForFunction(() => document.querySelector('#queue-result')?.textContent.includes('Unmapped entry'));

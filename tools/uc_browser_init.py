@@ -38,6 +38,8 @@ static u32 pop(CPU *c) {
 PREFIX_BRIDGE = r"""
 static u32 stack[64], zero_fields[3], zero_core, fault, trace[8], entered;
 static int equal, less, below;
+static u32 boot_mode, boot_manager, boot_return = 0x13572468u;
+static unsigned char boot_flag[3] = {0x53,0,0x75}, main_flag[3] = {0x53,0,0x75};
 static u32 queue_memory[64], queue_active, queue_boundary, queue_numeric;
 static const unsigned char *frontend_data(u32 a, u32 size);
 static u32 read_base, read_delta;
@@ -45,6 +47,8 @@ static u32 apt_mode, apt_headers[19], apt_cell, apt_calls;
 static const u32 apt_offsets[] = {0, 12, 24, 36, 48, 64};
 static u32 *access(u32 a) {
     if (!(a & 3u)) {
+        if (boot_mode && a == 0x01873134u) return &boot_manager;
+        if (boot_mode && a == 0x0189bf08u) return &boot_return;
         if (queue_active && a >= 0x0300ed00u && a < 0x0300ee00u) return &queue_memory[(a-0x0300ed00u)/4u];
         if (a >= 0x0300ef00u && a < 0x0300f000u) return &stack[(a-0x0300ef00u)/4u];
         if (apt_mode && a >= 0x0189d0a0u && a < 0x0189d0ecu) return &apt_headers[(a-0x0189d0a0u)/4u];
@@ -302,6 +306,43 @@ u32 run_queue(u32 mode) {
 }
 """
 
+def build_boot_callbacks(lifter):
+    bodies = []
+    for entry, write in ((0x008062A0, "MR8(0x1873177u) = (0x1u);"),
+                         (0x00806290, "MR8(c->eax+0x6cu) = (0x1u);")):
+        body, calls = lifter.lift(entry)
+        if calls or body.count(write) != 1 or "goto L_009adc50;" not in body:
+            raise ValueError("Unexpected boot callback body")
+        bodies.append(body)
+    return "\n".join((r"""
+static unsigned char *boot_byte(u32 address) {
+    if (address == 0x01873177u) return &boot_flag[1];
+    if (address == 0x0300ec6cu) return &main_flag[1];
+    fault = address;
+    __builtin_trap();
+}
+#undef MR8
+#define MR8(a) (*boot_byte(a))
+""", *bodies, r"""
+u32 boot_flag_value(u32 mode) { return mode ? main_flag[1] : boot_flag[1]; }
+u32 run_boot_callback(u32 mode) {
+    if (mode > 3) __builtin_trap();
+    boot_mode = 1;
+    boot_manager = mode == 1 ? 0x0300ec00u : mode == 3 ? 0xdead0000u : 0;
+    cpu = (CPU){.esp=0x0300eff4u, .ebp=0x4321u};
+    *access(cpu.esp) = 0x00dec0deu;
+    *access(cpu.esp+4) = 0x11111111u;
+    *access(cpu.esp+8) = 0x22222222u;
+    if (mode) sub_00806290(&cpu);
+    else sub_008062a0(&cpu);
+    if (cpu.esp != 0x0300eff8u || cpu.eip != 0x00dec0deu || cpu.ebp != 0x4321u ||
+        *access(cpu.esp) != 0x11111111u || *access(cpu.esp+4) != 0x22222222u ||
+        boot_flag[0] != 0x53 || boot_flag[2] != 0x75 ||
+        main_flag[0] != 0x53 || main_flag[2] != 0x75) __builtin_trap();
+    return cpu.eax;
+}
+"""))
+
 EXPORTS = r"""
 static CPU cpu;
 u32 read_slot(u32 addr) { return *mapped(addr); }
@@ -338,11 +379,11 @@ def main():
     clang = p7.clang()
     linker = Path(clang).with_name("wasm-ld.exe")
     linker_arg = ["--ld-path=" + str(linker)] if linker.is_file() else []
-    exports = ["run_init", "read_slot", "write_count", "guest_esp", "guest_eax", "run_prefix", "prefix_fault", "prefix_entry", "prefix_read_base", "prefix_read_delta", "run_apt_constructor", "run_apt_fixture", "frontend_lookup", "frontend_stop", "frontend_native_id", "run_queue", "queue_word", "queue_stop", "queue_value"]
+    exports = ["run_init", "read_slot", "write_count", "guest_esp", "guest_eax", "run_prefix", "prefix_fault", "prefix_entry", "prefix_read_base", "prefix_read_delta", "run_apt_constructor", "run_apt_fixture", "frontend_lookup", "frontend_stop", "frontend_native_id", "run_queue", "queue_word", "queue_stop", "queue_value", "run_boot_callback", "boot_flag_value"]
     args.output.parent.mkdir(parents=True, exist_ok=True)
     with tempfile.TemporaryDirectory() as tmp:
         source = Path(tmp) / "init.c"
-        source.write_text(BRIDGE + body + EXPORTS + PREFIX_BRIDGE + build_prefix(lifter) + PREFIX_EXPORTS + build_apt(lifter) + build_frontend(lifter, args.image) + build_queue(lifter), encoding="utf-8")
+        source.write_text(BRIDGE + body + EXPORTS + PREFIX_BRIDGE + build_prefix(lifter) + PREFIX_EXPORTS + build_apt(lifter) + build_frontend(lifter, args.image) + build_queue(lifter) + build_boot_callbacks(lifter), encoding="utf-8")
         subprocess.run([clang, "--target=wasm32-unknown-unknown", *linker_arg, "-O2",
                         "-ffreestanding", "-nostdlib", "-Wl,--no-entry",
                         *["-Wl,--export=" + name for name in exports],
