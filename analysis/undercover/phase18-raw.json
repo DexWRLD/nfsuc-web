@@ -1,0 +1,1432 @@
+{
+  "terminology": {
+    "DISCOVERED_HIGH": "HIGH_CONFIDENCE and enrolled in discovery graph",
+    "CALL_GRAPH_REACHABLE": "has ordinary HIGH predecessor via calls/tails",
+    "DIRECTLY_REFERENCED": "E8/E9 or absolute immediate reference exists",
+    "INDIRECT_CANDIDATE": "may be reached only via unresolved table/register",
+    "RUNTIME_ENTERABLE": "FACTORY_FRONTIER_READY and state legitimate",
+    "map_reachable_field": "means discovery enrollment only; NOT call-graph reachability"
+  },
+  "table": {
+    "containing_run": {
+      "lo": "0x00B61528",
+      "hi": "0x00B615E4",
+      "n": 48,
+      "invalid": 25,
+      "valid": 17,
+      "interior": 6
+    },
+    "home_callable_looking": 48,
+    "home_invalid_initial": 25,
+    "home_valid_entry": 17,
+    "home_interior": 6,
+    "adjacent_named_iat": [
+      {
+        "iat_slot": "0x00B615EC",
+        "symbol": "VERSION.dll!VerQueryValueA"
+      },
+      {
+        "iat_slot": "0x00B615F0",
+        "symbol": "VERSION.dll!GetFileVersionInfoSizeA"
+      },
+      {
+        "iat_slot": "0x00B615F4",
+        "symbol": "VERSION.dll!GetFileVersionInfoA"
+      }
+    ],
+    "scan_counts": {
+      "INVALID_TEXT_BOUNDARY": 96,
+      "ORDINARY_TEXT_VALID_ENTRY": 60,
+      "ORDINARY_TEXT_INTERIOR": 11,
+      "IMPORT_RELATED": 151,
+      "ZERO": 13,
+      "NON_POINTER": 5
+    },
+    "pointer_dense_runs": [
+      {
+        "lo": "0x00B61100",
+        "hi": "0x00B611CC",
+        "n": 52,
+        "invalid": 29,
+        "valid": 20,
+        "interior": 3
+      },
+      {
+        "lo": "0x00B611D4",
+        "hi": "0x00B61214",
+        "n": 17,
+        "invalid": 12,
+        "valid": 3,
+        "interior": 2
+      },
+      {
+        "lo": "0x00B61528",
+        "hi": "0x00B615E4",
+        "n": 48,
+        "invalid": 25,
+        "valid": 17,
+        "interior": 6
+      }
+    ],
+    "entries_sample": [
+      {
+        "va": "0x00B61188",
+        "value": "0x008AB180",
+        "class": "INVALID_TEXT_BOUNDARY",
+        "watched": true,
+        "named_iat_slot": false
+      },
+      {
+        "va": "0x00B611D4",
+        "value": "0x008A9F58",
+        "class": "INVALID_TEXT_BOUNDARY",
+        "watched": true,
+        "named_iat_slot": false
+      },
+      {
+        "va": "0x00B61580",
+        "value": "0x008AA552",
+        "class": "ORDINARY_TEXT_VALID_ENTRY",
+        "watched": false,
+        "named_iat_slot": false
+      },
+      {
+        "va": "0x00B61584",
+        "value": "0x008AA566",
+        "class": "ORDINARY_TEXT_INTERIOR",
+        "watched": false,
+        "named_iat_slot": false
+      },
+      {
+        "va": "0x00B61588",
+        "value": "0x008AA574",
+        "class": "INVALID_TEXT_BOUNDARY",
+        "watched": false,
+        "named_iat_slot": false
+      },
+      {
+        "va": "0x00B6158C",
+        "value": "0x008AA580",
+        "class": "ORDINARY_TEXT_INTERIOR",
+        "watched": false,
+        "named_iat_slot": false
+      },
+      {
+        "va": "0x00B61590",
+        "value": "0x008AA590",
+        "class": "ORDINARY_TEXT_VALID_ENTRY",
+        "watched": false,
+        "named_iat_slot": false
+      },
+      {
+        "va": "0x00B61594",
+        "value": "0x008AA59E",
+        "class": "ORDINARY_TEXT_VALID_ENTRY",
+        "watched": false,
+        "named_iat_slot": false
+      },
+      {
+        "va": "0x00B61598",
+        "value": "0x008AA5B0",
+        "class": "ORDINARY_TEXT_INTERIOR",
+        "watched": false,
+        "named_iat_slot": false
+      },
+      {
+        "va": "0x00B6159C",
+        "value": "0x008AA5BE",
+        "class": "ORDINARY_TEXT_VALID_ENTRY",
+        "watched": false,
+        "named_iat_slot": false
+      },
+      {
+        "va": "0x00B615A0",
+        "value": "0x008AA5D0",
+        "class": "ORDINARY_TEXT_VALID_ENTRY",
+        "watched": false,
+        "named_iat_slot": false
+      },
+      {
+        "va": "0x00B615A4",
+        "value": "0x008AA5E2",
+        "class": "INVALID_TEXT_BOUNDARY",
+        "watched": false,
+        "named_iat_slot": false
+      },
+      {
+        "va": "0x00B615A8",
+        "value": "0x008AA5EE",
+        "class": "INVALID_TEXT_BOUNDARY",
+        "watched": false,
+        "named_iat_slot": false
+      },
+      {
+        "va": "0x00B615AC",
+        "value": "0x008AA5FA",
+        "class": "INVALID_TEXT_BOUNDARY",
+        "watched": false,
+        "named_iat_slot": false
+      },
+      {
+        "va": "0x00B615B0",
+        "value": "0x008AA606",
+        "class": "ORDINARY_TEXT_INTERIOR",
+        "watched": false,
+        "named_iat_slot": false
+      },
+      {
+        "va": "0x00B615B4",
+        "value": "0x008AA3E0",
+        "class": "INVALID_TEXT_BOUNDARY",
+        "watched": false,
+        "named_iat_slot": false
+      },
+      {
+        "va": "0x00B615B8",
+        "value": "0x008AA3D4",
+        "class": "INVALID_TEXT_BOUNDARY",
+        "watched": false,
+        "named_iat_slot": false
+      },
+      {
+        "va": "0x00B615BC",
+        "value": "0x008AB4E8",
+        "class": "ORDINARY_TEXT_VALID_ENTRY",
+        "watched": false,
+        "named_iat_slot": false
+      },
+      {
+        "va": "0x00B615C0",
+        "value": "0x008AA3C6",
+        "class": "INVALID_TEXT_BOUNDARY",
+        "watched": false,
+        "named_iat_slot": false
+      },
+      {
+        "va": "0x00B615C4",
+        "value": "0x008AA3AE",
+        "class": "INVALID_TEXT_BOUNDARY",
+        "watched": true,
+        "named_iat_slot": false
+      },
+      {
+        "va": "0x00B615C8",
+        "value": "0x008AA396",
+        "class": "ORDINARY_TEXT_VALID_ENTRY",
+        "watched": false,
+        "named_iat_slot": false
+      },
+      {
+        "va": "0x00B615CC",
+        "value": "0x008AA384",
+        "class": "INVALID_TEXT_BOUNDARY",
+        "watched": false,
+        "named_iat_slot": false
+      },
+      {
+        "va": "0x00B615D0",
+        "value": "0x008AA378",
+        "class": "INVALID_TEXT_BOUNDARY",
+        "watched": false,
+        "named_iat_slot": false
+      },
+      {
+        "va": "0x00B615D4",
+        "value": "0x008AA368",
+        "class": "INVALID_TEXT_BOUNDARY",
+        "watched": false,
+        "named_iat_slot": false
+      },
+      {
+        "va": "0x00B615D8",
+        "value": "0x008AB4C0",
+        "class": "INVALID_TEXT_BOUNDARY",
+        "watched": false,
+        "named_iat_slot": false
+      },
+      {
+        "va": "0x00B615DC",
+        "value": "0x008AB4AC",
+        "class": "INVALID_TEXT_BOUNDARY",
+        "watched": false,
+        "named_iat_slot": false
+      },
+      {
+        "va": "0x00B615E0",
+        "value": "0x008AB49E",
+        "class": "INVALID_TEXT_BOUNDARY",
+        "watched": false,
+        "named_iat_slot": false
+      },
+      {
+        "va": "0x00B615E4",
+        "value": "0x008AA524",
+        "class": "ORDINARY_TEXT_VALID_ENTRY",
+        "watched": false,
+        "named_iat_slot": false
+      },
+      {
+        "va": "0x00B615E8",
+        "value": "0x00000000",
+        "class": "ZERO",
+        "watched": false,
+        "named_iat_slot": false
+      },
+      {
+        "va": "0x00B615EC",
+        "value": "0x008AA77A",
+        "class": "IMPORT_RELATED",
+        "watched": false,
+        "named_iat_slot": true
+      },
+      {
+        "va": "0x00B615F0",
+        "value": "0x008AA7A2",
+        "class": "IMPORT_RELATED",
+        "watched": false,
+        "named_iat_slot": true
+      },
+      {
+        "va": "0x00B615F4",
+        "value": "0x008AA78C",
+        "class": "IMPORT_RELATED",
+        "watched": false,
+        "named_iat_slot": true
+      },
+      {
+        "va": "0x00B615F8",
+        "value": "0x00000000",
+        "class": "ZERO",
+        "watched": false,
+        "named_iat_slot": false
+      },
+      {
+        "va": "0x00B615FC",
+        "value": "0x008AB5BC",
+        "class": "ORDINARY_TEXT_VALID_ENTRY",
+        "watched": false,
+        "named_iat_slot": false
+      },
+      {
+        "va": "0x00B61600",
+        "value": "0x008AB5CA",
+        "class": "ORDINARY_TEXT_VALID_ENTRY",
+        "watched": false,
+        "named_iat_slot": false
+      },
+      {
+        "va": "0x00B61604",
+        "value": "0x008AB5DA",
+        "class": "ORDINARY_TEXT_VALID_ENTRY",
+        "watched": false,
+        "named_iat_slot": false
+      },
+      {
+        "va": "0x00B61608",
+        "value": "0x00000000",
+        "class": "ZERO",
+        "watched": false,
+        "named_iat_slot": false
+      },
+      {
+        "va": "0x00B6160C",
+        "value": "0x008AAF7E",
+        "class": "IMPORT_RELATED",
+        "watched": false,
+        "named_iat_slot": true
+      },
+      {
+        "va": "0x00B61610",
+        "value": "0x00000000",
+        "class": "ZERO",
+        "watched": false,
+        "named_iat_slot": false
+      },
+      {
+        "va": "0x00B61614",
+        "value": "0x008AB6A8",
+        "class": "INVALID_TEXT_BOUNDARY",
+        "watched": false,
+        "named_iat_slot": false
+      }
+    ],
+    "all_three_in_same_run": false,
+    "structure": "Three nearby pointer-dense runs in .rdata: 0x00B61100\u20130x00B61214 (Win32-ish dispatch + GetTickCount IAT), 0x00B61230\u20130x00B614D8 (mostly named CRT IAT), 0x00B61528\u20130x00B615E4 (graphics/system callback table containing 0x00B615C4). Slots are not one single table.",
+    "entries_watched": [
+      {
+        "va": "0x00B61188",
+        "value": "0x008AB180",
+        "class": "INVALID_TEXT_BOUNDARY",
+        "watched": true,
+        "named_iat_slot": false
+      },
+      {
+        "va": "0x00B611D4",
+        "value": "0x008A9F58",
+        "class": "INVALID_TEXT_BOUNDARY",
+        "watched": true,
+        "named_iat_slot": false
+      },
+      {
+        "va": "0x00B615C4",
+        "value": "0x008AA3AE",
+        "class": "INVALID_TEXT_BOUNDARY",
+        "watched": true,
+        "named_iat_slot": false
+      }
+    ]
+  },
+  "slots": {
+    "0x00B611D4": {
+      "pe_value": "0x008A9F58",
+      "value_class": "INVALID_TEXT_BOUNDARY",
+      "in_ordinary_named_iat": false,
+      "named_iat": null,
+      "in_pe_import_firstthunk": null,
+      "initial_interpretation": {
+        "class": "DELIBERATELY_INVALID_SENTINEL_OR_PLACEHOLDER",
+        "covering": "0x008A9F58: dec dword ptr [ebx - 0x7abbdbbc]",
+        "byte_role": "Capstone-decodable at VA but rejected by linear sweep",
+        "note": "Not a linear-sweep instruction boundary. Same placeholder shape as nearby named import slots (e.g. VERSION.dll at 0x00B615EC) whose PE values also fail ordinary entry checks. No ordinary XOR/add decode observed; treat as unbound/runtime-filled placeholder."
+      },
+      "consumers": [
+        {
+          "kind": "INDIRECT_CALL",
+          "eip": "0x0072B84B",
+          "text": "call dword ptr [0x00B611D4]",
+          "owner": "0x0072B7D0",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "window": [
+            "call dword ptr [0xb611d4]",
+            "mov dword ptr [0x12c9148], 1",
+            "ret "
+          ]
+        },
+        {
+          "kind": "READ",
+          "eip": "0x0076673A",
+          "text": "mov ebp, dword ptr [0x00B611D4]",
+          "owner": "0x00766730",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "window": [
+            "mov ebp, dword ptr [0xb611d4]",
+            "push esi",
+            "push eax",
+            "call ebp",
+            "mov ecx, dword ptr [0x1882c34]",
+            "mov edx, dword ptr fs:[0x2c]",
+            "mov esi, dword ptr [edx + ecx*4]",
+            "mov dword ptr [esi + 4], 0x12c9338",
+            "call 0x977300",
+            "mov ecx, 0x1318170",
+            "mov dword ptr [0x13c656c], eax",
+            "mov dword ptr [esi + 0xc], eax"
+          ]
+        },
+        {
+          "kind": "INDIRECT_CALL",
+          "eip": "0x0087C5A2",
+          "text": "call dword ptr [0x00B611D4]",
+          "owner": "0x0087C4BC",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "window": [
+            "call dword ptr [0xb611d4]",
+            "jmp 0x87c5b2",
+            "push 1",
+            "call 0x87c6a2",
+            "pop ecx",
+            "cmp dword ptr [0x1883110], 0",
+            "jne 0x87c5aa",
+            "push dword ptr [0x12856b0]",
+            "call dword ptr [0xb610a4]",
+            "push 0x18",
+            "push 0x12856b0",
+            "call 0x880622"
+          ]
+        },
+        {
+          "kind": "INDIRECT_CALL",
+          "eip": "0x0087E10E",
+          "text": "call dword ptr [0x00B611D4]",
+          "owner": "0x0087E0FD",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "window": [
+            "call dword ptr [0xb611d4]",
+            "cmp dword ptr [esi + 8], 0",
+            "jne 0x87e1c2",
+            "push ebx",
+            "push edi",
+            "lea ebx, [esi + 0x28]",
+            "mov ecx, ebx",
+            "call 0xae540d",
+            "mov edi, dword ptr [esi + 0x10]",
+            "and dword ptr [esi + 0xc], 0",
+            "test edi, edi",
+            "je 0x87e149"
+          ]
+        },
+        {
+          "kind": "INDIRECT_CALL",
+          "eip": "0x0087E1B0",
+          "text": "call dword ptr [0x00B611D4]",
+          "owner": "0x0087E0FD",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "window": [
+            "call dword ptr [0xb611d4]",
+            "cmp dword ptr [esi + 8], 0",
+            "je 0x87e123",
+            "pop edi",
+            "pop ebx",
+            "mov dword ptr [esi + 4], 0",
+            "xor eax, eax",
+            "pop esi",
+            "pop ebp",
+            "ret "
+          ]
+        },
+        {
+          "kind": "INDIRECT_CALL",
+          "eip": "0x0087E260",
+          "text": "call dword ptr [0x00B611D4]",
+          "owner": "0x0087E209",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "window": [
+            "call dword ptr [0xb611d4]",
+            "push dword ptr [esi + 0x78]",
+            "call dword ptr [0xb610a4]",
+            "lea eax, [esi + 0x68]",
+            "push eax",
+            "call 0x87c672",
+            "pop ecx",
+            "lea ecx, [esi + 0x28]",
+            "call 0xae5402",
+            "lea ecx, [esi + 0x4c]",
+            "call 0xae5402",
+            "mov ecx, dword ptr [esi + 0x80]"
+          ]
+        },
+        {
+          "kind": "READ",
+          "eip": "0x009ECDC2",
+          "text": "mov ebx, dword ptr [0x00B611D4]",
+          "owner": "0x009ECD30",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "window": [
+            "mov ebx, dword ptr [0xb611d4]",
+            "push edi",
+            "add esi, 0x4c",
+            "mov edi, 0x20",
+            "cmp byte ptr [esi - 0x24], 0",
+            "je 0x9ecddc",
+            "mov eax, dword ptr [esi]",
+            "push eax",
+            "call ebx",
+            "add esi, 0x30",
+            "sub edi, 1",
+            "jne 0x9ecdd1"
+          ]
+        },
+        {
+          "kind": "INDIRECT_CALL",
+          "eip": "0x009EDB36",
+          "text": "call dword ptr [0x00B611D4]",
+          "owner": "0x009EDB20",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "window": [
+            "call dword ptr [0xb611d4]",
+            "ret 8"
+          ]
+        },
+        {
+          "kind": "READ",
+          "eip": "0x009EDFF2",
+          "text": "mov ebp, dword ptr [0x00B611D4]",
+          "owner": "0x009EDFF0",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "window": [
+            "mov ebp, dword ptr [0xb611d4]",
+            "push esi",
+            "mov ebx, ecx",
+            "push edi",
+            "mov dword ptr [ebx], 0xc313e0",
+            "lea esi, [ebx + 0x4c]",
+            "mov edi, 0x20",
+            "lea ebx, [ebx]",
+            "mov eax, dword ptr [esi]",
+            "push eax",
+            "mov byte ptr [esi - 0x23], 1",
+            "call ebp"
+          ]
+        },
+        {
+          "kind": "INDIRECT_CALL",
+          "eip": "0x00AE5378",
+          "text": "call dword ptr [0x00B611D4]",
+          "owner": "0x00AE536F",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "window": [
+            "call dword ptr [0xb611d4]",
+            "pop ebp",
+            "ret "
+          ]
+        }
+      ],
+      "consumer_count": 10,
+      "final_class": "RUNTIME_REPLACEMENT_REQUIRED"
+    },
+    "0x00B61188": {
+      "pe_value": "0x008AB180",
+      "value_class": "INVALID_TEXT_BOUNDARY",
+      "in_ordinary_named_iat": false,
+      "named_iat": null,
+      "in_pe_import_firstthunk": null,
+      "initial_interpretation": {
+        "class": "DELIBERATELY_INVALID_SENTINEL_OR_PLACEHOLDER",
+        "covering": "0x008AB180: and al, 0xc",
+        "byte_role": "Capstone-decodable at VA but rejected by linear sweep",
+        "note": "Not a linear-sweep instruction boundary. Same placeholder shape as nearby named import slots (e.g. VERSION.dll at 0x00B615EC) whose PE values also fail ordinary entry checks. No ordinary XOR/add decode observed; treat as unbound/runtime-filled placeholder."
+      },
+      "consumers": [
+        {
+          "kind": "INDIRECT_CALL",
+          "eip": "0x0087C6AA",
+          "text": "call dword ptr [0x00B61188]",
+          "owner": "0x0087C6A2",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "window": [
+            "call dword ptr [0xb61188]",
+            "pop ebp",
+            "ret "
+          ]
+        },
+        {
+          "kind": "INDIRECT_CALL",
+          "eip": "0x0087C6D2",
+          "text": "call dword ptr [0x00B61188]",
+          "owner": "0x0087C6B2",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "window": [
+            "call dword ptr [0xb61188]",
+            "pop ebp",
+            "ret "
+          ]
+        },
+        {
+          "kind": "INDIRECT_CALL",
+          "eip": "0x0087C8B9",
+          "text": "call dword ptr [0x00B61188]",
+          "owner": "0x0087C859",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "window": [
+            "call dword ptr [0xb61188]",
+            "cmp dword ptr [ebp - 0xc], edi",
+            "je 0x87c8b5",
+            "cmp dword ptr [ebp + 8], edi",
+            "jne 0x87c8d2",
+            "push dword ptr [esi + 4]",
+            "call dword ptr [0xb610a4]",
+            "mov al, 1",
+            "jmp 0x87c8d8",
+            "xor al, al",
+            "pop edi",
+            "pop esi"
+          ]
+        },
+        {
+          "kind": "INDIRECT_CALL",
+          "eip": "0x009773B9",
+          "text": "call dword ptr [0x00B61188]",
+          "owner": "0x009773B0",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "window": [
+            "call dword ptr [0xb61188]",
+            "ret "
+          ]
+        },
+        {
+          "kind": "INDIRECT_CALL",
+          "eip": "0x0097789A",
+          "text": "call dword ptr [0x00B61188]",
+          "owner": "0x00977870",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "window": [
+            "call dword ptr [0xb61188]",
+            "jmp 0x977885",
+            "cmp dword ptr [esi], 0",
+            "je 0x977925",
+            "xor edi, edi",
+            "cmp dword ptr [esi], edi",
+            "je 0x977885",
+            "jmp 0x9778b3",
+            "mov edi, dword ptr [esp + 0x18]",
+            "mov eax, dword ptr [esi]",
+            "cmp dword ptr [eax], 0",
+            "je 0x97790e"
+          ]
+        },
+        {
+          "kind": "INDIRECT_CALL",
+          "eip": "0x0097F8D6",
+          "text": "call dword ptr [0x00B61188]",
+          "owner": "0x0097F790",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "window": [
+            "call dword ptr [0xb61188]",
+            "lea ecx, [esp + 0x10]",
+            "push ecx",
+            "call ebx",
+            "rdtsc ",
+            "mov edi, dword ptr [esp + 0x10]",
+            "sub edi, dword ptr [esp + 0x28]",
+            "mov ecx, eax",
+            "mov eax, dword ptr [esp + 0x14]",
+            "sbb eax, dword ptr [esp + 0x2c]",
+            "mov dword ptr [esp + 0x48], edi",
+            "mov edi, eax"
+          ]
+        }
+      ],
+      "consumer_count": 6,
+      "final_class": "RUNTIME_REPLACEMENT_REQUIRED"
+    },
+    "0x00B615C4": {
+      "pe_value": "0x008AA3AE",
+      "value_class": "INVALID_TEXT_BOUNDARY",
+      "in_ordinary_named_iat": false,
+      "named_iat": null,
+      "in_pe_import_firstthunk": null,
+      "initial_interpretation": {
+        "class": "DELIBERATELY_INVALID_SENTINEL_OR_PLACEHOLDER",
+        "covering": "0x008AA3AE: or eax, 0x4e286850",
+        "byte_role": "Capstone-decodable at VA but rejected by linear sweep",
+        "note": "Not a linear-sweep instruction boundary. Same placeholder shape as nearby named import slots (e.g. VERSION.dll at 0x00B615EC) whose PE values also fail ordinary entry checks. No ordinary XOR/add decode observed; treat as unbound/runtime-filled placeholder."
+      },
+      "consumers": [
+        {
+          "kind": "READ",
+          "eip": "0x0071EA4A",
+          "text": "mov edi, dword ptr [0x00B615C4]",
+          "owner": "0x0071EA40",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "window": [
+            "mov edi, dword ptr [0xb615c4]",
+            "mov esi, ecx",
+            "je 0x71ea89",
+            "push 0",
+            "lea eax, [esi + 0x4c0]",
+            "push eax",
+            "push 8",
+            "push 0x3b",
+            "call edi",
+            "push 0",
+            "lea ecx, [esi + 0x4c8]",
+            "push ecx"
+          ]
+        },
+        {
+          "kind": "READ",
+          "eip": "0x00727F4E",
+          "text": "mov edi, dword ptr [0x00B615C4]",
+          "owner": "0x00727F40",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "window": [
+            "mov edi, dword ptr [0xb615c4]",
+            "push 0",
+            "push 0x1318630",
+            "push 8",
+            "push 0x3b",
+            "call edi",
+            "push 0",
+            "push 0x1318638",
+            "push 8",
+            "push 0x35",
+            "call edi",
+            "push 0"
+          ]
+        },
+        {
+          "kind": "READ",
+          "eip": "0x0072E346",
+          "text": "mov esi, dword ptr [0x00B615C4]",
+          "owner": "0x0072E340",
+          "owner_label": "HIGH_CONFIDENCE",
+          "discovered_high": true,
+          "window": [
+            "mov esi, dword ptr [0xb615c4]",
+            "mov ebx, ecx",
+            "xor ebp, ebp",
+            "push ebp",
+            "lea eax, [ebx + 0x4c0]",
+            "push eax",
+            "push 8",
+            "push 0x3a",
+            "call esi",
+            "push ebp",
+            "lea ecx, [ebx + 0x4c8]",
+            "push ecx"
+          ]
+        }
+      ],
+      "consumer_count": 3,
+      "final_class": "RUNTIME_REPLACEMENT_REQUIRED"
+    }
+  },
+  "three_call": {
+    "listing_prefix": [
+      "0x0072E340: sub esp, 0x4c",
+      "0x0072E343: push ebx",
+      "0x0072E344: push ebp",
+      "0x0072E345: push esi",
+      "0x0072E346: mov esi, dword ptr [0xb615c4]",
+      "0x0072E34C: mov ebx, ecx",
+      "0x0072E34E: xor ebp, ebp",
+      "0x0072E350: push ebp",
+      "0x0072E351: lea eax, [ebx + 0x4c0]",
+      "0x0072E357: push eax",
+      "0x0072E358: push 8",
+      "0x0072E35A: push 0x3a",
+      "0x0072E35C: call esi",
+      "0x0072E35E: push ebp",
+      "0x0072E35F: lea ecx, [ebx + 0x4c8]",
+      "0x0072E365: push ecx",
+      "0x0072E366: push 8",
+      "0x0072E368: push 0x34",
+      "0x0072E36A: call esi",
+      "0x0072E36C: push ebp",
+      "0x0072E36D: lea edx, [ebx + 0x4d0]",
+      "0x0072E373: push edx",
+      "0x0072E374: push 0x18",
+      "0x0072E376: push 0x32",
+      "0x0072E378: call esi",
+      "0x0072E37A: cmp dword ptr [ebx + 0x4b8], ebp",
+      "0x0072E380: je 0x72e38c",
+      "0x0072E382: mov eax, dword ptr [ebx + 0x54]",
+      "0x0072E385: mov dword ptr [eax + 0x78], 1",
+      "0x0072E38C: lea ecx, [esp + 0x10]",
+      "0x0072E390: push ecx",
+      "0x0072E391: mov edx, ecx",
+      "0x0072E393: push edx",
+      "0x0072E394: mov dword ptr [esp + 0x18], 0xce69f8",
+      "0x0072E39C: mov dword ptr [esp + 0x1c], 0xcc5b44",
+      "0x0072E3A4: call 0x72dd00",
+      "0x0072E3A9: push eax",
+      "0x0072E3AA: push 0x87fa2bec",
+      "0x0072E3AF: call 0x72dca0",
+      "0x0072E3B4: add esp, 0x10",
+      "0x0072E3B7: push 0x20",
+      "0x0072E3B9: call 0x87a79c"
+    ],
+    "calls": [
+      {
+        "eip": "0x0072E35C",
+        "pushes_before": [
+          "ebp",
+          "eax",
+          "8",
+          "0x3a"
+        ]
+      },
+      {
+        "eip": "0x0072E36A",
+        "pushes_before": [
+          "ebp",
+          "ecx",
+          "8",
+          "0x34"
+        ]
+      },
+      {
+        "eip": "0x0072E378",
+        "pushes_before": [
+          "ebp",
+          "edx",
+          "0x18",
+          "0x32"
+        ]
+      }
+    ],
+    "abi_inference": {
+      "form": "register-indirect via ESI",
+      "stack_args_each": 4,
+      "stdcall_arg_order": [
+        "code",
+        "size",
+        "buffer",
+        "flags"
+      ],
+      "observed_imm_args": [
+        {
+          "index": 1,
+          "stack_dwords_push_order": [
+            "0",
+            "lea [ebx+0x4C0]",
+            "8",
+            "0x3A"
+          ],
+          "stdcall_args": {
+            "code": "0x3A",
+            "size": 8,
+            "buffer": "[ebx+0x4C0]",
+            "flags": 0
+          }
+        },
+        {
+          "index": 2,
+          "stack_dwords_push_order": [
+            "0",
+            "lea [ebx+0x4C8]",
+            "8",
+            "0x34"
+          ],
+          "stdcall_args": {
+            "code": "0x34",
+            "size": 8,
+            "buffer": "[ebx+0x4C8]",
+            "flags": 0
+          }
+        },
+        {
+          "index": 3,
+          "stack_dwords_push_order": [
+            "0",
+            "lea [ebx+0x4D0]",
+            "0x18",
+            "0x32"
+          ],
+          "stdcall_args": {
+            "code": "0x32",
+            "size": 24,
+            "buffer": "[ebx+0x4D0]",
+            "flags": 0
+          }
+        }
+      ],
+      "caller_cleans": false,
+      "likely": "stdcall 4-arg (or custom equivalent); caller does not add esp after call esi",
+      "pattern": "repeated same-callback fill of three object regions (+0x4C0 size 8 / +0x4C8 size 8 / +0x4D0 size 0x18) with distinct codes",
+      "returns_used": false,
+      "observable_effect": "Expected to mutate the three lea'd object buffers before the [ebx+0x4B8] check and the later Direct3DCreate9 path; no return value consumed.",
+      "note": "No semantic Win32/API name assigned without ordinary binding evidence."
+    }
+  },
+  "table_base_refs": {
+    "0x00B61100": [
+      {
+        "kind": "INDIRECT_CALL",
+        "eip": "0x0097B686",
+        "text": "call dword ptr [0x00B61100]",
+        "owner": "0x0097B5E0",
+        "label": "HIGH_CONFIDENCE",
+        "discovered_high": true
+      }
+    ],
+    "0x00B61188": [
+      {
+        "kind": "INDIRECT_CALL",
+        "eip": "0x0087C6AA",
+        "text": "call dword ptr [0x00B61188]",
+        "owner": "0x0087C6A2",
+        "label": "HIGH_CONFIDENCE",
+        "discovered_high": true
+      },
+      {
+        "kind": "INDIRECT_CALL",
+        "eip": "0x0087C6D2",
+        "text": "call dword ptr [0x00B61188]",
+        "owner": "0x0087C6B2",
+        "label": "HIGH_CONFIDENCE",
+        "discovered_high": true
+      },
+      {
+        "kind": "INDIRECT_CALL",
+        "eip": "0x0087C8B9",
+        "text": "call dword ptr [0x00B61188]",
+        "owner": "0x0087C859",
+        "label": "HIGH_CONFIDENCE",
+        "discovered_high": true
+      },
+      {
+        "kind": "INDIRECT_CALL",
+        "eip": "0x009773B9",
+        "text": "call dword ptr [0x00B61188]",
+        "owner": "0x009773B0",
+        "label": "HIGH_CONFIDENCE",
+        "discovered_high": true
+      },
+      {
+        "kind": "INDIRECT_CALL",
+        "eip": "0x0097789A",
+        "text": "call dword ptr [0x00B61188]",
+        "owner": "0x00977870",
+        "label": "HIGH_CONFIDENCE",
+        "discovered_high": true
+      },
+      {
+        "kind": "INDIRECT_CALL",
+        "eip": "0x0097F8D6",
+        "text": "call dword ptr [0x00B61188]",
+        "owner": "0x0097F790",
+        "label": "HIGH_CONFIDENCE",
+        "discovered_high": true
+      }
+    ],
+    "0x00B611D4": [
+      {
+        "kind": "INDIRECT_CALL",
+        "eip": "0x0072B84B",
+        "text": "call dword ptr [0x00B611D4]",
+        "owner": "0x0072B7D0",
+        "label": "HIGH_CONFIDENCE",
+        "discovered_high": true
+      },
+      {
+        "kind": "READ",
+        "eip": "0x0076673A",
+        "text": "mov ebp, dword ptr [0x00B611D4]",
+        "owner": "0x00766730",
+        "label": "HIGH_CONFIDENCE",
+        "discovered_high": true
+      },
+      {
+        "kind": "INDIRECT_CALL",
+        "eip": "0x0087C5A2",
+        "text": "call dword ptr [0x00B611D4]",
+        "owner": "0x0087C4BC",
+        "label": "HIGH_CONFIDENCE",
+        "discovered_high": true
+      },
+      {
+        "kind": "INDIRECT_CALL",
+        "eip": "0x0087E10E",
+        "text": "call dword ptr [0x00B611D4]",
+        "owner": "0x0087E0FD",
+        "label": "HIGH_CONFIDENCE",
+        "discovered_high": true
+      },
+      {
+        "kind": "INDIRECT_CALL",
+        "eip": "0x0087E1B0",
+        "text": "call dword ptr [0x00B611D4]",
+        "owner": "0x0087E0FD",
+        "label": "HIGH_CONFIDENCE",
+        "discovered_high": true
+      },
+      {
+        "kind": "INDIRECT_CALL",
+        "eip": "0x0087E260",
+        "text": "call dword ptr [0x00B611D4]",
+        "owner": "0x0087E209",
+        "label": "HIGH_CONFIDENCE",
+        "discovered_high": true
+      },
+      {
+        "kind": "READ",
+        "eip": "0x009ECDC2",
+        "text": "mov ebx, dword ptr [0x00B611D4]",
+        "owner": "0x009ECD30",
+        "label": "HIGH_CONFIDENCE",
+        "discovered_high": true
+      },
+      {
+        "kind": "INDIRECT_CALL",
+        "eip": "0x009EDB36",
+        "text": "call dword ptr [0x00B611D4]",
+        "owner": "0x009EDB20",
+        "label": "HIGH_CONFIDENCE",
+        "discovered_high": true
+      },
+      {
+        "kind": "READ",
+        "eip": "0x009EDFF2",
+        "text": "mov ebp, dword ptr [0x00B611D4]",
+        "owner": "0x009EDFF0",
+        "label": "HIGH_CONFIDENCE",
+        "discovered_high": true
+      },
+      {
+        "kind": "INDIRECT_CALL",
+        "eip": "0x00AE5378",
+        "text": "call dword ptr [0x00B611D4]",
+        "owner": "0x00AE536F",
+        "label": "HIGH_CONFIDENCE",
+        "discovered_high": true
+      }
+    ],
+    "0x00B61500": [
+      {
+        "kind": "INDIRECT_CALL",
+        "eip": "0x0073638D",
+        "text": "call dword ptr [0x00B61500]",
+        "owner": "0x00736030",
+        "label": "HIGH_CONFIDENCE",
+        "discovered_high": true
+      }
+    ],
+    "0x00B615C4": [
+      {
+        "kind": "READ",
+        "eip": "0x0071EA4A",
+        "text": "mov edi, dword ptr [0x00B615C4]",
+        "owner": "0x0071EA40",
+        "label": "HIGH_CONFIDENCE",
+        "discovered_high": true
+      },
+      {
+        "kind": "READ",
+        "eip": "0x00727F4E",
+        "text": "mov edi, dword ptr [0x00B615C4]",
+        "owner": "0x00727F40",
+        "label": "HIGH_CONFIDENCE",
+        "discovered_high": true
+      },
+      {
+        "kind": "READ",
+        "eip": "0x0072E346",
+        "text": "mov esi, dword ptr [0x00B615C4]",
+        "owner": "0x0072E340",
+        "label": "HIGH_CONFIDENCE",
+        "discovered_high": true
+      }
+    ],
+    "0x00B61528": [
+      {
+        "kind": "INDIRECT_CALL",
+        "eip": "0x00723A97",
+        "text": "call dword ptr [0x00B61528]",
+        "owner": "0x00723A00",
+        "label": "HIGH_CONFIDENCE",
+        "discovered_high": true
+      },
+      {
+        "kind": "READ",
+        "eip": "0x00723AC2",
+        "text": "mov ebp, dword ptr [0x00B61528]",
+        "owner": "0x00723A00",
+        "label": "HIGH_CONFIDENCE",
+        "discovered_high": true
+      }
+    ],
+    "0x00B615E4": [
+      {
+        "kind": "INDIRECT_CALL",
+        "eip": "0x0072E554",
+        "text": "call dword ptr [0x00B615E4]",
+        "owner": "0x0072E340",
+        "label": "HIGH_CONFIDENCE",
+        "discovered_high": true
+      }
+    ],
+    "0x00B61230": [
+      {
+        "kind": "INDIRECT_JUMP",
+        "eip": "0x00AE5074",
+        "text": "jmp dword ptr [0x00B61230]",
+        "owner": "0x00AE5074",
+        "label": "HIGH_CONFIDENCE",
+        "discovered_high": true
+      }
+    ]
+  },
+  "alias_writers": {
+    "definite": [],
+    "possible": [],
+    "candidate_count": 128,
+    "all_kinds": {
+      "INDIRECT_CALL": 78,
+      "READ": 27,
+      "INDIRECT_JUMP": 23
+    }
+  },
+  "bulk_copies": [],
+  "shadow_table": {
+    "data_copies_of_initial_values": [],
+    "found": false
+  },
+  "imports": {
+    "dynamic_loader_imports_in_ordinary_abi": [],
+    "memcpy": [
+      {
+        "dll": "MSVCR80.dll",
+        "symbol": "memcpy",
+        "ordinal": null,
+        "thunk": "0x0087B44C",
+        "iat_slot": "0x00B61270",
+        "calling_convention": "cdecl",
+        "call_sites": 357,
+        "tail_jumps": 4,
+        "confidence": "high"
+      },
+      {
+        "dll": "MSVCR80.dll",
+        "symbol": "memmove",
+        "ordinal": null,
+        "thunk": "0x0087B4B8",
+        "iat_slot": "0x00B61274",
+        "calling_convention": "cdecl",
+        "call_sites": 98,
+        "tail_jumps": 1,
+        "confidence": "high"
+      }
+    ],
+    "has_getprocaddress_ordinary_abi": false,
+    "has_virtualprotect_ordinary_abi": false
+  },
+  "pe_import_binding": {
+    "directories": {
+      "Import": {
+        "rva": "0x01ECEC7F",
+        "va": "0x022CEC7F",
+        "size": "0x00000208",
+        "section": ".securom"
+      },
+      "Resource": {
+        "rva": "0x014B3000",
+        "va": "0x018B3000",
+        "size": "0x00001214",
+        "section": ".rsrc"
+      },
+      "Security": {
+        "rva": "0x01548000",
+        "va": "0x01948000",
+        "size": "0x00001510",
+        "section": "Stext"
+      },
+      "Debug": {
+        "rva": "0x01ECB000",
+        "va": "0x022CB000",
+        "size": "0x0000001C",
+        "section": ".securom"
+      },
+      "TLS": {
+        "rva": "0x00849E60",
+        "va": "0x00C49E60",
+        "size": "0x00000018",
+        "section": ".rdata"
+      },
+      "IAT": {
+        "rva": "0x01ECD82F",
+        "va": "0x022CD82F",
+        "size": "0x00000A28",
+        "section": ".securom"
+      }
+    },
+    "import_directory_section": ".securom",
+    "iat_directory_section": ".securom",
+    "delay_import_present": false,
+    "descriptor_count": 25,
+    "descriptors_overlap_ordinary_B610_B617": [],
+    "d3d9_descriptors": [
+      {
+        "dll": "d3d9.dll",
+        "lo": "0x022CDB73",
+        "hi": "0x022CDB73",
+        "n": 1,
+        "section": ".securom"
+      }
+    ],
+    "watched_slot_in_pe_iat": {
+      "0x00B611D4": null,
+      "0x00B61188": null,
+      "0x00B615C4": null
+    },
+    "securom_kernel_apis": [
+      {
+        "dll": "KERNEL32.dll",
+        "symbol": "LoadLibraryA",
+        "iat": "0x022CD82F"
+      },
+      {
+        "dll": "KERNEL32.dll",
+        "symbol": "LoadLibraryW",
+        "iat": "0x022CD893"
+      },
+      {
+        "dll": "KERNEL32.dll",
+        "symbol": "VirtualQuery",
+        "iat": "0x022CD89B"
+      },
+      {
+        "dll": "KERNEL32.dll",
+        "symbol": "VirtualAlloc",
+        "iat": "0x022CD89F"
+      },
+      {
+        "dll": "KERNEL32.dll",
+        "symbol": "VirtualFree",
+        "iat": "0x022CD8A3"
+      },
+      {
+        "dll": "KERNEL32.dll",
+        "symbol": "GetProcAddress",
+        "iat": "0x022CD8CF"
+      },
+      {
+        "dll": "KERNEL32.dll",
+        "symbol": "VirtualProtect",
+        "iat": "0x022CD907"
+      },
+      {
+        "dll": "KERNEL32.dll",
+        "symbol": "LoadLibraryExA",
+        "iat": "0x022CDB3B"
+      },
+      {
+        "dll": "KERNEL32.dll",
+        "symbol": "LoadLibraryExW",
+        "iat": "0x022CDB3F"
+      }
+    ],
+    "ordinary_text_imm_refs_to_securom_api_iat": {
+      "LoadLibraryA": 0,
+      "LoadLibraryW": 0,
+      "VirtualQuery": 0,
+      "VirtualAlloc": 0,
+      "VirtualFree": 0,
+      "GetProcAddress": 0,
+      "VirtualProtect": 0,
+      "LoadLibraryExA": 0,
+      "LoadLibraryExW": 0
+    },
+    "conclusion": "Official PE Import Directory and IAT Data Directory reside in .securom. No IMAGE_IMPORT_DESCRIPTOR FirstThunk range covers 0x00B615C4 / 0x00B611D4 / 0x00B61188. GetProcAddress/VirtualProtect/LoadLibrary* IAT slots are in the protected VA range (~0x22CD****) with zero ordinary .text absolute immediates. Ordinary .rdata B610xx\u2013B617xx is a parallel dispatch/IAT-shaped window consumed by ordinary code, but PE binding of those slots is not performed by the documented ordinary import directory."
+  },
+  "memory_protection": {
+    "virtualprotect_in_ordinary_abi": false,
+    "virtualprotect_in_securom_iat": true,
+    "ordinary_text_refs_to_virtualprotect_iat": 0,
+    "evidence_linking_to_table": false
+  },
+  "module_dll_evidence": {
+    "home_run_adjacent_named_iat": [
+      {
+        "iat_slot": "0x00B615EC",
+        "symbol": "VERSION.dll!VerQueryValueA"
+      },
+      {
+        "iat_slot": "0x00B615F0",
+        "symbol": "VERSION.dll!GetFileVersionInfoSizeA"
+      },
+      {
+        "iat_slot": "0x00B615F4",
+        "symbol": "VERSION.dll!GetFileVersionInfoA"
+      }
+    ],
+    "d3d9_in_pe_import_dir": true,
+    "d3d9_iat_range": [
+      {
+        "dll": "d3d9.dll",
+        "lo": "0x022CDB73",
+        "hi": "0x022CDB73",
+        "n": 1,
+        "section": ".securom"
+      }
+    ],
+    "note": "d3d9.dll appears in the SecuROM-hosted PE import directory (IAT ~0x22CD****), not as a member of the ordinary 0x00B61528 table. VERSION.dll named slots sit just after the home run. No ordinary DLL/module string initializer path was tied to publishing 0x00B615C4."
+  },
+  "publishers": {
+    "definite_writers": [],
+    "possible_writers": [],
+    "bulk_copy_hits": [],
+    "best_candidate": "PE/SecuROM import-binding of ordinary .rdata dispatch window",
+    "publication": {
+      "class": "EXTERNAL_PROTECTED_INITIALIZATION",
+      "best_candidate": "PE/SecuROM import-binding of ordinary .rdata dispatch window",
+      "call_graph_reachable": false,
+      "needs_tls": false,
+      "needs_00686000": false,
+      "needs_protected_external": true,
+      "evidence": [
+        "Official PE Import + IAT directories are in .securom (VA ~0x22CD****)",
+        "Watched slots are NOT members of any IMAGE_IMPORT_DESCRIPTOR FirstThunk range",
+        "Zero DEFINITE ordinary writers / alias writers / overlapping memcpy into the table",
+        "Zero ordinary .text immediates to SecuROM GetProcAddress/VirtualProtect IAT slots",
+        "Named ordinary imports (e.g. VERSION.dll @ 0x00B615EC) sit adjacent to the home run and share the same invalid PE placeholder shape",
+        "Phase-16 HIGH re-scan found no new publisher of 0x00B615C4"
+      ],
+      "note": "Publication of callable targets into 0x00B615C4 is not an ordinary-code responsibility observable in .text/.rdata/.data. It depends on unavailable protected/external binding. Do not invent a callback body."
+    },
+    "note": "Publication of callable targets into 0x00B615C4 is not an ordinary-code responsibility observable in .text/.rdata/.data. It depends on unavailable protected/external binding. Do not invent a callback body."
+  },
+  "create_status": {
+    "discovered_high": true,
+    "call_graph_reachable": true,
+    "map_reachable_means": "discovery_enrollment",
+    "label": "HIGH_CONFIDENCE",
+    "enrolled": true,
+    "directly_referenced": true
+  },
+  "flag_set1": {
+    "status": {
+      "discovered_high": true,
+      "call_graph_reachable": false,
+      "map_reachable_means": "discovery_enrollment",
+      "label": "HIGH_CONFIDENCE",
+      "enrolled": true,
+      "directly_referenced": false
+    },
+    "indirect": {
+      "direct_preds": [],
+      "neighbors_in_map": [],
+      "ordinary_section_dword_hits": [],
+      "indirect_candidate": "NONE_OBSERVED",
+      "note": "No E8/E9, absolute immediate, or ordinary .rdata/.data dword equal to 0x00722D60. No indexed base+offset publisher observed."
+    }
+  },
+  "relationship": {
+    "shared_dense_pointer_table_run": false,
+    "shared_invalid_initial_format": true,
+    "shared_absolute_writer": false,
+    "shared_publication_class": "EXTERNAL_PROTECTED_PLACEHOLDER_BINDING",
+    "shared_publication_mechanism": "Same .rdata dispatch-window placeholder class; different sub-tables (B61188/B611D4 near KERNEL32 cluster; B615C4 in home graphics run). No ordinary publisher found for any of the three.",
+    "priority_slot": "0x00B615C4"
+  },
+  "frontier": {
+    "FACTORY_FRONTIER_READY": false,
+    "reasons": [
+      "0x00B615C4 not legitimately resolved to callable"
+    ],
+    "DIRECT3D9_IMPLEMENTED": false,
+    "PRE_FACTORY_CALLBACK": "UNRESOLVED",
+    "STATIC_FACTORY": "REACHABLE"
+  },
+  "execution": {
+    "ran": false,
+    "reason": "publication depends on protected/external binding; no ordinary initializer to run",
+    "slot_changed": false,
+    "resulting_target": null,
+    "target_valid_ordinary": false,
+    "graphics_prefix_executed": false,
+    "reached_before_d3d": false
+  },
+  "first_frame_estimate": {
+    "best_case_phase": 20,
+    "likely_low": 23,
+    "likely_high": 31,
+    "note": "External/protected publication proven as the dependency class, but not implemented; estimate unchanged (do not invent callback bodies)."
+  },
+  "phase19": {
+    "recommendation": "GRAPHICS_FRONTIER_REQUIRES_EXTERNAL_INITIALIZATION",
+    "actions": [
+      "Document external/protected binding dependency for 0x00B615C4 without reconstructing protected code",
+      "Search for an independent ordinary graphics initialization route that does not consume 0x00B615C4",
+      "Keep Direct3D9 unimplemented until a legitimate callable target is obtained without patching .rdata"
+    ]
+  }
+}
