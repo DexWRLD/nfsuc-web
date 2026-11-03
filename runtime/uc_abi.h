@@ -49,7 +49,8 @@ typedef enum UcHle {
     UC_HLE_CICOS,
     UC_HLE_CIACOS,
     UC_HLE_CISQRT,
-    UC_HLE_TLSALLOC
+    UC_HLE_TLSALLOC,
+    UC_HLE_TLSSETVALUE
 } UcHle;
 
 /* Where an import argument is read, and where its result is written.
@@ -152,6 +153,12 @@ const UcImport *uc_import_find_dispatch_target(uint32_t target);
 unsigned uc_import_count(void);
 /* Optional: write thunk into guest IAT when the slot is writable. */
 unsigned uc_import_bind_hle_iats(void);
+
+/* Dynamic Win32 TLS (guest-managed; not host OS TLS). */
+void uc_tls_reset(void);
+uint32_t uc_tls_get_value(uint32_t index);
+int uc_tls_slot_allocated(uint32_t index);
+unsigned uc_tls_thread_context_count(void);
 
 typedef uint32_t (*UcHleFn)(struct CPU *c, const UcDecoded *in, int *ok);
 

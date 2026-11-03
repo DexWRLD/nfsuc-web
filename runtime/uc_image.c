@@ -192,6 +192,7 @@ int uc_image_reset(uint8_t *mem, uint32_t mem_size) {
     uc_access_fault.active = 0;
     for (i = 0; i < 16; i++) sink[i] = 0;
     for (i = 0; i < 8; i++) uc_esp_mark[i] = 0;
+    uc_tls_reset();
     return mem && mem_size ? 0 : -1;
 }
 

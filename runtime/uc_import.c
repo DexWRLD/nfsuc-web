@@ -53,20 +53,66 @@ static int x87_replace(struct CPU *c, UcHostUnary fn, const char *missing) {
 
 #include "uc_import_table.inc"
 
-/* Guest TLS index allocator for KERNEL32!TlsAlloc.
- * Indices are abstract guest values, not host TLS slots. */
-enum { UC_TLS_INDEX_MAX = 128 };
+/* Dynamic Win32 TLS — guest-managed indices/values, not host OS TLS.
+ * Today: one active guest-thread context (single-thread harness).
+ * Layout keeps a thread axis so multi-thread can be added later. */
+enum { UC_TLS_INDEX_MAX = 128, UC_TLS_THREAD_MAX = 1 };
 #define UC_TLS_OUT_OF_INDEXES 0xffffffffu
 static uint32_t uc_tls_next;
 static uint32_t uc_tls_free_stack[UC_TLS_INDEX_MAX];
 static int uc_tls_nfree;
+static uint8_t uc_tls_allocated[UC_TLS_INDEX_MAX];
+static uint32_t uc_tls_values[UC_TLS_THREAD_MAX][UC_TLS_INDEX_MAX];
+static unsigned uc_tls_active_thread; /* always 0 for current harness */
+
+void uc_tls_reset(void) {
+    unsigned t, i;
+    uc_tls_next = 0;
+    uc_tls_nfree = 0;
+    uc_tls_active_thread = 0;
+    for (i = 0; i < UC_TLS_INDEX_MAX; i++) {
+        uc_tls_allocated[i] = 0;
+        uc_tls_free_stack[i] = 0;
+        for (t = 0; t < UC_TLS_THREAD_MAX; t++)
+            uc_tls_values[t][i] = 0;
+    }
+}
+
+unsigned uc_tls_thread_context_count(void) {
+    return UC_TLS_THREAD_MAX;
+}
+
+int uc_tls_slot_allocated(uint32_t index) {
+    return index < UC_TLS_INDEX_MAX && uc_tls_allocated[index];
+}
+
+uint32_t uc_tls_get_value(uint32_t index) {
+    if (!uc_tls_slot_allocated(index)) return 0;
+    if (uc_tls_active_thread >= UC_TLS_THREAD_MAX) return 0;
+    return uc_tls_values[uc_tls_active_thread][index];
+}
 
 static uint32_t uc_tls_alloc_index(void) {
+    uint32_t idx;
     if (uc_tls_nfree > 0)
-        return uc_tls_free_stack[--uc_tls_nfree];
-    if (uc_tls_next < UC_TLS_INDEX_MAX)
-        return uc_tls_next++;
-    return UC_TLS_OUT_OF_INDEXES;
+        idx = uc_tls_free_stack[--uc_tls_nfree];
+    else if (uc_tls_next < UC_TLS_INDEX_MAX)
+        idx = uc_tls_next++;
+    else
+        return UC_TLS_OUT_OF_INDEXES;
+    uc_tls_allocated[idx] = 1;
+    if (uc_tls_active_thread < UC_TLS_THREAD_MAX)
+        uc_tls_values[uc_tls_active_thread][idx] = 0;
+    return idx;
+}
+
+static uint32_t uc_tls_set_value(uint32_t index, uint32_t value) {
+    /* Public BOOL: nonzero success. NULL value is valid for an allocated index.
+     * GetLastError is not modeled yet. */
+    if (!uc_tls_slot_allocated(index)) return 0;
+    if (uc_tls_active_thread >= UC_TLS_THREAD_MAX) return 0;
+    uc_tls_values[uc_tls_active_thread][index] = value;
+    return 1;
 }
 
 int uc_abi_callee_bytes(UcAbi abi, int stack_dwords) {
@@ -174,6 +220,12 @@ static uint32_t hle_run(struct CPU *c, const UcImport *imp, const UcDecoded *in,
         (void)in;
         *ok = 1;
         return uc_tls_alloc_index();
+    }
+    if (imp->hle == UC_HLE_TLSSETVALUE) {
+        /* KERNEL32!TlsSetValue(index, value): stdcall, 2 stack dwords; EAX BOOL. */
+        if (in->stack_dwords < 2) return 0;
+        *ok = 1;
+        return uc_tls_set_value(in->stack[0], in->stack[1]);
     }
     if (imp->arg_loc == UC_LOC_ST0 || imp->ret_loc == UC_LOC_ST0) {
         if (imp->arg_loc != UC_LOC_ST0 || imp->ret_loc != UC_LOC_ST0) {
