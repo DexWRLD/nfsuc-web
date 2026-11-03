@@ -1,5 +1,10 @@
 interface InitializerExports {
   run_init(): number;
+  run_queue(mode: number): number;
+  queue_word(address: number): number;
+  queue_stop(): number;
+  queue_value(): number;
+  prefix_fault(): number;
   frontend_lookup(length: number): number;
   frontend_stop(): number;
   frontend_native_id(): number;
@@ -77,4 +82,46 @@ export async function runFrontendLookup() {
     throw new Error('Unexpected original frontend lookup trace');
   }
   return { index, nativeId, stop };
+}
+
+const queueCases = [
+  'Append to empty vector', 'Append after existing entry', 'Full vector',
+  'Processing disabled', 'Empty scan', 'No pending entry', 'Pending entry',
+  'Null entry', 'Unmapped entry',
+];
+
+export async function runFrontendQueue() {
+  const results: string[] = [];
+  for (const [mode, label] of queueCases.entries()) {
+    const guest = await loadInitializer();
+    const boundary = mode === 2 ? 0x005d6b20 : mode === 6 ? 0x0055feb0 : 0;
+    const fault = mode === 7 ? 4 : mode === 8 ? 0xdead0004 : 0;
+    let trapped = false;
+    try {
+      if (guest.run_queue(mode) !== 0x00dec0de) throw new Error('Wrong guest return');
+    } catch (error) {
+      if (!(error instanceof WebAssembly.RuntimeError) || !(boundary || fault)) throw error;
+      trapped = true;
+    }
+    const word = (address: number) => guest.queue_word(address) >>> 0;
+    const begin = word(0x0300ed10);
+    const end = word(0x0300ed14);
+    const entry = 0x0300ed60;
+    const expectedEnd = mode === 1 ? 0x0300ed50 : mode === 4 ? 0x0300ed48 : 0x0300ed4c;
+    const first = mode === 7 ? 0 : mode === 8 ? 0xdead0000 : entry;
+    if (trapped !== Boolean(boundary || fault) || guest.queue_stop() !== boundary
+        || (guest.prefix_fault() >>> 0) !== fault || begin !== 0x0300ed48 || end !== expectedEnd
+        || word(begin) !== first || word(begin + 4) !== (mode === 1 ? entry : 0xaabbccdd)
+        || word(begin - 4) !== 0x11223344 || word(begin + 8) !== 0x55667788
+        || word(entry + 4) !== (mode === 5 ? 2 : 1) || word(entry + 12) !== 7
+        || guest.queue_value() !== (mode === 6 ? 900 : 0)) {
+      throw new Error('Unexpected queue trace: ' + label);
+    }
+    const hex = (value: number) => '0x' + value.toString(16).toUpperCase().padStart(8, '0');
+    const outcome = boundary ? 'blocked at ' + hex(boundary) : fault ? 'rejected read ' + hex(fault) : 'returned with stack restored';
+    results.push(label + ' · ' + (mode < 3 ? '0x0080F4F0' : '0x008091E0') + ' · '
+      + hex(begin) + '–' + hex(end) + ' · ' + (end - begin) / 4 + ' entries · ' + outcome
+      + (mode === 6 ? ' · entry ' + hex(entry) + ', state 1, selected index 7, fixture numeric field 900' : ''));
+  }
+  return results;
 }

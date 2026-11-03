@@ -1,5 +1,5 @@
 import './app/undercover-home.css';
-import { runFrontendLookup, runAptDiagnostic, runUndercoverInitializer } from './app/uc-browser-init';
+import { runFrontendQueue, runFrontendLookup, runAptDiagnostic, runUndercoverInitializer } from './app/uc-browser-init';
 import { bootUcAssets } from './app/uc-boot';
 import { bootUcAssetPreviews } from './app/uc-asset-preview-boot';
 import { bootUcStartupPreview } from './app/uc-startup-boot';
@@ -86,5 +86,19 @@ frontendLookup.addEventListener('click', async () => {
     frontendResult.textContent = error instanceof Error ? error.message : String(error);
   } finally {
     frontendLookup.disabled = false;
+  }
+});
+
+const queueButton = document.querySelector<HTMLButtonElement>('#frontend-queue')!;
+const queueResult = document.querySelector<HTMLElement>('#queue-result')!;
+queueButton.addEventListener('click', async () => {
+  queueButton.disabled = true;
+  queueResult.textContent = 'Running queue diagnostics…';
+  try {
+    queueResult.textContent = (await runFrontendQueue()).join('\n');
+  } catch (error) {
+    queueResult.textContent = error instanceof Error ? error.message : String(error);
+  } finally {
+    queueButton.disabled = false;
   }
 });

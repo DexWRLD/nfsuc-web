@@ -136,6 +136,14 @@ test('authorized EA bumper plays over the LAN asset pipeline', { skip: !process.
     await page.waitForFunction(() => document.querySelector('#apt-result')?.textContent.includes('18 zeroed'));
     await page.locator('#apt-fixture').click();
     await page.waitForFunction(() => document.querySelector('#apt-result')?.textContent.includes('Both calls restored ESP'));
+    for (let attempt = 0; attempt < 2; attempt++) {
+      await page.locator('#frontend-queue').click();
+      await page.waitForFunction(() => document.querySelector('#queue-result')?.textContent.includes('Unmapped entry'));
+      const queue = await page.locator('#queue-result').innerText();
+      assert.equal(queue.split('\n').length, 9);
+      assert.match(queue, /0x005D6B20/);
+      assert.match(queue, /0x0055FEB0/);
+    }
     for (let run = 0; run < 2; run++) {
       await page.locator('#frontend-lookup').click();
       await page.waitForFunction(() => document.querySelector('#frontend-result')?.textContent.includes('index 118'));

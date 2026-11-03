@@ -18,7 +18,7 @@ typedef unsigned u32;
 typedef u32 uint32_t;
 typedef int int32_t;
 typedef signed char int8_t;
-typedef struct { u32 esp, eip, eax, ebp, ecx, edx; } CPU;
+typedef struct { u32 esp, eip, eax, ebp, ecx, edx, esi, edi; } CPU;
 static u32 slots[55];
 static u32 writes, stack_word;
 static u32 *mapped(u32 address) {
@@ -38,12 +38,14 @@ static u32 pop(CPU *c) {
 PREFIX_BRIDGE = r"""
 static u32 stack[64], zero_fields[3], zero_core, fault, trace[8], entered;
 static int equal, less, below;
+static u32 queue_memory[64], queue_active, queue_boundary, queue_numeric;
 static const unsigned char *frontend_data(u32 a, u32 size);
 static u32 read_base, read_delta;
 static u32 apt_mode, apt_headers[19], apt_cell, apt_calls;
 static const u32 apt_offsets[] = {0, 12, 24, 36, 48, 64};
 static u32 *access(u32 a) {
     if (!(a & 3u)) {
+        if (queue_active && a >= 0x0300ed00u && a < 0x0300ee00u) return &queue_memory[(a-0x0300ed00u)/4u];
         if (a >= 0x0300ef00u && a < 0x0300f000u) return &stack[(a-0x0300ef00u)/4u];
         if (apt_mode && a >= 0x0189d0a0u && a < 0x0189d0ecu) return &apt_headers[(a-0x0189d0a0u)/4u];
         if (apt_mode == 2 && a == 0x0300ee00u) return &apt_cell;
@@ -234,6 +236,72 @@ u32 frontend_stop(void) {{ return lookup_stop; }}
 u32 frontend_native_id(void) {{ return lookup_stop ? frontend_word({cell + 4}u) : 0; }}
 """))
 
+def build_queue(lifter):
+    append, append_calls = lifter.lift(0x0080F4F0)
+    scan, scan_calls = lifter.lift(0x008091E0)
+    growth = "PUSH32(0x80f518u); sub_005d6b20(c);"
+    producer = "PUSH32(0x809205u); sub_0055feb0(c);"
+    if (append_calls != {0x005D6B20} or scan_calls != {0x0055FEB0, 0x00804550}
+            or append.count(growth) != 1 or scan.count(producer) != 1):
+        raise ValueError("Unexpected frontend queue instruction shape")
+    append = append.replace(growth, "queue_boundary = 0x005d6b20u; __builtin_trap();")
+    start, suffix = scan.split(producer)
+    resume = "L_00809217:;"
+    if suffix.count(resume) != 1:
+        raise ValueError("Unexpected frontend queue loop continuation")
+    scan = start + "queue_numeric = c->eax; queue_boundary = 0x0055feb0u; __builtin_trap();\n" + suffix[suffix.index(resume):]
+    return "\n".join((r"""
+#undef MR8
+#define MR8(a) ((unsigned char)*access(a))
+#define CC_AE (!below)
+""", append, scan, QUEUE_EXPORTS))
+
+
+QUEUE_EXPORTS = r"""
+#define QBASE 0x0300ed00u
+#define QCELL 0x0300ed40u
+#define QARRAY 0x0300ed48u
+#define QENTRY 0x0300ed60u
+#define QOBJECT 0x0300ed80u
+u32 queue_word(u32 address) {
+    if (!queue_active || address < QBASE || address >= 0x0300ee00u) __builtin_trap();
+    return *access(address);
+}
+u32 queue_stop(void) { return queue_boundary; }
+u32 queue_value(void) { return queue_numeric; }
+u32 run_queue(u32 mode) {
+    if (queue_active || mode > 8) __builtin_trap();
+    queue_active = 1;
+    *access(QBASE+0x10) = QARRAY;
+    *access(QBASE+0x14) = QARRAY + ((mode == 0 || mode == 4) ? 0 : 4);
+    *access(QBASE+0x18) = QARRAY + (mode == 2 ? 4 : 8);
+    *access(QBASE+0x24) = mode == 3;
+    *access(QCELL) = QENTRY;
+    *access(QARRAY-4) = 0x11223344u;
+    *access(QARRAY) = mode == 7 ? 0 : (mode == 8 ? 0xdead0000u : QENTRY);
+    *access(QARRAY+4) = 0xaabbccddu;
+    *access(QARRAY+8) = 0x55667788u;
+    *access(QENTRY) = QOBJECT;
+    *access(QENTRY+4) = mode == 5 ? 2 : 1;
+    *access(QENTRY+0xc) = 7;
+    *access(QOBJECT+0x58) = 900;
+    cpu = (CPU){.esp=mode < 3 ? 0x0300eff8u : 0x0300effcu,
+                .ecx=QBASE+(mode < 3 ? 0x10u : 0u),
+                .esi=0x1234u, .edi=0x5678u};
+    *access(cpu.esp) = 0x00dec0deu;
+    if (mode < 3) {
+        *access(cpu.esp+4) = QCELL;
+        if (mode == 0) *access(QARRAY) = 0xaabbccddu;
+        sub_0080f4f0(&cpu);
+    } else {
+        sub_008091e0(&cpu);
+    }
+    if (cpu.esp != 0x0300f000u || cpu.eip != 0x00dec0deu ||
+        cpu.esi != 0x1234u || cpu.edi != 0x5678u) __builtin_trap();
+    return cpu.eip;
+}
+"""
+
 EXPORTS = r"""
 static CPU cpu;
 u32 read_slot(u32 addr) { return *mapped(addr); }
@@ -270,11 +338,11 @@ def main():
     clang = p7.clang()
     linker = Path(clang).with_name("wasm-ld.exe")
     linker_arg = ["--ld-path=" + str(linker)] if linker.is_file() else []
-    exports = ["run_init", "read_slot", "write_count", "guest_esp", "guest_eax", "run_prefix", "prefix_fault", "prefix_entry", "prefix_read_base", "prefix_read_delta", "run_apt_constructor", "run_apt_fixture", "frontend_lookup", "frontend_stop", "frontend_native_id"]
+    exports = ["run_init", "read_slot", "write_count", "guest_esp", "guest_eax", "run_prefix", "prefix_fault", "prefix_entry", "prefix_read_base", "prefix_read_delta", "run_apt_constructor", "run_apt_fixture", "frontend_lookup", "frontend_stop", "frontend_native_id", "run_queue", "queue_word", "queue_stop", "queue_value"]
     args.output.parent.mkdir(parents=True, exist_ok=True)
     with tempfile.TemporaryDirectory() as tmp:
         source = Path(tmp) / "init.c"
-        source.write_text(BRIDGE + body + EXPORTS + PREFIX_BRIDGE + build_prefix(lifter) + PREFIX_EXPORTS + build_apt(lifter) + build_frontend(lifter, args.image), encoding="utf-8")
+        source.write_text(BRIDGE + body + EXPORTS + PREFIX_BRIDGE + build_prefix(lifter) + PREFIX_EXPORTS + build_apt(lifter) + build_frontend(lifter, args.image) + build_queue(lifter), encoding="utf-8")
         subprocess.run([clang, "--target=wasm32-unknown-unknown", *linker_arg, "-O2",
                         "-ffreestanding", "-nostdlib", "-Wl,--no-entry",
                         *["-Wl,--export=" + name for name in exports],
