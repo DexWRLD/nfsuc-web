@@ -182,6 +182,10 @@ The 24-instruction unreachable-candidate sketch was replaced by a CFG-aware fact
 
 `0x00B615C4` sits in contiguous `.rdata` callback table `0x00B61528`–`0x00B615E4` (48 dwords; 25 invalid initials). The three watched slots are not one table. Create-path ABI is stdcall-like 4-arg `(code,size,buffer,flags)` filling object `+0x4C0/+0x4C8/+0x4D0`. Zero ordinary definite writers, zero overlapping memcpy, no shadow table. Official PE Import Directory and IAT Data Directory are in `.securom`; watched slots are not FirstThunk members; `VirtualProtect`/`GetProcAddress` exist only on the protected IAT with zero ordinary `.text` immediates. Publication class: `EXTERNAL_PROTECTED_INITIALIZATION`. `FACTORY_FRONTIER_READY` remains false. Direct3D was not implemented. Details are in `analysis/undercover/runtime-phase18.md`.
 
+## Phase 19
+
+The factory prefix is frozen as `BLOCKED_EXTERNAL_PROTECTED_INITIALIZATION`. Downstream, ordinary code uses proven device global `0x013C6510` (`PROVEN_D3D9_DEVICE`) with BeginScene/Clear/EndScene/Present-shaped vtable calls and `D3DERR_DEVICELOST`. There is no absolute ordinary store to the device pointer; it is published as a COM out-parameter in `0x00725200`, whose caller hits `0x00686000`. Fifty-five post-init islands need only external DEVICE state for Present-shaped prefixes; device publication still needs external/protected code. FIRST_CLEAR and FIRST_PRESENT are `BLOCKED_EXTERNAL`; FIRST_DRAW was not found on the device load pattern. First-frame phase estimate is UNBOUNDED. Direct3D was not implemented. Details are in `analysis/undercover/runtime-phase19.md`.
+
 ## Status
 
 STATIC CODE READINESS: established for the repaired ordinary high-confidence `.text` list. 22,770 of 22,779 generate, and every generated function compiles. The old 24-instruction discovery cap is gone.
@@ -194,7 +198,7 @@ X87 CRT ABI: established in Phase 9 for `_CIsin`, `_CIcos`, and `_CIacos` as use
 
 DETERMINISTIC CLUSTER EXECUTION: established. Phase 8 ran the five-function string chain. Phase 9 ran the six-function `0x00A124B0` closure twice from the same state, then once with a second input. Phase 10 ran two larger static closures; the completing paths enter 6 functions and repeat.
 
-MAJOR NATIVE SUBSYSTEMS: future. Phase 16–18 put `Direct3DCreate9` on a statically REACHABLE HIGH path outside the helper cut, but it is still not enterable: pre-factory slot `0x00B615C4` requires external/protected publication, and the flag's value-`1` writer remains without an ordinary caller. Filesystem, timing, TLS, and Direct3D were not implemented.
+MAJOR NATIVE SUBSYSTEMS: future. Phase 19 finds a proven post-init device pointer and Present/Clear-shaped ordinary code, but publishing that device still crosses protected/external code (`0x00B615C4` factory freeze and/or `0x00686000` on the publisher caller). Filesystem, timing, TLS, and Direct3D were not implemented.
 
 PROTECTED STARTUP: unresolved and outside this work. `Sitext` and the other protected sections are not read, executed, or rewritten.
 
@@ -204,4 +208,4 @@ The atomic helpers remain a single-threaded stand-in. The game does not boot or 
 
 ## Verdict
 
-The `0x00A124B0` closure runs, and Phase 10 can enter larger ordinary closures until a zero indirect slot or a null pointer. Phase 11 shows that slot has an ordinary writer and that executing the writer moves `0x0099DCD0` past it, onto another zero object field. Phase 12 finds the ordinary store for that field and stops at `call 0x00686000`, which is not an ordinary function and is not substituted. Phase 14–16 show that call remains a narrow cut. Phase 16 repaired function discovery. Phase 18 shows the pre-`Direct3DCreate9` callback table is populated only by external/protected binding, not ordinary code. The game is not ready to boot.
+The `0x00A124B0` closure runs, and Phase 10 can enter larger ordinary closures until a zero indirect slot or a null pointer. Phase 11 shows that slot has an ordinary writer and that executing the writer moves `0x0099DCD0` past it, onto another zero object field. Phase 12 finds the ordinary store for that field and stops at `call 0x00686000`, which is not an ordinary function and is not substituted. Phase 14–16 show that call remains a narrow cut. Phase 16 repaired function discovery. Phase 18 freezes the factory callback table as external/protected. Phase 19 maps post-init D3D device use but cannot publish the device through ordinary code alone. The game is not ready to boot.

@@ -26,10 +26,10 @@ The order from here:
 4. ORDINARY OBJECT INITIALIZATION. Stopped. The writers of `0x0189DA84` and `[0x0189D0A0+8]` follow `call 0x00686000`. That address is an unavailable protected or external dependency. It is not substituted.
 5. DEPENDENCY CUT. Phase 14. Eleven reachable functions must hit that call, 31 can hit it on some walk, and 6,456 have no path to it. The 102-function closure at `0x0099DCD0` is in the last set and still needs the object field this call feeds. It is not the primary frontier.
 6. FUNCTION DISCOVERY REPAIR. Phase 16. CFG-aware fact walk; old 24-instruction cohort mostly promoted; compiler closure holds.
-7. INDEPENDENT SUBSYSTEM FRONTIERS. `Direct3DCreate9` is statically REACHABLE HIGH. Phase 18: `0x00B615C4` lives in `.rdata` table `0x00B61528`–`0x00B615E4`; publication class is `EXTERNAL_PROTECTED_INITIALIZATION` (PE Import/IAT in `.securom`; no ordinary writer). PRE-FACTORY CALLBACK UNRESOLVED. `FACTORY_FRONTIER_READY` is false. Direct3D was not implemented.
-8. Alternate ordinary graphics routes, or accept external initialization. Do not invent callback bodies.
-9. FACTORY FRONTIER READY, then Direct3D9 factory implementation. Not started.
-10. FIRST FRAME, if a path becomes available. Not started. A factory pointer is not a frame.
+7. FACTORY PREFIX FROZEN. `0x00B615C4` / `Direct3DCreate9` create path is `BLOCKED_EXTERNAL_PROTECTED_INITIALIZATION`. Resolving that slot is no longer an active objective.
+8. POST-INIT GRAPHICS FRONTIER. Phase 19: proven device global `0x013C6510` with Present/Clear/BeginScene/EndScene-shaped COM; 55 state-only ordinary islands. Device has no ordinary writer; publisher caller hits `0x00686000`. FIRST_CLEAR/PRESENT `BLOCKED_EXTERNAL`; FIRST_DRAW `NOT_FOUND`. Direct3D not implemented.
+9. Expand post-init analysis (reset/recreate, draw/resource identity) or decide an external-state contract. Do not invent SecuROM callbacks.
+10. FIRST FRAME estimate is UNBOUNDED until a legitimate ordinary device publication path or accepted contract exists.
 
 The strategy is ordinary static recompilation, then ordinary runtime islands, then this dependency cut, then independent subsystem frontiers, then a first-frame path if one is available.
 
