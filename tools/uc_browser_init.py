@@ -36,6 +36,7 @@ static u32 pop(CPU *c) {
 PREFIX_BRIDGE = r"""
 static u32 stack[64], zero_fields[3], zero_core, fault, trace[8], entered;
 static int equal, less;
+static u32 read_base, read_delta;
 static u32 *access(u32 a) {
     if (!(a & 3u)) {
         if (a >= 0x0300ef00u && a < 0x0300f000u) return &stack[(a-0x0300ef00u)/4u];
@@ -45,6 +46,11 @@ static u32 *access(u32 a) {
     }
     fault = a;
     __builtin_trap();
+}
+static u32 *indexed_read(u32 base, u32 delta) {
+    read_base = base;
+    read_delta = delta;
+    return access(base + delta * 4u - 4u);
 }
 static void push(CPU *c, u32 value) { c->esp -= 4; *access(c->esp) = value; }
 static u32 prefix_pop(CPU *c) { u32 value = *access(c->esp); c->esp += 4; return value; }
@@ -64,6 +70,8 @@ static void sub_009e78c0(CPU *c);
 #define DISPATCH_CALL(c,target) do { if ((target) != 0x009e78c0u) __builtin_trap(); sub_009e78c0(c); } while (0)
 """
 PREFIX_EXPORTS = r"""
+u32 prefix_read_base(void) { return read_base; }
+u32 prefix_read_delta(void) { return read_delta; }
 u32 prefix_fault(void) { return fault; }
 u32 prefix_entry(u32 i) { return i < entered ? trace[i] : 0; }
 u32 run_prefix(void) {
@@ -84,6 +92,11 @@ def build_prefix(lifter):
         body, _ = lifter.lift(addr)
         start = f"void sub_{addr:08x}(CPU *restrict c) {{"
         body = body.replace(start, start + f"\n    if (entered >= 8) __builtin_trap(); trace[entered++] = {addr}u;")
+        if addr == 0x009E4B10:
+            operand = "MR32(c->edx+c->eax*4+0xfffffffcu)"
+            if body.count(operand) != 2:
+                raise ValueError("Unexpected indexed read")
+            body = body.replace(operand, "(*indexed_read(c->edx, c->eax))")
         if addr == 0x0099DCD0:
             cut = "    MR32(c->ebp+0xfffffffcu) = (c->eax);"
             if body.count(cut) != 1:
@@ -128,7 +141,7 @@ def main():
     clang = p7.clang()
     linker = Path(clang).with_name("wasm-ld.exe")
     linker_arg = ["--ld-path=" + str(linker)] if linker.is_file() else []
-    exports = ["run_init", "read_slot", "write_count", "guest_esp", "guest_eax", "run_prefix", "prefix_fault", "prefix_entry"]
+    exports = ["run_init", "read_slot", "write_count", "guest_esp", "guest_eax", "run_prefix", "prefix_fault", "prefix_entry", "prefix_read_base", "prefix_read_delta"]
     args.output.parent.mkdir(parents=True, exist_ok=True)
     with tempfile.TemporaryDirectory() as tmp:
         source = Path(tmp) / "init.c"

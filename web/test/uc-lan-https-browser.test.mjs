@@ -138,7 +138,7 @@ test('authorized EA bumper plays over the LAN asset pipeline', { skip: !process.
       writes: 49, eip: 0x00dec0de, esp: 0x0300f000, eax: 0,
       prefix: {
         entered: [0x0099dcd0, 0x009e78c0, 0x009b6290, 0x009e4b10, 0x009e78c0],
-        faultAddress: 0xfffffffc,
+        backingPointer: 0, countMinusIndex: 0, faultAddress: 0xfffffffc,
       },
     });
   }

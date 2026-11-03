@@ -6,6 +6,8 @@ interface InitializerExports {
   guest_eax(): number;
   run_prefix(): number;
   prefix_fault(): number;
+  prefix_read_base(): number;
+  prefix_read_delta(): number;
   prefix_entry(index: number): number;
 }
 
@@ -36,7 +38,10 @@ export async function runUndercoverInitializer() {
     if (entered.some((address, index) => address !== expected[index]) || guest.prefix_entry(5)) {
       throw new Error('Unexpected startup prefix trace');
     }
-    return { ...result, prefix: { entered, faultAddress: guest.prefix_fault() >>> 0 } };
+    const backingPointer = guest.prefix_read_base() >>> 0;
+    const countMinusIndex = guest.prefix_read_delta() | 0;
+    if (backingPointer !== 0 || countMinusIndex !== 0) throw new Error('Unexpected fault operands');
+    return { ...result, prefix: { entered, backingPointer, countMinusIndex, faultAddress: guest.prefix_fault() >>> 0 } };
   }
   throw new Error('Startup prefix returned unexpectedly');
 }

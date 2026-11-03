@@ -43,7 +43,10 @@ runInit.addEventListener('click', async () => {
       'Verified return ESP ' + hex(trace.esp),
       'Entered in order: ' + trace.prefix.entered.map(hex).join(', '),
       'Last dispatch: 0x009E4B32 → 0x009E78C0 (diagnostic callback)',
-      'Read at 0x009E4B49 → ' + hex(trace.prefix.faultAddress),
+      'Last successful instruction: 0x009E4B46 · backing pointer ' + hex(trace.prefix.backingPointer),
+      'Count minus index: ' + trace.prefix.countMinusIndex,
+      'Read at 0x009E4B49 → ' + hex(trace.prefix.faultAddress) + ' · rejected by guest bounds',
+      'Phase 55: verified the publisher at 0x009E46A1. Allocation remains unresolved.',
       'Missing producer: allocator-backed field 0x0189D0A8',
     ].join('\n');
     console.info('[uc-init]', trace);
