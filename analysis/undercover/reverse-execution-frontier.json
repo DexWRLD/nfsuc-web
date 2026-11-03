@@ -1,5 +1,5 @@
 {
-  "phase": 29,
+  "phase": 30,
   "seeds": [
     "0x00721070",
     "0x00739B90",
@@ -419,6 +419,7 @@
     "caller": "0x009E9340",
     "class": "DIRECT_ORDINARY",
     "enterable": false,
-    "blocker": "allocator 0x009EB870 / runtime callback"
+    "blocker": "vtable-mediated game allocator via global object from 0x009E9460 / 0x0189DA88",
+    "allocator_classification": "ORDINARY_GAME_ALLOCATOR"
   }
 }

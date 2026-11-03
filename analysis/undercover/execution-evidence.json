@@ -1,6 +1,59 @@
 {
-  "phase": 29,
+  "phase": 30,
   "roots": [
+    {
+      "root": "0x009E9160",
+      "phase": 30,
+      "result": "RETURNED_CLEAN",
+      "ordinary_initializers_executed": [
+        "0x009E7710",
+        "0x009E9990"
+      ],
+      "functions_entered": [
+        "0x009E9160",
+        "0x009E7710",
+        "0x009E9990",
+        "0x009E9460",
+        "0x009777D0",
+        "0x009E8AD0",
+        "0x00977800"
+      ],
+      "unique_functions_entered": 11,
+      "max_depth": 3,
+      "imports": [
+        "TlsAlloc",
+        "TlsSetValue"
+      ],
+      "indirect_resolved": 2,
+      "termination": "CLEAN_RETURN ret 8; parent 0x009E9340 still blocked on allocator",
+      "memory_contract": "CALLER_OWNED this; guest TLS index@+0x240; value=0",
+      "notes": "TlsSetValue stores ebx=0 into guest TLS slot; ctor returns this",
+      "evidence": "uc_phase30_test.py",
+      "before": "stop at 0x00977800 / [0x00B611C8] when TlsSetValue HLE disabled",
+      "after": "TlsSetValue HLE; wrapper entered; ctor RETURNED_CLEAN",
+      "tls_index": 0,
+      "tls_value": 0
+    },
+    {
+      "root": "0x009E9340",
+      "phase": 30,
+      "result": "BLOCKED_REQUIRED_STATE",
+      "functions_entered": [],
+      "max_depth": 0,
+      "notes": "Do not substitute malloc. Not Phase-30 scope.",
+      "classification": "ORDINARY_GAME_ALLOCATOR",
+      "allocator": {
+        "parent": "0x009E9340",
+        "allocator_helper": "0x009EB870",
+        "mechanism": "0x009EB870 calls 0x009E9460 for allocator object, then virtual call [vtable+8] (edx) with size/args \u2014 runtime-initialized vtable.",
+        "identity": "vtable-mediated game allocator via global object from 0x009E9460 / 0x0189DA88",
+        "classification": "ORDINARY_GAME_ALLOCATOR",
+        "sub_class": "RUNTIME_INITIALIZED_CALLBACK",
+        "standard_crt": false,
+        "implementation_attempted": false,
+        "note": "Do not substitute malloc. Not Phase-30 scope."
+      }
+    },
     {
       "root": "0x009E9160",
       "phase": 29,
@@ -309,14 +362,19 @@
     "0x00924D30",
     "0x00929972",
     "0x00949920",
+    "0x009773C0",
     "0x009777D0",
+    "0x00977800",
+    "0x00977E20",
+    "0x0097FCD0",
     "0x009E7710",
     "0x009E78C0",
     "0x009E8AD0",
     "0x009E9160",
     "0x009E9460",
-    "0x009E9990"
+    "0x009E9990",
+    "0x009EB980"
   ],
   "deepest_ordinary_execution_chain": 3,
-  "largest_executed_ordinary_closure": 10
+  "largest_executed_ordinary_closure": 11
 }

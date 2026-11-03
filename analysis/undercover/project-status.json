@@ -1,6 +1,6 @@
 {
-  "current_phase": 29,
-  "strategy": "Phase 29: KERNEL32!TlsAlloc HLE at 0x00B61138 continues ctor chain past 0x009777D0 into 0x009E8AD0. Graphics frozen.",
+  "current_phase": 30,
+  "strategy": "Phase 30: KERNEL32!TlsSetValue HLE at 0x00B611C8; ctor 0x009E9160 RETURNED_CLEAN. Graphics frozen.",
   "boundaries": {
     "0x00686000": {
       "status": "PROTECTED_OR_EXTERNAL_DEPENDENCY",
@@ -226,6 +226,18 @@
       "phase": 29,
       "completed": true,
       "evidence": "Phase 29: TlsAlloc wrapper; stores guest TLS index"
+    },
+    {
+      "address": "0x00977800",
+      "phase": 30,
+      "completed": true,
+      "evidence": "Phase 30: TlsSetValue wrapper; guest TLS value store; ctor clean return"
+    },
+    {
+      "address": "0x009E9160",
+      "phase": 30,
+      "completed": true,
+      "evidence": "Phase 30: constructor RETURNED_CLEAN after TlsAlloc+TlsSetValue"
     }
   ],
   "phases": [
@@ -362,6 +374,11 @@
     {
       "phase": 29,
       "name": "TlsAlloc depth-3 boundary",
+      "state": "completed"
+    },
+    {
+      "phase": 30,
+      "name": "TlsSetValue dynamic guest TLS",
       "state": "completed"
     }
   ],

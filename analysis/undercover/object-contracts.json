@@ -1,6 +1,18 @@
 {
-  "phase": 29,
+  "phase": 30,
   "contracts": [
+    {
+      "object_id": "tls_value_slot_phase30",
+      "target_root": "0x00977800",
+      "required_fields": [],
+      "field_provenance": "guest_thread_context.tls_values[index]",
+      "producer": "KERNEL32!TlsSetValue",
+      "value_at_ctor": 0,
+      "value_provenance": "INTEGER_VALUE / NULL (EBX after xor ebx,ebx)",
+      "ownership": "GUEST_TLS_TABLE",
+      "enterability": "ENTERABLE_AFTER_STANDARD_RUNTIME",
+      "confidence": "PROVEN"
+    },
     {
       "object_id": "tls_index_holder_9777d0",
       "target_root": "0x009777D0",
@@ -12,15 +24,15 @@
         }
       ],
       "field_provenance": "STANDARD_RUNTIME TlsAlloc",
-      "constructor": null,
       "initializer": "0x009777D0",
       "producer": "KERNEL32!TlsAlloc",
-      "vtable": "none",
       "allocation": "embedded at ctor object +0x240",
       "ownership": "EMBEDDED_SUBOBJECT",
+      "readers": [
+        "0x00977800",
+        "future TlsGetValue consumers"
+      ],
       "enterability": "ENTERABLE_AFTER_STANDARD_RUNTIME",
-      "enterability_cost": 3,
-      "chain_potential": 60,
       "confidence": "PROVEN"
     },
     {

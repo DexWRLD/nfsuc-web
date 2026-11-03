@@ -1,5 +1,5 @@
 {
-  "phase": 29,
+  "phase": 30,
   "definitions": {
     "ENTERABLE": "All pre-entry required state establishable via primitives, static PE data, standard runtime, or proven ordinary init/ctor. Not merely IMPORT_READY.",
     "DEEPEST_ORDINARY_EXECUTION_CHAIN": "Max nested ordinary UC frames in one harness run.",
@@ -11,8 +11,8 @@
   "compiled": 22770,
   "static_ready": 20762,
   "import_ready": 737,
-  "runtime_ready": 56,
-  "enterable": 13,
+  "runtime_ready": 58,
+  "enterable": 14,
   "enterable_roots": [
     "0x00721050",
     "0x00721070",
@@ -24,6 +24,7 @@
     "0x00929972",
     "0x00949920",
     "0x009777D0",
+    "0x00977800",
     "0x009E7710",
     "0x009E9160",
     "0x009E9990"
@@ -34,7 +35,7 @@
   ],
   "enterable_with_depth_4_potential": 0,
   "enterable_with_depth_4_potential_roots": [],
-  "unique_uc_functions_executed": 16,
+  "unique_uc_functions_executed": 21,
   "unique_uc_functions_executed_list": [
     "0x00721050",
     "0x00721070",
@@ -45,17 +46,22 @@
     "0x00924D30",
     "0x00929972",
     "0x00949920",
+    "0x009773C0",
     "0x009777D0",
+    "0x00977800",
+    "0x00977E20",
+    "0x0097FCD0",
     "0x009E7710",
     "0x009E78C0",
     "0x009E8AD0",
     "0x009E9160",
     "0x009E9460",
-    "0x009E9990"
+    "0x009E9990",
+    "0x009EB980"
   ],
-  "execution_runs": 9,
+  "execution_runs": 11,
   "deepest_ordinary_execution_chain": 3,
-  "largest_executed_ordinary_closure": 10,
+  "largest_executed_ordinary_closure": 11,
   "ordinary_init_recovered": 5,
   "init_blocked_external": 0,
   "init_blocked_protected": 1,
@@ -65,142 +71,113 @@
     "COMPILED": 22770,
     "STATIC_READY": 20762,
     "IMPORT_READY": 737,
-    "RUNTIME_READY": 56,
-    "ENTERABLE": 13,
-    "EXECUTED": 16,
+    "RUNTIME_READY": 58,
+    "ENTERABLE": 14,
+    "EXECUTED": 21,
     "DEEPEST": 3,
-    "LARGEST_CLOSURE": 10,
+    "LARGEST_CLOSURE": 11,
     "ENTERABLE_WITH_DEPTH_3_POTENTIAL": 1,
     "ENTERABLE_WITH_DEPTH_4_POTENTIAL": 0,
-    "LATEST_REAL_RUNTIME_BOUNDARY": "KERNEL32!TlsAlloc"
+    "LATEST_REAL_RUNTIME_BOUNDARY": "KERNEL32!TlsSetValue (ctor RETURNED_CLEAN)"
   },
   "campaign_summary": {
-    "phase29_attempted": 3,
+    "phase30_attempted": 2,
     "outcomes": {
-      "EXECUTED_TO_NEXT_BLOCKER": 1,
-      "BLOCKED_REQUIRED_STATE": 1,
-      "BLOCKED_IMPORT": 1
+      "RETURNED_CLEAN": 1,
+      "BLOCKED_REQUIRED_STATE": 1
     },
     "most_common_next_blocker": [
       "BLOCKED_REQUIRED_STATE",
       1
     ],
     "deepest_chain": 3,
-    "largest_executed_closure": 10,
-    "latest_newly_executed_root": "0x009777D0",
+    "largest_executed_closure": 11,
+    "latest_newly_executed_root": "0x00977800",
     "deepest_successful_sequence": [
       "0x009E9160",
       "0x009E9990",
       "0x009E7710"
     ],
     "tlsalloc_implemented": true,
-    "constructor_chain_continued": true,
-    "fallback_947790_executed": false,
+    "tlssetvalue_implemented": true,
+    "tlsgetvalue_implemented": false,
+    "tlsfree_implemented": false,
+    "constructor_chain_clean_return": true,
     "CIpow_reached": false,
     "floor_reached": false,
     "malloc_free_reached": false,
     "filesystem_reached": false,
     "timing_reached": false,
     "tls_reached": true,
-    "seh_required": false
+    "seh_required": false,
+    "pe_static_tls_required": false
   },
-  "tlsalloc": {
-    "slot": "0x00B61138",
+  "tlssetvalue": {
+    "slot": "0x00B611C8",
     "section": ".rdata",
-    "initial_pe_dword": "0x008AB2CE",
-    "hint": 867,
-    "symbol": "TlsAlloc",
+    "initial_pe_dword": "0x008A9F82",
+    "hint": 870,
+    "symbol": "TlsSetValue",
     "dll": "KERNEL32.dll",
     "dlls_matching_name": [
       "KERNEL32.dll"
     ],
     "classification": "STANDARD_WIN32_IMPORT",
     "abi": "stdcall",
-    "stack_dwords": 0,
+    "stack_dwords": 2,
     "abi_confidence": "PROVEN",
     "public_standard": true,
     "hle_justified": true,
     "call_sites": [
-      "0x00977356",
-      "0x009777D3",
-      "0x009781C2",
-      "0x0097826D",
-      "0x00978482",
-      "0x00978535",
-      "0x00B55239",
-      "0x00B57E40",
-      "0x00B57E70",
-      "0x00B57E90"
+      "0x0097739D",
+      "0x00977808",
+      "0x009781E6",
+      "0x00978292",
+      "0x009784A6",
+      "0x00978559",
+      "0x00A0B0CF",
+      "0x00A0E475"
     ],
-    "call_site_count": 10,
-    "import_directory_note": "Official PE Import/IAT directories live in .securom; ordinary .rdata B610\u2013B617 window holds unbound hint/name RVAs consumed by ordinary code.",
-    "neighbors": {
-      "0x00B61120": "TlsFree",
-      "0x00B611CC": "TlsGetValue",
-      "0x00B611D0": "GetTickCount"
-    }
+    "call_site_count": 8,
+    "owner_function_count": 6,
+    "high_caller_count": 6,
+    "import_directory_note": "Ordinary .rdata B610\u2013B617 window holds unbound hint/name RVAs; official Import/IAT dirs live in .securom (not read for dispatch)."
   },
-  "wrap_9777d0": {
-    "function": "0x009777D0",
-    "abi": "thiscall-like wrapper; ret 0; ECX=this storage for TLS index",
+  "wrap_977800": {
+    "function": "0x00977800",
+    "abi": "stdcall wrapper ret 4; ECX=pointer to TLS index dword; [esp+4]=value",
     "body": [
-      "push esi",
-      "mov esi, ecx",
-      "call dword ptr [0xb61138]",
-      "mov dword ptr [esi], eax",
-      "mov eax, esi",
-      "pop esi",
-      "ret "
+      "mov eax, dword ptr [esp + 4]",
+      "mov ecx, dword ptr [ecx]",
+      "push eax",
+      "push ecx",
+      "call dword ptr [0xb611c8]",
+      "test eax, eax",
+      "setne al",
+      "ret 4"
     ],
-    "calls_iat": "0x00B61138",
-    "stack_args_to_import": 0,
-    "argument_provenance": [],
-    "return_contract": "STORE_TO_THIS",
-    "return_detail": "EAX from TlsAlloc stored to dword [ESI]; EAX then returns ESI (this)",
-    "reached_regs_note": "Phase-28/29 path: ECX/ESI = ctor object +0x240 subobject; no stack args; ESP has only retaddr for TlsAlloc."
+    "calls_iat": "0x00B611C8",
+    "stack_args_to_import": 2,
+    "wrapper_ret_bytes": 4,
+    "ret_bytes": 4,
+    "index_source": "[ECX] \u2014 dword at TLS index holder (ctor object +0x240)",
+    "value_source": "[esp+4] pushed by caller (ctor pushes EBX after xor ebx,ebx \u2192 0)",
+    "value_provenance": "INTEGER_VALUE / NULL",
+    "return_contract": "BOOL in EAX; wrapper setne AL; caller ignores",
+    "reached_regs_note": "Phase-30 path at 0x009E930A: push ebx; mov ecx, edi; call 0x00977800; edi = esi+0x240 after TlsAlloc store."
   },
-  "fallback_947790": {
-    "root": "0x00947790",
-    "abi": "cdecl-like; two object pointers on stack after frame setup",
-    "insns": 286,
-    "calls": [
-      "0x00929900",
-      "0x00929EF0",
-      "0x009472A0",
-      "0x00947590"
-    ],
-    "required_state": [
-      {
-        "name": "arg0 object ESI",
-        "class": "BUFFER",
-        "prov": "UNKNOWN"
-      },
-      {
-        "name": "arg1 object EBP+0x3000c",
-        "class": "OBJECT_FIELD",
-        "prov": "UNKNOWN"
-      }
-    ],
-    "ordinary_producers": [],
-    "grandparent_path_proven": false,
-    "enterable": false,
-    "note": "Fallback not required; TlsAlloc HLE justified. Still UNKNOWN for POD grandparent.",
-    "sample_reads": [
-      "mov esi, dword ptr [esp + 0x9c]",
-      "fld dword ptr [esi + 0x28]",
-      "mov ebp, dword ptr [esp + 0xa0]",
-      "fstp dword ptr [esp + 0x1c]",
-      "mov eax, dword ptr [ebp + 0x3000c]",
-      "fld dword ptr [esi + 0x30]",
-      "mov ecx, dword ptr [ebp + 0x30010]",
-      "fstp dword ptr [esp + 0x30]",
-      "mov dword ptr [esp + 0x10], eax",
-      "fld dword ptr [esi + 0x38]",
-      "fstp dword ptr [esp + 0x2c]",
-      "mov dword ptr [esp + 0x18], ecx"
-    ]
+  "parent_allocator": {
+    "parent": "0x009E9340",
+    "allocator_helper": "0x009EB870",
+    "mechanism": "0x009EB870 calls 0x009E9460 for allocator object, then virtual call [vtable+8] (edx) with size/args \u2014 runtime-initialized vtable.",
+    "identity": "vtable-mediated game allocator via global object from 0x009E9460 / 0x0189DA88",
+    "classification": "ORDINARY_GAME_ALLOCATOR",
+    "sub_class": "RUNTIME_INITIALIZED_CALLBACK",
+    "standard_crt": false,
+    "implementation_attempted": false,
+    "note": "Do not substitute malloc. Not Phase-30 scope."
   },
   "first_frame": "FIRST_FRAME_PATH_BLOCKED_BY_PROTECTED_BACKEND",
   "graphics_frozen": true,
-  "recommended_phase30": "TlsAlloc unblocked 0x009777D0\u21920x009E8AD0. Next on the same chain: 0x00977800 calls IAT 0x00B611C8 = KERNEL32!TlsSetValue (classify ABI/args before HLE). Depth stays 3 until parent 0x009E9340 is ENTERABLE. 0x00947790 still UNKNOWN. Do not reopen A52DF0/graphics."
+  "recommended_phase31": "Ctor 0x009E9160 now RETURNED_CLEAN after TlsSetValue. Depth-4 needs parent 0x009E9340 (ORDINARY_GAME_ALLOCATOR via vtable \u2014 do not malloc-substitute). TlsGetValue is heavily imported but not on this path \u2014 implement only if a related ordinary reader is reached. Prefer EXPAND ORDINARY INITIALIZATION / REAL UC EXECUTION for next ENTERABLE roots, or EXPAND THREADING/TLS RUNTIME if a TlsGetValue consumer on the same object family is selected. Do not reopen A52DF0/graphics."
 }

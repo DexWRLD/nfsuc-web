@@ -1,10 +1,11 @@
 {
-  "phase": 29,
+  "phase": 30,
   "campaign_outcomes": {
-    "EXECUTED_TO_NEXT_BLOCKER": 1,
-    "BLOCKED_REQUIRED_STATE": 1,
-    "BLOCKED_IMPORT": 1
+    "RETURNED_CLEAN": 1,
+    "BLOCKED_REQUIRED_STATE": 1
   },
-  "latest_real_runtime_boundary": "KERNEL32!TlsAlloc @ 0x00B61138",
-  "next_on_ctor_chain": "0x00977800 Win32/IAT (classify in Phase 30)"
+  "latest_real_runtime_boundary": "KERNEL32!TlsSetValue @ 0x00B611C8 \u2014 resolved; ctor CLEAN",
+  "next_genuine_blocker": "0x009E9340 allocator / ORDINARY_GAME_ALLOCATOR vtable",
+  "tlsgetvalue_inventoried": true,
+  "tlsgetvalue_reached": false
 }
