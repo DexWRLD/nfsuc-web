@@ -1002,6 +1002,21 @@ def _virtual_dispatch_badge(model):
                                           faults if faults is not None else "?")
 
 
+def _graphics_config_synthetic_badge(model):
+    try:
+        raw = json.load(open(os.path.join(ANALYSIS, "runtime-frontier.json"), encoding="utf-8"))
+        gfx = raw.get("graphics_config_phase43") or {}
+    except Exception:
+        gfx = {}
+    if not gfx:
+        return "UNMEASURED"
+    if gfx.get("synthetic_implemented"):
+        tests = gfx.get("tests_executed")
+        return "SYNTHETIC ok tests=%s FIRST_FRAME BLOCKED" % (
+            tests if tests is not None else "?")
+    return "NOT INTEGRATED"
+
+
 def _target_provenance_badge(model):
     prov = model.get("target_provenance") or {}
     try:
@@ -1380,6 +1395,7 @@ def render_svg(model, detailed=False):
         ("ORDINARY OBJECT FAMILIES", _object_families_badge(model)),
         ("VIRTUAL DISPATCH", _virtual_dispatch_badge(model)),
         ("GAME TARGET PROVENANCE", _target_provenance_badge(model)),
+        ("GRAPHICS CONFIG SYNTHETIC", _graphics_config_synthetic_badge(model)),
     ]
     parts = []
     y = badge_row(parts, badges, 14)
@@ -1804,6 +1820,7 @@ def render_png(model):
         ("ORDINARY OBJECT FAMILIES", _object_families_badge(model)),
         ("VIRTUAL DISPATCH", _virtual_dispatch_badge(model)),
         ("GAME TARGET PROVENANCE", _target_provenance_badge(model)),
+        ("GRAPHICS CONFIG SYNTHETIC", _graphics_config_synthetic_badge(model)),
     ]
 
     # Measure height with the same geometry as the SVG.

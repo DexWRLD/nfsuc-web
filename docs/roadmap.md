@@ -33,6 +33,7 @@ The order from here:
 11. Phase 23: vector inserts `0x007A40D0` / `0x007AF900` via encrypted helper `0x004A26B0`. Iface ctor `0x007A1A20` publishes static VT `0x00BB1AAC`; `+148/+14C/+154` are ordinary and call encrypted submit `0x007A51B0` (**PROTECTED** terminus). **MIXED_INTERFACE_PUBLICATION**; **PROTECTED_ENGINE_BACKEND_BOUNDARY**; PARTIAL seam; D3D9/adapter NOT justified; UNBOUNDED.
 12. Phase 24: opaque-boundary contracts only. `0x007A51B0` has **160** ordinary callers with visible size/record/paired-global ABI; no protected bodies recovered. Architecture **ORDINARY_FRONTEND_PROTECTED_BACKEND**. **FIRST_FRAME_PATH_BLOCKED_BY_PROTECTED_BACKEND**. Further protected-backend recovery is not an objective.
 13. Prefer ordinary CPU/runtime islands / Present-only host harness. Do not implement D3D9 Draw adapter for opaque submit. Do not invent SecuROM callbacks.
+14. Phase 43: Nov 2026 Ghidra graphics evidence integrated as **synthetic** ordinary models (clamp `0x0071D7E0`, AA probe/fallback correction, mode selection, presentation builder, ownership fixtures). Guest RUNTIME_READY/ENTERABLE unchanged. **FIRST_FRAME** still **BLOCKED_BY_PROTECTED_BACKEND**. D3D9 / engine backend **NOT JUSTIFIED**.
 
 The strategy is ordinary static recompilation, then ordinary runtime islands, then this dependency cut, then independent subsystem frontiers, then a first-frame path if one is available.
 
