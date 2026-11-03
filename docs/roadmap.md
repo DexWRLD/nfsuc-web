@@ -27,9 +27,9 @@ The order from here:
 5. DEPENDENCY CUT. Phase 14. Eleven reachable functions must hit that call, 31 can hit it on some walk, and 6,456 have no path to it. The 102-function closure at `0x0099DCD0` is in the last set and still needs the object field this call feeds. It is not the primary frontier.
 6. FUNCTION DISCOVERY REPAIR. Phase 16. CFG-aware fact walk; old 24-instruction cohort mostly promoted; compiler closure holds.
 7. FACTORY PREFIX FROZEN. `0x00B615C4` / `Direct3DCreate9` create path is `BLOCKED_EXTERNAL_PROTECTED_INITIALIZATION`. Resolving that slot is no longer an active objective.
-8. POST-INIT GRAPHICS FRONTIER. Phase 19: proven device global `0x013C6510` with Present/Clear/BeginScene/EndScene-shaped COM; 55 state-only ordinary islands. Device has no ordinary writer; publisher caller hits `0x00686000`. FIRST_CLEAR/PRESENT `BLOCKED_EXTERNAL`; FIRST_DRAW `NOT_FOUND`. Direct3D not implemented.
-9. Expand post-init analysis (reset/recreate, draw/resource identity) or decide an external-state contract. Do not invent SecuROM callbacks.
-10. FIRST FRAME estimate is UNBOUNDED until a legitimate ordinary device publication path or accepted contract exists.
+8. POST-INIT GRAPHICS FRONTIER. Phase 20: DEFINITE device publication via `0x00725200` COM out-param (`CREATEDEVICE_STRONG_CANDIDATE` at VT `+0x40`), but EXTERNAL/BLOCKED (`0x00686000` before publish; factory field needs frozen `0x00B615C4`). PRESENT CODE FOUND; PRESENT RUNTIME BLOCKED. DRAW CODE FOUND via renderer `0x017AA798` (not DEVICE-aliased). RESET/RECOVERY NOT FOUND. PARTIAL post-init seam. D3D9 NOT justified. Estimate UNBOUNDED.
+9. Alias DEVICE into draw/renderer paths; decide whether a host-owned device at `0x013C6510` is an accepted Present-only runtime contract. Do not invent SecuROM callbacks.
+10. FIRST FRAME remains UNBOUNDED until that contract/decision and mapped draw state exist.
 
 The strategy is ordinary static recompilation, then ordinary runtime islands, then this dependency cut, then independent subsystem frontiers, then a first-frame path if one is available.
 
