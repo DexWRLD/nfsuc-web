@@ -136,6 +136,14 @@ test('authorized EA bumper plays over the LAN asset pipeline', { skip: !process.
     await page.waitForFunction(() => document.querySelector('#apt-result')?.textContent.includes('18 zeroed'));
     await page.locator('#apt-fixture').click();
     await page.waitForFunction(() => document.querySelector('#apt-result')?.textContent.includes('Both calls restored ESP'));
+    for (let attempt = 0; attempt < 2; attempt++) {
+      await page.locator('#frontend-frame').click();
+      await page.waitForFunction(() => document.querySelector('#frame-result')?.textContent.includes('Guest stack validated'));
+      const frame = await page.locator('#frame-result').innerText();
+      assert.match(frame, /0x00785CE3 → 0x008096E0/);
+      assert.match(frame, /0x008096F5.*0x00548810/);
+      assert.match(frame, /0xDEAD0018/);
+    }
     await page.locator('#boot-callbacks').click();
     await page.waitForFunction(() => document.querySelector('#boot-callback-result')?.textContent.includes('Fixture entry only'));
     const callbacks = await page.locator('#boot-callback-result').innerText();

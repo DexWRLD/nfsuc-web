@@ -1,5 +1,9 @@
 interface InitializerExports {
   run_init(): number;
+  run_frame(mode: number): number;
+  frame_boundary(): number;
+  frame_entries(): number;
+  frame_receiver(): number;
   run_boot_callback(mode: number): number;
   boot_flag_value(mode: number): number;
   run_queue(mode: number): number;
@@ -158,5 +162,42 @@ export async function runBootCallbacks() {
     'Both tail paths reached 0x009ADC50 and returned fixture EAX 0x13572468 at 0x009ADC59.',
     'Two caller-cleaned arguments preserved. Null and unmapped manager writes rejected.',
     'Fixture entry only. Original CmdUtil registration and Apt dispatch remain unverified.',
+  ];
+}
+
+export async function runFrontendFrame() {
+  const labels = [
+    'Gate zero: original call returns; stopped at caller continuation 0x00785CE8',
+    '+0x18 zero: call at 0x008096F5 stops at 0x00548810',
+    '+0x18 one, +0x34 null: tail at 0x0080972B stops at 0x00548810',
+    'Null global manager: caller skips call and reaches 0x00785CE8',
+    'Direct null receiver: read at 0x008096EC rejected at 0x00000018',
+    'Unmapped receiver: read at 0x008096EC rejected at 0xDEAD0018',
+    '+0x34 nonzero, +0x4C null: virtual setup rejected at 0x0000001C',
+  ];
+  for (const [mode, label] of labels.entries()) {
+    const guest = await loadInitializer();
+    const boundary = [0x785ce8, 0x548810, 0x548810, 0x785ce8, 0, 0, 0][mode];
+    const fault = [0, 0, 0, 0, 0x18, 0xdead0018, 0x1c][mode];
+    const blocked = mode !== 0 && mode !== 3;
+    let trapped = false;
+    try {
+      if (guest.run_frame(mode) !== boundary) throw new Error('Unexpected frame return');
+    } catch (error) {
+      if (!(error instanceof WebAssembly.RuntimeError) || !blocked) throw error;
+      trapped = true;
+    }
+    if (trapped !== blocked || guest.frame_boundary() !== boundary
+        || guest.frame_entries() !== (mode === 3 ? 0 : 1) || (guest.prefix_fault() >>> 0) !== fault
+        || (mode === 1 || mode === 2) && guest.frame_receiver() !== 0x0300ec08
+        || guest.guest_esp() !== (mode === 4 ? 0x0300eff8
+          : mode === 1 ? 0x0300eff0 : mode === 5 || mode === 6 ? 0x0300eff4 : mode === 2 ? 0x0300eff8 : 0x0300effc)) {
+      throw new Error('Unexpected frontend frame trace: ' + label);
+    }
+  }
+  return [
+    'Synthetic frame state · original call 0x00785CE3 → 0x008096E0 · mapped manager 0x0300EC00.',
+    ...labels,
+    'Guest stack validated for each path; no manager work-state writes or original screen presentation.',
   ];
 }

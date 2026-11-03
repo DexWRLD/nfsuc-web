@@ -1,5 +1,5 @@
 import './app/undercover-home.css';
-import { runBootCallbacks, runFrontendQueue, runFrontendLookup, runAptDiagnostic, runUndercoverInitializer } from './app/uc-browser-init';
+import { runFrontendFrame, runBootCallbacks, runFrontendQueue, runFrontendLookup, runAptDiagnostic, runUndercoverInitializer } from './app/uc-browser-init';
 import { bootUcAssets } from './app/uc-boot';
 import { bootUcAssetPreviews } from './app/uc-asset-preview-boot';
 import { bootUcStartupPreview } from './app/uc-startup-boot';
@@ -114,5 +114,19 @@ bootButton.addEventListener('click', async () => {
     bootResult.textContent = error instanceof Error ? error.message : String(error);
   } finally {
     bootButton.disabled = false;
+  }
+});
+
+const frameButton = document.querySelector<HTMLButtonElement>('#frontend-frame')!;
+const frameResult = document.querySelector<HTMLElement>('#frame-result')!;
+frameButton.addEventListener('click', async () => {
+  frameButton.disabled = true;
+  frameResult.textContent = 'Running frame diagnostics…';
+  try {
+    frameResult.textContent = (await runFrontendFrame()).join('\n');
+  } catch (error) {
+    frameResult.textContent = error instanceof Error ? error.message : String(error);
+  } finally {
+    frameButton.disabled = false;
   }
 });

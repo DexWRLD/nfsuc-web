@@ -18,7 +18,7 @@ typedef unsigned u32;
 typedef u32 uint32_t;
 typedef int int32_t;
 typedef signed char int8_t;
-typedef struct { u32 esp, eip, eax, ebp, ecx, edx, esi, edi; } CPU;
+typedef struct { u32 esp, eip, eax, ebp, ecx, edx, esi, edi, ebx; } CPU;
 static u32 slots[55];
 static u32 writes, stack_word;
 static u32 *mapped(u32 address) {
@@ -38,6 +38,7 @@ static u32 pop(CPU *c) {
 PREFIX_BRIDGE = r"""
 static u32 stack[64], zero_fields[3], zero_core, fault, trace[8], entered;
 static int equal, less, below;
+static u32 frame_active, frame_gate, frame_manager, frame_words[20], frame_entered, frame_stop;
 static u32 boot_mode, boot_manager, boot_return = 0x13572468u;
 static unsigned char boot_flag[3] = {0x53,0,0x75}, main_flag[3] = {0x53,0,0x75};
 static u32 queue_memory[64], queue_active, queue_boundary, queue_numeric;
@@ -47,6 +48,9 @@ static u32 apt_mode, apt_headers[19], apt_cell, apt_calls;
 static const u32 apt_offsets[] = {0, 12, 24, 36, 48, 64};
 static u32 *access(u32 a) {
     if (!(a & 3u)) {
+        if (frame_active && a == 0x00cbf590u) return &frame_gate;
+        if (frame_active && a == 0x01873134u) return &frame_manager;
+        if (frame_active && a >= 0x0300ec00u && a < 0x0300ec50u) return &frame_words[(a-0x0300ec00u)/4u];
         if (boot_mode && a == 0x01873134u) return &boot_manager;
         if (boot_mode && a == 0x0189bf08u) return &boot_return;
         if (queue_active && a >= 0x0300ed00u && a < 0x0300ee00u) return &queue_memory[(a-0x0300ed00u)/4u];
@@ -343,6 +347,47 @@ u32 run_boot_callback(u32 mode) {
 }
 """))
 
+def build_frame(info, lifter):
+    entry, end = 0x008096E0, 0x00809732
+    base = info["text_va"]
+    bounded = lift.RawLifter(info["bytes"][entry-base:end-base], entry, comments=False)
+    frame, calls = bounded.lift(entry)
+    if calls != {0x00548810, 0x008082F0}:
+        raise ValueError("Unexpected frontend frame dependencies")
+    caller, _ = lifter.lift(0x00785CD9)
+    cut = "    PUSH32(0x785ce8u); sub_008096e0(c);"
+    if caller.count(cut) != 1:
+        raise ValueError("Unexpected original frame caller")
+    caller = caller.split(cut)[0] + cut + "\nL_00785ce8: frame_stop = 0x00785ce8u; return;\n}"
+    frame = frame.replace("    goto L_008096e0;", "    frame_entered++; goto L_008096e0;")
+    return "\n".join((r"""
+#undef MR8
+#define MR8(a) ((unsigned char)*access(a))
+#undef DISPATCH_CALL
+#define DISPATCH_CALL(c,target) do { frame_stop = (target); __builtin_trap(); } while (0)
+#define DISPATCH_TAIL(c,target) DISPATCH_CALL(c,target)
+#define dispatch_indirect(c,target) DISPATCH_CALL(c,target)
+""", frame, caller, r"""
+u32 frame_boundary(void) { return frame_stop; }
+u32 frame_entries(void) { return frame_entered; }
+u32 frame_receiver(void) { return cpu.ecx; }
+u32 run_frame(u32 mode) {
+    if (frame_active || mode > 6) __builtin_trap();
+    frame_active = 1;
+    frame_gate = mode != 0;
+    frame_manager = (mode == 3 || mode == 4) ? 0 : mode == 5 ? 0xdead0000u : 0x0300ec00u;
+    frame_words[6] = mode == 2 || mode == 6;
+    frame_words[13] = mode == 6 ? 1 : 0;
+    cpu = (CPU){.esp=0x0300effcu, .esi=0x1234u, .ecx=frame_manager};
+    *access(cpu.esp) = 0x00dec0deu;
+    if (mode == 4) sub_008096e0(&cpu);
+    else sub_00785cd9(&cpu);
+    if (cpu.esp != 0x0300effcu || cpu.esi != 0x1234u ||
+        cpu.eip != (mode == 3 ? 0u : 0x00785ce8u)) __builtin_trap();
+    return frame_stop;
+}
+"""))
+
 EXPORTS = r"""
 static CPU cpu;
 u32 read_slot(u32 addr) { return *mapped(addr); }
@@ -379,11 +424,11 @@ def main():
     clang = p7.clang()
     linker = Path(clang).with_name("wasm-ld.exe")
     linker_arg = ["--ld-path=" + str(linker)] if linker.is_file() else []
-    exports = ["run_init", "read_slot", "write_count", "guest_esp", "guest_eax", "run_prefix", "prefix_fault", "prefix_entry", "prefix_read_base", "prefix_read_delta", "run_apt_constructor", "run_apt_fixture", "frontend_lookup", "frontend_stop", "frontend_native_id", "run_queue", "queue_word", "queue_stop", "queue_value", "run_boot_callback", "boot_flag_value"]
+    exports = ["run_init", "read_slot", "write_count", "guest_esp", "guest_eax", "run_prefix", "prefix_fault", "prefix_entry", "prefix_read_base", "prefix_read_delta", "run_apt_constructor", "run_apt_fixture", "frontend_lookup", "frontend_stop", "frontend_native_id", "run_queue", "queue_word", "queue_stop", "queue_value", "run_boot_callback", "boot_flag_value", "run_frame", "frame_boundary", "frame_entries", "frame_receiver"]
     args.output.parent.mkdir(parents=True, exist_ok=True)
     with tempfile.TemporaryDirectory() as tmp:
         source = Path(tmp) / "init.c"
-        source.write_text(BRIDGE + body + EXPORTS + PREFIX_BRIDGE + build_prefix(lifter) + PREFIX_EXPORTS + build_apt(lifter) + build_frontend(lifter, args.image) + build_queue(lifter) + build_boot_callbacks(lifter), encoding="utf-8")
+        source.write_text(BRIDGE + body + EXPORTS + PREFIX_BRIDGE + build_prefix(lifter) + PREFIX_EXPORTS + build_apt(lifter) + build_frontend(lifter, args.image) + build_queue(lifter) + build_boot_callbacks(lifter) + build_frame(info, lifter), encoding="utf-8")
         subprocess.run([clang, "--target=wasm32-unknown-unknown", *linker_arg, "-O2",
                         "-ffreestanding", "-nostdlib", "-Wl,--no-entry",
                         *["-Wl,--export=" + name for name in exports],
