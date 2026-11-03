@@ -1,0 +1,53 @@
+{
+  "scan": [
+    "0x00B61100",
+    "0x00B61640"
+  ],
+  "counts": {
+    "INVALID_TEXT_BOUNDARY": 96,
+    "ORDINARY_TEXT_VALID_ENTRY": 60,
+    "ORDINARY_TEXT_INTERIOR": 11,
+    "IMPORT_RELATED": 151,
+    "ZERO": 13,
+    "NON_POINTER": 5
+  },
+  "runs": [
+    {
+      "lo": "0x00B61100",
+      "hi": "0x00B611CC",
+      "n": 52,
+      "invalid": 29,
+      "valid": 20,
+      "interior": 3
+    },
+    {
+      "lo": "0x00B611D4",
+      "hi": "0x00B61214",
+      "n": 17,
+      "invalid": 12,
+      "valid": 3,
+      "interior": 2
+    },
+    {
+      "lo": "0x00B61528",
+      "hi": "0x00B615E4",
+      "n": 48,
+      "invalid": 25,
+      "valid": 17,
+      "interior": 6
+    }
+  ],
+  "slots": {
+    "0x00B611D4": "0x008A9F58",
+    "0x00B61188": "0x008AB180",
+    "0x00B615C4": "0x008AA3AE"
+  },
+  "home_run": {
+    "lo": "0x00B61528",
+    "hi": "0x00B615E4",
+    "n": 48,
+    "invalid": 25,
+    "valid": 17,
+    "interior": 6
+  }
+}
