@@ -198,6 +198,10 @@ Optional `angr` 10.0.5 oracle (Python 3.12) compares against the UC analyzer wit
 
 Renderer `0x017AA798` owns an MSVC-like vector at `+0x50/+0x54/+0x58` (8-byte elements; COM at `+4`). `0x0079E4A0` selects **ENGINE_GFX_IFACE_00**. All five engine Draw paths terminate at **ENGINE_BACKEND** with no ordinary `0x013C6510` bridge. Phase 21’s durable `this+0x1B0` device alias was a false positive. Graphics boundary **MIXED**; seam PARTIAL; D3D9 and engine-backend adapter not justified. Details: `analysis/undercover/runtime-phase22.md`.
 
+## Phase 23
+
+Ordinary code constructs/publishes **ENGINE_GFX_IFACE_00** (`0x007A1A20`, static VT `0x00BB1AAC`) and inserts via `0x007A40D0` / `0x007AF900`, but the insert primitive `0x004A26B0` and draw-submit `0x007A51B0` are encrypted `.text` islands. Method slots `+0x148/+0x14C/+0x154` resolve to ordinary wrappers whose terminus is **PROTECTED_BOUNDARY**. Publication **MIXED**; graphics boundary **PROTECTED_ENGINE_BACKEND**; seam still PARTIAL; D3D9/adapter not justified; first-frame UNBOUNDED. Details: `analysis/undercover/runtime-phase23.md`.
+
 ## Status
 
 STATIC CODE READINESS: established for the repaired ordinary high-confidence `.text` list. 22,770 of 22,779 generate, and every generated function compiles. The old 24-instruction discovery cap is gone.
