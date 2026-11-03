@@ -3,6 +3,7 @@
 
 #if defined(UC_GUEST_CHECKED)
 extern void uc_guest_store8(uint32_t addr, uint8_t value);
+extern void uc_guest_store32(uint32_t addr, uint32_t value, int *ok);
 #define UC_ST8(addr, value) uc_guest_store8((uint32_t)(addr), (uint8_t)(value))
 #else
 #define UC_ST8(addr, value) (MR8(addr) = (uint8_t)(value))
@@ -52,6 +53,22 @@ static int x87_replace(struct CPU *c, UcHostUnary fn, const char *missing) {
 
 #include "uc_import_table.inc"
 
+/* Guest TLS index allocator for KERNEL32!TlsAlloc.
+ * Indices are abstract guest values, not host TLS slots. */
+enum { UC_TLS_INDEX_MAX = 128 };
+#define UC_TLS_OUT_OF_INDEXES 0xffffffffu
+static uint32_t uc_tls_next;
+static uint32_t uc_tls_free_stack[UC_TLS_INDEX_MAX];
+static int uc_tls_nfree;
+
+static uint32_t uc_tls_alloc_index(void) {
+    if (uc_tls_nfree > 0)
+        return uc_tls_free_stack[--uc_tls_nfree];
+    if (uc_tls_next < UC_TLS_INDEX_MAX)
+        return uc_tls_next++;
+    return UC_TLS_OUT_OF_INDEXES;
+}
+
 int uc_abi_callee_bytes(UcAbi abi, int stack_dwords) {
     if (stack_dwords < 0) return -1;
     if (abi == UC_ABI_CDECL) return 0;
@@ -78,6 +95,47 @@ const UcImport *uc_import_find(uint32_t thunk) {
         else hi = mid;
     }
     return 0;
+}
+
+const UcImport *uc_import_find_by_iat(uint32_t iat_slot) {
+    unsigned i, n = uc_import_count();
+    for (i = 0; i < n; i++)
+        if (uc_import_table[i].iat_slot == iat_slot)
+            return &uc_import_table[i];
+    return 0;
+}
+
+const UcImport *uc_import_find_dispatch_target(uint32_t target) {
+    const UcImport *imp = uc_import_find(target);
+    unsigned i, n;
+    if (imp) return imp;
+    n = uc_import_count();
+    for (i = 0; i < n; i++) {
+        imp = &uc_import_table[i];
+        if (imp->hle == UC_HLE_NONE || !imp->iat_slot) continue;
+        if (MR32(imp->iat_slot) == target) return imp;
+    }
+    return 0;
+}
+
+unsigned uc_import_bind_hle_iats(void) {
+    unsigned i, n = uc_import_count(), bound = 0;
+    for (i = 0; i < n; i++) {
+        const UcImport *imp = &uc_import_table[i];
+        if (imp->hle == UC_HLE_NONE || !imp->iat_slot)
+            continue;
+#if defined(UC_GUEST_CHECKED)
+        {
+            int ok = 0;
+            uc_guest_store32(imp->iat_slot, imp->thunk, &ok);
+            if (!ok) continue;
+        }
+#else
+        MR32(imp->iat_slot) = imp->thunk;
+#endif
+        bound++;
+    }
+    return bound;
 }
 
 static int range_ok(uint32_t addr, uint32_t len) {
@@ -111,6 +169,12 @@ static uint32_t hle_run(struct CPU *c, const UcImport *imp, const UcDecoded *in,
     uint32_t a, b, n, i;
     int diff;
     *ok = 0;
+    if (imp->hle == UC_HLE_TLSALLOC) {
+        /* KERNEL32!TlsAlloc: stdcall, 0 stack args; EAX = index or 0xFFFFFFFF. */
+        (void)in;
+        *ok = 1;
+        return uc_tls_alloc_index();
+    }
     if (imp->arg_loc == UC_LOC_ST0 || imp->ret_loc == UC_LOC_ST0) {
         if (imp->arg_loc != UC_LOC_ST0 || imp->ret_loc != UC_LOC_ST0) {
             x87_fail(c, "x87 import must read and write ST(0)");

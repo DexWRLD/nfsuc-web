@@ -21,6 +21,7 @@ IMPLEMENTED = {
     "memcpy", "memmove", "memset", "memcmp", "strlen", "strcmp", "strncmp",
     "strncpy",
     "_CIsin", "_CIcos", "_CIacos", "_CIsqrt",
+    "TlsAlloc",
 }
 # Deterministic helpers whose convention is already recorded as cdecl and whose
 # operation is a pure value transform. Not a promise they are implemented.

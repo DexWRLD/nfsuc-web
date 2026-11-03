@@ -48,7 +48,8 @@ typedef enum UcHle {
     UC_HLE_CISIN,
     UC_HLE_CICOS,
     UC_HLE_CIACOS,
-    UC_HLE_CISQRT
+    UC_HLE_CISQRT,
+    UC_HLE_TLSALLOC
 } UcHle;
 
 /* Where an import argument is read, and where its result is written.
@@ -144,7 +145,13 @@ extern UcHostUnary uc_host_acos;
 extern UcHostUnary uc_host_sqrt;
 
 const UcImport *uc_import_find(uint32_t thunk);
+const UcImport *uc_import_find_by_iat(uint32_t iat_slot);
+/* Resolve a `call dword ptr [iat]` target: bound thunk, or unbound
+ * PE name-RVA still sitting in an HLE-ready IAT slot. */
+const UcImport *uc_import_find_dispatch_target(uint32_t target);
 unsigned uc_import_count(void);
+/* Optional: write thunk into guest IAT when the slot is writable. */
+unsigned uc_import_bind_hle_iats(void);
 
 typedef uint32_t (*UcHleFn)(struct CPU *c, const UcDecoded *in, int *ok);
 
