@@ -56,7 +56,7 @@ Allocator/factory (`0x0189DA84` / `0x009E9460`) unchanged. Virtual callers need 
 
 ## M. Frontier delta
 
-UNIQUE **61**; ENTERABLE **29**; FAMILIES **2**; CLEAN_LIFECYCLES **2**; VTABLE_DISPATCH **1**; RUNS **179**.
+UNIQUE **61**; ENTERABLE **29**; FAMILIES **2**; CLEAN_LIFECYCLES **2**; VTABLE_DISPATCH **1**; RUNS **221**.
 
 ## N. Phase 41 recommendation
 

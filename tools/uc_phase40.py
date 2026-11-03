@@ -616,13 +616,18 @@ def main():
         {CTOR_A, 0x009E7710, CTOR_B},
         p31.CTOR_CENSUS | {EBC70, SEM, CTOR_B, 0x009E0880},
     )
-    deepest = max([r["depth_max"] for r in rows] + [s["depth_max_nested"] for s in seqs] + [0])
-    largest_closure = max([r["unique_entered"] for r in rows] +
-                          [s["unique_entered"] for s in seqs] + [0])
-    # Prefer prior highs if campaign alone is smaller
+    # Nested depth/closure = single-root harness runs only (not SEQ_COV).
+    deepest = max([r["depth_max"] for r in rows] +
+                  [s["depth_max_nested"] for s in seqs] + [0])
+    largest_closure = max([r["unique_entered"] for r in rows] + [0])
     deepest = max(deepest, prev.get("deepest_ordinary_execution_chain") or 0)
-    largest_closure = max(largest_closure,
-                          prev.get("largest_executed_ordinary_closure") or 0)
+    prior_clos = prev.get("largest_executed_ordinary_closure") or 0
+    prior_cov = prev.get("largest_stateful_sequence_coverage") or 0
+    # Ignore a prior closure that was accidentally equated to SEQ_COV.
+    if prior_clos and prior_clos != prior_cov:
+        largest_closure = max(largest_closure, prior_clos)
+    elif prior_clos and prior_clos < prior_cov:
+        largest_closure = max(largest_closure, prior_clos)
     longest = max(longest, prev.get("ordinary_execution_sequence_length") or 0)
     largest_cov = max(largest_cov,
                       prev.get("largest_stateful_sequence_coverage") or 0)

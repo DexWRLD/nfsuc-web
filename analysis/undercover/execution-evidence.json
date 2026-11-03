@@ -5099,7 +5099,7 @@
     "0x00B57CF0"
   ],
   "deepest_ordinary_execution_chain": 4,
-  "largest_executed_ordinary_closure": 22,
+  "largest_executed_ordinary_closure": 18,
   "ordinary_execution_sequence_length": 5,
   "largest_stateful_sequence_coverage": 22,
   "clean_stateful_sequences": 11,
