@@ -1,5 +1,5 @@
 {
-  "phase": 38,
+  "phase": 39,
   "constructor": "0x009E9160",
   "verified_entry_contract": {
     "abi": "thiscall",
@@ -325,5 +325,70 @@
     "Allocator path remains protected",
     "Snapshot is metadata; harness reproduces state by re-running ctor"
   ],
-  "reproducible_by_rerunning_ctor": true
+  "reproducible_by_rerunning_ctor": true,
+  "phase39_consumer_relations": {
+    "methods_exercised": [
+      "0x009E9140",
+      "0x009E9150",
+      "0x009E7780",
+      "0x009E9980",
+      "0x009E8400",
+      "0x009E8460",
+      "0x009E83D0"
+    ],
+    "globals_published": [
+      {
+        "address": "0x0189D1A4",
+        "writer": "0x009E8AD0",
+        "writer_insn": "0x009E8B16",
+        "writer_text": "mov dword ptr [0x0189D1A4], 0x009E78C0",
+        "runtime_value": "0x009E78C0",
+        "expected_immediate": "0x009E78C0",
+        "matches_constructor_write": true,
+        "classification": "FUNCTION_POINTER",
+        "publisher_provenance": "ORDINARY_HELPER_WRITTEN",
+        "producer_chain": "0x009E9160 \u2192 0x009E8AD0",
+        "callable_target_proven": true,
+        "callable_abi": "cdecl / 3 stack args; callee ret 0; early-exit if [0x0189DA84]==0",
+        "readers": {
+          "kind": "CALL_THROUGH_POINTER",
+          "static_indirect_call_sites": 906,
+          "note": "all FF 15 A4 D1 89 01; add esp,0xC \u2014 see global-0189d1a4.md"
+        },
+        "eligibility": "ENTERABLE_AFTER_CONSTRUCTOR",
+        "eligibility_detail": "Direct invoke of published target early-returns when factory slot 0x0189DA84 is unset; meaningful inner dispatch needs factory publication (allocator-blocked)",
+        "factory_slot_0189DA84": "0x00000000"
+      },
+      {
+        "address": "0x0189D198",
+        "writer": "0x009E8AD0",
+        "writer_insn": "0x009E8AD0",
+        "writer_text": "mov dword ptr [0x0189D198], 0x009E77D0",
+        "runtime_value": "0x009E77D0",
+        "expected_immediate": "0x009E77D0",
+        "matches_constructor_write": true,
+        "classification": "FUNCTION_POINTER",
+        "publisher_provenance": "ORDINARY_HELPER_WRITTEN",
+        "producer_chain": "0x009E9160 \u2192 0x009E8AD0",
+        "callable_target_proven": true,
+        "callable_abi": "uses 0x009E9460 allocator manager",
+        "readers": {
+          "kind": "CALL_THROUGH_POINTER",
+          "note": "object-init path call [0x0189D198] \u2192 0x009E77D0 \u2192 0x009E9460"
+        },
+        "eligibility": "BLOCKED_PROTECTED_INIT",
+        "eligibility_detail": "0x009E77D0 \u2192 0x009E9460 requires [0x0189DA88] allocator"
+      }
+    ],
+    "runtime_vtable_check": {
+      "installed": "0x00C30E68",
+      "matches_static": true,
+      "slot13": "0x009E9140",
+      "slot14": "0x009E9150",
+      "slot2": "0x009E7780",
+      "slot13_expected": "0x009E9140",
+      "slot14_expected": "0x009E9150",
+      "slot2_expected": "0x009E7780"
+    }
+  }
 }
