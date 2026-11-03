@@ -606,6 +606,10 @@ def build():
             json.load(open(os.path.join(ANALYSIS, "vtable-execution-frontier.json"), encoding="utf-8"))
             if os.path.isfile(os.path.join(ANALYSIS, "vtable-execution-frontier.json")) else {}
         ),
+        "target_provenance": (
+            json.load(open(os.path.join(ANALYSIS, "target-provenance.json"), encoding="utf-8"))
+            if os.path.isfile(os.path.join(ANALYSIS, "target-provenance.json")) else {}
+        ),
         "initialization": status["initialization"],
         "boundaries": status["boundaries"],
         "helper_cut": helper_summary if helper_summary else "UNKNOWN",
@@ -969,9 +973,10 @@ def _object_families_badge(model):
     clean = (orf.get("CLEAN_INDEPENDENT_OBJECT_LIFECYCLES")
              or fam.get("clean_independent_object_lifecycles")
              or of.get("clean_lifecycles") or "?")
-    blocked = sum(1 for f in (fam.get("families") or [])
-                  if "BLOCKED" in str(f.get("lifecycle_execution_result") or ""))
-    return "cand=%s exec=%s life=%s blk=%s" % (cands or "?", executed, clean, blocked)
+    nontrivial = (orf.get("NONTRIVIAL_OBJECT_LIFECYCLES")
+                  or fam.get("nontrivial_object_lifecycles") or "?")
+    return "exec=%s life=%s nontriv=%s cand=%s" % (
+        executed, clean, nontrivial, cands or "?")
 
 
 def _virtual_dispatch_badge(model):
@@ -985,11 +990,35 @@ def _virtual_dispatch_badge(model):
         vd = {}
     if not vt and not vd:
         return "UNMEASURED"
-    sites = len(vt.get("sites") or [])
     executed = (orf.get("REAL_VTABLE_DISPATCHES_EXECUTED")
                 or vt.get("real_vtable_dispatches_executed") or 0)
-    status = (vt.get("result") or vd or {}).get("status") or "?"
-    return "sites=%s real=%s %s" % (sites or "?", executed, status)
+    clean = orf.get("CLEAN_VIRTUAL_CALLS")
+    if clean is None:
+        clean = vt.get("clean_virtual_calls")
+    faults = orf.get("VIRTUAL_CALL_CONTINUATION_FAULTS")
+    if faults is None:
+        faults = vt.get("virtual_call_continuation_faults")
+    return "real=%s clean=%s fault=%s" % (executed, clean if clean is not None else "?",
+                                          faults if faults is not None else "?")
+
+
+def _target_provenance_badge(model):
+    prov = model.get("target_provenance") or {}
+    try:
+        raw = json.load(open(os.path.join(ANALYSIS, "runtime-frontier.json"), encoding="utf-8"))
+        tp = raw.get("target_provenance") or {}
+        if tp:
+            prov = {**prov, **tp}
+    except Exception:
+        pass
+    if not prov:
+        return "UNMEASURED"
+    status = prov.get("status") or prov.get("verification_status") or "?"
+    if status == "VERIFIED_UNDERCOVER_1_1_2_1":
+        return "UC 1.1.2.1 VERIFIED"
+    if status == "TARGET_BINARY_NOT_AVAILABLE_FOR_REHASH":
+        return "INPUT UNAVAILABLE"
+    return str(status)[:40]
 
 
 def _global_publication_html_table(model):
@@ -1017,23 +1046,24 @@ def _object_families_html_table(model):
         pass
     ranked = fam.get("ranked_constructor_candidates") or []
     families = fam.get("families") or []
-    executed_ctors = sum(
-        1 for f in families
-        if "EXECUTED" in str(f.get("lifecycle_execution_result") or ""))
     blocked = sum(
         1 for f in families
         if "BLOCKED" in str(f.get("lifecycle_execution_result") or ""))
     rows = [
         ("Candidate constructors", len(ranked)),
-        ("Executed constructors/families",
-         orf.get("INDEPENDENT_OBJECT_FAMILIES_EXECUTED")
-         or fam.get("independent_object_families_executed") or executed_ctors),
         ("Independent families",
-         orf.get("INDEPENDENT_OBJECT_FAMILIES_EXECUTED") or "?"),
+         orf.get("INDEPENDENT_OBJECT_FAMILIES_EXECUTED")
+         or fam.get("independent_object_families_executed") or "?"),
         ("Clean lifecycles",
-         orf.get("CLEAN_INDEPENDENT_OBJECT_LIFECYCLES") or "?"),
+         orf.get("CLEAN_INDEPENDENT_OBJECT_LIFECYCLES")
+         or fam.get("clean_independent_object_lifecycles") or "?"),
+        ("Nontrivial lifecycles",
+         orf.get("NONTRIVIAL_OBJECT_LIFECYCLES")
+         or fam.get("nontrivial_object_lifecycles") or "?"),
         ("Blocked families", blocked),
         ("Strongest new family", fam.get("strongest_new_family") or "?"),
+        ("Strongest nontrivial consumer",
+         fam.get("strongest_nontrivial_new_consumer") or "?"),
     ]
     return html_table(("Item", "Value"), rows)
 
@@ -1047,17 +1077,65 @@ def _virtual_dispatch_html_table(model):
     except Exception:
         pass
     result = vt.get("result") or {}
+    site = vt.get("phase40_site") or {}
     rows = [
-        ("Proven static vtables", "C30E68 / C30F2C / C30D5C"),
-        ("Eligible ordinary call sites",
-         result.get("eligible_ordinary_call_sites") or 0),
-        ("Sampled virtual-call sites", len(vt.get("sites") or [])),
+        ("Proven static vtables", "C30E68 / C30F2C / C30D5C / C31180"),
         ("Real virtual dispatches executed",
          orf.get("REAL_VTABLE_DISPATCHES_EXECUTED")
          or vt.get("real_vtable_dispatches_executed") or 0),
+        ("Clean virtual calls",
+         orf.get("CLEAN_VIRTUAL_CALLS")
+         if orf.get("CLEAN_VIRTUAL_CALLS") is not None
+         else vt.get("clean_virtual_calls")),
+        ("Continuation faults",
+         orf.get("VIRTUAL_CALL_CONTINUATION_FAULTS")
+         if orf.get("VIRTUAL_CALL_CONTINUATION_FAULTS") is not None
+         else vt.get("virtual_call_continuation_faults")),
+        ("Continuation class",
+         site.get("continuation_classification")
+         or result.get("continuation_classification") or "?"),
         ("Status", result.get("status") or "?"),
         ("Outstanding blockers",
-         str(result.get("continuation_blocker") or result.get("detail") or "?")[:80]),
+         str(result.get("detail") or site.get("continuation_detail") or "?")[:80]),
+    ]
+    return html_table(("Item", "Value"), rows)
+
+
+def _target_provenance_html_table(model):
+    prov = model.get("target_provenance") or {}
+    try:
+        raw = json.load(open(os.path.join(ANALYSIS, "runtime-frontier.json"), encoding="utf-8"))
+        tp = raw.get("target_provenance") or {}
+        if tp.get("status"):
+            prov = {**prov, **tp}
+    except Exception:
+        pass
+    if not prov and os.path.isfile(os.path.join(ANALYSIS, "target-provenance.json")):
+        try:
+            prov = json.load(open(os.path.join(ANALYSIS, "target-provenance.json"),
+                                  encoding="utf-8"))
+        except Exception:
+            prov = {}
+    exp = prov.get("expected") or {}
+    status = prov.get("verification_status") or prov.get("status") or "UNMEASURED"
+    hash_state = "not re-verified"
+    if status == "TARGET_BINARY_NOT_AVAILABLE_FOR_REHASH":
+        hash_state = "INPUT UNAVAILABLE"
+    elif prov.get("sha256_match") is True:
+        hash_state = "VERIFIED MATCH"
+    elif prov.get("sha256_match") is False:
+        hash_state = "MISMATCH"
+    rows = [
+        ("Tooling origin", prov.get("tooling_origin") or "NFSU2-WEB"),
+        ("Game code target", prov.get("game_code_target") or "NFS_UNDERCOVER_PC"),
+        ("Expected version", exp.get("version") or "?"),
+        ("Verification status", status),
+        ("Hash state", hash_state),
+        ("Ordinary .text provenance",
+         "YES" if prov.get("ordinary_text_provenance") else (
+             "NO" if prov.get("ordinary_text_provenance") is False else "?")),
+        ("Image base", exp.get("image_base") or "?"),
+        ("Architecture", exp.get("architecture") or "PE32/x86"),
     ]
     return html_table(("Item", "Value"), rows)
 
@@ -1301,6 +1379,7 @@ def render_svg(model, detailed=False):
         ("GLOBAL PUBLICATION", _global_publication_badge(model)),
         ("ORDINARY OBJECT FAMILIES", _object_families_badge(model)),
         ("VIRTUAL DISPATCH", _virtual_dispatch_badge(model)),
+        ("GAME TARGET PROVENANCE", _target_provenance_badge(model)),
     ]
     parts = []
     y = badge_row(parts, badges, 14)
@@ -1442,6 +1521,8 @@ th { color: #8b949e; font-weight: 600; }
 %s
 <h2>Virtual dispatch</h2>
 %s
+<h2>Game target provenance</h2>
+%s
 <p>FIRST FRAME: <strong>BLOCKED — PROTECTED BACKEND</strong>. D3D9: <strong>NOT JUSTIFIED</strong>. ENGINE BACKEND: <strong>NOT JUSTIFIED</strong>.</p>
 <p>CRT <code>_CIsqrt</code>: %s. ABI: X87 ST0→ST0.</p>
 <p>Independent of <code>0x00686000</code>: %s. Discovery-enrolled on HIGH graph: %s. Runtime enterable now: %s. Call <code>%s</code> in <code>%s</code> (%s).</p>
@@ -1571,6 +1652,7 @@ document.querySelectorAll("rect[data-addr]").forEach(function (node) {
         _global_publication_html_table(model),
         _object_families_html_table(model),
         _virtual_dispatch_html_table(model),
+        _target_provenance_html_table(model),
         html.escape(_cisqrt_badge(model)),
         html.escape(graphics["independent_of_0x00686000"]),
         html.escape(graphics["reachable_from_high_graph"]),
@@ -1721,6 +1803,7 @@ def render_png(model):
         ("GLOBAL PUBLICATION", _global_publication_badge(model)),
         ("ORDINARY OBJECT FAMILIES", _object_families_badge(model)),
         ("VIRTUAL DISPATCH", _virtual_dispatch_badge(model)),
+        ("GAME TARGET PROVENANCE", _target_provenance_badge(model)),
     ]
 
     # Measure height with the same geometry as the SVG.

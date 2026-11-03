@@ -1,8 +1,8 @@
 {
   "project": {
     "name": "nfsuc-web",
-    "current_phase": 40,
-    "strategy": "Phase 40: independent POD object family + vtable dispatch attempt. Graphics frozen."
+    "current_phase": 41,
+    "strategy": "Phase 41: nontrivial Family B export, Family C lifecycle, virtual continuation diagnosis, Undercover target verify. Graphics frozen."
   },
   "discovery": {
     "candidates": 25450,
@@ -63,10 +63,10 @@
     "STATIC_READY": 20762,
     "IMPORT_READY": 737,
     "RUNTIME_READY": 72,
-    "ENTERABLE": 29,
-    "EXECUTED": 61,
-    "UNIQUE": 61,
-    "EXECUTION_RUNS": 221,
+    "ENTERABLE": 31,
+    "EXECUTED": 64,
+    "UNIQUE": 64,
+    "EXECUTION_RUNS": 243,
     "CLEAN_ORDINARY_ROOTS": 13,
     "EXECUTED_ORDINARY_CONSTRUCTORS": 9,
     "DEEPEST": 4,
@@ -74,10 +74,14 @@
     "ORDINARY_EXECUTION_SEQUENCE_LENGTH": 5,
     "LARGEST_STATEFUL_SEQUENCE_COVERAGE": 22,
     "CLEAN_STATEFUL_SEQUENCES": 11,
-    "INDEPENDENT_OBJECT_FAMILIES_EXECUTED": 2,
-    "CLEAN_INDEPENDENT_OBJECT_LIFECYCLES": 2,
+    "INDEPENDENT_OBJECT_FAMILIES_EXECUTED": 3,
+    "CLEAN_INDEPENDENT_OBJECT_LIFECYCLES": 3,
+    "NONTRIVIAL_OBJECT_LIFECYCLES": 2,
     "REAL_VTABLE_DISPATCHES_EXECUTED": 1,
-    "LATEST_REAL_RUNTIME_BOUNDARY": "Independent POD family B clean; vtable=EXECUTED_VTABLE_DISPATCH; allocator/factory still closed",
+    "CLEAN_VIRTUAL_CALLS": 0,
+    "VIRTUAL_CALL_CONTINUATION_FAULTS": 1,
+    "TARGET_VERIFICATION": "VERIFIED_UNDERCOVER_1_1_2_1",
+    "LATEST_REAL_RUNTIME_BOUNDARY": "B export nontrivial; C RTTI lifecycle; vcall continuation INCORRECT_VTABLE_SLOT",
     "MOST_COMMON_REAL_BLOCKER": [
       "REQUIRED_STATE:UNKNOWN_OBJECT",
       2
@@ -85,7 +89,7 @@
   },
   "top_ordinary_island": {},
   "campaign_summary": {
-    "phase40_sequences": 9,
+    "phase41_sequences": 10,
     "clean_stateful_sequences": 8,
     "outcomes": {
       "EXECUTED_CHAIN": 8,
@@ -122,9 +126,13 @@
       2
     ],
     "family_a_getter_0x5a": true,
-    "family_b_lifecycle_clean": true,
-    "family_b_copy_clean": true,
-    "new_functions": [],
+    "family_b_export_clean": true,
+    "family_c_rtti_clean": true,
+    "new_functions": [
+      "0x009E9A30",
+      "0x009E9CD0",
+      "0x009EB310"
+    ],
     "tlsgetvalue_reached": false,
     "tlsfree_reached": false,
     "filesystem_reached": false,
@@ -2272,7 +2280,7 @@
     }
   },
   "post_constructor_frontier": {
-    "phase": 40,
+    "phase": 41,
     "constructor": "0x009E9160",
     "vtable_census": {
       "main": {
@@ -4070,6 +4078,688 @@
         "sleepex_done": 5,
         "qpc_ticks": 2500000
       }
+    ],
+    "phase41": {
+      "family_b_export": "0x009E9A30",
+      "family_c": "0x009EB350",
+      "nontrivial_lifecycles": 2,
+      "vcall_continuation": "INCORRECT_VTABLE_SLOT"
+    },
+    "phase41_sequences": [
+      {
+        "name": "family_a_setter_getter",
+        "result": "EXECUTED_STATEFUL_SEQUENCE",
+        "clean": true,
+        "sequence_length": 3,
+        "steps": [
+          {
+            "label": "ctor",
+            "root": "0x009E9160",
+            "clean": true,
+            "eax": "0x03004000",
+            "blocked_kind": "NONE",
+            "blocked_va": null,
+            "blocked_fn": null,
+            "depth_max": 4,
+            "entered_n": 18,
+            "uc_indirect_enters": 0,
+            "fault_active": false,
+            "fault_addr": null,
+            "fault_why": "write to read-only guest data"
+          },
+          {
+            "label": "setter",
+            "root": "0x009E9140",
+            "clean": true,
+            "eax": "0x0000005A",
+            "blocked_kind": "NONE",
+            "blocked_va": null,
+            "blocked_fn": null,
+            "depth_max": 4,
+            "entered_n": 19,
+            "uc_indirect_enters": 0,
+            "fault_active": false,
+            "fault_addr": null,
+            "fault_why": "write to read-only guest data"
+          },
+          {
+            "label": "getter",
+            "root": "0x009E9150",
+            "clean": true,
+            "eax": "0x0000005A",
+            "blocked_kind": "NONE",
+            "blocked_va": null,
+            "blocked_fn": null,
+            "depth_max": 4,
+            "entered_n": 20,
+            "uc_indirect_enters": 0,
+            "fault_active": false,
+            "fault_addr": null,
+            "fault_why": "write to read-only guest data"
+          }
+        ],
+        "unique_entered": 20,
+        "entered": [
+          "0x0087B4F6",
+          "0x0087B880",
+          "0x009773C0",
+          "0x00977420",
+          "0x009777D0",
+          "0x00977800",
+          "0x00977E20",
+          "0x00978720",
+          "0x0097F790",
+          "0x0097F9E0",
+          "0x0097FAE0",
+          "0x0097FCD0",
+          "0x009E7710",
+          "0x009E8AD0",
+          "0x009E9140",
+          "0x009E9150",
+          "0x009E9160",
+          "0x009E9460",
+          "0x009E9990",
+          "0x009EB980"
+        ],
+        "depth_max_nested": 4,
+        "blocker": null,
+        "uc_indirect_enters": 0,
+        "final_eax": "0x0000005A",
+        "family": "A",
+        "expected_al": 90,
+        "nontrivial": true
+      },
+      {
+        "name": "family_a_five_step",
+        "result": "EXECUTED_STATEFUL_SEQUENCE",
+        "clean": true,
+        "sequence_length": 5,
+        "steps": [
+          {
+            "label": "ctor",
+            "root": "0x009E9160",
+            "clean": true,
+            "eax": "0x03004000",
+            "blocked_kind": "NONE",
+            "blocked_va": null,
+            "blocked_fn": null,
+            "depth_max": 4,
+            "entered_n": 18,
+            "uc_indirect_enters": 0,
+            "fault_active": false,
+            "fault_addr": null,
+            "fault_why": "write to read-only guest data"
+          },
+          {
+            "label": "setter",
+            "root": "0x009E9140",
+            "clean": true,
+            "eax": "0x00000011",
+            "blocked_kind": "NONE",
+            "blocked_va": null,
+            "blocked_fn": null,
+            "depth_max": 4,
+            "entered_n": 19,
+            "uc_indirect_enters": 0,
+            "fault_active": false,
+            "fault_addr": null,
+            "fault_why": "write to read-only guest data"
+          },
+          {
+            "label": "getter",
+            "root": "0x009E9150",
+            "clean": true,
+            "eax": "0x00000011",
+            "blocked_kind": "NONE",
+            "blocked_va": null,
+            "blocked_fn": null,
+            "depth_max": 4,
+            "entered_n": 20,
+            "uc_indirect_enters": 0,
+            "fault_active": false,
+            "fault_addr": null,
+            "fault_why": "write to read-only guest data"
+          },
+          {
+            "label": "rtti",
+            "root": "0x009E7780",
+            "clean": true,
+            "eax": "0x00C30DE4",
+            "blocked_kind": "NONE",
+            "blocked_va": null,
+            "blocked_fn": null,
+            "depth_max": 4,
+            "entered_n": 21,
+            "uc_indirect_enters": 0,
+            "fault_active": false,
+            "fault_addr": null,
+            "fault_why": "write to read-only guest data"
+          },
+          {
+            "label": "list_a",
+            "root": "0x009E8400",
+            "clean": true,
+            "eax": "0x00000001",
+            "blocked_kind": "NONE",
+            "blocked_va": null,
+            "blocked_fn": null,
+            "depth_max": 4,
+            "entered_n": 22,
+            "uc_indirect_enters": 0,
+            "fault_active": false,
+            "fault_addr": null,
+            "fault_why": "write to read-only guest data"
+          }
+        ],
+        "unique_entered": 22,
+        "entered": [
+          "0x0087B4F6",
+          "0x0087B880",
+          "0x009773C0",
+          "0x00977420",
+          "0x009777D0",
+          "0x00977800",
+          "0x00977E20",
+          "0x00978720",
+          "0x0097F790",
+          "0x0097F9E0",
+          "0x0097FAE0",
+          "0x0097FCD0",
+          "0x009E7710",
+          "0x009E7780",
+          "0x009E8400",
+          "0x009E8AD0",
+          "0x009E9140",
+          "0x009E9150",
+          "0x009E9160",
+          "0x009E9460",
+          "0x009E9990",
+          "0x009EB980"
+        ],
+        "depth_max_nested": 4,
+        "blocker": null,
+        "uc_indirect_enters": 0,
+        "final_eax": "0x00000001",
+        "family": "A",
+        "regression": "phase39_five_step"
+      },
+      {
+        "name": "family_b_rtti",
+        "result": "EXECUTED_STATEFUL_SEQUENCE",
+        "clean": true,
+        "sequence_length": 2,
+        "steps": [
+          {
+            "label": "ctor_b",
+            "root": "0x009E98F0",
+            "clean": true,
+            "eax": "0x03004300",
+            "blocked_kind": "NONE",
+            "blocked_va": null,
+            "blocked_fn": null,
+            "depth_max": 2,
+            "entered_n": 3,
+            "uc_indirect_enters": 0,
+            "fault_active": false,
+            "fault_addr": null,
+            "fault_why": "write to read-only guest data"
+          },
+          {
+            "label": "rtti_b",
+            "root": "0x009E9980",
+            "clean": true,
+            "eax": "0x00C30F38",
+            "blocked_kind": "NONE",
+            "blocked_va": null,
+            "blocked_fn": null,
+            "depth_max": 2,
+            "entered_n": 4,
+            "uc_indirect_enters": 0,
+            "fault_active": false,
+            "fault_addr": null,
+            "fault_why": "write to read-only guest data"
+          }
+        ],
+        "unique_entered": 4,
+        "entered": [
+          "0x009E0880",
+          "0x009E7710",
+          "0x009E98F0",
+          "0x009E9980"
+        ],
+        "depth_max_nested": 2,
+        "blocker": null,
+        "uc_indirect_enters": 0,
+        "final_eax": "0x00C30F38",
+        "family": "B",
+        "expected_eax": "0x00C30F38",
+        "nontrivial": false,
+        "lifecycle": "RTTI"
+      },
+      {
+        "name": "family_b_export",
+        "result": "EXECUTED_STATEFUL_SEQUENCE",
+        "clean": true,
+        "sequence_length": 2,
+        "steps": [
+          {
+            "label": "ctor_b",
+            "root": "0x009E98F0",
+            "clean": true,
+            "eax": "0x03004300",
+            "blocked_kind": "NONE",
+            "blocked_va": null,
+            "blocked_fn": null,
+            "depth_max": 2,
+            "entered_n": 3,
+            "uc_indirect_enters": 0,
+            "fault_active": false,
+            "fault_addr": null,
+            "fault_why": "write to read-only guest data"
+          },
+          {
+            "label": "export",
+            "root": "0x009E9A30",
+            "clean": true,
+            "eax": "0x03004400",
+            "blocked_kind": "NONE",
+            "blocked_va": null,
+            "blocked_fn": null,
+            "depth_max": 2,
+            "entered_n": 4,
+            "uc_indirect_enters": 0,
+            "fault_active": false,
+            "fault_addr": null,
+            "fault_why": "write to read-only guest data"
+          }
+        ],
+        "unique_entered": 4,
+        "entered": [
+          "0x009E0880",
+          "0x009E7710",
+          "0x009E98F0",
+          "0x009E9A30"
+        ],
+        "depth_max_nested": 2,
+        "blocker": null,
+        "uc_indirect_enters": 0,
+        "final_eax": "0x03004400",
+        "family": "B",
+        "nontrivial": true,
+        "lifecycle": "CTOR_EXPORT",
+        "field_match": true,
+        "exported": [
+          "0x00000040",
+          "0x00000040",
+          "0x00000040",
+          "0x00000200",
+          "0x00000200",
+          "0x00000100"
+        ],
+        "source_fields": [
+          "0x00000040",
+          "0x00000040",
+          "0x00000040",
+          "0x00000200",
+          "0x00000200",
+          "0x00000100"
+        ]
+      },
+      {
+        "name": "family_b_ctor_copy_export",
+        "result": "EXECUTED_STATEFUL_SEQUENCE",
+        "clean": true,
+        "sequence_length": 3,
+        "steps": [
+          {
+            "label": "ctor_b",
+            "root": "0x009E98F0",
+            "clean": true,
+            "eax": "0x03004300",
+            "blocked_kind": "NONE",
+            "blocked_va": null,
+            "blocked_fn": null,
+            "depth_max": 2,
+            "entered_n": 3,
+            "uc_indirect_enters": 0,
+            "fault_active": false,
+            "fault_addr": null,
+            "fault_why": "write to read-only guest data"
+          },
+          {
+            "label": "copy",
+            "root": "0x009E9990",
+            "clean": true,
+            "eax": "0x03004380",
+            "blocked_kind": "NONE",
+            "blocked_va": null,
+            "blocked_fn": null,
+            "depth_max": 2,
+            "entered_n": 4,
+            "uc_indirect_enters": 0,
+            "fault_active": false,
+            "fault_addr": null,
+            "fault_why": "write to read-only guest data"
+          },
+          {
+            "label": "export",
+            "root": "0x009E9A30",
+            "clean": true,
+            "eax": "0x03004400",
+            "blocked_kind": "NONE",
+            "blocked_va": null,
+            "blocked_fn": null,
+            "depth_max": 2,
+            "entered_n": 5,
+            "uc_indirect_enters": 0,
+            "fault_active": false,
+            "fault_addr": null,
+            "fault_why": "write to read-only guest data"
+          }
+        ],
+        "unique_entered": 5,
+        "entered": [
+          "0x009E0880",
+          "0x009E7710",
+          "0x009E98F0",
+          "0x009E9990",
+          "0x009E9A30"
+        ],
+        "depth_max_nested": 2,
+        "blocker": null,
+        "uc_indirect_enters": 0,
+        "final_eax": "0x03004400",
+        "family": "B",
+        "nontrivial": true,
+        "lifecycle": "CTOR_COPY_EXPORT"
+      },
+      {
+        "name": "family_b_embedded_only_9e9cd0",
+        "result": "EXECUTED_TO_NEXT_BLOCKER",
+        "clean": false,
+        "sequence_length": 2,
+        "steps": [
+          {
+            "label": "ctor_b",
+            "root": "0x009E98F0",
+            "clean": true,
+            "eax": "0x03004300",
+            "blocked_kind": "NONE",
+            "blocked_va": null,
+            "blocked_fn": null,
+            "depth_max": 2,
+            "entered_n": 3,
+            "uc_indirect_enters": 0,
+            "fault_active": false,
+            "fault_addr": null,
+            "fault_why": "write to read-only guest data"
+          },
+          {
+            "label": "embed",
+            "root": "0x009E9CD0",
+            "clean": false,
+            "eax": "0x00000000",
+            "blocked_kind": "FAULT",
+            "blocked_va": "0x00000028",
+            "blocked_fn": "0x009E9CD0",
+            "depth_max": 2,
+            "entered_n": 4,
+            "uc_indirect_enters": 0,
+            "fault_active": true,
+            "fault_addr": "0x00000028",
+            "fault_why": "unmapped guest access"
+          }
+        ],
+        "unique_entered": 4,
+        "entered": [
+          "0x009E0880",
+          "0x009E7710",
+          "0x009E98F0",
+          "0x009E9CD0"
+        ],
+        "depth_max_nested": 2,
+        "blocker": {
+          "kind": "FAULT",
+          "va": "0x00000028",
+          "fn": "0x009E9CD0",
+          "at_step": "embed",
+          "fault_addr": "0x00000028",
+          "fault_why": "unmapped guest access"
+        },
+        "uc_indirect_enters": 0,
+        "final_eax": "0x00000000",
+        "family": "B",
+        "contract": "EMBEDDED_ONLY_ATTEMPT",
+        "note": "this+4 treated as nested pointer; standalone POD has +4=0"
+      },
+      {
+        "name": "family_c_ctor_rtti",
+        "result": "EXECUTED_STATEFUL_SEQUENCE",
+        "clean": true,
+        "sequence_length": 2,
+        "steps": [
+          {
+            "label": "ctor_c",
+            "root": "0x009EB350",
+            "clean": true,
+            "eax": "0x03004480",
+            "blocked_kind": "NONE",
+            "blocked_va": null,
+            "blocked_fn": null,
+            "depth_max": 2,
+            "entered_n": 2,
+            "uc_indirect_enters": 0,
+            "fault_active": false,
+            "fault_addr": null,
+            "fault_why": "write to read-only guest data"
+          },
+          {
+            "label": "rtti_c",
+            "root": "0x009EB310",
+            "clean": true,
+            "eax": "0x00C31168",
+            "blocked_kind": "NONE",
+            "blocked_va": null,
+            "blocked_fn": null,
+            "depth_max": 2,
+            "entered_n": 3,
+            "uc_indirect_enters": 0,
+            "fault_active": false,
+            "fault_addr": null,
+            "fault_why": "write to read-only guest data"
+          }
+        ],
+        "unique_entered": 3,
+        "entered": [
+          "0x009E7710",
+          "0x009EB310",
+          "0x009EB350"
+        ],
+        "depth_max_nested": 2,
+        "blocker": null,
+        "uc_indirect_enters": 0,
+        "final_eax": "0x00C31168",
+        "family": "C_9EB350",
+        "expected_eax": "0x00C31168",
+        "nontrivial": false,
+        "lifecycle": "RTTI",
+        "independent": true
+      },
+      {
+        "name": "vcall_9e8e00_continuation",
+        "result": "EXECUTED_TO_NEXT_BLOCKER",
+        "clean": false,
+        "sequence_length": 2,
+        "steps": [
+          {
+            "label": "ctor_a",
+            "root": "0x009E9160",
+            "clean": true,
+            "eax": "0x03004000",
+            "blocked_kind": "NONE",
+            "blocked_va": null,
+            "blocked_fn": null,
+            "depth_max": 4,
+            "entered_n": 18,
+            "uc_indirect_enters": 0,
+            "fault_active": false,
+            "fault_addr": null,
+            "fault_why": "write to read-only guest data"
+          },
+          {
+            "label": "virt",
+            "root": "0x009E8E00",
+            "clean": false,
+            "eax": "0x009E8E17",
+            "blocked_kind": "FAULT",
+            "blocked_va": null,
+            "blocked_fn": "0x009E8E00",
+            "depth_max": 4,
+            "entered_n": 19,
+            "uc_indirect_enters": 1,
+            "fault_active": true,
+            "fault_addr": "0x00000000",
+            "fault_why": "unmapped guest access"
+          }
+        ],
+        "unique_entered": 19,
+        "entered": [
+          "0x0087B4F6",
+          "0x0087B880",
+          "0x009773C0",
+          "0x00977420",
+          "0x009777D0",
+          "0x00977800",
+          "0x00977E20",
+          "0x00978720",
+          "0x0097F790",
+          "0x0097F9E0",
+          "0x0097FAE0",
+          "0x0097FCD0",
+          "0x009E7710",
+          "0x009E8AD0",
+          "0x009E8E00",
+          "0x009E9160",
+          "0x009E9460",
+          "0x009E9990",
+          "0x009EB980"
+        ],
+        "depth_max_nested": 4,
+        "blocker": {
+          "kind": "FAULT",
+          "va": null,
+          "fn": "0x009E8E00",
+          "at_step": "virt",
+          "fault_addr": "0x00000000",
+          "fault_why": "unmapped guest access"
+        },
+        "uc_indirect_enters": 1,
+        "final_eax": "0x009E8E17",
+        "family": "VTABLE",
+        "virtual_dispatch": true,
+        "diagnosis": "INCORRECT_VTABLE_SLOT"
+      },
+      {
+        "name": "cb_d1a4_early_exit",
+        "result": "EXECUTED_STATEFUL_SEQUENCE",
+        "clean": true,
+        "sequence_length": 2,
+        "steps": [
+          {
+            "label": "ctor_a",
+            "root": "0x009E9160",
+            "clean": true,
+            "eax": "0x03004000",
+            "blocked_kind": "NONE",
+            "blocked_va": null,
+            "blocked_fn": null,
+            "depth_max": 4,
+            "entered_n": 18,
+            "uc_indirect_enters": 0,
+            "fault_active": false,
+            "fault_addr": null,
+            "fault_why": "write to read-only guest data"
+          },
+          {
+            "label": "cb",
+            "root": "0x009E78C0",
+            "clean": true,
+            "eax": "0x00000000",
+            "blocked_kind": "NONE",
+            "blocked_va": null,
+            "blocked_fn": null,
+            "depth_max": 4,
+            "entered_n": 19,
+            "uc_indirect_enters": 0,
+            "fault_active": false,
+            "fault_addr": null,
+            "fault_why": "write to read-only guest data"
+          }
+        ],
+        "unique_entered": 19,
+        "entered": [
+          "0x0087B4F6",
+          "0x0087B880",
+          "0x009773C0",
+          "0x00977420",
+          "0x009777D0",
+          "0x00977800",
+          "0x00977E20",
+          "0x00978720",
+          "0x0097F790",
+          "0x0097F9E0",
+          "0x0097FAE0",
+          "0x0097FCD0",
+          "0x009E7710",
+          "0x009E78C0",
+          "0x009E8AD0",
+          "0x009E9160",
+          "0x009E9460",
+          "0x009E9990",
+          "0x009EB980"
+        ],
+        "depth_max_nested": 4,
+        "blocker": null,
+        "uc_indirect_enters": 0,
+        "final_eax": "0x00000000",
+        "family": "A_GLOBAL"
+      },
+      {
+        "name": "ebc70_alone",
+        "result": "EXECUTED_STATEFUL_SEQUENCE",
+        "clean": true,
+        "sequence_length": 1,
+        "steps": [
+          {
+            "label": "ebc70",
+            "root": "0x009EBC70",
+            "clean": true,
+            "eax": "0x03004000",
+            "blocked_kind": "NONE",
+            "blocked_va": null,
+            "blocked_fn": null,
+            "depth_max": 3,
+            "entered_n": 5,
+            "uc_indirect_enters": 0,
+            "fault_active": false,
+            "fault_addr": null,
+            "fault_why": "write to read-only guest data"
+          }
+        ],
+        "unique_entered": 5,
+        "entered": [
+          "0x00977420",
+          "0x00977E20",
+          "0x009E9450",
+          "0x009E9460",
+          "0x009EBC70"
+        ],
+        "depth_max_nested": 3,
+        "blocker": null,
+        "uc_indirect_enters": 0,
+        "final_eax": "0x03004000",
+        "family": "EBC70"
+      }
     ]
   },
   "constructor_state_frontier": {
@@ -4515,7 +5205,7 @@
     "confidence": "HIGH"
   },
   "object_family_frontier": {
-    "phase": 40,
+    "phase": 41,
     "ranked_constructor_candidates": [
       {
         "va": "0x009E98F0",
@@ -4862,30 +5552,9 @@
       {
         "family_id": "A_9E9160",
         "ctor_init_va": "0x009E9160",
-        "object_ownership": "CALLER_STORAGE",
-        "extent": "0x00000248",
-        "vtable": [
-          "0x00C30E68",
-          "0x00C30F2C",
-          "0x00C30D5C"
-        ],
-        "required_state": [
-          "ECX=caller buffer",
-          "stack src+flags"
-        ],
-        "ordinary_consumers": [
-          "0x009E9140",
-          "0x009E9150",
-          "0x009E7780",
-          "0x009E8400",
-          "0x009E8460",
-          "0x009E83D0"
-        ],
-        "lifecycle_execution_result": "EXECUTED_STATEFUL_SEQUENCE",
-        "confidence": "HIGH",
-        "limitations": "Allocator/factory paths closed",
-        "independent": true,
-        "phase_established": 38
+        "phase_established": 38,
+        "nontrivial": true,
+        "lifecycle_execution_result": "EXECUTED_STATEFUL_SEQUENCE"
       },
       {
         "family_id": "B_9E98F0_POD",
@@ -4895,954 +5564,437 @@
         "vtable": [
           "0x00C30F2C"
         ],
-        "required_state": [
-          "ECX=caller buffer (raw)",
-          "no stack args"
-        ],
-        "ordinary_fields_initialized": {
-          "+0": "0x00C30F2C",
-          "+0x2C/+0x30": "0x10",
-          "+0x28": "1",
-          "+0x34": "1",
-          "+0x38..+0x4C": "from nested 0x009E0880 table",
-          "+0x50": "0"
-        },
-        "ordinary_consumers": [
-          "0x009E9980",
-          "0x009E9990"
-        ],
-        "lifecycle_execution_result": "EXECUTED_STATEFUL_SEQUENCE",
-        "confidence": "HIGH",
-        "limitations": "Destructor 0x009E7E40 not executed; dtor avoided",
-        "independent": true,
         "phase_established": 40,
-        "classification": "PROVEN_ORDINARY_CONSTRUCTOR",
-        "observable": {
-          "rtti_eax": "0x00C30F38",
-          "expected": "0x00C30F38",
-          "copy_dst_vt": "0x00C30F2C"
-        }
-      },
-      {
-        "family_id": "SEM_97BB30",
-        "ctor_init_va": "0x0097BB30",
-        "object_ownership": "CALLER_STORAGE",
-        "extent": "0x00000150",
-        "vtable": null,
-        "required_state": [
-          "ECX buffer",
-          "two stack args; +0x140 written from arg"
-        ],
-        "ordinary_consumers": [],
-        "lifecycle_execution_result": "EXECUTED_CLEAN_CTOR_ONLY",
-        "confidence": "MEDIUM",
-        "limitations": "No ordinary consumer without additional +0x140 contract",
-        "independent": true,
-        "phase_established": 37,
-        "classification": "STRONG_ORDINARY_CONSTRUCTOR"
-      }
-    ],
-    "independent_object_families_executed": 2,
-    "phase40_new_independent_families": 1,
-    "phase40_new_clean_lifecycles": 1,
-    "strongest_new_family": "B_9E98F0_POD",
-    "observations": {
-      "family_a_getter_al": 90,
-      "family_a_dc": 90,
-      "family_a_vt": "0x00C30E68",
-      "family_b_ctor_clean": true,
-      "family_b_vt": "0x00C30F2C",
-      "family_b_plus2c": "0x00000010",
-      "family_b_plus34": "0x00000001",
-      "family_b_plus50": "0x00000000",
-      "family_b_rtti_eax": "0x00C30F38",
-      "copy_dst_vt": "0x00C30F2C",
-      "copy_dst_2c": "0x00000010"
-    }
-  },
-  "vtable_execution_frontier": {
-    "phase": 40,
-    "dispatch_infrastructure": {
-      "sparse_uc_dtab": true,
-      "reason": "UC .text exceeds NFSU2 DISPATCH_TEXT_SIZE; harness registers lifted bodies",
-      "counts_direct_entry_as_real_dispatch": false
-    },
-    "result": {
-      "attempted": true,
-      "real_vtable_dispatches_executed": 1,
-      "status": "EXECUTED_VTABLE_DISPATCH",
-      "detail": "0x009E8E00 performs call [vt+0x14]; with arg==constructed Family-A object, slot5 resolves to 0x009E8E00 and sparse DISPATCH_CALL entered it. Continuation hits allocator 0x009E9460 (not counted as clean lifecycle).",
-      "uc_indirect_enters_on_9e8e00_attempt": 1,
-      "probe_90749e": {
-        "name": "vcall_probe_90749e_with_pod",
-        "result": "EXECUTED_STATEFUL_SEQUENCE",
-        "clean": true,
-        "sequence_length": 2,
-        "steps": [
+        "methods": [
           {
-            "label": "ctor_b",
-            "root": "0x009E98F0",
-            "clean": true,
-            "eax": "0x03004300",
-            "blocked_kind": "NONE",
-            "blocked_va": null,
-            "depth_max": 2,
-            "entered_n": 3,
-            "uc_indirect_enters": 0
+            "va": "0x009E9980",
+            "classification": "PURE_GETTER",
+            "contract": "STANDALONE_FAMILY_B",
+            "label": "HIGH_CONFIDENCE",
+            "head": [
+              "mov eax, 0xc30f38",
+              "ret "
+            ],
+            "note": "returns 0x00C30F38",
+            "standalone_enterable": true
           },
           {
-            "label": "caller",
-            "root": "0x0090749E",
-            "clean": true,
-            "eax": "0x000003E9",
-            "blocked_kind": "NONE",
-            "blocked_va": null,
-            "depth_max": 3,
-            "entered_n": 7,
-            "uc_indirect_enters": 0
+            "va": "0x009E9990",
+            "classification": "COPY_METHOD",
+            "contract": "STANDALONE_FAMILY_B",
+            "label": "HIGH_CONFIDENCE",
+            "head": [
+              "push esi",
+              "mov esi, ecx",
+              "call 0x9e7710",
+              "mov eax, dword ptr [esp + 8]",
+              "mov dword ptr [esi], 0xc30f2c",
+              "mov ecx, dword ptr [eax + 4]"
+            ],
+            "note": "copy-initializer ret 4",
+            "standalone_enterable": true
+          },
+          {
+            "va": "0x009E9A30",
+            "classification": "BOUNDED_STATE_TRANSFORM",
+            "contract": "STANDALONE_FAMILY_B",
+            "label": "HIGH_CONFIDENCE",
+            "head": [
+              "mov edx, dword ptr [ecx + 0x48]",
+              "mov eax, dword ptr [esp + 4]",
+              "mov dword ptr [eax + 0x10], edx",
+              "mov edx, dword ptr [ecx + 0x44]",
+              "mov dword ptr [eax + 0xc], edx",
+              "mov edx, dword ptr [ecx + 0x40]"
+            ],
+            "note": "exports ctor fields +0x38..+0x4C into caller buffer",
+            "standalone_enterable": true
+          },
+          {
+            "va": "0x009E7E40",
+            "classification": "DESTRUCTOR_OR_FREE",
+            "contract": "EXCLUDED",
+            "label": "HIGH_CONFIDENCE",
+            "head": [
+              "push esi",
+              "mov esi, ecx",
+              "call 0x9e7730",
+              "test byte ptr [esp + 8], 1",
+              "je 0x9e7e58",
+              "push esi"
+            ],
+            "note": "calls 0x00686030 \u2014 excluded",
+            "standalone_enterable": false
+          },
+          {
+            "va": "0x009E9CD0",
+            "classification": "EMBEDDED_ONLY_METHOD",
+            "contract": "EMBEDDED_FAMILY_B",
+            "label": "HIGH_CONFIDENCE",
+            "head": [
+              "sub esp, 0xc",
+              "push ebx",
+              "mov ebx, ecx",
+              "mov eax, dword ptr [ebx + 4]",
+              "cmp byte ptr [eax + 0x28], 0",
+              "jne 0x9e9ce7"
+            ],
+            "note": "reads [this+4] as nested POD; not standalone Family B",
+            "standalone_enterable": false
+          },
+          {
+            "va": "0x009E9DB0",
+            "classification": "EMBEDDED_ONLY_METHOD",
+            "contract": "EMBEDDED_FAMILY_B",
+            "label": "HIGH_CONFIDENCE",
+            "head": [
+              "sub esp, 0xc",
+              "push edi",
+              "mov edi, ecx",
+              "mov eax, dword ptr [edi + 4]",
+              "cmp byte ptr [eax + 0x28], 0",
+              "jne 0x9e9dc7"
+            ],
+            "note": "reads [this+4]+0x2C; parent wrapper",
+            "standalone_enterable": false
           }
         ],
-        "unique_entered": 7,
-        "entered": [
-          "0x0090749E",
-          "0x0090826A",
-          "0x0090827E",
-          "0x0090B452",
-          "0x009E0880",
-          "0x009E7710",
-          "0x009E98F0"
+        "strongest_nontrivial_consumer": {
+          "va": "0x009E9A30",
+          "abi": "thiscall ret 4; arg0=dest buffer",
+          "required_fields": [
+            "+0x38",
+            "+0x3C",
+            "+0x40",
+            "+0x44",
+            "+0x48",
+            "+0x4C"
+          ],
+          "provenance": "CONSTRUCTOR_PRODUCED",
+          "observed": [
+            "0x00000040",
+            "0x00000040",
+            "0x00000040",
+            "0x00000200",
+            "0x00000200",
+            "0x00000100"
+          ],
+          "match": true,
+          "result": "EXECUTED_STATEFUL_SEQUENCE"
+        },
+        "standalone_consumers": [
+          "0x009E9980",
+          "0x009E9990",
+          "0x009E9A30"
         ],
-        "depth_max_nested": 3,
-        "blocker": null,
-        "uc_indirect_enters": 0,
-        "invocation_type": "DIRECT_GUEST_ENTRY",
-        "final_eax": "0x000003E9",
-        "family": "VTABLE_PROBE",
-        "virtual_dispatch": "NOT_TAKEN",
-        "reason": "[arg0+0x14]==0 after POD ctor; cmp vs 0x54 skips call [vt+8]",
-        "classification": "BLOCKED_REQUIRED_STATE",
-        "sleepex_done": 0,
-        "qpc_ticks": 0
+        "embedded_only_consumers": [
+          "0x009E9CD0",
+          "0x009E9DB0"
+        ],
+        "lifecycle_execution_result": "EXECUTED_STATEFUL_SEQUENCE",
+        "nontrivial": true,
+        "confidence": "HIGH"
       },
-      "sites_sampled": [
-        {
-          "caller": "0x0090749E",
-          "site": "0x009074B2",
-          "slot_offset": "0x00000008",
-          "slot_index": 2,
-          "op": "dword ptr [eax + 8]",
-          "prev": [
-            "mov esi, ecx",
-            "jne 0x9074d0",
-            "mov eax, dword ptr [edi]",
-            "mov ecx, edi"
-          ],
-          "enterable_caller": false,
-          "eligible": false,
-          "blocker": "NO_ENTERABLE_VIRTUAL_CALLER_FOUND"
+      {
+        "family_id": "C_9EB350",
+        "ctor_init_va": "0x009EB350",
+        "object_ownership": "CALLER_STORAGE",
+        "extent": "0x0000001C",
+        "vtable": [
+          "0x00C31180"
+        ],
+        "classification": "STRONG_ORDINARY_CONSTRUCTOR",
+        "abi": "thiscall ret 0x10; 4 stack args; arg2\u2192dword used as optional ptr",
+        "required_state": [
+          "ECX caller buffer",
+          "arg2 pointer to zero skips 0x009D2C40"
+        ],
+        "ordinary_consumers": [
+          "0x009EB310"
+        ],
+        "ordinary_fields": {
+          "+0": "0x00C31180",
+          "+0x10": "0x00000011",
+          "+0x14": "0x00000022",
+          "+0x18": "0x00000033"
         },
-        {
-          "caller": "0x00902DF0",
-          "site": "0x00902EA5",
-          "slot_offset": "0x0000001C",
-          "slot_index": 7,
-          "op": "dword ptr [edx + 0x1c]",
-          "prev": [
-            "push esi",
-            "je 0x902eaa",
-            "mov edx, dword ptr [eax]",
-            "mov ecx, eax"
-          ],
-          "enterable_caller": false,
-          "eligible": false,
-          "blocker": "NO_ENTERABLE_VIRTUAL_CALLER_FOUND"
-        },
-        {
-          "caller": "0x00902DF8",
-          "site": "0x00902EA5",
-          "slot_offset": "0x0000001C",
-          "slot_index": 7,
-          "op": "dword ptr [edx + 0x1c]",
-          "prev": [
-            "push esi",
-            "je 0x902eaa",
-            "mov edx, dword ptr [eax]",
-            "mov ecx, eax"
-          ],
-          "enterable_caller": false,
-          "eligible": false,
-          "blocker": "NO_ENTERABLE_VIRTUAL_CALLER_FOUND"
-        },
-        {
-          "caller": "0x00903107",
-          "site": "0x009031D4",
-          "slot_offset": "0x00000000",
-          "slot_index": 0,
-          "op": "dword ptr [eax]",
-          "prev": [
-            "mov edi, eax",
-            "je 0x9031dd",
-            "mov eax, dword ptr [ecx]",
-            "push 1"
-          ],
-          "enterable_caller": false,
-          "eligible": false,
-          "blocker": "NO_ENTERABLE_VIRTUAL_CALLER_FOUND"
-        },
-        {
-          "caller": "0x0090311F",
-          "site": "0x009031D4",
-          "slot_offset": "0x00000000",
-          "slot_index": 0,
-          "op": "dword ptr [eax]",
-          "prev": [
-            "mov edi, eax",
-            "je 0x9031dd",
-            "mov eax, dword ptr [ecx]",
-            "push 1"
-          ],
-          "enterable_caller": false,
-          "eligible": false,
-          "blocker": "NO_ENTERABLE_VIRTUAL_CALLER_FOUND"
-        },
-        {
-          "caller": "0x0090313C",
-          "site": "0x009031D4",
-          "slot_offset": "0x00000000",
-          "slot_index": 0,
-          "op": "dword ptr [eax]",
-          "prev": [
-            "mov edi, eax",
-            "je 0x9031dd",
-            "mov eax, dword ptr [ecx]",
-            "push 1"
-          ],
-          "enterable_caller": false,
-          "eligible": false,
-          "blocker": "NO_ENTERABLE_VIRTUAL_CALLER_FOUND"
-        },
-        {
-          "caller": "0x00903161",
-          "site": "0x009031D4",
-          "slot_offset": "0x00000000",
-          "slot_index": 0,
-          "op": "dword ptr [eax]",
-          "prev": [
-            "mov edi, eax",
-            "je 0x9031dd",
-            "mov eax, dword ptr [ecx]",
-            "push 1"
-          ],
-          "enterable_caller": false,
-          "eligible": false,
-          "blocker": "NO_ENTERABLE_VIRTUAL_CALLER_FOUND"
-        },
-        {
-          "caller": "0x00903178",
-          "site": "0x009031D4",
-          "slot_offset": "0x00000000",
-          "slot_index": 0,
-          "op": "dword ptr [eax]",
-          "prev": [
-            "mov edi, eax",
-            "je 0x9031dd",
-            "mov eax, dword ptr [ecx]",
-            "push 1"
-          ],
-          "enterable_caller": false,
-          "eligible": false,
-          "blocker": "NO_ENTERABLE_VIRTUAL_CALLER_FOUND"
-        },
-        {
-          "caller": "0x0090319D",
-          "site": "0x009031D4",
-          "slot_offset": "0x00000000",
-          "slot_index": 0,
-          "op": "dword ptr [eax]",
-          "prev": [
-            "mov edi, eax",
-            "je 0x9031dd",
-            "mov eax, dword ptr [ecx]",
-            "push 1"
-          ],
-          "enterable_caller": false,
-          "eligible": false,
-          "blocker": "NO_ENTERABLE_VIRTUAL_CALLER_FOUND"
-        },
-        {
-          "caller": "0x009031A3",
-          "site": "0x009031D4",
-          "slot_offset": "0x00000000",
-          "slot_index": 0,
-          "op": "dword ptr [eax]",
-          "prev": [
-            "mov edi, eax",
-            "je 0x9031dd",
-            "mov eax, dword ptr [ecx]",
-            "push 1"
-          ],
-          "enterable_caller": false,
-          "eligible": false,
-          "blocker": "NO_ENTERABLE_VIRTUAL_CALLER_FOUND"
-        },
-        {
-          "caller": "0x0090340C",
-          "site": "0x0090352C",
-          "slot_offset": "0x00000000",
-          "slot_index": 0,
-          "op": "dword ptr [eax]",
-          "prev": [
-            "call 0x90311f",
-            "mov ecx, dword ptr [ebp + 8]",
-            "mov eax, dword ptr [ecx]",
-            "push 1"
-          ],
-          "enterable_caller": false,
-          "eligible": false,
-          "blocker": "NO_ENTERABLE_VIRTUAL_CALLER_FOUND"
-        },
-        {
-          "caller": "0x009034AC",
-          "site": "0x0090352C",
-          "slot_offset": "0x00000000",
-          "slot_index": 0,
-          "op": "dword ptr [eax]",
-          "prev": [
-            "call 0x90311f",
-            "mov ecx, dword ptr [ebp + 8]",
-            "mov eax, dword ptr [ecx]",
-            "push 1"
-          ],
-          "enterable_caller": false,
-          "eligible": false,
-          "blocker": "NO_ENTERABLE_VIRTUAL_CALLER_FOUND"
-        },
-        {
-          "caller": "0x00904F8E",
-          "site": "0x0090508B",
-          "slot_offset": "0x00000000",
-          "slot_index": 0,
-          "op": "dword ptr [edx]",
-          "prev": [
-            "je 0x90508d",
-            "mov edx, dword ptr [eax]",
-            "push 1",
-            "mov ecx, eax"
-          ],
-          "enterable_caller": false,
-          "eligible": false,
-          "blocker": "NO_ENTERABLE_VIRTUAL_CALLER_FOUND"
-        },
-        {
-          "caller": "0x00905069",
-          "site": "0x0090508B",
-          "slot_offset": "0x00000000",
-          "slot_index": 0,
-          "op": "dword ptr [edx]",
-          "prev": [
-            "je 0x90508d",
-            "mov edx, dword ptr [eax]",
-            "push 1",
-            "mov ecx, eax"
-          ],
-          "enterable_caller": false,
-          "eligible": false,
-          "blocker": "NO_ENTERABLE_VIRTUAL_CALLER_FOUND"
-        },
-        {
-          "caller": "0x00905151",
-          "site": "0x0090526A",
-          "slot_offset": "0x00000008",
-          "slot_index": 2,
-          "op": "dword ptr [edx + 8]",
-          "prev": [
-            "call 0x90827e",
-            "push dword ptr [ebp + 8]",
-            "mov edx, dword ptr [eax]",
-            "mov ecx, eax"
-          ],
-          "enterable_caller": false,
-          "eligible": false,
-          "blocker": "NO_ENTERABLE_VIRTUAL_CALLER_FOUND"
-        },
-        {
-          "caller": "0x009051A8",
-          "site": "0x0090526A",
-          "slot_offset": "0x00000008",
-          "slot_index": 2,
-          "op": "dword ptr [edx + 8]",
-          "prev": [
-            "call 0x90827e",
-            "push dword ptr [ebp + 8]",
-            "mov edx, dword ptr [eax]",
-            "mov ecx, eax"
-          ],
-          "enterable_caller": false,
-          "eligible": false,
-          "blocker": "NO_ENTERABLE_VIRTUAL_CALLER_FOUND"
-        },
-        {
-          "caller": "0x0090520B",
-          "site": "0x0090526A",
-          "slot_offset": "0x00000008",
-          "slot_index": 2,
-          "op": "dword ptr [edx + 8]",
-          "prev": [
-            "call 0x90827e",
-            "push dword ptr [ebp + 8]",
-            "mov edx, dword ptr [eax]",
-            "mov ecx, eax"
-          ],
-          "enterable_caller": false,
-          "eligible": false,
-          "blocker": "NO_ENTERABLE_VIRTUAL_CALLER_FOUND"
-        },
-        {
-          "caller": "0x00905249",
-          "site": "0x0090526A",
-          "slot_offset": "0x00000008",
-          "slot_index": 2,
-          "op": "dword ptr [edx + 8]",
-          "prev": [
-            "call 0x90827e",
-            "push dword ptr [ebp + 8]",
-            "mov edx, dword ptr [eax]",
-            "mov ecx, eax"
-          ],
-          "enterable_caller": false,
-          "eligible": false,
-          "blocker": "NO_ENTERABLE_VIRTUAL_CALLER_FOUND"
-        },
-        {
-          "caller": "0x00905283",
-          "site": "0x0090530A",
-          "slot_offset": "0x00000000",
-          "slot_index": 0,
-          "op": "dword ptr [eax]",
-          "prev": [
-            "test ecx, ecx",
-            "je 0x90530c",
-            "mov eax, dword ptr [ecx]",
-            "push 1"
-          ],
-          "enterable_caller": false,
-          "eligible": false,
-          "blocker": "NO_ENTERABLE_VIRTUAL_CALLER_FOUND"
-        },
-        {
-          "caller": "0x0090531B",
-          "site": "0x0090536D",
-          "slot_offset": "0x00000010",
-          "slot_index": 4,
-          "op": "dword ptr [edx + 0x10]",
-          "prev": [
-            "mov ecx, edi",
-            "call 0x90827e",
-            "mov edx, dword ptr [eax]",
-            "mov ecx, eax"
-          ],
-          "enterable_caller": false,
-          "eligible": false,
-          "blocker": "NO_ENTERABLE_VIRTUAL_CALLER_FOUND"
-        }
-      ],
-      "eligible_ordinary_call_sites": 1,
-      "actual_virtual_caller": "0x009E8E00",
-      "vtable": "0x00C30E68",
-      "slot": 5,
-      "slot_offset": "0x00000014",
-      "resolved_target": "0x009E8E00",
-      "this_adjustment": "none (ecx=arg object)",
-      "abi_verified": true,
-      "continuation_blocker": {
-        "kind": "FAULT",
-        "va": null,
-        "at_step": "virt"
+        "lifecycle_execution_result": "EXECUTED_STATEFUL_SEQUENCE",
+        "nontrivial": false,
+        "note": "RTTI-only consumer so far; dtor/slot0 hits protected free",
+        "phase_established": 41,
+        "confidence": "HIGH",
+        "independent": true
       }
+    ],
+    "independent_object_families_executed": 3,
+    "clean_independent_object_lifecycles": 3,
+    "nontrivial_object_lifecycles": 2,
+    "strongest_new_family": "C_9EB350",
+    "strongest_nontrivial_new_consumer": "0x009E9A30",
+    "observations": {
+      "family_a_al": 90,
+      "family_b_fields": [
+        "0x00000040",
+        "0x00000040",
+        "0x00000040",
+        "0x00000200",
+        "0x00000200",
+        "0x00000100"
+      ],
+      "family_b_export_dest": [
+        "0x00000040",
+        "0x00000040",
+        "0x00000040",
+        "0x00000200",
+        "0x00000200",
+        "0x00000100"
+      ],
+      "family_b_export_match": true,
+      "family_c_vt": "0x00C31180",
+      "family_c_10": "0x00000011",
+      "family_c_14": "0x00000022",
+      "family_c_18": "0x00000033"
     },
-    "real_vtable_dispatches_executed": 1,
-    "sites": [
+    "family_b_method_census": [
       {
-        "caller": "0x0090749E",
-        "site": "0x009074B2",
-        "slot_offset": "0x00000008",
-        "slot_index": 2,
-        "op": "dword ptr [eax + 8]",
-        "prev": [
+        "va": "0x009E9980",
+        "classification": "PURE_GETTER",
+        "contract": "STANDALONE_FAMILY_B",
+        "label": "HIGH_CONFIDENCE",
+        "head": [
+          "mov eax, 0xc30f38",
+          "ret "
+        ],
+        "note": "returns 0x00C30F38",
+        "standalone_enterable": true
+      },
+      {
+        "va": "0x009E9990",
+        "classification": "COPY_METHOD",
+        "contract": "STANDALONE_FAMILY_B",
+        "label": "HIGH_CONFIDENCE",
+        "head": [
+          "push esi",
           "mov esi, ecx",
-          "jne 0x9074d0",
-          "mov eax, dword ptr [edi]",
-          "mov ecx, edi"
+          "call 0x9e7710",
+          "mov eax, dword ptr [esp + 8]",
+          "mov dword ptr [esi], 0xc30f2c",
+          "mov ecx, dword ptr [eax + 4]"
         ],
-        "enterable_caller": false,
-        "eligible": false,
-        "blocker": "NO_ENTERABLE_VIRTUAL_CALLER_FOUND"
+        "note": "copy-initializer ret 4",
+        "standalone_enterable": true
       },
       {
-        "caller": "0x00902DF0",
-        "site": "0x00902EA5",
-        "slot_offset": "0x0000001C",
-        "slot_index": 7,
-        "op": "dword ptr [edx + 0x1c]",
-        "prev": [
+        "va": "0x009E9A30",
+        "classification": "BOUNDED_STATE_TRANSFORM",
+        "contract": "STANDALONE_FAMILY_B",
+        "label": "HIGH_CONFIDENCE",
+        "head": [
+          "mov edx, dword ptr [ecx + 0x48]",
+          "mov eax, dword ptr [esp + 4]",
+          "mov dword ptr [eax + 0x10], edx",
+          "mov edx, dword ptr [ecx + 0x44]",
+          "mov dword ptr [eax + 0xc], edx",
+          "mov edx, dword ptr [ecx + 0x40]"
+        ],
+        "note": "exports ctor fields +0x38..+0x4C into caller buffer",
+        "standalone_enterable": true
+      },
+      {
+        "va": "0x009E7E40",
+        "classification": "DESTRUCTOR_OR_FREE",
+        "contract": "EXCLUDED",
+        "label": "HIGH_CONFIDENCE",
+        "head": [
           "push esi",
-          "je 0x902eaa",
-          "mov edx, dword ptr [eax]",
-          "mov ecx, eax"
+          "mov esi, ecx",
+          "call 0x9e7730",
+          "test byte ptr [esp + 8], 1",
+          "je 0x9e7e58",
+          "push esi"
         ],
-        "enterable_caller": false,
-        "eligible": false,
-        "blocker": "NO_ENTERABLE_VIRTUAL_CALLER_FOUND"
+        "note": "calls 0x00686030 \u2014 excluded",
+        "standalone_enterable": false
       },
       {
-        "caller": "0x00902DF8",
-        "site": "0x00902EA5",
-        "slot_offset": "0x0000001C",
-        "slot_index": 7,
-        "op": "dword ptr [edx + 0x1c]",
-        "prev": [
-          "push esi",
-          "je 0x902eaa",
-          "mov edx, dword ptr [eax]",
-          "mov ecx, eax"
+        "va": "0x009E9CD0",
+        "classification": "EMBEDDED_ONLY_METHOD",
+        "contract": "EMBEDDED_FAMILY_B",
+        "label": "HIGH_CONFIDENCE",
+        "head": [
+          "sub esp, 0xc",
+          "push ebx",
+          "mov ebx, ecx",
+          "mov eax, dword ptr [ebx + 4]",
+          "cmp byte ptr [eax + 0x28], 0",
+          "jne 0x9e9ce7"
         ],
-        "enterable_caller": false,
-        "eligible": false,
-        "blocker": "NO_ENTERABLE_VIRTUAL_CALLER_FOUND"
+        "note": "reads [this+4] as nested POD; not standalone Family B",
+        "standalone_enterable": false
       },
       {
-        "caller": "0x00903107",
-        "site": "0x009031D4",
-        "slot_offset": "0x00000000",
-        "slot_index": 0,
-        "op": "dword ptr [eax]",
-        "prev": [
-          "mov edi, eax",
-          "je 0x9031dd",
-          "mov eax, dword ptr [ecx]",
-          "push 1"
+        "va": "0x009E9DB0",
+        "classification": "EMBEDDED_ONLY_METHOD",
+        "contract": "EMBEDDED_FAMILY_B",
+        "label": "HIGH_CONFIDENCE",
+        "head": [
+          "sub esp, 0xc",
+          "push edi",
+          "mov edi, ecx",
+          "mov eax, dword ptr [edi + 4]",
+          "cmp byte ptr [eax + 0x28], 0",
+          "jne 0x9e9dc7"
         ],
-        "enterable_caller": false,
-        "eligible": false,
-        "blocker": "NO_ENTERABLE_VIRTUAL_CALLER_FOUND"
-      },
-      {
-        "caller": "0x0090311F",
-        "site": "0x009031D4",
-        "slot_offset": "0x00000000",
-        "slot_index": 0,
-        "op": "dword ptr [eax]",
-        "prev": [
-          "mov edi, eax",
-          "je 0x9031dd",
-          "mov eax, dword ptr [ecx]",
-          "push 1"
-        ],
-        "enterable_caller": false,
-        "eligible": false,
-        "blocker": "NO_ENTERABLE_VIRTUAL_CALLER_FOUND"
-      },
-      {
-        "caller": "0x0090313C",
-        "site": "0x009031D4",
-        "slot_offset": "0x00000000",
-        "slot_index": 0,
-        "op": "dword ptr [eax]",
-        "prev": [
-          "mov edi, eax",
-          "je 0x9031dd",
-          "mov eax, dword ptr [ecx]",
-          "push 1"
-        ],
-        "enterable_caller": false,
-        "eligible": false,
-        "blocker": "NO_ENTERABLE_VIRTUAL_CALLER_FOUND"
-      },
-      {
-        "caller": "0x00903161",
-        "site": "0x009031D4",
-        "slot_offset": "0x00000000",
-        "slot_index": 0,
-        "op": "dword ptr [eax]",
-        "prev": [
-          "mov edi, eax",
-          "je 0x9031dd",
-          "mov eax, dword ptr [ecx]",
-          "push 1"
-        ],
-        "enterable_caller": false,
-        "eligible": false,
-        "blocker": "NO_ENTERABLE_VIRTUAL_CALLER_FOUND"
-      },
-      {
-        "caller": "0x00903178",
-        "site": "0x009031D4",
-        "slot_offset": "0x00000000",
-        "slot_index": 0,
-        "op": "dword ptr [eax]",
-        "prev": [
-          "mov edi, eax",
-          "je 0x9031dd",
-          "mov eax, dword ptr [ecx]",
-          "push 1"
-        ],
-        "enterable_caller": false,
-        "eligible": false,
-        "blocker": "NO_ENTERABLE_VIRTUAL_CALLER_FOUND"
-      },
-      {
-        "caller": "0x0090319D",
-        "site": "0x009031D4",
-        "slot_offset": "0x00000000",
-        "slot_index": 0,
-        "op": "dword ptr [eax]",
-        "prev": [
-          "mov edi, eax",
-          "je 0x9031dd",
-          "mov eax, dword ptr [ecx]",
-          "push 1"
-        ],
-        "enterable_caller": false,
-        "eligible": false,
-        "blocker": "NO_ENTERABLE_VIRTUAL_CALLER_FOUND"
-      },
-      {
-        "caller": "0x009031A3",
-        "site": "0x009031D4",
-        "slot_offset": "0x00000000",
-        "slot_index": 0,
-        "op": "dword ptr [eax]",
-        "prev": [
-          "mov edi, eax",
-          "je 0x9031dd",
-          "mov eax, dword ptr [ecx]",
-          "push 1"
-        ],
-        "enterable_caller": false,
-        "eligible": false,
-        "blocker": "NO_ENTERABLE_VIRTUAL_CALLER_FOUND"
-      },
-      {
-        "caller": "0x0090340C",
-        "site": "0x0090352C",
-        "slot_offset": "0x00000000",
-        "slot_index": 0,
-        "op": "dword ptr [eax]",
-        "prev": [
-          "call 0x90311f",
-          "mov ecx, dword ptr [ebp + 8]",
-          "mov eax, dword ptr [ecx]",
-          "push 1"
-        ],
-        "enterable_caller": false,
-        "eligible": false,
-        "blocker": "NO_ENTERABLE_VIRTUAL_CALLER_FOUND"
-      },
-      {
-        "caller": "0x009034AC",
-        "site": "0x0090352C",
-        "slot_offset": "0x00000000",
-        "slot_index": 0,
-        "op": "dword ptr [eax]",
-        "prev": [
-          "call 0x90311f",
-          "mov ecx, dword ptr [ebp + 8]",
-          "mov eax, dword ptr [ecx]",
-          "push 1"
-        ],
-        "enterable_caller": false,
-        "eligible": false,
-        "blocker": "NO_ENTERABLE_VIRTUAL_CALLER_FOUND"
-      },
-      {
-        "caller": "0x00904F8E",
-        "site": "0x0090508B",
-        "slot_offset": "0x00000000",
-        "slot_index": 0,
-        "op": "dword ptr [edx]",
-        "prev": [
-          "je 0x90508d",
-          "mov edx, dword ptr [eax]",
-          "push 1",
-          "mov ecx, eax"
-        ],
-        "enterable_caller": false,
-        "eligible": false,
-        "blocker": "NO_ENTERABLE_VIRTUAL_CALLER_FOUND"
-      },
-      {
-        "caller": "0x00905069",
-        "site": "0x0090508B",
-        "slot_offset": "0x00000000",
-        "slot_index": 0,
-        "op": "dword ptr [edx]",
-        "prev": [
-          "je 0x90508d",
-          "mov edx, dword ptr [eax]",
-          "push 1",
-          "mov ecx, eax"
-        ],
-        "enterable_caller": false,
-        "eligible": false,
-        "blocker": "NO_ENTERABLE_VIRTUAL_CALLER_FOUND"
-      },
-      {
-        "caller": "0x00905151",
-        "site": "0x0090526A",
-        "slot_offset": "0x00000008",
-        "slot_index": 2,
-        "op": "dword ptr [edx + 8]",
-        "prev": [
-          "call 0x90827e",
-          "push dword ptr [ebp + 8]",
-          "mov edx, dword ptr [eax]",
-          "mov ecx, eax"
-        ],
-        "enterable_caller": false,
-        "eligible": false,
-        "blocker": "NO_ENTERABLE_VIRTUAL_CALLER_FOUND"
-      },
-      {
-        "caller": "0x009051A8",
-        "site": "0x0090526A",
-        "slot_offset": "0x00000008",
-        "slot_index": 2,
-        "op": "dword ptr [edx + 8]",
-        "prev": [
-          "call 0x90827e",
-          "push dword ptr [ebp + 8]",
-          "mov edx, dword ptr [eax]",
-          "mov ecx, eax"
-        ],
-        "enterable_caller": false,
-        "eligible": false,
-        "blocker": "NO_ENTERABLE_VIRTUAL_CALLER_FOUND"
-      },
-      {
-        "caller": "0x0090520B",
-        "site": "0x0090526A",
-        "slot_offset": "0x00000008",
-        "slot_index": 2,
-        "op": "dword ptr [edx + 8]",
-        "prev": [
-          "call 0x90827e",
-          "push dword ptr [ebp + 8]",
-          "mov edx, dword ptr [eax]",
-          "mov ecx, eax"
-        ],
-        "enterable_caller": false,
-        "eligible": false,
-        "blocker": "NO_ENTERABLE_VIRTUAL_CALLER_FOUND"
-      },
-      {
-        "caller": "0x00905249",
-        "site": "0x0090526A",
-        "slot_offset": "0x00000008",
-        "slot_index": 2,
-        "op": "dword ptr [edx + 8]",
-        "prev": [
-          "call 0x90827e",
-          "push dword ptr [ebp + 8]",
-          "mov edx, dword ptr [eax]",
-          "mov ecx, eax"
-        ],
-        "enterable_caller": false,
-        "eligible": false,
-        "blocker": "NO_ENTERABLE_VIRTUAL_CALLER_FOUND"
-      },
-      {
-        "caller": "0x00905283",
-        "site": "0x0090530A",
-        "slot_offset": "0x00000000",
-        "slot_index": 0,
-        "op": "dword ptr [eax]",
-        "prev": [
-          "test ecx, ecx",
-          "je 0x90530c",
-          "mov eax, dword ptr [ecx]",
-          "push 1"
-        ],
-        "enterable_caller": false,
-        "eligible": false,
-        "blocker": "NO_ENTERABLE_VIRTUAL_CALLER_FOUND"
-      },
-      {
-        "caller": "0x0090531B",
-        "site": "0x0090536D",
-        "slot_offset": "0x00000010",
-        "slot_index": 4,
-        "op": "dword ptr [edx + 0x10]",
-        "prev": [
-          "mov ecx, edi",
-          "call 0x90827e",
-          "mov edx, dword ptr [eax]",
-          "mov ecx, eax"
-        ],
-        "enterable_caller": false,
-        "eligible": false,
-        "blocker": "NO_ENTERABLE_VIRTUAL_CALLER_FOUND"
-      },
-      {
-        "caller": "0x009053F9",
-        "site": "0x00905419",
-        "slot_offset": "0x00000018",
-        "slot_index": 6,
-        "op": "dword ptr [edx + 0x18]",
-        "prev": [
-          "mov ecx, edi",
-          "call 0x90827e",
-          "mov edx, dword ptr [eax]",
-          "mov ecx, eax"
-        ],
-        "enterable_caller": false,
-        "eligible": false,
-        "blocker": "NO_ENTERABLE_VIRTUAL_CALLER_FOUND"
-      },
-      {
-        "caller": "0x00905456",
-        "site": "0x00905541",
-        "slot_offset": "0x0000000C",
-        "slot_index": 3,
-        "op": "dword ptr [edx + 0xc]",
-        "prev": [
-          "mov ecx, edi",
-          "call 0x90827e",
-          "mov edx, dword ptr [eax]",
-          "mov ecx, eax"
-        ],
-        "enterable_caller": false,
-        "eligible": false,
-        "blocker": "NO_ENTERABLE_VIRTUAL_CALLER_FOUND"
-      },
-      {
-        "caller": "0x0090577A",
-        "site": "0x00905859",
-        "slot_offset": "0x00000000",
-        "slot_index": 0,
-        "op": "dword ptr [esi]",
-        "prev": [
-          "add esi, 0x1c",
-          "call 0x90827e",
-          "mov ecx, dword ptr [ebp + 8]",
-          "push eax"
-        ],
-        "enterable_caller": false,
-        "eligible": false,
-        "blocker": "NO_ENTERABLE_VIRTUAL_CALLER_FOUND"
-      },
-      {
-        "caller": "0x009057DE",
-        "site": "0x00905859",
-        "slot_offset": "0x00000000",
-        "slot_index": 0,
-        "op": "dword ptr [esi]",
-        "prev": [
-          "add esi, 0x1c",
-          "call 0x90827e",
-          "mov ecx, dword ptr [ebp + 8]",
-          "push eax"
-        ],
-        "enterable_caller": false,
-        "eligible": false,
-        "blocker": "NO_ENTERABLE_VIRTUAL_CALLER_FOUND"
-      },
-      {
-        "caller": "0x00905F74",
-        "site": "0x00906066",
-        "slot_offset": "0x00000008",
-        "slot_index": 2,
-        "op": "dword ptr [edx + 8]",
-        "prev": [
-          "mov eax, dword ptr [esi + 0x2c]",
-          "mov eax, dword ptr [eax + 0x3c]",
-          "mov edx, dword ptr [ecx]",
-          "push eax"
-        ],
-        "enterable_caller": false,
-        "eligible": false,
-        "blocker": "NO_ENTERABLE_VIRTUAL_CALLER_FOUND"
-      },
-      {
-        "caller": "0x009062A3",
-        "site": "0x00906370",
-        "slot_offset": "0x00000000",
-        "slot_index": 0,
-        "op": "dword ptr [edx]",
-        "prev": [
-          "call 0x90827e",
-          "push dword ptr [ebp + 8]",
-          "mov edx, dword ptr [eax]",
-          "mov ecx, eax"
-        ],
-        "enterable_caller": false,
-        "eligible": false,
-        "blocker": "NO_ENTERABLE_VIRTUAL_CALLER_FOUND"
-      },
-      {
-        "caller": "0x00906327",
-        "site": "0x00906370",
-        "slot_offset": "0x00000000",
-        "slot_index": 0,
-        "op": "dword ptr [edx]",
-        "prev": [
-          "call 0x90827e",
-          "push dword ptr [ebp + 8]",
-          "mov edx, dword ptr [eax]",
-          "mov ecx, eax"
-        ],
-        "enterable_caller": false,
-        "eligible": false,
-        "blocker": "NO_ENTERABLE_VIRTUAL_CALLER_FOUND"
-      },
-      {
-        "caller": "0x0090638F",
-        "site": "0x009063BD",
-        "slot_offset": "0x00000004",
-        "slot_index": 1,
-        "op": "dword ptr [edx + 4]",
-        "prev": [
-          "push dword ptr [ebp + 0x10]",
-          "mov ecx, eax",
-          "push dword ptr [ebp + 0xc]",
-          "push dword ptr [ebp + 8]"
-        ],
-        "enterable_caller": false,
-        "eligible": false,
-        "blocker": "NO_ENTERABLE_VIRTUAL_CALLER_FOUND"
-      },
-      {
-        "caller": "0x0090669F",
-        "site": "0x00906706",
-        "slot_offset": "0x00000020",
-        "slot_index": 8,
-        "op": "dword ptr [eax + 0x20]",
-        "prev": [
-          "call 0x902ffc",
-          "add esp, 0xc",
-          "jmp 0x90681a",
-          "mov eax, dword ptr [esi]"
-        ],
-        "enterable_caller": false,
-        "eligible": false,
-        "blocker": "NO_ENTERABLE_VIRTUAL_CALLER_FOUND"
-      },
-      {
-        "caller": "0x009066C5",
-        "site": "0x00906706",
-        "slot_offset": "0x00000020",
-        "slot_index": 8,
-        "op": "dword ptr [eax + 0x20]",
-        "prev": [
-          "call 0x902ffc",
-          "add esp, 0xc",
-          "jmp 0x90681a",
-          "mov eax, dword ptr [esi]"
-        ],
-        "enterable_caller": false,
-        "eligible": false,
-        "blocker": "NO_ENTERABLE_VIRTUAL_CALLER_FOUND"
+        "note": "reads [this+4]+0x2C; parent wrapper",
+        "standalone_enterable": false
       }
     ]
+  },
+  "vtable_execution_frontier": {
+    "phase": 41,
+    "dispatch_infrastructure": {
+      "sparse_uc_dtab": true,
+      "counts_direct_entry_as_real_dispatch": false
+    },
+    "phase40_site": {
+      "attempted": true,
+      "reproduced": true,
+      "ordinary_caller": "0x009E8E00",
+      "exact_call_site": "0x009E8E15",
+      "call_insn": "call edx  ; edx = [eax+0x14], eax = [[ebp]]",
+      "runtime_object": "0x03004000",
+      "vtable_va": "0x00C30E68",
+      "slot_index": 5,
+      "slot_offset": "0x00000014",
+      "resolved_target": "0x009E8E00",
+      "same_function_caller_target": true,
+      "nested_frame_evidence": {
+        "uc_indirect_enters": 1,
+        "root_entry": "DIRECT_GUEST_ENTRY",
+        "nested_entry": "DISPATCH_CALL\u2192sparse UC",
+        "entered_unique_shows_once": true,
+        "note": "Unique entered[] dedupes; uc_indirect_enters proves second activation"
+      },
+      "thiscall_abi_at_call_site": {
+        "ecx": "arg object (ebp)",
+        "stack_args_pushed_by_site": 0,
+        "callee_9E8E00_ret": 4,
+        "abi_match_for_self_target": false
+      },
+      "vtable_dispatch_succeeded": true,
+      "virtual_call_completed": false,
+      "caller_returned_clean": false,
+      "continuation_classification": "INCORRECT_VTABLE_SLOT",
+      "continuation_detail": "Call site 0x009E8E15 invokes [vt+0x14] as thiscall with 0 stack args, expecting EAX string. Family-A slot5 resolves to 0x009E8E00 itself (ret 4). Nested activation therefore lacks the stack arg its prologue reads at [esp+0x20], loads EBP\u22480/garbage, then faults on `mov eax, dword ptr [ebp]` (unmapped guest access at 0). Not a clean virtual-method completion.",
+      "first_failing_operation": {
+        "ordinary_function": "0x009E8E00",
+        "instruction_va": "0x009E8E09",
+        "reason": "nested frame ebp invalid/null after ABI-mismatched self virtual call",
+        "fault_addr": "0x00000000",
+        "fault_why": "unmapped guest access",
+        "blocked_kind": "FAULT",
+        "eax_at_stop": "0x009E8E17",
+        "eip_at_stop": "0x00000000",
+        "esp_at_stop": "0x0300EFEC"
+      },
+      "clean_virtual_call": false,
+      "continuation_fault": true,
+      "result": "EXECUTED_VTABLE_DISPATCH"
+    },
+    "real_vtable_dispatches_executed": 1,
+    "clean_virtual_calls": 0,
+    "virtual_call_continuation_faults": 1,
+    "result": {
+      "status": "EXECUTED_VTABLE_DISPATCH",
+      "continuation_classification": "INCORRECT_VTABLE_SLOT",
+      "eligible_ordinary_call_sites": 1,
+      "detail": "Call site 0x009E8E15 invokes [vt+0x14] as thiscall with 0 stack args, expecting EAX string. Family-A slot5 resolves to 0x009E8E00 itself (ret 4). Nested activation therefore lacks the stack arg its prologue reads at [esp+0x20], loads EBP\u22480/garbage, then faults on `mov eax, dword ptr [ebp]` (unmapped guest access at 0). Not a clean virtual-method completion.",
+      "actual_virtual_caller": "0x009E8E00",
+      "slot": 5,
+      "resolved_target": "0x009E8E00",
+      "continuation_blocker": {
+        "ordinary_function": "0x009E8E00",
+        "instruction_va": "0x009E8E09",
+        "reason": "nested frame ebp invalid/null after ABI-mismatched self virtual call",
+        "fault_addr": "0x00000000",
+        "fault_why": "unmapped guest access",
+        "blocked_kind": "FAULT",
+        "eax_at_stop": "0x009E8E17",
+        "eip_at_stop": "0x00000000",
+        "esp_at_stop": "0x0300EFEC"
+      }
+    }
+  },
+  "target_provenance": {
+    "tooling_origin": "NFSU2-WEB",
+    "game_code_target": "NFS_UNDERCOVER_PC",
+    "expected": {
+      "filename": "nfs.exe",
+      "version": "1.1.2.1",
+      "sha256": "6b10551649fd70fa630bd7454fd953f51555fa2dd2112faae84ac8ca97844bcd",
+      "architecture": "PE32/x86",
+      "machine": "0x014C",
+      "image_base": "0x00400000",
+      "entry_va": "0x01FCA510",
+      "ordinary_text_va": "0x00401000"
+    },
+    "input_present": true,
+    "input_path_recorded": false,
+    "verification_status": "VERIFIED_UNDERCOVER_1_1_2_1",
+    "sha256_match": true,
+    "pe_match": true,
+    "ordinary_text_provenance": true,
+    "mismatch": null,
+    "ordinary_samples_checked": [
+      {
+        "va": "0x009E9160",
+        "ok": true,
+        "observed_prefix": "5356578bf1e8a6e5ffff8b442410508d",
+        "expected_prefix": "5356578bf1e8a6e5ffff8b442410508d"
+      },
+      {
+        "va": "0x009E98F0",
+        "ok": true,
+        "observed_prefix": "83ec44568bf1e815deffff33c0b91000",
+        "expected_prefix": "83ec44568bf1e815deffff33c0b91000"
+      },
+      {
+        "va": "0x009E9980",
+        "ok": true,
+        "observed_prefix": "b8380fc300c3",
+        "expected_prefix": "b8380fc300c3"
+      },
+      {
+        "va": "0x009E8E00",
+        "ok": true,
+        "observed_prefix": "83ec1453558b6c24208b45008b501456",
+        "expected_prefix": "83ec1453558b6c24208b45008b501456"
+      },
+      {
+        "va": "0x009E9A30",
+        "ok": true,
+        "observed_prefix": "8b51488b4424048950108b514489500c",
+        "expected_prefix": "8b51488b4424048950108b514489500c"
+      },
+      {
+        "va": "0x009EB350",
+        "ok": true,
+        "observed_prefix": "568bf1e8b8c3ffff8b44241033c9",
+        "expected_prefix": "568bf1e8b8c3ffff8b44241033c9"
+      }
+    ],
+    "input_basename": "nfs.exe",
+    "observed_sha256": "6b10551649fd70fa630bd7454fd953f51555fa2dd2112faae84ac8ca97844bcd",
+    "observed": {
+      "machine": "0x014C",
+      "image_base": "0x00400000",
+      "entry_va": "0x01FCA510",
+      "version": "1.1.2.1",
+      "ordinary_text": {
+        "va": "0x00401000",
+        "vsize": "0x0075F3FB"
+      }
+    }
   },
   "initialization": [
     {
@@ -6170,6 +6322,11 @@
     {
       "phase": 40,
       "name": "Independent object family and real vtable dispatch",
+      "state": "completed"
+    },
+    {
+      "phase": 41,
+      "name": "Nontrivial lifecycles and virtual continuation",
       "state": "completed"
     }
   ],
