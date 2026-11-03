@@ -1,5 +1,5 @@
 {
-  "current_phase": 32,
+  "current_phase": 33,
   "strategy": "Phase 30: KERNEL32!TlsSetValue HLE at 0x00B611C8; ctor 0x009E9160 RETURNED_CLEAN. Graphics frozen.",
   "boundaries": {
     "0x00686000": {
@@ -389,6 +389,11 @@
     {
       "phase": 32,
       "name": "Win32 synchronization runtime (ICS/Mutex/GCP)",
+      "state": "completed"
+    },
+    {
+      "phase": 33,
+      "name": "GetPriorityClass + CreateSemaphoreA",
       "state": "completed"
     }
   ],
