@@ -21,7 +21,8 @@ TIMING_IMPORTS = {"GetTickCount", "QueryPerformanceCounter", "QueryPerformanceFr
 THREAD_STATE_IMPORTS = {"GetCurrentThread", "GetCurrentThreadId", "GetThreadPriority",
                         "SetThreadPriority", "SetPriorityClass", "GetPriorityClass"}
 AFFINITY_IMPORTS = {"SetThreadAffinityMask", "GetProcessAffinityMask", "SetProcessAffinityMask"}
-ALERTABLE_WAIT_IMPORTS = {"SleepEx"}
+ALERTABLE_WAIT_IMPORTS = set()  # SleepEx has timeout-only HLE when eligible
+APC_DELIVERY_IMPORTS = set()  # reserved; pending-APC SleepEx fails as IMPORT today
 FS_IMPORTS = {"CreateFileA", "ReadFile", "WriteFile", "CloseHandle", "FindFirstFileA",
               "FindNextFileA", "FindClose", "GetFileAttributesA", "SetFilePointer"}
 TLS_IMPORTS = {"TlsGetValue", "TlsFree"}
@@ -65,6 +66,13 @@ def classify_outcome(root, out_view, fmap_label=None, import_name=None):
     if kind == h.K_IMPORT:
         name = import_name or "UNKNOWN_IMPORT"
         res["detail"] = name
+        # Jump-table / mid-function targets misrouted through dispatch_indirect
+        # yield non-symbol "names"; treat ordinary .text targets as INDIRECT.
+        looks_symbol = isinstance(name, str) and name.isidentifier() and len(name) >= 2
+        if not looks_symbol and 0x00401000 <= (va or 0) < 0x00B60000:
+            res.update(result="BLOCKED_INDIRECT", hist="INDIRECT",
+                       detail="switch/jump-table or unresolved ordinary target 0x%08X" % va)
+            return res
         if name in TLS_IMPORTS:
             res.update(result="BLOCKED_TLS", hist="TLS")
         elif name in ALERTABLE_WAIT_IMPORTS:
@@ -122,7 +130,7 @@ def classify_outcome(root, out_view, fmap_label=None, import_name=None):
 def finalize_result(res, depth):
     """EXECUTED_TO_NEXT_BLOCKER when a real chain entered >=2 frames before stopping."""
     if res["result"].startswith("BLOCKED") and depth >= 2 and res["hist"] in (
-            "IMPORT", "TIMING", "ALERTABLE_WAIT", "FILESYSTEM", "TLS",
+            "IMPORT", "TIMING", "ALERTABLE_WAIT", "INDIRECT", "FILESYSTEM", "TLS",
             "PROTECTED", "EXTERNAL"):
         res = dict(res)
         res["blocker_result"] = res["result"]
@@ -239,6 +247,8 @@ def run_campaign(specs=None, harness=None, fmap=None):
             lbl = row["label"] if row else None
         res = classify_outcome(s["root"], view, lbl, imp_name)
         res = finalize_result(res, view["depth_max"])
+        if res.get("hist") == "INDIRECT":
+            imp_name = None  # do not surface garbage PE-name decode of .text
         imports = []
         for i in range(min(out.nimp, h.IMP_CAP)):
             nm = h.import_name_for_target(out.imp_target[i]) if not out.imp_ok[i] else "HLE_ok"
@@ -272,6 +282,8 @@ def run_campaign(specs=None, harness=None, fmap=None):
             "qpf_calls": getattr(out, "qpf_calls", 0),
             "qpc_ticks_lo": getattr(out, "qpc_ticks_lo", 0),
             "qpc_ticks_hi": getattr(out, "qpc_ticks_hi", 0),
+            "sleepex_calls": getattr(out, "sleepex_calls", 0),
+            "sleepex_done": getattr(out, "sleepex_done", 0),
             "stubs": [], "esp_delta_ok": out.esp == out.esp_expected,
         })
     return rows, harness
