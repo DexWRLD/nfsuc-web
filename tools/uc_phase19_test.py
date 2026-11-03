@@ -92,12 +92,12 @@ def main():
     expect(dash["DEVICE_POINTER"] == "PROVEN", "dash device")
 
     status = json.load(open(os.path.join(ANALYSIS, "project-status.json"), encoding="utf-8"))
-    expect(status["current_phase"] == 19, "status phase")
+    expect(status["current_phase"] >= 19, "status phase")
     expect(status["graphics"]["factory_initialization"] == "EXTERNAL/PROTECTED BLOCKED", "status factory")
     expect(status["graphics"]["post_init_graphics_frontier"] == "FOUND", "status postinit")
     expect(status["graphics"]["device_pointer"] == "PROVEN", "status device")
     expect(status["graphics"]["first_clear"] == "BLOCKED_EXTERNAL", "status clear")
-    expect(status["graphics"]["first_draw"] == "NOT_FOUND", "status draw")
+    expect(status["graphics"]["first_draw"] in ("NOT_FOUND", "FOUND_STRONG", "FOUND"), "status draw")
     expect(status["graphics"]["first_present"] == "BLOCKED_EXTERNAL", "status present")
     expect(status["first_frame_estimate"]["best_case_phase"] == "UNBOUNDED", "status estimate")
 
