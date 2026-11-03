@@ -53,6 +53,13 @@ def load_angr_cached():
         "d3d9": None,
         "engine_backend_adapter": None,
         "first_frame": None,
+        "engine_frontend": None,
+        "submit_backend": None,
+        "visible_submit_contract": None,
+        "raw_d3d9_resource_traffic": None,
+        "frame_correlation": None,
+        "graphics_architecture": None,
+        "safe_runtime_seam": None,
     }
     if os.path.isfile(path):
         try:
@@ -145,6 +152,28 @@ def load_angr_cached():
                 ("D3D9", "d3d9"),
                 ("ENGINE_BACKEND_ADAPTER", "engine_backend_adapter"),
                 ("FIRST_FRAME", "first_frame"),
+            ):
+                if dash.get(k_src) is not None:
+                    out[k_dst] = dash.get(k_src)
+        except Exception:
+            pass
+    p24_raw = os.path.join(ANALYSIS, "phase24-raw.json")
+    if os.path.isfile(p24_raw):
+        try:
+            g = json.load(open(p24_raw, encoding="utf-8"))
+            dash = g.get("dashboard") or {}
+            for k_src, k_dst in (
+                ("ENGINE_FRONTEND", "engine_frontend"),
+                ("SUBMIT_BACKEND", "submit_backend"),
+                ("VISIBLE_SUBMIT_CONTRACT", "visible_submit_contract"),
+                ("RAW_D3D9_RESOURCE_TRAFFIC", "raw_d3d9_resource_traffic"),
+                ("FRAME_CORRELATION", "frame_correlation"),
+                ("GRAPHICS_ARCHITECTURE", "graphics_architecture"),
+                ("SAFE_RUNTIME_SEAM", "safe_runtime_seam"),
+                ("FIRST_FRAME", "first_frame"),
+                ("D3D9", "d3d9"),
+                ("ENGINE_BACKEND_ADAPTER", "engine_backend_adapter"),
+                ("GRAPHICS_BOUNDARY", "graphics_boundary"),
             ):
                 if dash.get(k_src) is not None:
                     out[k_dst] = dash.get(k_src)
@@ -726,6 +755,13 @@ def render_svg(model, detailed=False):
         ("P23 D3D9", angr_meta.get("d3d9") or d3d_just),
         ("P23 BACKEND ADAPTER", angr_meta.get("engine_backend_adapter") or "UNKNOWN"),
         ("FIRST FRAME", angr_meta.get("first_frame") or "UNBOUNDED"),
+        ("ENGINE FRONTEND", angr_meta.get("engine_frontend") or "UNKNOWN"),
+        ("SUBMIT BACKEND", angr_meta.get("submit_backend") or "UNKNOWN"),
+        ("VISIBLE SUBMIT CONTRACT", angr_meta.get("visible_submit_contract") or "UNKNOWN"),
+        ("RAW D3D9 RESOURCE TRAFFIC", angr_meta.get("raw_d3d9_resource_traffic") or "UNKNOWN"),
+        ("FRAME CORRELATION", angr_meta.get("frame_correlation") or "UNKNOWN"),
+        ("GRAPHICS ARCHITECTURE", angr_meta.get("graphics_architecture") or "UNKNOWN"),
+        ("SAFE RUNTIME SEAM", angr_meta.get("safe_runtime_seam") or "UNKNOWN"),
         ("STATIC FACTORY", static_factory),
         ("FACTORY FRONTIER READY", frontier_ready),
         ("DIRECT3D9 IMPLEMENTED", d3d_impl),
@@ -843,6 +879,8 @@ th { color: #8b949e; font-weight: 600; }
 <p>FRAME ROOT: %s. GRAPHICS BOUNDARY: %s.</p>
 <p>RENDERER VECTOR: MAPPED. VECTOR INSERTION: %s. ELEMENT +0x04: %s. IFACE PUBLICATION: %s. VTABLE: %s.</p>
 <p>METHOD +148: %s. METHOD +14C: %s. METHOD +154: %s. FIRST FRAME: %s.</p>
+<p>ENGINE FRONTEND: %s. SUBMIT BACKEND: %s. VISIBLE SUBMIT CONTRACT: %s. RAW D3D9 RESOURCE TRAFFIC: %s.</p>
+<p>FRAME CORRELATION: %s. GRAPHICS ARCHITECTURE: %s. SAFE RUNTIME SEAM: %s.</p>
 <p>STATIC FACTORY: %s. FACTORY FRONTIER READY: %s. DIRECT3D9 IMPLEMENTED: %s.</p>
 <p>Independent of <code>0x00686000</code>: %s. Discovery-enrolled on HIGH graph: %s. Runtime enterable now: %s. Call <code>%s</code> in <code>%s</code> (%s).</p>
 <p>Active objective: %s</p>
@@ -930,6 +968,13 @@ document.querySelectorAll("rect[data-addr]").forEach(function (node) {
         html.escape(str(angr_meta.get("method_14c_terminus") or "UNKNOWN")),
         html.escape(str(angr_meta.get("method_154_terminus") or "UNKNOWN")),
         html.escape(str(angr_meta.get("first_frame") or "UNBOUNDED")),
+        html.escape(str(angr_meta.get("engine_frontend") or "UNKNOWN")),
+        html.escape(str(angr_meta.get("submit_backend") or "UNKNOWN")),
+        html.escape(str(angr_meta.get("visible_submit_contract") or "UNKNOWN")),
+        html.escape(str(angr_meta.get("raw_d3d9_resource_traffic") or "UNKNOWN")),
+        html.escape(str(angr_meta.get("frame_correlation") or "UNKNOWN")),
+        html.escape(str(angr_meta.get("graphics_architecture") or "UNKNOWN")),
+        html.escape(str(angr_meta.get("safe_runtime_seam") or "UNKNOWN")),
         html.escape(graphics.get("static_factory_frontier") or graphics.get("frontier") or "UNKNOWN"),
         "YES" if graphics.get("factory_frontier_ready") else "NO",
         "YES" if graphics.get("direct3d9_implemented") else "NO",
@@ -1053,6 +1098,13 @@ def render_png(model):
         ("P23 D3D9", angr_meta.get("d3d9") or d3d_just),
         ("P23 BACKEND ADAPTER", angr_meta.get("engine_backend_adapter") or "UNKNOWN"),
         ("FIRST FRAME", angr_meta.get("first_frame") or "UNBOUNDED"),
+        ("ENGINE FRONTEND", angr_meta.get("engine_frontend") or "UNKNOWN"),
+        ("SUBMIT BACKEND", angr_meta.get("submit_backend") or "UNKNOWN"),
+        ("VISIBLE SUBMIT CONTRACT", angr_meta.get("visible_submit_contract") or "UNKNOWN"),
+        ("RAW D3D9 RESOURCE TRAFFIC", angr_meta.get("raw_d3d9_resource_traffic") or "UNKNOWN"),
+        ("FRAME CORRELATION", angr_meta.get("frame_correlation") or "UNKNOWN"),
+        ("GRAPHICS ARCHITECTURE", angr_meta.get("graphics_architecture") or "UNKNOWN"),
+        ("SAFE RUNTIME SEAM", angr_meta.get("safe_runtime_seam") or "UNKNOWN"),
         ("STATIC FACTORY", static_factory),
         ("FACTORY FRONTIER READY", frontier_ready),
         ("DIRECT3D9 IMPLEMENTED", d3d_impl),
