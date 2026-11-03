@@ -1,5 +1,5 @@
 {
-  "phase": 41,
+  "phase": 42,
   "definitions": {
     "ENTERABLE": "All pre-entry required state establishable via primitives, static PE data, standard runtime, or proven ordinary init/ctor. Not merely IMPORT_READY.",
     "DEEPEST_ORDINARY_EXECUTION_CHAIN": "Max nested ordinary UC frames in one harness run.",
@@ -22,7 +22,7 @@
   "static_ready": 20762,
   "import_ready": 737,
   "runtime_ready": 72,
-  "enterable": 31,
+  "enterable": 33,
   "enterable_roots": [
     "0x00721050",
     "0x00721070",
@@ -50,13 +50,15 @@
     "0x009E9980",
     "0x009E9990",
     "0x009E9A30",
+    "0x009EB2B0",
+    "0x009EB2D0",
     "0x009EB310",
     "0x009EB350",
     "0x009EB980",
     "0x009EBC70",
     "0x00B57CD0"
   ],
-  "unique_uc_functions_executed": 64,
+  "unique_uc_functions_executed": 67,
   "unique_uc_functions_executed_list": [
     "0x00721050",
     "0x00721070",
@@ -114,8 +116,11 @@
     "0x009E9990",
     "0x009E9A30",
     "0x009E9CD0",
+    "0x009EB2B0",
+    "0x009EB2D0",
     "0x009EB310",
     "0x009EB350",
+    "0x009EB770",
     "0x009EB870",
     "0x009EB980",
     "0x009EBC70",
@@ -123,13 +128,12 @@
     "0x00B57CD0",
     "0x00B57CF0"
   ],
-  "execution_runs": 243,
+  "execution_runs": 265,
   "deepest_ordinary_execution_chain": 4,
   "largest_executed_ordinary_closure": 18,
   "ordinary_execution_sequence_length": 5,
   "largest_stateful_sequence_coverage": 22,
   "clean_stateful_sequences": 11,
-  "proven_post_constructor_consumers": 8,
   "clean_ordinary_roots": 13,
   "clean_ordinary_roots_list": [
     "0x00721070",
@@ -160,7 +164,7 @@
   ],
   "independent_object_families_executed": 3,
   "clean_independent_object_lifecycles": 3,
-  "nontrivial_object_lifecycles": 2,
+  "nontrivial_object_lifecycles": 3,
   "real_vtable_dispatches_executed": 1,
   "clean_virtual_calls": 0,
   "virtual_call_continuation_faults": 1,
@@ -188,10 +192,10 @@
     "STATIC_READY": 20762,
     "IMPORT_READY": 737,
     "RUNTIME_READY": 72,
-    "ENTERABLE": 31,
-    "EXECUTED": 64,
-    "UNIQUE": 64,
-    "EXECUTION_RUNS": 243,
+    "ENTERABLE": 33,
+    "EXECUTED": 67,
+    "UNIQUE": 67,
+    "EXECUTION_RUNS": 265,
     "CLEAN_ORDINARY_ROOTS": 13,
     "EXECUTED_ORDINARY_CONSTRUCTORS": 9,
     "DEEPEST": 4,
@@ -201,26 +205,25 @@
     "CLEAN_STATEFUL_SEQUENCES": 11,
     "INDEPENDENT_OBJECT_FAMILIES_EXECUTED": 3,
     "CLEAN_INDEPENDENT_OBJECT_LIFECYCLES": 3,
-    "NONTRIVIAL_OBJECT_LIFECYCLES": 2,
+    "NONTRIVIAL_OBJECT_LIFECYCLES": 3,
     "REAL_VTABLE_DISPATCHES_EXECUTED": 1,
     "CLEAN_VIRTUAL_CALLS": 0,
     "VIRTUAL_CALL_CONTINUATION_FAULTS": 1,
     "TARGET_VERIFICATION": "VERIFIED_UNDERCOVER_1_1_2_1",
-    "LATEST_REAL_RUNTIME_BOUNDARY": "B export nontrivial; C RTTI lifecycle; vcall continuation INCORRECT_VTABLE_SLOT",
+    "LATEST_REAL_RUNTIME_BOUNDARY": "C field-slot getter clean; typed virtual provider not enterable; wrong-interface self-dispatch remains faulted",
     "MOST_COMMON_REAL_BLOCKER": [
       "REQUIRED_STATE:UNKNOWN_OBJECT",
       2
     ]
   },
   "campaign_summary": {
-    "phase41_sequences": 10,
+    "phase42_sequences": 10,
     "clean_stateful_sequences": 8,
     "outcomes": {
       "EXECUTED_CHAIN": 8,
       "BLOCKED_REQUIRED_STATE": 3,
       "UNKNOWN": 1,
-      "EXECUTED_STATEFUL_SEQUENCE": 8,
-      "EXECUTED_VTABLE_DISPATCH": 1
+      "EXECUTED_STATEFUL_SEQUENCE": 8
     },
     "real_blocker_histogram": {
       "REQUIRED_STATE": 4,
@@ -249,22 +252,21 @@
       "REQUIRED_STATE:UNKNOWN_OBJECT",
       2
     ],
-    "family_a_getter_0x5a": true,
-    "family_b_export_clean": true,
-    "family_c_rtti_clean": true,
+    "family_a_ok": true,
+    "family_b_ok": true,
+    "family_c_nontrivial": true,
     "new_functions": [
-      "0x009E9A30",
-      "0x009E9CD0",
-      "0x009EB310"
+      "0x009EB2B0",
+      "0x009EB2D0",
+      "0x009EB770"
     ],
     "tlsgetvalue_reached": false,
     "tlsfree_reached": false,
     "filesystem_reached": false,
     "scheduler": false,
     "protected_boundary_encountered": false,
-    "diagnostics_counted": 0,
-    "jtswitch_enabled_in_harness": true,
-    "sparse_uc_dispatch": true
+    "sparse_dispatch_ok": true,
+    "jtswitch_enabled_in_harness": true
   },
   "post_constructor": {
     "clean_constructor": true,
@@ -284,53 +286,212 @@
   "object_families": {
     "executed": 3,
     "clean_lifecycles": 3,
-    "nontrivial": 2,
-    "strongest_nontrivial_consumer": "0x009E9A30"
+    "nontrivial": 3,
+    "family_c_field_consumer": "0x009EB2B0"
   },
   "virtual_dispatch": {
-    "attempted": true,
     "reproduced": true,
-    "ordinary_caller": "0x009E8E00",
-    "exact_call_site": "0x009E8E15",
-    "call_insn": "call edx  ; edx = [eax+0x14], eax = [[ebp]]",
-    "runtime_object": "0x03004000",
-    "vtable_va": "0x00C30E68",
-    "slot_index": 5,
-    "slot_offset": "0x00000014",
-    "resolved_target": "0x009E8E00",
-    "same_function_caller_target": true,
-    "nested_frame_evidence": {
-      "uc_indirect_enters": 1,
-      "root_entry": "DIRECT_GUEST_ENTRY",
-      "nested_entry": "DISPATCH_CALL\u2192sparse UC",
-      "entered_unique_shows_once": true,
-      "note": "Unique entered[] dedupes; uc_indirect_enters proves second activation"
-    },
-    "thiscall_abi_at_call_site": {
-      "ecx": "arg object (ebp)",
-      "stack_args_pushed_by_site": 0,
-      "callee_9E8E00_ret": 4,
-      "abi_match_for_self_target": false
-    },
-    "vtable_dispatch_succeeded": true,
-    "virtual_call_completed": false,
-    "caller_returned_clean": false,
-    "continuation_classification": "INCORRECT_VTABLE_SLOT",
-    "continuation_detail": "Call site 0x009E8E15 invokes [vt+0x14] as thiscall with 0 stack args, expecting EAX string. Family-A slot5 resolves to 0x009E8E00 itself (ret 4). Nested activation therefore lacks the stack arg its prologue reads at [esp+0x20], loads EBP\u22480/garbage, then faults on `mov eax, dword ptr [ebp]` (unmapped guest access at 0). Not a clean virtual-method completion.",
-    "first_failing_operation": {
-      "ordinary_function": "0x009E8E00",
-      "instruction_va": "0x009E8E09",
-      "reason": "nested frame ebp invalid/null after ABI-mismatched self virtual call",
-      "fault_addr": "0x00000000",
-      "fault_why": "unmapped guest access",
-      "blocked_kind": "FAULT",
-      "eax_at_stop": "0x009E8E17",
-      "eip_at_stop": "0x00000000",
-      "esp_at_stop": "0x0300EFEC"
-    },
-    "clean_virtual_call": false,
-    "continuation_fault": true,
-    "result": "EXECUTED_VTABLE_DISPATCH"
+    "vtable": "0x00C30E68",
+    "slot5": "0x009E8E00",
+    "same_function": true,
+    "uc_indirect_enters": 1,
+    "clean": false,
+    "fault": true,
+    "fault_addr": "0x00000000",
+    "classification": "INCORRECT_VTABLE_SLOT",
+    "virtual_target_entered": true,
+    "virtual_target_returned_clean": false,
+    "virtual_caller_returned_clean": false,
+    "interface": {
+      "caller": "0x009E8E00",
+      "call_site": "0x009E8E15",
+      "call_insn": "call edx",
+      "caller_abi": "thiscall ret 4; 1 stack arg (interface provider)",
+      "site_disasm": [
+        "009E8E00: sub esp, 0x14",
+        "009E8E03: push ebx",
+        "009E8E04: push ebp",
+        "009E8E05: mov ebp, dword ptr [esp + 0x20]",
+        "009E8E09: mov eax, dword ptr [ebp]",
+        "009E8E0C: mov edx, dword ptr [eax + 0x14]",
+        "009E8E0F: push esi",
+        "009E8E10: push edi",
+        "009E8E11: mov edi, ecx",
+        "009E8E13: mov ecx, ebp",
+        "009E8E15: call edx",
+        "009E8E17: xor ebx, ebx"
+      ],
+      "receiver_source": "STACK_ARG0 / [esp+4] after prologue \u2192 ebp",
+      "receiver_classification": "SEPARATE_INTERFACE_ARGUMENT",
+      "receiver_not": "Family A primary this (edi/ecx of outer method)",
+      "vtable_source": "[ebp] \u2192 object vtable of arg0",
+      "selected_slot": "+0x14 (index 5)",
+      "expected_virtual_abi": {
+        "ecx": "receiver (arg0)",
+        "stack_args_at_site": 0,
+        "expected_return": "EAX = C-string pointer",
+        "expected_callee_ret": 0
+      },
+      "wrong_interface_evidence": {
+        "tested_object": "Family A at 0x03004000",
+        "vtable": "0x00C30E68",
+        "slot5_target": "0x009E8E00",
+        "slot5_callee_ret": 4,
+        "classification": "WRONG_INTERFACE_TYPE",
+        "continuation": "INCORRECT_VTABLE_SLOT",
+        "missing_stack_argument_on_nested_self_call": true
+      },
+      "provider_candidates": [
+        {
+          "vtable": "0x00B65EF4",
+          "slot0": "0x0065BF10",
+          "slot5": "0x008D18B0",
+          "slot5_head": [
+            "mov eax, dword ptr [ecx + 0x38]",
+            "ret "
+          ],
+          "classification": "POSSIBLE_INTERFACE",
+          "abi_match": "thiscall ret 0; returns [this+disp] likely string/ptr",
+          "ordinary_ctor_linking_to_9E8E00_arg": false
+        },
+        {
+          "vtable": "0x00B65F44",
+          "slot0": "0x0065BF10",
+          "slot5": "0x008D18B0",
+          "slot5_head": [
+            "mov eax, dword ptr [ecx + 0x38]",
+            "ret "
+          ],
+          "classification": "POSSIBLE_INTERFACE",
+          "abi_match": "thiscall ret 0; returns [this+disp] likely string/ptr",
+          "ordinary_ctor_linking_to_9E8E00_arg": false
+        },
+        {
+          "vtable": "0x00B6602C",
+          "slot0": "0x0065BF10",
+          "slot5": "0x008D18B0",
+          "slot5_head": [
+            "mov eax, dword ptr [ecx + 0x38]",
+            "ret "
+          ],
+          "classification": "POSSIBLE_INTERFACE",
+          "abi_match": "thiscall ret 0; returns [this+disp] likely string/ptr",
+          "ordinary_ctor_linking_to_9E8E00_arg": false
+        },
+        {
+          "vtable": "0x00B66094",
+          "slot0": "0x0065BF10",
+          "slot5": "0x008D18B0",
+          "slot5_head": [
+            "mov eax, dword ptr [ecx + 0x38]",
+            "ret "
+          ],
+          "classification": "POSSIBLE_INTERFACE",
+          "abi_match": "thiscall ret 0; returns [this+disp] likely string/ptr",
+          "ordinary_ctor_linking_to_9E8E00_arg": false
+        },
+        {
+          "vtable": "0x00B6623C",
+          "slot0": "0x0065BF10",
+          "slot5": "0x008D18B0",
+          "slot5_head": [
+            "mov eax, dword ptr [ecx + 0x38]",
+            "ret "
+          ],
+          "classification": "POSSIBLE_INTERFACE",
+          "abi_match": "thiscall ret 0; returns [this+disp] likely string/ptr",
+          "ordinary_ctor_linking_to_9E8E00_arg": false
+        },
+        {
+          "vtable": "0x00B66290",
+          "slot0": "0x0065BF10",
+          "slot5": "0x008D18B0",
+          "slot5_head": [
+            "mov eax, dword ptr [ecx + 0x38]",
+            "ret "
+          ],
+          "classification": "POSSIBLE_INTERFACE",
+          "abi_match": "thiscall ret 0; returns [this+disp] likely string/ptr",
+          "ordinary_ctor_linking_to_9E8E00_arg": false
+        },
+        {
+          "vtable": "0x00B66A70",
+          "slot0": "0x006FA550",
+          "slot5": "0x008D18B0",
+          "slot5_head": [
+            "mov eax, dword ptr [ecx + 0x38]",
+            "ret "
+          ],
+          "classification": "POSSIBLE_INTERFACE",
+          "abi_match": "thiscall ret 0; returns [this+disp] likely string/ptr",
+          "ordinary_ctor_linking_to_9E8E00_arg": false
+        },
+        {
+          "vtable": "0x00B66D78",
+          "slot0": "0x006FA550",
+          "slot5": "0x008D18B0",
+          "slot5_head": [
+            "mov eax, dword ptr [ecx + 0x38]",
+            "ret "
+          ],
+          "classification": "POSSIBLE_INTERFACE",
+          "abi_match": "thiscall ret 0; returns [this+disp] likely string/ptr",
+          "ordinary_ctor_linking_to_9E8E00_arg": false
+        },
+        {
+          "vtable": "0x00B670A8",
+          "slot0": "0x006FA550",
+          "slot5": "0x008D18B0",
+          "slot5_head": [
+            "mov eax, dword ptr [ecx + 0x38]",
+            "ret "
+          ],
+          "classification": "POSSIBLE_INTERFACE",
+          "abi_match": "thiscall ret 0; returns [this+disp] likely string/ptr",
+          "ordinary_ctor_linking_to_9E8E00_arg": false
+        },
+        {
+          "vtable": "0x00B673F8",
+          "slot0": "0x006FA550",
+          "slot5": "0x008D18B0",
+          "slot5_head": [
+            "mov eax, dword ptr [ecx + 0x38]",
+            "ret "
+          ],
+          "classification": "POSSIBLE_INTERFACE",
+          "abi_match": "thiscall ret 0; returns [this+disp] likely string/ptr",
+          "ordinary_ctor_linking_to_9E8E00_arg": false
+        },
+        {
+          "vtable": "0x00B67760",
+          "slot0": "0x006FA550",
+          "slot5": "0x008D18B0",
+          "slot5_head": [
+            "mov eax, dword ptr [ecx + 0x38]",
+            "ret "
+          ],
+          "classification": "POSSIBLE_INTERFACE",
+          "abi_match": "thiscall ret 0; returns [this+disp] likely string/ptr",
+          "ordinary_ctor_linking_to_9E8E00_arg": false
+        },
+        {
+          "vtable": "0x00B67AC0",
+          "slot0": "0x006FA550",
+          "slot5": "0x008D18B0",
+          "slot5_head": [
+            "mov eax, dword ptr [ecx + 0x38]",
+            "ret "
+          ],
+          "classification": "POSSIBLE_INTERFACE",
+          "abi_match": "thiscall ret 0; returns [this+disp] likely string/ptr",
+          "ordinary_ctor_linking_to_9E8E00_arg": false
+        }
+      ],
+      "proven_correct_interface": null,
+      "strongest_provider": null,
+      "correct_provider_enterable": false,
+      "note": "Possible slot5 string/field getters exist statically, but no ordinary constructor was proven to produce such an object as 0x009E8E00's arg0 without fabrication. Fail closed."
+    }
   },
   "target_provenance": {
     "status": "VERIFIED_UNDERCOVER_1_1_2_1",
@@ -381,6 +542,6 @@
   },
   "first_frame": "FIRST_FRAME_PATH_BLOCKED_BY_PROTECTED_BACKEND",
   "graphics_frozen": true,
-  "recommended_phase42": "Family B nontrivial export (`0x009E9A30`) and Family C RTTI lifecycle are proven. Virtual self-dispatch at `0x009E8E00` remains a continuation fault (INCORRECT_VTABLE_SLOT / ABI mismatch). Phase 42: EXPAND REAL UC EXECUTION on Family C nontrivial consumers or a correctly typed string-provider object for the 0x009E8E00 virtual call site. Graphics frozen.",
+  "recommended_phase43": "Family C field-slot getter `0x009EB2B0` validates constructor payload layout beyond RTTI; vt-slot3/interface consumers remain blocked without a real interface at +0x14. Virtual call at `0x009E8E15` needs a proven ordinary producer of a ret0 string/field getter at slot+0x14 \u2014 none enterable without fabrication. Phase 43: EXPAND REAL UC EXECUTION on proven interface producers for typed virtual calls, or deeper Family C when +0x14 interface objects are ordinarily constructed. Graphics frozen.",
   "phase31_metric_corrections_preserved": true
 }

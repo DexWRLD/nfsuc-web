@@ -1,11 +1,10 @@
 {
-  "phase": 41,
+  "phase": 42,
   "campaign_outcomes": {
     "EXECUTED_CHAIN": 8,
     "BLOCKED_REQUIRED_STATE": 3,
     "UNKNOWN": 1,
-    "EXECUTED_STATEFUL_SEQUENCE": 8,
-    "EXECUTED_VTABLE_DISPATCH": 1
+    "EXECUTED_STATEFUL_SEQUENCE": 8
   },
   "real_blocker_histogram": {
     "REQUIRED_STATE": 4,
@@ -34,7 +33,6 @@
     "REQUIRED_STATE:UNKNOWN_OBJECT",
     2
   ],
-  "clean_stateful_sequences": 11,
-  "virtual_call_continuation_classification": "INCORRECT_VTABLE_SLOT",
-  "latest_real_runtime_boundary": "B export nontrivial; C RTTI lifecycle; vcall continuation INCORRECT_VTABLE_SLOT"
+  "virtual_continuation": "INCORRECT_VTABLE_SLOT / WRONG_INTERFACE_TYPE",
+  "latest_real_runtime_boundary": "C field-slot getter clean; typed virtual provider not enterable; wrong-interface self-dispatch remains faulted"
 }
