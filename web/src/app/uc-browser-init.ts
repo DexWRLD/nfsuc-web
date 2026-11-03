@@ -1,5 +1,8 @@
 interface InitializerExports {
   run_init(): number;
+  frontend_lookup(length: number): number;
+  frontend_stop(): number;
+  frontend_native_id(): number;
   run_apt_constructor(): number;
   run_apt_fixture(): number;
   read_slot(address: number): number;
@@ -60,4 +63,18 @@ export async function runUndercoverInitializer() {
     return { ...result, prefix: { entered, backingPointer, countMinusIndex, faultAddress: guest.prefix_fault() >>> 0 } };
   }
   throw new Error('Startup prefix returned unexpectedly');
+}
+
+export async function runFrontendLookup() {
+  const guest = await loadInitializer();
+  for (const length of [1, 21]) {
+    if (guest.frontend_lookup(length) || guest.frontend_stop()) throw new Error('Unexpected lookup length result');
+  }
+  const index = guest.frontend_lookup(13);
+  const nativeId = guest.frontend_native_id();
+  const stop = guest.frontend_stop();
+  if (index !== 118 || nativeId !== 0x7f || stop !== 0x00998241) {
+    throw new Error('Unexpected original frontend lookup trace');
+  }
+  return { index, nativeId, stop };
 }

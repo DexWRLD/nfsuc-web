@@ -16,6 +16,8 @@ ENTRY = 0x009E8AD0
 BRIDGE = r"""
 typedef unsigned u32;
 typedef u32 uint32_t;
+typedef int int32_t;
+typedef signed char int8_t;
 typedef struct { u32 esp, eip, eax, ebp, ecx, edx; } CPU;
 static u32 slots[55];
 static u32 writes, stack_word;
@@ -35,7 +37,8 @@ static u32 pop(CPU *c) {
 """
 PREFIX_BRIDGE = r"""
 static u32 stack[64], zero_fields[3], zero_core, fault, trace[8], entered;
-static int equal, less;
+static int equal, less, below;
+static const unsigned char *frontend_data(u32 a, u32 size);
 static u32 read_base, read_delta;
 static u32 apt_mode, apt_headers[19], apt_cell, apt_calls;
 static const u32 apt_offsets[] = {0, 12, 24, 36, 48, 64};
@@ -51,6 +54,16 @@ static u32 *access(u32 a) {
     fault = a;
     __builtin_trap();
 }
+static u32 frontend_word(u32 a) {
+    const unsigned char *data = frontend_data(a, 4);
+    if (data) return data[0] | ((u32)data[1]<<8) | ((u32)data[2]<<16) | ((u32)data[3]<<24);
+    return *access(a);
+}
+static unsigned char frontend_byte(u32 a) {
+    const unsigned char *data = frontend_data(a, 1);
+    if (!data) __builtin_trap();
+    return *data;
+}
 static u32 *indexed_read(u32 base, u32 delta) {
     read_base = base;
     read_delta = delta;
@@ -63,7 +76,7 @@ static u32 prefix_pop(CPU *c) { u32 value = *access(c->esp); c->esp += 4; return
 #define MR32(a) (*access(a))
 #define PUSH32(v) push(c, (v))
 #define POP32(v) ((v) = prefix_pop(c))
-#define FLAGS_SUB_M(a,b,r,n,m) do { if (m) { equal = !(r); less = (int)(a) < (int)(b); } } while (0)
+#define FLAGS_SUB_M(a,b,r,n,m) do { if (m) { equal = !(r); less = (int)(a) < (int)(b); below = (a) < (b); } } while (0)
 #define FLAGS_ADD_M(a,b,r,n,m) do { if (m) { equal = !(r); less = (int)(r) < 0; } } while (0)
 #define FLAGS_LOG_M(r,n,m) do { equal = !(r); less = (int)(r) < 0; } while (0)
 #define CC_E equal
@@ -157,6 +170,70 @@ def build_apt(lifter):
     leaf = leaf.replace("    goto L_009e75a0;", "    apt_calls++;\n    goto L_009e75a0;")
     return "\n".join((leaf, ctor.split(cut)[0] + "}", push, APT_EXPORTS))
 
+def build_frontend(lifter, image):
+    sections = p7.read_sections(str(image))["sections"]
+
+    def read(va, length):
+        for section in sections:
+            raw = section["raw"]
+            offset = va - section["va"]
+            if section["name"] in (".data", ".rdata") and raw and 0 <= offset <= len(raw) - length:
+                return raw[offset:offset + length]
+        raise ValueError(f"Unmapped frontend static data at {va:#x}")
+
+    cell = 0x0129D858
+    name = int.from_bytes(read(cell, 4), "little")
+    if read(name, 14) != b"localToGlobal\0" or int.from_bytes(read(cell + 4, 4), "little") != 0x7F:
+        raise ValueError("Unexpected original method entry")
+    if read(0x0127D304, 4) != (0x00BBAAC8).to_bytes(4, "little") or read(0x00BBAAC8, 28) != b"_level0._root.gblPushScreen\0":
+        raise ValueError("Unexpected frontend method pointer")
+    spans = [(cell, 8), (name, 14)]
+    spans.extend((0x01295F90 + 4 * byte, 4) for byte in sorted(set(b"localToGlobal")))
+    arrays = []
+    ranges = []
+    for index, (address, size) in enumerate(spans):
+        arrays.append(f"static const unsigned char span{index}[] = {{{','.join(map(str, read(address, size)))}}};")
+        ranges.append(f"if (a >= {address}u && a <= {address + size}u && size <= {address + size}u - a) return span{index} + (a - {address}u);")
+    data = "\n".join(arrays + ["static const unsigned char *frontend_data(u32 a, u32 size) {", *ranges, "return 0; }"])
+    hash_code, hash_calls = lifter.lift(0x009DE390)
+    lookup, lookup_calls = lifter.lift(0x009981F0)
+    cut = "L_00998241:; /* --- block --- */"
+    if hash_calls or lookup_calls != {0x009DE390, 0x00AE52C8} or lookup.count(cut) != 1:
+        raise ValueError("Unexpected frontend lookup shape")
+    # The comparison thunk is unresolved in this bridge. End the diagnostic at its block.
+    tail = "DISPATCH_TAIL(c, MR32(c->eax*4+0x9de414u));"
+    if hash_code.count(tail) != 1:
+        raise ValueError("Unexpected short-name hash branch")
+    hash_code = hash_code.replace(tail, "__builtin_trap();")
+    lookup = lookup.split(cut)[0] + r"""
+L_00998241:
+    lookup_stop = 0x00998241u;
+    return;
+""" + lookup[lookup.index("L_00998267:;"):lookup.index("L_00998269:;")] + "}"
+    for address in ("c->edx*4+0x1295f90u", "c->edx*8+0x129d4a8u"):
+        hash_code = hash_code.replace(f"MR32({address})", f"frontend_word({address})")
+        lookup = lookup.replace(f"MR32({address})", f"frontend_word({address})")
+    return "\n".join((data, "static u32 lookup_stop;", "#define MR8(a) frontend_byte(a)",
+        "#define CC_A (!below && !equal)\n#define CC_B below", hash_code, lookup, f"""
+u32 frontend_lookup(u32 length) {{
+    if (length != 13 && length != 1 && length != 21) __builtin_trap();
+    lookup_stop = 0;
+    cpu = (CPU){{.esp=0x0300eff4u}};
+    *access(cpu.esp) = 0x00dec0deu;
+    *access(cpu.esp+4) = {name}u;
+    *access(cpu.esp+8) = length;
+    sub_009981f0(&cpu);
+    if (lookup_stop) {{
+        if (cpu.esp != 0x0300efe8u || cpu.eip != 0x0099820fu) __builtin_trap();
+        return *access(cpu.ebp-4);
+    }}
+    if (cpu.eax || cpu.eip != 0x00dec0deu || cpu.esp != 0x0300eff8u) __builtin_trap();
+    return 0;
+}}
+u32 frontend_stop(void) {{ return lookup_stop; }}
+u32 frontend_native_id(void) {{ return lookup_stop ? frontend_word({cell + 4}u) : 0; }}
+"""))
+
 EXPORTS = r"""
 static CPU cpu;
 u32 read_slot(u32 addr) { return *mapped(addr); }
@@ -193,11 +270,11 @@ def main():
     clang = p7.clang()
     linker = Path(clang).with_name("wasm-ld.exe")
     linker_arg = ["--ld-path=" + str(linker)] if linker.is_file() else []
-    exports = ["run_init", "read_slot", "write_count", "guest_esp", "guest_eax", "run_prefix", "prefix_fault", "prefix_entry", "prefix_read_base", "prefix_read_delta", "run_apt_constructor", "run_apt_fixture"]
+    exports = ["run_init", "read_slot", "write_count", "guest_esp", "guest_eax", "run_prefix", "prefix_fault", "prefix_entry", "prefix_read_base", "prefix_read_delta", "run_apt_constructor", "run_apt_fixture", "frontend_lookup", "frontend_stop", "frontend_native_id"]
     args.output.parent.mkdir(parents=True, exist_ok=True)
     with tempfile.TemporaryDirectory() as tmp:
         source = Path(tmp) / "init.c"
-        source.write_text(BRIDGE + body + EXPORTS + PREFIX_BRIDGE + build_prefix(lifter) + PREFIX_EXPORTS + build_apt(lifter), encoding="utf-8")
+        source.write_text(BRIDGE + body + EXPORTS + PREFIX_BRIDGE + build_prefix(lifter) + PREFIX_EXPORTS + build_apt(lifter) + build_frontend(lifter, args.image), encoding="utf-8")
         subprocess.run([clang, "--target=wasm32-unknown-unknown", *linker_arg, "-O2",
                         "-ffreestanding", "-nostdlib", "-Wl,--no-entry",
                         *["-Wl,--export=" + name for name in exports],

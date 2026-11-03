@@ -1,5 +1,5 @@
 import './app/undercover-home.css';
-import { runAptDiagnostic, runUndercoverInitializer } from './app/uc-browser-init';
+import { runFrontendLookup, runAptDiagnostic, runUndercoverInitializer } from './app/uc-browser-init';
 import { bootUcAssets } from './app/uc-boot';
 import { bootUcAssetPreviews } from './app/uc-asset-preview-boot';
 import { bootUcStartupPreview } from './app/uc-startup-boot';
@@ -71,3 +71,20 @@ for (const mode of ['constructor', 'fixture'] as const) {
     }
   });
 }
+
+const frontendLookup = document.querySelector<HTMLButtonElement>('#frontend-lookup')!;
+const frontendResult = document.querySelector<HTMLElement>('#frontend-result')!;
+frontendLookup.addEventListener('click', async () => {
+  frontendLookup.disabled = true;
+  frontendResult.textContent = 'Running lookup prefix…';
+  try {
+    const result = await runFrontendLookup();
+    frontendResult.textContent = 'localToGlobal · index ' + result.index
+      + ' · candidate native ID 0x' + result.nativeId.toString(16).toUpperCase()
+      + ' · stopped at 0x00998241 before comparison thunk. Cache and argument stack untouched.';
+  } catch (error) {
+    frontendResult.textContent = error instanceof Error ? error.message : String(error);
+  } finally {
+    frontendLookup.disabled = false;
+  }
+});
