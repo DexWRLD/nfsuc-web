@@ -1,0 +1,104 @@
+{
+  "phase": 36,
+  "SleepEx": {
+    "slot": "0x00B61188",
+    "dll": "KERNEL32.dll",
+    "symbol": "SleepEx",
+    "hint": 855,
+    "unbound_name_rva": "0x008AB180",
+    "classification": "STANDARD_WIN32_IMPORT",
+    "abi": "stdcall",
+    "stack_dwords": 2,
+    "return": "DWORD",
+    "abi_confidence": "PROVEN",
+    "call_site_count": 6,
+    "high_caller_count": 6,
+    "high_callers": [
+      "0x0087C6A2",
+      "0x0087C6B2",
+      "0x0087C859",
+      "0x009773B0",
+      "0x00977870",
+      "0x0097F790"
+    ],
+    "call_sites": [
+      "0x0087C6AA",
+      "0x0087C6D2",
+      "0x0087C8B9",
+      "0x009773B9",
+      "0x0097789A",
+      "0x0097F8D6"
+    ],
+    "ordinary_caller": "0x0097F790",
+    "instruction": "0x0097F8D6",
+    "args": {
+      "dwMilliseconds": 50,
+      "bAlertable": 1
+    },
+    "arg_provenance": "immediate push 1; push 0x32",
+    "return_usage": "IGNORED \u2014 next insn lea ecx,[esp+0x10]; call QPC",
+    "post_sleep_loop": "je 0x97F8D0 retries SleepEx until calibration threshold 0.25",
+    "shape": [
+      "0097F8D0: fstp st(0)",
+      "0097F8D2: push 1",
+      "0097F8D4: push 0x32",
+      "0097F8D6: call dword ptr [0xb61188]",
+      "0097F8DC: lea ecx, [esp + 0x10]",
+      "0097F8E0: push ecx",
+      "0097F8E1: call ebx",
+      "0097F8E3: rdtsc ",
+      "0097F8E5: mov edi, dword ptr [esp + 0x10]",
+      "0097F8E9: sub edi, dword ptr [esp + 0x28]",
+      "0097F8ED: mov ecx, eax"
+    ],
+    "implemented": true,
+    "reached": true,
+    "hle": "UC_HLE_SLEEPEX",
+    "hle_justified": true,
+    "timeout_only_eligible": true,
+    "supported_finite_non_alertable": true,
+    "supported_finite_alertable_timeout": true,
+    "apc_delivery": false,
+    "zero_timeout": "immediate complete; no invented elapsed time",
+    "infinite_timeout": "rejected (*ok=0) \u2014 BLOCKED_INFINITE_WAIT class",
+    "pending_apc_guard": "uc_wait_set_pending_apc(1) refuses timeout-only path",
+    "return_on_timeout": 0,
+    "never_returns_WAIT_IO_COMPLETION_without_callback": true,
+    "virtual_advance_per_50ms": "500,000 QPC ticks / 50,000,000 ns",
+    "tests": "uc_phase36_test.py"
+  },
+  "apc_provenance": {
+    "imported": {
+      "CreateWaitableTimerA": "0x00B61194",
+      "SetWaitableTimer": "0x00B6119C"
+    },
+    "in_ctor_closure": {},
+    "QueueUserAPC": "NOT_IMPORTED",
+    "ReadFileEx": "NOT_IMPORTED",
+    "WriteFileEx": "NOT_IMPORTED",
+    "SetWaitableTimer_on_ctor_path": false,
+    "CreateWaitableTimerA_on_ctor_path": false,
+    "pending_apc_classification": "PROVEN_NO_PENDING_APC_IN_SUPPORTED_MODEL",
+    "note": "SetWaitableTimer/CreateWaitableTimerA are imported but not called on the ordinary constructor closure path that reaches SleepEx. No APC queue exists in the guest runtime. Guest APC pending flag defaults false."
+  },
+  "guest_wait_model": {
+    "representation": "last-wait descriptor: ms, alertable, start_ticks, deadline_ticks; completion counter; pending-APC flag",
+    "threads": 1,
+    "scheduler": "NONE",
+    "advancement": "synchronous HLE advances guest clock to deadline (harness-controlled)",
+    "not": [
+      "CreateThread",
+      "APC delivery",
+      "kernel wait queues",
+      "Web Workers"
+    ]
+  },
+  "crt_atexit": {
+    "roots": [
+      "0x00B52140",
+      "0x00B57CF0"
+    ],
+    "classification": "BLOCKED_CRT_INITIALIZATION",
+    "implementation_attempted": false
+  }
+}

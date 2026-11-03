@@ -61,7 +61,8 @@ typedef enum UcHle {
     UC_HLE_SETPRIORITYCLASS,
     UC_HLE_SETTHREADPRIORITY,
     UC_HLE_QUERYPERFORMANCECOUNTER,
-    UC_HLE_QUERYPERFORMANCEFREQUENCY
+    UC_HLE_QUERYPERFORMANCEFREQUENCY,
+    UC_HLE_SLEEPEX
 } UcHle;
 
 /* Where an import argument is read, and where its result is written.
@@ -193,6 +194,12 @@ int uc_guest_clock_advance_ns(uint64_t delta_ns);
 uint64_t uc_guest_clock_qpc(void);
 uint64_t uc_guest_clock_qpf(void);
 uint64_t uc_guest_clock_tsc(void); /* coherent virtual TSC for rdtsc_shim */
+
+/* Narrow deterministic guest waits (single thread; no scheduler / APC delivery). */
+void uc_wait_reset(void);
+void uc_wait_set_pending_apc(int pending);
+int uc_wait_pending_apc(void);
+unsigned uc_wait_sleepex_completions(void);
 
 typedef uint32_t (*UcHleFn)(struct CPU *c, const UcDecoded *in, int *ok);
 
