@@ -1,0 +1,65 @@
+Undercover PC nfs.exe 1.1.2.1 — BLOCKED / protected addresses for Ghidra
+Image base: 0x00400000
+SHA-256: 6b10551649fd70fa630bd7454fd953f51555fa2dd2112faae84ac8ca97844bcd
+
+=== PASTE INTO GHIDRA (Go To Address) — one per line ===
+0x004A26B0
+0x00686000
+0x00686030
+0x0071E380
+0x0072B170
+0x00766730
+0x007A51B0
+0x00B615C4
+
+=== ANNOTATED (BLOCKED / PROTECTED / UNRESOLVED) ===
+0x004A26B0
+  - unresolved_dependency
+  - phase43 protected_boundary
+  - graphics backend — PROTECTED
+0x00686000
+  - unresolved_dependency
+  - phase43 protected_boundary
+  - allocator — do not reconstruct
+0x00686030
+  - unresolved_dependency
+  - phase43 protected_boundary
+  - free — do not reconstruct
+0x0071E380
+  - Bad-instruction decompilation; opaque boundary.
+  - unresolved_dependency
+  - phase43 protected_boundary
+  - opaque cleanup — bad-instruction boundary
+0x0072B170
+  - evidence confidence=BLOCKED
+  - unresolved_dependency: Ghidra function boundaries at 0x00766730 and 0x0072B170
+0x00766730
+  - unresolved_dependency: Ghidra function boundaries at 0x00766730 and 0x0072B170
+0x007A51B0
+  - unresolved_dependency
+  - phase43 protected_boundary
+  - submission path — PROTECTED
+0x00B615C4
+  - unresolved_dependency
+  - indirect_slot identity=BLOCKED
+  - phase43 protected_boundary
+  - callback initialization — BLOCKED
+
+=== RELATED RESEARCH / NOT YET IMPLEMENTED (not confidence=BLOCKED) ===
+0x00727C60
+  - PARTIAL_NOT_FULLY_INTEGRATED / SIDE_EFFECT_CALLBACKS
+0x00730450
+  - NOT_IMPLEMENTED / SEPARATE_INPUT_OBJECT
+0x007408D0
+  - NOT_IMPLEMENTED / TLS_CONTRACT
+0x00754740
+  - NOT_IMPLEMENTED / DEVICE_SIDE_EFFECTS
+0x007661A0
+  - NOT_IMPLEMENTED / BUFFER_MANAGER_GLOBAL
+0x009782D0
+  - NOT_IMPLEMENTED / OS_SLOT_UNRESOLVED
+
+=== INDIRECT SLOTS (import link BLOCKED; not confirmed functions) ===
+0x00B6157C  CreateWindowExA (import link BLOCKED; identity STRONGLY_SUPPORTED)
+0x00B616CC  Direct3DCreate9 (import link BLOCKED; identity STRONGLY_SUPPORTED)
+
