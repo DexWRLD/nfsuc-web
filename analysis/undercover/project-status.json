@@ -1,6 +1,6 @@
 {
-  "current_phase": 35,
-  "strategy": "Phase 35: deterministic guest QPC/QPF; ctor \u2192 alertable SleepEx. Graphics frozen.",
+  "current_phase": 36,
+  "strategy": "Phase 36: SleepEx timeout-only; ctor \u2192 jump-table INDIRECT in 0x97F9E0. Graphics frozen.",
   "boundaries": {
     "0x00686000": {
       "status": "PROTECTED_OR_EXTERNAL_DEPENDENCY",
@@ -404,6 +404,11 @@
     {
       "phase": 35,
       "name": "Deterministic guest QPC/QPF clock",
+      "state": "completed"
+    },
+    {
+      "phase": 36,
+      "name": "Deterministic SleepEx timeout",
       "state": "completed"
     }
   ],

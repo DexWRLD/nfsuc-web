@@ -1,5 +1,5 @@
 {
-  "phase": 35,
+  "phase": 36,
   "campaign_outcomes": {
     "EXECUTED_TO_NEXT_BLOCKER": 1,
     "EXECUTED_CHAIN": 7,
@@ -9,12 +9,12 @@
   "real_blocker_histogram": {
     "REQUIRED_STATE": 4,
     "IMPORT": 0,
-    "INDIRECT": 0,
+    "INDIRECT": 1,
     "MEMORY": 0,
     "TLS": 0,
     "FILESYSTEM": 0,
     "TIMING": 0,
-    "ALERTABLE_WAIT": 1,
+    "ALERTABLE_WAIT": 0,
     "EXTERNAL": 0,
     "PROTECTED": 0,
     "CLEAN_RETURN": 7
@@ -33,12 +33,11 @@
     "REQUIRED_STATE:UNKNOWN_OBJECT",
     2
   ],
-  "qpc_cleared": true,
-  "qpf_cleared": true,
-  "latest_real_runtime_boundary": "SleepEx",
+  "sleepex_cleared": true,
+  "latest_real_runtime_boundary": "BLOCKED_INDIRECT",
   "next_genuine_blockers": [
     "BLOCKED_CRT_INITIALIZATION",
-    "SleepEx"
+    "BLOCKED_INDIRECT"
   ],
   "crt_atexit": {
     "roots": [
@@ -46,7 +45,6 @@
       "0x00B57CF0"
     ],
     "classification": "BLOCKED_CRT_INITIALIZATION",
-    "implementation_attempted": false,
-    "reason": "Unchanged; not the highest-leverage blocker this campaign."
+    "implementation_attempted": false
   }
 }

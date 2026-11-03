@@ -1,5 +1,5 @@
 {
-  "phase": 35,
+  "phase": 36,
   "definitions": {
     "ENTERABLE": "All pre-entry required state establishable via primitives, static PE data, standard runtime, or proven ordinary init/ctor. Not merely IMPORT_READY.",
     "DEEPEST_ORDINARY_EXECUTION_CHAIN": "Max nested ordinary UC frames in one harness run.",
@@ -15,7 +15,7 @@
   "compiled": 22770,
   "static_ready": 20762,
   "import_ready": 737,
-  "runtime_ready": 71,
+  "runtime_ready": 72,
   "enterable": 21,
   "enterable_roots": [
     "0x00721050",
@@ -52,11 +52,12 @@
   "enterable_with_depth_4_potential_roots": [],
   "proven_depth_4_roots": [
     "0x0097BB30",
+    "0x009E9160",
     "0x00B52140",
     "0x00B57CF0"
   ],
   "proven_depth_5_roots": [],
-  "unique_uc_functions_executed": 44,
+  "unique_uc_functions_executed": 48,
   "unique_uc_functions_executed_list": [
     "0x00721050",
     "0x00721070",
@@ -64,8 +65,10 @@
     "0x0072D640",
     "0x00739B90",
     "0x00808770",
+    "0x0087B4F6",
     "0x0087B59B",
     "0x0087B640",
+    "0x0087B880",
     "0x0087BEB8",
     "0x0088390D",
     "0x00924D30",
@@ -84,6 +87,8 @@
     "0x00978720",
     "0x0097BB30",
     "0x0097F790",
+    "0x0097F9E0",
+    "0x0097FAE0",
     "0x0097FCD0",
     "0x009D9310",
     "0x009E0880",
@@ -103,9 +108,9 @@
     "0x00B57CD0",
     "0x00B57CF0"
   ],
-  "execution_runs": 71,
+  "execution_runs": 83,
   "deepest_ordinary_execution_chain": 4,
-  "largest_executed_ordinary_closure": 11,
+  "largest_executed_ordinary_closure": 15,
   "clean_ordinary_roots": 12,
   "clean_ordinary_roots_list": [
     "0x00721070",
@@ -142,25 +147,25 @@
     "COMPILED": 22770,
     "STATIC_READY": 20762,
     "IMPORT_READY": 737,
-    "RUNTIME_READY": 71,
+    "RUNTIME_READY": 72,
     "ENTERABLE": 21,
-    "EXECUTED": 44,
-    "UNIQUE": 44,
-    "EXECUTION_RUNS": 71,
+    "EXECUTED": 48,
+    "UNIQUE": 48,
+    "EXECUTION_RUNS": 83,
     "CLEAN_ORDINARY_ROOTS": 12,
     "EXECUTED_ORDINARY_CONSTRUCTORS": 9,
     "DEEPEST": 4,
-    "LARGEST_CLOSURE": 11,
+    "LARGEST_CLOSURE": 15,
     "ENTERABLE_WITH_DEPTH_4_POTENTIAL": 0,
-    "PROVEN_DEPTH_4_ROOTS": 3,
-    "LATEST_REAL_RUNTIME_BOUNDARY": "SleepEx",
+    "PROVEN_DEPTH_4_ROOTS": 4,
+    "LATEST_REAL_RUNTIME_BOUNDARY": "BLOCKED_INDIRECT",
     "MOST_COMMON_REAL_BLOCKER": [
       "REQUIRED_STATE:UNKNOWN_OBJECT",
       2
     ]
   },
   "campaign_summary": {
-    "phase35_attempted": 12,
+    "phase36_attempted": 12,
     "outcomes": {
       "EXECUTED_TO_NEXT_BLOCKER": 1,
       "EXECUTED_CHAIN": 7,
@@ -170,12 +175,12 @@
     "real_blocker_histogram": {
       "REQUIRED_STATE": 4,
       "IMPORT": 0,
-      "INDIRECT": 0,
+      "INDIRECT": 1,
       "MEMORY": 0,
       "TLS": 0,
       "FILESYSTEM": 0,
       "TIMING": 0,
-      "ALERTABLE_WAIT": 1,
+      "ALERTABLE_WAIT": 0,
       "EXTERNAL": 0,
       "PROTECTED": 0,
       "CLEAN_RETURN": 7
@@ -195,21 +200,21 @@
       2
     ],
     "deepest_chain": 4,
-    "largest_executed_closure": 11,
+    "largest_executed_closure": 15,
     "clean_ordinary_roots": 12,
     "executed_ordinary_constructors": 9,
-    "qpc_implemented": true,
-    "qpf_implemented": true,
-    "sleepex_implemented": false,
+    "sleepex_implemented": true,
+    "apc_delivery": false,
     "ctor_status": {
-      "before": "EXECUTED_TO_NEXT_BLOCKER / QueryPerformanceCounter",
+      "before": "EXECUTED_TO_NEXT_BLOCKER / SleepEx BLOCKED_ALERTABLE_WAIT",
       "after": "EXECUTED_TO_NEXT_BLOCKER",
-      "after_blocker": "SleepEx",
-      "blocker_result": "BLOCKED_ALERTABLE_WAIT",
+      "after_blocker": "switch/jump-table or unresolved ordinary target 0x0097FA08",
+      "blocker_result": "BLOCKED_INDIRECT",
       "returned_clean": false,
-      "qpc_calls": 6,
-      "qpf_calls": 1,
-      "qpc_ticks_observed": 0,
+      "sleepex_calls": 5,
+      "sleepex_done": 5,
+      "qpc_ticks_after": 2500000,
+      "virtual_ms_elapsed": 25,
       "entered": [
         "0x009E9160",
         "0x009E7710",
@@ -221,16 +226,24 @@
         "0x009EB980",
         "0x00978720",
         "0x0097FCD0",
-        "0x0097F790"
+        "0x0097F790",
+        "0x0087B4F6",
+        "0x0097FAE0",
+        "0x0087B880",
+        "0x0097F9E0"
       ],
-      "depth": 3,
-      "closure": 11
+      "depth": 4,
+      "closure": 15,
+      "new_ordinary_after_sleep": [
+        "0x0087B4F6",
+        "0x0097FAE0",
+        "0x0087B880",
+        "0x0097F9E0"
+      ]
     },
     "semaphore_path_status": {
-      "before": "EXECUTED_CHAIN clean depth 4",
-      "after": "EXECUTED_CHAIN",
-      "returned_clean": true,
-      "sem_calls": 4,
+      "result": "EXECUTED_CHAIN",
+      "clean": true,
       "depth": 4
     },
     "ebc70_status": {
@@ -243,12 +256,9 @@
         "0x00B57CF0"
       ],
       "classification": "BLOCKED_CRT_INITIALIZATION",
-      "implementation_attempted": false,
-      "reason": "Unchanged; not the highest-leverage blocker this campaign."
+      "implementation_attempted": false
     },
     "timing_loop_encountered": false,
-    "instruction_budget_exhaustion": false,
-    "alertable_wait_reached": true,
     "scheduler": false,
     "tlsgetvalue_reached": false,
     "tlsfree_reached": false,
@@ -277,13 +287,20 @@
   "timing": {
     "QueryPerformanceCounter": "IMPLEMENTED",
     "QueryPerformanceFrequency": "IMPLEMENTED",
-    "SleepEx": "NOT_IMPLEMENTED / BLOCKED_ALERTABLE_WAIT",
+    "SleepEx": "IMPLEMENTED_TIMEOUT_ONLY",
     "frequency_hz": 10000000,
     "guest_threads": 1,
     "scheduler": "NONE"
   },
+  "waits": {
+    "SleepEx": "IMPLEMENTED_TIMEOUT_ONLY",
+    "APC_delivery": "NOT_IMPLEMENTED",
+    "guest_threads": 1,
+    "scheduler": "NONE",
+    "current_ctor_blocker": "BLOCKED_INDIRECT"
+  },
   "first_frame": "FIRST_FRAME_PATH_BLOCKED_BY_PROTECTED_BACKEND",
   "graphics_frozen": true,
-  "recommended_phase36": "QPC/QPF guest clock is live; constructor advances to alertable SleepEx(50ms, TRUE). Phase 36: either EXPAND THREADING/TLS RUNTIME for a narrowly justified non-alertable sleep/virtual-wait policy (without APC/scheduler fiction), or EXPAND REAL UC EXECUTION on other ordinary roots while leaving alertable waits classified. CRT atexit remains BLOCKED_CRT_INITIALIZATION. Graphics frozen.",
+  "recommended_phase37": "SleepEx timeout-only HLE cleared the alertable finite wait. Constructor now stops on an unresolved ordinary jump-table / switch dispatch inside 0x0097F9E0 (BLOCKED_INDIRECT). Phase 37: EXPAND INDIRECT DISPATCH \u2014 enable/verify JTSWITCH recognition for this MSVC switch so ordinary case handlers execute without DISPATCH_TAIL. Do not invent APC delivery. Graphics frozen.",
   "phase31_metric_corrections_preserved": true
 }
