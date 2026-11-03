@@ -582,6 +582,10 @@ def build():
             json.load(open(os.path.join(ANALYSIS, "wait-frontier.json"), encoding="utf-8"))
             if os.path.isfile(os.path.join(ANALYSIS, "wait-frontier.json")) else {}
         ),
+        "indirect_dispatch_frontier": (
+            json.load(open(os.path.join(ANALYSIS, "indirect-dispatch-frontier.json"), encoding="utf-8"))
+            if os.path.isfile(os.path.join(ANALYSIS, "indirect-dispatch-frontier.json")) else {}
+        ),
         "initialization": status["initialization"],
         "boundaries": status["boundaries"],
         "helper_cut": helper_summary if helper_summary else "UNKNOWN",
@@ -877,6 +881,49 @@ def _guest_waits_badge(model):
     )
 
 
+def _indirect_dispatch_badge(model):
+    ind = model.get("indirect_dispatch_frontier") or {}
+    if not ind:
+        # Fall back to campaign summary embedded in runtime-frontier.
+        camp = model.get("campaign_summary") or {}
+        ind = (model.get("ordinary_runtime_frontier") or {})
+        # Prefer top-level key from runtime-frontier.json when progress loads it.
+        return "UNMEASURED" if not camp.get("jtswitch_enabled_in_harness") else "JTSWITCH ON"
+    cls = ind.get("switch_classification") or "?"
+    jt = ind.get("jtswitch_status") or ind.get("audit", {}).get("with_jtswitch", {})
+    executed = "EXEC" if ind.get("executed") else "PEND"
+    return "%s JT=%s %s" % (
+        (ind.get("indirect_site") or ind.get("phase36_blocked_case_body") or "?"),
+        "ON" if ind.get("recognized") or ind.get("emitted") else "OFF",
+        executed,
+    )
+
+
+def _indirect_dispatch_html_table(model):
+    ind = model.get("indirect_dispatch_frontier") or {}
+    if not ind:
+        return html_table(("Item", "Status"), [("status", "UNMEASURED")])
+    audit = ind.get("audit") or {}
+    rows = [
+        ("Reached switch site", ind.get("indirect_site") or "?"),
+        ("Containing function", ind.get("function") or "?"),
+        ("Classification", ind.get("switch_classification") or "?"),
+        ("Proof", ind.get("proof") or "?"),
+        ("Table base", ind.get("table_base_va") or "?"),
+        ("Entry count", ind.get("entry_count") or "?"),
+        ("Runtime selected index", ind.get("runtime_selected_index")),
+        ("Runtime selected target", ind.get("runtime_selected_target") or "?"),
+        ("Target valid", "YES" if ind.get("runtime_selected_valid") else "NO"),
+        ("JTSWITCH recognized", "YES" if ind.get("recognized") else "NO"),
+        ("JTSWITCH emitted", "YES" if ind.get("emitted") else "NO"),
+        ("Compiled", "YES" if ind.get("compiled") else "NO"),
+        ("Executed", "YES" if ind.get("executed") else "NO"),
+        ("Correction generic", "YES" if audit.get("correction_generic") else "NO"),
+        ("Next blocker", "ctor RETURNED_CLEAN" if ind.get("executed") else "?"),
+    ]
+    return html_table(("Item", "Status"), rows)
+
+
 def _sync_html_table(model):
     sync = model.get("sync_frontier") or {}
     fam = sync.get("family_inventory") or {}
@@ -1058,6 +1105,7 @@ def render_svg(model, detailed=False):
         ("GUEST THREAD", _guest_thread_badge(model)),
         ("GUEST TIMING", _guest_timing_badge(model)),
         ("GUEST WAITS", _guest_waits_badge(model)),
+        ("ORDINARY INDIRECT DISPATCH", _indirect_dispatch_badge(model)),
     ]
     parts = []
     y = badge_row(parts, badges, 14)
@@ -1189,6 +1237,9 @@ th { color: #8b949e; font-weight: 600; }
 <h2>Win32 synchronization</h2>
 %s
 <p>SINGLE GUEST THREAD — LIMITED SYNC MODEL. No guest scheduler.</p>
+<h2>Ordinary indirect dispatch</h2>
+%s
+<p>FIRST FRAME: <strong>BLOCKED — PROTECTED BACKEND</strong>. D3D9: <strong>NOT JUSTIFIED</strong>. ENGINE BACKEND: <strong>NOT JUSTIFIED</strong>.</p>
 <p>CRT <code>_CIsqrt</code>: %s. ABI: X87 ST0→ST0.</p>
 <p>Independent of <code>0x00686000</code>: %s. Discovery-enrolled on HIGH graph: %s. Runtime enterable now: %s. Call <code>%s</code> in <code>%s</code> (%s).</p>
 <p>Active objective: %s</p>
@@ -1312,6 +1363,7 @@ document.querySelectorAll("rect[data-addr]").forEach(function (node) {
         ]),
         _tls_html_table(model),
         _sync_html_table(model),
+        _indirect_dispatch_html_table(model),
         html.escape(_cisqrt_badge(model)),
         html.escape(graphics["independent_of_0x00686000"]),
         html.escape(graphics["reachable_from_high_graph"]),
@@ -1457,6 +1509,7 @@ def render_png(model):
         ("GUEST THREAD", _guest_thread_badge(model)),
         ("GUEST TIMING", _guest_timing_badge(model)),
         ("GUEST WAITS", _guest_waits_badge(model)),
+        ("ORDINARY INDIRECT DISPATCH", _indirect_dispatch_badge(model)),
     ]
 
     # Measure height with the same geometry as the SVG.
