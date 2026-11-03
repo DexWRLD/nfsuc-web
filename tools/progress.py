@@ -703,10 +703,23 @@ def _real_uc_execution_badge(model):
     nxt = camp.get("most_common_next_blocker")
     if isinstance(nxt, (list, tuple)) and nxt:
         nxt = nxt[0]
-    return "uniq=%s deep=%s next=%s" % (
+    return "uniq=%s deep=%s enter=%s next=%s" % (
         orf.get("EXECUTED") or "?",
-        camp.get("deepest_chain") or "?",
+        camp.get("deepest_chain") or orf.get("DEEPEST") or "?",
+        orf.get("ENTERABLE") or "?",
         nxt or "?",
+    )
+
+
+def _ordinary_init_badge(model):
+    orf = model.get("ordinary_runtime_frontier") or {}
+    if not orf:
+        return "UNMEASURED"
+    return "rec=%s ext=%s prot=%s unk=%s" % (
+        orf.get("ORDINARY_INIT_RECOVERED") or "?",
+        orf.get("INIT_BLOCKED_EXTERNAL") or "?",
+        orf.get("INIT_BLOCKED_PROTECTED") or "?",
+        orf.get("INIT_BLOCKED_UNKNOWN") or "?",
     )
 
 
@@ -844,6 +857,7 @@ def render_svg(model, detailed=False):
         ("ORDINARY RUNTIME FRONTIER", _ordinary_frontier_badge(model)),
         ("TOP ORDINARY ISLAND", _top_island_badge(model)),
         ("REAL UC EXECUTION", _real_uc_execution_badge(model)),
+        ("ORDINARY INITIALIZATION", _ordinary_init_badge(model)),
         ("CRT _CIsqrt", _cisqrt_badge(model)),
     ]
     parts = []
@@ -968,6 +982,8 @@ th { color: #8b949e; font-weight: 600; }
 %s
 <h2>Real UC execution</h2>
 %s
+<h2>Ordinary initialization</h2>
+%s
 <p>CRT <code>_CIsqrt</code>: %s. ABI: X87 ST0→ST0.</p>
 <p>Independent of <code>0x00686000</code>: %s. Discovery-enrolled on HIGH graph: %s. Runtime enterable now: %s. Call <code>%s</code> in <code>%s</code> (%s).</p>
 <p>Active objective: %s</p>
@@ -1084,12 +1100,19 @@ document.querySelectorAll("rect[data-addr]").forEach(function (node) {
         html_table(("Field", "Value"), [
             ("unique executed", (model.get("ordinary_runtime_frontier") or {}).get("EXECUTED") or "?"),
             ("deepest chain", (model.get("campaign_summary") or {}).get("deepest_chain") or "?"),
-            ("largest entered island", (model.get("campaign_summary") or {}).get("largest_island_entered") or "?"),
+            ("largest executed closure", (model.get("campaign_summary") or {}).get("largest_executed_closure") or "?"),
+            ("enterable", (model.get("ordinary_runtime_frontier") or {}).get("ENTERABLE") or "?"),
             ("most common next blocker", (
                 (model.get("campaign_summary") or {}).get("most_common_next_blocker") or ("?", 0)
             )[0] if isinstance((model.get("campaign_summary") or {}).get("most_common_next_blocker"), (list, tuple))
             else ((model.get("campaign_summary") or {}).get("most_common_next_blocker") or "?")),
             ("latest newly executed root", (model.get("campaign_summary") or {}).get("latest_newly_executed_root") or "?"),
+        ]),
+        html_table(("Metric", "Value"), [
+            ("recovered", (model.get("ordinary_runtime_frontier") or {}).get("ORDINARY_INIT_RECOVERED") or "?"),
+            ("external", (model.get("ordinary_runtime_frontier") or {}).get("INIT_BLOCKED_EXTERNAL") or "?"),
+            ("protected", (model.get("ordinary_runtime_frontier") or {}).get("INIT_BLOCKED_PROTECTED") or "?"),
+            ("unknown", (model.get("ordinary_runtime_frontier") or {}).get("INIT_BLOCKED_UNKNOWN") or "?"),
         ]),
         html.escape(_cisqrt_badge(model)),
         html.escape(graphics["independent_of_0x00686000"]),
@@ -1228,6 +1251,7 @@ def render_png(model):
         ("ORDINARY RUNTIME FRONTIER", _ordinary_frontier_badge(model)),
         ("TOP ORDINARY ISLAND", _top_island_badge(model)),
         ("REAL UC EXECUTION", _real_uc_execution_badge(model)),
+        ("ORDINARY INITIALIZATION", _ordinary_init_badge(model)),
         ("CRT _CIsqrt", _cisqrt_badge(model)),
     ]
 

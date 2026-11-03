@@ -1,8 +1,8 @@
 {
   "project": {
     "name": "nfsuc-web",
-    "current_phase": 26,
-    "strategy": "Phase 26: implemented MSVCR80 _CIsqrt HLE (0x00AE5116, ST0\u2192ST0). Consumer 0x00924D30 executed (3,4)\u2192(0.6,0.8,1.0). Campaign: most common next blocker BLOCKED_REQUIRED_STATE. Graphics remain frozen."
+    "current_phase": 27,
+    "strategy": "Phase 27: ordinary initialization. Recovered POD contracts; executed 0x00929972\u21920x00924D30 chain (depth 2) and 0x00949920. 0x0072EAE0 blocked by .securom jump slot 0x023AF9C8. Graphics frozen."
   },
   "discovery": {
     "candidates": 25450,
@@ -36,12 +36,14 @@
     "note": "The badge is the current high-confidence.json compile record. Green cells are discovery-enrolled HIGH functions that generated and compiled. Map 'reachable' means discovery enrollment, not proven call-graph reachability."
   },
   "runtime": {
-    "recorded_completed": 6,
-    "recorded_entries": 7,
-    "recorded_without_map_cell": [],
+    "recorded_completed": 7,
+    "recorded_entries": 9,
+    "recorded_without_map_cell": [
+      "0x00929972"
+    ],
     "unlogged_entries": "UNKNOWN",
     "counts": {
-      "EXECUTED": 6,
+      "EXECUTED": 7,
       "READY": 0,
       "RUNTIME_READY_NOT_EXECUTED": 54,
       "BLOCKED_INITIALIZATION": 0,
@@ -49,7 +51,7 @@
       "BLOCKED_IMPORT": 732,
       "BLOCKED_EXTERNAL": 74,
       "PROTECTED_BOUNDARY": 793,
-      "UNKNOWN": 23660
+      "UNKNOWN": 23659
     },
     "ready_closure": 19,
     "ready_with_imports_closure": 35,
@@ -61,206 +63,43 @@
     "STATIC_READY": 20762,
     "IMPORT_READY": 737,
     "RUNTIME_READY": 54,
-    "ENTERABLE": 3,
-    "EXECUTED": 6,
-    "BLOCKED_STANDARD_RUNTIME": 733,
-    "BLOCKED_PROTECTED": 585,
-    "BLOCKED_GRAPHICS": 124,
-    "UNKNOWN": 79
+    "ENTERABLE": 6,
+    "EXECUTED": 8,
+    "ORDINARY_INIT_RECOVERED": 4,
+    "INIT_BLOCKED_EXTERNAL": 0,
+    "INIT_BLOCKED_PROTECTED": 1,
+    "INIT_BLOCKED_UNKNOWN": 4
   },
-  "top_ordinary_island": {
-    "root": "0x009F0D20",
-    "representative": "0x009F0D20",
-    "function_count": 274,
-    "edge_count": 774,
-    "imports": [
-      [
-        "strchr",
-        5
-      ],
-      [
-        "sprintf",
-        3
-      ],
-      [
-        "memcpy",
-        3
-      ],
-      [
-        "isdigit",
-        3
-      ],
-      [
-        "isspace",
-        2
-      ],
-      [
-        "longjmp",
-        2
-      ],
-      [
-        "iscntrl",
-        2
-      ],
-      [
-        "isalnum",
-        2
-      ],
-      [
-        "strtoul",
-        1
-      ],
-      [
-        "strncpy",
-        1
-      ],
-      [
-        "strncat",
-        1
-      ],
-      [
-        "strcspn",
-        1
-      ]
-    ],
-    "missing_imports": [
-      "_CIpow",
-      "_setjmp3",
-      "floor",
-      "isalnum",
-      "isalpha",
-      "iscntrl",
-      "isdigit",
-      "isspace",
-      "localeconv",
-      "longjmp",
-      "sprintf",
-      "strchr",
-      "strcoll",
-      "strcspn",
-      "strncat",
-      "strtoul"
-    ],
-    "indirect_calls": 0,
-    "protected_deps": 0,
-    "graphics_deps": 0,
-    "tls_members": 0,
-    "blockers": {
-      "BLOCKED_IMPORT": 23,
-      "BLOCKED_EXTERNAL": 5
-    },
-    "enterable": false,
-    "executed_member": false,
-    "members_sample": [
-      "0x009F0D20",
-      "0x009F0DE0",
-      "0x009F0E70",
-      "0x009F0EA0",
-      "0x009F0EC0",
-      "0x009F0EE0",
-      "0x009F0F20",
-      "0x009F0F50"
-    ],
-    "non_graphics": true,
-    "leverage": 692
-  },
+  "top_ordinary_island": {},
   "campaign_summary": {
-    "attempted": 10,
+    "phase27_attempted": 7,
     "outcomes": {
-      "EXECUTED_CLEAN": 3,
-      "BLOCKED_REQUIRED_STATE": 5,
-      "BLOCKED_INDIRECT": 1,
-      "BLOCKED_IMPORT": 1
+      "EXECUTED_CHAIN": 1,
+      "EXECUTED_CLEAN": 1,
+      "BLOCKED_PROTECTED": 1,
+      "BLOCKED_REQUIRED_STATE": 4
     },
     "most_common_next_blocker": [
       "BLOCKED_REQUIRED_STATE",
-      5
+      4
     ],
-    "observed_in_executed_imports": {
-      "_CIsqrt": 1,
-      "strncpy": 1
-    },
-    "CIpow_observed": false,
-    "setjmp3_observed": false,
-    "floor_observed": false,
-    "malloc_free_observed": false,
-    "filesystem_observed": false,
-    "timing_observed": false,
-    "tls_observed": false,
-    "unresolved_indirect_observed": true,
-    "deepest_chain": 1,
-    "largest_island_entered": 1,
-    "latest_newly_executed_root": "0x00924D30"
+    "deepest_chain": 2,
+    "largest_executed_closure": 2,
+    "latest_newly_executed_root": "0x00929972",
+    "CIpow_reached": false,
+    "floor_reached": false,
+    "malloc_free_reached": false,
+    "filesystem_reached": false,
+    "timing_reached": false,
+    "tls_reached": false,
+    "seh_required": false
   },
   "cisqrt": {
-    "thunk": "0x00AE5116",
-    "iat_slot": "0x00B61448",
-    "dll": "MSVCR80.dll",
-    "symbol": "_CIsqrt",
-    "convention": "cdecl",
-    "call_sites": 116,
-    "high_callers": 55,
-    "abi": "X87 ST0\u2192ST0; cdecl; 0 stack dwords; EAX unchanged; TOP unchanged",
     "hle": "UC_HLE_CISQRT",
-    "host": "uc_host_sqrt (ucrtbase sqrt)",
-    "numerical_policy": "Host double math; not MSVCR80/x87 80-bit bit-exact; no tag-word; no exception signaling fidelity.",
-    "pre_single_unlock_functions": 88,
-    "post_single_unlock_gone": true,
-    "functions_now_import_ready_with_cisqrt": 53,
-    "largest_affected_island": {
-      "root": "0x00A1CD60",
-      "representative": "0x00A1CD60",
-      "function_count": 6,
-      "edge_count": 6,
-      "imports": [
-        [
-          "_CIsqrt",
-          3
-        ]
-      ],
-      "missing_imports": [],
-      "indirect_calls": 0,
-      "protected_deps": 0,
-      "graphics_deps": 0,
-      "tls_members": 0,
-      "blockers": {
-        "RUNTIME_READY": 1
-      },
-      "enterable": true,
-      "executed_member": false,
-      "members_sample": [
-        "0x00A1CD60",
-        "0x00A1CDF0",
-        "0x00A28DF0",
-        "0x00A2B820",
-        "0x00A2B9E0",
-        "0x00A2BC30"
-      ],
-      "non_graphics": true,
-      "leverage": 148
-    }
+    "status": "IMPLEMENTED"
   },
   "harness_capability": {
-    "mapped_ordinary_sections": "IMPLEMENTED",
-    "guest_stack": "IMPLEMENTED",
-    "direct_uc_calls": "IMPLEMENTED",
-    "nested_uc_calls": "IMPLEMENTED",
-    "imports_hle": "PARTIAL",
-    "x87": "PARTIAL",
-    "simd": "PARTIAL",
-    "atomics": "PARTIAL",
-    "memory_validation": "IMPLEMENTED",
-    "indirect_dispatch": "PARTIAL",
-    "tls": "STUB",
-    "filesystem": "MISSING",
-    "threads": "MISSING",
-    "timing": "MISSING",
-    "seh": "STUB",
-    "notes": "Native UC harness maps ordinary PE sections and runs lifted HIGH functions with import HLE for CRT mem/string and a few x87 helpers. NFSU2 win32/fileio/thread helpers exist in the broader tree but are not wired as the Undercover native UC import path. Atomics suffice for single-thread controlled execution.",
-    "atomic_correctness": "SUFFICIENT_FOR_SINGLE_THREAD",
-    "crt_cisqrt": "IMPLEMENTED",
-    "crt_cisqrt_abi": "X87 ST0\u2192ST0",
-    "crt_cisqrt_test": "PASS"
+    "crt_cisqrt": "IMPLEMENTED"
   },
   "initialization": [
     {
@@ -369,7 +208,7 @@
     "enterable_now": "NO",
     "object": "0x01318170",
     "esi_slot": "0x00B615C4",
-    "active_objective": "FROZEN graphics; expand ordinary execution / state contracts",
+    "active_objective": "FROZEN; expand ordinary init/execution depth",
     "blockers": [
       "FIRST_FRAME_PATH_BLOCKED_BY_PROTECTED_BACKEND",
       "ORDINARY_FRONTEND_PROTECTED_BACKEND",
@@ -518,6 +357,11 @@
     {
       "phase": 26,
       "name": "_CIsqrt HLE + ordinary execution campaign",
+      "state": "completed"
+    },
+    {
+      "phase": 27,
+      "name": "Ordinary initialization frontier",
       "state": "completed"
     }
   ],
@@ -136676,8 +136520,11 @@
       "generated": true,
       "compiled": true,
       "translation_status": "COMPILED",
-      "runtime_status": "UNKNOWN",
+      "runtime_status": "EXECUTED",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
+      "recorded_execution": true,
+      "completed": true,
+      "first_observed_phase": 27,
       "direct_callees": 3
     },
     {
