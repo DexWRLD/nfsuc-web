@@ -1,15 +1,14 @@
 {
-  "phase": 36,
+  "phase": 37,
   "campaign_outcomes": {
-    "EXECUTED_TO_NEXT_BLOCKER": 1,
-    "EXECUTED_CHAIN": 7,
+    "EXECUTED_CHAIN": 8,
     "BLOCKED_REQUIRED_STATE": 3,
     "UNKNOWN": 1
   },
   "real_blocker_histogram": {
     "REQUIRED_STATE": 4,
     "IMPORT": 0,
-    "INDIRECT": 1,
+    "INDIRECT": 0,
     "MEMORY": 0,
     "TLS": 0,
     "FILESYSTEM": 0,
@@ -17,7 +16,7 @@
     "ALERTABLE_WAIT": 0,
     "EXTERNAL": 0,
     "PROTECTED": 0,
-    "CLEAN_RETURN": 7
+    "CLEAN_RETURN": 8
   },
   "required_state_histogram": {
     "UNKNOWN_OBJECT": 2,
@@ -33,18 +32,12 @@
     "REQUIRED_STATE:UNKNOWN_OBJECT",
     2
   ],
-  "sleepex_cleared": true,
-  "latest_real_runtime_boundary": "BLOCKED_INDIRECT",
+  "indirect_switch_cleared": true,
+  "ctor_returned_clean": true,
+  "latest_real_runtime_boundary": "0x009E9160 RETURNED_CLEAN",
   "next_genuine_blockers": [
     "BLOCKED_CRT_INITIALIZATION",
-    "BLOCKED_INDIRECT"
-  ],
-  "crt_atexit": {
-    "roots": [
-      "0x00B52140",
-      "0x00B57CF0"
-    ],
-    "classification": "BLOCKED_CRT_INITIALIZATION",
-    "implementation_attempted": false
-  }
+    "access 0x00000000 unmapped guest access",
+    "callee 0x004026F0 (REJECTED_DATA_LIKE); callee not ordinary-decodable"
+  ]
 }
