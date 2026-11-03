@@ -1,3 +1,4 @@
+import { UcDownloadManager } from './uc-download-manager';
 // Wire Phase 51 startup preview panel (synthetic by default; authentic when
 // authorized dialog logo is served from UC_ASSET_ROOT /uc-assets/).
 // After digest verification, logo bytes are published into the OPFS/memory
@@ -93,13 +94,37 @@ export async function bootUcStartupPreview(log: (line: string) => void): Promise
     logo: prov,
     logoBytes: bytes,
     videoLead,
+    offerVideo: true,
     skipVideo: false,
     onState: (s, d) => setStatus(s, d),
   });
 
+  const abort = new AbortController();
+  const video = document.createElement('video');
+  video.controls = true;
+  video.playsInline = true;
+  video.preload = 'metadata';
+  video.style.maxWidth = '100%';
+  let movieUrl: string | undefined;
+  const cleanup = () => {
+    abort.abort();
+    video.onended = video.onerror = video.onplaying = null;
+    video.pause();
+    video.removeAttribute('src');
+    video.load();
+    video.remove();
+    if (movieUrl) URL.revokeObjectURL(movieUrl);
+    movieUrl = undefined;
+  };
+  window.addEventListener('pagehide', () => {
+    cleanup();
+    ctl.dispose();
+  }, { once: true });
+
   const skipBtn = $('#uc-startup-skip');
   if (skipBtn) {
     skipBtn.onclick = () => {
+      cleanup();
       ctl.skip();
       const snap = ctl.snapshot();
       if (flags) flags.textContent = JSON.stringify(snap.statuses);
@@ -135,6 +160,38 @@ export async function bootUcStartupPreview(log: (line: string) => void): Promise
       } catch (ce) {
         log(`[uc-startup] cache write skipped: ${ce instanceof Error ? ce.message : String(ce)}`);
       }
+    }
+
+    if (abort.signal.aborted) return;
+    try {
+      const store = await openOpfsAssetStore().catch(() => new MemoryAssetStore());
+      const manager = new UcDownloadManager({ store, pageOrigin: location.origin });
+      const manifest = await manager.loadManifest('/uc-asset-manifest.json');
+      const entry = manifest.assets.find(asset => asset.id === 'ea-bumper');
+      if (!entry || entry.path !== 'ea-bumper.mp4' || entry.contentType !== 'video/mp4'
+        || entry.size !== 1016295
+        || entry.sha256 !== 'c21e846377132ea74773e1b7a41679f27bcf47f5634fc752dc267b74b7284eb8') {
+        throw new Error('Verified EA bumper unavailable');
+      }
+      const data = await manager.ensureAsset(manifest, entry, abort.signal);
+      if (abort.signal.aborted) return;
+      if (!data) throw new Error('Verified EA bumper unavailable');
+      movieUrl = URL.createObjectURL(new Blob([data.slice()], { type: 'video/mp4' }));
+      video.onplaying = () => setStatus('EA_BUMPER_PLAYING', 'Shipped EA bumper · audio decode unverified');
+      video.onended = () => {
+        cleanup();
+        ctl.finishVideo();
+      };
+      video.onerror = () => {
+        const reason = video.error?.message || 'Browser media decode failed';
+        cleanup();
+        ctl.finishVideo(reason);
+      };
+      video.src = movieUrl;
+      panel.append(video);
+      setStatus('EA_BUMPER_READY', 'Press play to preview the shipped EA bumper');
+    } catch (error) {
+      if (!abort.signal.aborted) ctl.finishVideo(error instanceof Error ? error.message : String(error));
     }
 
     log(`[uc-startup] ${snap.state} authentic=${snap.logoAuthentic} id=${snap.logoIdentity}`);

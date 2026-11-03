@@ -97,3 +97,46 @@ test('HTTPS LAN origin: secure context, assets ready, play disabled', async (t) 
     await handle.close();
   }
 });
+
+
+test('authorized EA bumper plays over the LAN asset pipeline', { skip: !process.env.UC_AUTHENTIC_ASSET_ROOT }, async (t) => {
+  const { chromium } = await import('playwright');
+  const { startUcLanServer } = await import('../tools/uc-lan-server.mjs');
+  const assetRoot = process.env.UC_AUTHENTIC_ASSET_ROOT;
+  const certDir = fs.mkdtempSync(path.join(os.tmpdir(), 'uc-bumper-certs-'));
+  t.after(() => fs.rmSync(certDir, { recursive: true, force: true }));
+  const handle = await startUcLanServer({
+    bind: '127.0.0.1', port: 0, certDir, assetRoot,
+    dist: path.join(WEB, 'dist'), manifest: path.join(assetRoot, 'phase52-manifest.json'),
+  });
+  t.after(() => handle.close());
+  const browser = await chromium.launch({ channel: process.env.UC_BROWSER_CHANNEL || undefined, args: [
+    '--ignore-certificate-errors-spki-list=' + handle.certs.spki.join(','),
+  ] });
+  t.after(() => browser.close());
+  const page = await browser.newPage();
+  const errors = [];
+  page.on('pageerror', error => errors.push(error.message));
+  let downloads = 0;
+  page.on('request', request => {
+    if (request.url().endsWith('/uc-assets/ea-bumper.mp4')) downloads++;
+  });
+  await page.goto(handle.urls[0]);
+  assert.equal(await page.evaluate(() => isSecureContext), true);
+  const video = page.locator('#uc-startup-preview video');
+  await page.waitForFunction(() => document.querySelector('#uc-startup-preview video')?.readyState >= 1);
+  assert.equal(await video.evaluate(element => element.videoWidth), 1280);
+  await video.evaluate(element => element.play());
+  await page.waitForFunction(() => document.querySelector('#uc-startup-preview video')?.currentTime > 0.2);
+  await video.evaluate(element => element.pause());
+  assert.equal(await video.evaluate(element => element.paused), true);
+  await video.evaluate(element => element.play());
+  await video.evaluate(element => { element.currentTime = element.duration - 0.2; });
+  await video.waitFor({ state: 'detached' });
+  await page.reload();
+  await video.waitFor({ state: 'attached' });
+  assert.equal(downloads, 1);
+  await page.locator('#uc-startup-skip').click();
+  await video.waitFor({ state: 'detached' });
+  assert.deepEqual(errors, []);
+});

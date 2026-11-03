@@ -51,6 +51,7 @@ export interface StartupVideoLead {
 export interface StartupPreviewOptions {
   logo?: StartupImageProvenance | null;
   logoBytes?: Uint8Array | null;
+  offerVideo?: boolean;
   videoLead?: StartupVideoLead | null;
   /** Prefer skipping video stage. */
   skipVideo?: boolean;
@@ -107,7 +108,14 @@ export class StartupPreviewController {
     }
   }
 
+  finishVideo(error?: string) {
+    if (error) this.set('VIDEO_UNAVAILABLE', error);
+    this.set('MENU_PLACEHOLDER', error || 'Bumper complete');
+    this.set('COMPLETE', error || 'Preview sequence complete');
+  }
+
   skip() {
+    this.generation++;
     this.set('SKIPPED', 'user skip');
     this.set('MENU_PLACEHOLDER', 'skipped to menu placeholder');
     this.set('COMPLETE', 'preview sequence complete (skipped)');
@@ -188,6 +196,11 @@ export class StartupPreviewController {
       );
     } catch (e) {
       this.set('FAILED', e instanceof Error ? e.message : String(e));
+      return this.snapshot();
+    }
+
+    if (this.opts.offerVideo) {
+      this.set('LOADING_VIDEO', 'Checking for the authorized EA bumper');
       return this.snapshot();
     }
 
