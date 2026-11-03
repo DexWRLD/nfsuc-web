@@ -1,425 +1,2020 @@
 {
-  "phase": 30,
+  "phase": 31,
   "seeds": [
+    "0x00721050",
     "0x00721070",
+    "0x007212F0",
+    "0x0072D640",
     "0x00739B90",
+    "0x00808770",
     "0x0088390D",
     "0x00924D30",
-    "0x00929972",
     "0x00949920",
+    "0x009773C0",
+    "0x00977420",
+    "0x009777D0",
+    "0x00977800",
+    "0x00977E20",
+    "0x00978720",
+    "0x0097BB30",
+    "0x009D9310",
+    "0x009E0880",
+    "0x009E7710",
     "0x009E78C0",
-    "0x009E8AD0"
+    "0x009E8AD0",
+    "0x009E9160",
+    "0x009E9450",
+    "0x009E9460",
+    "0x009E98F0",
+    "0x009E9990",
+    "0x009EB350",
+    "0x009EB870",
+    "0x009EB980",
+    "0x009EBC70",
+    "0x00B52140",
+    "0x00B57CD0",
+    "0x00B57CF0",
+    "0x00929972"
   ],
   "callers": [
     {
-      "seed": "0x00721070",
-      "caller": "0x0072D640",
+      "level": 1,
+      "seed": "0x009E9460",
+      "caller": "0x009EB400",
+      "label": "HIGH_CONFIDENCE",
+      "insns": 117,
       "call_type": "call",
+      "frames_static": 14,
+      "pending_imports": [
+        "EnterCriticalSection",
+        "GetTickCount",
+        "LeaveCriticalSection",
+        "ReleaseMutex",
+        "WaitForSingleObject"
+      ],
+      "unlifted": [],
+      "protected": [],
+      "contract_cost": 5,
+      "chain_potential_score": 600,
+      "prefer_non_allocating": true
+    },
+    {
+      "level": 1,
+      "seed": "0x009EB350",
+      "caller": "0x009EB400",
+      "label": "HIGH_CONFIDENCE",
+      "insns": 117,
+      "call_type": "call",
+      "frames_static": 14,
+      "pending_imports": [
+        "EnterCriticalSection",
+        "GetTickCount",
+        "LeaveCriticalSection",
+        "ReleaseMutex",
+        "WaitForSingleObject"
+      ],
+      "unlifted": [],
+      "protected": [],
+      "contract_cost": 5,
+      "chain_potential_score": 600,
+      "prefer_non_allocating": true
+    },
+    {
+      "level": 1,
+      "seed": "0x009EB870",
+      "caller": "0x009EB400",
+      "label": "HIGH_CONFIDENCE",
+      "insns": 117,
+      "call_type": "call",
+      "frames_static": 14,
+      "pending_imports": [
+        "EnterCriticalSection",
+        "GetTickCount",
+        "LeaveCriticalSection",
+        "ReleaseMutex",
+        "WaitForSingleObject"
+      ],
+      "unlifted": [],
+      "protected": [],
+      "contract_cost": 5,
+      "chain_potential_score": 600,
+      "prefer_non_allocating": true
+    },
+    {
+      "level": 1,
+      "seed": "0x009E9460",
+      "caller": "0x009E9F30",
+      "label": "HIGH_CONFIDENCE",
+      "insns": 22,
+      "call_type": "call",
+      "frames_static": 11,
+      "pending_imports": [
+        "EnterCriticalSection",
+        "GetTickCount",
+        "LeaveCriticalSection",
+        "ReleaseMutex",
+        "WaitForSingleObject"
+      ],
+      "unlifted": [],
+      "protected": [],
+      "contract_cost": 5,
+      "chain_potential_score": 480,
+      "prefer_non_allocating": true
+    },
+    {
+      "level": 1,
+      "seed": "0x009E9460",
+      "caller": "0x009EB640",
+      "label": "HIGH_CONFIDENCE",
+      "insns": 102,
+      "call_type": "call",
+      "frames_static": 10,
+      "pending_imports": [
+        "EnterCriticalSection",
+        "GetTickCount",
+        "LeaveCriticalSection",
+        "ReleaseMutex",
+        "WaitForSingleObject",
+        "memcpy"
+      ],
+      "unlifted": [],
+      "protected": [],
+      "contract_cost": 6,
+      "chain_potential_score": 430,
+      "prefer_non_allocating": true
+    },
+    {
+      "level": 2,
+      "seed": "0x009E9F30",
+      "caller": "0x009E78F0",
+      "label": "HIGH_CONFIDENCE",
+      "insns": 11,
+      "call_type": "call",
+      "frames_static": 12,
+      "pending_imports": [
+        "EnterCriticalSection",
+        "GetTickCount",
+        "LeaveCriticalSection",
+        "ReleaseMutex",
+        "TlsGetValue",
+        "WaitForSingleObject"
+      ],
+      "unlifted": [],
+      "protected": [],
+      "contract_cost": 6,
+      "chain_potential_score": 390,
+      "prefer_non_allocating": true
+    },
+    {
+      "level": 1,
+      "seed": "0x009E9460",
+      "caller": "0x009EB770",
+      "label": "HIGH_CONFIDENCE",
+      "insns": 171,
+      "call_type": "call",
+      "frames_static": 8,
+      "pending_imports": [
+        "EnterCriticalSection",
+        "GetTickCount",
+        "LeaveCriticalSection",
+        "ReleaseMutex",
+        "WaitForSingleObject"
+      ],
+      "unlifted": [],
+      "protected": [],
+      "contract_cost": 5,
+      "chain_potential_score": 360,
+      "prefer_non_allocating": true
+    },
+    {
+      "level": 1,
+      "seed": "0x009EB870",
+      "caller": "0x009EB770",
+      "label": "HIGH_CONFIDENCE",
+      "insns": 171,
+      "call_type": "call",
+      "frames_static": 8,
+      "pending_imports": [
+        "EnterCriticalSection",
+        "GetTickCount",
+        "LeaveCriticalSection",
+        "ReleaseMutex",
+        "WaitForSingleObject"
+      ],
+      "unlifted": [],
+      "protected": [],
+      "contract_cost": 5,
+      "chain_potential_score": 360,
+      "prefer_non_allocating": true
+    },
+    {
+      "level": 1,
+      "seed": "0x009EB870",
+      "caller": "0x009E7D00",
+      "label": "HIGH_CONFIDENCE",
+      "insns": 29,
+      "call_type": "call",
+      "frames_static": 8,
+      "pending_imports": [
+        "CreateMutexA",
+        "InitializeCriticalSection",
+        "memcpy",
+        "memmove"
+      ],
+      "unlifted": [
+        "0x004026F0"
+      ],
+      "protected": [],
+      "contract_cost": 7,
+      "chain_potential_score": 340,
+      "prefer_non_allocating": true
+    },
+    {
+      "level": 1,
+      "seed": "0x009EB870",
+      "caller": "0x009EB5B0",
+      "label": "HIGH_CONFIDENCE",
+      "insns": 72,
+      "call_type": "call",
+      "frames_static": 8,
+      "pending_imports": [
+        "CreateMutexA",
+        "EnterCriticalSection",
+        "GetTickCount",
+        "InitializeCriticalSection",
+        "LeaveCriticalSection",
+        "ReleaseMutex",
+        "WaitForSingleObject"
+      ],
+      "unlifted": [],
+      "protected": [],
+      "contract_cost": 7,
+      "chain_potential_score": 340,
+      "prefer_non_allocating": true
+    },
+    {
+      "level": 1,
+      "seed": "0x009EBC70",
+      "caller": "0x009EB5B0",
+      "label": "HIGH_CONFIDENCE",
+      "insns": 72,
+      "call_type": "call",
+      "frames_static": 8,
+      "pending_imports": [
+        "CreateMutexA",
+        "EnterCriticalSection",
+        "GetTickCount",
+        "InitializeCriticalSection",
+        "LeaveCriticalSection",
+        "ReleaseMutex",
+        "WaitForSingleObject"
+      ],
+      "unlifted": [],
+      "protected": [],
+      "contract_cost": 7,
+      "chain_potential_score": 340,
+      "prefer_non_allocating": true
+    },
+    {
+      "level": 1,
+      "seed": "0x009E9450",
+      "caller": "0x009E7C90",
+      "label": "HIGH_CONFIDENCE",
+      "insns": 24,
+      "call_type": "call",
+      "frames_static": 7,
+      "pending_imports": [
+        "EnterCriticalSection",
+        "GetTickCount",
+        "LeaveCriticalSection",
+        "ReleaseMutex",
+        "WaitForSingleObject"
+      ],
+      "unlifted": [],
+      "protected": [],
+      "contract_cost": 5,
+      "chain_potential_score": 320,
+      "prefer_non_allocating": true
+    },
+    {
+      "level": 1,
+      "seed": "0x009E9460",
+      "caller": "0x009E7C90",
+      "label": "HIGH_CONFIDENCE",
+      "insns": 24,
+      "call_type": "call",
+      "frames_static": 7,
+      "pending_imports": [
+        "EnterCriticalSection",
+        "GetTickCount",
+        "LeaveCriticalSection",
+        "ReleaseMutex",
+        "WaitForSingleObject"
+      ],
+      "unlifted": [],
+      "protected": [],
+      "contract_cost": 5,
+      "chain_potential_score": 320,
+      "prefer_non_allocating": true
+    },
+    {
+      "level": 2,
+      "seed": "0x009EB2D0",
+      "caller": "0x009EA050",
+      "label": "HIGH_CONFIDENCE",
       "insns": 96,
-      "callees": [
-        "0x00721050",
-        "0x00721070",
-        "0x00721080",
-        "0x007212F0",
-        "0x0072C190"
-      ],
-      "contract_cost": 1,
-      "cost_kind": "zero_init",
-      "chain_depth_potential": 3,
-      "chain_potential_score": 129,
-      "blocker": null,
-      "confidence": "STRONG"
-    },
-    {
-      "seed": "0x009E8AD0",
-      "caller": "0x009E9160",
       "call_type": "call",
-      "insns": 110,
-      "callees": [
-        "0x009773C0",
-        "0x009777D0",
-        "0x00977800",
-        "0x00977E20",
-        "0x0097FCD0",
-        "0x009E7710",
-        "0x009E8AD0",
-        "0x009E9460",
-        "0x009E9990",
-        "0x009EB980"
+      "frames_static": 10,
+      "pending_imports": [
+        "EnterCriticalSection",
+        "GetTickCount",
+        "LeaveCriticalSection",
+        "ReleaseMutex",
+        "WaitForSingleObject"
       ],
-      "contract_cost": 3,
-      "cost_kind": "ordinary_ctor",
-      "chain_depth_potential": 3,
-      "chain_potential_score": 155,
-      "blocker": null,
-      "confidence": "PROVEN"
+      "unlifted": [],
+      "protected": [],
+      "contract_cost": 5,
+      "chain_potential_score": 320,
+      "prefer_non_allocating": true
     },
     {
-      "seed": "0x00739B90",
-      "caller": "0x008491B0",
+      "level": 1,
+      "seed": "0x009E9450",
+      "caller": "0x00809740",
+      "label": "HIGH_CONFIDENCE",
+      "insns": 61,
       "call_type": "call",
-      "insns": 1344,
-      "callees": [
-        "0x00401600",
-        "0x00401640",
-        "0x0044FD70",
-        "0x004A8300",
-        "0x004A87E0",
-        "0x004A9510",
-        "0x0050BE00",
-        "0x00520F60",
-        "0x00520F80",
-        "0x00521220",
-        "0x00521250",
-        "0x00522450",
-        "0x005224A0",
-        "0x00526350",
-        "0x0065BF10",
-        "0x00686030",
-        "0x0071B850",
-        "0x007393B0",
-        "0x00739B90",
-        "0x007409C0",
-        "0x00743240",
-        "0x00743300",
-        "0x007499F0",
-        "0x0074A9C0",
-        "0x0075FD20",
-        "0x00814A40",
-        "0x00814B90",
-        "0x00814D40",
-        "0x00817920",
-        "0x00817E30",
-        "0x00822CA0",
-        "0x00823010",
-        "0x00823E10",
-        "0x00824100",
-        "0x008241E0",
-        "0x00825430",
-        "0x00836BD0",
-        "0x008383F0",
-        "0x00838A90",
-        "0x00847590",
-        "0x0085ED20",
-        "0x00865310",
-        "0x009EC4F0"
+      "frames_static": 7,
+      "pending_imports": [
+        "memcpy"
       ],
-      "contract_cost": 9,
-      "cost_kind": "unknown",
-      "chain_depth_potential": 2,
-      "chain_potential_score": 470,
-      "blocker": null,
-      "confidence": "WEAK"
+      "unlifted": [],
+      "protected": [
+        "0x00686000"
+      ],
+      "contract_cost": 6,
+      "chain_potential_score": 310,
+      "prefer_non_allocating": true
     },
     {
+      "level": 1,
+      "seed": "0x009E9460",
+      "caller": "0x009EA710",
+      "label": "HIGH_CONFIDENCE",
+      "insns": 197,
+      "call_type": "call",
+      "frames_static": 7,
+      "pending_imports": [
+        "CloseHandle",
+        "DeleteCriticalSection",
+        "EnterCriticalSection",
+        "GetTickCount",
+        "LeaveCriticalSection",
+        "ReleaseMutex",
+        "WaitForSingleObject"
+      ],
+      "unlifted": [],
+      "protected": [],
+      "contract_cost": 7,
+      "chain_potential_score": 300,
+      "prefer_non_allocating": true
+    },
+    {
+      "level": 1,
+      "seed": "0x00977E20",
+      "caller": "0x009EB010",
+      "label": "HIGH_CONFIDENCE",
+      "insns": 166,
+      "call_type": "call",
+      "frames_static": 7,
+      "pending_imports": [
+        "CreateMutexA",
+        "InitializeCriticalSection",
+        "memcpy",
+        "memmove"
+      ],
+      "unlifted": [
+        "0x004026F0"
+      ],
+      "protected": [],
+      "contract_cost": 7,
+      "chain_potential_score": 300,
+      "prefer_non_allocating": true
+    },
+    {
+      "level": 1,
+      "seed": "0x009E7710",
+      "caller": "0x009EB010",
+      "label": "HIGH_CONFIDENCE",
+      "insns": 166,
+      "call_type": "call",
+      "frames_static": 7,
+      "pending_imports": [
+        "CreateMutexA",
+        "InitializeCriticalSection",
+        "memcpy",
+        "memmove"
+      ],
+      "unlifted": [
+        "0x004026F0"
+      ],
+      "protected": [],
+      "contract_cost": 7,
+      "chain_potential_score": 300,
+      "prefer_non_allocating": true
+    },
+    {
+      "level": 1,
+      "seed": "0x009E9450",
+      "caller": "0x009EB010",
+      "label": "HIGH_CONFIDENCE",
+      "insns": 166,
+      "call_type": "call",
+      "frames_static": 7,
+      "pending_imports": [
+        "CreateMutexA",
+        "InitializeCriticalSection",
+        "memcpy",
+        "memmove"
+      ],
+      "unlifted": [
+        "0x004026F0"
+      ],
+      "protected": [],
+      "contract_cost": 7,
+      "chain_potential_score": 300,
+      "prefer_non_allocating": true
+    },
+    {
+      "level": 1,
+      "seed": "0x009E9460",
+      "caller": "0x009EB010",
+      "label": "HIGH_CONFIDENCE",
+      "insns": 166,
+      "call_type": "call",
+      "frames_static": 7,
+      "pending_imports": [
+        "CreateMutexA",
+        "InitializeCriticalSection",
+        "memcpy",
+        "memmove"
+      ],
+      "unlifted": [
+        "0x004026F0"
+      ],
+      "protected": [],
+      "contract_cost": 7,
+      "chain_potential_score": 300,
+      "prefer_non_allocating": true
+    },
+    {
+      "level": 1,
+      "seed": "0x009D9310",
+      "caller": "0x009D9DE0",
+      "label": "HIGH_CONFIDENCE",
+      "insns": 38,
+      "call_type": "call",
+      "frames_static": 8,
+      "pending_imports": [
+        "CreateMutexA",
+        "EnterCriticalSection",
+        "GetTickCount",
+        "InitializeCriticalSection",
+        "LeaveCriticalSection",
+        "ReleaseMutex",
+        "WaitForSingleObject",
+        "memcpy"
+      ],
+      "unlifted": [
+        "0x004026F0"
+      ],
+      "protected": [],
+      "contract_cost": 12,
+      "chain_potential_score": 290,
+      "prefer_non_allocating": true
+    },
+    {
+      "level": 1,
       "seed": "0x0088390D",
       "caller": "0x008858AB",
-      "call_type": "call",
+      "label": "HIGH_CONFIDENCE",
       "insns": 194,
-      "callees": [
-        "0x0088348B",
-        "0x00883903",
-        "0x0088390D",
-        "0x00883958",
-        "0x00883A16",
-        "0x00883AF7",
-        "0x00883B60",
-        "0x00883BDD",
-        "0x00883C61",
-        "0x00883D1A",
-        "0x00883D24",
-        "0x00884356",
-        "0x00885B03"
-      ],
-      "contract_cost": 9,
-      "cost_kind": "unknown",
-      "chain_depth_potential": 2,
-      "chain_potential_score": 164,
-      "blocker": null,
-      "confidence": "WEAK"
-    },
-    {
-      "seed": "0x00721070",
-      "caller": "0x0072D820",
       "call_type": "call",
-      "insns": 96,
-      "callees": [
-        "0x00721060",
-        "0x00721070",
-        "0x00721080",
-        "0x007212F0",
-        "0x0072C190"
+      "frames_static": 5,
+      "pending_imports": [
+        "strncpy"
       ],
-      "contract_cost": 9,
-      "cost_kind": "unknown",
-      "chain_depth_potential": 2,
-      "chain_potential_score": 104,
-      "blocker": null,
-      "confidence": "WEAK"
+      "unlifted": [],
+      "protected": [],
+      "contract_cost": 1,
+      "chain_potential_score": 280,
+      "prefer_non_allocating": true
     },
     {
-      "seed": "0x00929900",
-      "caller": "0x00947790",
+      "level": 2,
+      "seed": "0x009E7CF0",
+      "caller": "0x009E9E80",
+      "label": "HIGH_CONFIDENCE",
+      "insns": 22,
       "call_type": "call",
-      "insns": 286,
-      "callees": [
-        "0x00929900",
-        "0x00929EF0",
-        "0x009472A0",
-        "0x00947590"
+      "frames_static": 9,
+      "pending_imports": [
+        "EnterCriticalSection",
+        "GetTickCount",
+        "LeaveCriticalSection",
+        "ReleaseMutex",
+        "WaitForSingleObject"
       ],
-      "contract_cost": 9,
-      "cost_kind": "unknown",
-      "chain_depth_potential": 2,
-      "chain_potential_score": 79,
-      "blocker": "REQUIRED_STATE",
-      "confidence": "WEAK"
+      "unlifted": [],
+      "protected": [],
+      "contract_cost": 5,
+      "chain_potential_score": 280,
+      "prefer_non_allocating": true
     },
     {
+      "level": 1,
+      "seed": "0x00977E20",
+      "caller": "0x0097C610",
+      "label": "HIGH_CONFIDENCE",
+      "insns": 140,
+      "call_type": "call",
+      "frames_static": 8,
+      "pending_imports": [
+        "CreateMutexA",
+        "CreateSemaphoreA",
+        "GetCurrentDirectoryA",
+        "GetLogicalDrives",
+        "InitializeCriticalSection",
+        "SetUnhandledExceptionFilter",
+        "_XcptFilter",
+        "__dllonexit"
+      ],
+      "unlifted": [],
+      "protected": [],
+      "contract_cost": 15,
+      "chain_potential_score": 260,
+      "prefer_non_allocating": true
+    },
+    {
+      "level": 2,
+      "seed": "0x009E7C90",
+      "caller": "0x009E9440",
+      "label": "HIGH_CONFIDENCE",
+      "insns": 1,
+      "call_type": "tail",
+      "frames_static": 8,
+      "pending_imports": [
+        "EnterCriticalSection",
+        "GetTickCount",
+        "LeaveCriticalSection",
+        "ReleaseMutex",
+        "WaitForSingleObject"
+      ],
+      "unlifted": [],
+      "protected": [],
+      "contract_cost": 5,
+      "chain_potential_score": 240,
+      "prefer_non_allocating": true
+    },
+    {
+      "level": 1,
+      "seed": "0x0097BB30",
+      "caller": "0x0097BC00",
+      "label": "HIGH_CONFIDENCE",
+      "insns": 43,
+      "call_type": "call",
+      "frames_static": 7,
+      "pending_imports": [
+        "CreateMutexA",
+        "CreateSemaphoreA",
+        "GetCurrentDirectoryA",
+        "GetLogicalDrives",
+        "InitializeCriticalSection",
+        "SetUnhandledExceptionFilter",
+        "_XcptFilter",
+        "__dllonexit"
+      ],
+      "unlifted": [],
+      "protected": [],
+      "contract_cost": 15,
+      "chain_potential_score": 220,
+      "prefer_non_allocating": true
+    },
+    {
+      "level": 1,
+      "seed": "0x00977E20",
+      "caller": "0x009D9400",
+      "label": "HIGH_CONFIDENCE",
+      "insns": 32,
+      "call_type": "call",
+      "frames_static": 4,
+      "pending_imports": [
+        "CreateMutexA",
+        "InitializeCriticalSection",
+        "memset"
+      ],
+      "unlifted": [],
+      "protected": [],
+      "contract_cost": 3,
+      "chain_potential_score": 220,
+      "prefer_non_allocating": true
+    },
+    {
+      "level": 1,
+      "seed": "0x009E9460",
+      "caller": "0x009E8EB0",
+      "label": "HIGH_CONFIDENCE",
+      "insns": 66,
+      "call_type": "call",
+      "frames_static": 6,
+      "pending_imports": [
+        "EnterCriticalSection",
+        "GetTickCount",
+        "LeaveCriticalSection",
+        "ReleaseMutex",
+        "WaitForSingleObject",
+        "ceil",
+        "memmove",
+        "memset"
+      ],
+      "unlifted": [
+        "0x0052E640",
+        "0x00731C30"
+      ],
+      "protected": [],
+      "contract_cost": 11,
+      "chain_potential_score": 220,
+      "prefer_non_allocating": true
+    },
+    {
+      "level": 1,
+      "seed": "0x009E9450",
+      "caller": "0x009EAE00",
+      "label": "HIGH_CONFIDENCE",
+      "insns": 74,
+      "call_type": "call",
+      "frames_static": 6,
+      "pending_imports": [
+        "EnterCriticalSection",
+        "GetTickCount",
+        "LeaveCriticalSection",
+        "ReleaseMutex",
+        "WaitForSingleObject",
+        "ceil",
+        "memmove",
+        "memset"
+      ],
+      "unlifted": [
+        "0x0052E640",
+        "0x00731C30"
+      ],
+      "protected": [],
+      "contract_cost": 11,
+      "chain_potential_score": 220,
+      "prefer_non_allocating": true
+    },
+    {
+      "level": 1,
+      "seed": "0x009E9460",
+      "caller": "0x009EAE00",
+      "label": "HIGH_CONFIDENCE",
+      "insns": 74,
+      "call_type": "call",
+      "frames_static": 6,
+      "pending_imports": [
+        "EnterCriticalSection",
+        "GetTickCount",
+        "LeaveCriticalSection",
+        "ReleaseMutex",
+        "WaitForSingleObject",
+        "ceil",
+        "memmove",
+        "memset"
+      ],
+      "unlifted": [
+        "0x0052E640",
+        "0x00731C30"
+      ],
+      "protected": [],
+      "contract_cost": 11,
+      "chain_potential_score": 220,
+      "prefer_non_allocating": true
+    },
+    {
+      "level": 1,
+      "seed": "0x009E9450",
+      "caller": "0x009EAEB0",
+      "label": "HIGH_CONFIDENCE",
+      "insns": 74,
+      "call_type": "call",
+      "frames_static": 6,
+      "pending_imports": [
+        "EnterCriticalSection",
+        "GetTickCount",
+        "LeaveCriticalSection",
+        "ReleaseMutex",
+        "WaitForSingleObject",
+        "ceil",
+        "memmove",
+        "memset"
+      ],
+      "unlifted": [
+        "0x0052E640",
+        "0x00731C30"
+      ],
+      "protected": [],
+      "contract_cost": 11,
+      "chain_potential_score": 220,
+      "prefer_non_allocating": true
+    },
+    {
+      "level": 1,
+      "seed": "0x009E9460",
+      "caller": "0x009EAEB0",
+      "label": "HIGH_CONFIDENCE",
+      "insns": 74,
+      "call_type": "call",
+      "frames_static": 6,
+      "pending_imports": [
+        "EnterCriticalSection",
+        "GetTickCount",
+        "LeaveCriticalSection",
+        "ReleaseMutex",
+        "WaitForSingleObject",
+        "ceil",
+        "memmove",
+        "memset"
+      ],
+      "unlifted": [
+        "0x0052E640",
+        "0x00731C30"
+      ],
+      "protected": [],
+      "contract_cost": 11,
+      "chain_potential_score": 220,
+      "prefer_non_allocating": true
+    },
+    {
+      "level": 1,
+      "seed": "0x009E9450",
+      "caller": "0x009EAF60",
+      "label": "HIGH_CONFIDENCE",
+      "insns": 67,
+      "call_type": "call",
+      "frames_static": 6,
+      "pending_imports": [
+        "EnterCriticalSection",
+        "GetTickCount",
+        "LeaveCriticalSection",
+        "ReleaseMutex",
+        "WaitForSingleObject",
+        "ceil",
+        "memmove",
+        "memset"
+      ],
+      "unlifted": [
+        "0x0052E640",
+        "0x00731C30"
+      ],
+      "protected": [],
+      "contract_cost": 11,
+      "chain_potential_score": 220,
+      "prefer_non_allocating": true
+    },
+    {
+      "level": 1,
+      "seed": "0x009E9460",
+      "caller": "0x009EAF60",
+      "label": "HIGH_CONFIDENCE",
+      "insns": 67,
+      "call_type": "call",
+      "frames_static": 6,
+      "pending_imports": [
+        "EnterCriticalSection",
+        "GetTickCount",
+        "LeaveCriticalSection",
+        "ReleaseMutex",
+        "WaitForSingleObject",
+        "ceil",
+        "memmove",
+        "memset"
+      ],
+      "unlifted": [
+        "0x0052E640",
+        "0x00731C30"
+      ],
+      "protected": [],
+      "contract_cost": 11,
+      "chain_potential_score": 220,
+      "prefer_non_allocating": true
+    },
+    {
+      "level": 1,
+      "seed": "0x0072D640",
+      "caller": "0x0072DCA0",
+      "label": "HIGH_CONFIDENCE",
+      "insns": 33,
+      "call_type": "tail",
+      "frames_static": 3,
+      "pending_imports": [],
+      "unlifted": [],
+      "protected": [],
+      "contract_cost": 0,
+      "chain_potential_score": 210,
+      "prefer_non_allocating": true
+    },
+    {
+      "level": 1,
+      "seed": "0x009E9450",
+      "caller": "0x00804FE0",
+      "label": "HIGH_CONFIDENCE",
+      "insns": 60,
+      "call_type": "call",
+      "frames_static": 3,
+      "pending_imports": [],
+      "unlifted": [],
+      "protected": [],
+      "contract_cost": 0,
+      "chain_potential_score": 210,
+      "prefer_non_allocating": true
+    },
+    {
+      "level": 1,
+      "seed": "0x009E9450",
+      "caller": "0x00805070",
+      "label": "HIGH_CONFIDENCE",
+      "insns": 56,
+      "call_type": "call",
+      "frames_static": 3,
+      "pending_imports": [],
+      "unlifted": [],
+      "protected": [],
+      "contract_cost": 0,
+      "chain_potential_score": 210,
+      "prefer_non_allocating": true
+    },
+    {
+      "level": 1,
+      "seed": "0x009E9460",
+      "caller": "0x00807BD0",
+      "label": "HIGH_CONFIDENCE",
+      "insns": 82,
+      "call_type": "call",
+      "frames_static": 3,
+      "pending_imports": [],
+      "unlifted": [],
+      "protected": [],
+      "contract_cost": 0,
+      "chain_potential_score": 210,
+      "prefer_non_allocating": true
+    },
+    {
+      "level": 1,
+      "seed": "0x009E9460",
+      "caller": "0x008080D0",
+      "label": "HIGH_CONFIDENCE",
+      "insns": 48,
+      "call_type": "call",
+      "frames_static": 3,
+      "pending_imports": [],
+      "unlifted": [],
+      "protected": [],
+      "contract_cost": 0,
+      "chain_potential_score": 210,
+      "prefer_non_allocating": true
+    },
+    {
+      "level": 1,
+      "seed": "0x009E7710",
+      "caller": "0x0080FE70",
+      "label": "HIGH_CONFIDENCE",
+      "insns": 26,
+      "call_type": "call",
+      "frames_static": 5,
+      "pending_imports": [],
+      "unlifted": [
+        "0x004A9F60"
+      ],
+      "protected": [
+        "0x00686000"
+      ],
+      "contract_cost": 8,
+      "chain_potential_score": 210,
+      "prefer_non_allocating": true
+    },
+    {
+      "level": 1,
+      "seed": "0x00808770",
+      "caller": "0x008101B0",
+      "label": "HIGH_CONFIDENCE",
+      "insns": 524,
+      "call_type": "call",
+      "frames_static": 5,
+      "pending_imports": [],
+      "unlifted": [
+        "0x004026F0",
+        "0x004AA010",
+        "0x0055FF30",
+        "0x0064A560"
+      ],
+      "protected": [
+        "0x00686000"
+      ],
+      "contract_cost": 8,
+      "chain_potential_score": 210,
+      "prefer_non_allocating": true
+    },
+    {
+      "level": 1,
+      "seed": "0x009E7710",
+      "caller": "0x008101B0",
+      "label": "HIGH_CONFIDENCE",
+      "insns": 524,
+      "call_type": "call",
+      "frames_static": 5,
+      "pending_imports": [],
+      "unlifted": [
+        "0x004026F0",
+        "0x004AA010",
+        "0x0055FF30",
+        "0x0064A560"
+      ],
+      "protected": [
+        "0x00686000"
+      ],
+      "contract_cost": 8,
+      "chain_potential_score": 210,
+      "prefer_non_allocating": true
+    },
+    {
+      "level": 1,
+      "seed": "0x009E98F0",
+      "caller": "0x008101B0",
+      "label": "HIGH_CONFIDENCE",
+      "insns": 524,
+      "call_type": "call",
+      "frames_static": 5,
+      "pending_imports": [],
+      "unlifted": [
+        "0x004026F0",
+        "0x004AA010",
+        "0x0055FF30",
+        "0x0064A560"
+      ],
+      "protected": [
+        "0x00686000"
+      ],
+      "contract_cost": 8,
+      "chain_potential_score": 210,
+      "prefer_non_allocating": true
+    },
+    {
+      "level": 1,
+      "seed": "0x009E9450",
+      "caller": "0x009E7810",
+      "label": "HIGH_CONFIDENCE",
+      "insns": 18,
+      "call_type": "call",
+      "frames_static": 3,
+      "pending_imports": [],
+      "unlifted": [],
+      "protected": [],
+      "contract_cost": 0,
+      "chain_potential_score": 210,
+      "prefer_non_allocating": true
+    },
+    {
+      "level": 1,
+      "seed": "0x009E9460",
+      "caller": "0x009E9F60",
+      "label": "HIGH_CONFIDENCE",
+      "insns": 95,
+      "call_type": "call",
+      "frames_static": 7,
+      "pending_imports": [
+        "?terminate@@YAXXZ",
+        "EnterCriticalSection",
+        "GetCurrentProcess",
+        "GetTickCount",
+        "IsDebuggerPresent",
+        "LeaveCriticalSection",
+        "ReleaseMutex",
+        "SetUnhandledExceptionFilter"
+      ],
+      "unlifted": [],
+      "protected": [],
+      "contract_cost": 16,
+      "chain_potential_score": 210,
+      "prefer_non_allocating": true
+    },
+    {
+      "level": 1,
+      "seed": "0x009E7710",
+      "caller": "0x009EB530",
+      "label": "HIGH_CONFIDENCE",
+      "insns": 61,
+      "call_type": "call",
+      "frames_static": 3,
+      "pending_imports": [],
+      "unlifted": [],
+      "protected": [],
+      "contract_cost": 0,
+      "chain_potential_score": 210,
+      "prefer_non_allocating": true
+    },
+    {
+      "level": 1,
+      "seed": "0x009EB870",
+      "caller": "0x009EB530",
+      "label": "HIGH_CONFIDENCE",
+      "insns": 61,
+      "call_type": "call",
+      "frames_static": 3,
+      "pending_imports": [],
+      "unlifted": [],
+      "protected": [],
+      "contract_cost": 0,
+      "chain_potential_score": 210,
+      "prefer_non_allocating": true
+    },
+    {
+      "level": 1,
+      "seed": "0x00977E20",
+      "caller": "0x00B52200",
+      "label": "HIGH_CONFIDENCE",
+      "insns": 8,
+      "call_type": "call",
+      "frames_static": 5,
+      "pending_imports": [
+        "CreateMutexA",
+        "InitializeCriticalSection",
+        "SetUnhandledExceptionFilter",
+        "_XcptFilter",
+        "__dllonexit",
+        "_amsg_exit",
+        "_lock",
+        "_onexit"
+      ],
+      "unlifted": [],
+      "protected": [],
+      "contract_cost": 9,
+      "chain_potential_score": 200,
+      "prefer_non_allocating": true
+    },
+    {
+      "level": 1,
+      "seed": "0x00977E20",
+      "caller": "0x00B57D20",
+      "label": "HIGH_CONFIDENCE",
+      "insns": 11,
+      "call_type": "call",
+      "frames_static": 5,
+      "pending_imports": [
+        "CreateMutexA",
+        "InitializeCriticalSection",
+        "SetUnhandledExceptionFilter",
+        "_XcptFilter",
+        "__dllonexit",
+        "_amsg_exit",
+        "_lock",
+        "_onexit"
+      ],
+      "unlifted": [],
+      "protected": [],
+      "contract_cost": 9,
+      "chain_potential_score": 200,
+      "prefer_non_allocating": true
+    },
+    {
+      "level": 1,
+      "seed": "0x00977E20",
+      "caller": "0x00B57D50",
+      "label": "HIGH_CONFIDENCE",
+      "insns": 11,
+      "call_type": "call",
+      "frames_static": 5,
+      "pending_imports": [
+        "CreateMutexA",
+        "InitializeCriticalSection",
+        "SetUnhandledExceptionFilter",
+        "_XcptFilter",
+        "__dllonexit",
+        "_amsg_exit",
+        "_lock",
+        "_onexit"
+      ],
+      "unlifted": [],
+      "protected": [],
+      "contract_cost": 9,
+      "chain_potential_score": 200,
+      "prefer_non_allocating": true
+    },
+    {
+      "level": 1,
+      "seed": "0x00977E20",
+      "caller": "0x00B57DE0",
+      "label": "HIGH_CONFIDENCE",
+      "insns": 11,
+      "call_type": "call",
+      "frames_static": 5,
+      "pending_imports": [
+        "CreateMutexA",
+        "InitializeCriticalSection",
+        "SetUnhandledExceptionFilter",
+        "_XcptFilter",
+        "__dllonexit",
+        "_amsg_exit",
+        "_lock",
+        "_onexit"
+      ],
+      "unlifted": [],
+      "protected": [],
+      "contract_cost": 9,
+      "chain_potential_score": 200,
+      "prefer_non_allocating": true
+    },
+    {
+      "level": 1,
+      "seed": "0x00977E20",
+      "caller": "0x00B57E00",
+      "label": "HIGH_CONFIDENCE",
+      "insns": 11,
+      "call_type": "call",
+      "frames_static": 5,
+      "pending_imports": [
+        "CreateMutexA",
+        "InitializeCriticalSection",
+        "SetUnhandledExceptionFilter",
+        "_XcptFilter",
+        "__dllonexit",
+        "_amsg_exit",
+        "_lock",
+        "_onexit"
+      ],
+      "unlifted": [],
+      "protected": [],
+      "contract_cost": 9,
+      "chain_potential_score": 200,
+      "prefer_non_allocating": true
+    },
+    {
+      "level": 2,
+      "seed": "0x008858AB",
+      "caller": "0x00886196",
+      "label": "HIGH_CONFIDENCE",
+      "insns": 34,
+      "call_type": "call",
+      "frames_static": 6,
+      "pending_imports": [
+        "strncpy"
+      ],
+      "unlifted": [],
+      "protected": [],
+      "contract_cost": 1,
+      "chain_potential_score": 200,
+      "prefer_non_allocating": true
+    },
+    {
+      "level": 2,
+      "seed": "0x008858AB",
+      "caller": "0x008861F7",
+      "label": "HIGH_CONFIDENCE",
+      "insns": 32,
+      "call_type": "call",
+      "frames_static": 6,
+      "pending_imports": [
+        "strncpy"
+      ],
+      "unlifted": [],
+      "protected": [],
+      "contract_cost": 1,
+      "chain_potential_score": 200,
+      "prefer_non_allocating": true
+    },
+    {
+      "level": 2,
+      "seed": "0x008858AB",
+      "caller": "0x00886253",
+      "label": "HIGH_CONFIDENCE",
+      "insns": 57,
+      "call_type": "call",
+      "frames_static": 6,
+      "pending_imports": [
+        "strncpy"
+      ],
+      "unlifted": [],
+      "protected": [],
+      "contract_cost": 1,
+      "chain_potential_score": 200,
+      "prefer_non_allocating": true
+    },
+    {
+      "level": 2,
+      "seed": "0x008858AB",
+      "caller": "0x008862ED",
+      "label": "HIGH_CONFIDENCE",
+      "insns": 37,
+      "call_type": "call",
+      "frames_static": 6,
+      "pending_imports": [
+        "strncpy"
+      ],
+      "unlifted": [],
+      "protected": [],
+      "contract_cost": 1,
+      "chain_potential_score": 200,
+      "prefer_non_allocating": true
+    },
+    {
+      "level": 2,
+      "seed": "0x008858AB",
+      "caller": "0x0088634C",
+      "label": "HIGH_CONFIDENCE",
+      "insns": 41,
+      "call_type": "call",
+      "frames_static": 6,
+      "pending_imports": [
+        "strncpy"
+      ],
+      "unlifted": [],
+      "protected": [],
+      "contract_cost": 1,
+      "chain_potential_score": 200,
+      "prefer_non_allocating": true
+    },
+    {
+      "level": 2,
+      "seed": "0x008858AB",
+      "caller": "0x008863B3",
+      "label": "HIGH_CONFIDENCE",
+      "insns": 39,
+      "call_type": "call",
+      "frames_static": 6,
+      "pending_imports": [
+        "strncpy"
+      ],
+      "unlifted": [],
+      "protected": [],
+      "contract_cost": 1,
+      "chain_potential_score": 200,
+      "prefer_non_allocating": true
+    },
+    {
+      "level": 2,
+      "seed": "0x008858AB",
+      "caller": "0x0088641B",
+      "label": "HIGH_CONFIDENCE",
+      "insns": 35,
+      "call_type": "call",
+      "frames_static": 6,
+      "pending_imports": [
+        "strncpy"
+      ],
+      "unlifted": [],
+      "protected": [],
+      "contract_cost": 1,
+      "chain_potential_score": 200,
+      "prefer_non_allocating": true
+    },
+    {
+      "level": 2,
+      "seed": "0x008858AB",
+      "caller": "0x00886477",
+      "label": "HIGH_CONFIDENCE",
+      "insns": 39,
+      "call_type": "call",
+      "frames_static": 6,
+      "pending_imports": [
+        "strncpy"
+      ],
+      "unlifted": [],
+      "protected": [],
+      "contract_cost": 1,
+      "chain_potential_score": 200,
+      "prefer_non_allocating": true
+    },
+    {
+      "level": 2,
+      "seed": "0x008858AB",
+      "caller": "0x008864DF",
+      "label": "HIGH_CONFIDENCE",
+      "insns": 32,
+      "call_type": "call",
+      "frames_static": 6,
+      "pending_imports": [
+        "strncpy"
+      ],
+      "unlifted": [],
+      "protected": [],
+      "contract_cost": 1,
+      "chain_potential_score": 200,
+      "prefer_non_allocating": true
+    },
+    {
+      "level": 1,
+      "seed": "0x00977E20",
+      "caller": "0x0075EFD0",
+      "label": "HIGH_CONFIDENCE",
+      "insns": 50,
+      "call_type": "call",
+      "frames_static": 3,
+      "pending_imports": [
+        "CreateMutexA",
+        "InitializeCriticalSection"
+      ],
+      "unlifted": [],
+      "protected": [],
+      "contract_cost": 2,
+      "chain_potential_score": 190,
+      "prefer_non_allocating": true
+    },
+    {
+      "level": 1,
+      "seed": "0x009E7710",
+      "caller": "0x0080C650",
+      "label": "HIGH_CONFIDENCE",
+      "insns": 36,
+      "call_type": "call",
+      "frames_static": 7,
+      "pending_imports": [
+        "?terminate@@YAXXZ",
+        "GetCurrentProcess",
+        "IsDebuggerPresent",
+        "SetUnhandledExceptionFilter",
+        "TerminateProcess",
+        "UnhandledExceptionFilter",
+        "_crt_debugger_hook",
+        "_except_handler4_common"
+      ],
+      "unlifted": [
+        "0x004A9F60",
+        "0x004AA010",
+        "0x004AA230",
+        "0x004AA3C0",
+        "0x004ACEB0",
+        "0x005258D0"
+      ],
+      "protected": [
+        "0x00686000"
+      ],
+      "contract_cost": 18,
+      "chain_potential_score": 190,
+      "prefer_non_allocating": true
+    },
+    {
+      "level": 1,
+      "seed": "0x009773C0",
+      "caller": "0x0080E4C0",
+      "label": "HIGH_CONFIDENCE",
+      "insns": 115,
+      "call_type": "call",
+      "frames_static": 8,
+      "pending_imports": [
+        "?terminate@@YAXXZ",
+        "CreateMutexA",
+        "GetCurrentProcess",
+        "InitializeCriticalSection",
+        "IsDebuggerPresent",
+        "SetUnhandledExceptionFilter",
+        "TerminateProcess",
+        "UnhandledExceptionFilter"
+      ],
+      "unlifted": [
+        "0x004A74F0",
+        "0x004A7650",
+        "0x004A7CC0",
+        "0x004A8DC0",
+        "0x004A9260",
+        "0x004A95F0"
+      ],
+      "protected": [
+        "0x00686000"
+      ],
+      "contract_cost": 22,
+      "chain_potential_score": 190,
+      "prefer_non_allocating": true
+    },
+    {
+      "level": 1,
+      "seed": "0x00977420",
+      "caller": "0x0080E4C0",
+      "label": "HIGH_CONFIDENCE",
+      "insns": 115,
+      "call_type": "call",
+      "frames_static": 8,
+      "pending_imports": [
+        "?terminate@@YAXXZ",
+        "CreateMutexA",
+        "GetCurrentProcess",
+        "InitializeCriticalSection",
+        "IsDebuggerPresent",
+        "SetUnhandledExceptionFilter",
+        "TerminateProcess",
+        "UnhandledExceptionFilter"
+      ],
+      "unlifted": [
+        "0x004A74F0",
+        "0x004A7650",
+        "0x004A7CC0",
+        "0x004A8DC0",
+        "0x004A9260",
+        "0x004A95F0"
+      ],
+      "protected": [
+        "0x00686000"
+      ],
+      "contract_cost": 22,
+      "chain_potential_score": 190,
+      "prefer_non_allocating": true
+    },
+    {
+      "level": 1,
+      "seed": "0x009E7710",
+      "caller": "0x0080FED0",
+      "label": "HIGH_CONFIDENCE",
+      "insns": 178,
+      "call_type": "call",
+      "frames_static": 8,
+      "pending_imports": [
+        "?terminate@@YAXXZ",
+        "EnterCriticalSection",
+        "GetCurrentDirectoryA",
+        "GetCurrentProcess",
+        "GetTickCount",
+        "InterlockedDecrement",
+        "InterlockedExchange",
+        "InterlockedExchangeAdd"
+      ],
+      "unlifted": [],
+      "protected": [],
+      "contract_cost": 22,
+      "chain_potential_score": 190,
+      "prefer_non_allocating": true
+    },
+    {
+      "level": 1,
+      "seed": "0x009E9460",
+      "caller": "0x0080FED0",
+      "label": "HIGH_CONFIDENCE",
+      "insns": 178,
+      "call_type": "call",
+      "frames_static": 8,
+      "pending_imports": [
+        "?terminate@@YAXXZ",
+        "EnterCriticalSection",
+        "GetCurrentDirectoryA",
+        "GetCurrentProcess",
+        "GetTickCount",
+        "InterlockedDecrement",
+        "InterlockedExchange",
+        "InterlockedExchangeAdd"
+      ],
+      "unlifted": [],
+      "protected": [],
+      "contract_cost": 22,
+      "chain_potential_score": 190,
+      "prefer_non_allocating": true
+    },
+    {
+      "level": 1,
+      "seed": "0x00977E20",
+      "caller": "0x00902780",
+      "label": "HIGH_CONFIDENCE",
+      "insns": 38,
+      "call_type": "call",
+      "frames_static": 3,
+      "pending_imports": [
+        "CreateMutexA",
+        "InitializeCriticalSection"
+      ],
+      "unlifted": [],
+      "protected": [],
+      "contract_cost": 2,
+      "chain_potential_score": 190,
+      "prefer_non_allocating": true
+    },
+    {
+      "level": 1,
+      "seed": "0x00977E20",
+      "caller": "0x00983960",
+      "label": "HIGH_CONFIDENCE",
+      "insns": 210,
+      "call_type": "call",
+      "frames_static": 3,
+      "pending_imports": [
+        "CreateMutexA",
+        "InitializeCriticalSection"
+      ],
+      "unlifted": [],
+      "protected": [],
+      "contract_cost": 2,
+      "chain_potential_score": 190,
+      "prefer_non_allocating": true
+    },
+    {
+      "level": 1,
+      "seed": "0x009E0880",
+      "caller": "0x009B2820",
+      "label": "HIGH_CONFIDENCE",
+      "insns": 482,
+      "call_type": "call",
+      "frames_static": 4,
+      "pending_imports": [
+        "EnterCriticalSection",
+        "GetTickCount",
+        "LeaveCriticalSection",
+        "ReleaseMutex",
+        "WaitForSingleObject",
+        "memset"
+      ],
+      "unlifted": [],
+      "protected": [],
+      "contract_cost": 6,
+      "chain_potential_score": 190,
+      "prefer_non_allocating": true
+    },
+    {
+      "level": 2,
+      "seed": "0x00847C70",
+      "caller": "0x00797CF0",
+      "label": "HIGH_CONFIDENCE",
+      "insns": 130,
+      "call_type": "call",
+      "frames_static": 7,
+      "pending_imports": [
+        "CreateMutexA",
+        "InitializeCriticalSection",
+        "memset"
+      ],
+      "unlifted": [
+        "0x00431320",
+        "0x0052CBB0",
+        "0x005300B0",
+        "0x00530890",
+        "0x005DAAB0",
+        "0x005DB940"
+      ],
+      "protected": [],
+      "contract_cost": 6,
+      "chain_potential_score": 190,
+      "prefer_non_allocating": true
+    },
+    {
+      "level": 1,
+      "seed": "0x009E9460",
+      "caller": "0x00808510",
+      "label": "HIGH_CONFIDENCE",
+      "insns": 54,
+      "call_type": "call",
+      "frames_static": 3,
+      "pending_imports": [],
+      "unlifted": [
+        "0x004AA010",
+        "0x004AA0B0",
+        "0x005258D0",
+        "0x00538180"
+      ],
+      "protected": [],
+      "contract_cost": 3,
+      "chain_potential_score": 180,
+      "prefer_non_allocating": true
+    },
+    {
+      "level": 1,
       "seed": "0x00949920",
       "caller": "0x00950190",
-      "call_type": "call",
+      "label": "HIGH_CONFIDENCE",
       "insns": 255,
-      "callees": [
-        "0x009239A0",
-        "0x00923C60",
-        "0x00949920"
+      "call_type": "call",
+      "frames_static": 3,
+      "pending_imports": [
+        "_CIcos",
+        "_CIsin",
+        "_CIsqrt"
       ],
-      "contract_cost": 9,
-      "cost_kind": "unknown",
-      "chain_depth_potential": 2,
-      "chain_potential_score": 67,
-      "blocker": "REQUIRED_STATE",
-      "confidence": "WEAK"
+      "unlifted": [],
+      "protected": [],
+      "contract_cost": 3,
+      "chain_potential_score": 180,
+      "prefer_non_allocating": true
+    },
+    {
+      "level": 1,
+      "seed": "0x00977E20",
+      "caller": "0x0097BCC0",
+      "label": "HIGH_CONFIDENCE",
+      "insns": 238,
+      "call_type": "call",
+      "frames_static": 3,
+      "pending_imports": [
+        "CreateMutexA",
+        "InitializeCriticalSection",
+        "memset"
+      ],
+      "unlifted": [],
+      "protected": [],
+      "contract_cost": 3,
+      "chain_potential_score": 180,
+      "prefer_non_allocating": true
+    },
+    {
+      "level": 2,
+      "seed": "0x0097C610",
+      "caller": "0x0097C9A0",
+      "label": "HIGH_CONFIDENCE",
+      "insns": 30,
+      "call_type": "call",
+      "frames_static": 9,
+      "pending_imports": [
+        "CreateMutexA",
+        "CreateSemaphoreA",
+        "GetCurrentDirectoryA",
+        "GetLogicalDrives",
+        "InitializeCriticalSection",
+        "SetUnhandledExceptionFilter",
+        "_XcptFilter",
+        "__dllonexit"
+      ],
+      "unlifted": [],
+      "protected": [],
+      "contract_cost": 15,
+      "chain_potential_score": 180,
+      "prefer_non_allocating": true
+    },
+    {
+      "level": 1,
+      "seed": "0x009E9460",
+      "caller": "0x00804A80",
+      "label": "HIGH_CONFIDENCE",
+      "insns": 31,
+      "call_type": "call",
+      "frames_static": 2,
+      "pending_imports": [],
+      "unlifted": [],
+      "protected": [],
+      "contract_cost": 0,
+      "chain_potential_score": 170,
+      "prefer_non_allocating": true
+    },
+    {
+      "level": 1,
+      "seed": "0x009E7710",
+      "caller": "0x00805AE0",
+      "label": "HIGH_CONFIDENCE",
+      "insns": 46,
+      "call_type": "call",
+      "frames_static": 2,
+      "pending_imports": [],
+      "unlifted": [],
+      "protected": [],
+      "contract_cost": 0,
+      "chain_potential_score": 170,
+      "prefer_non_allocating": true
+    },
+    {
+      "level": 1,
+      "seed": "0x009E9460",
+      "caller": "0x00805AE0",
+      "label": "HIGH_CONFIDENCE",
+      "insns": 46,
+      "call_type": "call",
+      "frames_static": 2,
+      "pending_imports": [],
+      "unlifted": [],
+      "protected": [],
+      "contract_cost": 0,
+      "chain_potential_score": 170,
+      "prefer_non_allocating": true
+    },
+    {
+      "level": 1,
+      "seed": "0x009E7710",
+      "caller": "0x00807B10",
+      "label": "HIGH_CONFIDENCE",
+      "insns": 50,
+      "call_type": "call",
+      "frames_static": 2,
+      "pending_imports": [],
+      "unlifted": [],
+      "protected": [],
+      "contract_cost": 0,
+      "chain_potential_score": 170,
+      "prefer_non_allocating": true
+    },
+    {
+      "level": 1,
+      "seed": "0x009E7710",
+      "caller": "0x00808890",
+      "label": "HIGH_CONFIDENCE",
+      "insns": 46,
+      "call_type": "call",
+      "frames_static": 2,
+      "pending_imports": [],
+      "unlifted": [],
+      "protected": [],
+      "contract_cost": 0,
+      "chain_potential_score": 170,
+      "prefer_non_allocating": true
     }
   ],
   "depth3_candidates": [
     {
       "root": "0x009E9160",
-      "sequence": [
+      "max_depth": 3,
+      "entered": [
         "0x009E9160",
+        "0x009E7710",
         "0x009E9990",
-        "0x009E7710"
+        "0x009E9460",
+        "0x009773C0",
+        "0x00977E20",
+        "0x00977420"
+      ]
+    },
+    {
+      "root": "0x00B52140",
+      "max_depth": 3,
+      "entered": [
+        "0x00B52140",
+        "0x00977E20",
+        "0x00977420"
+      ]
+    },
+    {
+      "root": "0x009EBC70",
+      "max_depth": 3,
+      "entered": [
+        "0x009EBC70",
+        "0x009E9450",
+        "0x009E9460",
+        "0x00977E20",
+        "0x00977420"
+      ]
+    },
+    {
+      "root": "0x0097BB30",
+      "max_depth": 3,
+      "entered": [
+        "0x0097BB30",
+        "0x00977E20",
+        "0x00977420"
+      ]
+    },
+    {
+      "root": "0x00B57CF0",
+      "max_depth": 3,
+      "entered": [
+        "0x00B57CF0",
+        "0x00977E20",
+        "0x00977420"
+      ]
+    }
+  ],
+  "depth4_candidates": [],
+  "depth5_candidates": [],
+  "depth_scoring": [
+    {
+      "root": "0x009EB350",
+      "frames_static": 3,
+      "pending_imports": [],
+      "protected": [],
+      "unlifted": [],
+      "contract_defensible": true,
+      "score": 450,
+      "depth4": false,
+      "depth5": false,
+      "note": "frames<4"
+    },
+    {
+      "root": "0x00B57CD0",
+      "frames_static": 3,
+      "pending_imports": [
+        "strncpy"
       ],
-      "kind": "ENTERABLE_AFTER_ORDINARY_CTOR",
-      "enterability_cost": 3,
-      "chain_potential": 90,
-      "ownership": "CALLER_OWNED",
-      "confidence": "PROVEN",
-      "note": "ctor nests base initializer; harness allocates guest this + POD source"
+      "protected": [],
+      "unlifted": [],
+      "contract_defensible": true,
+      "score": 440,
+      "depth4": false,
+      "depth5": false,
+      "note": "pending imports block strict depth-N"
+    },
+    {
+      "root": "0x00B52140",
+      "frames_static": 5,
+      "pending_imports": [
+        "CreateMutexA",
+        "InitializeCriticalSection",
+        "SetUnhandledExceptionFilter",
+        "_XcptFilter",
+        "__dllonexit",
+        "_amsg_exit",
+        "_lock",
+        "_onexit",
+        "_unlock"
+      ],
+      "protected": [],
+      "unlifted": [],
+      "contract_defensible": false,
+      "score": 440,
+      "depth4": false,
+      "depth5": false,
+      "note": "pending imports block strict depth-N"
+    },
+    {
+      "root": "0x009EBC70",
+      "frames_static": 3,
+      "pending_imports": [
+        "CreateMutexA",
+        "InitializeCriticalSection"
+      ],
+      "protected": [],
+      "unlifted": [],
+      "contract_defensible": false,
+      "score": 430,
+      "depth4": false,
+      "depth5": false,
+      "note": "pending imports block strict depth-N"
+    },
+    {
+      "root": "0x009E9160",
+      "frames_static": 4,
+      "pending_imports": [
+        "?what@exception@std@@UBEPBDXZ",
+        "CreateMutexA",
+        "GetCurrentProcess",
+        "GetCurrentThread",
+        "GetPriorityClass",
+        "GetThreadPriority",
+        "InitializeCriticalSection",
+        "QueryPerformanceCounter",
+        "QueryPerformanceFrequency",
+        "SetPriorityClass",
+        "SetThreadPriority",
+        "SleepEx",
+        "__iob_func",
+        "_controlfp_s",
+        "strncpy"
+      ],
+      "protected": [],
+      "unlifted": [],
+      "contract_defensible": true,
+      "score": 340,
+      "depth4": false,
+      "depth5": false,
+      "note": "pending imports block strict depth-N"
+    },
+    {
+      "root": "0x009E98F0",
+      "frames_static": 2,
+      "pending_imports": [],
+      "protected": [],
+      "unlifted": [],
+      "contract_defensible": true,
+      "score": 290,
+      "depth4": false,
+      "depth5": false,
+      "note": "frames<4"
+    },
+    {
+      "root": "0x00808770",
+      "frames_static": 2,
+      "pending_imports": [],
+      "protected": [],
+      "unlifted": [],
+      "contract_defensible": true,
+      "score": 290,
+      "depth4": false,
+      "depth5": false,
+      "note": "frames<4"
+    },
+    {
+      "root": "0x009EB980",
+      "frames_static": 2,
+      "pending_imports": [],
+      "protected": [],
+      "unlifted": [],
+      "contract_defensible": true,
+      "score": 290,
+      "depth4": false,
+      "depth5": false,
+      "note": "frames<4"
     },
     {
       "root": "0x0072D640",
-      "sequence": [
-        "0x0072D640",
-        "0x00721050",
-        "0x007212F0",
-        "0x00721070"
-      ],
-      "kind": "ENTERABLE_DIRECT",
-      "enterability_cost": 1,
-      "chain_potential": 70,
-      "ownership": "GLOBAL_OBJECT",
-      "confidence": "STRONG",
-      "note": "uses BSS object 0xCEA3B8 via 0x00721050; stops before protected 0x0072C190",
-      "max_nesting": 2
+      "frames_static": 2,
+      "pending_imports": [],
+      "protected": [],
+      "unlifted": [],
+      "contract_defensible": true,
+      "score": 290,
+      "depth4": false,
+      "depth5": false,
+      "note": "frames<4"
     },
     {
-      "root": "0x0072DCA0",
-      "sequence": [
-        "0x0072DCA0",
-        "0x0072D640",
-        "0x00721070"
+      "root": "0x00924D30",
+      "frames_static": 2,
+      "pending_imports": [
+        "_CIsqrt"
       ],
-      "kind": "ENTERABLE_DIRECT",
-      "enterability_cost": 1,
-      "chain_potential": 80,
-      "ownership": "GLOBAL_OBJECT",
-      "confidence": "STRONG",
-      "note": "PE-zero BSS 0xCEA3F0/0xCEA3F4 selects jmp \u2192 0x0072D640. Lifter may merge tail into one frame; nesting depth depends on lift shape."
+      "protected": [],
+      "unlifted": [],
+      "contract_defensible": true,
+      "score": 280,
+      "depth4": false,
+      "depth5": false,
+      "note": "pending imports block strict depth-N"
+    },
+    {
+      "root": "0x00949920",
+      "frames_static": 2,
+      "pending_imports": [
+        "_CIcos",
+        "_CIsin",
+        "_CIsqrt"
+      ],
+      "protected": [],
+      "unlifted": [],
+      "contract_defensible": true,
+      "score": 260,
+      "depth4": false,
+      "depth5": false,
+      "note": "pending imports block strict depth-N"
+    },
+    {
+      "root": "0x00929972",
+      "frames_static": 1,
+      "pending_imports": [],
+      "protected": [],
+      "unlifted": [
+        "0x00929972"
+      ],
+      "contract_defensible": true,
+      "score": 110,
+      "depth4": false,
+      "depth5": false,
+      "note": "unlifted callees"
     }
   ],
   "constructor_census": {
     "proven_constructors": [
       {
-        "va": "0x009E9160",
-        "class": "PROVEN_CONSTRUCTOR",
-        "vtable": "0x00C30E68",
-        "confidence": "PROVEN",
-        "note": "stores vtable, nested base/init calls, registers callbacks via 0x009E8AD0"
+        "va": "0x009E9160"
       }
     ],
     "strong_constructors": [
       {
-        "va": "0x009E7710",
-        "class": "STRONG_CONSTRUCTOR",
-        "vtable": "0x00C30D5C",
-        "confidence": "STRONG",
-        "note": "base this-store + lock xadd refcount"
+        "va": "0x00808770"
       },
       {
-        "va": "0x006E8D70",
-        "class": "STRONG_CONSTRUCTOR",
-        "vtable": "0x00BA679C",
-        "confidence": "WEAK",
-        "note": "heuristic vtable+fields; not promoted without consumer"
+        "va": "0x0097BB30"
       },
       {
-        "va": "0x006EBD00",
-        "class": "STRONG_CONSTRUCTOR",
-        "vtable": "0x00BA6C6C",
-        "confidence": "WEAK",
-        "note": "heuristic vtable+fields; not promoted without consumer"
+        "va": "0x009D9310"
       },
       {
-        "va": "0x007008E0",
-        "class": "STRONG_CONSTRUCTOR",
-        "vtable": "0x00BA7520",
-        "confidence": "WEAK",
-        "note": "heuristic vtable+fields; not promoted without consumer"
+        "va": "0x009E0880"
       },
       {
-        "va": "0x00707EB0",
-        "class": "STRONG_CONSTRUCTOR",
-        "vtable": "0x00BA7264",
-        "confidence": "WEAK",
-        "note": "heuristic vtable+fields; not promoted without consumer"
+        "va": "0x009E7710"
       },
       {
-        "va": "0x0070A3E0",
-        "class": "STRONG_CONSTRUCTOR",
-        "vtable": "0x00BA7B34",
-        "confidence": "WEAK",
-        "note": "heuristic vtable+fields; not promoted without consumer"
+        "va": "0x009E98F0"
       },
       {
-        "va": "0x0070BB60",
-        "class": "STRONG_CONSTRUCTOR",
-        "vtable": "0x00BA7BA4",
-        "confidence": "WEAK",
-        "note": "heuristic vtable+fields; not promoted without consumer"
+        "va": "0x009EB350"
       },
       {
-        "va": "0x0070C630",
-        "class": "STRONG_CONSTRUCTOR",
-        "vtable": "0x00BA7468",
-        "confidence": "WEAK",
-        "note": "heuristic vtable+fields; not promoted without consumer"
-      },
-      {
-        "va": "0x0070C6F0",
-        "class": "STRONG_CONSTRUCTOR",
-        "vtable": "0x00BA7520",
-        "confidence": "WEAK",
-        "note": "heuristic vtable+fields; not promoted without consumer"
-      },
-      {
-        "va": "0x0070D7A0",
-        "class": "STRONG_CONSTRUCTOR",
-        "vtable": "0x00BA7904",
-        "confidence": "WEAK",
-        "note": "heuristic vtable+fields; not promoted without consumer"
-      },
-      {
-        "va": "0x0070DBA0",
-        "class": "STRONG_CONSTRUCTOR",
-        "vtable": "0x00BA7AAC",
-        "confidence": "WEAK",
-        "note": "heuristic vtable+fields; not promoted without consumer"
-      },
-      {
-        "va": "0x0070DE70",
-        "class": "STRONG_CONSTRUCTOR",
-        "vtable": "0x00BA7DAC",
-        "confidence": "WEAK",
-        "note": "heuristic vtable+fields; not promoted without consumer"
-      },
-      {
-        "va": "0x0070E510",
-        "class": "STRONG_CONSTRUCTOR",
-        "vtable": "0x00BA8088",
-        "confidence": "WEAK",
-        "note": "heuristic vtable+fields; not promoted without consumer"
-      },
-      {
-        "va": "0x0070ED80",
-        "class": "STRONG_CONSTRUCTOR",
-        "vtable": "0x00B6F584",
-        "confidence": "WEAK",
-        "note": "heuristic vtable+fields; not promoted without consumer"
-      },
-      {
-        "va": "0x0070F3C0",
-        "class": "STRONG_CONSTRUCTOR",
-        "vtable": "0x00BA84E8",
-        "confidence": "WEAK",
-        "note": "heuristic vtable+fields; not promoted without consumer"
-      },
-      {
-        "va": "0x0070F690",
-        "class": "STRONG_CONSTRUCTOR",
-        "vtable": "0x00BA853C",
-        "confidence": "WEAK",
-        "note": "heuristic vtable+fields; not promoted without consumer"
-      },
-      {
-        "va": "0x0070F870",
-        "class": "STRONG_CONSTRUCTOR",
-        "vtable": "0x00BA679C",
-        "confidence": "WEAK",
-        "note": "heuristic vtable+fields; not promoted without consumer"
-      },
-      {
-        "va": "0x0070FF60",
-        "class": "STRONG_CONSTRUCTOR",
-        "vtable": "0x00BA72BC",
-        "confidence": "WEAK",
-        "note": "heuristic vtable+fields; not promoted without consumer"
-      },
-      {
-        "va": "0x00710A40",
-        "class": "STRONG_CONSTRUCTOR",
-        "vtable": "0x00BA87C0",
-        "confidence": "WEAK",
-        "note": "heuristic vtable+fields; not promoted without consumer"
-      },
-      {
-        "va": "0x00710F70",
-        "class": "STRONG_CONSTRUCTOR",
-        "vtable": "0x00BA88FC",
-        "confidence": "WEAK",
-        "note": "heuristic vtable+fields; not promoted without consumer"
+        "va": "0x009EBC70"
       }
     ],
-    "ordinary_initializers": [
-      {
-        "va": "0x009E9990",
-        "class": "ORDINARY_INITIALIZER",
-        "confidence": "STRONG",
-        "note": "copies POD source into this+4 subobject after base ctor"
-      }
-    ],
-    "pod_builders": [
-      {
-        "va": "0x00929900",
-        "class": "POD_BUILDER",
-        "confidence": "PROVEN",
-        "note": "Phase 27 parent; zeroed this + primitive stack; calls 0x00924D30"
-      },
-      {
-        "va": "0x00949920",
-        "class": "POD_BUILDER",
-        "confidence": "PROVEN",
-        "note": "math leaf; harness POD this + floats"
-      }
+    "executed_ordinary_constructors": [
+      "0x00808770",
+      "0x0097BB30",
+      "0x009D9310",
+      "0x009E0880",
+      "0x009E7710",
+      "0x009E9160",
+      "0x009E98F0",
+      "0x009EB350",
+      "0x009EBC70"
     ]
   },
-  "depth4_candidates": [],
   "ctor_parent": {
     "caller": "0x009E9340",
     "class": "DIRECT_ORDINARY",
+    "this_source": "ALLOCATOR_RESULT",
     "enterable": false,
-    "blocker": "vtable-mediated game allocator via global object from 0x009E9460 / 0x0189DA88",
-    "allocator_classification": "ORDINARY_GAME_ALLOCATOR"
-  }
+    "non_allocating_callers": 0,
+    "blocker": "PROTECTED_INITIALIZED_ALLOCATOR / vtable+8 undecodable",
+    "allocator_classification": "PROTECTED_INITIALIZED_ALLOCATOR"
+  },
+  "prefer_non_allocating": true,
+  "pod_path": [
+    "0x00929972",
+    "0x00924D30"
+  ],
+  "seed_949920": "0x00949920"
 }
