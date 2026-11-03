@@ -1,5 +1,5 @@
 {
-  "phase": 34,
+  "phase": 35,
   "campaign_outcomes": {
     "EXECUTED_TO_NEXT_BLOCKER": 1,
     "EXECUTED_CHAIN": 7,
@@ -13,7 +13,8 @@
     "MEMORY": 0,
     "TLS": 0,
     "FILESYSTEM": 0,
-    "TIMING": 1,
+    "TIMING": 0,
+    "ALERTABLE_WAIT": 1,
     "EXTERNAL": 0,
     "PROTECTED": 0,
     "CLEAN_RETURN": 7
@@ -32,18 +33,12 @@
     "REQUIRED_STATE:UNKNOWN_OBJECT",
     2
   ],
-  "getcurrentthread_cleared": true,
-  "setpriorityclass_cleared": true,
-  "getthreadpriority_cleared": true,
-  "setthreadpriority_cleared": true,
-  "latest_real_runtime_boundary": "QueryPerformanceCounter",
-  "static_import_frequency_vs_execution": {
-    "note": "Affinity and wait APIs appear in IAT but are not constructor blockers.",
-    "execution_blocker": "QueryPerformanceCounter"
-  },
+  "qpc_cleared": true,
+  "qpf_cleared": true,
+  "latest_real_runtime_boundary": "SleepEx",
   "next_genuine_blockers": [
     "BLOCKED_CRT_INITIALIZATION",
-    "QueryPerformanceCounter"
+    "SleepEx"
   ],
   "crt_atexit": {
     "roots": [
@@ -52,6 +47,6 @@
     ],
     "classification": "BLOCKED_CRT_INITIALIZATION",
     "implementation_attempted": false,
-    "reason": "CRT atexit/registration path requires initialized CRT lock/heap state; unchanged from Phase 33. Not the highest-leverage blocker this campaign."
+    "reason": "Unchanged; not the highest-leverage blocker this campaign."
   }
 }

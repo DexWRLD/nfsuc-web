@@ -1,5 +1,5 @@
 {
-  "phase": 34,
+  "phase": 35,
   "definitions": {
     "ENTERABLE": "All pre-entry required state establishable via primitives, static PE data, standard runtime, or proven ordinary init/ctor. Not merely IMPORT_READY.",
     "DEEPEST_ORDINARY_EXECUTION_CHAIN": "Max nested ordinary UC frames in one harness run.",
@@ -15,7 +15,7 @@
   "compiled": 22770,
   "static_ready": 20762,
   "import_ready": 737,
-  "runtime_ready": 69,
+  "runtime_ready": 71,
   "enterable": 21,
   "enterable_roots": [
     "0x00721050",
@@ -103,7 +103,7 @@
     "0x00B57CD0",
     "0x00B57CF0"
   ],
-  "execution_runs": 59,
+  "execution_runs": 71,
   "deepest_ordinary_execution_chain": 4,
   "largest_executed_ordinary_closure": 11,
   "clean_ordinary_roots": 12,
@@ -142,25 +142,25 @@
     "COMPILED": 22770,
     "STATIC_READY": 20762,
     "IMPORT_READY": 737,
-    "RUNTIME_READY": 69,
+    "RUNTIME_READY": 71,
     "ENTERABLE": 21,
     "EXECUTED": 44,
     "UNIQUE": 44,
-    "EXECUTION_RUNS": 59,
+    "EXECUTION_RUNS": 71,
     "CLEAN_ORDINARY_ROOTS": 12,
     "EXECUTED_ORDINARY_CONSTRUCTORS": 9,
     "DEEPEST": 4,
     "LARGEST_CLOSURE": 11,
     "ENTERABLE_WITH_DEPTH_4_POTENTIAL": 0,
     "PROVEN_DEPTH_4_ROOTS": 3,
-    "LATEST_REAL_RUNTIME_BOUNDARY": "QueryPerformanceCounter",
+    "LATEST_REAL_RUNTIME_BOUNDARY": "SleepEx",
     "MOST_COMMON_REAL_BLOCKER": [
       "REQUIRED_STATE:UNKNOWN_OBJECT",
       2
     ]
   },
   "campaign_summary": {
-    "phase34_attempted": 12,
+    "phase35_attempted": 12,
     "outcomes": {
       "EXECUTED_TO_NEXT_BLOCKER": 1,
       "EXECUTED_CHAIN": 7,
@@ -174,7 +174,8 @@
       "MEMORY": 0,
       "TLS": 0,
       "FILESYSTEM": 0,
-      "TIMING": 1,
+      "TIMING": 0,
+      "ALERTABLE_WAIT": 1,
       "EXTERNAL": 0,
       "PROTECTED": 0,
       "CLEAN_RETURN": 7
@@ -197,22 +198,18 @@
     "largest_executed_closure": 11,
     "clean_ordinary_roots": 12,
     "executed_ordinary_constructors": 9,
-    "getcurrentthread_implemented": true,
-    "setpriorityclass_implemented": true,
-    "getthreadpriority_implemented": true,
-    "setthreadpriority_implemented": true,
+    "qpc_implemented": true,
+    "qpf_implemented": true,
+    "sleepex_implemented": false,
     "ctor_status": {
-      "before": "EXECUTED_TO_NEXT_BLOCKER / GetCurrentThread",
+      "before": "EXECUTED_TO_NEXT_BLOCKER / QueryPerformanceCounter",
       "after": "EXECUTED_TO_NEXT_BLOCKER",
-      "after_blocker": "QueryPerformanceCounter",
-      "blocker_result": "BLOCKED_TIMING",
+      "after_blocker": "SleepEx",
+      "blocker_result": "BLOCKED_ALERTABLE_WAIT",
       "returned_clean": false,
-      "gct_calls": 1,
-      "gtp_calls": 1,
-      "spc_calls": 1,
-      "stp_calls": 1,
-      "priority_class_observed": 256,
-      "thread_priority_observed": 15,
+      "qpc_calls": 6,
+      "qpf_calls": 1,
+      "qpc_ticks_observed": 0,
       "entered": [
         "0x009E9160",
         "0x009E7710",
@@ -234,17 +231,6 @@
       "after": "EXECUTED_CHAIN",
       "returned_clean": true,
       "sem_calls": 4,
-      "sem_count": 4,
-      "entered": [
-        "0x0097BB30",
-        "0x00977E20",
-        "0x00977420",
-        "0x00978040",
-        "0x00977FD0",
-        "0x009775E0",
-        "0x00977AF0",
-        "0x00977860"
-      ],
       "depth": 4
     },
     "ebc70_status": {
@@ -258,24 +244,17 @@
       ],
       "classification": "BLOCKED_CRT_INITIALIZATION",
       "implementation_attempted": false,
-      "reason": "CRT atexit/registration path requires initialized CRT lock/heap state; unchanged from Phase 33. Not the highest-leverage blocker this campaign."
+      "reason": "Unchanged; not the highest-leverage blocker this campaign."
     },
-    "affinity_reached": false,
-    "affinity_implemented": false,
-    "qpc_reached": true,
-    "qpf_reached": false,
-    "timing_implementation_attempted": false,
+    "timing_loop_encountered": false,
+    "instruction_budget_exhaustion": false,
+    "alertable_wait_reached": true,
+    "scheduler": false,
     "tlsgetvalue_reached": false,
     "tlsfree_reached": false,
-    "scheduler": false,
     "filesystem_reached": false,
     "protected_boundary_encountered": false,
-    "diagnostics_counted": 0,
-    "proven_depth_4_roots": [
-      "0x0097BB30",
-      "0x00B52140",
-      "0x00B57CF0"
-    ]
+    "diagnostics_counted": 0
   },
   "synchronization": {
     "InitializeCriticalSection": "IMPLEMENTED",
@@ -290,10 +269,21 @@
     "guest_processes": 1,
     "guest_threads": 1,
     "scheduler": "NONE",
-    "thread_scheduling": "NOT_IMPLEMENTED"
+    "thread_scheduling": "NOT_IMPLEMENTED",
+    "QueryPerformanceCounter": "IMPLEMENTED",
+    "QueryPerformanceFrequency": "IMPLEMENTED",
+    "SleepEx": "NOT_IMPLEMENTED"
+  },
+  "timing": {
+    "QueryPerformanceCounter": "IMPLEMENTED",
+    "QueryPerformanceFrequency": "IMPLEMENTED",
+    "SleepEx": "NOT_IMPLEMENTED / BLOCKED_ALERTABLE_WAIT",
+    "frequency_hz": 10000000,
+    "guest_threads": 1,
+    "scheduler": "NONE"
   },
   "first_frame": "FIRST_FRAME_PATH_BLOCKED_BY_PROTECTED_BACKEND",
   "graphics_frozen": true,
-  "recommended_phase35": "GetCurrentThread, GetThreadPriority, SetPriorityClass, and SetThreadPriority are implemented with guest-only state (no host scheduling changes). Constructor 0x009E9160 advances past the priority block and stops on QueryPerformanceCounter. Phase 35: EXPAND TIMING RUNTIME \u2014 coherent deterministic guest QPC/QPF (+ SleepEx policy) without wall-clock substitution. Affinity remains a future dependency (no guest processor topology). CRT atexit stays BLOCKED_CRT_INITIALIZATION. Graphics frozen. No scheduler.",
+  "recommended_phase36": "QPC/QPF guest clock is live; constructor advances to alertable SleepEx(50ms, TRUE). Phase 36: either EXPAND THREADING/TLS RUNTIME for a narrowly justified non-alertable sleep/virtual-wait policy (without APC/scheduler fiction), or EXPAND REAL UC EXECUTION on other ordinary roots while leaving alertable waits classified. CRT atexit remains BLOCKED_CRT_INITIALIZATION. Graphics frozen.",
   "phase31_metric_corrections_preserved": true
 }

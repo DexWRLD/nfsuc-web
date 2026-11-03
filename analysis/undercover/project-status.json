@@ -1,6 +1,6 @@
 {
-  "current_phase": 34,
-  "strategy": "Phase 34: GetCurrentThread + guest priority APIs; ctor \u2192 QueryPerformanceCounter. Graphics frozen.",
+  "current_phase": 35,
+  "strategy": "Phase 35: deterministic guest QPC/QPF; ctor \u2192 alertable SleepEx. Graphics frozen.",
   "boundaries": {
     "0x00686000": {
       "status": "PROTECTED_OR_EXTERNAL_DEPENDENCY",
@@ -399,6 +399,11 @@
     {
       "phase": 34,
       "name": "GetCurrentThread + guest priority continuation",
+      "state": "completed"
+    },
+    {
+      "phase": 35,
+      "name": "Deterministic guest QPC/QPF clock",
       "state": "completed"
     }
   ],
