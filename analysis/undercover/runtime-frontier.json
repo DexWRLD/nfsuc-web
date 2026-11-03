@@ -1,5 +1,5 @@
 {
-  "phase": 43,
+  "phase": 44,
   "definitions": {
     "ENTERABLE": "All pre-entry required state establishable via primitives, static PE data, standard runtime, or proven ordinary init/ctor. Not merely IMPORT_READY.",
     "DEEPEST_ORDINARY_EXECUTION_CHAIN": "Max nested ordinary UC frames in one harness run.",
@@ -568,5 +568,20 @@
     "aa_fallback_corrected": true,
     "evidence": "graphics-evidence-2026-11-03.json"
   },
-  "recommended_phase44": "Integrate verified setter cases of 0x00727C60 with injected side-effect callbacks; resolve aspect/window slot contracts without fabricating Win32/D3D9 import links; keep protected backend opaque."
+  "recommended_phase44": "Integrate verified setter cases of 0x00727C60 with injected side-effect callbacks; resolve aspect/window slot contracts without fabricating Win32/D3D9 import links; keep protected backend opaque.",
+  "blocked_external_attribution": {
+    "count": 74,
+    "root": "0x00686000",
+    "direct": 62,
+    "transitive": 12,
+    "rooted": 74,
+    "audit_gaps": 6,
+    "callback_registration_edges": 2,
+    "status_reclassified": 0,
+    "enterable_delta": 0,
+    "runtime_ready_delta": 0,
+    "unique_executed_delta": 0,
+    "inventory": "blocked-external-attribution.json"
+  },
+  "recommended_phase45": "Close allocator-audit caller gaps in static evidence; recover enough of 0x0072B170 / 0x00766730 ordinary bodies to decide whether callback execution edges are justifiable; keep protected backends opaque. Do not promote BLOCKED_EXTERNAL to ENTERABLE without an ordinary allocator-free path."
 }

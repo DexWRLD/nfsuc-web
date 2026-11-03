@@ -1,0 +1,686 @@
+{
+  "phase": 44,
+  "count": 74,
+  "root_blocker": "0x00686000",
+  "functions": [
+    {
+      "address": "0x006E9260",
+      "kind": "DIRECT",
+      "path": [
+        "0x006E9260",
+        "0x00686000"
+      ],
+      "confidence": "CONFIRMED"
+    },
+    {
+      "address": "0x007111E0",
+      "kind": "DIRECT",
+      "path": [
+        "0x007111E0",
+        "0x00686000"
+      ],
+      "confidence": "CONFIRMED"
+    },
+    {
+      "address": "0x007154D0",
+      "kind": "DIRECT",
+      "path": [
+        "0x007154D0",
+        "0x00686000"
+      ],
+      "confidence": "CONFIRMED"
+    },
+    {
+      "address": "0x0071D170",
+      "kind": "DIRECT",
+      "path": [
+        "0x0071D170",
+        "0x00686000"
+      ],
+      "confidence": "CONFIRMED"
+    },
+    {
+      "address": "0x0071E6A0",
+      "kind": "DIRECT",
+      "path": [
+        "0x0071E6A0",
+        "0x00686000"
+      ],
+      "confidence": "CONFIRMED"
+    },
+    {
+      "address": "0x0071E730",
+      "kind": "DIRECT",
+      "path": [
+        "0x0071E730",
+        "0x00686000"
+      ],
+      "confidence": "CONFIRMED"
+    },
+    {
+      "address": "0x0071E820",
+      "kind": "TRANSITIVE",
+      "path": [
+        "0x0071E820",
+        "0x0071E6A0",
+        "0x00686000"
+      ],
+      "confidence": "CONFIRMED"
+    },
+    {
+      "address": "0x00723160",
+      "kind": "DIRECT",
+      "path": [
+        "0x00723160",
+        "0x00686000"
+      ],
+      "confidence": "CONFIRMED"
+    },
+    {
+      "address": "0x00724F90",
+      "kind": "DIRECT",
+      "path": [
+        "0x00724F90",
+        "0x00686000"
+      ],
+      "confidence": "CONFIRMED"
+    },
+    {
+      "address": "0x007279A0",
+      "kind": "DIRECT",
+      "path": [
+        "0x007279A0",
+        "0x00686000"
+      ],
+      "confidence": "CONFIRMED"
+    },
+    {
+      "address": "0x007297D0",
+      "kind": "DIRECT",
+      "path": [
+        "0x007297D0",
+        "0x00686000"
+      ],
+      "confidence": "CONFIRMED"
+    },
+    {
+      "address": "0x0072FC70",
+      "kind": "TRANSITIVE",
+      "path": [
+        "0x0072FC70",
+        "0x0071E820",
+        "0x0071E6A0",
+        "0x00686000"
+      ],
+      "confidence": "CONFIRMED"
+    },
+    {
+      "address": "0x00731A90",
+      "kind": "TRANSITIVE",
+      "path": [
+        "0x00731A90",
+        "0x0071E730",
+        "0x00686000"
+      ],
+      "confidence": "CONFIRMED"
+    },
+    {
+      "address": "0x00734A70",
+      "kind": "DIRECT",
+      "path": [
+        "0x00734A70",
+        "0x00686000"
+      ],
+      "confidence": "CONFIRMED"
+    },
+    {
+      "address": "0x0073C5C0",
+      "kind": "DIRECT",
+      "path": [
+        "0x0073C5C0",
+        "0x00686000"
+      ],
+      "confidence": "CONFIRMED"
+    },
+    {
+      "address": "0x0073D0F0",
+      "kind": "DIRECT",
+      "path": [
+        "0x0073D0F0",
+        "0x00686000"
+      ],
+      "confidence": "CONFIRMED"
+    },
+    {
+      "address": "0x0074C370",
+      "kind": "TRANSITIVE",
+      "path": [
+        "0x0074C370",
+        "0x00839BC0",
+        "0x00686000"
+      ],
+      "confidence": "CONFIRMED"
+    },
+    {
+      "address": "0x0074D4A0",
+      "kind": "DIRECT",
+      "path": [
+        "0x0074D4A0",
+        "0x00686000"
+      ],
+      "confidence": "CONFIRMED"
+    },
+    {
+      "address": "0x00750870",
+      "kind": "DIRECT",
+      "path": [
+        "0x00750870",
+        "0x00686000"
+      ],
+      "confidence": "CONFIRMED"
+    },
+    {
+      "address": "0x007508F0",
+      "kind": "DIRECT",
+      "path": [
+        "0x007508F0",
+        "0x00686000"
+      ],
+      "confidence": "CONFIRMED"
+    },
+    {
+      "address": "0x007525B0",
+      "kind": "DIRECT",
+      "path": [
+        "0x007525B0",
+        "0x00686000"
+      ],
+      "confidence": "CONFIRMED"
+    },
+    {
+      "address": "0x00752650",
+      "kind": "DIRECT",
+      "path": [
+        "0x00752650",
+        "0x00686000"
+      ],
+      "confidence": "CONFIRMED"
+    },
+    {
+      "address": "0x00757730",
+      "kind": "DIRECT",
+      "path": [
+        "0x00757730",
+        "0x00686000"
+      ],
+      "confidence": "CONFIRMED"
+    },
+    {
+      "address": "0x0075DCB0",
+      "kind": "DIRECT",
+      "path": [
+        "0x0075DCB0",
+        "0x00686000"
+      ],
+      "confidence": "CONFIRMED"
+    },
+    {
+      "address": "0x0075DF00",
+      "kind": "DIRECT",
+      "path": [
+        "0x0075DF00",
+        "0x00686000"
+      ],
+      "confidence": "CONFIRMED"
+    },
+    {
+      "address": "0x0075E080",
+      "kind": "DIRECT",
+      "path": [
+        "0x0075E080",
+        "0x00686000"
+      ],
+      "confidence": "CONFIRMED"
+    },
+    {
+      "address": "0x0075E790",
+      "kind": "DIRECT",
+      "path": [
+        "0x0075E790",
+        "0x00686000"
+      ],
+      "confidence": "CONFIRMED"
+    },
+    {
+      "address": "0x0075F3D0",
+      "kind": "DIRECT",
+      "path": [
+        "0x0075F3D0",
+        "0x00686000"
+      ],
+      "confidence": "CONFIRMED"
+    },
+    {
+      "address": "0x00762560",
+      "kind": "DIRECT",
+      "path": [
+        "0x00762560",
+        "0x00686000"
+      ],
+      "confidence": "CONFIRMED"
+    },
+    {
+      "address": "0x007632E0",
+      "kind": "DIRECT",
+      "path": [
+        "0x007632E0",
+        "0x00686000"
+      ],
+      "confidence": "CONFIRMED"
+    },
+    {
+      "address": "0x00768610",
+      "kind": "DIRECT",
+      "path": [
+        "0x00768610",
+        "0x00686000"
+      ],
+      "confidence": "CONFIRMED"
+    },
+    {
+      "address": "0x0076D460",
+      "kind": "TRANSITIVE",
+      "path": [
+        "0x0076D460",
+        "0x00768610",
+        "0x00686000"
+      ],
+      "confidence": "CONFIRMED"
+    },
+    {
+      "address": "0x00771B80",
+      "kind": "DIRECT",
+      "path": [
+        "0x00771B80",
+        "0x00686000"
+      ],
+      "confidence": "CONFIRMED"
+    },
+    {
+      "address": "0x00771FB0",
+      "kind": "DIRECT",
+      "path": [
+        "0x00771FB0",
+        "0x00686000"
+      ],
+      "confidence": "CONFIRMED"
+    },
+    {
+      "address": "0x007723E0",
+      "kind": "DIRECT",
+      "path": [
+        "0x007723E0",
+        "0x00686000"
+      ],
+      "confidence": "CONFIRMED"
+    },
+    {
+      "address": "0x00779B30",
+      "kind": "DIRECT",
+      "path": [
+        "0x00779B30",
+        "0x00686000"
+      ],
+      "confidence": "CONFIRMED"
+    },
+    {
+      "address": "0x0077A4E0",
+      "kind": "DIRECT",
+      "path": [
+        "0x0077A4E0",
+        "0x00686000"
+      ],
+      "confidence": "CONFIRMED"
+    },
+    {
+      "address": "0x0077A610",
+      "kind": "DIRECT",
+      "path": [
+        "0x0077A610",
+        "0x00686000"
+      ],
+      "confidence": "CONFIRMED"
+    },
+    {
+      "address": "0x0077B540",
+      "kind": "DIRECT",
+      "path": [
+        "0x0077B540",
+        "0x00686000"
+      ],
+      "confidence": "CONFIRMED"
+    },
+    {
+      "address": "0x0077BF80",
+      "kind": "DIRECT",
+      "path": [
+        "0x0077BF80",
+        "0x00686000"
+      ],
+      "confidence": "CONFIRMED"
+    },
+    {
+      "address": "0x0077C8A0",
+      "kind": "TRANSITIVE",
+      "path": [
+        "0x0077C8A0",
+        "0x0077A4E0",
+        "0x00686000"
+      ],
+      "confidence": "CONFIRMED"
+    },
+    {
+      "address": "0x0077C950",
+      "kind": "TRANSITIVE",
+      "path": [
+        "0x0077C950",
+        "0x00779B30",
+        "0x00686000"
+      ],
+      "confidence": "CONFIRMED"
+    },
+    {
+      "address": "0x0077C9B0",
+      "kind": "TRANSITIVE",
+      "path": [
+        "0x0077C9B0",
+        "0x00779B30",
+        "0x00686000"
+      ],
+      "confidence": "CONFIRMED"
+    },
+    {
+      "address": "0x0077DCC0",
+      "kind": "DIRECT",
+      "path": [
+        "0x0077DCC0",
+        "0x00686000"
+      ],
+      "confidence": "CONFIRMED"
+    },
+    {
+      "address": "0x0077EA60",
+      "kind": "DIRECT",
+      "path": [
+        "0x0077EA60",
+        "0x00686000"
+      ],
+      "confidence": "CONFIRMED"
+    },
+    {
+      "address": "0x0077F760",
+      "kind": "TRANSITIVE",
+      "path": [
+        "0x0077F760",
+        "0x007508F0",
+        "0x00686000"
+      ],
+      "confidence": "CONFIRMED"
+    },
+    {
+      "address": "0x0077FEE0",
+      "kind": "DIRECT",
+      "path": [
+        "0x0077FEE0",
+        "0x00686000"
+      ],
+      "confidence": "CONFIRMED"
+    },
+    {
+      "address": "0x00780180",
+      "kind": "DIRECT",
+      "path": [
+        "0x00780180",
+        "0x00686000"
+      ],
+      "confidence": "CONFIRMED"
+    },
+    {
+      "address": "0x00780D60",
+      "kind": "DIRECT",
+      "path": [
+        "0x00780D60",
+        "0x00686000"
+      ],
+      "confidence": "CONFIRMED"
+    },
+    {
+      "address": "0x00782570",
+      "kind": "TRANSITIVE",
+      "path": [
+        "0x00782570",
+        "0x00762560",
+        "0x00686000"
+      ],
+      "confidence": "CONFIRMED"
+    },
+    {
+      "address": "0x00782D10",
+      "kind": "TRANSITIVE",
+      "path": [
+        "0x00782D10",
+        "0x00782A50",
+        "0x00686000"
+      ],
+      "confidence": "CONFIRMED"
+    },
+    {
+      "address": "0x00787390",
+      "kind": "DIRECT",
+      "path": [
+        "0x00787390",
+        "0x00686000"
+      ],
+      "confidence": "CONFIRMED"
+    },
+    {
+      "address": "0x00787E90",
+      "kind": "DIRECT",
+      "path": [
+        "0x00787E90",
+        "0x00686000"
+      ],
+      "confidence": "CONFIRMED"
+    },
+    {
+      "address": "0x00787F80",
+      "kind": "DIRECT",
+      "path": [
+        "0x00787F80",
+        "0x00686000"
+      ],
+      "confidence": "CONFIRMED"
+    },
+    {
+      "address": "0x007953A0",
+      "kind": "DIRECT",
+      "path": [
+        "0x007953A0",
+        "0x00686000"
+      ],
+      "confidence": "CONFIRMED"
+    },
+    {
+      "address": "0x0079DC80",
+      "kind": "DIRECT",
+      "path": [
+        "0x0079DC80",
+        "0x00686000"
+      ],
+      "confidence": "CONFIRMED"
+    },
+    {
+      "address": "0x007B5020",
+      "kind": "DIRECT",
+      "path": [
+        "0x007B5020",
+        "0x00686000"
+      ],
+      "confidence": "CONFIRMED"
+    },
+    {
+      "address": "0x007EA480",
+      "kind": "DIRECT",
+      "path": [
+        "0x007EA480",
+        "0x00686000"
+      ],
+      "confidence": "CONFIRMED"
+    },
+    {
+      "address": "0x007F5760",
+      "kind": "DIRECT",
+      "path": [
+        "0x007F5760",
+        "0x00686000"
+      ],
+      "confidence": "CONFIRMED"
+    },
+    {
+      "address": "0x007F9710",
+      "kind": "DIRECT",
+      "path": [
+        "0x007F9710",
+        "0x00686000"
+      ],
+      "confidence": "CONFIRMED"
+    },
+    {
+      "address": "0x007FF0A0",
+      "kind": "DIRECT",
+      "path": [
+        "0x007FF0A0",
+        "0x00686000"
+      ],
+      "confidence": "CONFIRMED"
+    },
+    {
+      "address": "0x00807A80",
+      "kind": "DIRECT",
+      "path": [
+        "0x00807A80",
+        "0x00686000"
+      ],
+      "confidence": "CONFIRMED"
+    },
+    {
+      "address": "0x008085D0",
+      "kind": "DIRECT",
+      "path": [
+        "0x008085D0",
+        "0x00686000"
+      ],
+      "confidence": "CONFIRMED"
+    },
+    {
+      "address": "0x00809740",
+      "kind": "DIRECT",
+      "path": [
+        "0x00809740",
+        "0x00686000"
+      ],
+      "confidence": "CONFIRMED"
+    },
+    {
+      "address": "0x0080A070",
+      "kind": "DIRECT",
+      "path": [
+        "0x0080A070",
+        "0x00686000"
+      ],
+      "confidence": "CONFIRMED"
+    },
+    {
+      "address": "0x0080ABF0",
+      "kind": "TRANSITIVE",
+      "path": [
+        "0x0080ABF0",
+        "0x0080A070",
+        "0x00686000"
+      ],
+      "confidence": "CONFIRMED"
+    },
+    {
+      "address": "0x0080C000",
+      "kind": "DIRECT",
+      "path": [
+        "0x0080C000",
+        "0x00686000"
+      ],
+      "confidence": "CONFIRMED"
+    },
+    {
+      "address": "0x0080E4C0",
+      "kind": "DIRECT",
+      "path": [
+        "0x0080E4C0",
+        "0x00686000"
+      ],
+      "confidence": "CONFIRMED"
+    },
+    {
+      "address": "0x008101B0",
+      "kind": "DIRECT",
+      "path": [
+        "0x008101B0",
+        "0x00686000"
+      ],
+      "confidence": "CONFIRMED"
+    },
+    {
+      "address": "0x0081F9F0",
+      "kind": "DIRECT",
+      "path": [
+        "0x0081F9F0",
+        "0x00686000"
+      ],
+      "confidence": "CONFIRMED"
+    },
+    {
+      "address": "0x00830380",
+      "kind": "DIRECT",
+      "path": [
+        "0x00830380",
+        "0x00686000"
+      ],
+      "confidence": "CONFIRMED"
+    },
+    {
+      "address": "0x008429D0",
+      "kind": "DIRECT",
+      "path": [
+        "0x008429D0",
+        "0x00686000"
+      ],
+      "confidence": "CONFIRMED"
+    },
+    {
+      "address": "0x00869BC0",
+      "kind": "DIRECT",
+      "path": [
+        "0x00869BC0",
+        "0x00686000"
+      ],
+      "confidence": "CONFIRMED"
+    },
+    {
+      "address": "0x008757A0",
+      "kind": "DIRECT",
+      "path": [
+        "0x008757A0",
+        "0x00686000"
+      ],
+      "confidence": "CONFIRMED"
+    }
+  ]
+}

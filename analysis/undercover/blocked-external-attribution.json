@@ -1,0 +1,1861 @@
+{
+  "phase": 44,
+  "title": "External blocker attribution and callback reachability",
+  "game_code_target": "NFS_UNDERCOVER_PC",
+  "tooling_origin": "NFSU2-WEB",
+  "sha256": "6b10551649fd70fa630bd7454fd953f51555fa2dd2112faae84ac8ca97844bcd",
+  "evidence": "blocker-audit-2026-11-03.json",
+  "definitions": {
+    "BLOCKED_EXTERNAL": "progress.py: MUST_REACH_EXTERNAL_HELPER on allocator 0x00686000 (helper-cut). Not every protected-boundary caller.",
+    "DIRECT": "Function itself calls root blocker (audit and/or verified map).",
+    "TRANSITIVE": "Every returning ordinary path hits a MUST/direct callee of the root.",
+    "CALLBACK_REGISTRATION": "DATA/store of callback address; not ordinary execution of the callback body."
+  },
+  "protected_boundaries_opaque": [
+    "0x00686000",
+    "0x00686030",
+    "0x004A26B0",
+    "0x007A51B0",
+    "0x0071E380",
+    "0x00B615C4"
+  ],
+  "summary": {
+    "blocked_external_count": 74,
+    "equals_helper_cut_must": true,
+    "duplicate_root": "0x00686000",
+    "all_share_allocator_root": true,
+    "direct": 62,
+    "transitive": 12,
+    "rooted": 74,
+    "audit_gaps": 6,
+    "classification_errors_requiring_status_change": 0,
+    "note": "All 74 BLOCKED_EXTERNAL share root 0x00686000. No status reclassification: Ghidra call sites alone do not justify changing BLOCKED_EXTERNAL, and callback registration edges are not execution edges."
+  },
+  "metrics": {
+    "blocked_external_before": 74,
+    "blocked_external_after": 74,
+    "blocked_external_delta": 0,
+    "with_identified_root_blocker": 74,
+    "direct_root_callers": 62,
+    "transitive_inherited": 12,
+    "audit_missing_direct_caller_gaps": 6,
+    "callback_registration_edges": 2,
+    "blocked_external_affected_by_callback_edges": 0,
+    "enterable_before": 33,
+    "enterable_after": 33,
+    "enterable_delta": 0,
+    "unique_uc_functions_executed_before": 67,
+    "unique_uc_functions_executed_after": 67,
+    "unique_executed_delta": 0,
+    "runtime_ready_before": 72,
+    "runtime_ready_after": 72,
+    "runtime_ready_delta": 0,
+    "newly_classified_without_execution": 0,
+    "first_frame": "FIRST_FRAME_PATH_BLOCKED_BY_PROTECTED_BACKEND"
+  },
+  "audit_vs_project": {
+    "allocator_audit_defined_callers": 113,
+    "allocator_audit_callers_in_blocked_external": 56,
+    "allocator_audit_callers_in_may": 44,
+    "allocator_audit_callers_absent_from_progress": 13,
+    "may_direct_sample": [
+      "0x00701B70",
+      "0x00721A40",
+      "0x0072C2A0",
+      "0x00757290",
+      "0x0075F240",
+      "0x0076CA20",
+      "0x00772D40",
+      "0x00779C60",
+      "0x00779E80",
+      "0x00779FA0",
+      "0x0077A0A0",
+      "0x0077A1C0",
+      "0x0077A2C0",
+      "0x0077C510",
+      "0x0077D050",
+      "0x00782A50",
+      "0x007871A0",
+      "0x007A8490",
+      "0x007ADEE0",
+      "0x007AED70"
+    ],
+    "absent_direct_sample": [
+      "0x006F4AF0",
+      "0x0074BC20",
+      "0x00760A30",
+      "0x0077C150",
+      "0x0077ED50",
+      "0x00783CF0",
+      "0x007845C0",
+      "0x00789C40",
+      "0x0080AC80",
+      "0x0080BD00",
+      "0x023D0A50",
+      "0x023D4180",
+      "0x023DB100"
+    ],
+    "fmap_must_helper_edges_missing_from_audit": [
+      "0x0071E6A0",
+      "0x0071E730",
+      "0x00779B30",
+      "0x0077A4E0",
+      "0x0077BF80",
+      "0x00780180"
+    ],
+    "audit_complete_flag_allocator": true,
+    "audit_completeness_issue": "Allocator root claims complete:true but omits >=6 verified ordinary direct callers present in project function-map and .text."
+  },
+  "secondary_root_overlaps_on_blocked_external": {
+    "0x00686030": {
+      "label": "free",
+      "blocked_external_direct_callers": [
+        "0x00750870",
+        "0x007508F0",
+        "0x0077A610",
+        "0x0077EA60",
+        "0x00780D60",
+        "0x0080C000"
+      ],
+      "count": 6,
+      "note": "Secondary direct edge; primary BLOCKED_EXTERNAL root remains allocator."
+    }
+  },
+  "callback_registration_edges": [
+    {
+      "edge_kind": "CALLBACK_REGISTRATION",
+      "not_execution": true,
+      "registrar": "0x0072E340",
+      "site": "0x0072E497",
+      "ref_type": "DATA",
+      "callback": "0x0072B170",
+      "label": "window callback boundary / GameFrame lpfnWndProc-shaped store",
+      "audit_readiness": "NEEDS_MORE_STATIC_EVIDENCE",
+      "confidence": "CONFIRMED_REGISTRATION",
+      "execution_modeled": false,
+      "note": "Address supplied into window-class preparation; not an ordinary direct call. Do not treat as executed WndProc without further evidence.",
+      "registrar_runtime_status": "BLOCKED_IMPORT",
+      "callback_runtime_status": "ABSENT",
+      "affects_blocked_external_count": false
+    },
+    {
+      "edge_kind": "CALLBACK_REGISTRATION",
+      "not_execution": true,
+      "registrar": "0x0076CA20",
+      "site": "0x0076CB40",
+      "ref_type": "DATA",
+      "callback": "0x00766730",
+      "label": "render-thread callback boundary",
+      "audit_readiness": "NEEDS_MORE_STATIC_EVIDENCE",
+      "confidence": "CONFIRMED_REGISTRATION",
+      "execution_modeled": false,
+      "note": "Callback address pushed before thread-wrapper call; registration edge only. Actual callback execution remains unmodeled as an ordinary call-graph edge.",
+      "registrar_runtime_status": "UNKNOWN",
+      "callback_runtime_status": "UNKNOWN",
+      "affects_blocked_external_count": false
+    }
+  ],
+  "functions": [
+    {
+      "address": "0x006E9260",
+      "runtime_status": "BLOCKED_EXTERNAL",
+      "blocker_category": "BLOCKED_EXTERNAL",
+      "attribution": {
+        "kind": "DIRECT",
+        "root_blocker": "0x00686000",
+        "root_label": "allocator",
+        "shortest_path": [
+          "0x006E9260",
+          "0x00686000"
+        ],
+        "path_edge_count": 1,
+        "path_method": "DIRECT_AUDIT_CALLER",
+        "confidence": "CONFIRMED"
+      },
+      "project_blocker_field": "0x00686000",
+      "external_helper_class": "MUST_REACH_EXTERNAL_HELPER",
+      "also_direct_caller_of": [],
+      "reclassified": false,
+      "classification_error": false
+    },
+    {
+      "address": "0x007111E0",
+      "runtime_status": "BLOCKED_EXTERNAL",
+      "blocker_category": "BLOCKED_EXTERNAL",
+      "attribution": {
+        "kind": "DIRECT",
+        "root_blocker": "0x00686000",
+        "root_label": "allocator",
+        "shortest_path": [
+          "0x007111E0",
+          "0x00686000"
+        ],
+        "path_edge_count": 1,
+        "path_method": "DIRECT_AUDIT_CALLER",
+        "confidence": "CONFIRMED"
+      },
+      "project_blocker_field": "0x00686000",
+      "external_helper_class": "MUST_REACH_EXTERNAL_HELPER",
+      "also_direct_caller_of": [],
+      "reclassified": false,
+      "classification_error": false
+    },
+    {
+      "address": "0x007154D0",
+      "runtime_status": "BLOCKED_EXTERNAL",
+      "blocker_category": "BLOCKED_EXTERNAL",
+      "attribution": {
+        "kind": "DIRECT",
+        "root_blocker": "0x00686000",
+        "root_label": "allocator",
+        "shortest_path": [
+          "0x007154D0",
+          "0x00686000"
+        ],
+        "path_edge_count": 1,
+        "path_method": "DIRECT_AUDIT_CALLER",
+        "confidence": "CONFIRMED"
+      },
+      "project_blocker_field": "0x00686000",
+      "external_helper_class": "MUST_REACH_EXTERNAL_HELPER",
+      "also_direct_caller_of": [],
+      "reclassified": false,
+      "classification_error": false
+    },
+    {
+      "address": "0x0071D170",
+      "runtime_status": "BLOCKED_EXTERNAL",
+      "blocker_category": "BLOCKED_EXTERNAL",
+      "attribution": {
+        "kind": "DIRECT",
+        "root_blocker": "0x00686000",
+        "root_label": "allocator",
+        "shortest_path": [
+          "0x0071D170",
+          "0x00686000"
+        ],
+        "path_edge_count": 1,
+        "path_method": "DIRECT_AUDIT_CALLER",
+        "confidence": "CONFIRMED"
+      },
+      "project_blocker_field": "0x00686000",
+      "external_helper_class": "MUST_REACH_EXTERNAL_HELPER",
+      "also_direct_caller_of": [],
+      "reclassified": false,
+      "classification_error": false
+    },
+    {
+      "address": "0x0071E6A0",
+      "runtime_status": "BLOCKED_EXTERNAL",
+      "blocker_category": "BLOCKED_EXTERNAL",
+      "attribution": {
+        "kind": "DIRECT",
+        "root_blocker": "0x00686000",
+        "root_label": "allocator",
+        "shortest_path": [
+          "0x0071E6A0",
+          "0x00686000"
+        ],
+        "path_edge_count": 1,
+        "path_method": "DIRECT_MAP_VERIFIED_AUDIT_INCOMPLETE",
+        "confidence": "CONFIRMED"
+      },
+      "project_blocker_field": "0x00686000",
+      "external_helper_class": "MUST_REACH_EXTERNAL_HELPER",
+      "also_direct_caller_of": [],
+      "reclassified": false,
+      "classification_error": false,
+      "audit_gap": {
+        "issue": "AUDIT_MISSING_DIRECT_CALLER",
+        "evidence": "ordinary .text contains call 0x00686000; audit complete:true omitted caller",
+        "confidence": "CONFIRMED"
+      }
+    },
+    {
+      "address": "0x0071E730",
+      "runtime_status": "BLOCKED_EXTERNAL",
+      "blocker_category": "BLOCKED_EXTERNAL",
+      "attribution": {
+        "kind": "DIRECT",
+        "root_blocker": "0x00686000",
+        "root_label": "allocator",
+        "shortest_path": [
+          "0x0071E730",
+          "0x00686000"
+        ],
+        "path_edge_count": 1,
+        "path_method": "DIRECT_MAP_VERIFIED_AUDIT_INCOMPLETE",
+        "confidence": "CONFIRMED"
+      },
+      "project_blocker_field": "0x00686000",
+      "external_helper_class": "MUST_REACH_EXTERNAL_HELPER",
+      "also_direct_caller_of": [],
+      "reclassified": false,
+      "classification_error": false,
+      "audit_gap": {
+        "issue": "AUDIT_MISSING_DIRECT_CALLER",
+        "evidence": "ordinary .text contains call 0x00686000; audit complete:true omitted caller",
+        "confidence": "CONFIRMED"
+      }
+    },
+    {
+      "address": "0x0071E820",
+      "runtime_status": "BLOCKED_EXTERNAL",
+      "blocker_category": "BLOCKED_EXTERNAL",
+      "attribution": {
+        "kind": "TRANSITIVE",
+        "root_blocker": "0x00686000",
+        "root_label": "allocator",
+        "shortest_path": [
+          "0x0071E820",
+          "0x0071E6A0",
+          "0x00686000"
+        ],
+        "path_edge_count": 2,
+        "path_method": "PATH_VIA_MAP",
+        "confidence": "CONFIRMED"
+      },
+      "project_blocker_field": "0x00686000",
+      "external_helper_class": "MUST_REACH_EXTERNAL_HELPER",
+      "also_direct_caller_of": [],
+      "reclassified": false,
+      "classification_error": false
+    },
+    {
+      "address": "0x00723160",
+      "runtime_status": "BLOCKED_EXTERNAL",
+      "blocker_category": "BLOCKED_EXTERNAL",
+      "attribution": {
+        "kind": "DIRECT",
+        "root_blocker": "0x00686000",
+        "root_label": "allocator",
+        "shortest_path": [
+          "0x00723160",
+          "0x00686000"
+        ],
+        "path_edge_count": 1,
+        "path_method": "DIRECT_AUDIT_CALLER",
+        "confidence": "CONFIRMED"
+      },
+      "project_blocker_field": "0x00686000",
+      "external_helper_class": "MUST_REACH_EXTERNAL_HELPER",
+      "also_direct_caller_of": [],
+      "reclassified": false,
+      "classification_error": false
+    },
+    {
+      "address": "0x00724F90",
+      "runtime_status": "BLOCKED_EXTERNAL",
+      "blocker_category": "BLOCKED_EXTERNAL",
+      "attribution": {
+        "kind": "DIRECT",
+        "root_blocker": "0x00686000",
+        "root_label": "allocator",
+        "shortest_path": [
+          "0x00724F90",
+          "0x00686000"
+        ],
+        "path_edge_count": 1,
+        "path_method": "DIRECT_AUDIT_CALLER",
+        "confidence": "CONFIRMED"
+      },
+      "project_blocker_field": "0x00686000",
+      "external_helper_class": "MUST_REACH_EXTERNAL_HELPER",
+      "also_direct_caller_of": [],
+      "reclassified": false,
+      "classification_error": false
+    },
+    {
+      "address": "0x007279A0",
+      "runtime_status": "BLOCKED_EXTERNAL",
+      "blocker_category": "BLOCKED_EXTERNAL",
+      "attribution": {
+        "kind": "DIRECT",
+        "root_blocker": "0x00686000",
+        "root_label": "allocator",
+        "shortest_path": [
+          "0x007279A0",
+          "0x00686000"
+        ],
+        "path_edge_count": 1,
+        "path_method": "DIRECT_AUDIT_CALLER",
+        "confidence": "CONFIRMED"
+      },
+      "project_blocker_field": "0x00686000",
+      "external_helper_class": "MUST_REACH_EXTERNAL_HELPER",
+      "also_direct_caller_of": [],
+      "reclassified": false,
+      "classification_error": false
+    },
+    {
+      "address": "0x007297D0",
+      "runtime_status": "BLOCKED_EXTERNAL",
+      "blocker_category": "BLOCKED_EXTERNAL",
+      "attribution": {
+        "kind": "DIRECT",
+        "root_blocker": "0x00686000",
+        "root_label": "allocator",
+        "shortest_path": [
+          "0x007297D0",
+          "0x00686000"
+        ],
+        "path_edge_count": 1,
+        "path_method": "DIRECT_AUDIT_CALLER",
+        "confidence": "CONFIRMED"
+      },
+      "project_blocker_field": "0x00686000",
+      "external_helper_class": "MUST_REACH_EXTERNAL_HELPER",
+      "also_direct_caller_of": [],
+      "reclassified": false,
+      "classification_error": false
+    },
+    {
+      "address": "0x0072FC70",
+      "runtime_status": "BLOCKED_EXTERNAL",
+      "blocker_category": "BLOCKED_EXTERNAL",
+      "attribution": {
+        "kind": "TRANSITIVE",
+        "root_blocker": "0x00686000",
+        "root_label": "allocator",
+        "shortest_path": [
+          "0x0072FC70",
+          "0x0071E820",
+          "0x0071E6A0",
+          "0x00686000"
+        ],
+        "path_edge_count": 3,
+        "path_method": "PATH_VIA_MAP",
+        "confidence": "CONFIRMED"
+      },
+      "project_blocker_field": "0x00686000",
+      "external_helper_class": "MUST_REACH_EXTERNAL_HELPER",
+      "also_direct_caller_of": [],
+      "reclassified": false,
+      "classification_error": false
+    },
+    {
+      "address": "0x00731A90",
+      "runtime_status": "BLOCKED_EXTERNAL",
+      "blocker_category": "BLOCKED_EXTERNAL",
+      "attribution": {
+        "kind": "TRANSITIVE",
+        "root_blocker": "0x00686000",
+        "root_label": "allocator",
+        "shortest_path": [
+          "0x00731A90",
+          "0x0071E730",
+          "0x00686000"
+        ],
+        "path_edge_count": 2,
+        "path_method": "PATH_VIA_MAP",
+        "confidence": "CONFIRMED"
+      },
+      "project_blocker_field": "0x00686000",
+      "external_helper_class": "MUST_REACH_EXTERNAL_HELPER",
+      "also_direct_caller_of": [],
+      "reclassified": false,
+      "classification_error": false
+    },
+    {
+      "address": "0x00734A70",
+      "runtime_status": "BLOCKED_EXTERNAL",
+      "blocker_category": "BLOCKED_EXTERNAL",
+      "attribution": {
+        "kind": "DIRECT",
+        "root_blocker": "0x00686000",
+        "root_label": "allocator",
+        "shortest_path": [
+          "0x00734A70",
+          "0x00686000"
+        ],
+        "path_edge_count": 1,
+        "path_method": "DIRECT_AUDIT_CALLER",
+        "confidence": "CONFIRMED"
+      },
+      "project_blocker_field": "0x00686000",
+      "external_helper_class": "MUST_REACH_EXTERNAL_HELPER",
+      "also_direct_caller_of": [],
+      "reclassified": false,
+      "classification_error": false
+    },
+    {
+      "address": "0x0073C5C0",
+      "runtime_status": "BLOCKED_EXTERNAL",
+      "blocker_category": "BLOCKED_EXTERNAL",
+      "attribution": {
+        "kind": "DIRECT",
+        "root_blocker": "0x00686000",
+        "root_label": "allocator",
+        "shortest_path": [
+          "0x0073C5C0",
+          "0x00686000"
+        ],
+        "path_edge_count": 1,
+        "path_method": "DIRECT_AUDIT_CALLER",
+        "confidence": "CONFIRMED"
+      },
+      "project_blocker_field": "0x00686000",
+      "external_helper_class": "MUST_REACH_EXTERNAL_HELPER",
+      "also_direct_caller_of": [],
+      "reclassified": false,
+      "classification_error": false
+    },
+    {
+      "address": "0x0073D0F0",
+      "runtime_status": "BLOCKED_EXTERNAL",
+      "blocker_category": "BLOCKED_EXTERNAL",
+      "attribution": {
+        "kind": "DIRECT",
+        "root_blocker": "0x00686000",
+        "root_label": "allocator",
+        "shortest_path": [
+          "0x0073D0F0",
+          "0x00686000"
+        ],
+        "path_edge_count": 1,
+        "path_method": "DIRECT_AUDIT_CALLER",
+        "confidence": "CONFIRMED"
+      },
+      "project_blocker_field": "0x00686000",
+      "external_helper_class": "MUST_REACH_EXTERNAL_HELPER",
+      "also_direct_caller_of": [],
+      "reclassified": false,
+      "classification_error": false
+    },
+    {
+      "address": "0x0074C370",
+      "runtime_status": "BLOCKED_EXTERNAL",
+      "blocker_category": "BLOCKED_EXTERNAL",
+      "attribution": {
+        "kind": "TRANSITIVE",
+        "root_blocker": "0x00686000",
+        "root_label": "allocator",
+        "shortest_path": [
+          "0x0074C370",
+          "0x00839BC0",
+          "0x00686000"
+        ],
+        "path_edge_count": 2,
+        "path_method": "PATH_VIA_MAP_THEN_DIRECT",
+        "confidence": "CONFIRMED"
+      },
+      "project_blocker_field": "0x00686000",
+      "external_helper_class": "MUST_REACH_EXTERNAL_HELPER",
+      "also_direct_caller_of": [],
+      "reclassified": false,
+      "classification_error": false
+    },
+    {
+      "address": "0x0074D4A0",
+      "runtime_status": "BLOCKED_EXTERNAL",
+      "blocker_category": "BLOCKED_EXTERNAL",
+      "attribution": {
+        "kind": "DIRECT",
+        "root_blocker": "0x00686000",
+        "root_label": "allocator",
+        "shortest_path": [
+          "0x0074D4A0",
+          "0x00686000"
+        ],
+        "path_edge_count": 1,
+        "path_method": "DIRECT_AUDIT_CALLER",
+        "confidence": "CONFIRMED"
+      },
+      "project_blocker_field": "0x00686000",
+      "external_helper_class": "MUST_REACH_EXTERNAL_HELPER",
+      "also_direct_caller_of": [],
+      "reclassified": false,
+      "classification_error": false
+    },
+    {
+      "address": "0x00750870",
+      "runtime_status": "BLOCKED_EXTERNAL",
+      "blocker_category": "BLOCKED_EXTERNAL",
+      "attribution": {
+        "kind": "DIRECT",
+        "root_blocker": "0x00686000",
+        "root_label": "allocator",
+        "shortest_path": [
+          "0x00750870",
+          "0x00686000"
+        ],
+        "path_edge_count": 1,
+        "path_method": "DIRECT_AUDIT_CALLER",
+        "confidence": "CONFIRMED"
+      },
+      "project_blocker_field": "0x00686000",
+      "external_helper_class": "MUST_REACH_EXTERNAL_HELPER",
+      "also_direct_caller_of": [
+        {
+          "root": "0x00686030",
+          "label": "free"
+        }
+      ],
+      "reclassified": false,
+      "classification_error": false
+    },
+    {
+      "address": "0x007508F0",
+      "runtime_status": "BLOCKED_EXTERNAL",
+      "blocker_category": "BLOCKED_EXTERNAL",
+      "attribution": {
+        "kind": "DIRECT",
+        "root_blocker": "0x00686000",
+        "root_label": "allocator",
+        "shortest_path": [
+          "0x007508F0",
+          "0x00686000"
+        ],
+        "path_edge_count": 1,
+        "path_method": "DIRECT_AUDIT_CALLER",
+        "confidence": "CONFIRMED"
+      },
+      "project_blocker_field": "0x00686000",
+      "external_helper_class": "MUST_REACH_EXTERNAL_HELPER",
+      "also_direct_caller_of": [
+        {
+          "root": "0x00686030",
+          "label": "free"
+        }
+      ],
+      "reclassified": false,
+      "classification_error": false
+    },
+    {
+      "address": "0x007525B0",
+      "runtime_status": "BLOCKED_EXTERNAL",
+      "blocker_category": "BLOCKED_EXTERNAL",
+      "attribution": {
+        "kind": "DIRECT",
+        "root_blocker": "0x00686000",
+        "root_label": "allocator",
+        "shortest_path": [
+          "0x007525B0",
+          "0x00686000"
+        ],
+        "path_edge_count": 1,
+        "path_method": "DIRECT_AUDIT_CALLER",
+        "confidence": "CONFIRMED"
+      },
+      "project_blocker_field": "0x00686000",
+      "external_helper_class": "MUST_REACH_EXTERNAL_HELPER",
+      "also_direct_caller_of": [],
+      "reclassified": false,
+      "classification_error": false
+    },
+    {
+      "address": "0x00752650",
+      "runtime_status": "BLOCKED_EXTERNAL",
+      "blocker_category": "BLOCKED_EXTERNAL",
+      "attribution": {
+        "kind": "DIRECT",
+        "root_blocker": "0x00686000",
+        "root_label": "allocator",
+        "shortest_path": [
+          "0x00752650",
+          "0x00686000"
+        ],
+        "path_edge_count": 1,
+        "path_method": "DIRECT_AUDIT_CALLER",
+        "confidence": "CONFIRMED"
+      },
+      "project_blocker_field": "0x00686000",
+      "external_helper_class": "MUST_REACH_EXTERNAL_HELPER",
+      "also_direct_caller_of": [],
+      "reclassified": false,
+      "classification_error": false
+    },
+    {
+      "address": "0x00757730",
+      "runtime_status": "BLOCKED_EXTERNAL",
+      "blocker_category": "BLOCKED_EXTERNAL",
+      "attribution": {
+        "kind": "DIRECT",
+        "root_blocker": "0x00686000",
+        "root_label": "allocator",
+        "shortest_path": [
+          "0x00757730",
+          "0x00686000"
+        ],
+        "path_edge_count": 1,
+        "path_method": "DIRECT_AUDIT_CALLER",
+        "confidence": "CONFIRMED"
+      },
+      "project_blocker_field": "0x00686000",
+      "external_helper_class": "MUST_REACH_EXTERNAL_HELPER",
+      "also_direct_caller_of": [],
+      "reclassified": false,
+      "classification_error": false
+    },
+    {
+      "address": "0x0075DCB0",
+      "runtime_status": "BLOCKED_EXTERNAL",
+      "blocker_category": "BLOCKED_EXTERNAL",
+      "attribution": {
+        "kind": "DIRECT",
+        "root_blocker": "0x00686000",
+        "root_label": "allocator",
+        "shortest_path": [
+          "0x0075DCB0",
+          "0x00686000"
+        ],
+        "path_edge_count": 1,
+        "path_method": "DIRECT_AUDIT_CALLER",
+        "confidence": "CONFIRMED"
+      },
+      "project_blocker_field": "0x00686000",
+      "external_helper_class": "MUST_REACH_EXTERNAL_HELPER",
+      "also_direct_caller_of": [],
+      "reclassified": false,
+      "classification_error": false
+    },
+    {
+      "address": "0x0075DF00",
+      "runtime_status": "BLOCKED_EXTERNAL",
+      "blocker_category": "BLOCKED_EXTERNAL",
+      "attribution": {
+        "kind": "DIRECT",
+        "root_blocker": "0x00686000",
+        "root_label": "allocator",
+        "shortest_path": [
+          "0x0075DF00",
+          "0x00686000"
+        ],
+        "path_edge_count": 1,
+        "path_method": "DIRECT_AUDIT_CALLER",
+        "confidence": "CONFIRMED"
+      },
+      "project_blocker_field": "0x00686000",
+      "external_helper_class": "MUST_REACH_EXTERNAL_HELPER",
+      "also_direct_caller_of": [],
+      "reclassified": false,
+      "classification_error": false
+    },
+    {
+      "address": "0x0075E080",
+      "runtime_status": "BLOCKED_EXTERNAL",
+      "blocker_category": "BLOCKED_EXTERNAL",
+      "attribution": {
+        "kind": "DIRECT",
+        "root_blocker": "0x00686000",
+        "root_label": "allocator",
+        "shortest_path": [
+          "0x0075E080",
+          "0x00686000"
+        ],
+        "path_edge_count": 1,
+        "path_method": "DIRECT_AUDIT_CALLER",
+        "confidence": "CONFIRMED"
+      },
+      "project_blocker_field": "0x00686000",
+      "external_helper_class": "MUST_REACH_EXTERNAL_HELPER",
+      "also_direct_caller_of": [],
+      "reclassified": false,
+      "classification_error": false
+    },
+    {
+      "address": "0x0075E790",
+      "runtime_status": "BLOCKED_EXTERNAL",
+      "blocker_category": "BLOCKED_EXTERNAL",
+      "attribution": {
+        "kind": "DIRECT",
+        "root_blocker": "0x00686000",
+        "root_label": "allocator",
+        "shortest_path": [
+          "0x0075E790",
+          "0x00686000"
+        ],
+        "path_edge_count": 1,
+        "path_method": "DIRECT_AUDIT_CALLER",
+        "confidence": "CONFIRMED"
+      },
+      "project_blocker_field": "0x00686000",
+      "external_helper_class": "MUST_REACH_EXTERNAL_HELPER",
+      "also_direct_caller_of": [],
+      "reclassified": false,
+      "classification_error": false
+    },
+    {
+      "address": "0x0075F3D0",
+      "runtime_status": "BLOCKED_EXTERNAL",
+      "blocker_category": "BLOCKED_EXTERNAL",
+      "attribution": {
+        "kind": "DIRECT",
+        "root_blocker": "0x00686000",
+        "root_label": "allocator",
+        "shortest_path": [
+          "0x0075F3D0",
+          "0x00686000"
+        ],
+        "path_edge_count": 1,
+        "path_method": "DIRECT_AUDIT_CALLER",
+        "confidence": "CONFIRMED"
+      },
+      "project_blocker_field": "0x00686000",
+      "external_helper_class": "MUST_REACH_EXTERNAL_HELPER",
+      "also_direct_caller_of": [],
+      "reclassified": false,
+      "classification_error": false
+    },
+    {
+      "address": "0x00762560",
+      "runtime_status": "BLOCKED_EXTERNAL",
+      "blocker_category": "BLOCKED_EXTERNAL",
+      "attribution": {
+        "kind": "DIRECT",
+        "root_blocker": "0x00686000",
+        "root_label": "allocator",
+        "shortest_path": [
+          "0x00762560",
+          "0x00686000"
+        ],
+        "path_edge_count": 1,
+        "path_method": "DIRECT_AUDIT_CALLER",
+        "confidence": "CONFIRMED"
+      },
+      "project_blocker_field": "0x00686000",
+      "external_helper_class": "MUST_REACH_EXTERNAL_HELPER",
+      "also_direct_caller_of": [],
+      "reclassified": false,
+      "classification_error": false
+    },
+    {
+      "address": "0x007632E0",
+      "runtime_status": "BLOCKED_EXTERNAL",
+      "blocker_category": "BLOCKED_EXTERNAL",
+      "attribution": {
+        "kind": "DIRECT",
+        "root_blocker": "0x00686000",
+        "root_label": "allocator",
+        "shortest_path": [
+          "0x007632E0",
+          "0x00686000"
+        ],
+        "path_edge_count": 1,
+        "path_method": "DIRECT_AUDIT_CALLER",
+        "confidence": "CONFIRMED"
+      },
+      "project_blocker_field": "0x00686000",
+      "external_helper_class": "MUST_REACH_EXTERNAL_HELPER",
+      "also_direct_caller_of": [],
+      "reclassified": false,
+      "classification_error": false
+    },
+    {
+      "address": "0x00768610",
+      "runtime_status": "BLOCKED_EXTERNAL",
+      "blocker_category": "BLOCKED_EXTERNAL",
+      "attribution": {
+        "kind": "DIRECT",
+        "root_blocker": "0x00686000",
+        "root_label": "allocator",
+        "shortest_path": [
+          "0x00768610",
+          "0x00686000"
+        ],
+        "path_edge_count": 1,
+        "path_method": "DIRECT_AUDIT_CALLER",
+        "confidence": "CONFIRMED"
+      },
+      "project_blocker_field": "0x00686000",
+      "external_helper_class": "MUST_REACH_EXTERNAL_HELPER",
+      "also_direct_caller_of": [],
+      "reclassified": false,
+      "classification_error": false
+    },
+    {
+      "address": "0x0076D460",
+      "runtime_status": "BLOCKED_EXTERNAL",
+      "blocker_category": "BLOCKED_EXTERNAL",
+      "attribution": {
+        "kind": "TRANSITIVE",
+        "root_blocker": "0x00686000",
+        "root_label": "allocator",
+        "shortest_path": [
+          "0x0076D460",
+          "0x00768610",
+          "0x00686000"
+        ],
+        "path_edge_count": 2,
+        "path_method": "PATH_VIA_MAP_THEN_DIRECT",
+        "confidence": "CONFIRMED"
+      },
+      "project_blocker_field": "0x00686000",
+      "external_helper_class": "MUST_REACH_EXTERNAL_HELPER",
+      "also_direct_caller_of": [],
+      "reclassified": false,
+      "classification_error": false
+    },
+    {
+      "address": "0x00771B80",
+      "runtime_status": "BLOCKED_EXTERNAL",
+      "blocker_category": "BLOCKED_EXTERNAL",
+      "attribution": {
+        "kind": "DIRECT",
+        "root_blocker": "0x00686000",
+        "root_label": "allocator",
+        "shortest_path": [
+          "0x00771B80",
+          "0x00686000"
+        ],
+        "path_edge_count": 1,
+        "path_method": "DIRECT_AUDIT_CALLER",
+        "confidence": "CONFIRMED"
+      },
+      "project_blocker_field": "0x00686000",
+      "external_helper_class": "MUST_REACH_EXTERNAL_HELPER",
+      "also_direct_caller_of": [],
+      "reclassified": false,
+      "classification_error": false
+    },
+    {
+      "address": "0x00771FB0",
+      "runtime_status": "BLOCKED_EXTERNAL",
+      "blocker_category": "BLOCKED_EXTERNAL",
+      "attribution": {
+        "kind": "DIRECT",
+        "root_blocker": "0x00686000",
+        "root_label": "allocator",
+        "shortest_path": [
+          "0x00771FB0",
+          "0x00686000"
+        ],
+        "path_edge_count": 1,
+        "path_method": "DIRECT_AUDIT_CALLER",
+        "confidence": "CONFIRMED"
+      },
+      "project_blocker_field": "0x00686000",
+      "external_helper_class": "MUST_REACH_EXTERNAL_HELPER",
+      "also_direct_caller_of": [],
+      "reclassified": false,
+      "classification_error": false
+    },
+    {
+      "address": "0x007723E0",
+      "runtime_status": "BLOCKED_EXTERNAL",
+      "blocker_category": "BLOCKED_EXTERNAL",
+      "attribution": {
+        "kind": "DIRECT",
+        "root_blocker": "0x00686000",
+        "root_label": "allocator",
+        "shortest_path": [
+          "0x007723E0",
+          "0x00686000"
+        ],
+        "path_edge_count": 1,
+        "path_method": "DIRECT_AUDIT_CALLER",
+        "confidence": "CONFIRMED"
+      },
+      "project_blocker_field": "0x00686000",
+      "external_helper_class": "MUST_REACH_EXTERNAL_HELPER",
+      "also_direct_caller_of": [],
+      "reclassified": false,
+      "classification_error": false
+    },
+    {
+      "address": "0x00779B30",
+      "runtime_status": "BLOCKED_EXTERNAL",
+      "blocker_category": "BLOCKED_EXTERNAL",
+      "attribution": {
+        "kind": "DIRECT",
+        "root_blocker": "0x00686000",
+        "root_label": "allocator",
+        "shortest_path": [
+          "0x00779B30",
+          "0x00686000"
+        ],
+        "path_edge_count": 1,
+        "path_method": "DIRECT_MAP_VERIFIED_AUDIT_INCOMPLETE",
+        "confidence": "CONFIRMED"
+      },
+      "project_blocker_field": "0x00686000",
+      "external_helper_class": "MUST_REACH_EXTERNAL_HELPER",
+      "also_direct_caller_of": [],
+      "reclassified": false,
+      "classification_error": false,
+      "audit_gap": {
+        "issue": "AUDIT_MISSING_DIRECT_CALLER",
+        "evidence": "ordinary .text contains call 0x00686000; audit complete:true omitted caller",
+        "confidence": "CONFIRMED"
+      }
+    },
+    {
+      "address": "0x0077A4E0",
+      "runtime_status": "BLOCKED_EXTERNAL",
+      "blocker_category": "BLOCKED_EXTERNAL",
+      "attribution": {
+        "kind": "DIRECT",
+        "root_blocker": "0x00686000",
+        "root_label": "allocator",
+        "shortest_path": [
+          "0x0077A4E0",
+          "0x00686000"
+        ],
+        "path_edge_count": 1,
+        "path_method": "DIRECT_MAP_VERIFIED_AUDIT_INCOMPLETE",
+        "confidence": "CONFIRMED"
+      },
+      "project_blocker_field": "0x00686000",
+      "external_helper_class": "MUST_REACH_EXTERNAL_HELPER",
+      "also_direct_caller_of": [],
+      "reclassified": false,
+      "classification_error": false,
+      "audit_gap": {
+        "issue": "AUDIT_MISSING_DIRECT_CALLER",
+        "evidence": "ordinary .text contains call 0x00686000; audit complete:true omitted caller",
+        "confidence": "CONFIRMED"
+      }
+    },
+    {
+      "address": "0x0077A610",
+      "runtime_status": "BLOCKED_EXTERNAL",
+      "blocker_category": "BLOCKED_EXTERNAL",
+      "attribution": {
+        "kind": "DIRECT",
+        "root_blocker": "0x00686000",
+        "root_label": "allocator",
+        "shortest_path": [
+          "0x0077A610",
+          "0x00686000"
+        ],
+        "path_edge_count": 1,
+        "path_method": "DIRECT_AUDIT_CALLER",
+        "confidence": "CONFIRMED"
+      },
+      "project_blocker_field": "0x00686000",
+      "external_helper_class": "MUST_REACH_EXTERNAL_HELPER",
+      "also_direct_caller_of": [
+        {
+          "root": "0x00686030",
+          "label": "free"
+        }
+      ],
+      "reclassified": false,
+      "classification_error": false
+    },
+    {
+      "address": "0x0077B540",
+      "runtime_status": "BLOCKED_EXTERNAL",
+      "blocker_category": "BLOCKED_EXTERNAL",
+      "attribution": {
+        "kind": "DIRECT",
+        "root_blocker": "0x00686000",
+        "root_label": "allocator",
+        "shortest_path": [
+          "0x0077B540",
+          "0x00686000"
+        ],
+        "path_edge_count": 1,
+        "path_method": "DIRECT_AUDIT_CALLER",
+        "confidence": "CONFIRMED"
+      },
+      "project_blocker_field": "0x00686000",
+      "external_helper_class": "MUST_REACH_EXTERNAL_HELPER",
+      "also_direct_caller_of": [],
+      "reclassified": false,
+      "classification_error": false
+    },
+    {
+      "address": "0x0077BF80",
+      "runtime_status": "BLOCKED_EXTERNAL",
+      "blocker_category": "BLOCKED_EXTERNAL",
+      "attribution": {
+        "kind": "DIRECT",
+        "root_blocker": "0x00686000",
+        "root_label": "allocator",
+        "shortest_path": [
+          "0x0077BF80",
+          "0x00686000"
+        ],
+        "path_edge_count": 1,
+        "path_method": "DIRECT_MAP_VERIFIED_AUDIT_INCOMPLETE",
+        "confidence": "CONFIRMED"
+      },
+      "project_blocker_field": "0x00686000",
+      "external_helper_class": "MUST_REACH_EXTERNAL_HELPER",
+      "also_direct_caller_of": [],
+      "reclassified": false,
+      "classification_error": false,
+      "audit_gap": {
+        "issue": "AUDIT_MISSING_DIRECT_CALLER",
+        "evidence": "ordinary .text contains call 0x00686000; audit complete:true omitted caller",
+        "confidence": "CONFIRMED"
+      }
+    },
+    {
+      "address": "0x0077C8A0",
+      "runtime_status": "BLOCKED_EXTERNAL",
+      "blocker_category": "BLOCKED_EXTERNAL",
+      "attribution": {
+        "kind": "TRANSITIVE",
+        "root_blocker": "0x00686000",
+        "root_label": "allocator",
+        "shortest_path": [
+          "0x0077C8A0",
+          "0x0077A4E0",
+          "0x00686000"
+        ],
+        "path_edge_count": 2,
+        "path_method": "PATH_VIA_MAP",
+        "confidence": "CONFIRMED"
+      },
+      "project_blocker_field": "0x00686000",
+      "external_helper_class": "MUST_REACH_EXTERNAL_HELPER",
+      "also_direct_caller_of": [],
+      "reclassified": false,
+      "classification_error": false
+    },
+    {
+      "address": "0x0077C950",
+      "runtime_status": "BLOCKED_EXTERNAL",
+      "blocker_category": "BLOCKED_EXTERNAL",
+      "attribution": {
+        "kind": "TRANSITIVE",
+        "root_blocker": "0x00686000",
+        "root_label": "allocator",
+        "shortest_path": [
+          "0x0077C950",
+          "0x00779B30",
+          "0x00686000"
+        ],
+        "path_edge_count": 2,
+        "path_method": "PATH_VIA_MAP",
+        "confidence": "CONFIRMED"
+      },
+      "project_blocker_field": "0x00686000",
+      "external_helper_class": "MUST_REACH_EXTERNAL_HELPER",
+      "also_direct_caller_of": [],
+      "reclassified": false,
+      "classification_error": false
+    },
+    {
+      "address": "0x0077C9B0",
+      "runtime_status": "BLOCKED_EXTERNAL",
+      "blocker_category": "BLOCKED_EXTERNAL",
+      "attribution": {
+        "kind": "TRANSITIVE",
+        "root_blocker": "0x00686000",
+        "root_label": "allocator",
+        "shortest_path": [
+          "0x0077C9B0",
+          "0x00779B30",
+          "0x00686000"
+        ],
+        "path_edge_count": 2,
+        "path_method": "PATH_VIA_MAP",
+        "confidence": "CONFIRMED"
+      },
+      "project_blocker_field": "0x00686000",
+      "external_helper_class": "MUST_REACH_EXTERNAL_HELPER",
+      "also_direct_caller_of": [],
+      "reclassified": false,
+      "classification_error": false
+    },
+    {
+      "address": "0x0077DCC0",
+      "runtime_status": "BLOCKED_EXTERNAL",
+      "blocker_category": "BLOCKED_EXTERNAL",
+      "attribution": {
+        "kind": "DIRECT",
+        "root_blocker": "0x00686000",
+        "root_label": "allocator",
+        "shortest_path": [
+          "0x0077DCC0",
+          "0x00686000"
+        ],
+        "path_edge_count": 1,
+        "path_method": "DIRECT_AUDIT_CALLER",
+        "confidence": "CONFIRMED"
+      },
+      "project_blocker_field": "0x00686000",
+      "external_helper_class": "MUST_REACH_EXTERNAL_HELPER",
+      "also_direct_caller_of": [],
+      "reclassified": false,
+      "classification_error": false
+    },
+    {
+      "address": "0x0077EA60",
+      "runtime_status": "BLOCKED_EXTERNAL",
+      "blocker_category": "BLOCKED_EXTERNAL",
+      "attribution": {
+        "kind": "DIRECT",
+        "root_blocker": "0x00686000",
+        "root_label": "allocator",
+        "shortest_path": [
+          "0x0077EA60",
+          "0x00686000"
+        ],
+        "path_edge_count": 1,
+        "path_method": "DIRECT_AUDIT_CALLER",
+        "confidence": "CONFIRMED"
+      },
+      "project_blocker_field": "0x00686000",
+      "external_helper_class": "MUST_REACH_EXTERNAL_HELPER",
+      "also_direct_caller_of": [
+        {
+          "root": "0x00686030",
+          "label": "free"
+        }
+      ],
+      "reclassified": false,
+      "classification_error": false
+    },
+    {
+      "address": "0x0077F760",
+      "runtime_status": "BLOCKED_EXTERNAL",
+      "blocker_category": "BLOCKED_EXTERNAL",
+      "attribution": {
+        "kind": "TRANSITIVE",
+        "root_blocker": "0x00686000",
+        "root_label": "allocator",
+        "shortest_path": [
+          "0x0077F760",
+          "0x007508F0",
+          "0x00686000"
+        ],
+        "path_edge_count": 2,
+        "path_method": "PATH_VIA_MAP_THEN_DIRECT",
+        "confidence": "CONFIRMED"
+      },
+      "project_blocker_field": "0x00686000",
+      "external_helper_class": "MUST_REACH_EXTERNAL_HELPER",
+      "also_direct_caller_of": [],
+      "reclassified": false,
+      "classification_error": false
+    },
+    {
+      "address": "0x0077FEE0",
+      "runtime_status": "BLOCKED_EXTERNAL",
+      "blocker_category": "BLOCKED_EXTERNAL",
+      "attribution": {
+        "kind": "DIRECT",
+        "root_blocker": "0x00686000",
+        "root_label": "allocator",
+        "shortest_path": [
+          "0x0077FEE0",
+          "0x00686000"
+        ],
+        "path_edge_count": 1,
+        "path_method": "DIRECT_AUDIT_CALLER",
+        "confidence": "CONFIRMED"
+      },
+      "project_blocker_field": "0x00686000",
+      "external_helper_class": "MUST_REACH_EXTERNAL_HELPER",
+      "also_direct_caller_of": [],
+      "reclassified": false,
+      "classification_error": false
+    },
+    {
+      "address": "0x00780180",
+      "runtime_status": "BLOCKED_EXTERNAL",
+      "blocker_category": "BLOCKED_EXTERNAL",
+      "attribution": {
+        "kind": "DIRECT",
+        "root_blocker": "0x00686000",
+        "root_label": "allocator",
+        "shortest_path": [
+          "0x00780180",
+          "0x00686000"
+        ],
+        "path_edge_count": 1,
+        "path_method": "DIRECT_MAP_VERIFIED_AUDIT_INCOMPLETE",
+        "confidence": "CONFIRMED"
+      },
+      "project_blocker_field": "0x00686000",
+      "external_helper_class": "MUST_REACH_EXTERNAL_HELPER",
+      "also_direct_caller_of": [],
+      "reclassified": false,
+      "classification_error": false,
+      "audit_gap": {
+        "issue": "AUDIT_MISSING_DIRECT_CALLER",
+        "evidence": "ordinary .text contains call 0x00686000; audit complete:true omitted caller",
+        "confidence": "CONFIRMED"
+      }
+    },
+    {
+      "address": "0x00780D60",
+      "runtime_status": "BLOCKED_EXTERNAL",
+      "blocker_category": "BLOCKED_EXTERNAL",
+      "attribution": {
+        "kind": "DIRECT",
+        "root_blocker": "0x00686000",
+        "root_label": "allocator",
+        "shortest_path": [
+          "0x00780D60",
+          "0x00686000"
+        ],
+        "path_edge_count": 1,
+        "path_method": "DIRECT_AUDIT_CALLER",
+        "confidence": "CONFIRMED"
+      },
+      "project_blocker_field": "0x00686000",
+      "external_helper_class": "MUST_REACH_EXTERNAL_HELPER",
+      "also_direct_caller_of": [
+        {
+          "root": "0x00686030",
+          "label": "free"
+        }
+      ],
+      "reclassified": false,
+      "classification_error": false
+    },
+    {
+      "address": "0x00782570",
+      "runtime_status": "BLOCKED_EXTERNAL",
+      "blocker_category": "BLOCKED_EXTERNAL",
+      "attribution": {
+        "kind": "TRANSITIVE",
+        "root_blocker": "0x00686000",
+        "root_label": "allocator",
+        "shortest_path": [
+          "0x00782570",
+          "0x00762560",
+          "0x00686000"
+        ],
+        "path_edge_count": 2,
+        "path_method": "PATH_VIA_MAP_THEN_DIRECT",
+        "confidence": "CONFIRMED"
+      },
+      "project_blocker_field": "0x00686000",
+      "external_helper_class": "MUST_REACH_EXTERNAL_HELPER",
+      "also_direct_caller_of": [],
+      "reclassified": false,
+      "classification_error": false
+    },
+    {
+      "address": "0x00782D10",
+      "runtime_status": "BLOCKED_EXTERNAL",
+      "blocker_category": "BLOCKED_EXTERNAL",
+      "attribution": {
+        "kind": "TRANSITIVE",
+        "root_blocker": "0x00686000",
+        "root_label": "allocator",
+        "shortest_path": [
+          "0x00782D10",
+          "0x00782A50",
+          "0x00686000"
+        ],
+        "path_edge_count": 2,
+        "path_method": "PATH_VIA_MAP_THEN_DIRECT",
+        "confidence": "CONFIRMED"
+      },
+      "project_blocker_field": "0x00686000",
+      "external_helper_class": "MUST_REACH_EXTERNAL_HELPER",
+      "also_direct_caller_of": [],
+      "reclassified": false,
+      "classification_error": false
+    },
+    {
+      "address": "0x00787390",
+      "runtime_status": "BLOCKED_EXTERNAL",
+      "blocker_category": "BLOCKED_EXTERNAL",
+      "attribution": {
+        "kind": "DIRECT",
+        "root_blocker": "0x00686000",
+        "root_label": "allocator",
+        "shortest_path": [
+          "0x00787390",
+          "0x00686000"
+        ],
+        "path_edge_count": 1,
+        "path_method": "DIRECT_AUDIT_CALLER",
+        "confidence": "CONFIRMED"
+      },
+      "project_blocker_field": "0x00686000",
+      "external_helper_class": "MUST_REACH_EXTERNAL_HELPER",
+      "also_direct_caller_of": [],
+      "reclassified": false,
+      "classification_error": false
+    },
+    {
+      "address": "0x00787E90",
+      "runtime_status": "BLOCKED_EXTERNAL",
+      "blocker_category": "BLOCKED_EXTERNAL",
+      "attribution": {
+        "kind": "DIRECT",
+        "root_blocker": "0x00686000",
+        "root_label": "allocator",
+        "shortest_path": [
+          "0x00787E90",
+          "0x00686000"
+        ],
+        "path_edge_count": 1,
+        "path_method": "DIRECT_AUDIT_CALLER",
+        "confidence": "CONFIRMED"
+      },
+      "project_blocker_field": "0x00686000",
+      "external_helper_class": "MUST_REACH_EXTERNAL_HELPER",
+      "also_direct_caller_of": [],
+      "reclassified": false,
+      "classification_error": false
+    },
+    {
+      "address": "0x00787F80",
+      "runtime_status": "BLOCKED_EXTERNAL",
+      "blocker_category": "BLOCKED_EXTERNAL",
+      "attribution": {
+        "kind": "DIRECT",
+        "root_blocker": "0x00686000",
+        "root_label": "allocator",
+        "shortest_path": [
+          "0x00787F80",
+          "0x00686000"
+        ],
+        "path_edge_count": 1,
+        "path_method": "DIRECT_AUDIT_CALLER",
+        "confidence": "CONFIRMED"
+      },
+      "project_blocker_field": "0x00686000",
+      "external_helper_class": "MUST_REACH_EXTERNAL_HELPER",
+      "also_direct_caller_of": [],
+      "reclassified": false,
+      "classification_error": false
+    },
+    {
+      "address": "0x007953A0",
+      "runtime_status": "BLOCKED_EXTERNAL",
+      "blocker_category": "BLOCKED_EXTERNAL",
+      "attribution": {
+        "kind": "DIRECT",
+        "root_blocker": "0x00686000",
+        "root_label": "allocator",
+        "shortest_path": [
+          "0x007953A0",
+          "0x00686000"
+        ],
+        "path_edge_count": 1,
+        "path_method": "DIRECT_AUDIT_CALLER",
+        "confidence": "CONFIRMED"
+      },
+      "project_blocker_field": "0x00686000",
+      "external_helper_class": "MUST_REACH_EXTERNAL_HELPER",
+      "also_direct_caller_of": [],
+      "reclassified": false,
+      "classification_error": false
+    },
+    {
+      "address": "0x0079DC80",
+      "runtime_status": "BLOCKED_EXTERNAL",
+      "blocker_category": "BLOCKED_EXTERNAL",
+      "attribution": {
+        "kind": "DIRECT",
+        "root_blocker": "0x00686000",
+        "root_label": "allocator",
+        "shortest_path": [
+          "0x0079DC80",
+          "0x00686000"
+        ],
+        "path_edge_count": 1,
+        "path_method": "DIRECT_AUDIT_CALLER",
+        "confidence": "CONFIRMED"
+      },
+      "project_blocker_field": "0x00686000",
+      "external_helper_class": "MUST_REACH_EXTERNAL_HELPER",
+      "also_direct_caller_of": [],
+      "reclassified": false,
+      "classification_error": false
+    },
+    {
+      "address": "0x007B5020",
+      "runtime_status": "BLOCKED_EXTERNAL",
+      "blocker_category": "BLOCKED_EXTERNAL",
+      "attribution": {
+        "kind": "DIRECT",
+        "root_blocker": "0x00686000",
+        "root_label": "allocator",
+        "shortest_path": [
+          "0x007B5020",
+          "0x00686000"
+        ],
+        "path_edge_count": 1,
+        "path_method": "DIRECT_AUDIT_CALLER",
+        "confidence": "CONFIRMED"
+      },
+      "project_blocker_field": "0x00686000",
+      "external_helper_class": "MUST_REACH_EXTERNAL_HELPER",
+      "also_direct_caller_of": [],
+      "reclassified": false,
+      "classification_error": false
+    },
+    {
+      "address": "0x007EA480",
+      "runtime_status": "BLOCKED_EXTERNAL",
+      "blocker_category": "BLOCKED_EXTERNAL",
+      "attribution": {
+        "kind": "DIRECT",
+        "root_blocker": "0x00686000",
+        "root_label": "allocator",
+        "shortest_path": [
+          "0x007EA480",
+          "0x00686000"
+        ],
+        "path_edge_count": 1,
+        "path_method": "DIRECT_AUDIT_CALLER",
+        "confidence": "CONFIRMED"
+      },
+      "project_blocker_field": "0x00686000",
+      "external_helper_class": "MUST_REACH_EXTERNAL_HELPER",
+      "also_direct_caller_of": [],
+      "reclassified": false,
+      "classification_error": false
+    },
+    {
+      "address": "0x007F5760",
+      "runtime_status": "BLOCKED_EXTERNAL",
+      "blocker_category": "BLOCKED_EXTERNAL",
+      "attribution": {
+        "kind": "DIRECT",
+        "root_blocker": "0x00686000",
+        "root_label": "allocator",
+        "shortest_path": [
+          "0x007F5760",
+          "0x00686000"
+        ],
+        "path_edge_count": 1,
+        "path_method": "DIRECT_AUDIT_CALLER",
+        "confidence": "CONFIRMED"
+      },
+      "project_blocker_field": "0x00686000",
+      "external_helper_class": "MUST_REACH_EXTERNAL_HELPER",
+      "also_direct_caller_of": [],
+      "reclassified": false,
+      "classification_error": false
+    },
+    {
+      "address": "0x007F9710",
+      "runtime_status": "BLOCKED_EXTERNAL",
+      "blocker_category": "BLOCKED_EXTERNAL",
+      "attribution": {
+        "kind": "DIRECT",
+        "root_blocker": "0x00686000",
+        "root_label": "allocator",
+        "shortest_path": [
+          "0x007F9710",
+          "0x00686000"
+        ],
+        "path_edge_count": 1,
+        "path_method": "DIRECT_AUDIT_CALLER",
+        "confidence": "CONFIRMED"
+      },
+      "project_blocker_field": "0x00686000",
+      "external_helper_class": "MUST_REACH_EXTERNAL_HELPER",
+      "also_direct_caller_of": [],
+      "reclassified": false,
+      "classification_error": false
+    },
+    {
+      "address": "0x007FF0A0",
+      "runtime_status": "BLOCKED_EXTERNAL",
+      "blocker_category": "BLOCKED_EXTERNAL",
+      "attribution": {
+        "kind": "DIRECT",
+        "root_blocker": "0x00686000",
+        "root_label": "allocator",
+        "shortest_path": [
+          "0x007FF0A0",
+          "0x00686000"
+        ],
+        "path_edge_count": 1,
+        "path_method": "DIRECT_AUDIT_CALLER",
+        "confidence": "CONFIRMED"
+      },
+      "project_blocker_field": "0x00686000",
+      "external_helper_class": "MUST_REACH_EXTERNAL_HELPER",
+      "also_direct_caller_of": [],
+      "reclassified": false,
+      "classification_error": false
+    },
+    {
+      "address": "0x00807A80",
+      "runtime_status": "BLOCKED_EXTERNAL",
+      "blocker_category": "BLOCKED_EXTERNAL",
+      "attribution": {
+        "kind": "DIRECT",
+        "root_blocker": "0x00686000",
+        "root_label": "allocator",
+        "shortest_path": [
+          "0x00807A80",
+          "0x00686000"
+        ],
+        "path_edge_count": 1,
+        "path_method": "DIRECT_AUDIT_CALLER",
+        "confidence": "CONFIRMED"
+      },
+      "project_blocker_field": "0x00686000",
+      "external_helper_class": "MUST_REACH_EXTERNAL_HELPER",
+      "also_direct_caller_of": [],
+      "reclassified": false,
+      "classification_error": false
+    },
+    {
+      "address": "0x008085D0",
+      "runtime_status": "BLOCKED_EXTERNAL",
+      "blocker_category": "BLOCKED_EXTERNAL",
+      "attribution": {
+        "kind": "DIRECT",
+        "root_blocker": "0x00686000",
+        "root_label": "allocator",
+        "shortest_path": [
+          "0x008085D0",
+          "0x00686000"
+        ],
+        "path_edge_count": 1,
+        "path_method": "DIRECT_AUDIT_CALLER",
+        "confidence": "CONFIRMED"
+      },
+      "project_blocker_field": "0x00686000",
+      "external_helper_class": "MUST_REACH_EXTERNAL_HELPER",
+      "also_direct_caller_of": [],
+      "reclassified": false,
+      "classification_error": false
+    },
+    {
+      "address": "0x00809740",
+      "runtime_status": "BLOCKED_EXTERNAL",
+      "blocker_category": "BLOCKED_EXTERNAL",
+      "attribution": {
+        "kind": "DIRECT",
+        "root_blocker": "0x00686000",
+        "root_label": "allocator",
+        "shortest_path": [
+          "0x00809740",
+          "0x00686000"
+        ],
+        "path_edge_count": 1,
+        "path_method": "DIRECT_AUDIT_CALLER",
+        "confidence": "CONFIRMED"
+      },
+      "project_blocker_field": "0x00686000",
+      "external_helper_class": "MUST_REACH_EXTERNAL_HELPER",
+      "also_direct_caller_of": [],
+      "reclassified": false,
+      "classification_error": false
+    },
+    {
+      "address": "0x0080A070",
+      "runtime_status": "BLOCKED_EXTERNAL",
+      "blocker_category": "BLOCKED_EXTERNAL",
+      "attribution": {
+        "kind": "DIRECT",
+        "root_blocker": "0x00686000",
+        "root_label": "allocator",
+        "shortest_path": [
+          "0x0080A070",
+          "0x00686000"
+        ],
+        "path_edge_count": 1,
+        "path_method": "DIRECT_AUDIT_CALLER",
+        "confidence": "CONFIRMED"
+      },
+      "project_blocker_field": "0x00686000",
+      "external_helper_class": "MUST_REACH_EXTERNAL_HELPER",
+      "also_direct_caller_of": [],
+      "reclassified": false,
+      "classification_error": false
+    },
+    {
+      "address": "0x0080ABF0",
+      "runtime_status": "BLOCKED_EXTERNAL",
+      "blocker_category": "BLOCKED_EXTERNAL",
+      "attribution": {
+        "kind": "TRANSITIVE",
+        "root_blocker": "0x00686000",
+        "root_label": "allocator",
+        "shortest_path": [
+          "0x0080ABF0",
+          "0x0080A070",
+          "0x00686000"
+        ],
+        "path_edge_count": 2,
+        "path_method": "PATH_VIA_MAP_THEN_DIRECT",
+        "confidence": "CONFIRMED"
+      },
+      "project_blocker_field": "0x00686000",
+      "external_helper_class": "MUST_REACH_EXTERNAL_HELPER",
+      "also_direct_caller_of": [],
+      "reclassified": false,
+      "classification_error": false
+    },
+    {
+      "address": "0x0080C000",
+      "runtime_status": "BLOCKED_EXTERNAL",
+      "blocker_category": "BLOCKED_EXTERNAL",
+      "attribution": {
+        "kind": "DIRECT",
+        "root_blocker": "0x00686000",
+        "root_label": "allocator",
+        "shortest_path": [
+          "0x0080C000",
+          "0x00686000"
+        ],
+        "path_edge_count": 1,
+        "path_method": "DIRECT_AUDIT_CALLER",
+        "confidence": "CONFIRMED"
+      },
+      "project_blocker_field": "0x00686000",
+      "external_helper_class": "MUST_REACH_EXTERNAL_HELPER",
+      "also_direct_caller_of": [
+        {
+          "root": "0x00686030",
+          "label": "free"
+        }
+      ],
+      "reclassified": false,
+      "classification_error": false
+    },
+    {
+      "address": "0x0080E4C0",
+      "runtime_status": "BLOCKED_EXTERNAL",
+      "blocker_category": "BLOCKED_EXTERNAL",
+      "attribution": {
+        "kind": "DIRECT",
+        "root_blocker": "0x00686000",
+        "root_label": "allocator",
+        "shortest_path": [
+          "0x0080E4C0",
+          "0x00686000"
+        ],
+        "path_edge_count": 1,
+        "path_method": "DIRECT_AUDIT_CALLER",
+        "confidence": "CONFIRMED"
+      },
+      "project_blocker_field": "0x00686000",
+      "external_helper_class": "MUST_REACH_EXTERNAL_HELPER",
+      "also_direct_caller_of": [],
+      "reclassified": false,
+      "classification_error": false
+    },
+    {
+      "address": "0x008101B0",
+      "runtime_status": "BLOCKED_EXTERNAL",
+      "blocker_category": "BLOCKED_EXTERNAL",
+      "attribution": {
+        "kind": "DIRECT",
+        "root_blocker": "0x00686000",
+        "root_label": "allocator",
+        "shortest_path": [
+          "0x008101B0",
+          "0x00686000"
+        ],
+        "path_edge_count": 1,
+        "path_method": "DIRECT_AUDIT_CALLER",
+        "confidence": "CONFIRMED"
+      },
+      "project_blocker_field": "0x00686000",
+      "external_helper_class": "MUST_REACH_EXTERNAL_HELPER",
+      "also_direct_caller_of": [],
+      "reclassified": false,
+      "classification_error": false
+    },
+    {
+      "address": "0x0081F9F0",
+      "runtime_status": "BLOCKED_EXTERNAL",
+      "blocker_category": "BLOCKED_EXTERNAL",
+      "attribution": {
+        "kind": "DIRECT",
+        "root_blocker": "0x00686000",
+        "root_label": "allocator",
+        "shortest_path": [
+          "0x0081F9F0",
+          "0x00686000"
+        ],
+        "path_edge_count": 1,
+        "path_method": "DIRECT_AUDIT_CALLER",
+        "confidence": "CONFIRMED"
+      },
+      "project_blocker_field": "0x00686000",
+      "external_helper_class": "MUST_REACH_EXTERNAL_HELPER",
+      "also_direct_caller_of": [],
+      "reclassified": false,
+      "classification_error": false
+    },
+    {
+      "address": "0x00830380",
+      "runtime_status": "BLOCKED_EXTERNAL",
+      "blocker_category": "BLOCKED_EXTERNAL",
+      "attribution": {
+        "kind": "DIRECT",
+        "root_blocker": "0x00686000",
+        "root_label": "allocator",
+        "shortest_path": [
+          "0x00830380",
+          "0x00686000"
+        ],
+        "path_edge_count": 1,
+        "path_method": "DIRECT_AUDIT_CALLER",
+        "confidence": "CONFIRMED"
+      },
+      "project_blocker_field": "0x00686000",
+      "external_helper_class": "MUST_REACH_EXTERNAL_HELPER",
+      "also_direct_caller_of": [],
+      "reclassified": false,
+      "classification_error": false
+    },
+    {
+      "address": "0x008429D0",
+      "runtime_status": "BLOCKED_EXTERNAL",
+      "blocker_category": "BLOCKED_EXTERNAL",
+      "attribution": {
+        "kind": "DIRECT",
+        "root_blocker": "0x00686000",
+        "root_label": "allocator",
+        "shortest_path": [
+          "0x008429D0",
+          "0x00686000"
+        ],
+        "path_edge_count": 1,
+        "path_method": "DIRECT_AUDIT_CALLER",
+        "confidence": "CONFIRMED"
+      },
+      "project_blocker_field": "0x00686000",
+      "external_helper_class": "MUST_REACH_EXTERNAL_HELPER",
+      "also_direct_caller_of": [],
+      "reclassified": false,
+      "classification_error": false
+    },
+    {
+      "address": "0x00869BC0",
+      "runtime_status": "BLOCKED_EXTERNAL",
+      "blocker_category": "BLOCKED_EXTERNAL",
+      "attribution": {
+        "kind": "DIRECT",
+        "root_blocker": "0x00686000",
+        "root_label": "allocator",
+        "shortest_path": [
+          "0x00869BC0",
+          "0x00686000"
+        ],
+        "path_edge_count": 1,
+        "path_method": "DIRECT_AUDIT_CALLER",
+        "confidence": "CONFIRMED"
+      },
+      "project_blocker_field": "0x00686000",
+      "external_helper_class": "MUST_REACH_EXTERNAL_HELPER",
+      "also_direct_caller_of": [],
+      "reclassified": false,
+      "classification_error": false
+    },
+    {
+      "address": "0x008757A0",
+      "runtime_status": "BLOCKED_EXTERNAL",
+      "blocker_category": "BLOCKED_EXTERNAL",
+      "attribution": {
+        "kind": "DIRECT",
+        "root_blocker": "0x00686000",
+        "root_label": "allocator",
+        "shortest_path": [
+          "0x008757A0",
+          "0x00686000"
+        ],
+        "path_edge_count": 1,
+        "path_method": "DIRECT_AUDIT_CALLER",
+        "confidence": "CONFIRMED"
+      },
+      "project_blocker_field": "0x00686000",
+      "external_helper_class": "MUST_REACH_EXTERNAL_HELPER",
+      "also_direct_caller_of": [],
+      "reclassified": false,
+      "classification_error": false
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 {
-  "current_phase": 43,
-  "strategy": "Phase 43: graphics evidence integration \u2014 synthetic PCDisplayConfig clamp, AA probe/fallback correction, mode selection, presentation builder, and ownership fixtures. FIRST_FRAME remains BLOCKED_BY_PROTECTED_BACKEND.",
+  "current_phase": 44,
+  "strategy": "Phase 44: attribute all 74 BLOCKED_EXTERNAL to allocator 0x00686000 (56 direct / 18 transitive); model callback registration edges without execution; FIRST_FRAME remains blocked.",
   "boundaries": {
     "0x00686000": {
       "status": "PROTECTED_OR_EXTERNAL_DEPENDENCY",
@@ -444,6 +444,11 @@
     {
       "phase": 43,
       "name": "Graphics evidence integration and synthetic device lifecycle",
+      "state": "completed"
+    },
+    {
+      "phase": 44,
+      "name": "External blocker attribution and callback reachability",
       "state": "completed"
     }
   ],

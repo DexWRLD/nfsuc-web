@@ -1,0 +1,42 @@
+{
+  "phase": 44,
+  "edges": [
+    {
+      "edge_kind": "CALLBACK_REGISTRATION",
+      "not_execution": true,
+      "registrar": "0x0072E340",
+      "site": "0x0072E497",
+      "ref_type": "DATA",
+      "callback": "0x0072B170",
+      "label": "window callback boundary / GameFrame lpfnWndProc-shaped store",
+      "audit_readiness": "NEEDS_MORE_STATIC_EVIDENCE",
+      "confidence": "CONFIRMED_REGISTRATION",
+      "execution_modeled": false,
+      "note": "Address supplied into window-class preparation; not an ordinary direct call. Do not treat as executed WndProc without further evidence.",
+      "registrar_runtime_status": "BLOCKED_IMPORT",
+      "callback_runtime_status": "ABSENT",
+      "affects_blocked_external_count": false
+    },
+    {
+      "edge_kind": "CALLBACK_REGISTRATION",
+      "not_execution": true,
+      "registrar": "0x0076CA20",
+      "site": "0x0076CB40",
+      "ref_type": "DATA",
+      "callback": "0x00766730",
+      "label": "render-thread callback boundary",
+      "audit_readiness": "NEEDS_MORE_STATIC_EVIDENCE",
+      "confidence": "CONFIRMED_REGISTRATION",
+      "execution_modeled": false,
+      "note": "Callback address pushed before thread-wrapper call; registration edge only. Actual callback execution remains unmodeled as an ordinary call-graph edge.",
+      "registrar_runtime_status": "UNKNOWN",
+      "callback_runtime_status": "UNKNOWN",
+      "affects_blocked_external_count": false
+    }
+  ],
+  "semantics": {
+    "registration_vs_execution": "DISTINCT",
+    "changes_blocked_external": false,
+    "invented_win32_mappings": false
+  }
+}
