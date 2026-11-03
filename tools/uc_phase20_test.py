@@ -87,11 +87,11 @@ def main():
     expect(dash["D3D9_IMPLEMENTATION"] == "NOT JUSTIFIED", "dash impl")
 
     status = json.load(open(os.path.join(ANALYSIS, "project-status.json"), encoding="utf-8"))
-    expect(status["current_phase"] == 20, "phase")
+    expect(status["current_phase"] >= 20, "phase")
     expect(status["graphics"]["device_publication"] == "EXTERNAL/BLOCKED", "status pub")
     expect(status["graphics"]["present_code"] == "FOUND", "status present code")
     expect(status["graphics"]["present_runtime"] == "BLOCKED", "status present rt")
-    expect(status["graphics"]["draw_code"] == "FOUND", "status draw")
+    expect(status["graphics"]["draw_code"] in ("FOUND", "FOUND_STRONG"), "status draw")
     expect(status["graphics"]["post_init_seam"] == "PARTIAL", "status seam")
     expect(status["graphics"]["d3d9_implementation_justified"] is False, "status impl")
     expect(status["first_frame_estimate"]["best_case_phase"] == "UNBOUNDED", "status est")

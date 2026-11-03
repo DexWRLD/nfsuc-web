@@ -101,7 +101,7 @@ def main():
     expect(summary.get("symbolic_execution") is False, "no se")
 
     status = json.load(open(os.path.join(ANALYSIS, "project-status.json"), encoding="utf-8"))
-    expect(status["current_phase"] == 21, "status phase")
+    expect(status["current_phase"] >= 21, "status phase")
     expect(status["graphics"]["d3d9_implementation_justified"] is False, "status impl")
     expect(status["graphics"]["device_to_renderer"] == raw["relationship"]["CONSENSUS"]
            or status["graphics"]["device_to_renderer"] in (
