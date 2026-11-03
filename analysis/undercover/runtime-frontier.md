@@ -15,8 +15,8 @@ Executed paths are smaller than these static closures. `analysis/undercover/runt
 | UNKNOWN_RUNTIME_DEPENDENCY | 1862 |
 | TLS_BOUNDARY | 1383 |
 | PROTECTED_BOUNDARY | 585 |
-| READY_WITH_IMPLEMENTED_IMPORTS | 76 |
-| KNOWN_IMPORT_MISSING_HLE | 71 |
+| READY_WITH_IMPLEMENTED_IMPORTS | 102 |
+| KNOWN_IMPORT_MISSING_HLE | 45 |
 | RESOLVABLE_INDIRECT_CALL | 36 |
 | UNKNOWN_IMPORT_ABI | 5 |
 | FILESYSTEM_BOUNDARY | 5 |
@@ -91,7 +91,7 @@ Examples are guest addresses, not names invented for the code.
 - TLS_BOUNDARY: `340` functions at `0x0080E770` (depth 31, missing imports vsprintf, _crt_debugger_hook).
 - UNRESOLVED_INDIRECT_CALL: `334` functions at `0x009E9440` (depth 29, missing imports vsprintf, _crt_debugger_hook).
 - READY_WITH_IMPLEMENTED_IMPORTS: `35` functions at `0x0096CED0` (depth 5, missing imports none).
-- KNOWN_IMPORT_MISSING_HLE: `25` functions at `0x0094FFD0` (depth 6, missing imports _CItan, floor, _CIsqrt).
+- KNOWN_IMPORT_MISSING_HLE: `25` functions at `0x0094FFD0` (depth 6, missing imports _CItan, floor).
 - READY: `19` functions at `0x00B01EB0` (depth 5, missing imports none).
 - RESOLVABLE_INDIRECT_CALL: `18` functions at `0x00906973` (depth 7, missing imports strnlen).
 - UNKNOWN_RUNTIME_DEPENDENCY: `16` functions at `0x009D0EE0` (depth 6, missing imports _wassert).

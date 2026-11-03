@@ -6,7 +6,6 @@ Counts use the reachable high-confidence graph. A function is unlocked by one mi
 
 | symbol | DLL | convention | direct sites | closures blocked only by it | functions in those closures | high roots whose closure also contains it |
 | --- | --- | --- | --- | --- | --- | --- |
-| `_CIsqrt` | MSVCR80.dll | cdecl | 116 | 55 | 88 | 191 |
 | `_wassert` | MSVCR80.dll | cdecl | 1 | 13 | 22 | 48 |
 | `sprintf` | MSVCR80.dll | cdecl | 430 | 16 | 21 | 662 |
 | `tolower` | MSVCR80.dll | cdecl | 10 | 12 | 21 | 67 |
@@ -14,9 +13,9 @@ Counts use the reachable high-confidence graph. A function is unlocked by one mi
 | `strchr` | MSVCR80.dll | cdecl | 50 | 6 | 13 | 476 |
 | `_snprintf` | MSVCR80.dll | cdecl | 34 | 7 | 13 | 169 |
 | `strtok` | MSVCR80.dll | cdecl | 26 | 6 | 12 | 61 |
+| `floor` | MSVCR80.dll | cdecl | 9 | 6 | 12 | 13 |
 | `_stricmp` | MSVCR80.dll | cdecl | 65 | 11 | 11 | 95 |
 | `_CIpow` | MSVCR80.dll | cdecl | 18 | 6 | 11 | 16 |
-| `floor` | MSVCR80.dll | cdecl | 9 | 4 | 9 | 13 |
 | `ldexp` | MSVCR80.dll | cdecl | 4 | 7 | 9 | 8 |
 | `_vsnprintf` | MSVCR80.dll | cdecl | 7 | 7 | 8 | 316 |
 | `D3DXVec4Transform` | d3dx9_34.dll | unknown | 2 | 6 | 6 | 71 |
@@ -27,12 +26,12 @@ Counts use the reachable high-confidence graph. A function is unlocked by one mi
 | `strnlen` | MSVCR80.dll | cdecl | 41 | 2 | 3 | 155 |
 | `D3DXMatrixMultiply` | d3dx9_34.dll | unknown | 9 | 3 | 3 | 73 |
 | `strtoul` | MSVCR80.dll | cdecl | 4 | 2 | 3 | 65 |
+| `_CItan` | MSVCR80.dll | cdecl | 5 | 3 | 3 | 10 |
 | `fclose` | MSVCR80.dll | cdecl | 5 | 2 | 2 | 143 |
 | `ordinal 3` | WS2_32.dll / WSOCK32.dll | unknown | 4 | 2 | 2 | 143 |
 | `strstr` | MSVCR80.dll | cdecl | 16 | 1 | 2 | 54 |
 | `D3DXVec3Transform` | d3dx9_34.dll | unknown | 1 | 2 | 2 | 31 |
 | `__libm_sse2_exp` | MSVCR80.dll | cdecl | 4 | 2 | 2 | 12 |
-| `_CItan` | MSVCR80.dll | cdecl | 5 | 2 | 2 | 10 |
 | `bsearch` | MSVCR80.dll | cdecl | 3 | 2 | 2 | 5 |
 | `fseek` | MSVCR80.dll | cdecl | 3 | 2 | 2 | 4 |
 | `_fullpath` | MSVCR80.dll | cdecl | 1 | 2 | 2 | 4 |
@@ -170,14 +169,13 @@ Only sets that account for a closure of at least 8 functions are listed.
 
 | missing imports | largest such closure |
 | --- | --- |
-| `_CIsqrt`, `_CItan`, `floor` | 25 |
+| `_CItan`, `floor` | 25 |
 | `_wassert` | 16 |
 | `_vsnprintf`, `tolower` | 14 |
 | `strchr`, `tolower` | 10 |
 | `tolower` | 9 |
-| `_CIsqrt` | 8 |
+| `floor` | 8 |
 | `_CIpow` | 8 |
 | `atoi`, `isdigit` | 8 |
 | `atof`, `sprintf` | 8 |
-| `floor` | 8 |
 | `sscanf` | 8 |

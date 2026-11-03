@@ -1980,7 +1980,6 @@
         ]
       ],
       "missing": [
-        "_CIsqrt",
         "_CItan",
         "floor"
       ],
@@ -2014,6 +2013,60 @@
         "0x0094FFD0",
         "0x009787A0",
         "0x009795A0"
+      ]
+    },
+    "READY_WITH_IMPLEMENTED_IMPORTS": {
+      "root": "0x0096CED0",
+      "size": 35,
+      "depth": 5,
+      "label": "READY_WITH_IMPLEMENTED_IMPORTS",
+      "imports": [
+        [
+          "memset",
+          1
+        ]
+      ],
+      "missing": [],
+      "indirect": 0,
+      "unknown": 0,
+      "protected_edges": 0,
+      "protected_mem": 0,
+      "functions": [
+        "0x0087B570",
+        "0x00925C90",
+        "0x00936CC0",
+        "0x009600B0",
+        "0x009605B0",
+        "0x00960920",
+        "0x00961260",
+        "0x009614C0",
+        "0x00962A50",
+        "0x00962C20",
+        "0x00962E70",
+        "0x00962FD0",
+        "0x00963050",
+        "0x00963D00",
+        "0x009641F0",
+        "0x00964420",
+        "0x00964DC0",
+        "0x00965790",
+        "0x009659A0",
+        "0x00965B30",
+        "0x00966AD0",
+        "0x009674B0",
+        "0x00967680",
+        "0x009676E0",
+        "0x00967750",
+        "0x009677E0",
+        "0x00967B80",
+        "0x00968020",
+        "0x00968260",
+        "0x009683D0",
+        "0x00968D10",
+        "0x00969170",
+        "0x0096B790",
+        "0x0096CED0",
+        "0x009787A0"
       ]
     },
     "PROTECTED_BOUNDARY": {
@@ -2884,60 +2937,6 @@
         "0x009EB720"
       ]
     },
-    "READY_WITH_IMPLEMENTED_IMPORTS": {
-      "root": "0x0096CED0",
-      "size": 35,
-      "depth": 5,
-      "label": "READY_WITH_IMPLEMENTED_IMPORTS",
-      "imports": [
-        [
-          "memset",
-          1
-        ]
-      ],
-      "missing": [],
-      "indirect": 0,
-      "unknown": 0,
-      "protected_edges": 0,
-      "protected_mem": 0,
-      "functions": [
-        "0x0087B570",
-        "0x00925C90",
-        "0x00936CC0",
-        "0x009600B0",
-        "0x009605B0",
-        "0x00960920",
-        "0x00961260",
-        "0x009614C0",
-        "0x00962A50",
-        "0x00962C20",
-        "0x00962E70",
-        "0x00962FD0",
-        "0x00963050",
-        "0x00963D00",
-        "0x009641F0",
-        "0x00964420",
-        "0x00964DC0",
-        "0x00965790",
-        "0x009659A0",
-        "0x00965B30",
-        "0x00966AD0",
-        "0x009674B0",
-        "0x00967680",
-        "0x009676E0",
-        "0x00967750",
-        "0x009677E0",
-        "0x00967B80",
-        "0x00968020",
-        "0x00968260",
-        "0x009683D0",
-        "0x00968D10",
-        "0x00969170",
-        "0x0096B790",
-        "0x0096CED0",
-        "0x009787A0"
-      ]
-    },
     "FILESYSTEM_BOUNDARY": {
       "root": "0x00944EC0",
       "size": 5,
@@ -3300,7 +3299,6 @@
       ]
     ],
     "missing": [
-      "_CIsqrt",
       "_CItan",
       "floor"
     ],
@@ -3353,13 +3351,13 @@
     "strchr": 13,
     "strtok": 12,
     "printf": 4,
-    "_CIsqrt": 88,
     "_fullpath": 2,
     "strnlen": 3,
     "__libm_sse2_pow": 1,
     "_localtime32": 1,
     "_mkdir": 1,
     "qsort": 1,
+    "floor": 12,
     "fwrite": 4,
     "_CIpow": 11,
     "_wassert": 22,
@@ -3370,8 +3368,7 @@
     "free": 1,
     "fopen": 5,
     "strcat_s": 1,
-    "floor": 9,
-    "_CItan": 2,
+    "_CItan": 3,
     "sscanf": 15,
     "ldexp": 9,
     "_time64": 3,

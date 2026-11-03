@@ -1,19 +1,193 @@
 {
-  "phase": 25,
+  "phase": 26,
+  "definitions": {
+    "STATIC_READY": "HIGH with no import thunks and no protected callees in the direct call list.",
+    "IMPORT_READY": "HIGH whose direct import thunks are all HLE-implemented and with no protected callees. May still need state or hit indirects.",
+    "RUNTIME_READY": "Conservative: size(READY)+size(READY_WITH_IMPLEMENTED_IMPORTS) largest closures from uc_frontier. Not inflated by single-import unlock totals.",
+    "ENTERABLE": "IMPORT_READY/STATIC_READY with a known small guest-state contract sufficient to call.",
+    "EXECUTED": "UNIQUE_UC_FUNCTIONS_EXECUTED from harness-logged completed runs.",
+    "UNIQUE_UC_FUNCTIONS_EXECUTED": "Distinct guest function VAs with completed=true harness evidence.",
+    "EXECUTION_RUNS": "Number of distinct harness campaign/test entries that entered a root."
+  },
   "high_functions": 22779,
   "generated": 22770,
   "compiled": 22770,
-  "runtime_ready_estimate": 54,
-  "runtime_ready_note": "RUNTIME_READY uses largest READY + READY_WITH_IMPLEMENTED_IMPORTS closure sizes from uc_frontier (not compilation). Per-function call-list heuristic was 21446 (overcounts leaves).",
-  "executed": 6,
-  "executed_note": "Harness-logged only: prior phases 5 recorded + Phase 25 consumer 0x0088390D. COMPILED is not EXECUTED.",
+  "static_ready": 20762,
+  "import_ready": 737,
+  "runtime_ready": 54,
+  "runtime_ready_closures": {
+    "READY": 19,
+    "READY_WITH_IMPLEMENTED_IMPORTS": 35,
+    "ready_root": "0x00B01EB0",
+    "ready_with_imports_root": "0x0096CED0"
+  },
+  "enterable_estimate": 3,
+  "unique_uc_functions_executed": 6,
+  "unique_uc_functions_executed_list": [
+    "0x00721070",
+    "0x00739B90",
+    "0x0088390D",
+    "0x00924D30",
+    "0x009E78C0",
+    "0x009E8AD0"
+  ],
+  "unique_uc_functions_entered": 7,
+  "execution_runs": 6,
   "blocked_graphics": 124,
   "blocked_protected": 585,
   "blocked_standard_runtime": 733,
   "unknown_blocker": 79,
-  "execution_islands": 7085,
-  "non_graphics_islands": 6996,
-  "largest_non_graphics_island": {
+  "cisqrt": {
+    "thunk": "0x00AE5116",
+    "iat_slot": "0x00B61448",
+    "dll": "MSVCR80.dll",
+    "symbol": "_CIsqrt",
+    "convention": "cdecl",
+    "call_sites": 116,
+    "high_callers": 55,
+    "abi": "X87 ST0\u2192ST0; cdecl; 0 stack dwords; EAX unchanged; TOP unchanged",
+    "hle": "UC_HLE_CISQRT",
+    "host": "uc_host_sqrt (ucrtbase sqrt)",
+    "numerical_policy": "Host double math; not MSVCR80/x87 80-bit bit-exact; no tag-word; no exception signaling fidelity.",
+    "pre_single_unlock_functions": 88,
+    "post_single_unlock_gone": true,
+    "functions_now_import_ready_with_cisqrt": 53,
+    "largest_affected_island": {
+      "root": "0x00A1CD60",
+      "representative": "0x00A1CD60",
+      "function_count": 6,
+      "edge_count": 6,
+      "imports": [
+        [
+          "_CIsqrt",
+          3
+        ]
+      ],
+      "missing_imports": [],
+      "indirect_calls": 0,
+      "protected_deps": 0,
+      "graphics_deps": 0,
+      "tls_members": 0,
+      "blockers": {
+        "RUNTIME_READY": 1
+      },
+      "enterable": true,
+      "executed_member": false,
+      "members_sample": [
+        "0x00A1CD60",
+        "0x00A1CDF0",
+        "0x00A28DF0",
+        "0x00A2B820",
+        "0x00A2B9E0",
+        "0x00A2BC30"
+      ],
+      "non_graphics": true,
+      "leverage": 148
+    }
+  },
+  "unlock_recompute": {
+    "functions_newly_import_ready_estimate": 53,
+    "closures_newly_import_ready_estimate": 88,
+    "note": "Phase-25 single_unlock[_CIsqrt]=88 counted otherwise-clean closures. Per-function call-list import-ready with _CIsqrt and no other missing imports is 53 HIGH functions. RUNTIME_READY closure sizes remain 19+35 because newly unlocked closures are smaller than the extreme.",
+    "islands_listing_cisqrt": 13,
+    "largest_cisqrt_island": 6,
+    "largest_cisqrt_root": "0x00A1CD60"
+  },
+  "phase25_to_26_delta": {
+    "high": 0,
+    "compiled": 0,
+    "runtime_ready_closures": "unchanged extremes 54 (19+35)",
+    "import_ready_cisqrt_callers": 53,
+    "unique_executed_delta": "+1 (0x00924D30); audited total 6",
+    "top_single_unlock_now": [
+      [
+        "_wassert",
+        22
+      ],
+      [
+        "tolower",
+        21
+      ],
+      [
+        "sprintf",
+        21
+      ],
+      [
+        "sscanf",
+        15
+      ],
+      [
+        "_snprintf",
+        13
+      ]
+    ]
+  },
+  "campaign_summary": {
+    "attempted": 10,
+    "outcomes": {
+      "EXECUTED_CLEAN": 3,
+      "BLOCKED_REQUIRED_STATE": 5,
+      "BLOCKED_INDIRECT": 1,
+      "BLOCKED_IMPORT": 1
+    },
+    "most_common_next_blocker": [
+      "BLOCKED_REQUIRED_STATE",
+      5
+    ],
+    "observed_in_executed_imports": {
+      "_CIsqrt": 1,
+      "strncpy": 1
+    },
+    "CIpow_observed": false,
+    "setjmp3_observed": false,
+    "floor_observed": false,
+    "malloc_free_observed": false,
+    "filesystem_observed": false,
+    "timing_observed": false,
+    "tls_observed": false,
+    "unresolved_indirect_observed": true,
+    "deepest_chain": 1,
+    "largest_island_entered": 1,
+    "latest_newly_executed_root": "0x00924D30"
+  },
+  "ordinary_runtime_frontier": {
+    "HIGH": 22779,
+    "COMPILED": 22770,
+    "STATIC_READY": 20762,
+    "IMPORT_READY": 737,
+    "RUNTIME_READY": 54,
+    "ENTERABLE": 3,
+    "EXECUTED": 6,
+    "BLOCKED_STANDARD_RUNTIME": 733,
+    "BLOCKED_PROTECTED": 585,
+    "BLOCKED_GRAPHICS": 124,
+    "UNKNOWN": 79
+  },
+  "harness_capability": {
+    "mapped_ordinary_sections": "IMPLEMENTED",
+    "guest_stack": "IMPLEMENTED",
+    "direct_uc_calls": "IMPLEMENTED",
+    "nested_uc_calls": "IMPLEMENTED",
+    "imports_hle": "PARTIAL",
+    "x87": "PARTIAL",
+    "simd": "PARTIAL",
+    "atomics": "PARTIAL",
+    "memory_validation": "IMPLEMENTED",
+    "indirect_dispatch": "PARTIAL",
+    "tls": "STUB",
+    "filesystem": "MISSING",
+    "threads": "MISSING",
+    "timing": "MISSING",
+    "seh": "STUB",
+    "notes": "Native UC harness maps ordinary PE sections and runs lifted HIGH functions with import HLE for CRT mem/string and a few x87 helpers. NFSU2 win32/fileio/thread helpers exist in the broader tree but are not wired as the Undercover native UC import path. Atomics suffice for single-thread controlled execution.",
+    "atomic_correctness": "SUFFICIENT_FOR_SINGLE_THREAD",
+    "crt_cisqrt": "IMPLEMENTED",
+    "crt_cisqrt_abi": "X87 ST0\u2192ST0",
+    "crt_cisqrt_test": "PASS"
+  },
+  "first_frame": "FIRST_FRAME_PATH_BLOCKED_BY_PROTECTED_BACKEND",
+  "graphics_frozen": true,
+  "top_ordinary_island": {
     "root": "0x009F0D20",
     "representative": "0x009F0D20",
     "function_count": 274,
@@ -109,1391 +283,12 @@
     "non_graphics": true,
     "leverage": 692
   },
-  "largest_runtime_ready_island": {
-    "root": "0x0096CED0",
-    "function_count": 54,
-    "ready_closure": 19,
-    "ready_with_imports_closure": 35
-  },
-  "blocker_histogram_functions": {
-    "RUNTIME_READY": 21446,
-    "BLOCKED_STANDARD_RUNTIME": 733,
-    "UNKNOWN": 79,
-    "BLOCKED_PROTECTED": 585,
-    "BLOCKED_GRAPHICS": 141,
-    "BLOCKED_IMPORT": 32
-  },
-  "import_frontier": {
-    "total_thunks": 199,
-    "implemented_hle": 11,
-    "convention_unknown": 42,
-    "top_missing_by_prior_unlock": [
-      {
-        "symbol": "_CIsqrt",
-        "dll": "MSVCR80.dll",
-        "convention": "cdecl",
-        "call_sites": 116,
-        "status": "KNOWN_ABI_UNIMPLEMENTED",
-        "single_unlock_functions_pre_phase25": 88,
-        "single_unlock_functions_post": 88
-      },
-      {
-        "symbol": "_wassert",
-        "dll": "MSVCR80.dll",
-        "convention": "cdecl",
-        "call_sites": 1,
-        "status": "CONVENTION_KNOWN_NO_HLE",
-        "single_unlock_functions_pre_phase25": 22,
-        "single_unlock_functions_post": 22
-      },
-      {
-        "symbol": "sprintf",
-        "dll": "MSVCR80.dll",
-        "convention": "cdecl",
-        "call_sites": 430,
-        "status": "KNOWN_ABI_UNIMPLEMENTED",
-        "single_unlock_functions_pre_phase25": 21,
-        "single_unlock_functions_post": 21
-      },
-      {
-        "symbol": "tolower",
-        "dll": "MSVCR80.dll",
-        "convention": "cdecl",
-        "call_sites": 10,
-        "status": "KNOWN_ABI_UNIMPLEMENTED",
-        "single_unlock_functions_pre_phase25": 21,
-        "single_unlock_functions_post": 21
-      },
-      {
-        "symbol": "sscanf",
-        "dll": "MSVCR80.dll",
-        "convention": "cdecl",
-        "call_sites": 51,
-        "status": "KNOWN_ABI_UNIMPLEMENTED",
-        "single_unlock_functions_pre_phase25": 15,
-        "single_unlock_functions_post": 15
-      },
-      {
-        "symbol": "strchr",
-        "dll": "MSVCR80.dll",
-        "convention": "cdecl",
-        "call_sites": 50,
-        "status": "KNOWN_ABI_UNIMPLEMENTED",
-        "single_unlock_functions_pre_phase25": 13,
-        "single_unlock_functions_post": 13
-      },
-      {
-        "symbol": "_snprintf",
-        "dll": "MSVCR80.dll",
-        "convention": "cdecl",
-        "call_sites": 34,
-        "status": "KNOWN_ABI_UNIMPLEMENTED",
-        "single_unlock_functions_pre_phase25": 13,
-        "single_unlock_functions_post": 13
-      },
-      {
-        "symbol": "strtok",
-        "dll": "MSVCR80.dll",
-        "convention": "cdecl",
-        "call_sites": 26,
-        "status": "CONVENTION_KNOWN_NO_HLE",
-        "single_unlock_functions_pre_phase25": 12,
-        "single_unlock_functions_post": 12
-      },
-      {
-        "symbol": "_stricmp",
-        "dll": "MSVCR80.dll",
-        "convention": "cdecl",
-        "call_sites": 65,
-        "status": "KNOWN_ABI_UNIMPLEMENTED",
-        "single_unlock_functions_pre_phase25": 11,
-        "single_unlock_functions_post": 11
-      },
-      {
-        "symbol": "_CIpow",
-        "dll": "MSVCR80.dll",
-        "convention": "cdecl",
-        "call_sites": 18,
-        "status": "KNOWN_ABI_UNIMPLEMENTED",
-        "single_unlock_functions_pre_phase25": 11,
-        "single_unlock_functions_post": 11
-      },
-      {
-        "symbol": "floor",
-        "dll": "MSVCR80.dll",
-        "convention": "cdecl",
-        "call_sites": 9,
-        "status": "KNOWN_ABI_UNIMPLEMENTED",
-        "single_unlock_functions_pre_phase25": 9,
-        "single_unlock_functions_post": 9
-      },
-      {
-        "symbol": "ldexp",
-        "dll": "MSVCR80.dll",
-        "convention": "cdecl",
-        "call_sites": 4,
-        "status": "KNOWN_ABI_UNIMPLEMENTED",
-        "single_unlock_functions_pre_phase25": 9,
-        "single_unlock_functions_post": 9
-      }
-    ]
-  },
-  "crt_frontier": {
-    "imports": [
-      {
-        "symbol": "memset",
-        "call_sites": 597,
-        "convention": "cdecl",
-        "implemented": true
-      },
-      {
-        "symbol": "sprintf",
-        "call_sites": 430,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "memcpy",
-        "call_sites": 357,
-        "convention": "cdecl",
-        "implemented": true
-      },
-      {
-        "symbol": "printf",
-        "call_sites": 277,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "strncpy",
-        "call_sites": 244,
-        "convention": "cdecl",
-        "implemented": true
-      },
-      {
-        "symbol": "strlen",
-        "call_sites": 123,
-        "convention": "cdecl",
-        "implemented": true
-      },
-      {
-        "symbol": "_CIsqrt",
-        "call_sites": 116,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "free",
-        "call_sites": 106,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "memmove",
-        "call_sites": 98,
-        "convention": "cdecl",
-        "implemented": true
-      },
-      {
-        "symbol": "malloc",
-        "call_sites": 66,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "_stricmp",
-        "call_sites": 65,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "sscanf",
-        "call_sites": 51,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "strchr",
-        "call_sites": 50,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "strnlen",
-        "call_sites": 41,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "_CIsin",
-        "call_sites": 39,
-        "convention": "cdecl",
-        "implemented": true
-      },
-      {
-        "symbol": "_CIcos",
-        "call_sites": 38,
-        "convention": "cdecl",
-        "implemented": true
-      },
-      {
-        "symbol": "__libm_sse2_sin",
-        "call_sites": 34,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "_snprintf",
-        "call_sites": 34,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "strcmp",
-        "call_sites": 33,
-        "convention": "cdecl",
-        "implemented": true
-      },
-      {
-        "symbol": "strtok",
-        "call_sites": 26,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "_isnan",
-        "call_sites": 24,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "__libm_sse2_atan2",
-        "call_sites": 21,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "__libm_sse2_cos",
-        "call_sites": 19,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "_CIpow",
-        "call_sites": 18,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "strstr",
-        "call_sites": 16,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "atoi",
-        "call_sites": 15,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "__libm_sse2_pow",
-        "call_sites": 13,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "fwrite",
-        "call_sites": 13,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "isdigit",
-        "call_sites": 13,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "tolower",
-        "call_sites": 10,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "strncat",
-        "call_sites": 10,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "floor",
-        "call_sites": 9,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "_CIatan2",
-        "call_sites": 9,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "__libm_sse2_acos",
-        "call_sites": 8,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "_time64",
-        "call_sites": 8,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "strncmp",
-        "call_sites": 8,
-        "convention": "cdecl",
-        "implemented": true
-      },
-      {
-        "symbol": "_snprintf_s",
-        "call_sites": 8,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "memcmp",
-        "call_sites": 8,
-        "convention": "cdecl",
-        "implemented": true
-      },
-      {
-        "symbol": "ceil",
-        "call_sites": 7,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "_vsnprintf",
-        "call_sites": 7,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "strtol",
-        "call_sites": 6,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "strcpy",
-        "call_sites": 6,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "__libm_sse2_asin",
-        "call_sites": 5,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "isspace",
-        "call_sites": 5,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "atof",
-        "call_sites": 5,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "fclose",
-        "call_sites": 5,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "fopen",
-        "call_sites": 5,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "_CItan",
-        "call_sites": 5,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "abs",
-        "call_sites": 5,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "_CIacos",
-        "call_sites": 4,
-        "convention": "cdecl",
-        "implemented": true
-      },
-      {
-        "symbol": "_CxxThrowException",
-        "call_sites": 4,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "__libm_sse2_exp",
-        "call_sites": 4,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "qsort",
-        "call_sites": 4,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "vsprintf",
-        "call_sites": 4,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "getenv",
-        "call_sites": 4,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "_read",
-        "call_sites": 4,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "_localtime64",
-        "call_sites": 4,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "isprint",
-        "call_sites": 4,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "_itoa_s",
-        "call_sites": 4,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "ldexp",
-        "call_sites": 4,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "strtoul",
-        "call_sites": 4,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "toupper",
-        "call_sites": 3,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "fseek",
-        "call_sites": 3,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "isalnum",
-        "call_sites": 3,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "_beginthreadex",
-        "call_sites": 3,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "bsearch",
-        "call_sites": 3,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "_findclose",
-        "call_sites": 3,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "_write",
-        "call_sites": 3,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "sscanf_s",
-        "call_sites": 3,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "_CIlog10",
-        "call_sites": 3,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "_control87",
-        "call_sites": 3,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "strtod",
-        "call_sites": 3,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "_CIasin",
-        "call_sites": 2,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "ftell",
-        "call_sites": 2,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "_gmtime64",
-        "call_sites": 2,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "isxdigit",
-        "call_sites": 2,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "?terminate@@YAXXZ",
-        "call_sites": 2,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "_amsg_exit",
-        "call_sites": 2,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "_crt_debugger_hook",
-        "call_sites": 2,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "_close",
-        "call_sites": 2,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "_open",
-        "call_sites": 2,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "asctime",
-        "call_sites": 2,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "_CIlog",
-        "call_sites": 2,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "_aligned_malloc",
-        "call_sites": 2,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "longjmp",
-        "call_sites": 2,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "strcoll",
-        "call_sites": 2,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "iscntrl",
-        "call_sites": 2,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "setvbuf",
-        "call_sites": 2,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "rand",
-        "call_sites": 1,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "_CIfmod",
-        "call_sites": 1,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "strrchr",
-        "call_sites": 1,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "exit",
-        "call_sites": 1,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "__iob_func",
-        "call_sites": 1,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "_controlfp_s",
-        "call_sites": 1,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "__libm_sse2_log",
-        "call_sites": 1,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "_strupr",
-        "call_sites": 1,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "fread",
-        "call_sites": 1,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "remove",
-        "call_sites": 1,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "strcat_s",
-        "call_sites": 1,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "fflush",
-        "call_sites": 1,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "_strnicmp",
-        "call_sites": 1,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "_mkdir",
-        "call_sites": 1,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "_unlock",
-        "call_sites": 1,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "__dllonexit",
-        "call_sites": 1,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "_lock",
-        "call_sites": 1,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "_XcptFilter",
-        "call_sites": 1,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "_initterm",
-        "call_sites": 1,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "_initterm_e",
-        "call_sites": 1,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "?_type_info_dtor_internal_method@type_info@@QAEXXZ",
-        "call_sites": 1,
-        "convention": "thiscall",
-        "implemented": false
-      },
-      {
-        "symbol": "_except_handler4_common",
-        "call_sites": 1,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "_invoke_watson",
-        "call_sites": 1,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "_endthreadex",
-        "call_sites": 1,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "_vsnwprintf",
-        "call_sites": 1,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "_getdiskfree",
-        "call_sites": 1,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "_getdrive",
-        "call_sites": 1,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "_fullpath",
-        "call_sites": 1,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "_lseek",
-        "call_sites": 1,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "_filelength",
-        "call_sites": 1,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "_rmdir",
-        "call_sites": 1,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "_mktime64",
-        "call_sites": 1,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "_mkgmtime64",
-        "call_sites": 1,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "strpbrk",
-        "call_sites": 1,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "_difftime64",
-        "call_sites": 1,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "srand",
-        "call_sites": 1,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "_aligned_free",
-        "call_sites": 1,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "atan",
-        "call_sites": 1,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "strcat",
-        "call_sites": 1,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "_wassert",
-        "call_sites": 1,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "strcspn",
-        "call_sites": 1,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "_setjmp3",
-        "call_sites": 1,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "localeconv",
-        "call_sites": 1,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "isalpha",
-        "call_sites": 1,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "_strlwr",
-        "call_sites": 1,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "_localtime32",
-        "call_sites": 1,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "_findnext32",
-        "call_sites": 1,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "_findfirst32",
-        "call_sites": 1,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "__CxxFrameHandler3",
-        "call_sites": 0,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "__CxxFrameHandler",
-        "call_sites": 0,
-        "convention": "cdecl",
-        "implemented": false
-      }
-    ],
-    "total_call_sites": 3277,
-    "unimplemented": 127
-  },
-  "allocation_frontier": {
-    "imports": [
-      {
-        "symbol": "free",
-        "call_sites": 106,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "malloc",
-        "call_sites": 66,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "_aligned_malloc",
-        "call_sites": 2,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "_aligned_free",
-        "call_sites": 1,
-        "convention": "cdecl",
-        "implemented": false
-      }
-    ],
-    "total_call_sites": 175,
-    "unimplemented": 4
-  },
-  "filesystem_frontier": {
-    "imports": [
-      {
-        "symbol": "fwrite",
-        "call_sites": 13,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "fclose",
-        "call_sites": 5,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "fopen",
-        "call_sites": 5,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "_read",
-        "call_sites": 4,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "fseek",
-        "call_sites": 3,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "_findclose",
-        "call_sites": 3,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "_write",
-        "call_sites": 3,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "ftell",
-        "call_sites": 2,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "_close",
-        "call_sites": 2,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "_open",
-        "call_sites": 2,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "setvbuf",
-        "call_sites": 2,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "VerQueryValueA",
-        "call_sites": 1,
-        "convention": "stdcall",
-        "implemented": false
-      },
-      {
-        "symbol": "GetFileVersionInfoA",
-        "call_sites": 1,
-        "convention": "stdcall",
-        "implemented": false
-      },
-      {
-        "symbol": "GetFileVersionInfoSizeA",
-        "call_sites": 1,
-        "convention": "stdcall",
-        "implemented": false
-      },
-      {
-        "symbol": "fread",
-        "call_sites": 1,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "remove",
-        "call_sites": 1,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "fflush",
-        "call_sites": 1,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "_mkdir",
-        "call_sites": 1,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "_getdiskfree",
-        "call_sites": 1,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "_getdrive",
-        "call_sites": 1,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "_fullpath",
-        "call_sites": 1,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "_lseek",
-        "call_sites": 1,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "_filelength",
-        "call_sites": 1,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "_rmdir",
-        "call_sites": 1,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "_findnext32",
-        "call_sites": 1,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "_findfirst32",
-        "call_sites": 1,
-        "convention": "cdecl",
-        "implemented": false
-      }
-    ],
-    "total_call_sites": 59,
-    "unimplemented": 26
-  },
-  "timing_frontier": {
-    "imports": [
-      {
-        "symbol": "_time64",
-        "call_sites": 8,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "_localtime64",
-        "call_sites": 4,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "_gmtime64",
-        "call_sites": 2,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "GetTickCount",
-        "call_sites": 2,
-        "convention": "stdcall",
-        "implemented": false
-      },
-      {
-        "symbol": "asctime",
-        "call_sites": 2,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "_mktime64",
-        "call_sites": 1,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "_mkgmtime64",
-        "call_sites": 1,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "_difftime64",
-        "call_sites": 1,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "_localtime32",
-        "call_sites": 1,
-        "convention": "cdecl",
-        "implemented": false
-      }
-    ],
-    "total_call_sites": 22,
-    "unimplemented": 9
-  },
-  "threading_frontier": {
-    "imports": [
-      {
-        "symbol": "_beginthreadex",
-        "call_sites": 3,
-        "convention": "cdecl",
-        "implemented": false
-      },
-      {
-        "symbol": "_endthreadex",
-        "call_sites": 1,
-        "convention": "cdecl",
-        "implemented": false
-      }
-    ],
-    "total_call_sites": 4,
-    "unimplemented": 2
-  },
-  "tls_frontier": {
-    "status": "STUB",
-    "note": "Prior phases observed substantial fs:[0x2C]/TLS traffic; no fabricated TLS init this phase. Not the selected unlock."
-  },
-  "seh_frontier": {
-    "status": "STUB",
-    "note": "Ordinary fs:[0] bookkeeping appears in .text; full exception delivery/unwind is not implemented. Not selected this phase."
-  },
-  "indirect_call_frontier": {
-    "D_REGISTER": 30614,
-    "D_UNKNOWN": 8972,
-    "E_PROTECTED_SLOT": 241,
-    "B_GENERATED_TARGET": 50,
-    "B_IMPORT_SLOT": 110
-  },
-  "ordinary_initialization_frontier": {
-    "note": "Prefer enterable non-graphics islands as harness roots.",
-    "top_enterable": [
-      {
-        "root": "0x0072EAE0",
-        "functions": 41
-      },
-      {
-        "root": "0x00B182F0",
-        "functions": 21
-      },
-      {
-        "root": "0x00721050",
-        "functions": 11
-      },
-      {
-        "root": "0x00820E20",
-        "functions": 13
-      },
-      {
-        "root": "0x00757B40",
-        "functions": 12
-      },
-      {
-        "root": "0x009FF620",
-        "functions": 11
-      },
-      {
-        "root": "0x008833FA",
-        "functions": 11
-      },
-      {
-        "root": "0x00A07E00",
-        "functions": 11
-      }
-    ]
-  },
-  "harness_capability": {
-    "mapped_ordinary_sections": "IMPLEMENTED",
-    "guest_stack": "IMPLEMENTED",
-    "direct_uc_calls": "IMPLEMENTED",
-    "nested_uc_calls": "IMPLEMENTED",
-    "imports_hle": "PARTIAL",
-    "x87": "PARTIAL",
-    "simd": "PARTIAL",
-    "atomics": "PARTIAL",
-    "memory_validation": "IMPLEMENTED",
-    "indirect_dispatch": "PARTIAL",
-    "tls": "STUB",
-    "filesystem": "MISSING",
-    "threads": "MISSING",
-    "timing": "MISSING",
-    "seh": "STUB",
-    "notes": "Native UC harness maps ordinary PE sections and runs lifted HIGH functions with import HLE for CRT mem/string and a few x87 helpers. NFSU2 win32/fileio/thread helpers exist in the broader tree but are not wired as the Undercover native UC import path. Atomics suffice for single-thread controlled execution.",
-    "atomic_correctness": "SUFFICIENT_FOR_SINGLE_THREAD"
-  },
   "selected_implementation": {
-    "implementation": "strncpy CRT HLE",
-    "symbol": "strncpy",
-    "thunk": "0x0087B6A0",
-    "why": "Highest single-missing-import unlock in prior frontier (90 HIGH functions / 66 closures / 244 call sites); cdecl; standard public CRT semantics; no protected behavior.",
+    "implementation": "_CIsqrt CRT HLE",
+    "symbol": "_CIsqrt",
+    "thunk": "0x00AE5116",
     "standard_public_semantics": true,
     "protected_dependency": false
   },
-  "phase25_delta": {
-    "newly_runtime_ready_functions_estimate": 90,
-    "newly_runtime_ready_note": "Prior single_unlock[strncpy]=90 HIGH functions in otherwise-clean closures.",
-    "consumer_under_test": "0x0088390D"
-  },
-  "first_frame": "FIRST_FRAME_PATH_BLOCKED_BY_PROTECTED_BACKEND",
-  "graphics_frozen": true,
-  "ordinary_runtime_frontier": {
-    "HIGH": 22779,
-    "COMPILED": 22770,
-    "RUNTIME_READY_EST": 54,
-    "EXECUTED": 6,
-    "BLOCKED_STANDARD_RUNTIME": 733,
-    "BLOCKED_PROTECTED": 585,
-    "BLOCKED_GRAPHICS": 124,
-    "UNKNOWN": 79
-  },
-  "top_ordinary_island": {
-    "root": "0x009F0D20",
-    "function_count": 274,
-    "edge_count": 774,
-    "imports": [
-      [
-        "strchr",
-        5
-      ],
-      [
-        "sprintf",
-        3
-      ],
-      [
-        "memcpy",
-        3
-      ],
-      [
-        "isdigit",
-        3
-      ],
-      [
-        "isspace",
-        2
-      ],
-      [
-        "longjmp",
-        2
-      ],
-      [
-        "iscntrl",
-        2
-      ],
-      [
-        "isalnum",
-        2
-      ]
-    ],
-    "missing_imports": [
-      "_CIpow",
-      "_setjmp3",
-      "floor",
-      "isalnum",
-      "isalpha",
-      "iscntrl",
-      "isdigit",
-      "isspace"
-    ],
-    "indirects": 0,
-    "initialization": "UNKNOWN",
-    "subsystem_guess": "CRT/string",
-    "exact_blockers": [
-      "BLOCKED_EXTERNAL",
-      "BLOCKED_IMPORT"
-    ],
-    "estimated_runtime_work": "import HLE only",
-    "leverage": 692
-  }
+  "recommended_phase27": "Most common campaign next blocker is BLOCKED_REQUIRED_STATE (ordinary object/global contracts). Prefer documenting/entering proven ordinary initializers for import-ready math leaves, or implement next clean CRT HLE (tolower / floor cdecl \u2014 not _CI*) only if execution evidence elevates it. Do not implement _CIpow/_setjmp3 without real execution pressure. Graphics remain frozen."
 }
