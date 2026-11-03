@@ -1,6 +1,6 @@
 {
-  "current_phase": 20,
-  "strategy": "Factory prefix frozen. Device 0x013C6510 is PROVEN; in-game publication is DEFINITE via 0x00725200 out-param but EXTERNAL/BLOCKED (needs 0x00686000 before pub and factory field from 0x00B615C4). Present code FOUND; Present runtime BLOCKED on device state. Draw COM shapes FOUND via renderer 0x017AA798 but not DEVICE-aliased. PARTIAL post-init seam (host device for Present/Clear). D3D9 implementation NOT justified. First-frame UNBOUNDED.",
+  "current_phase": 21,
+  "strategy": "Phase 21: optional angr oracle + UC consensus on device\u2192renderer\u2192Draw. DEVICE proven; publication EXTERNAL/BLOCKED. Renderer 0x017AA798 is an engine object pointer (ordinary publishers). Consensus device\u2194renderer: NO_RELATION_FOUND. Draw remains ENGINE_COM_DRAW (helper COM from renderer list), not raw DEVICE. PARTIAL seam; D3D9 NOT justified; first-frame UNBOUNDED.",
   "boundaries": {
     "0x00686000": {
       "status": "PROTECTED_OR_EXTERNAL_DEPENDENCY",
@@ -42,7 +42,11 @@
     {
       "address": "0x01311E1C",
       "status": "DEFINITE ORDINARY WRITERS / VALUE-1 DISCONNECTED",
-      "writers": ["0x00722D60=1", "0x00729977=2", "0x00B4F990=0"]
+      "writers": [
+        "0x00722D60=1",
+        "0x00729977=2",
+        "0x00B4F990=0"
+      ]
     },
     {
       "address": "0x01318170",
@@ -81,7 +85,7 @@
     "createdevice_vtable_offset": "0x40",
     "present_code": "FOUND",
     "present_runtime": "BLOCKED",
-    "draw_code": "FOUND",
+    "draw_code": "FOUND_STRONG",
     "reset_recovery": "NOT FOUND",
     "post_init_seam": "PARTIAL",
     "first_clear": "BLOCKED_EXTERNAL",
@@ -96,21 +100,28 @@
     "enterable_now": "NO",
     "object": "0x01318170",
     "esi_slot": "0x00B615C4",
-    "active_objective": "Map DEVICE aliases into draw/renderer paths; decide host-device Present contract",
+    "active_objective": "Map renderer helper 0x0079E4A0 list objects to DEVICE fields; keep angr optional",
     "blockers": [
       "In-game DEVICE publication needs 0x00686000 before 0x00725200 and factory field from frozen 0x00B615C4",
-      "Present runtime blocked on live DEVICE state",
-      "Draw COM shapes not proven as aliases of 0x013C6510",
-      "Reset/recovery not found",
+      "No proven DEVICE\u2194renderer alias (consensus NO_RELATION_FOUND)",
+      "Draw is ENGINE_COM_DRAW via 0x017AA798 helper, not raw DEVICE",
+      "Renderer list/COM field provenance unmapped",
       "D3D9 not implemented"
-    ]
+    ],
+    "angr": "AVAILABLE",
+    "angr_version": "10.0.5",
+    "angr_present_control": "PASS",
+    "angr_clear_control": "PARTIAL",
+    "device_to_renderer": "NO_RELATION_FOUND",
+    "draw_consensus": "ENGINE_COM_DRAW",
+    "renderer_classification": "POINTER_TO_ENGINE_OBJECT"
   },
   "first_frame_estimate": {
     "best_case_phase": "UNBOUNDED",
     "likely_low": "UNBOUNDED",
     "likely_high": "UNBOUNDED",
     "is_estimate": true,
-    "uncertainty": "PARTIAL seam for Present/Clear with host DEVICE; full frame still UNBOUNDED."
+    "uncertainty": "Renderer/Draw not tied to proven DEVICE; seam remains PARTIAL."
   },
   "recorded_execution": [
     {
@@ -145,47 +156,192 @@
     }
   ],
   "phases": [
-    {"phase": 1, "name": "PE analysis", "state": "completed"},
-    {"phase": 2, "name": "CFG and instruction analysis", "state": "completed"},
-    {"phase": 3, "name": "Compile sample", "state": "completed"},
-    {"phase": 4, "name": "Lifter expansion", "state": "completed"},
-    {"phase": 5, "name": "Compiler closure", "state": "completed"},
-    {"phase": 6, "name": "First native execution", "state": "completed"},
-    {"phase": 7, "name": "Imports and mapped image", "state": "completed"},
-    {"phase": 8, "name": "Deterministic clusters", "state": "completed"},
-    {"phase": 9, "name": "x87 and CRT math ABI", "state": "completed"},
-    {"phase": 10, "name": "Runtime frontier", "state": "completed"},
-    {"phase": 11, "name": "Callback initialization", "state": "completed"},
-    {"phase": 12, "name": "Object initialization analysis", "state": "completed"},
-    {"phase": 13, "name": "External boundary classification", "state": "completed"},
-    {"phase": 14, "name": "Dependency cut and alternate frontier", "state": "completed"},
-    {"phase": 15, "name": "Graphics initialization provenance", "state": "completed"},
-    {"phase": 16, "name": "CFG discovery repair", "state": "completed"},
-    {"phase": 17, "name": "Factory initialization provenance", "state": "completed"},
-    {"phase": 18, "name": "Callback table publication provenance", "state": "completed"},
-    {"phase": 19, "name": "Post-init graphics frontier", "state": "completed"},
-    {"phase": 20, "name": "Device lifecycle and post-init seam", "state": "current"}
+    {
+      "phase": 1,
+      "name": "PE analysis",
+      "state": "completed"
+    },
+    {
+      "phase": 2,
+      "name": "CFG and instruction analysis",
+      "state": "completed"
+    },
+    {
+      "phase": 3,
+      "name": "Compile sample",
+      "state": "completed"
+    },
+    {
+      "phase": 4,
+      "name": "Lifter expansion",
+      "state": "completed"
+    },
+    {
+      "phase": 5,
+      "name": "Compiler closure",
+      "state": "completed"
+    },
+    {
+      "phase": 6,
+      "name": "First native execution",
+      "state": "completed"
+    },
+    {
+      "phase": 7,
+      "name": "Imports and mapped image",
+      "state": "completed"
+    },
+    {
+      "phase": 8,
+      "name": "Deterministic clusters",
+      "state": "completed"
+    },
+    {
+      "phase": 9,
+      "name": "x87 and CRT math ABI",
+      "state": "completed"
+    },
+    {
+      "phase": 10,
+      "name": "Runtime frontier",
+      "state": "completed"
+    },
+    {
+      "phase": 11,
+      "name": "Callback initialization",
+      "state": "completed"
+    },
+    {
+      "phase": 12,
+      "name": "Object initialization analysis",
+      "state": "completed"
+    },
+    {
+      "phase": 13,
+      "name": "External boundary classification",
+      "state": "completed"
+    },
+    {
+      "phase": 14,
+      "name": "Dependency cut and alternate frontier",
+      "state": "completed"
+    },
+    {
+      "phase": 15,
+      "name": "Graphics initialization provenance",
+      "state": "completed"
+    },
+    {
+      "phase": 16,
+      "name": "CFG discovery repair",
+      "state": "completed"
+    },
+    {
+      "phase": 17,
+      "name": "Factory initialization provenance",
+      "state": "completed"
+    },
+    {
+      "phase": 18,
+      "name": "Callback table publication provenance",
+      "state": "completed"
+    },
+    {
+      "phase": 19,
+      "name": "Post-init graphics frontier",
+      "state": "completed"
+    },
+    {
+      "phase": 20,
+      "name": "Device lifecycle and post-init seam",
+      "state": "completed"
+    },
+    {
+      "phase": 21,
+      "name": "Angr oracle and device-renderer consensus",
+      "state": "current"
+    }
   ],
   "milestones": [
-    {"name": "STATIC RECOMPILATION", "state": "ACHIEVED"},
-    {"name": "NATIVE EXECUTION", "state": "DEMONSTRATED"},
-    {"name": "CRT / ABI", "state": "PARTIAL"},
-    {"name": "ORDINARY CALLBACK INITIALIZATION", "state": "DEMONSTRATED"},
-    {"name": "LARGE ORDINARY INITIALIZATION", "state": "BLOCKED"},
-    {"name": "FUNCTION DISCOVERY", "state": "REPAIRED"},
-    {"name": "FACTORY INITIALIZATION", "state": "EXTERNAL/PROTECTED BLOCKED"},
-    {"name": "DEVICE CODE", "state": "PROVEN"},
-    {"name": "DEVICE PUBLICATION", "state": "EXTERNAL/BLOCKED"},
-    {"name": "PRESENT CODE", "state": "FOUND"},
-    {"name": "PRESENT RUNTIME", "state": "BLOCKED"},
-    {"name": "DRAW CODE", "state": "FOUND"},
-    {"name": "RESET/RECOVERY", "state": "NOT FOUND"},
-    {"name": "POST-INIT SEAM", "state": "PARTIAL"},
-    {"name": "D3D9 IMPLEMENTATION", "state": "NOT JUSTIFIED"},
-    {"name": "FIRST FRAME", "state": "UNBOUNDED"},
-    {"name": "INPUT / SIMULATION", "state": "NOT STARTED"},
-    {"name": "FIRST DRIVE", "state": "NOT STARTED"},
-    {"name": "WASM / BROWSER", "state": "NOT STARTED"},
-    {"name": "PLAYABLE WEB BUILD", "state": "NOT STARTED"}
+    {
+      "name": "STATIC RECOMPILATION",
+      "state": "ACHIEVED"
+    },
+    {
+      "name": "NATIVE EXECUTION",
+      "state": "DEMONSTRATED"
+    },
+    {
+      "name": "CRT / ABI",
+      "state": "PARTIAL"
+    },
+    {
+      "name": "ORDINARY CALLBACK INITIALIZATION",
+      "state": "DEMONSTRATED"
+    },
+    {
+      "name": "LARGE ORDINARY INITIALIZATION",
+      "state": "BLOCKED"
+    },
+    {
+      "name": "FUNCTION DISCOVERY",
+      "state": "REPAIRED"
+    },
+    {
+      "name": "FACTORY INITIALIZATION",
+      "state": "EXTERNAL/PROTECTED BLOCKED"
+    },
+    {
+      "name": "DEVICE CODE",
+      "state": "PROVEN"
+    },
+    {
+      "name": "DEVICE PUBLICATION",
+      "state": "EXTERNAL/BLOCKED"
+    },
+    {
+      "name": "PRESENT CODE",
+      "state": "FOUND"
+    },
+    {
+      "name": "PRESENT RUNTIME",
+      "state": "BLOCKED"
+    },
+    {
+      "name": "DRAW CODE",
+      "state": "FOUND_STRONG"
+    },
+    {
+      "name": "RESET/RECOVERY",
+      "state": "NOT FOUND"
+    },
+    {
+      "name": "POST-INIT SEAM",
+      "state": "PARTIAL"
+    },
+    {
+      "name": "D3D9 IMPLEMENTATION",
+      "state": "NOT JUSTIFIED"
+    },
+    {
+      "name": "FIRST FRAME",
+      "state": "UNBOUNDED"
+    },
+    {
+      "name": "INPUT / SIMULATION",
+      "state": "NOT STARTED"
+    },
+    {
+      "name": "FIRST DRIVE",
+      "state": "NOT STARTED"
+    },
+    {
+      "name": "WASM / BROWSER",
+      "state": "NOT STARTED"
+    },
+    {
+      "name": "PLAYABLE WEB BUILD",
+      "state": "NOT STARTED"
+    }
   ]
 }

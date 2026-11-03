@@ -1,0 +1,331 @@
+{
+  "relationship": {
+    "UC_RESULT": "NO_RELATION_FOUND",
+    "ANGR_RESULT": "NO_RELATION_FOUND",
+    "CONSENSUS": "NO_RELATION_FOUND",
+    "confidence": "AGREE_STRONG",
+    "detail_uc": "No ordinary function owner references both 0x013C6510 and 0x017AA798. Durable DEVICE field stores exist on other objects (e.g. publisher this+0x1B0) but not into renderer 0x017AA798.",
+    "note": "Absence of an angr relationship is not proof of no relationship. UC found no shared owners and no durable DEVICE\u2192renderer pointer store."
+  },
+  "draw_candidates": [
+    {
+      "address": "0x007B2AE7",
+      "owner": "0x007B2AC0",
+      "offset": "0x00000148",
+      "object_source": "RENDERER_HELPER_RETURN",
+      "vtable_source": "loaded from helper-returned COM",
+      "UC_classification": "ENGINE_COM_DRAW",
+      "ANGR_classification": "ENGINE_COM_DRAW",
+      "device_relationship": "NO_RELATION_FOUND",
+      "method_identity": "ENGINE_COM_METHOD",
+      "CONSENSUS": "ENGINE_COM_DRAW"
+    },
+    {
+      "address": "0x007B39D3",
+      "owner": "0x007B36A0",
+      "offset": "0x00000148",
+      "object_source": "UNKNOWN",
+      "vtable_source": "UNKNOWN",
+      "UC_classification": "ENGINE_COM_DRAW",
+      "ANGR_classification": "UNKNOWN",
+      "device_relationship": "NO_RELATION_FOUND",
+      "method_identity": "ENGINE_COM_METHOD",
+      "CONSENSUS": "ENGINE_COM_DRAW"
+    },
+    {
+      "address": "0x007A14FD",
+      "owner": "0x007A1400",
+      "offset": "0x0000014C",
+      "object_source": "RENDERER_HELPER_RETURN",
+      "vtable_source": "loaded from helper-returned COM",
+      "UC_classification": "ENGINE_COM_DRAW",
+      "ANGR_classification": "ENGINE_COM_DRAW",
+      "device_relationship": "NO_RELATION_FOUND",
+      "method_identity": "ENGINE_COM_METHOD",
+      "CONSENSUS": "ENGINE_COM_DRAW"
+    },
+    {
+      "address": "0x007B29E7",
+      "owner": "0x007B2930",
+      "offset": "0x0000014C",
+      "object_source": "UNKNOWN",
+      "vtable_source": "UNKNOWN",
+      "UC_classification": "ENGINE_COM_DRAW",
+      "ANGR_classification": "ENGINE_COM_DRAW",
+      "device_relationship": "NO_RELATION_FOUND",
+      "method_identity": "ENGINE_COM_METHOD",
+      "CONSENSUS": "ENGINE_COM_DRAW"
+    },
+    {
+      "address": "0x007B1C78",
+      "owner": "0x007B17C0",
+      "offset": "0x00000154",
+      "object_source": "UNKNOWN",
+      "vtable_source": "UNKNOWN",
+      "UC_classification": "ENGINE_COM_DRAW",
+      "ANGR_classification": "ENGINE_COM_DRAW",
+      "device_relationship": "NO_RELATION_FOUND",
+      "method_identity": "ENGINE_COM_METHOD",
+      "CONSENSUS": "ENGINE_COM_DRAW"
+    }
+  ],
+  "method_0x148": {
+    "UC_ANALYZER": "ENGINE_COM_METHOD",
+    "ANGR": "ENGINE_COM_DRAW",
+    "offset": "0x148",
+    "idirect3ddevice9_drawprimitive": "0x148",
+    "CONSENSUS": "ENGINE_COM_METHOD",
+    "note": "Offset matches raw IDirect3DDevice9::DrawPrimitive, but the this-pointer is helper-returned engine COM from renderer 0x017AA798, not a proven load of 0x013C6510."
+  },
+  "present_control": {
+    "UC_ANALYZER": "PASS",
+    "ANGR": "ANGR_PRESENT_CONTROL_PASS",
+    "CONSENSUS": "ANGR_PRESENT_CONTROL_PASS"
+  },
+  "clear_control": {
+    "UC_ANALYZER": "PASS",
+    "ANGR": "ANGR_CLEAR_CONTROL_PARTIAL",
+    "CONSENSUS": "ANGR_CLEAR_CONTROL_PARTIAL"
+  },
+  "renderer": {
+    "UC": "POINTER_TO_ENGINE_OBJECT",
+    "ANGR": {
+      "mentions_renderer": true,
+      "mentions_device": false,
+      "excerpt_sha": "02dcb82cb5f0df0b"
+    },
+    "publishers": [
+      {
+        "eip": "0x0079D1E0",
+        "text": "mov dword ptr [0x017AA798], 0x00000000",
+        "owner": "0x0079D150",
+        "label": "HIGH_CONFIDENCE",
+        "class": "NULL_CLEAR"
+      },
+      {
+        "eip": "0x007A09BB",
+        "text": "mov dword ptr [0x017AA798], ebp",
+        "owner": "0x007A06E0",
+        "label": "HIGH_CONFIDENCE",
+        "class": "DEFINITE_PUBLISHER"
+      },
+      {
+        "eip": "0x007B506B",
+        "text": "mov dword ptr [0x017AA798], eax",
+        "owner": "0x007B5020",
+        "label": "HIGH_CONFIDENCE",
+        "class": "DEFINITE_PUBLISHER"
+      },
+      {
+        "eip": "0x007B5072",
+        "text": "mov dword ptr [0x017AA798], ebx",
+        "owner": "0x007B5020",
+        "label": "HIGH_CONFIDENCE",
+        "class": "DEFINITE_PUBLISHER"
+      }
+    ]
+  },
+  "aliases": {
+    "transient_count": 164,
+    "durable_count": 1,
+    "transient_samples": [
+      {
+        "kind": "stack_arg",
+        "va": "0x0071CDCB",
+        "owner": "0x0071CDA0"
+      },
+      {
+        "kind": "stack_arg",
+        "va": "0x0071D3E2",
+        "owner": "0x0071D300"
+      },
+      {
+        "kind": "stack_arg",
+        "va": "0x0071D3E8",
+        "owner": "0x0071D300"
+      },
+      {
+        "kind": "stack_arg",
+        "va": "0x0071D413",
+        "owner": "0x0071D300"
+      },
+      {
+        "kind": "stack_arg",
+        "va": "0x0071DAFC",
+        "owner": "0x0071DAE0"
+      },
+      {
+        "kind": "stack_arg",
+        "va": "0x0071E63D",
+        "owner": "0x0071E630"
+      },
+      {
+        "kind": "stack_arg",
+        "va": "0x007231B8",
+        "owner": "0x00723160"
+      },
+      {
+        "kind": "stack_arg",
+        "va": "0x007231EF",
+        "owner": "0x00723160"
+      },
+      {
+        "kind": "stack_arg",
+        "va": "0x00723218",
+        "owner": "0x00723160"
+      },
+      {
+        "kind": "stack_arg",
+        "va": "0x00725312",
+        "owner": "0x00725200"
+      },
+      {
+        "kind": "stack_arg",
+        "va": "0x0072532E",
+        "owner": "0x00725200"
+      },
+      {
+        "kind": "stack_arg",
+        "va": "0x0072533E",
+        "owner": "0x00725200"
+      },
+      {
+        "kind": "stack_arg",
+        "va": "0x0072534F",
+        "owner": "0x00725200"
+      },
+      {
+        "kind": "stack_arg",
+        "va": "0x007253E4",
+        "owner": "0x00725200"
+      },
+      {
+        "kind": "stack_arg",
+        "va": "0x00725437",
+        "owner": "0x00725200"
+      },
+      {
+        "kind": "stack_arg",
+        "va": "0x007254BD",
+        "owner": "0x007254A0"
+      },
+      {
+        "kind": "stack_arg",
+        "va": "0x00725520",
+        "owner": "0x007254A0"
+      },
+      {
+        "kind": "stack_arg",
+        "va": "0x00725901",
+        "owner": "0x00725580"
+      },
+      {
+        "kind": "stack_arg",
+        "va": "0x00725A99",
+        "owner": "0x00725580"
+      },
+      {
+        "kind": "stack_arg",
+        "va": "0x00725AC3",
+        "owner": "0x00725580"
+      },
+      {
+        "kind": "stack_arg",
+        "va": "0x00727F30",
+        "owner": "0x00727ED0"
+      },
+      {
+        "kind": "stack_arg",
+        "va": "0x00729890",
+        "owner": "0x007297D0"
+      },
+      {
+        "kind": "stack_arg",
+        "va": "0x00729926",
+        "owner": "0x007297D0"
+      },
+      {
+        "kind": "stack_arg",
+        "va": "0x0072E238",
+        "owner": "0x0072E050"
+      },
+      {
+        "kind": "stack_arg",
+        "va": "0x0072E675",
+        "owner": "0x0072E5D0"
+      },
+      {
+        "kind": "stack_arg",
+        "va": "0x00730156",
+        "owner": "0x00730040"
+      },
+      {
+        "kind": "stack_arg",
+        "va": "0x00731B4E",
+        "owner": "0x00731B30"
+      },
+      {
+        "kind": "stack_arg",
+        "va": "0x00733761",
+        "owner": "0x00733700"
+      },
+      {
+        "kind": "stack_arg",
+        "va": "0x0073377E",
+        "owner": "0x00733700"
+      },
+      {
+        "kind": "stack_arg",
+        "va": "0x00733799",
+        "owner": "0x00733700"
+      }
+    ],
+    "durable_samples": [
+      {
+        "kind": "object_field",
+        "va": "0x007253F1",
+        "base": "esi",
+        "offset": "0x1b0",
+        "owner": "0x00725200",
+        "note": "short-window store of DEVICE-held register"
+      }
+    ]
+  },
+  "seam": {
+    "classification": "PARTIAL_POST_INIT_SEAM",
+    "rationale": "Present/Clear on a host-owned device remain a legitimate post-init API boundary. Phase 21 still lacks a DEVICE\u2194renderer alias and a raw-device Draw path, so the seam is not CLEAN (CLEAN requires meaningful ordinary rendering beyond Present)."
+  },
+  "d3d9": {
+    "D3D9_IMPLEMENTATION_JUSTIFIED": false,
+    "decision": "NO",
+    "checklist": {
+      "device_identity": true,
+      "useful_ordinary_renderer_consumers": true,
+      "renderer_device_relationship_understood": false,
+      "standard_d3d9_advances_ordinary_execution": false,
+      "no_protected_callback_recreation_required_for_present": true
+    },
+    "reason": "Device identity and Present/Clear consumers are established, but the Draw path is engine COM via 0x017AA798 without a proven DEVICE relationship. Implementing D3D9 would not yet advance a defensible first useful frame.",
+    "highest_value_uncertainty": "Whether COM objects returned by renderer helper 0x0079E4A0 (list at [renderer+0x50]..[+0x54]) hold or alias the proven device at 0x013C6510 \u2014 exact field/dataflow inside those list elements.",
+    "phase22_surface_if_yes": null
+  },
+  "dashboard": {
+    "ANGR": "AVAILABLE",
+    "ANGR_VERSION": "10.0.5",
+    "FUNCTION_OVERLAP": {
+      "AGREE": 14
+    },
+    "BOUNDARY_DISAGREEMENTS": 0,
+    "PRESENT_CONTROL": "PASS",
+    "CLEAR_CONTROL": "PARTIAL",
+    "DEVICE_TO_RENDERER": "NO_RELATION_FOUND",
+    "DRAW_CONSENSUS": "ENGINE_COM_DRAW",
+    "DEVICE_CODE": "PROVEN",
+    "DEVICE_PUBLICATION": "EXTERNAL/BLOCKED",
+    "PRESENT_CODE": "FOUND",
+    "DRAW_CODE": "FOUND_STRONG",
+    "POST_INIT_SEAM": "PARTIAL",
+    "D3D9_IMPLEMENTATION": "NOT JUSTIFIED",
+    "FIRST_FRAME": "UNBOUNDED"
+  }
+}

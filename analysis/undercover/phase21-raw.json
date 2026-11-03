@@ -1,0 +1,2474 @@
+{
+  "phase": 21,
+  "angr": {
+    "available": true,
+    "version": "10.0.5",
+    "pinned": "10.0.5",
+    "python": "3.12.10",
+    "mode": "static_shellcode_windows",
+    "symbolic_execution": false,
+    "load_ok": true,
+    "cfg_ok": true,
+    "functions": {
+      "0x00752AF0": {
+        "address": "0x00752AF0",
+        "status": "OK",
+        "angr_function": true,
+        "window": {
+          "start": "0x00752AF0",
+          "end": "0x00752D00",
+          "bytes": 528
+        },
+        "size": 19,
+        "block_count": 1,
+        "returning": false,
+        "callees": [],
+        "jump_targets": [],
+        "global_refs": [
+          {
+            "va": "0x00752AF0",
+            "abs": "0x013C6510",
+            "text": "eax, dword ptr [0x13c6510]"
+          }
+        ],
+        "immediate_hits": [
+          {
+            "abs": "0x013C6510",
+            "name": "DEVICE",
+            "at": "0x00752AF1"
+          },
+          {
+            "abs": "0x013C6510",
+            "name": "DEVICE",
+            "at": "0x00752B04"
+          },
+          {
+            "abs": "0x013C6510",
+            "name": "DEVICE",
+            "at": "0x00752B54"
+          },
+          {
+            "abs": "0x013C6510",
+            "name": "DEVICE",
+            "at": "0x00752B7D"
+          },
+          {
+            "abs": "0x013C6510",
+            "name": "DEVICE",
+            "at": "0x00752B9F"
+          },
+          {
+            "abs": "0x013C6510",
+            "name": "DEVICE",
+            "at": "0x00752BC8"
+          },
+          {
+            "abs": "0x013C6510",
+            "name": "DEVICE",
+            "at": "0x00752BE7"
+          }
+        ],
+        "boundary_hits": [],
+        "decompiler_available": false,
+        "pseudocode_sha": null
+      },
+      "0x00725200": {
+        "address": "0x00725200",
+        "status": "OK",
+        "angr_function": true,
+        "window": {
+          "start": "0x00725200",
+          "end": "0x007254E0",
+          "bytes": 736
+        },
+        "size": 78,
+        "block_count": 1,
+        "returning": false,
+        "callees": [],
+        "jump_targets": [],
+        "global_refs": [
+          {
+            "va": "0x00725206",
+            "abs": "0x01285688",
+            "text": "eax, dword ptr [0x1285688]"
+          }
+        ],
+        "immediate_hits": [
+          {
+            "abs": "0x013C6510",
+            "name": "DEVICE",
+            "at": "0x007252B7"
+          },
+          {
+            "abs": "0x013C6510",
+            "name": "DEVICE",
+            "at": "0x007252E9"
+          },
+          {
+            "abs": "0x013C6510",
+            "name": "DEVICE",
+            "at": "0x00725306"
+          },
+          {
+            "abs": "0x013C6510",
+            "name": "DEVICE",
+            "at": "0x00725318"
+          },
+          {
+            "abs": "0x013C6510",
+            "name": "DEVICE",
+            "at": "0x00725332"
+          },
+          {
+            "abs": "0x013C6510",
+            "name": "DEVICE",
+            "at": "0x00725342"
+          },
+          {
+            "abs": "0x013C6510",
+            "name": "DEVICE",
+            "at": "0x007253C3"
+          },
+          {
+            "abs": "0x013C6510",
+            "name": "DEVICE",
+            "at": "0x00725421"
+          },
+          {
+            "abs": "0x013C6510",
+            "name": "DEVICE",
+            "at": "0x007254B0"
+          }
+        ],
+        "boundary_hits": [],
+        "decompiler_available": false,
+        "pseudocode_sha": null
+      },
+      "0x0072E340": {
+        "address": "0x0072E340",
+        "status": "OK",
+        "angr_function": true,
+        "window": {
+          "start": "0x0072E340",
+          "end": "0x0072E600",
+          "bytes": 704
+        },
+        "size": 30,
+        "block_count": 1,
+        "returning": false,
+        "callees": [],
+        "jump_targets": [],
+        "global_refs": [],
+        "immediate_hits": [],
+        "boundary_hits": [],
+        "decompiler_available": false,
+        "pseudocode_sha": null
+      },
+      "0x00766730": {
+        "address": "0x00766730",
+        "status": "OK",
+        "angr_function": true,
+        "window": {
+          "start": "0x00766730",
+          "end": "0x00766990",
+          "bytes": 608
+        },
+        "size": 20,
+        "block_count": 1,
+        "returning": false,
+        "callees": [],
+        "jump_targets": [],
+        "global_refs": [
+          {
+            "va": "0x00766730",
+            "abs": "0x01385FA0",
+            "text": "eax, dword ptr [0x1385fa0]"
+          }
+        ],
+        "immediate_hits": [],
+        "boundary_hits": [],
+        "decompiler_available": false,
+        "pseudocode_sha": null
+      },
+      "0x0072DD00": {
+        "address": "0x0072DD00",
+        "status": "OK",
+        "angr_function": true,
+        "window": {
+          "start": "0x0072DD00",
+          "end": "0x0072DDA0",
+          "bytes": 160
+        },
+        "size": 75,
+        "block_count": 5,
+        "returning": false,
+        "callees": [],
+        "jump_targets": [],
+        "global_refs": [],
+        "immediate_hits": [],
+        "boundary_hits": [],
+        "decompiler_available": false,
+        "pseudocode_sha": null
+      },
+      "0x007B2AC0": {
+        "address": "0x007B2AC0",
+        "status": "OK",
+        "angr_function": true,
+        "window": {
+          "start": "0x007B2AC0",
+          "end": "0x007B2BE0",
+          "bytes": 288
+        },
+        "size": 66,
+        "block_count": 7,
+        "returning": true,
+        "callees": [],
+        "jump_targets": [],
+        "global_refs": [
+          {
+            "va": "0x007B2AC1",
+            "abs": "0x017AA798",
+            "text": "esi, dword ptr [0x17aa798]"
+          },
+          {
+            "va": "0x007B2AF9",
+            "abs": "0xFFFFFFFF",
+            "text": "-1"
+          }
+        ],
+        "immediate_hits": [
+          {
+            "abs": "0x017AA798",
+            "name": "RENDERER",
+            "at": "0x007B2AC3"
+          },
+          {
+            "abs": "0x017AA798",
+            "name": "RENDERER",
+            "at": "0x007B2B2F"
+          }
+        ],
+        "boundary_hits": [],
+        "decompiler_available": false,
+        "pseudocode_sha": null
+      },
+      "0x007B36A0": {
+        "address": "0x007B36A0",
+        "status": "OK",
+        "angr_function": true,
+        "window": {
+          "start": "0x007B36A0",
+          "end": "0x007B4120",
+          "bytes": 2688
+        },
+        "size": 215,
+        "block_count": 9,
+        "returning": true,
+        "callees": [],
+        "jump_targets": [],
+        "global_refs": [
+          {
+            "va": "0x007B36A3",
+            "abs": "0xFFFFFFF8",
+            "text": "esp, 0xfffffff8"
+          },
+          {
+            "va": "0x007B36A6",
+            "abs": "0xFFFFFFFF",
+            "text": "-1"
+          },
+          {
+            "va": "0x007B36BB",
+            "abs": "0x01285688",
+            "text": "eax, dword ptr [0x1285688]"
+          },
+          {
+            "va": "0x007B36F2",
+            "abs": "0x0130D874",
+            "text": "cl, byte ptr [0x130d874]"
+          },
+          {
+            "va": "0x007B370D",
+            "abs": "0x0130D86C",
+            "text": "ebp, dword ptr [0x130d86c]"
+          },
+          {
+            "va": "0x007B3713",
+            "abs": "0x0130D874",
+            "text": "edx, dword ptr [0x130d874]"
+          }
+        ],
+        "immediate_hits": [],
+        "boundary_hits": [],
+        "decompiler_available": false,
+        "pseudocode_sha": null
+      },
+      "0x007A1400": {
+        "address": "0x007A1400",
+        "status": "OK",
+        "angr_function": true,
+        "window": {
+          "start": "0x007A1400",
+          "end": "0x007A1560",
+          "bytes": 352
+        },
+        "size": 102,
+        "block_count": 9,
+        "returning": true,
+        "callees": [],
+        "jump_targets": [],
+        "global_refs": [
+          {
+            "va": "0x007A1402",
+            "abs": "0x017AA798",
+            "text": "ebp, dword ptr [0x17aa798]"
+          }
+        ],
+        "immediate_hits": [
+          {
+            "abs": "0x017AA798",
+            "name": "RENDERER",
+            "at": "0x007A1404"
+          }
+        ],
+        "boundary_hits": [],
+        "decompiler_available": false,
+        "pseudocode_sha": null
+      },
+      "0x007B2930": {
+        "address": "0x007B2930",
+        "status": "OK",
+        "angr_function": true,
+        "window": {
+          "start": "0x007B2930",
+          "end": "0x007B2B00",
+          "bytes": 464
+        },
+        "size": 332,
+        "block_count": 31,
+        "returning": true,
+        "callees": [],
+        "jump_targets": [],
+        "global_refs": [
+          {
+            "va": "0x007B2932",
+            "abs": "0x017AA798",
+            "text": "ebx, dword ptr [0x17aa798]"
+          },
+          {
+            "va": "0x007B2A50",
+            "abs": "0x012C9740",
+            "text": "ecx, dword ptr [0x12c9740]"
+          },
+          {
+            "va": "0x007B2A94",
+            "abs": "0x017A9548",
+            "text": "eax, dword ptr [0x17a9548]"
+          }
+        ],
+        "immediate_hits": [
+          {
+            "abs": "0x017AA798",
+            "name": "RENDERER",
+            "at": "0x007B2934"
+          },
+          {
+            "abs": "0x017AA798",
+            "name": "RENDERER",
+            "at": "0x007B2AC3"
+          }
+        ],
+        "boundary_hits": [],
+        "decompiler_available": false,
+        "pseudocode_sha": null
+      },
+      "0x007B17C0": {
+        "address": "0x007B17C0",
+        "status": "OK",
+        "angr_function": true,
+        "window": {
+          "start": "0x007B17C0",
+          "end": "0x007B1DB0",
+          "bytes": 1520
+        },
+        "size": 143,
+        "block_count": 19,
+        "returning": true,
+        "callees": [],
+        "jump_targets": [],
+        "global_refs": [
+          {
+            "va": "0x007B17C0",
+            "abs": "0x017AA798",
+            "text": "eax, dword ptr [0x17aa798]"
+          },
+          {
+            "va": "0x007B17F3",
+            "abs": "0x01279AE8",
+            "text": "ecx, 0x1279ae8"
+          },
+          {
+            "va": "0x007B181B",
+            "abs": "0x10000000",
+            "text": "eax, 0x10000000"
+          },
+          {
+            "va": "0x007B1803",
+            "abs": "0x01279AE8",
+            "text": "ecx, 0x1279ae8"
+          }
+        ],
+        "immediate_hits": [
+          {
+            "abs": "0x017AA798",
+            "name": "RENDERER",
+            "at": "0x007B17C1"
+          },
+          {
+            "abs": "0x017AA798",
+            "name": "RENDERER",
+            "at": "0x007B187B"
+          },
+          {
+            "abs": "0x017AA798",
+            "name": "RENDERER",
+            "at": "0x007B1D9D"
+          }
+        ],
+        "boundary_hits": [],
+        "decompiler_available": false,
+        "pseudocode_sha": null
+      },
+      "0x007A06E0": {
+        "address": "0x007A06E0",
+        "status": "OK",
+        "angr_function": true,
+        "window": {
+          "start": "0x007A06E0",
+          "end": "0x007A0A30",
+          "bytes": 848
+        },
+        "size": 770,
+        "block_count": 60,
+        "returning": true,
+        "callees": [],
+        "jump_targets": [],
+        "global_refs": [
+          {
+            "va": "0x007A06E0",
+            "abs": "0xFFFFFFFF",
+            "text": "-1"
+          },
+          {
+            "va": "0x007A06F5",
+            "abs": "0x01285688",
+            "text": "eax, dword ptr [0x1285688]"
+          },
+          {
+            "va": "0x007A0733",
+            "abs": "0x017A95A8",
+            "text": "dword ptr [0x17a95a8], ebp"
+          },
+          {
+            "va": "0x007A087D",
+            "abs": "0xFFFFFFFF",
+            "text": "-1"
+          },
+          {
+            "va": "0x007A0892",
+            "abs": "0xFFFFFFFF",
+            "text": "-1"
+          },
+          {
+            "va": "0x007A08A7",
+            "abs": "0xFFFFFFFF",
+            "text": "-1"
+          },
+          {
+            "va": "0x007A08BC",
+            "abs": "0xFFFFFFFF",
+            "text": "-1"
+          },
+          {
+            "va": "0x007A08D1",
+            "abs": "0xFFFFFFFF",
+            "text": "-1"
+          },
+          {
+            "va": "0x007A08F1",
+            "abs": "0x017A95A4",
+            "text": "eax, dword ptr [0x17a95a4]"
+          },
+          {
+            "va": "0x007A08E6",
+            "abs": "0xFFFFFFFF",
+            "text": "-1"
+          },
+          {
+            "va": "0x007A08FA",
+            "abs": "0xFFFFFFFF",
+            "text": "-1"
+          },
+          {
+            "va": "0x007A0905",
+            "abs": "0x017A95A4",
+            "text": "dword ptr [0x17a95a4], ebp"
+          },
+          {
+            "va": "0x007A093B",
+            "abs": "0x01882C34",
+            "text": "edi, dword ptr [0x1882c34]"
+          },
+          {
+            "va": "0x007A09BB",
+            "abs": "0x017AA798",
+            "text": "dword ptr [0x17aa798], ebp"
+          },
+          {
+            "va": "0x007A09C1",
+            "abs": "0xFFFFFFFF",
+            "text": "dword ptr [esp + 0x24], 0xffffffff"
+          }
+        ],
+        "immediate_hits": [
+          {
+            "abs": "0x017AA798",
+            "name": "RENDERER",
+            "at": "0x007A09BD"
+          }
+        ],
+        "boundary_hits": [],
+        "decompiler_available": false,
+        "pseudocode_sha": null
+      },
+      "0x007B5020": {
+        "address": "0x007B5020",
+        "status": "OK",
+        "angr_function": true,
+        "window": {
+          "start": "0x007B5020",
+          "end": "0x007B58A0",
+          "bytes": 2176
+        },
+        "size": 2097,
+        "block_count": 82,
+        "returning": true,
+        "callees": [],
+        "jump_targets": [],
+        "global_refs": [
+          {
+            "va": "0x007B5020",
+            "abs": "0xFFFFFFFF",
+            "text": "-1"
+          },
+          {
+            "va": "0x007B5035",
+            "abs": "0x01285688",
+            "text": "eax, dword ptr [0x1285688]"
+          },
+          {
+            "va": "0x007B5068",
+            "abs": "0xFFFFFFBC",
+            "text": "eax, [edi - 0x44]"
+          },
+          {
+            "va": "0x007B506B",
+            "abs": "0x017AA798",
+            "text": "dword ptr [0x17aa798], eax"
+          },
+          {
+            "va": "0x007B5072",
+            "abs": "0x017AA798",
+            "text": "dword ptr [0x17aa798], ebx"
+          },
+          {
+            "va": "0x007B52A5",
+            "abs": "0xFFFFFFFF",
+            "text": "dword ptr [esi + 0x1fc], 0xffffffff"
+          },
+          {
+            "va": "0x007B5309",
+            "abs": "0x012C9740",
+            "text": "edx, dword ptr [0x12c9740]"
+          },
+          {
+            "va": "0x007B5366",
+            "abs": "0x20D60DBF",
+            "text": "dword ptr [ecx], 0x20d60dbf"
+          },
+          {
+            "va": "0x007B53B4",
+            "abs": "0x20D60DBF",
+            "text": "dword ptr [ecx], 0x20d60dbf"
+          },
+          {
+            "va": "0x007B544B",
+            "abs": "0x017A95A8",
+            "text": "dword ptr [0x17a95a8], 1"
+          },
+          {
+            "va": "0x007B5497",
+            "abs": "0xBC683501",
+            "text": "0xbc683501"
+          },
+          {
+            "va": "0x007B54AD",
+            "abs": "0x551E22B3",
+            "text": "0x551e22b3"
+          },
+          {
+            "va": "0x007B54E5",
+            "abs": "0xFFFFFFFE",
+            "text": "dword ptr [eax + 0x14], 0xfffffffe"
+          },
+          {
+            "va": "0x007B54EF",
+            "abs": "0xFFFFFFF7",
+            "text": "dword ptr [eax + 0x14], 0xfffffff7"
+          },
+          {
+            "va": "0x007B54F3",
+            "abs": "0x017AA798",
+            "text": "eax, dword ptr [0x17aa798]"
+          },
+          {
+            "va": "0x007B5519",
+            "abs": "0x012A78A0",
+            "text": "eax, dword ptr [0x12a78a0]"
+          },
+          {
+            "va": "0x007B5588",
+            "abs": "0x017AA798",
+            "text": "eax, dword ptr [0x17aa798]"
+          },
+          {
+            "va": "0x007B55AC",
+            "abs": "0x012A78A0",
+            "text": "eax, dword ptr [0x12a78a0]"
+          },
+          {
+            "va": "0x007B57F5",
+            "abs": "0x24624AED",
+            "text": "dword ptr [esp + 0x44], 0x24624aed"
+          },
+          {
+            "va": "0x007B5813",
+            "abs": "0x017A95A4",
+            "text": "dword ptr [0x17a95a4], eax"
+          }
+        ],
+        "immediate_hits": [
+          {
+            "abs": "0x017AA798",
+            "name": "RENDERER",
+            "at": "0x007B506C"
+          },
+          {
+            "abs": "0x017AA798",
+            "name": "RENDERER",
+            "at": "0x007B5074"
+          },
+          {
+            "abs": "0x017AA798",
+            "name": "RENDERER",
+            "at": "0x007B54F4"
+          },
+          {
+            "abs": "0x017AA798",
+            "name": "RENDERER",
+            "at": "0x007B5589"
+          }
+        ],
+        "boundary_hits": [],
+        "decompiler_available": false,
+        "pseudocode_sha": null
+      },
+      "0x0071E630": {
+        "address": "0x0071E630",
+        "status": "OK",
+        "angr_function": true,
+        "window": {
+          "start": "0x0071E630",
+          "end": "0x0071E690",
+          "bytes": 96
+        },
+        "size": 16,
+        "block_count": 1,
+        "returning": false,
+        "callees": [],
+        "jump_targets": [],
+        "global_refs": [
+          {
+            "va": "0x0071E630",
+            "abs": "0x013C6510",
+            "text": "eax, dword ptr [0x13c6510]"
+          }
+        ],
+        "immediate_hits": [
+          {
+            "abs": "0x013C6510",
+            "name": "DEVICE",
+            "at": "0x0071E631"
+          }
+        ],
+        "boundary_hits": [],
+        "decompiler_available": false,
+        "pseudocode_sha": null
+      },
+      "0x007297D0": {
+        "address": "0x007297D0",
+        "status": "OK",
+        "angr_function": true,
+        "window": {
+          "start": "0x007297D0",
+          "end": "0x007299D0",
+          "bytes": 512
+        },
+        "size": 195,
+        "block_count": 8,
+        "returning": false,
+        "callees": [],
+        "jump_targets": [],
+        "global_refs": [
+          {
+            "va": "0x007297D0",
+            "abs": "0xFFFFFFFF",
+            "text": "-1"
+          },
+          {
+            "va": "0x007297E1",
+            "abs": "0x01285688",
+            "text": "eax, dword ptr [0x1285688]"
+          },
+          {
+            "va": "0x0072987A",
+            "abs": "0x013C6510",
+            "text": "eax, dword ptr [0x13c6510]"
+          }
+        ],
+        "immediate_hits": [
+          {
+            "abs": "0x013C6510",
+            "name": "DEVICE",
+            "at": "0x0072987B"
+          },
+          {
+            "abs": "0x013C6510",
+            "name": "DEVICE",
+            "at": "0x0072990A"
+          }
+        ],
+        "boundary_hits": [],
+        "decompiler_available": false,
+        "pseudocode_sha": null
+      }
+    },
+    "comparison": {
+      "0x00752AF0": {
+        "address": "0x00752AF0",
+        "class": "AGREE",
+        "UC_ANALYZER": {
+          "present": true,
+          "label": "HIGH_CONFIDENCE",
+          "insns": 125,
+          "reachable": true
+        },
+        "ANGR": {
+          "function": true,
+          "size": 19,
+          "block_count": 1,
+          "status": "OK"
+        }
+      },
+      "0x00725200": {
+        "address": "0x00725200",
+        "class": "AGREE",
+        "UC_ANALYZER": {
+          "present": true,
+          "label": "HIGH_CONFIDENCE",
+          "insns": 303,
+          "reachable": true
+        },
+        "ANGR": {
+          "function": true,
+          "size": 78,
+          "block_count": 1,
+          "status": "OK"
+        }
+      },
+      "0x0072E340": {
+        "address": "0x0072E340",
+        "class": "AGREE",
+        "UC_ANALYZER": {
+          "present": true,
+          "label": "HIGH_CONFIDENCE",
+          "insns": 351,
+          "reachable": true
+        },
+        "ANGR": {
+          "function": true,
+          "size": 30,
+          "block_count": 1,
+          "status": "OK"
+        }
+      },
+      "0x00766730": {
+        "address": "0x00766730",
+        "class": "AGREE",
+        "UC_ANALYZER": {
+          "present": true,
+          "label": "HIGH_CONFIDENCE",
+          "insns": 227,
+          "reachable": true
+        },
+        "ANGR": {
+          "function": true,
+          "size": 20,
+          "block_count": 1,
+          "status": "OK"
+        }
+      },
+      "0x0072DD00": {
+        "address": "0x0072DD00",
+        "class": "AGREE",
+        "UC_ANALYZER": {
+          "present": true,
+          "label": "HIGH_CONFIDENCE",
+          "insns": 33,
+          "reachable": true
+        },
+        "ANGR": {
+          "function": true,
+          "size": 75,
+          "block_count": 5,
+          "status": "OK"
+        }
+      },
+      "0x007B2AC0": {
+        "address": "0x007B2AC0",
+        "class": "AGREE",
+        "UC_ANALYZER": {
+          "present": true,
+          "label": "HIGH_CONFIDENCE",
+          "insns": 51,
+          "reachable": true
+        },
+        "ANGR": {
+          "function": true,
+          "size": 66,
+          "block_count": 7,
+          "status": "OK"
+        }
+      },
+      "0x007B36A0": {
+        "address": "0x007B36A0",
+        "class": "AGREE",
+        "UC_ANALYZER": {
+          "present": true,
+          "label": "HIGH_CONFIDENCE",
+          "insns": 1002,
+          "reachable": true
+        },
+        "ANGR": {
+          "function": true,
+          "size": 215,
+          "block_count": 9,
+          "status": "OK"
+        }
+      },
+      "0x007A1400": {
+        "address": "0x007A1400",
+        "class": "AGREE",
+        "UC_ANALYZER": {
+          "present": true,
+          "label": "HIGH_CONFIDENCE",
+          "insns": 115,
+          "reachable": true
+        },
+        "ANGR": {
+          "function": true,
+          "size": 102,
+          "block_count": 9,
+          "status": "OK"
+        }
+      },
+      "0x007B2930": {
+        "address": "0x007B2930",
+        "class": "AGREE",
+        "UC_ANALYZER": {
+          "present": true,
+          "label": "HIGH_CONFIDENCE",
+          "insns": 169,
+          "reachable": true
+        },
+        "ANGR": {
+          "function": true,
+          "size": 332,
+          "block_count": 31,
+          "status": "OK"
+        }
+      },
+      "0x007B17C0": {
+        "address": "0x007B17C0",
+        "class": "AGREE",
+        "UC_ANALYZER": {
+          "present": true,
+          "label": "HIGH_CONFIDENCE",
+          "insns": 54,
+          "reachable": true
+        },
+        "ANGR": {
+          "function": true,
+          "size": 143,
+          "block_count": 19,
+          "status": "OK"
+        }
+      },
+      "0x007A06E0": {
+        "address": "0x007A06E0",
+        "class": "AGREE",
+        "UC_ANALYZER": {
+          "present": true,
+          "label": "HIGH_CONFIDENCE",
+          "insns": 333,
+          "reachable": true
+        },
+        "ANGR": {
+          "function": true,
+          "size": 770,
+          "block_count": 60,
+          "status": "OK"
+        }
+      },
+      "0x007B5020": {
+        "address": "0x007B5020",
+        "class": "AGREE",
+        "UC_ANALYZER": {
+          "present": true,
+          "label": "HIGH_CONFIDENCE",
+          "insns": 865,
+          "reachable": true
+        },
+        "ANGR": {
+          "function": true,
+          "size": 2097,
+          "block_count": 82,
+          "status": "OK"
+        }
+      },
+      "0x0071E630": {
+        "address": "0x0071E630",
+        "class": "AGREE",
+        "UC_ANALYZER": {
+          "present": true,
+          "label": "HIGH_CONFIDENCE",
+          "insns": 10,
+          "reachable": true
+        },
+        "ANGR": {
+          "function": true,
+          "size": 16,
+          "block_count": 1,
+          "status": "OK"
+        }
+      },
+      "0x007297D0": {
+        "address": "0x007297D0",
+        "class": "AGREE",
+        "UC_ANALYZER": {
+          "present": true,
+          "label": "HIGH_CONFIDENCE",
+          "insns": 222,
+          "reachable": true
+        },
+        "ANGR": {
+          "function": true,
+          "size": 195,
+          "block_count": 8,
+          "status": "OK"
+        }
+      }
+    },
+    "controls": {},
+    "non_functions": {
+      "0x00686000": {
+        "address": "0x00686000",
+        "natural": "NO_FUNCTION",
+        "forced": false,
+        "uc_label": "LOW_CONFIDENCE",
+        "angr": {
+          "status": "ANGR_MISSING",
+          "size": null,
+          "block_count": 0,
+          "boundary_hits": []
+        }
+      },
+      "0x0055FF30": {
+        "address": "0x0055FF30",
+        "natural": "NO_FUNCTION",
+        "forced": false,
+        "uc_label": "REJECTED_DATA_LIKE",
+        "angr": {
+          "status": "ANGR_MISSING",
+          "size": null,
+          "block_count": 0,
+          "boundary_hits": []
+        }
+      }
+    },
+    "decompiles": {
+      "0x007B2AC0": {
+        "available": true,
+        "sha": "02dcb82cb5f0df0b",
+        "excerpt": "typedef struct st_7b2ac0_2 {\n    char padding_0[12];\n    struct st_7b2ac0_1 *field_c;\n} st_7b2ac0_2;\n\ntypedef struct st_7b2ac0_0 {\n    char padding_0[328];\n    struct st_7b2ac0_1 *field_148;\n} st_7b2ac0_0;\n\ntypedef struct st_7b2ac0_1 {\n    unsigned int field_0;\n} st_7b2ac0_1;\n\nint sub_7b2ac0(void)\n{\n    st_7b2ac0_0 **v4;  // eax\n    st_7b2ac0_2 **v5;  // ecx\n    unsigned int v6;  // eax\n    unsigned int v0;  // [bp-0x14]\n    unsigned int v1;  // [bp-0x10]\n    unsigned int v2;  // [bp-0xc]\n\n    if (!*(int *)0x17aa798)\n        return v6;\n    v2 = 1;\n    v1 = 0;\n    v4 = 7988384();\n    if (!v4)\n    {\n        8041280();\n        v0 = 0xffffffff;\n        *v5->field_c();\n    }\n    *v4->field_148();\n}",
+        "globals": [
+          {
+            "va": "0x007B2AC1",
+            "abs": "0x017AA798",
+            "text": "esi, dword ptr [0x17aa798]"
+          },
+          {
+            "va": "0x007B2AF9",
+            "abs": "0xFFFFFFFF",
+            "text": "-1"
+          }
+        ],
+        "size": 66,
+        "blocks": 7
+      },
+      "0x00725200": {
+        "available": true,
+        "sha": "78ebc93c1b5df51a",
+        "excerpt": "typedef struct st_725200_0 {\n    char padding_0[16];\n    struct st_725200_1 *field_10;\n} st_725200_0;\n\ntypedef struct st_725200_1 {\n    unsigned int field_0;\n} st_725200_1;\n\nint sub_725200(void)\n{\n    unsigned int v12;  // ebx\n    unsigned int v13;  // esi\n    unsigned int v14;  // edi\n    unsigned int v15;  // ecx\n    st_725200_0 **v0;  // [bp-0x474]\n    unsigned int v1;  // [bp-0x470]\n    unsigned int v2;  // [bp-0x46c]\n    unsigned int v3;  // [bp-0x464]\n    unsigned int v4;  // [bp-0x460]\n    unsigned int v5;  // [bp-0x45c]\n    unsigned int v6;  // [bp-0x458]\n    unsigned int v7;  // [bp-0x454]\n    unsigned int v8;  // [bp-0x4]\n    st_725200_0 **v9;  // [bp+0x4]\n    unsigned int v10;  // [bp+0x8]\n    unsigned int v11;  // [bp+0xc]\n\n    v8 = *(int *)0x1285688 ^ &v4;\n    v3 = v12;\n    v2 = v13;\n    v1 = v14;\n    v6 = v11;\n    v0 = v9;\n    v5 = v15;\n    v4 = v10;\n    v7 = 1;\n    *v9->field_10();\n}",
+        "globals": [
+          {
+            "va": "0x00725206",
+            "abs": "0x01285688",
+            "text": "eax, dword ptr [0x1285688]"
+          }
+        ],
+        "size": 78,
+        "blocks": 1
+      },
+      "0x00752AF0": {
+        "available": true,
+        "sha": "9de27636d0bc0361",
+        "excerpt": "void sub_752af0(void)\n{\n    unsigned int v5;  // ebx\n    unsigned int v6;  // esi\n    unsigned int v7;  // edi\n    unsigned int v0;  // [bp-0x10]\n    unsigned int v1;  // [bp-0xc]\n    unsigned int v2;  // [bp-0x8]\n    unsigned int v3;  // [bp-0x4]\n\n    v3 = v5;\n    v2 = v6;\n    v1 = v7;\n    v0 = *(int *)0x13c6510;\n    (*(int *)(*(int *)*(int *)0x13c6510 + 168))();\n}",
+        "globals": [
+          {
+            "va": "0x00752AF0",
+            "abs": "0x013C6510",
+            "text": "eax, dword ptr [0x13c6510]"
+          }
+        ],
+        "size": 19,
+        "blocks": 1
+      },
+      "0x0072E340": {
+        "available": true,
+        "sha": "746e546738a50265",
+        "excerpt": "int sub_72e340(void)\n{\n    unsigned int v7;  // ebx\n    unsigned int v8;  // esi\n    unsigned int v9;  // ecx\n    unsigned int v0;  // [bp-0x68]\n    unsigned int v1;  // [bp-0x64]\n    unsigned int v2;  // [bp-0x60]\n    unsigned int v3;  // [bp-0x5c]\n    unsigned int v4;  // [bp-0x58]\n    unsigned int v5;  // [bp-0x50]\n\n    v5 = v7;\n    v4 = v8;\n    v3 = 0;\n    v2 = v9 + 1216;\n    v1 = 8;\n    v0 = 58;\n    (*(int *)0xb615c4)();\n}",
+        "globals": [],
+        "size": 30,
+        "blocks": 1
+      }
+    },
+    "present_control": "ANGR_PRESENT_CONTROL_PASS",
+    "clear_control": "ANGR_CLEAR_CONTROL_PARTIAL",
+    "device_provenance": {
+      "present_globals": [
+        {
+          "va": "0x00752AF0",
+          "abs": "0x013C6510",
+          "text": "eax, dword ptr [0x13c6510]"
+        }
+      ],
+      "publisher_globals": [],
+      "note": "angr shellcode windows recover absolute DEVICE immediates inside known consumers"
+    },
+    "renderer_opinion": {
+      "mentions_renderer": true,
+      "mentions_device": false,
+      "excerpt_sha": "02dcb82cb5f0df0b"
+    },
+    "draw_opinions": {
+      "0x007B2AC0": {
+        "angr_function": true,
+        "mentions_renderer": true,
+        "mentions_device": false,
+        "offset": "0x00000148",
+        "classification": "ENGINE_COM_DRAW",
+        "sha": "02dcb82cb5f0df0b"
+      },
+      "0x007B36A0": {
+        "angr_function": true,
+        "mentions_renderer": false,
+        "mentions_device": false,
+        "offset": "0x00000148",
+        "classification": "UNKNOWN",
+        "sha": "6e243dcc1ccec90b"
+      },
+      "0x007A1400": {
+        "angr_function": true,
+        "mentions_renderer": true,
+        "mentions_device": false,
+        "offset": "0x0000014C",
+        "classification": "ENGINE_COM_DRAW",
+        "sha": "f97eb725444d6085"
+      },
+      "0x007B2930": {
+        "angr_function": true,
+        "mentions_renderer": true,
+        "mentions_device": false,
+        "offset": "0x0000014C",
+        "classification": "ENGINE_COM_DRAW",
+        "sha": "025d23dc3d4aca39"
+      },
+      "0x007B17C0": {
+        "angr_function": true,
+        "mentions_renderer": true,
+        "mentions_device": false,
+        "offset": "0x00000154",
+        "classification": "ENGINE_COM_DRAW",
+        "sha": "37576f96c0f4ac32"
+      }
+    },
+    "quality": {
+      "priority_compared": 14,
+      "class_counts": {
+        "AGREE": 14
+      },
+      "ordinary_functions_recovered_priority": 14,
+      "full_high_scan": false,
+      "note": "Full 22,779 HIGH CFG via angr is not run this phase; priority/control shellcode windows are used. Overlap figures below are priority-scoped."
+    },
+    "control_weight": "USEFUL"
+  },
+  "overlap": {
+    "uc_high_total": 22779,
+    "angr_priority_recovered": 14,
+    "priority_class_counts": {
+      "AGREE": 14
+    },
+    "full_map_compared": false,
+    "major_boundary_disagreements": []
+  },
+  "phase16_controls": {
+    "0x00766730": {
+      "address": "0x00766730",
+      "class": "AGREE",
+      "UC_ANALYZER": {
+        "present": true,
+        "label": "HIGH_CONFIDENCE",
+        "insns": 227,
+        "reachable": true
+      },
+      "ANGR": {
+        "function": true,
+        "size": 20,
+        "block_count": 1,
+        "status": "OK"
+      }
+    },
+    "0x0072E340": {
+      "address": "0x0072E340",
+      "class": "AGREE",
+      "UC_ANALYZER": {
+        "present": true,
+        "label": "HIGH_CONFIDENCE",
+        "insns": 351,
+        "reachable": true
+      },
+      "ANGR": {
+        "function": true,
+        "size": 30,
+        "block_count": 1,
+        "status": "OK"
+      }
+    },
+    "0x0072DD00": {
+      "address": "0x0072DD00",
+      "class": "AGREE",
+      "UC_ANALYZER": {
+        "present": true,
+        "label": "HIGH_CONFIDENCE",
+        "insns": 33,
+        "reachable": true
+      },
+      "ANGR": {
+        "function": true,
+        "size": 75,
+        "block_count": 5,
+        "status": "OK"
+      }
+    }
+  },
+  "non_function_controls": {
+    "0x00686000": {
+      "address": "0x00686000",
+      "natural": "NO_FUNCTION",
+      "forced": false,
+      "uc_label": "LOW_CONFIDENCE",
+      "angr": {
+        "status": "ANGR_MISSING",
+        "size": null,
+        "block_count": 0,
+        "boundary_hits": []
+      }
+    },
+    "0x0055FF30": {
+      "address": "0x0055FF30",
+      "natural": "NO_FUNCTION",
+      "forced": false,
+      "uc_label": "REJECTED_DATA_LIKE",
+      "angr": {
+        "status": "ANGR_MISSING",
+        "size": null,
+        "block_count": 0,
+        "boundary_hits": []
+      }
+    }
+  },
+  "device": {
+    "va": "0x013C6510",
+    "mapped": {
+      "section": ".data",
+      "value": 0,
+      "reason": "virtual tail zero"
+    },
+    "UC_ANALYZER": "PROVEN_D3D9_DEVICE",
+    "ANGR": "seen as absolute in Present/Clear windows",
+    "CONSENSUS": "PROVEN_D3D9_DEVICE",
+    "confidence": "AGREE_STRONG"
+  },
+  "renderer": {
+    "UC_ANALYZER": {
+      "va": "0x017AA798",
+      "mapped": {
+        "section": ".data",
+        "value": 0,
+        "reason": "virtual tail zero"
+      },
+      "ref_count": 134,
+      "writers": [
+        {
+          "eip": "0x0079D1E0",
+          "text": "mov dword ptr [0x017AA798], 0x00000000",
+          "owner": "0x0079D150",
+          "label": "HIGH_CONFIDENCE",
+          "class": "NULL_CLEAR"
+        },
+        {
+          "eip": "0x007A09BB",
+          "text": "mov dword ptr [0x017AA798], ebp",
+          "owner": "0x007A06E0",
+          "label": "HIGH_CONFIDENCE",
+          "class": "DEFINITE_PUBLISHER"
+        },
+        {
+          "eip": "0x007B506B",
+          "text": "mov dword ptr [0x017AA798], eax",
+          "owner": "0x007B5020",
+          "label": "HIGH_CONFIDENCE",
+          "class": "DEFINITE_PUBLISHER"
+        },
+        {
+          "eip": "0x007B5072",
+          "text": "mov dword ptr [0x017AA798], ebx",
+          "owner": "0x007B5020",
+          "label": "HIGH_CONFIDENCE",
+          "class": "DEFINITE_PUBLISHER"
+        }
+      ],
+      "writer_classes": {
+        "NULL_CLEAR": 1,
+        "DEFINITE_PUBLISHER": 3
+      },
+      "classification": "POINTER_TO_ENGINE_OBJECT",
+      "pe_initial": 0,
+      "note": "Ordinary writers publish a constructed object pointer (e.g. lea this / ebp), not a raw IDirect3DDevice9* from 0x013C6510."
+    },
+    "ANGR": {
+      "mentions_renderer": true,
+      "mentions_device": false,
+      "excerpt_sha": "02dcb82cb5f0df0b"
+    },
+    "CONSENSUS": "POINTER_TO_ENGINE_OBJECT",
+    "confidence": "AGREE"
+  },
+  "relationship": {
+    "UC_RESULT": "NO_RELATION_FOUND",
+    "ANGR_RESULT": "NO_RELATION_FOUND",
+    "CONSENSUS": "NO_RELATION_FOUND",
+    "confidence": "AGREE_STRONG",
+    "detail_uc": "No ordinary function owner references both 0x013C6510 and 0x017AA798. Durable DEVICE field stores exist on other objects (e.g. publisher this+0x1B0) but not into renderer 0x017AA798.",
+    "note": "Absence of an angr relationship is not proof of no relationship. UC found no shared owners and no durable DEVICE\u2192renderer pointer store."
+  },
+  "aliases": {
+    "transient_count": 164,
+    "durable_count": 1,
+    "transient_samples": [
+      {
+        "kind": "stack_arg",
+        "va": "0x0071CDCB",
+        "owner": "0x0071CDA0"
+      },
+      {
+        "kind": "stack_arg",
+        "va": "0x0071D3E2",
+        "owner": "0x0071D300"
+      },
+      {
+        "kind": "stack_arg",
+        "va": "0x0071D3E8",
+        "owner": "0x0071D300"
+      },
+      {
+        "kind": "stack_arg",
+        "va": "0x0071D413",
+        "owner": "0x0071D300"
+      },
+      {
+        "kind": "stack_arg",
+        "va": "0x0071DAFC",
+        "owner": "0x0071DAE0"
+      },
+      {
+        "kind": "stack_arg",
+        "va": "0x0071E63D",
+        "owner": "0x0071E630"
+      },
+      {
+        "kind": "stack_arg",
+        "va": "0x007231B8",
+        "owner": "0x00723160"
+      },
+      {
+        "kind": "stack_arg",
+        "va": "0x007231EF",
+        "owner": "0x00723160"
+      },
+      {
+        "kind": "stack_arg",
+        "va": "0x00723218",
+        "owner": "0x00723160"
+      },
+      {
+        "kind": "stack_arg",
+        "va": "0x00725312",
+        "owner": "0x00725200"
+      },
+      {
+        "kind": "stack_arg",
+        "va": "0x0072532E",
+        "owner": "0x00725200"
+      },
+      {
+        "kind": "stack_arg",
+        "va": "0x0072533E",
+        "owner": "0x00725200"
+      },
+      {
+        "kind": "stack_arg",
+        "va": "0x0072534F",
+        "owner": "0x00725200"
+      },
+      {
+        "kind": "stack_arg",
+        "va": "0x007253E4",
+        "owner": "0x00725200"
+      },
+      {
+        "kind": "stack_arg",
+        "va": "0x00725437",
+        "owner": "0x00725200"
+      },
+      {
+        "kind": "stack_arg",
+        "va": "0x007254BD",
+        "owner": "0x007254A0"
+      },
+      {
+        "kind": "stack_arg",
+        "va": "0x00725520",
+        "owner": "0x007254A0"
+      },
+      {
+        "kind": "stack_arg",
+        "va": "0x00725901",
+        "owner": "0x00725580"
+      },
+      {
+        "kind": "stack_arg",
+        "va": "0x00725A99",
+        "owner": "0x00725580"
+      },
+      {
+        "kind": "stack_arg",
+        "va": "0x00725AC3",
+        "owner": "0x00725580"
+      },
+      {
+        "kind": "stack_arg",
+        "va": "0x00727F30",
+        "owner": "0x00727ED0"
+      },
+      {
+        "kind": "stack_arg",
+        "va": "0x00729890",
+        "owner": "0x007297D0"
+      },
+      {
+        "kind": "stack_arg",
+        "va": "0x00729926",
+        "owner": "0x007297D0"
+      },
+      {
+        "kind": "stack_arg",
+        "va": "0x0072E238",
+        "owner": "0x0072E050"
+      },
+      {
+        "kind": "stack_arg",
+        "va": "0x0072E675",
+        "owner": "0x0072E5D0"
+      },
+      {
+        "kind": "stack_arg",
+        "va": "0x00730156",
+        "owner": "0x00730040"
+      },
+      {
+        "kind": "stack_arg",
+        "va": "0x00731B4E",
+        "owner": "0x00731B30"
+      },
+      {
+        "kind": "stack_arg",
+        "va": "0x00733761",
+        "owner": "0x00733700"
+      },
+      {
+        "kind": "stack_arg",
+        "va": "0x0073377E",
+        "owner": "0x00733700"
+      },
+      {
+        "kind": "stack_arg",
+        "va": "0x00733799",
+        "owner": "0x00733700"
+      }
+    ],
+    "durable_samples": [
+      {
+        "kind": "object_field",
+        "va": "0x007253F1",
+        "base": "esi",
+        "offset": "0x1b0",
+        "owner": "0x00725200",
+        "note": "short-window store of DEVICE-held register"
+      }
+    ]
+  },
+  "draw_candidates": [
+    {
+      "address": "0x007B2AE7",
+      "owner": "0x007B2AC0",
+      "offset": "0x00000148",
+      "object_source": "RENDERER_HELPER_RETURN",
+      "vtable_source": "loaded from helper-returned COM",
+      "UC_classification": "ENGINE_COM_DRAW",
+      "ANGR_classification": "ENGINE_COM_DRAW",
+      "device_relationship": "NO_RELATION_FOUND",
+      "method_identity": "ENGINE_COM_METHOD",
+      "CONSENSUS": "ENGINE_COM_DRAW"
+    },
+    {
+      "address": "0x007B39D3",
+      "owner": "0x007B36A0",
+      "offset": "0x00000148",
+      "object_source": "UNKNOWN",
+      "vtable_source": "UNKNOWN",
+      "UC_classification": "ENGINE_COM_DRAW",
+      "ANGR_classification": "UNKNOWN",
+      "device_relationship": "NO_RELATION_FOUND",
+      "method_identity": "ENGINE_COM_METHOD",
+      "CONSENSUS": "ENGINE_COM_DRAW"
+    },
+    {
+      "address": "0x007A14FD",
+      "owner": "0x007A1400",
+      "offset": "0x0000014C",
+      "object_source": "RENDERER_HELPER_RETURN",
+      "vtable_source": "loaded from helper-returned COM",
+      "UC_classification": "ENGINE_COM_DRAW",
+      "ANGR_classification": "ENGINE_COM_DRAW",
+      "device_relationship": "NO_RELATION_FOUND",
+      "method_identity": "ENGINE_COM_METHOD",
+      "CONSENSUS": "ENGINE_COM_DRAW"
+    },
+    {
+      "address": "0x007B29E7",
+      "owner": "0x007B2930",
+      "offset": "0x0000014C",
+      "object_source": "UNKNOWN",
+      "vtable_source": "UNKNOWN",
+      "UC_classification": "ENGINE_COM_DRAW",
+      "ANGR_classification": "ENGINE_COM_DRAW",
+      "device_relationship": "NO_RELATION_FOUND",
+      "method_identity": "ENGINE_COM_METHOD",
+      "CONSENSUS": "ENGINE_COM_DRAW"
+    },
+    {
+      "address": "0x007B1C78",
+      "owner": "0x007B17C0",
+      "offset": "0x00000154",
+      "object_source": "UNKNOWN",
+      "vtable_source": "UNKNOWN",
+      "UC_classification": "ENGINE_COM_DRAW",
+      "ANGR_classification": "ENGINE_COM_DRAW",
+      "device_relationship": "NO_RELATION_FOUND",
+      "method_identity": "ENGINE_COM_METHOD",
+      "CONSENSUS": "ENGINE_COM_DRAW"
+    }
+  ],
+  "draw_detail_uc": [
+    {
+      "address": "0x007B2AE7",
+      "owner": "0x007B2AC0",
+      "offset": "0x00000148",
+      "soft_name": "DrawPrimitive",
+      "uses_renderer_global": true,
+      "uses_device_global": false,
+      "helper": "0x0079E4A0",
+      "object_source": "RENDERER_HELPER_RETURN",
+      "vtable_source": "loaded from helper-returned COM",
+      "method_identity": "ENGINE_COM_METHOD",
+      "UC_classification": "ENGINE_COM_DRAW",
+      "insn_count": 32,
+      "listing_head": [
+        {
+          "va": "0x007B2AC0",
+          "text": "push esi"
+        },
+        {
+          "va": "0x007B2AC1",
+          "text": "mov esi, dword ptr [0x17aa798]"
+        },
+        {
+          "va": "0x007B2AC7",
+          "text": "test esi, esi"
+        },
+        {
+          "va": "0x007B2AC9",
+          "text": "push edi"
+        },
+        {
+          "va": "0x007B2ACA",
+          "text": "mov edi, ecx"
+        },
+        {
+          "va": "0x007B2ACC",
+          "text": "je 0x7b2b0a"
+        },
+        {
+          "va": "0x007B2ACE",
+          "text": "push 1"
+        },
+        {
+          "va": "0x007B2AD0",
+          "text": "push 0"
+        },
+        {
+          "va": "0x007B2AD2",
+          "text": "mov ecx, esi"
+        },
+        {
+          "va": "0x007B2AD4",
+          "text": "call 0x79e4a0"
+        },
+        {
+          "va": "0x007B2AD9",
+          "text": "test eax, eax"
+        },
+        {
+          "va": "0x007B2ADB",
+          "text": "je 0x7b2ae9"
+        },
+        {
+          "va": "0x007B2ADD",
+          "text": "mov edx, dword ptr [eax]"
+        },
+        {
+          "va": "0x007B2ADF",
+          "text": "mov ecx, eax"
+        },
+        {
+          "va": "0x007B2AE1",
+          "text": "mov eax, dword ptr [edx + 0x148]"
+        },
+        {
+          "va": "0x007B2AE7",
+          "text": "call eax"
+        },
+        {
+          "va": "0x007B2AE9",
+          "text": "mov ecx, dword ptr [esi + 0xe8]"
+        },
+        {
+          "va": "0x007B2AEF",
+          "text": "call 0x7ab340"
+        },
+        {
+          "va": "0x007B2AF4",
+          "text": "mov edx, dword ptr [edi]"
+        },
+        {
+          "va": "0x007B2AF6",
+          "text": "mov eax, dword ptr [edx + 0xc]"
+        },
+        {
+          "va": "0x007B2AF9",
+          "text": "push -1"
+        },
+        {
+          "va": "0x007B2AFB",
+          "text": "mov ecx, edi"
+        },
+        {
+          "va": "0x007B2AFD",
+          "text": "call eax"
+        },
+        {
+          "va": "0x007B2AFF",
+          "text": "mov edx, dword ptr [edi]"
+        },
+        {
+          "va": "0x007B2B01",
+          "text": "mov eax, dword ptr [edx + 0x14]"
+        },
+        {
+          "va": "0x007B2B04",
+          "text": "mov ecx, edi"
+        },
+        {
+          "va": "0x007B2B06",
+          "text": "pop edi"
+        },
+        {
+          "va": "0x007B2B07",
+          "text": "pop esi"
+        },
+        {
+          "va": "0x007B2B08",
+          "text": "jmp eax"
+        },
+        {
+          "va": "0x007B2B0A",
+          "text": "pop edi"
+        },
+        {
+          "va": "0x007B2B0B",
+          "text": "pop esi"
+        },
+        {
+          "va": "0x007B2B0C",
+          "text": "ret "
+        }
+      ],
+      "device_relationship": "NO_RELATION_FOUND"
+    },
+    {
+      "address": "0x007B39D3",
+      "owner": "0x007B36A0",
+      "offset": "0x00000148",
+      "soft_name": "DrawPrimitive",
+      "uses_renderer_global": false,
+      "uses_device_global": false,
+      "helper": "0x004A2AA0",
+      "object_source": "UNKNOWN",
+      "vtable_source": "UNKNOWN",
+      "method_identity": "ENGINE_COM_METHOD",
+      "UC_classification": "ENGINE_COM_DRAW",
+      "insn_count": 120,
+      "listing_head": [
+        {
+          "va": "0x007B36A0",
+          "text": "push ebp"
+        },
+        {
+          "va": "0x007B36A1",
+          "text": "mov ebp, esp"
+        },
+        {
+          "va": "0x007B36A3",
+          "text": "and esp, 0xfffffff8"
+        },
+        {
+          "va": "0x007B36A6",
+          "text": "push -1"
+        },
+        {
+          "va": "0x007B36A8",
+          "text": "push 0xb3ff60"
+        },
+        {
+          "va": "0x007B36AD",
+          "text": "mov eax, dword ptr fs:[0]"
+        },
+        {
+          "va": "0x007B36B3",
+          "text": "push eax"
+        },
+        {
+          "va": "0x007B36B4",
+          "text": "sub esp, 0x74"
+        },
+        {
+          "va": "0x007B36B7",
+          "text": "push ebx"
+        },
+        {
+          "va": "0x007B36B8",
+          "text": "push ebp"
+        },
+        {
+          "va": "0x007B36B9",
+          "text": "push esi"
+        },
+        {
+          "va": "0x007B36BA",
+          "text": "push edi"
+        },
+        {
+          "va": "0x007B36BB",
+          "text": "mov eax, dword ptr [0x1285688]"
+        },
+        {
+          "va": "0x007B36C0",
+          "text": "xor eax, esp"
+        },
+        {
+          "va": "0x007B36C2",
+          "text": "push eax"
+        },
+        {
+          "va": "0x007B36C3",
+          "text": "lea eax, [esp + 0x88]"
+        },
+        {
+          "va": "0x007B36CA",
+          "text": "mov dword ptr fs:[0], eax"
+        },
+        {
+          "va": "0x007B36D0",
+          "text": "mov esi, ecx"
+        },
+        {
+          "va": "0x007B36D2",
+          "text": "xor ebx, ebx"
+        },
+        {
+          "va": "0x007B36D4",
+          "text": "mov dword ptr [esp + 0x74], ebx"
+        },
+        {
+          "va": "0x007B36D8",
+          "text": "mov dword ptr [esp + 0x78], ebx"
+        },
+        {
+          "va": "0x007B36DC",
+          "text": "mov dword ptr [esp + 0x7c], ebx"
+        },
+        {
+          "va": "0x007B36E0",
+          "text": "push 0x1e"
+        },
+        {
+          "va": "0x007B36E2",
+          "text": "lea ecx, [esp + 0x78]"
+        },
+        {
+          "va": "0x007B36E6",
+          "text": "mov dword ptr [esp + 0x94], ebx"
+        },
+        {
+          "va": "0x007B36ED",
+          "text": "call 0x4a2aa0"
+        },
+        {
+          "va": "0x007B36F2",
+          "text": "mov cl, byte ptr [0x130d874]"
+        },
+        {
+          "va": "0x007B36F8",
+          "text": "mov eax, dword ptr [esp + 0x74]"
+        },
+        {
+          "va": "0x007B36FC",
+          "text": "movss xmm1, dword ptr [0xb6d290]"
+        },
+        {
+          "va": "0x007B3704",
+          "text": "xorps xmm0, xmm0"
+        },
+        {
+          "va": "0x007B3707",
+          "text": "mov byte ptr [esi + 0x17d], cl"
+        },
+        {
+          "va": "0x007B370D",
+          "text": "mov ebp, dword ptr [0x130d86c]"
+        },
+        {
+          "va": "0x007B3713",
+          "text": "mov edx, dword ptr [0x130d874]"
+        },
+        {
+          "va": "0x007B3719",
+          "text": "mov dword ptr [esp + 0x78], eax"
+        },
+        {
+          "va": "0x007B371D",
+          "text": "lea eax, [ebp + edx*4]"
+        },
+        {
+          "va": "0x007B3721",
+          "text": "cmp ebp, eax"
+        },
+        {
+          "va": "0x007B3723",
+          "text": "movss dword ptr [esp + 0x1c], xmm1"
+        },
+        {
+          "va": "0x007B3729",
+          "text": "movss dword ptr [esp + 0x20], xmm0"
+        },
+        {
+          "va": "0x007B372F",
+          "text": "je 0x7b37e0"
+        },
+        {
+          "va": "0x007B3735",
+          "text": "mov edi, dword ptr [ebp]"
+        }
+      ],
+      "device_relationship": "NO_RELATION_FOUND"
+    },
+    {
+      "address": "0x007A14FD",
+      "owner": "0x007A1400",
+      "offset": "0x0000014C",
+      "soft_name": "DrawIndexedPrimitive",
+      "uses_renderer_global": true,
+      "uses_device_global": false,
+      "helper": "0x005DBBB0",
+      "object_source": "RENDERER_HELPER_RETURN",
+      "vtable_source": "loaded from helper-returned COM",
+      "method_identity": "ENGINE_COM_METHOD",
+      "UC_classification": "ENGINE_COM_DRAW",
+      "insn_count": 92,
+      "listing_head": [
+        {
+          "va": "0x007A1400",
+          "text": "push ecx"
+        },
+        {
+          "va": "0x007A1401",
+          "text": "push ebp"
+        },
+        {
+          "va": "0x007A1402",
+          "text": "mov ebp, dword ptr [0x17aa798]"
+        },
+        {
+          "va": "0x007A1408",
+          "text": "cmp dword ptr [ebp + 0x150], 2"
+        },
+        {
+          "va": "0x007A140F",
+          "text": "jne 0x7a1516"
+        },
+        {
+          "va": "0x007A1415",
+          "text": "mov eax, dword ptr [ebp + 0x1e8]"
+        },
+        {
+          "va": "0x007A141B",
+          "text": "test eax, eax"
+        },
+        {
+          "va": "0x007A141D",
+          "text": "je 0x7a1428"
+        },
+        {
+          "va": "0x007A141F",
+          "text": "cmp eax, 1"
+        },
+        {
+          "va": "0x007A1422",
+          "text": "jne 0x7a1516"
+        },
+        {
+          "va": "0x007A1428",
+          "text": "cmp word ptr [ebp + 0x168], 1"
+        },
+        {
+          "va": "0x007A1430",
+          "text": "jg 0x7a1516"
+        },
+        {
+          "va": "0x007A1436",
+          "text": "mov eax, dword ptr [esp + 0xc]"
+        },
+        {
+          "va": "0x007A143A",
+          "text": "mov ecx, dword ptr [eax + 0x40]"
+        },
+        {
+          "va": "0x007A143D",
+          "text": "push edi"
+        },
+        {
+          "va": "0x007A143E",
+          "text": "mov edi, dword ptr [ebp + 0x50]"
+        },
+        {
+          "va": "0x007A1441",
+          "text": "cmp edi, dword ptr [ebp + 0x54]"
+        },
+        {
+          "va": "0x007A1444",
+          "text": "mov dword ptr [esp + 8], ecx"
+        },
+        {
+          "va": "0x007A1448",
+          "text": "mov dword ptr [esp + 0x10], edi"
+        },
+        {
+          "va": "0x007A144C",
+          "text": "je 0x7a1515"
+        },
+        {
+          "va": "0x007A1452",
+          "text": "push ebx"
+        },
+        {
+          "va": "0x007A1453",
+          "text": "push esi"
+        },
+        {
+          "va": "0x007A1454",
+          "text": "mov ebx, dword ptr [edi + 4]"
+        },
+        {
+          "va": "0x007A1457",
+          "text": "mov edx, dword ptr [ebx]"
+        },
+        {
+          "va": "0x007A1459",
+          "text": "mov eax, dword ptr [edx + 0x28]"
+        },
+        {
+          "va": "0x007A145C",
+          "text": "mov ecx, ebx"
+        },
+        {
+          "va": "0x007A145E",
+          "text": "call eax"
+        },
+        {
+          "va": "0x007A1460",
+          "text": "test eax, eax"
+        },
+        {
+          "va": "0x007A1462",
+          "text": "je 0x7a1503"
+        },
+        {
+          "va": "0x007A1468",
+          "text": "mov ecx, dword ptr [0xcdbd5c]"
+        },
+        {
+          "va": "0x007A146E",
+          "text": "mov edx, dword ptr [0xcdbd64]"
+        },
+        {
+          "va": "0x007A1474",
+          "text": "push eax"
+        },
+        {
+          "va": "0x007A1475",
+          "text": "lea edx, [ecx + edx*8]"
+        },
+        {
+          "va": "0x007A1478",
+          "text": "push edx"
+        },
+        {
+          "va": "0x007A1479",
+          "text": "push ecx"
+        },
+        {
+          "va": "0x007A147A",
+          "text": "call 0x5dbbb0"
+        },
+        {
+          "va": "0x007A147F",
+          "text": "add esp, 0xc"
+        },
+        {
+          "va": "0x007A1482",
+          "text": "test eax, eax"
+        },
+        {
+          "va": "0x007A1484",
+          "text": "je 0x7a1503"
+        },
+        {
+          "va": "0x007A1486",
+          "text": "mov esi, dword ptr [eax + 4]"
+        }
+      ],
+      "device_relationship": "NO_RELATION_FOUND"
+    },
+    {
+      "address": "0x007B29E7",
+      "owner": "0x007B2930",
+      "offset": "0x0000014C",
+      "soft_name": "DrawIndexedPrimitive",
+      "uses_renderer_global": true,
+      "uses_device_global": false,
+      "helper": null,
+      "object_source": "UNKNOWN",
+      "vtable_source": "UNKNOWN",
+      "method_identity": "ENGINE_COM_METHOD",
+      "UC_classification": "ENGINE_COM_DRAW",
+      "insn_count": 20,
+      "listing_head": [
+        {
+          "va": "0x007B2930",
+          "text": "push ecx"
+        },
+        {
+          "va": "0x007B2931",
+          "text": "push ebx"
+        },
+        {
+          "va": "0x007B2932",
+          "text": "mov ebx, dword ptr [0x17aa798]"
+        },
+        {
+          "va": "0x007B2938",
+          "text": "push ebp"
+        },
+        {
+          "va": "0x007B2939",
+          "text": "push esi"
+        },
+        {
+          "va": "0x007B293A",
+          "text": "mov esi, ecx"
+        },
+        {
+          "va": "0x007B293C",
+          "text": "xor ebp, ebp"
+        },
+        {
+          "va": "0x007B293E",
+          "text": "cmp dword ptr [esi + 0xc], ebp"
+        },
+        {
+          "va": "0x007B2941",
+          "text": "jne 0x7b2a50"
+        },
+        {
+          "va": "0x007B2947",
+          "text": "cmp dword ptr [ebx + 0x1e8], ebp"
+        },
+        {
+          "va": "0x007B294D",
+          "text": "je 0x7b295d"
+        },
+        {
+          "va": "0x007B294F",
+          "text": "mov eax, dword ptr [esi]"
+        },
+        {
+          "va": "0x007B2951",
+          "text": "mov edx, dword ptr [eax + 0xc]"
+        },
+        {
+          "va": "0x007B2954",
+          "text": "push 6"
+        },
+        {
+          "va": "0x007B2956",
+          "text": "call edx"
+        },
+        {
+          "va": "0x007B2958",
+          "text": "pop esi"
+        },
+        {
+          "va": "0x007B2959",
+          "text": "pop ebp"
+        },
+        {
+          "va": "0x007B295A",
+          "text": "pop ebx"
+        },
+        {
+          "va": "0x007B295B",
+          "text": "pop ecx"
+        },
+        {
+          "va": "0x007B295C",
+          "text": "ret "
+        }
+      ],
+      "device_relationship": "NO_RELATION_FOUND"
+    },
+    {
+      "address": "0x007B1C78",
+      "owner": "0x007B17C0",
+      "offset": "0x00000154",
+      "soft_name": "DrawIndexedPrimitiveUP",
+      "uses_renderer_global": true,
+      "uses_device_global": false,
+      "helper": null,
+      "object_source": "UNKNOWN",
+      "vtable_source": "UNKNOWN",
+      "method_identity": "ENGINE_COM_METHOD",
+      "UC_classification": "ENGINE_COM_DRAW",
+      "insn_count": 14,
+      "listing_head": [
+        {
+          "va": "0x007B17C0",
+          "text": "mov eax, dword ptr [0x17aa798]"
+        },
+        {
+          "va": "0x007B17C5",
+          "text": "mov eax, dword ptr [eax + 0x150]"
+        },
+        {
+          "va": "0x007B17CB",
+          "text": "cmp eax, 2"
+        },
+        {
+          "va": "0x007B17CE",
+          "text": "push esi"
+        },
+        {
+          "va": "0x007B17CF",
+          "text": "mov esi, ecx"
+        },
+        {
+          "va": "0x007B17D1",
+          "text": "je 0x7b17e8"
+        },
+        {
+          "va": "0x007B17D3",
+          "text": "cmp eax, 0x29a"
+        },
+        {
+          "va": "0x007B17D8",
+          "text": "je 0x7b17e8"
+        },
+        {
+          "va": "0x007B17DA",
+          "text": "mov eax, dword ptr [esi]"
+        },
+        {
+          "va": "0x007B17DC",
+          "text": "mov edx, dword ptr [eax + 0xc]"
+        },
+        {
+          "va": "0x007B17DF",
+          "text": "push 0x3e7"
+        },
+        {
+          "va": "0x007B17E4",
+          "text": "call edx"
+        },
+        {
+          "va": "0x007B17E6",
+          "text": "pop esi"
+        },
+        {
+          "va": "0x007B17E7",
+          "text": "ret "
+        }
+      ],
+      "device_relationship": "NO_RELATION_FOUND"
+    }
+  ],
+  "method_0x148": {
+    "UC_ANALYZER": "ENGINE_COM_METHOD",
+    "ANGR": "ENGINE_COM_DRAW",
+    "offset": "0x148",
+    "idirect3ddevice9_drawprimitive": "0x148",
+    "CONSENSUS": "ENGINE_COM_METHOD",
+    "note": "Offset matches raw IDirect3DDevice9::DrawPrimitive, but the this-pointer is helper-returned engine COM from renderer 0x017AA798, not a proven load of 0x013C6510."
+  },
+  "raw_device_draw_found": false,
+  "wrappers": {
+    "note": "Phase 20 DEVICE thin wrappers still apply; Draw path wrappers are renderer helpers (e.g. 0x0079E4A0 list lookup), not DEVICE loads.",
+    "draw_helper": "0x0079E4A0",
+    "draw_helper_role": "renderer thiscall; walks [obj+0x50]..[obj+0x54] returning engine COM for VT Draw*"
+  },
+  "renderer_init": {
+    "root_candidates": [
+      "0x007A06E0",
+      "0x007B5020",
+      "0x007B5020"
+    ],
+    "best": "0x007A06E0",
+    "dependencies": {
+      "DEVICE_STATE": "UNKNOWN",
+      "FACTORY_STATE": "UNKNOWN",
+      "0x00686000": "POSSIBLE",
+      "0x00B615C4": "UNKNOWN",
+      "TLS": "SEH/fs:[0] seen near publisher epilogue",
+      "window_state": "UNKNOWN",
+      "external_code": "UNKNOWN",
+      "ordinary_code": "YES"
+    },
+    "note": "0x007A06E0 path calls 0x00686030 (sibling of frozen helper family); treat as EXTERNAL_STATE risk, not followed into protected bodies."
+  },
+  "handoff": {
+    "found": false,
+    "candidates": [],
+    "note": "No ordinary function found that reads 0x013C6510 and writes 0x017AA798 or a proven renderer device field."
+  },
+  "frame_graph": {
+    "edges": [
+      {
+        "from": "frame_root",
+        "to": "BeginScene",
+        "class": "UNKNOWN"
+      },
+      {
+        "from": "BeginScene",
+        "to": "state/setup",
+        "class": "UNKNOWN"
+      },
+      {
+        "from": "state/setup",
+        "to": "Draw*",
+        "class": "ENGINE_WRAPPER"
+      },
+      {
+        "from": "Draw*",
+        "to": "EndScene",
+        "class": "UNKNOWN"
+      },
+      {
+        "from": "EndScene",
+        "to": "Present@0x00752B14",
+        "class": "PROVEN_DIRECT"
+      },
+      {
+        "from": "device@0x013C6510",
+        "to": "Present prefix",
+        "class": "PROVEN_ALIAS"
+      },
+      {
+        "from": "renderer@0x017AA798",
+        "to": "Draw* helper COM",
+        "class": "PROVEN_INDIRECT"
+      },
+      {
+        "from": "device@0x013C6510",
+        "to": "renderer@0x017AA798",
+        "class": "UNKNOWN"
+      }
+    ],
+    "common_frame_root": "UNKNOWN",
+    "note": "Present/EndScene ordinary path proven on DEVICE; Draw path is renderer-engine COM without DEVICE alias."
+  },
+  "uc_controls": {
+    "present_uc": {
+      "device_load": true,
+      "endscene_shaped": true,
+      "present_shaped": true
+    },
+    "clear_uc": {
+      "device_load": true,
+      "clear_shaped": true
+    }
+  },
+  "present_control": {
+    "UC_ANALYZER": "PASS",
+    "ANGR": "ANGR_PRESENT_CONTROL_PASS",
+    "CONSENSUS": "ANGR_PRESENT_CONTROL_PASS"
+  },
+  "clear_control": {
+    "UC_ANALYZER": "PASS",
+    "ANGR": "ANGR_CLEAR_CONTROL_PARTIAL",
+    "CONSENSUS": "ANGR_CLEAR_CONTROL_PARTIAL"
+  },
+  "publication_classification": {
+    "classification": "MIXED",
+    "would_host_publication_reproduce_protected_semantics": "UNCLEAR",
+    "detail": "Exposing a guest IDirect3DDevice9* at 0x013C6510 is STANDARD_API_RUNTIME_PUBLICATION for Present/Clear consumers. In-game publication via 0x00725200 still requires GAME_SPECIFIC_INITIALIZATION (blocked factory field / 0x00686000). Host fill of the global alone does not recreate protected callback binding \u2014 but also does not initialize renderer 0x017AA798."
+  },
+  "factory_requirement": {
+    "classification": "DEVICE_ONLY",
+    "for": "Present/Clear ordinary consumers after a live device exists",
+    "note": "Factory remains mandatory for in-game CreateDevice publication path; not for Present prefix."
+  },
+  "game_owned_state": {
+    "Clear": [
+      {
+        "item": "live [0x013C6510]",
+        "class": "EXTERNAL_INITIALIZED"
+      },
+      {
+        "item": "device vtable",
+        "class": "EXTERNAL_INITIALIZED"
+      }
+    ],
+    "Draw": [
+      {
+        "item": "renderer [0x017AA798]",
+        "class": "EXTERNAL_INITIALIZED"
+      },
+      {
+        "item": "renderer object list / helper COM",
+        "class": "UNKNOWN"
+      },
+      {
+        "item": "draw arguments / resources",
+        "class": "UNKNOWN"
+      }
+    ],
+    "Present": [
+      {
+        "item": "live [0x013C6510]",
+        "class": "EXTERNAL_INITIALIZED"
+      },
+      {
+        "item": "device vtable",
+        "class": "EXTERNAL_INITIALIZED"
+      }
+    ]
+  },
+  "contracts": {
+    "MINIMUM_FIRST_CLEAR_CONTRACT": {
+      "fabricated": false,
+      "items": [
+        {
+          "item": "IDirect3DDevice9* at 0x013C6510",
+          "class": "D3D_DEVICE_STATE"
+        },
+        {
+          "item": "ordinary Clear consumer (e.g. demo in 0x00725200 or other DEVICE Clear)",
+          "class": "ORDINARY_CODE"
+        }
+      ],
+      "blocked_by": "in-game publication EXTERNAL/BLOCKED; host device would be analysis contract only"
+    },
+    "MINIMUM_FIRST_DRAW_CONTRACT": {
+      "fabricated": false,
+      "items": [
+        {
+          "item": "renderer object at 0x017AA798",
+          "class": "UNKNOWN"
+        },
+        {
+          "item": "helper-returned COM with Draw* vtable",
+          "class": "UNKNOWN"
+        },
+        {
+          "item": "relationship to DEVICE",
+          "class": "NO_RELATION_FOUND"
+        }
+      ],
+      "blocked_by": "renderer provenance / DEVICE alias unproven"
+    },
+    "MINIMUM_FIRST_PRESENT_CONTRACT": {
+      "fabricated": false,
+      "items": [
+        {
+          "item": "IDirect3DDevice9* at 0x013C6510",
+          "class": "D3D_DEVICE_STATE"
+        },
+        {
+          "item": "Enter 0x00752AF0",
+          "class": "ORDINARY_CODE"
+        }
+      ],
+      "blocked_by": "live device state; in-game publisher blocked"
+    }
+  },
+  "seam": {
+    "classification": "PARTIAL_POST_INIT_SEAM",
+    "rationale": "Present/Clear on a host-owned device remain a legitimate post-init API boundary. Phase 21 still lacks a DEVICE\u2194renderer alias and a raw-device Draw path, so the seam is not CLEAN (CLEAN requires meaningful ordinary rendering beyond Present)."
+  },
+  "d3d9_implementation": {
+    "D3D9_IMPLEMENTATION_JUSTIFIED": false,
+    "decision": "NO",
+    "checklist": {
+      "device_identity": true,
+      "useful_ordinary_renderer_consumers": true,
+      "renderer_device_relationship_understood": false,
+      "standard_d3d9_advances_ordinary_execution": false,
+      "no_protected_callback_recreation_required_for_present": true
+    },
+    "reason": "Device identity and Present/Clear consumers are established, but the Draw path is engine COM via 0x017AA798 without a proven DEVICE relationship. Implementing D3D9 would not yet advance a defensible first useful frame.",
+    "highest_value_uncertainty": "Whether COM objects returned by renderer helper 0x0079E4A0 (list at [renderer+0x50]..[+0x54]) hold or alias the proven device at 0x013C6510 \u2014 exact field/dataflow inside those list elements.",
+    "phase22_surface_if_yes": null
+  },
+  "first_frame_estimate": {
+    "best_case_phase": "UNBOUNDED",
+    "likely_range": "UNBOUNDED",
+    "note": "No clean seam + credible DEVICE-tied Draw + ordinary renderer state."
+  },
+  "angr_quality": {
+    "materially_improved_analysis": true,
+    "strongest_new_finding": "Independent Present/Clear control decompilation recovers DEVICE absolute and EndScene-shaped call; Draw decompilation independently shows renderer 0x017AA798 without DEVICE \u2014 supporting NO_RELATION_FOUND.",
+    "strongest_disagreement": "none on priority set",
+    "control_weight": "USEFUL"
+  },
+  "recommended_phase22": "EXPAND_RENDERER_STATE_PROVENANCE",
+  "symbolic_execution_proposal": {
+    "run": false,
+    "reason": "Static analysis sufficient to state the blocking uncertainty; no bounded SE query executed.",
+    "future_query_if_needed": {
+      "start": "0x0079E4A0",
+      "stop": [
+        "return sites",
+        "PROTECTED_BOUNDARY"
+      ],
+      "question": "Does returned COM pointer equal [0x013C6510] on any ordinary path?",
+      "guards": [
+        "is_protected_address",
+        "bounded_steps"
+      ]
+    }
+  },
+  "execution": {
+    "ran": false,
+    "reason": "analysis only; no fabricated device/renderer"
+  },
+  "dashboard": {
+    "ANGR": "AVAILABLE",
+    "ANGR_VERSION": "10.0.5",
+    "FUNCTION_OVERLAP": {
+      "AGREE": 14
+    },
+    "BOUNDARY_DISAGREEMENTS": 0,
+    "PRESENT_CONTROL": "PASS",
+    "CLEAR_CONTROL": "PARTIAL",
+    "DEVICE_TO_RENDERER": "NO_RELATION_FOUND",
+    "DRAW_CONSENSUS": "ENGINE_COM_DRAW",
+    "DEVICE_CODE": "PROVEN",
+    "DEVICE_PUBLICATION": "EXTERNAL/BLOCKED",
+    "PRESENT_CODE": "FOUND",
+    "DRAW_CODE": "FOUND_STRONG",
+    "POST_INIT_SEAM": "PARTIAL",
+    "D3D9_IMPLEMENTATION": "NOT JUSTIFIED",
+    "FIRST_FRAME": "UNBOUNDED"
+  }
+}
