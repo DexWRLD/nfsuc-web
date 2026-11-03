@@ -16,7 +16,7 @@ Top: translation/compile. Bottom: runtime. Green on the top map ≠ the game wor
 python tools/progress.py
 ```
 
-Roughly: ~22.7k high-confidence functions generate and compile. The harness can run real call chains (CRT string helpers, a few math stubs, larger closures). Graphics init is mapped in analysis notes; Direct3D is not implemented. Protected startup is left alone.
+Roughly: ~22.7k high-confidence functions generate and compile. The harness runs real ordinary call chains (depth 3+ via constructors/initializers, math/CRT leaves). Graphics remains blocked on a protected backend; Direct3D is not implemented. Protected startup is left alone.
 
 More detail: [docs/roadmap.md](docs/roadmap.md), [docs/feasibility.md](docs/feasibility.md), [analysis/undercover/](analysis/undercover/).
 
