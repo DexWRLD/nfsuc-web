@@ -1,6 +1,131 @@
 {
-  "phase": 27,
+  "phase": 28,
   "contracts": [
+    {
+      "object_id": "refcount_base_9e7710",
+      "target_root": "0x009E7710",
+      "required_fields": [
+        {
+          "off": "0x00",
+          "use": "vtable 0xC30D5C",
+          "pre_entry_read": false
+        }
+      ],
+      "field_provenance": "ORDINARY_CONSTRUCTOR store",
+      "constructor": "0x009E7710",
+      "initializer": null,
+      "producer": "0x009E7710",
+      "vtable": "STATIC_ORDINARY_VTABLE 0x00C30D5C",
+      "allocation": "caller-owned / embedded subobject",
+      "ownership": "EMBEDDED_SUBOBJECT",
+      "enterability": "ENTERABLE_AFTER_ORDINARY_CTOR",
+      "enterability_cost": 3,
+      "chain_potential": 40,
+      "confidence": "PROVEN"
+    },
+    {
+      "object_id": "pod_copy_9e9990",
+      "target_root": "0x009E9990",
+      "required_fields": [
+        {
+          "off": "0x00",
+          "use": "vtable 0xC30F2C",
+          "pre_entry_read": false
+        },
+        {
+          "off": "0x04..0x28",
+          "use": "copied from source POD",
+          "pre_entry_read": false
+        }
+      ],
+      "field_provenance": "CALLER_ARGUMENT source POD + ordinary initializer",
+      "constructor": "0x009E7710",
+      "initializer": "0x009E9990",
+      "producer": "0x009E9990",
+      "vtable": "STATIC_ORDINARY_VTABLE 0x00C30F2C",
+      "allocation": "embedded at parent+4",
+      "ownership": "EMBEDDED_SUBOBJECT",
+      "enterability": "ENTERABLE_AFTER_ORDINARY_INIT",
+      "enterability_cost": 3,
+      "chain_potential": 50,
+      "confidence": "PROVEN"
+    },
+    {
+      "object_id": "engine_obj_9e9160",
+      "target_root": "0x009E9160",
+      "required_fields": [
+        {
+          "off": "0x00",
+          "use": "vtable 0xC30E68",
+          "pre_entry_read": false
+        },
+        {
+          "off": "0x58",
+          "use": "stack arg store",
+          "pre_entry_read": false
+        }
+      ],
+      "field_provenance": "ordinary ctor writes; harness supplies this storage + POD arg",
+      "constructor": "0x009E9160",
+      "initializer": "0x009E9990",
+      "producer": "0x009E9160",
+      "vtable": "STATIC_ORDINARY_VTABLE 0x00C30E68",
+      "allocation": "harness guest buffer CALLER_OWNED",
+      "ownership": "CALLER_OWNED",
+      "enterability": "ENTERABLE_AFTER_ORDINARY_CTOR",
+      "enterability_cost": 3,
+      "chain_potential": 90,
+      "confidence": "PROVEN"
+    },
+    {
+      "object_id": "bss_table_cea3b8",
+      "target_root": "0x0072D640",
+      "required_fields": [
+        {
+          "off": "0x14..0x34",
+          "use": "read by 0x007212F0 arithmetic",
+          "pre_entry_read": true
+        }
+      ],
+      "field_provenance": "PE-zero BSS; ordinary reads only arithmetic",
+      "constructor": null,
+      "initializer": "PE BSS zero",
+      "producer": "0x00721050",
+      "vtable": "none",
+      "allocation": "GLOBAL_OBJECT 0xCEA3B8",
+      "ownership": "GLOBAL_OBJECT",
+      "enterability": "ENTERABLE_DIRECT",
+      "enterability_cost": 1,
+      "chain_potential": 70,
+      "confidence": "STRONG"
+    },
+    {
+      "object_id": "simd_pair_a52df0",
+      "target_root": "0x00A52DF0",
+      "required_fields": [
+        {
+          "off": "0x140",
+          "use": "movaps xmmword read",
+          "pre_entry_read": true
+        },
+        {
+          "off": "0x150",
+          "use": "movaps xmmword read",
+          "pre_entry_read": true
+        }
+      ],
+      "field_provenance": "UNKNOWN \u2014 no ordinary producer",
+      "constructor": null,
+      "initializer": null,
+      "producer": null,
+      "vtable": "UNKNOWN_VTABLE",
+      "allocation": "unknown",
+      "ownership": "UNKNOWN",
+      "enterability": "BLOCKED_UNKNOWN_STATE",
+      "enterability_cost": 9,
+      "chain_potential": 20,
+      "confidence": "PROVEN"
+    },
     {
       "object_id": "vec3_normalize_pod",
       "target_root": "0x00924D30",
@@ -990,172 +1115,6 @@
       "static_data": [
         "0x00BD2250"
       ]
-    }
-  },
-  "provenance": {
-    "0x0096CED0": {
-      "summary": "Reads [esi+0xb28] count/flag early via object at ESI from stack arg; needs object+0x24/+0x30/+0xb28. Multi-callee READY island. No ordinary ctor recovered in Phase 27 bound search.",
-      "required": [
-        {
-          "name": "esi/object",
-          "class": "THIS_POINTER",
-          "prov": "CALLER_ARGUMENT"
-        },
-        {
-          "name": "+0xb28",
-          "class": "COUNT",
-          "prov": "UNKNOWN"
-        },
-        {
-          "name": "+0x30",
-          "class": "OBJECT_FIELD",
-          "prov": "UNKNOWN"
-        },
-        {
-          "name": "+0x24",
-          "class": "OBJECT_FIELD",
-          "prov": "UNKNOWN"
-        }
-      ],
-      "unknown": true,
-      "enterability": "BLOCKED_UNKNOWN_STATE"
-    },
-    "0x00B01EB0": {
-      "summary": "stdcall-like multi-arg; stack [ebp+8..+20]; this-relative fields before call 0x00AFF2E0. Large READY root; init unknown.",
-      "required": [
-        {
-          "name": "stack+8",
-          "class": "STACK_ARGUMENT",
-          "prov": "CALLER_ARGUMENT"
-        },
-        {
-          "name": "stack+0x14 struct",
-          "class": "BUFFER",
-          "prov": "UNKNOWN"
-        }
-      ],
-      "unknown": true,
-      "enterability": "BLOCKED_UNKNOWN_STATE"
-    },
-    "0x00A52DF0": {
-      "summary": "Pre-entry: stack float [ebp+8] then _CIsin. Post-import reads this+0x140/+0x150 SIMD mats. No E8 callers; likely vtable method. Ctor not found; zero matrices are not claimed valid.",
-      "required": [
-        {
-          "name": "ecx/this",
-          "class": "THIS_POINTER",
-          "prov": "CALLER_ARGUMENT"
-        },
-        {
-          "name": "stack float",
-          "class": "STACK_ARGUMENT",
-          "prov": "CALLER_ARGUMENT"
-        },
-        {
-          "name": "+0x140/+0x150",
-          "class": "OBJECT_FIELD",
-          "prov": "UNKNOWN"
-        }
-      ],
-      "unknown": true,
-      "needs_ctor": true,
-      "enterability": "BLOCKED_UNKNOWN_STATE"
-    },
-    "0x00949920": {
-      "summary": "Pre-entry: this + stack floats; first import _CIcos. Writes this+0xa4. Caller 0x00950190 exists. Primitive float args OK; object fields beyond write sink not required pre-entry.",
-      "required": [
-        {
-          "name": "ecx/this",
-          "class": "THIS_POINTER",
-          "prov": "CALLER_ARGUMENT"
-        },
-        {
-          "name": "stack floats",
-          "class": "STACK_ARGUMENT",
-          "prov": "CALLER_ARGUMENT"
-        }
-      ],
-      "primitive_ok": true,
-      "ctor_confidence": "WEAK",
-      "enterability": "ENTERABLE_DIRECT",
-      "note": "POD this buffer + float args; method writes results into object"
-    },
-    "0x00A28720": {
-      "summary": "Pre-entry reads stack+8/+0xc and statics 0x00B71CF0 / 0x0129FC24 before _CIsqrt. Packed word-stream semantics UNKNOWN.",
-      "required": [
-        {
-          "name": "stack+8 stream",
-          "class": "BUFFER",
-          "prov": "UNKNOWN"
-        },
-        {
-          "name": "0x00B71CF0",
-          "class": "STATIC_DATA",
-          "prov": "STATIC_DATA"
-        }
-      ],
-      "unknown": true,
-      "enterability": "BLOCKED_UNKNOWN_STATE"
-    },
-    "0x0072EAE0": {
-      "summary": "Reads this+0x18 as interface pointer; call [ [*+0x18] + 0x18 ]. Caller 0x00731320 obtains object via 0x007306C0 which does jmp dword ptr [0x023AF9C8] located in .securom.",
-      "required": [
-        {
-          "name": "ecx/this",
-          "class": "THIS_POINTER",
-          "prov": "CALLER_ARGUMENT"
-        },
-        {
-          "name": "stack buffer",
-          "class": "BUFFER",
-          "prov": "CALLER_ARGUMENT"
-        },
-        {
-          "name": "+0x18 iface",
-          "class": "VTABLE",
-          "prov": "PROTECTED_INITIALIZED"
-        }
-      ],
-      "protected": true,
-      "indirect_class": "PROTECTED_INITIALIZED_CALLBACK",
-      "indirect_slot": "0x023AF9C8",
-      "indirect_slot_section": ".securom",
-      "enterability": "BLOCKED_PROTECTED_INIT",
-      "enterable": false
-    },
-    "0x00924D30": {
-      "summary": "POD this+0/+4/+8 floats; stack two floats; already EXECUTED.",
-      "primitive_ok": true,
-      "ctor_confidence": "STRONG",
-      "enterability": "ENTERABLE_DIRECT",
-      "enterable": true
-    },
-    "0x00929900": {
-      "summary": "Parent of 0x00924D30 via lea ecx,[esi+0x7c]. Switch on (arg0-1); case 0 \u2192 call 0x00924D30. Static .rdata constants. Zeroed this sufficient for selected path (writes +0x4c/+0x88).",
-      "required": [
-        {
-          "name": "ecx/this",
-          "class": "THIS_POINTER",
-          "prov": "CALLER_ARGUMENT"
-        },
-        {
-          "name": "7 stack dwords",
-          "class": "STACK_ARGUMENT",
-          "prov": "CALLER_ARGUMENT"
-        },
-        {
-          "name": "0x00BD2250",
-          "class": "STATIC_DATA",
-          "prov": "STATIC_DATA"
-        }
-      ],
-      "primitive_ok": true,
-      "ctor_confidence": "STRONG",
-      "enterability": "ENTERABLE_DIRECT",
-      "enterable": true,
-      "downstream": [
-        "0x00924D30"
-      ],
-      "init_depth": 0
     }
   }
 }

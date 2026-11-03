@@ -1,5 +1,5 @@
 {
-  "phase": 27,
+  "phase": 28,
   "roots": [
     {
       "root": "0x0096CED0",
@@ -54,33 +54,6 @@
       "depth": null,
       "confidence": "WEAK",
       "summary": "stdcall-like multi-arg; stack [ebp+8..+20]; this-relative fields before call 0x00AFF2E0. Large READY root; init unknown."
-    },
-    {
-      "root": "0x00A52DF0",
-      "required_state": [
-        {
-          "name": "ecx/this",
-          "class": "THIS_POINTER",
-          "prov": "CALLER_ARGUMENT"
-        },
-        {
-          "name": "stack float",
-          "class": "STACK_ARGUMENT",
-          "prov": "CALLER_ARGUMENT"
-        },
-        {
-          "name": "+0x140/+0x150",
-          "class": "OBJECT_FIELD",
-          "prov": "UNKNOWN"
-        }
-      ],
-      "producer": null,
-      "producer_type": "UNKNOWN",
-      "dependency": null,
-      "classification": "BLOCKED_UNKNOWN_STATE",
-      "depth": null,
-      "confidence": "WEAK",
-      "summary": "Pre-entry: stack float [ebp+8] then _CIsin. Post-import reads this+0x140/+0x150 SIMD mats. No E8 callers; likely vtable method. Ctor not found; zero matrices are not claimed valid."
     },
     {
       "root": "0x00949920",
@@ -192,13 +165,80 @@
       "depth": 0,
       "confidence": "PROVEN",
       "summary": "Parent of 0x00924D30 via lea ecx,[esi+0x7c]. Switch on (arg0-1); case 0 \u2192 call 0x00924D30. Static .rdata constants. Zeroed this sufficient for selected path (writes +0x4c/+0x88)."
+    },
+    {
+      "root": "0x009E9160",
+      "required_state": [
+        {
+          "name": "ecx/this",
+          "class": "THIS_POINTER",
+          "prov": "CALLER_ARGUMENT"
+        },
+        {
+          "name": "source POD",
+          "class": "BUFFER",
+          "prov": "CALLER_ARGUMENT"
+        }
+      ],
+      "producer": "0x009E9160",
+      "producer_type": "ORDINARY_CONSTRUCTOR",
+      "dependency": [
+        "0x009E9990",
+        "0x009E7710"
+      ],
+      "classification": "ENTERABLE_AFTER_ORDINARY_CTOR",
+      "depth": 1,
+      "confidence": "PROVEN",
+      "summary": "Ordinary ctor; nested 0x009E9990\u21920x009E7710; stops at Win32 IAT via 0x009777D0"
+    },
+    {
+      "root": "0x0072D640",
+      "required_state": [
+        {
+          "name": "stack+8/+0xc",
+          "class": "STACK_ARGUMENT",
+          "prov": "CALLER_ARGUMENT"
+        },
+        {
+          "name": "0xCEA3B8",
+          "class": "STATIC_DATA",
+          "prov": "STANDARD_RUNTIME"
+        }
+      ],
+      "producer": "0x00721050",
+      "producer_type": "STATIC_ORDINARY_STATE",
+      "dependency": [
+        "0x007212F0",
+        "0x00721070"
+      ],
+      "classification": "ENTERABLE_DIRECT",
+      "depth": 0,
+      "confidence": "STRONG",
+      "summary": "BSS table object; protected blocker after leaf XOR helper"
+    },
+    {
+      "root": "0x00A52DF0",
+      "required_state": [
+        {
+          "name": "+0x140/+0x150 xmmword",
+          "class": "OBJECT_FIELD",
+          "prov": "UNKNOWN"
+        }
+      ],
+      "producer": null,
+      "producer_type": "UNKNOWN",
+      "dependency": null,
+      "classification": "BLOCKED_UNKNOWN_STATE",
+      "depth": null,
+      "confidence": "PROVEN",
+      "summary": "No E8, no function-map preds, no absolute imm32 refs in mapped image. Do not synthesize +0x140/+0x150. Stop Track A."
     }
   ],
   "counts": {
-    "ordinary_init_recovered": 4,
+    "ordinary_init_recovered": 5,
     "init_blocked_external": 0,
     "init_blocked_protected": 1,
     "init_blocked_unknown": 4,
-    "enterable": 6
+    "enterable": 12
   }
 }
