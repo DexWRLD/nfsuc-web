@@ -1,37 +1,29 @@
 {
-  "phase": 47,
-  "asset_distribution_readiness": "FIXTURE_PIPELINE_READY",
+  "phase": 48,
+  "asset_distribution_readiness": "FIXTURE_PIPELINE_HARDENED",
   "production_undercover_assets": "UNAVAILABLE_PENDING_AUTHORIZED_SOURCE",
-  "manifest": {
-    "path": "web/src/static/uc-asset-manifest.json",
-    "version": 1,
-    "mode": "fixtures",
-    "productionAssetsAuthorized": false,
-    "asset_count": 4,
-    "required_count": 2
+  "browser_renderer_readiness": "SYNTHETIC_CLEAR_SMOKE_ONLY",
+  "first_frame": "FIRST_FRAME_PATH_BLOCKED_BY_PROTECTED_BACKEND",
+  "node_validation": {
+    "uc_assets_test": true,
+    "build": true,
+    "browser_clean": true,
+    "node_version": "v24.20.0"
   },
-  "fixtures": [
-    "menu\\placeholder.bin",
-    "startup\\boot-marker.json",
-    "startup\\readme.txt"
+  "hardening": [
+    "path traversal rejection",
+    "duplicate id/path rejection",
+    "URL host restrictions",
+    "atomic staged cache publish",
+    "retry backoff",
+    "content-length checks",
+    "cache re-hash verification",
+    "retry/cancel UI controls"
   ],
-  "modules": [
-    "web/src/app/uc-asset-manifest.ts",
-    "web/src/app/uc-asset-cache.ts",
-    "web/src/app/uc-download-manager.ts",
-    "web/src/app/uc-fs-bridge.ts",
-    "web/src/app/uc-clear-smoke.ts",
-    "web/src/app/uc-launch.ts",
-    "web/src/app/uc-boot.ts"
-  ],
+  "deploy_doc": "web/docs/uc-clean-pc-deploy.md",
   "clean_pc_ux": {
     "no_game_install_required_for_fixtures": true,
     "automatic_download": true,
-    "integrity_sha256": true,
-    "persistent_cache": "OPFS preferred; MemoryStore for tests",
     "authentic_play_enabled": false
-  },
-  "browser_renderer_readiness": "SYNTHETIC_CLEAR_SMOKE_ONLY",
-  "first_frame": "FIRST_FRAME_PATH_BLOCKED_BY_PROTECTED_BACKEND",
-  "legal": "Do not download copyrighted commercial Undercover assets from unauthorized sources. Fixture pipeline is ready for an authorized endpoint."
+  }
 }

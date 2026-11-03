@@ -1,5 +1,5 @@
 {
-  "phase": 47,
+  "phase": 48,
   "definitions": {
     "ENTERABLE": "All pre-entry required state establishable via primitives, static PE data, standard runtime, or proven ordinary init/ctor. Not merely IMPORT_READY.",
     "DEEPEST_ORDINARY_EXECUTION_CHAIN": "Max nested ordinary UC frames in one harness run.",
@@ -22,7 +22,7 @@
   "static_ready": 20762,
   "import_ready": 737,
   "runtime_ready": 72,
-  "enterable": 48,
+  "enterable": 50,
   "enterable_roots": [
     "0x00721050",
     "0x00721070",
@@ -58,6 +58,8 @@
     "0x009EB980",
     "0x009EBC70",
     "0x00A127E0",
+    "0x00A12800",
+    "0x00A12810",
     "0x00A12850",
     "0x00A12860",
     "0x00A128A0",
@@ -73,7 +75,7 @@
     "0x00A130E0",
     "0x00B57CD0"
   ],
-  "unique_uc_functions_executed": 82,
+  "unique_uc_functions_executed": 84,
   "unique_uc_functions_executed_list": [
     "0x00721050",
     "0x00721070",
@@ -141,6 +143,8 @@
     "0x009EB980",
     "0x009EBC70",
     "0x00A127E0",
+    "0x00A12800",
+    "0x00A12810",
     "0x00A12850",
     "0x00A12860",
     "0x00A128A0",
@@ -158,13 +162,13 @@
     "0x00B57CD0",
     "0x00B57CF0"
   ],
-  "execution_runs": 310,
+  "execution_runs": 322,
   "deepest_ordinary_execution_chain": 4,
   "largest_executed_ordinary_closure": 20,
   "ordinary_execution_sequence_length": 5,
   "largest_stateful_sequence_coverage": 22,
   "clean_stateful_sequences": 11,
-  "clean_ordinary_roots": 28,
+  "clean_ordinary_roots": 30,
   "clean_ordinary_roots_list": [
     "0x00721070",
     "0x00766100",
@@ -180,6 +184,8 @@
     "0x009EB980",
     "0x009EBC70",
     "0x00A127E0",
+    "0x00A12800",
+    "0x00A12810",
     "0x00A12850",
     "0x00A12860",
     "0x00A128A0",
@@ -730,5 +736,33 @@
     "node_uc_tests_passed": true,
     "note": "Clean-PC fixture download pipeline + synthetic clear smoke + matrix guest expansion. Authentic first frame still blocked. Production Undercover assets unauthorized."
   },
-  "recommended_phase48": "Host rights-authorized Undercover game data; map real resource formats into the FS bridge; recover scheduling edges for authentic Present; expand guest execution; keep opaque draw backends untouched."
+  "recommended_phase48": "Host rights-authorized Undercover game data; map real resource formats into the FS bridge; recover scheduling edges for authentic Present; expand guest execution; keep opaque draw backends untouched.",
+  "phase48": {
+    "newly_executed": [
+      "0x00A12800",
+      "0x00A12810"
+    ],
+    "enterable_new": [
+      "0x00A12800",
+      "0x00A12810"
+    ],
+    "runs_delta": 12,
+    "regressions": {
+      "family_a": true,
+      "family_b": true,
+      "family_c": true
+    },
+    "blocked_external_unchanged": 74,
+    "allocator_still_opaque": true,
+    "node_version": "v24.20.0",
+    "node_uc_assets_passed": true,
+    "frontend_build_passed": true,
+    "browser_clean_passed": true,
+    "asset_distribution": "FIXTURE_PIPELINE_HARDENED",
+    "browser_renderer": "SYNTHETIC_CLEAR_SMOKE_ONLY",
+    "production_assets": "UNAVAILABLE_PENDING_AUTHORIZED_SOURCE",
+    "stray_help_dir": "Accidental copies of analysis/undercover/progress.* likely created when progress.py was invoked with a '--help' output path. Not source code; left untracked per Phase 48 (do not delete without user confirmation).",
+    "note": "Node validation of uc-assets; hardened download/cache/path rules; guest float/finite leaves; authentic frame still blocked."
+  },
+  "recommended_phase49": "Authorize and host real Undercover game data; map resource formats; recover scene scheduling edges; keep opaque draw backends untouched."
 }

@@ -1,0 +1,107 @@
+{
+  "phase": 48,
+  "layers": {
+    "python_mirror": "PASS (uc_phase47/48 asset tests)",
+    "node_unit": "PASS",
+    "browser_integration": "PASS (Playwright clean context)",
+    "guest_execution": "PASS (Phase 48 campaign)",
+    "synthetic_graphics": "PASS (clear smoke Node + browser)",
+    "authentic_gameplay": "NOT_READY"
+  },
+  "scenarios": {
+    "1_no_cached_resources": {
+      "node": "PASS",
+      "browser": "PASS (Playwright clean context)"
+    },
+    "2_first_load_manifest_download": {
+      "node": "PASS",
+      "browser": "PASS (Playwright clean context)"
+    },
+    "3_download_progress": {
+      "node": "PASS (progress callbacks)",
+      "browser": "OBSERVED_VIA_UI_STATE"
+    },
+    "4_hash_verification": {
+      "node": "PASS",
+      "browser": "PASS (Playwright clean context)"
+    },
+    "5_resource_persistence": {
+      "node": "PASS (Memory/OPFS store)",
+      "browser": "PASS (Playwright clean context)"
+    },
+    "6_browser_reload": {
+      "node": "N/A",
+      "browser": "PASS (reload ready_to_initialize)"
+    },
+    "7_cached_resource_reuse": {
+      "node": "PASS",
+      "browser": "PASS (Playwright clean context)"
+    },
+    "8_offline_reload": {
+      "node": "PASS",
+      "browser": "ATTEMPTED (unit covers offline cache path)"
+    },
+    "9_corrupted_cached_asset": {
+      "node": "PASS (reverify)",
+      "browser": "UNVERIFIED"
+    },
+    "10_manifest_version_update": {
+      "node": "PASS (prune+replace)",
+      "browser": "UNVERIFIED"
+    },
+    "11_resource_replacement": {
+      "node": "PASS",
+      "browser": "UNVERIFIED"
+    },
+    "12_missing_asset": {
+      "node": "PASS",
+      "browser": "UNVERIFIED"
+    },
+    "13_failed_network_request": {
+      "node": "PASS",
+      "browser": "UNVERIFIED"
+    },
+    "14_interrupted_download": {
+      "node": "PASS (cancel)",
+      "browser": "UNVERIFIED"
+    },
+    "15_storage_permission_denial": {
+      "node": "FALLBACK_TO_MEMORY",
+      "browser": "DOCUMENTED (MemoryAssetStore fallback)"
+    },
+    "16_storage_quota_failure": {
+      "node": "PASS",
+      "browser": "UNVERIFIED"
+    },
+    "browser_clean_profile": "PASS (Playwright clean context)"
+  },
+  "node": {
+    "node_path": "C:\\Users\\999\\AppData\\Local\\Microsoft\\WinGet\\Packages\\OpenJS.NodeJS.LTS_Microsoft.Winget.Source_8wekyb3d8bbwe\\node-v24.20.0-win-x64\\node.exe",
+    "node_version": "v24.20.0",
+    "npm_install": {
+      "exit_code": 0,
+      "tail": "\nadded 10 packages, and audited 11 packages in 1s\n\nfound 0 vulnerabilities\nnpm warn Unknown env config \"devdir\". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.\nnpm warn install-scripts 1 package has install scripts not yet covered by allowScripts:\nnpm warn install-scripts   esbuild@0.28.2 (postinstall: node install.js)\nnpm warn install-scripts\nnpm warn install-scripts Run `npm install-scripts ls` to review, or `npm install-scripts approve <pkg>` to allow.\n"
+    },
+    "uc_assets_test": {
+      "exit_code": 0,
+      "passed": true,
+      "tail": "\u2714 shipped manifest parses and marks production unauthorized (1.1268ms)\n\u2714 invalid manifest rejected (0.319ms)\n\u2714 copyrighted-unavailable refused without authorization (0.2029ms)\n\u2714 download + hash verify + cache hit (19.9365ms)\n\u2714 hash mismatch rejected (0.9709ms)\n\u2714 partial download rejected (0.5432ms)\n\u2714 cancel aborts in-flight download (0.2867ms)\n\u2714 insufficient storage (0.1857ms)\n\u2714 offline cached (1.6666ms)\n\u2714 changed manifest prunes stale and downloads new (1.2875ms)\n\u2714 filesystem bridge maps virtual paths (0.8376ms)\n\u2714 clear smoke command sequence is BeginScene Clear EndScene Present (0.5623ms)\n\u2714 clear smoke with fake canvas2d (0.2286ms)\n\u2714 launch UI never enables authentic play (0.1117ms)\n\u2714 source unavailable mode (0.1115ms)\n\u2714 path traversal rejected in manifest (0.1266ms)\n\u2714 duplicate asset id rejected (0.104ms)\n\u2714 cross-origin absolute URL rejected with pageOrigin (0.1746ms)\n\u2714 filesystem rejects path traversal (1.7996ms)\n\u2714 cache corruption detected on reverify (1.2033ms)\n\u2139 tests 20\n\u2139 suites 0\n\u2139 pass 20\n\u2139 fail 0\n\u2139 cancelled 0\n\u2139 skipped 0\n\u2139 todo 0\n\u2139 duration_ms 133.7821\n"
+    },
+    "tsc_check": {
+      "exit_code": 0,
+      "passed": true,
+      "tail": "\n> nfsu2-web@0.0.0 check\n> tsc -p .\n\nnpm warn Unknown env config \"devdir\". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.\n"
+    },
+    "esbuild_build": {
+      "exit_code": 0,
+      "passed": true,
+      "tail": "\n> nfsu2-web@0.0.0 build\n> node build.mjs\n\nnpm warn Unknown env config \"devdir\". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.\n\n  dist\\main.js            513.6kb\n  dist\\test\\play.js        83.3kb\n  dist\\main.css            66.2kb\n  dist\\test\\aicheck.js     46.6kb\n  dist\\test\\hostcheck.js   30.5kb\n  ...and 19 more output files...\n\nDone in 51ms\n"
+    },
+    "browser_clean_test": {
+      "exit_code": 0,
+      "passed": true,
+      "skipped": false,
+      "skipped_or_failed_tail": "\u2714 clean browser profile: download, verify, clear smoke (1513.8125ms)\n\u2139 tests 1\n\u2139 suites 0\n\u2139 pass 1\n\u2139 fail 0\n\u2139 cancelled 0\n\u2139 skipped 0\n\u2139 todo 0\n\u2139 duration_ms 1596.3916\n"
+    }
+  }
+}

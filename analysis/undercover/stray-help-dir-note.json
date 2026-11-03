@@ -1,0 +1,18 @@
+{
+  "path": "--help/",
+  "exists": true,
+  "action": "left_untracked",
+  "entries": [
+    "progress.html",
+    "progress.json",
+    "progress.png",
+    "progress.svg"
+  ],
+  "origin": "Accidental copies of analysis/undercover/progress.* likely created when progress.py was invoked with a '--help' output path. Not source code; left untracked per Phase 48 (do not delete without user confirmation).",
+  "sizes": {
+    "progress.html": 16639168,
+    "progress.json": 8299771,
+    "progress.png": 147594,
+    "progress.svg": 7009981
+  }
+}

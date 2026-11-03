@@ -1,5 +1,5 @@
 {
-  "phase": 47,
+  "phase": 48,
   "roots": [
     {
       "root": "0x009E9160",
@@ -8146,9 +8146,881 @@
       "evidence": "uc_phase47.py",
       "counted_in_metrics": true,
       "diagnostic_only": false
+    },
+    {
+      "root": "0x009E9160",
+      "phase": 48,
+      "kind": "DIRECT_GUEST_ENTRY",
+      "result": "EXECUTED_CLEAN",
+      "functions_entered": [
+        "0x009E9160",
+        "0x009E7710",
+        "0x009E9990",
+        "0x009E9460",
+        "0x009773C0",
+        "0x00977E20",
+        "0x00977420",
+        "0x009EB980",
+        "0x00978720",
+        "0x0097FCD0",
+        "0x0097F790",
+        "0x0087B4F6",
+        "0x0097FAE0",
+        "0x0087B880",
+        "0x0097F9E0",
+        "0x009777D0",
+        "0x009E8AD0",
+        "0x00977800"
+      ],
+      "clean": true,
+      "oracle_ok": null,
+      "evidence": "uc_phase48.py",
+      "counted_in_metrics": true
+    },
+    {
+      "root": "0x009E9140",
+      "phase": 48,
+      "kind": "DIRECT_GUEST_ENTRY",
+      "result": "EXECUTED_CLEAN",
+      "functions_entered": [
+        "0x009E9160",
+        "0x009E7710",
+        "0x009E9990",
+        "0x009E9460",
+        "0x009773C0",
+        "0x00977E20",
+        "0x00977420",
+        "0x009EB980",
+        "0x00978720",
+        "0x0097FCD0",
+        "0x0097F790",
+        "0x0087B4F6",
+        "0x0097FAE0",
+        "0x0087B880",
+        "0x0097F9E0",
+        "0x009777D0",
+        "0x009E8AD0",
+        "0x00977800",
+        "0x009E9140"
+      ],
+      "clean": true,
+      "oracle_ok": null,
+      "evidence": "uc_phase48.py",
+      "counted_in_metrics": true
+    },
+    {
+      "root": "0x009E9150",
+      "phase": 48,
+      "kind": "DIRECT_GUEST_ENTRY",
+      "result": "EXECUTED_CLEAN",
+      "functions_entered": [
+        "0x009E9160",
+        "0x009E7710",
+        "0x009E9990",
+        "0x009E9460",
+        "0x009773C0",
+        "0x00977E20",
+        "0x00977420",
+        "0x009EB980",
+        "0x00978720",
+        "0x0097FCD0",
+        "0x0097F790",
+        "0x0087B4F6",
+        "0x0097FAE0",
+        "0x0087B880",
+        "0x0097F9E0",
+        "0x009777D0",
+        "0x009E8AD0",
+        "0x00977800",
+        "0x009E9140",
+        "0x009E9150"
+      ],
+      "clean": true,
+      "oracle_ok": true,
+      "evidence": "uc_phase48.py",
+      "counted_in_metrics": true
+    },
+    {
+      "root": "0x009E98F0",
+      "phase": 48,
+      "kind": "DIRECT_GUEST_ENTRY",
+      "result": "EXECUTED_CLEAN",
+      "functions_entered": [
+        "0x009E98F0",
+        "0x009E7710",
+        "0x009E0880"
+      ],
+      "clean": true,
+      "oracle_ok": null,
+      "evidence": "uc_phase48.py",
+      "counted_in_metrics": true
+    },
+    {
+      "root": "0x009E9A30",
+      "phase": 48,
+      "kind": "DIRECT_GUEST_ENTRY",
+      "result": "EXECUTED_CLEAN",
+      "functions_entered": [
+        "0x009E98F0",
+        "0x009E7710",
+        "0x009E0880",
+        "0x009E9A30"
+      ],
+      "clean": true,
+      "oracle_ok": true,
+      "evidence": "uc_phase48.py",
+      "counted_in_metrics": true
+    },
+    {
+      "root": "0x009EB350",
+      "phase": 48,
+      "kind": "DIRECT_GUEST_ENTRY",
+      "result": "EXECUTED_CLEAN",
+      "functions_entered": [
+        "0x009EB350",
+        "0x009E7710"
+      ],
+      "clean": true,
+      "oracle_ok": null,
+      "evidence": "uc_phase48.py",
+      "counted_in_metrics": true
+    },
+    {
+      "root": "0x009EB2B0",
+      "phase": 48,
+      "kind": "DIRECT_GUEST_ENTRY",
+      "result": "EXECUTED_CLEAN",
+      "functions_entered": [
+        "0x009EB350",
+        "0x009E7710",
+        "0x009EB2B0"
+      ],
+      "clean": true,
+      "oracle_ok": true,
+      "evidence": "uc_phase48.py",
+      "counted_in_metrics": true
+    },
+    {
+      "root": "0x00A127E0",
+      "phase": 48,
+      "kind": "DIRECT_GUEST_ENTRY",
+      "result": "EXECUTED_CLEAN",
+      "functions_entered": [
+        "0x00A127E0"
+      ],
+      "clean": true,
+      "oracle_ok": true,
+      "evidence": "uc_phase48.py",
+      "counted_in_metrics": true
+    },
+    {
+      "root": "0x00A129B0",
+      "phase": 48,
+      "kind": "DIRECT_GUEST_ENTRY",
+      "result": "EXECUTED_CLEAN",
+      "functions_entered": [
+        "0x00A129B0"
+      ],
+      "clean": true,
+      "oracle_ok": true,
+      "evidence": "uc_phase48.py",
+      "counted_in_metrics": true
+    },
+    {
+      "root": "0x00A12800",
+      "phase": 48,
+      "kind": "DIRECT_GUEST_ENTRY",
+      "result": "EXECUTED_CLEAN",
+      "functions_entered": [
+        "0x00A12800"
+      ],
+      "clean": true,
+      "oracle_ok": true,
+      "evidence": "uc_phase48.py",
+      "counted_in_metrics": true
+    },
+    {
+      "root": "0x00A12810",
+      "phase": 48,
+      "kind": "DIRECT_GUEST_ENTRY",
+      "result": "EXECUTED_CLEAN",
+      "functions_entered": [
+        "0x00A12810"
+      ],
+      "clean": true,
+      "oracle_ok": true,
+      "evidence": "uc_phase48.py",
+      "counted_in_metrics": true
+    },
+    {
+      "root": "0x00A12810",
+      "phase": 48,
+      "kind": "DIRECT_GUEST_ENTRY",
+      "result": "EXECUTED_CLEAN",
+      "functions_entered": [
+        "0x00A12810"
+      ],
+      "clean": true,
+      "oracle_ok": true,
+      "evidence": "uc_phase48.py",
+      "counted_in_metrics": true
+    },
+    {
+      "root": "0x009E9160",
+      "phase": 48,
+      "kind": "DIRECT_GUEST_ENTRY",
+      "result": "EXECUTED_CLEAN",
+      "functions_entered": [
+        "0x009E9160",
+        "0x009E7710",
+        "0x009E9990",
+        "0x009E9460",
+        "0x009773C0",
+        "0x00977E20",
+        "0x00977420",
+        "0x009EB980",
+        "0x00978720",
+        "0x0097FCD0",
+        "0x0097F790",
+        "0x0087B4F6",
+        "0x0097FAE0",
+        "0x0087B880",
+        "0x0097F9E0",
+        "0x009777D0",
+        "0x009E8AD0",
+        "0x00977800"
+      ],
+      "clean": true,
+      "oracle_ok": null,
+      "evidence": "uc_phase48.py",
+      "counted_in_metrics": true
+    },
+    {
+      "root": "0x009E9140",
+      "phase": 48,
+      "kind": "DIRECT_GUEST_ENTRY",
+      "result": "EXECUTED_CLEAN",
+      "functions_entered": [
+        "0x009E9160",
+        "0x009E7710",
+        "0x009E9990",
+        "0x009E9460",
+        "0x009773C0",
+        "0x00977E20",
+        "0x00977420",
+        "0x009EB980",
+        "0x00978720",
+        "0x0097FCD0",
+        "0x0097F790",
+        "0x0087B4F6",
+        "0x0097FAE0",
+        "0x0087B880",
+        "0x0097F9E0",
+        "0x009777D0",
+        "0x009E8AD0",
+        "0x00977800",
+        "0x009E9140"
+      ],
+      "clean": true,
+      "oracle_ok": null,
+      "evidence": "uc_phase48.py",
+      "counted_in_metrics": true
+    },
+    {
+      "root": "0x009E9150",
+      "phase": 48,
+      "kind": "DIRECT_GUEST_ENTRY",
+      "result": "EXECUTED_CLEAN",
+      "functions_entered": [
+        "0x009E9160",
+        "0x009E7710",
+        "0x009E9990",
+        "0x009E9460",
+        "0x009773C0",
+        "0x00977E20",
+        "0x00977420",
+        "0x009EB980",
+        "0x00978720",
+        "0x0097FCD0",
+        "0x0097F790",
+        "0x0087B4F6",
+        "0x0097FAE0",
+        "0x0087B880",
+        "0x0097F9E0",
+        "0x009777D0",
+        "0x009E8AD0",
+        "0x00977800",
+        "0x009E9140",
+        "0x009E9150"
+      ],
+      "clean": true,
+      "oracle_ok": true,
+      "evidence": "uc_phase48.py",
+      "counted_in_metrics": true
+    },
+    {
+      "root": "0x009E98F0",
+      "phase": 48,
+      "kind": "DIRECT_GUEST_ENTRY",
+      "result": "EXECUTED_CLEAN",
+      "functions_entered": [
+        "0x009E98F0",
+        "0x009E7710",
+        "0x009E0880"
+      ],
+      "clean": true,
+      "oracle_ok": null,
+      "evidence": "uc_phase48.py",
+      "counted_in_metrics": true
+    },
+    {
+      "root": "0x009E9A30",
+      "phase": 48,
+      "kind": "DIRECT_GUEST_ENTRY",
+      "result": "EXECUTED_CLEAN",
+      "functions_entered": [
+        "0x009E98F0",
+        "0x009E7710",
+        "0x009E0880",
+        "0x009E9A30"
+      ],
+      "clean": true,
+      "oracle_ok": true,
+      "evidence": "uc_phase48.py",
+      "counted_in_metrics": true
+    },
+    {
+      "root": "0x009EB350",
+      "phase": 48,
+      "kind": "DIRECT_GUEST_ENTRY",
+      "result": "EXECUTED_CLEAN",
+      "functions_entered": [
+        "0x009EB350",
+        "0x009E7710"
+      ],
+      "clean": true,
+      "oracle_ok": null,
+      "evidence": "uc_phase48.py",
+      "counted_in_metrics": true
+    },
+    {
+      "root": "0x009EB2B0",
+      "phase": 48,
+      "kind": "DIRECT_GUEST_ENTRY",
+      "result": "EXECUTED_CLEAN",
+      "functions_entered": [
+        "0x009EB350",
+        "0x009E7710",
+        "0x009EB2B0"
+      ],
+      "clean": true,
+      "oracle_ok": true,
+      "evidence": "uc_phase48.py",
+      "counted_in_metrics": true
+    },
+    {
+      "root": "0x00A127E0",
+      "phase": 48,
+      "kind": "DIRECT_GUEST_ENTRY",
+      "result": "EXECUTED_CLEAN",
+      "functions_entered": [
+        "0x00A127E0"
+      ],
+      "clean": true,
+      "oracle_ok": true,
+      "evidence": "uc_phase48.py",
+      "counted_in_metrics": true
+    },
+    {
+      "root": "0x00A129B0",
+      "phase": 48,
+      "kind": "DIRECT_GUEST_ENTRY",
+      "result": "EXECUTED_CLEAN",
+      "functions_entered": [
+        "0x00A129B0"
+      ],
+      "clean": true,
+      "oracle_ok": true,
+      "evidence": "uc_phase48.py",
+      "counted_in_metrics": true
+    },
+    {
+      "root": "0x00A12800",
+      "phase": 48,
+      "kind": "DIRECT_GUEST_ENTRY",
+      "result": "EXECUTED_CLEAN",
+      "functions_entered": [
+        "0x00A12800"
+      ],
+      "clean": true,
+      "oracle_ok": true,
+      "evidence": "uc_phase48.py",
+      "counted_in_metrics": true
+    },
+    {
+      "root": "0x00A12810",
+      "phase": 48,
+      "kind": "DIRECT_GUEST_ENTRY",
+      "result": "EXECUTED_CLEAN",
+      "functions_entered": [
+        "0x00A12810"
+      ],
+      "clean": true,
+      "oracle_ok": true,
+      "evidence": "uc_phase48.py",
+      "counted_in_metrics": true
+    },
+    {
+      "root": "0x00A12810",
+      "phase": 48,
+      "kind": "DIRECT_GUEST_ENTRY",
+      "result": "EXECUTED_CLEAN",
+      "functions_entered": [
+        "0x00A12810"
+      ],
+      "clean": true,
+      "oracle_ok": true,
+      "evidence": "uc_phase48.py",
+      "counted_in_metrics": true
+    },
+    {
+      "root": "0x009E9160",
+      "phase": 48,
+      "kind": "DIRECT_GUEST_ENTRY",
+      "result": "EXECUTED_CLEAN",
+      "functions_entered": [
+        "0x009E9160",
+        "0x009E7710",
+        "0x009E9990",
+        "0x009E9460",
+        "0x009773C0",
+        "0x00977E20",
+        "0x00977420",
+        "0x009EB980",
+        "0x00978720",
+        "0x0097FCD0",
+        "0x0097F790",
+        "0x0087B4F6",
+        "0x0097FAE0",
+        "0x0087B880",
+        "0x0097F9E0",
+        "0x009777D0",
+        "0x009E8AD0",
+        "0x00977800"
+      ],
+      "clean": true,
+      "oracle_ok": null,
+      "evidence": "uc_phase48.py",
+      "counted_in_metrics": true
+    },
+    {
+      "root": "0x009E9140",
+      "phase": 48,
+      "kind": "DIRECT_GUEST_ENTRY",
+      "result": "EXECUTED_CLEAN",
+      "functions_entered": [
+        "0x009E9160",
+        "0x009E7710",
+        "0x009E9990",
+        "0x009E9460",
+        "0x009773C0",
+        "0x00977E20",
+        "0x00977420",
+        "0x009EB980",
+        "0x00978720",
+        "0x0097FCD0",
+        "0x0097F790",
+        "0x0087B4F6",
+        "0x0097FAE0",
+        "0x0087B880",
+        "0x0097F9E0",
+        "0x009777D0",
+        "0x009E8AD0",
+        "0x00977800",
+        "0x009E9140"
+      ],
+      "clean": true,
+      "oracle_ok": null,
+      "evidence": "uc_phase48.py",
+      "counted_in_metrics": true
+    },
+    {
+      "root": "0x009E9150",
+      "phase": 48,
+      "kind": "DIRECT_GUEST_ENTRY",
+      "result": "EXECUTED_CLEAN",
+      "functions_entered": [
+        "0x009E9160",
+        "0x009E7710",
+        "0x009E9990",
+        "0x009E9460",
+        "0x009773C0",
+        "0x00977E20",
+        "0x00977420",
+        "0x009EB980",
+        "0x00978720",
+        "0x0097FCD0",
+        "0x0097F790",
+        "0x0087B4F6",
+        "0x0097FAE0",
+        "0x0087B880",
+        "0x0097F9E0",
+        "0x009777D0",
+        "0x009E8AD0",
+        "0x00977800",
+        "0x009E9140",
+        "0x009E9150"
+      ],
+      "clean": true,
+      "oracle_ok": true,
+      "evidence": "uc_phase48.py",
+      "counted_in_metrics": true
+    },
+    {
+      "root": "0x009E98F0",
+      "phase": 48,
+      "kind": "DIRECT_GUEST_ENTRY",
+      "result": "EXECUTED_CLEAN",
+      "functions_entered": [
+        "0x009E98F0",
+        "0x009E7710",
+        "0x009E0880"
+      ],
+      "clean": true,
+      "oracle_ok": null,
+      "evidence": "uc_phase48.py",
+      "counted_in_metrics": true
+    },
+    {
+      "root": "0x009E9A30",
+      "phase": 48,
+      "kind": "DIRECT_GUEST_ENTRY",
+      "result": "EXECUTED_CLEAN",
+      "functions_entered": [
+        "0x009E98F0",
+        "0x009E7710",
+        "0x009E0880",
+        "0x009E9A30"
+      ],
+      "clean": true,
+      "oracle_ok": true,
+      "evidence": "uc_phase48.py",
+      "counted_in_metrics": true
+    },
+    {
+      "root": "0x009EB350",
+      "phase": 48,
+      "kind": "DIRECT_GUEST_ENTRY",
+      "result": "EXECUTED_CLEAN",
+      "functions_entered": [
+        "0x009EB350",
+        "0x009E7710"
+      ],
+      "clean": true,
+      "oracle_ok": null,
+      "evidence": "uc_phase48.py",
+      "counted_in_metrics": true
+    },
+    {
+      "root": "0x009EB2B0",
+      "phase": 48,
+      "kind": "DIRECT_GUEST_ENTRY",
+      "result": "EXECUTED_CLEAN",
+      "functions_entered": [
+        "0x009EB350",
+        "0x009E7710",
+        "0x009EB2B0"
+      ],
+      "clean": true,
+      "oracle_ok": true,
+      "evidence": "uc_phase48.py",
+      "counted_in_metrics": true
+    },
+    {
+      "root": "0x00A127E0",
+      "phase": 48,
+      "kind": "DIRECT_GUEST_ENTRY",
+      "result": "EXECUTED_CLEAN",
+      "functions_entered": [
+        "0x00A127E0"
+      ],
+      "clean": true,
+      "oracle_ok": true,
+      "evidence": "uc_phase48.py",
+      "counted_in_metrics": true
+    },
+    {
+      "root": "0x00A129B0",
+      "phase": 48,
+      "kind": "DIRECT_GUEST_ENTRY",
+      "result": "EXECUTED_CLEAN",
+      "functions_entered": [
+        "0x00A129B0"
+      ],
+      "clean": true,
+      "oracle_ok": true,
+      "evidence": "uc_phase48.py",
+      "counted_in_metrics": true
+    },
+    {
+      "root": "0x00A12800",
+      "phase": 48,
+      "kind": "DIRECT_GUEST_ENTRY",
+      "result": "EXECUTED_CLEAN",
+      "functions_entered": [
+        "0x00A12800"
+      ],
+      "clean": true,
+      "oracle_ok": true,
+      "evidence": "uc_phase48.py",
+      "counted_in_metrics": true
+    },
+    {
+      "root": "0x00A12810",
+      "phase": 48,
+      "kind": "DIRECT_GUEST_ENTRY",
+      "result": "EXECUTED_CLEAN",
+      "functions_entered": [
+        "0x00A12810"
+      ],
+      "clean": true,
+      "oracle_ok": true,
+      "evidence": "uc_phase48.py",
+      "counted_in_metrics": true
+    },
+    {
+      "root": "0x00A12810",
+      "phase": 48,
+      "kind": "DIRECT_GUEST_ENTRY",
+      "result": "EXECUTED_CLEAN",
+      "functions_entered": [
+        "0x00A12810"
+      ],
+      "clean": true,
+      "oracle_ok": true,
+      "evidence": "uc_phase48.py",
+      "counted_in_metrics": true
+    },
+    {
+      "root": "0x009E9160",
+      "phase": 48,
+      "kind": "DIRECT_GUEST_ENTRY",
+      "result": "EXECUTED_CLEAN",
+      "functions_entered": [
+        "0x009E9160",
+        "0x009E7710",
+        "0x009E9990",
+        "0x009E9460",
+        "0x009773C0",
+        "0x00977E20",
+        "0x00977420",
+        "0x009EB980",
+        "0x00978720",
+        "0x0097FCD0",
+        "0x0097F790",
+        "0x0087B4F6",
+        "0x0097FAE0",
+        "0x0087B880",
+        "0x0097F9E0",
+        "0x009777D0",
+        "0x009E8AD0",
+        "0x00977800"
+      ],
+      "clean": true,
+      "oracle_ok": null,
+      "evidence": "uc_phase48.py",
+      "counted_in_metrics": true
+    },
+    {
+      "root": "0x009E9140",
+      "phase": 48,
+      "kind": "DIRECT_GUEST_ENTRY",
+      "result": "EXECUTED_CLEAN",
+      "functions_entered": [
+        "0x009E9160",
+        "0x009E7710",
+        "0x009E9990",
+        "0x009E9460",
+        "0x009773C0",
+        "0x00977E20",
+        "0x00977420",
+        "0x009EB980",
+        "0x00978720",
+        "0x0097FCD0",
+        "0x0097F790",
+        "0x0087B4F6",
+        "0x0097FAE0",
+        "0x0087B880",
+        "0x0097F9E0",
+        "0x009777D0",
+        "0x009E8AD0",
+        "0x00977800",
+        "0x009E9140"
+      ],
+      "clean": true,
+      "oracle_ok": null,
+      "evidence": "uc_phase48.py",
+      "counted_in_metrics": true
+    },
+    {
+      "root": "0x009E9150",
+      "phase": 48,
+      "kind": "DIRECT_GUEST_ENTRY",
+      "result": "EXECUTED_CLEAN",
+      "functions_entered": [
+        "0x009E9160",
+        "0x009E7710",
+        "0x009E9990",
+        "0x009E9460",
+        "0x009773C0",
+        "0x00977E20",
+        "0x00977420",
+        "0x009EB980",
+        "0x00978720",
+        "0x0097FCD0",
+        "0x0097F790",
+        "0x0087B4F6",
+        "0x0097FAE0",
+        "0x0087B880",
+        "0x0097F9E0",
+        "0x009777D0",
+        "0x009E8AD0",
+        "0x00977800",
+        "0x009E9140",
+        "0x009E9150"
+      ],
+      "clean": true,
+      "oracle_ok": true,
+      "evidence": "uc_phase48.py",
+      "counted_in_metrics": true
+    },
+    {
+      "root": "0x009E98F0",
+      "phase": 48,
+      "kind": "DIRECT_GUEST_ENTRY",
+      "result": "EXECUTED_CLEAN",
+      "functions_entered": [
+        "0x009E98F0",
+        "0x009E7710",
+        "0x009E0880"
+      ],
+      "clean": true,
+      "oracle_ok": null,
+      "evidence": "uc_phase48.py",
+      "counted_in_metrics": true
+    },
+    {
+      "root": "0x009E9A30",
+      "phase": 48,
+      "kind": "DIRECT_GUEST_ENTRY",
+      "result": "EXECUTED_CLEAN",
+      "functions_entered": [
+        "0x009E98F0",
+        "0x009E7710",
+        "0x009E0880",
+        "0x009E9A30"
+      ],
+      "clean": true,
+      "oracle_ok": true,
+      "evidence": "uc_phase48.py",
+      "counted_in_metrics": true
+    },
+    {
+      "root": "0x009EB350",
+      "phase": 48,
+      "kind": "DIRECT_GUEST_ENTRY",
+      "result": "EXECUTED_CLEAN",
+      "functions_entered": [
+        "0x009EB350",
+        "0x009E7710"
+      ],
+      "clean": true,
+      "oracle_ok": null,
+      "evidence": "uc_phase48.py",
+      "counted_in_metrics": true
+    },
+    {
+      "root": "0x009EB2B0",
+      "phase": 48,
+      "kind": "DIRECT_GUEST_ENTRY",
+      "result": "EXECUTED_CLEAN",
+      "functions_entered": [
+        "0x009EB350",
+        "0x009E7710",
+        "0x009EB2B0"
+      ],
+      "clean": true,
+      "oracle_ok": true,
+      "evidence": "uc_phase48.py",
+      "counted_in_metrics": true
+    },
+    {
+      "root": "0x00A127E0",
+      "phase": 48,
+      "kind": "DIRECT_GUEST_ENTRY",
+      "result": "EXECUTED_CLEAN",
+      "functions_entered": [
+        "0x00A127E0"
+      ],
+      "clean": true,
+      "oracle_ok": true,
+      "evidence": "uc_phase48.py",
+      "counted_in_metrics": true
+    },
+    {
+      "root": "0x00A129B0",
+      "phase": 48,
+      "kind": "DIRECT_GUEST_ENTRY",
+      "result": "EXECUTED_CLEAN",
+      "functions_entered": [
+        "0x00A129B0"
+      ],
+      "clean": true,
+      "oracle_ok": true,
+      "evidence": "uc_phase48.py",
+      "counted_in_metrics": true
+    },
+    {
+      "root": "0x00A12800",
+      "phase": 48,
+      "kind": "DIRECT_GUEST_ENTRY",
+      "result": "EXECUTED_CLEAN",
+      "functions_entered": [
+        "0x00A12800"
+      ],
+      "clean": true,
+      "oracle_ok": true,
+      "evidence": "uc_phase48.py",
+      "counted_in_metrics": true
+    },
+    {
+      "root": "0x00A12810",
+      "phase": 48,
+      "kind": "DIRECT_GUEST_ENTRY",
+      "result": "EXECUTED_CLEAN",
+      "functions_entered": [
+        "0x00A12810"
+      ],
+      "clean": true,
+      "oracle_ok": true,
+      "evidence": "uc_phase48.py",
+      "counted_in_metrics": true
+    },
+    {
+      "root": "0x00A12810",
+      "phase": 48,
+      "kind": "DIRECT_GUEST_ENTRY",
+      "result": "EXECUTED_CLEAN",
+      "functions_entered": [
+        "0x00A12810"
+      ],
+      "clean": true,
+      "oracle_ok": true,
+      "evidence": "uc_phase48.py",
+      "counted_in_metrics": true
     }
   ],
-  "unique_uc_functions_executed": 82,
+  "unique_uc_functions_executed": 84,
   "deepest_ordinary_execution_chain": 4,
   "largest_executed_ordinary_closure": 18,
   "ordinary_execution_sequence_length": 5,
@@ -11600,6 +12472,250 @@
       "sequence_length": 2,
       "oracle_ok": true,
       "notes": "from_vec \u2192 cdecl mul"
+    }
+  ],
+  "phase48_results": [
+    {
+      "name": "reg_ctor_a",
+      "root": "0x009E9160",
+      "clean": true,
+      "eax": "0x03004000",
+      "blocked_kind": "NONE",
+      "blocked_va": null,
+      "depth_max": 4,
+      "entered": [
+        "0x009E9160",
+        "0x009E7710",
+        "0x009E9990",
+        "0x009E9460",
+        "0x009773C0",
+        "0x00977E20",
+        "0x00977420",
+        "0x009EB980",
+        "0x00978720",
+        "0x0097FCD0",
+        "0x0097F790",
+        "0x0087B4F6",
+        "0x0097FAE0",
+        "0x0087B880",
+        "0x0097F9E0",
+        "0x009777D0",
+        "0x009E8AD0",
+        "0x00977800"
+      ],
+      "unique_entered": 18,
+      "oracle_ok": null,
+      "notes": null
+    },
+    {
+      "name": "reg_setter",
+      "root": "0x009E9140",
+      "clean": true,
+      "eax": "0x0000005A",
+      "blocked_kind": "NONE",
+      "blocked_va": null,
+      "depth_max": 4,
+      "entered": [
+        "0x009E9160",
+        "0x009E7710",
+        "0x009E9990",
+        "0x009E9460",
+        "0x009773C0",
+        "0x00977E20",
+        "0x00977420",
+        "0x009EB980",
+        "0x00978720",
+        "0x0097FCD0",
+        "0x0097F790",
+        "0x0087B4F6",
+        "0x0097FAE0",
+        "0x0087B880",
+        "0x0097F9E0",
+        "0x009777D0",
+        "0x009E8AD0",
+        "0x00977800",
+        "0x009E9140"
+      ],
+      "unique_entered": 19,
+      "oracle_ok": null,
+      "notes": null
+    },
+    {
+      "name": "reg_getter",
+      "root": "0x009E9150",
+      "clean": true,
+      "eax": "0x0000005A",
+      "blocked_kind": "NONE",
+      "blocked_va": null,
+      "depth_max": 4,
+      "entered": [
+        "0x009E9160",
+        "0x009E7710",
+        "0x009E9990",
+        "0x009E9460",
+        "0x009773C0",
+        "0x00977E20",
+        "0x00977420",
+        "0x009EB980",
+        "0x00978720",
+        "0x0097FCD0",
+        "0x0097F790",
+        "0x0087B4F6",
+        "0x0097FAE0",
+        "0x0087B880",
+        "0x0097F9E0",
+        "0x009777D0",
+        "0x009E8AD0",
+        "0x00977800",
+        "0x009E9140",
+        "0x009E9150"
+      ],
+      "unique_entered": 20,
+      "oracle_ok": true,
+      "notes": null
+    },
+    {
+      "name": "reg_ctor_b",
+      "root": "0x009E98F0",
+      "clean": true,
+      "eax": "0x03004300",
+      "blocked_kind": "NONE",
+      "blocked_va": null,
+      "depth_max": 2,
+      "entered": [
+        "0x009E98F0",
+        "0x009E7710",
+        "0x009E0880"
+      ],
+      "unique_entered": 3,
+      "oracle_ok": null,
+      "notes": null
+    },
+    {
+      "name": "reg_export_b",
+      "root": "0x009E9A30",
+      "clean": true,
+      "eax": "0x03004400",
+      "blocked_kind": "NONE",
+      "blocked_va": null,
+      "depth_max": 2,
+      "entered": [
+        "0x009E98F0",
+        "0x009E7710",
+        "0x009E0880",
+        "0x009E9A30"
+      ],
+      "unique_entered": 4,
+      "oracle_ok": true,
+      "notes": null
+    },
+    {
+      "name": "reg_ctor_c",
+      "root": "0x009EB350",
+      "clean": true,
+      "eax": "0x03004480",
+      "blocked_kind": "NONE",
+      "blocked_va": null,
+      "depth_max": 2,
+      "entered": [
+        "0x009EB350",
+        "0x009E7710"
+      ],
+      "unique_entered": 2,
+      "oracle_ok": null,
+      "notes": null
+    },
+    {
+      "name": "reg_field_c",
+      "root": "0x009EB2B0",
+      "clean": true,
+      "eax": "0x0300448C",
+      "blocked_kind": "NONE",
+      "blocked_va": null,
+      "depth_max": 2,
+      "entered": [
+        "0x009EB350",
+        "0x009E7710",
+        "0x009EB2B0"
+      ],
+      "unique_entered": 3,
+      "oracle_ok": true,
+      "notes": null
+    },
+    {
+      "name": "smoke_fmax",
+      "root": "0x00A127E0",
+      "clean": true,
+      "eax": "0x00000000",
+      "blocked_kind": "NONE",
+      "blocked_va": null,
+      "depth_max": 1,
+      "entered": [
+        "0x00A127E0"
+      ],
+      "unique_entered": 1,
+      "oracle_ok": true,
+      "notes": null
+    },
+    {
+      "name": "smoke_near_eq",
+      "root": "0x00A129B0",
+      "clean": true,
+      "eax": "0x03004790",
+      "blocked_kind": "NONE",
+      "blocked_va": null,
+      "depth_max": 1,
+      "entered": [
+        "0x00A129B0"
+      ],
+      "unique_entered": 1,
+      "oracle_ok": true,
+      "notes": null
+    },
+    {
+      "name": "float_passthru",
+      "root": "0x00A12800",
+      "clean": true,
+      "eax": "0x00000000",
+      "blocked_kind": "NONE",
+      "blocked_va": null,
+      "depth_max": 1,
+      "entered": [
+        "0x00A12800"
+      ],
+      "unique_entered": 1,
+      "oracle_ok": true,
+      "notes": "cdecl; returns ST0=arg0; harness checks clean return"
+    },
+    {
+      "name": "finite_matrix_ok",
+      "root": "0x00A12810",
+      "clean": true,
+      "eax": "0x03004790",
+      "blocked_kind": "NONE",
+      "blocked_va": null,
+      "depth_max": 1,
+      "entered": [
+        "0x00A12810"
+      ],
+      "unique_entered": 1,
+      "oracle_ok": true,
+      "notes": null
+    },
+    {
+      "name": "finite_matrix_inf",
+      "root": "0x00A12810",
+      "clean": true,
+      "eax": "0x03004790",
+      "blocked_kind": "NONE",
+      "blocked_va": null,
+      "depth_max": 1,
+      "entered": [
+        "0x00A12810"
+      ],
+      "unique_entered": 1,
+      "oracle_ok": true,
+      "notes": "Inf exponent -> *out=0"
     }
   ]
 }

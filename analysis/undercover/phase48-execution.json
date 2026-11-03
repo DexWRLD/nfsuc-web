@@ -1,0 +1,292 @@
+{
+  "phase": 48,
+  "results": [
+    {
+      "name": "reg_ctor_a",
+      "root": "0x009E9160",
+      "clean": true,
+      "eax": "0x03004000",
+      "blocked_kind": "NONE",
+      "blocked_va": null,
+      "depth_max": 4,
+      "entered": [
+        "0x009E9160",
+        "0x009E7710",
+        "0x009E9990",
+        "0x009E9460",
+        "0x009773C0",
+        "0x00977E20",
+        "0x00977420",
+        "0x009EB980",
+        "0x00978720",
+        "0x0097FCD0",
+        "0x0097F790",
+        "0x0087B4F6",
+        "0x0097FAE0",
+        "0x0087B880",
+        "0x0097F9E0",
+        "0x009777D0",
+        "0x009E8AD0",
+        "0x00977800"
+      ],
+      "unique_entered": 18,
+      "oracle_ok": null,
+      "notes": null
+    },
+    {
+      "name": "reg_setter",
+      "root": "0x009E9140",
+      "clean": true,
+      "eax": "0x0000005A",
+      "blocked_kind": "NONE",
+      "blocked_va": null,
+      "depth_max": 4,
+      "entered": [
+        "0x009E9160",
+        "0x009E7710",
+        "0x009E9990",
+        "0x009E9460",
+        "0x009773C0",
+        "0x00977E20",
+        "0x00977420",
+        "0x009EB980",
+        "0x00978720",
+        "0x0097FCD0",
+        "0x0097F790",
+        "0x0087B4F6",
+        "0x0097FAE0",
+        "0x0087B880",
+        "0x0097F9E0",
+        "0x009777D0",
+        "0x009E8AD0",
+        "0x00977800",
+        "0x009E9140"
+      ],
+      "unique_entered": 19,
+      "oracle_ok": null,
+      "notes": null
+    },
+    {
+      "name": "reg_getter",
+      "root": "0x009E9150",
+      "clean": true,
+      "eax": "0x0000005A",
+      "blocked_kind": "NONE",
+      "blocked_va": null,
+      "depth_max": 4,
+      "entered": [
+        "0x009E9160",
+        "0x009E7710",
+        "0x009E9990",
+        "0x009E9460",
+        "0x009773C0",
+        "0x00977E20",
+        "0x00977420",
+        "0x009EB980",
+        "0x00978720",
+        "0x0097FCD0",
+        "0x0097F790",
+        "0x0087B4F6",
+        "0x0097FAE0",
+        "0x0087B880",
+        "0x0097F9E0",
+        "0x009777D0",
+        "0x009E8AD0",
+        "0x00977800",
+        "0x009E9140",
+        "0x009E9150"
+      ],
+      "unique_entered": 20,
+      "oracle_ok": true,
+      "notes": null
+    },
+    {
+      "name": "reg_ctor_b",
+      "root": "0x009E98F0",
+      "clean": true,
+      "eax": "0x03004300",
+      "blocked_kind": "NONE",
+      "blocked_va": null,
+      "depth_max": 2,
+      "entered": [
+        "0x009E98F0",
+        "0x009E7710",
+        "0x009E0880"
+      ],
+      "unique_entered": 3,
+      "oracle_ok": null,
+      "notes": null
+    },
+    {
+      "name": "reg_export_b",
+      "root": "0x009E9A30",
+      "clean": true,
+      "eax": "0x03004400",
+      "blocked_kind": "NONE",
+      "blocked_va": null,
+      "depth_max": 2,
+      "entered": [
+        "0x009E98F0",
+        "0x009E7710",
+        "0x009E0880",
+        "0x009E9A30"
+      ],
+      "unique_entered": 4,
+      "oracle_ok": true,
+      "notes": null
+    },
+    {
+      "name": "reg_ctor_c",
+      "root": "0x009EB350",
+      "clean": true,
+      "eax": "0x03004480",
+      "blocked_kind": "NONE",
+      "blocked_va": null,
+      "depth_max": 2,
+      "entered": [
+        "0x009EB350",
+        "0x009E7710"
+      ],
+      "unique_entered": 2,
+      "oracle_ok": null,
+      "notes": null
+    },
+    {
+      "name": "reg_field_c",
+      "root": "0x009EB2B0",
+      "clean": true,
+      "eax": "0x0300448C",
+      "blocked_kind": "NONE",
+      "blocked_va": null,
+      "depth_max": 2,
+      "entered": [
+        "0x009EB350",
+        "0x009E7710",
+        "0x009EB2B0"
+      ],
+      "unique_entered": 3,
+      "oracle_ok": true,
+      "notes": null
+    },
+    {
+      "name": "smoke_fmax",
+      "root": "0x00A127E0",
+      "clean": true,
+      "eax": "0x00000000",
+      "blocked_kind": "NONE",
+      "blocked_va": null,
+      "depth_max": 1,
+      "entered": [
+        "0x00A127E0"
+      ],
+      "unique_entered": 1,
+      "oracle_ok": true,
+      "notes": null
+    },
+    {
+      "name": "smoke_near_eq",
+      "root": "0x00A129B0",
+      "clean": true,
+      "eax": "0x03004790",
+      "blocked_kind": "NONE",
+      "blocked_va": null,
+      "depth_max": 1,
+      "entered": [
+        "0x00A129B0"
+      ],
+      "unique_entered": 1,
+      "oracle_ok": true,
+      "notes": null
+    },
+    {
+      "name": "float_passthru",
+      "root": "0x00A12800",
+      "clean": true,
+      "eax": "0x00000000",
+      "blocked_kind": "NONE",
+      "blocked_va": null,
+      "depth_max": 1,
+      "entered": [
+        "0x00A12800"
+      ],
+      "unique_entered": 1,
+      "oracle_ok": true,
+      "notes": "cdecl; returns ST0=arg0; harness checks clean return"
+    },
+    {
+      "name": "finite_matrix_ok",
+      "root": "0x00A12810",
+      "clean": true,
+      "eax": "0x03004790",
+      "blocked_kind": "NONE",
+      "blocked_va": null,
+      "depth_max": 1,
+      "entered": [
+        "0x00A12810"
+      ],
+      "unique_entered": 1,
+      "oracle_ok": true,
+      "notes": null
+    },
+    {
+      "name": "finite_matrix_inf",
+      "root": "0x00A12810",
+      "clean": true,
+      "eax": "0x03004790",
+      "blocked_kind": "NONE",
+      "blocked_va": null,
+      "depth_max": 1,
+      "entered": [
+        "0x00A12810"
+      ],
+      "unique_entered": 1,
+      "oracle_ok": true,
+      "notes": "Inf exponent -> *out=0"
+    }
+  ],
+  "newly_executed": [
+    "0x00A12800",
+    "0x00A12810"
+  ],
+  "enterable_new": [
+    "0x00A12800",
+    "0x00A12810"
+  ],
+  "node_validation": {
+    "node_path": "C:\\Users\\999\\AppData\\Local\\Microsoft\\WinGet\\Packages\\OpenJS.NodeJS.LTS_Microsoft.Winget.Source_8wekyb3d8bbwe\\node-v24.20.0-win-x64\\node.exe",
+    "node_version": "v24.20.0",
+    "npm_install": {
+      "exit_code": 0,
+      "tail": "\nadded 10 packages, and audited 11 packages in 1s\n\nfound 0 vulnerabilities\nnpm warn Unknown env config \"devdir\". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.\nnpm warn install-scripts 1 package has install scripts not yet covered by allowScripts:\nnpm warn install-scripts   esbuild@0.28.2 (postinstall: node install.js)\nnpm warn install-scripts\nnpm warn install-scripts Run `npm install-scripts ls` to review, or `npm install-scripts approve <pkg>` to allow.\n"
+    },
+    "uc_assets_test": {
+      "exit_code": 0,
+      "passed": true,
+      "tail": "\u2714 shipped manifest parses and marks production unauthorized (1.1268ms)\n\u2714 invalid manifest rejected (0.319ms)\n\u2714 copyrighted-unavailable refused without authorization (0.2029ms)\n\u2714 download + hash verify + cache hit (19.9365ms)\n\u2714 hash mismatch rejected (0.9709ms)\n\u2714 partial download rejected (0.5432ms)\n\u2714 cancel aborts in-flight download (0.2867ms)\n\u2714 insufficient storage (0.1857ms)\n\u2714 offline cached (1.6666ms)\n\u2714 changed manifest prunes stale and downloads new (1.2875ms)\n\u2714 filesystem bridge maps virtual paths (0.8376ms)\n\u2714 clear smoke command sequence is BeginScene Clear EndScene Present (0.5623ms)\n\u2714 clear smoke with fake canvas2d (0.2286ms)\n\u2714 launch UI never enables authentic play (0.1117ms)\n\u2714 source unavailable mode (0.1115ms)\n\u2714 path traversal rejected in manifest (0.1266ms)\n\u2714 duplicate asset id rejected (0.104ms)\n\u2714 cross-origin absolute URL rejected with pageOrigin (0.1746ms)\n\u2714 filesystem rejects path traversal (1.7996ms)\n\u2714 cache corruption detected on reverify (1.2033ms)\n\u2139 tests 20\n\u2139 suites 0\n\u2139 pass 20\n\u2139 fail 0\n\u2139 cancelled 0\n\u2139 skipped 0\n\u2139 todo 0\n\u2139 duration_ms 133.7821\n"
+    },
+    "tsc_check": {
+      "exit_code": 0,
+      "passed": true,
+      "tail": "\n> nfsu2-web@0.0.0 check\n> tsc -p .\n\nnpm warn Unknown env config \"devdir\". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.\n"
+    },
+    "esbuild_build": {
+      "exit_code": 0,
+      "passed": true,
+      "tail": "\n> nfsu2-web@0.0.0 build\n> node build.mjs\n\nnpm warn Unknown env config \"devdir\". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.\n\n  dist\\main.js            513.6kb\n  dist\\test\\play.js        83.3kb\n  dist\\main.css            66.2kb\n  dist\\test\\aicheck.js     46.6kb\n  dist\\test\\hostcheck.js   30.5kb\n  ...and 19 more output files...\n\nDone in 51ms\n"
+    },
+    "browser_clean_test": {
+      "exit_code": 0,
+      "passed": true,
+      "skipped": false,
+      "skipped_or_failed_tail": "\u2714 clean browser profile: download, verify, clear smoke (1513.8125ms)\n\u2139 tests 1\n\u2139 suites 0\n\u2139 pass 1\n\u2139 fail 0\n\u2139 cancelled 0\n\u2139 skipped 0\n\u2139 todo 0\n\u2139 duration_ms 1596.3916\n"
+    }
+  },
+  "metrics_delta": {
+    "unique_before": 82,
+    "unique_after": 84,
+    "enterable_before": 48,
+    "enterable_after": 50,
+    "runs_before": 310,
+    "runs_after": 322
+  }
+}
