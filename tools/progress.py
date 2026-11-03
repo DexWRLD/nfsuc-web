@@ -555,6 +555,9 @@ def build():
         },
         "ordinary_runtime_frontier": ordinary.get("ordinary_runtime_frontier") or {},
         "top_ordinary_island": ordinary.get("top_ordinary_island") or {},
+        "campaign_summary": ordinary.get("campaign_summary") or {},
+        "cisqrt": ordinary.get("cisqrt") or {},
+        "harness_capability": ordinary.get("harness_capability") or {},
         "initialization": status["initialization"],
         "boundaries": status["boundaries"],
         "helper_cut": helper_summary if helper_summary else "UNKNOWN",
@@ -683,12 +686,36 @@ def _ordinary_frontier_badge(model):
     orf = model.get("ordinary_runtime_frontier") or {}
     if not orf:
         return "UNMEASURED"
-    return "H%d C%d R%d E%d" % (
+    return "H%d C%d I%d R%d E%d" % (
         int(orf.get("HIGH") or 0),
         int(orf.get("COMPILED") or 0),
-        int(orf.get("RUNTIME_READY_EST") or 0),
+        int(orf.get("IMPORT_READY") or orf.get("RUNTIME_READY_EST") or 0),
+        int(orf.get("RUNTIME_READY") or orf.get("RUNTIME_READY_EST") or 0),
         int(orf.get("EXECUTED") or 0),
     )
+
+
+def _real_uc_execution_badge(model):
+    orf = model.get("ordinary_runtime_frontier") or {}
+    camp = model.get("campaign_summary") or {}
+    if not orf and not camp:
+        return "UNMEASURED"
+    nxt = camp.get("most_common_next_blocker")
+    if isinstance(nxt, (list, tuple)) and nxt:
+        nxt = nxt[0]
+    return "uniq=%s deep=%s next=%s" % (
+        orf.get("EXECUTED") or "?",
+        camp.get("deepest_chain") or "?",
+        nxt or "?",
+    )
+
+
+def _cisqrt_badge(model):
+    cis = model.get("cisqrt") or {}
+    hc = model.get("harness_capability") or {}
+    if cis.get("hle") == "UC_HLE_CISQRT" or hc.get("crt_cisqrt") == "IMPLEMENTED":
+        return "IMPLEMENTED ST0→ST0 PASS"
+    return "UNKNOWN"
 
 
 def _top_island_badge(model):
@@ -816,6 +843,8 @@ def render_svg(model, detailed=False):
         ("Runtime factory frontier", runtime_factory),
         ("ORDINARY RUNTIME FRONTIER", _ordinary_frontier_badge(model)),
         ("TOP ORDINARY ISLAND", _top_island_badge(model)),
+        ("REAL UC EXECUTION", _real_uc_execution_badge(model)),
+        ("CRT _CIsqrt", _cisqrt_badge(model)),
     ]
     parts = []
     y = badge_row(parts, badges, 14)
@@ -937,6 +966,9 @@ th { color: #8b949e; font-weight: 600; }
 %s
 <h2>Top ordinary island</h2>
 %s
+<h2>Real UC execution</h2>
+%s
+<p>CRT <code>_CIsqrt</code>: %s. ABI: X87 ST0→ST0.</p>
 <p>Independent of <code>0x00686000</code>: %s. Discovery-enrolled on HIGH graph: %s. Runtime enterable now: %s. Call <code>%s</code> in <code>%s</code> (%s).</p>
 <p>Active objective: %s</p>
 <p>%s</p>
@@ -1049,6 +1081,17 @@ document.querySelectorAll("rect[data-addr]").forEach(function (node) {
                  if (model.get("top_ordinary_island") or {}).get("missing_imports") else "none"),
             ("missing imports", ", ".join((model.get("top_ordinary_island") or {}).get("missing_imports") or []) or "none"),
         ]),
+        html_table(("Field", "Value"), [
+            ("unique executed", (model.get("ordinary_runtime_frontier") or {}).get("EXECUTED") or "?"),
+            ("deepest chain", (model.get("campaign_summary") or {}).get("deepest_chain") or "?"),
+            ("largest entered island", (model.get("campaign_summary") or {}).get("largest_island_entered") or "?"),
+            ("most common next blocker", (
+                (model.get("campaign_summary") or {}).get("most_common_next_blocker") or ("?", 0)
+            )[0] if isinstance((model.get("campaign_summary") or {}).get("most_common_next_blocker"), (list, tuple))
+            else ((model.get("campaign_summary") or {}).get("most_common_next_blocker") or "?")),
+            ("latest newly executed root", (model.get("campaign_summary") or {}).get("latest_newly_executed_root") or "?"),
+        ]),
+        html.escape(_cisqrt_badge(model)),
         html.escape(graphics["independent_of_0x00686000"]),
         html.escape(graphics["reachable_from_high_graph"]),
         html.escape(graphics["enterable_now"]),
@@ -1184,6 +1227,8 @@ def render_png(model):
         ("Runtime factory frontier", runtime_factory),
         ("ORDINARY RUNTIME FRONTIER", _ordinary_frontier_badge(model)),
         ("TOP ORDINARY ISLAND", _top_island_badge(model)),
+        ("REAL UC EXECUTION", _real_uc_execution_badge(model)),
+        ("CRT _CIsqrt", _cisqrt_badge(model)),
     ]
 
     # Measure height with the same geometry as the SVG.
