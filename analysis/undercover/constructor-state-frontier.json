@@ -1,0 +1,329 @@
+{
+  "phase": 38,
+  "constructor": "0x009E9160",
+  "verified_entry_contract": {
+    "abi": "thiscall",
+    "ecx": "caller-owned OBJ_BASE",
+    "args": [
+      "SRC_BASE POD",
+      "0"
+    ],
+    "ret_pop": 8,
+    "JTSWITCH": true,
+    "no_stubs": true
+  },
+  "known_object_storage_extent": "0x00000248",
+  "object_base": "0x03004000",
+  "clean_termination": true,
+  "before_all_zero": true,
+  "initialized_nonzero_dwords": 34,
+  "fields": [
+    {
+      "offset": "0x00000000",
+      "width": 4,
+      "value": "0x00C30E68",
+      "provenance": "DIRECT_CONSTRUCTOR_WRITE",
+      "note": "vtable_main"
+    },
+    {
+      "offset": "0x00000004",
+      "width": 4,
+      "value": "0x00C30F2C",
+      "provenance": "NESTED_INITIALIZER_WRITE",
+      "note": "embedded_pod_vtable"
+    },
+    {
+      "offset": "0x0000005C",
+      "width": 4,
+      "value": "0x00C30DEC",
+      "provenance": "ORDINARY_CALLEE_WRITE",
+      "note": "initialized_nonzero"
+    },
+    {
+      "offset": "0x00000074",
+      "width": 4,
+      "value": "0x01294E4C",
+      "provenance": "ORDINARY_CALLEE_WRITE",
+      "note": "initialized_nonzero"
+    },
+    {
+      "offset": "0x00000078",
+      "width": 4,
+      "value": "0x00000001",
+      "provenance": "ORDINARY_CALLEE_WRITE",
+      "note": "initialized_nonzero"
+    },
+    {
+      "offset": "0x00000080",
+      "width": 4,
+      "value": "0x3F800000",
+      "provenance": "ORDINARY_CALLEE_WRITE",
+      "note": "initialized_nonzero"
+    },
+    {
+      "offset": "0x00000084",
+      "width": 4,
+      "value": "0x40000000",
+      "provenance": "ORDINARY_CALLEE_WRITE",
+      "note": "initialized_nonzero"
+    },
+    {
+      "offset": "0x00000098",
+      "width": 4,
+      "value": "0x01294E4C",
+      "provenance": "ORDINARY_CALLEE_WRITE",
+      "note": "initialized_nonzero"
+    },
+    {
+      "offset": "0x0000009C",
+      "width": 4,
+      "value": "0x00000001",
+      "provenance": "ORDINARY_CALLEE_WRITE",
+      "note": "initialized_nonzero"
+    },
+    {
+      "offset": "0x000000A4",
+      "width": 4,
+      "value": "0x3F800000",
+      "provenance": "ORDINARY_CALLEE_WRITE",
+      "note": "initialized_nonzero"
+    },
+    {
+      "offset": "0x000000A8",
+      "width": 4,
+      "value": "0x40000000",
+      "provenance": "ORDINARY_CALLEE_WRITE",
+      "note": "initialized_nonzero"
+    },
+    {
+      "offset": "0x000000BC",
+      "width": 4,
+      "value": "0x01294E4C",
+      "provenance": "ORDINARY_CALLEE_WRITE",
+      "note": "initialized_nonzero"
+    },
+    {
+      "offset": "0x000000C0",
+      "width": 4,
+      "value": "0x00000001",
+      "provenance": "ORDINARY_CALLEE_WRITE",
+      "note": "initialized_nonzero"
+    },
+    {
+      "offset": "0x000000C8",
+      "width": 4,
+      "value": "0x3F800000",
+      "provenance": "ORDINARY_CALLEE_WRITE",
+      "note": "initialized_nonzero"
+    },
+    {
+      "offset": "0x000000CC",
+      "width": 4,
+      "value": "0x40000000",
+      "provenance": "ORDINARY_CALLEE_WRITE",
+      "note": "initialized_nonzero"
+    },
+    {
+      "offset": "0x000000E8",
+      "width": 4,
+      "value": "0x00000100",
+      "provenance": "ORDINARY_CALLEE_WRITE",
+      "note": "initialized_nonzero"
+    },
+    {
+      "offset": "0x00000104",
+      "width": 4,
+      "value": "0xFFFFFFFF",
+      "provenance": "ORDINARY_CALLEE_WRITE",
+      "note": "initialized_nonzero"
+    },
+    {
+      "offset": "0x00000124",
+      "width": 4,
+      "value": "0x00000001",
+      "provenance": "ORDINARY_CALLEE_WRITE",
+      "note": "initialized_nonzero"
+    },
+    {
+      "offset": "0x00000130",
+      "width": 4,
+      "value": "0x0189DA98",
+      "provenance": "ORDINARY_CALLEE_WRITE",
+      "note": "initialized_nonzero"
+    },
+    {
+      "offset": "0x00000138",
+      "width": 4,
+      "value": "0x00BAD2E0",
+      "provenance": "ORDINARY_CALLEE_WRITE",
+      "note": "initialized_nonzero"
+    },
+    {
+      "offset": "0x00000140",
+      "width": 4,
+      "value": "0x00000003",
+      "provenance": "ORDINARY_CALLEE_WRITE",
+      "note": "initialized_nonzero"
+    },
+    {
+      "offset": "0x00000158",
+      "width": 4,
+      "value": "0x3DCCCCCD",
+      "provenance": "ORDINARY_CALLEE_WRITE",
+      "note": "initialized_nonzero"
+    },
+    {
+      "offset": "0x00000160",
+      "width": 4,
+      "value": "0x00BAD2E0",
+      "provenance": "ORDINARY_CALLEE_WRITE",
+      "note": "initialized_nonzero"
+    },
+    {
+      "offset": "0x00000168",
+      "width": 4,
+      "value": "0x00000003",
+      "provenance": "ORDINARY_CALLEE_WRITE",
+      "note": "initialized_nonzero"
+    },
+    {
+      "offset": "0x00000180",
+      "width": 4,
+      "value": "0x3DCCCCCD",
+      "provenance": "ORDINARY_CALLEE_WRITE",
+      "note": "initialized_nonzero"
+    },
+    {
+      "offset": "0x00000188",
+      "width": 4,
+      "value": "0x00BAD2E0",
+      "provenance": "ORDINARY_CALLEE_WRITE",
+      "note": "initialized_nonzero"
+    },
+    {
+      "offset": "0x00000190",
+      "width": 4,
+      "value": "0x00000003",
+      "provenance": "ORDINARY_CALLEE_WRITE",
+      "note": "initialized_nonzero"
+    },
+    {
+      "offset": "0x000001A8",
+      "width": 4,
+      "value": "0x3DCCCCCD",
+      "provenance": "ORDINARY_CALLEE_WRITE",
+      "note": "initialized_nonzero"
+    },
+    {
+      "offset": "0x000001B4",
+      "width": 4,
+      "value": "0xFFFFFFFF",
+      "provenance": "ORDINARY_CALLEE_WRITE",
+      "note": "initialized_nonzero"
+    },
+    {
+      "offset": "0x000001D4",
+      "width": 4,
+      "value": "0x00000001",
+      "provenance": "ORDINARY_CALLEE_WRITE",
+      "note": "initialized_nonzero"
+    },
+    {
+      "offset": "0x000001E4",
+      "width": 4,
+      "value": "0xFFFFFFFF",
+      "provenance": "ORDINARY_CALLEE_WRITE",
+      "note": "initialized_nonzero"
+    },
+    {
+      "offset": "0x00000204",
+      "width": 4,
+      "value": "0x00000001",
+      "provenance": "ORDINARY_CALLEE_WRITE",
+      "note": "initialized_nonzero"
+    },
+    {
+      "offset": "0x00000214",
+      "width": 4,
+      "value": "0xFFFFFFFF",
+      "provenance": "ORDINARY_CALLEE_WRITE",
+      "note": "initialized_nonzero"
+    },
+    {
+      "offset": "0x00000234",
+      "width": 4,
+      "value": "0x00000001",
+      "provenance": "ORDINARY_CALLEE_WRITE",
+      "note": "initialized_nonzero"
+    }
+  ],
+  "highlights": {
+    "vtable_plus0": "0x00C30E68",
+    "embedded_pod_vtable_plus4": "0x00C30F2C",
+    "arg2_plus58": "0x00000000",
+    "tls_index_plus240": "0x00000000",
+    "flag_plus_dc": "0x00000000"
+  },
+  "installed_vtables": {
+    "main_plus0": "0x00C30E68",
+    "pod_embedded_plus4": "0x00C30F2C",
+    "base_family": "0x00C30D5C"
+  },
+  "embedded_subobjects": [
+    {
+      "offset": "0x04",
+      "vtable": "0x00C30F2C",
+      "initializer": "0x009E9990"
+    },
+    {
+      "offset": "via 0x009E7710",
+      "vtable": "0x00C30D5C",
+      "note": "refcount base nested"
+    },
+    {
+      "offset": "0x240",
+      "role": "TLS index holder via 0x009777D0"
+    }
+  ],
+  "side_effects": {
+    "OBJECT_STATE": {
+      "vtable_plus0": "0x00C30E68",
+      "embedded_pod_vtable_plus4": "0x00C30F2C",
+      "arg2_plus58": "0x00000000",
+      "tls_index_plus240": "0x00000000",
+      "flag_plus_dc": "0x00000000"
+    },
+    "GUEST_RUNTIME_STATE": {
+      "tls_alloc_calls": 1,
+      "tls_set_calls": 1,
+      "ics_calls": 4,
+      "mutex_calls": 0,
+      "cs_count": 4,
+      "mutex_count": 0,
+      "priority_class": 32,
+      "thread_priority": 0,
+      "qpc_ticks": 2500000,
+      "sleepex_done": 5,
+      "gct_calls": 1,
+      "spc_calls": 2,
+      "stp_calls": 2
+    },
+    "GLOBAL_IMAGE_STATE": {
+      "note": "0x009E8AD0 writes ordinary globals 0x0189D198..0x0189D270 during ctor (incl. 0x0189D1A4=0x009E78C0); values observable in mapped .data",
+      "slot_0189D1A4": "0x009E78C0",
+      "slot_0189D198": "0x009E77D0"
+    }
+  },
+  "timing": {
+    "sleepex_done": 5,
+    "qpc_ticks": 2500000,
+    "virtual_ms": 250
+  },
+  "confidence": "HIGH",
+  "limitations": [
+    "Object not published to 0x0189DA84 (factory 0x009E9340 not run)",
+    "Allocator path remains protected",
+    "Snapshot is metadata; harness reproduces state by re-running ctor"
+  ],
+  "reproducible_by_rerunning_ctor": true
+}
