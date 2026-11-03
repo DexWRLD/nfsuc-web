@@ -51,7 +51,11 @@ class AssetDistribution(unittest.TestCase):
             "UNAVAILABLE_PENDING_AUTHORIZED_SOURCE")
         self.assertIn(
             r["browser_renderer_readiness"],
-            ("SYNTHETIC_CLEAR_SMOKE_ONLY", "SYNTHETIC_TEXTURE_AND_MESH_PREVIEW"),
+            (
+                "SYNTHETIC_CLEAR_SMOKE_ONLY",
+                "SYNTHETIC_TEXTURE_AND_MESH_PREVIEW",
+                "STARTUP_LOGO_AND_SYNTHETIC_TEXTURE_PREVIEW",
+            ),
         )
         self.assertEqual(
             r["first_frame"], "FIRST_FRAME_PATH_BLOCKED_BY_PROTECTED_BACKEND")

@@ -20,7 +20,7 @@ def _load(name: str):
 class Phase50(unittest.TestCase):
     def test_frontier(self):
         fr = _load("runtime-frontier.json")
-        self.assertEqual(fr["phase"], 50)
+        self.assertGreaterEqual(fr["phase"], 50)
         self.assertEqual(fr["first_frame"], FIRST)
         self.assertGreaterEqual(fr["unique_uc_functions_executed"], 84)
         self.assertEqual(fr["phase50"]["blocked_external_unchanged"], 74)

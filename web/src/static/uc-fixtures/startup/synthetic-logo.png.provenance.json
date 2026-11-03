@@ -1,0 +1,16 @@
+{
+  "resourceId": "synthetic.startup-logo",
+  "originalName": "synthetic-logo.png",
+  "sourceRelativePath": "uc-fixtures/startup/synthetic-logo.png",
+  "sourceSha256": "35fce1384b8b4cab568394e509514c74f73dcf1462b032f2c9f381ce614c4633",
+  "payloadSha256": "35fce1384b8b4cab568394e509514c74f73dcf1462b032f2c9f381ce614c4633",
+  "sourceByteOffset": 0,
+  "sourceByteLength": 69,
+  "mediaFormat": "image/png",
+  "width": 2,
+  "height": 2,
+  "sourceCategory": "synthetic-fixture",
+  "evidenceRef": "phase51-synthetic",
+  "identityNote": "Synthetic fixture for startup preview tests — not an Undercover asset.",
+  "kind": "synthetic"
+}

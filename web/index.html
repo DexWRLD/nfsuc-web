@@ -97,6 +97,21 @@
       <p class="hint" id="uc-clear-smoke-note" hidden></p>
     </section>
 
+    <section class="panel" id="uc-startup-preview" aria-labelledby="uc-startup-title">
+      <h2 id="uc-startup-title">Undercover startup preview</h2>
+      <p class="hint">Independent logo → optional video → menu placeholder. Not original boot execution.</p>
+      <p class="status" id="uc-startup-status" role="status">IDLE</p>
+      <p class="status-sub" id="uc-startup-detail">Waiting…</p>
+      <div class="row">
+        <button type="button" class="btn" id="uc-startup-skip">Skip</button>
+      </div>
+      <div style="max-width:240px;max-height:240px;aspect-ratio:1/1;background:#1a1a1a;margin:.5rem 0">
+        <img id="uc-startup-logo" alt="" hidden />
+      </div>
+      <p class="hint" id="uc-startup-note" hidden></p>
+      <p class="msg" id="uc-startup-flags" aria-live="polite"></p>
+    </section>
+
     <section class="panel" id="uc-texture-preview" aria-labelledby="uc-tex-title">
       <h2 id="uc-tex-title">Undercover DXT1 texture preview</h2>
       <p class="hint">Manifest-driven BC1 decode. Synthetic fixtures until a verified authentic payload span exists.</p>
