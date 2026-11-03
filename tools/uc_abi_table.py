@@ -33,6 +33,8 @@ STDCALL_KNOWN = {
     "InitializeCriticalSection": (1, "UC_HLE_INITCRITSEC"),
     "CreateMutexA": (3, "UC_HLE_CREATEMUTEXA"),
     "GetCurrentProcess": (0, "UC_HLE_GETCURRENTPROCESS"),
+    "GetPriorityClass": (1, "UC_HLE_GETPRIORITYCLASS"),
+    "CreateSemaphoreA": (4, "UC_HLE_CREATESEMAPHOREA"),
 }
 # public: void type_info::_type_info_dtor_internal_method(void)
 THISCALL_NO_STACK = "?_type_info_dtor_internal_method@type_info@@QAEXXZ"

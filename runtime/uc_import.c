@@ -119,46 +119,66 @@ static uint32_t uc_tls_set_value(uint32_t index, uint32_t value) {
     return 1;
 }
 
-/* Guest Win32 synchronization — single guest-thread context, no scheduler.
+/* Guest Win32 synchronization / process — single guest-thread, no scheduler.
  *
- * CRITICAL_SECTION is the 32-bit Windows layout written into guest memory.
- * Runtime ownership/recursion lives in a side table keyed by guest VA so no
- * host pointer is ever stored in the guest image.
- *
- * Mutexes are opaque guest handles (not host HANDLEs, not guest pointers). */
+ * CRITICAL_SECTION: 32-bit layout in guest memory + VA-keyed side table.
+ * Kernel objects (MUTEX / SEMAPHORE): opaque guest handles 0xCD010001+idx.
+ * Process: one logical guest process; pseudo-handle 0xFFFFFFFF.
+ * Never store host HANDLEs or host pointers in guest memory. */
 enum {
-    UC_CS_SIZE = 0x18,          /* sizeof(RTL_CRITICAL_SECTION) on x86 */
+    UC_CS_SIZE = 0x18,
     UC_CS_CAP = 64,
-    UC_MUTEX_CAP = 32,
-    UC_MUTEX_NAME_MAX = 64,
-    UC_MUTEX_HANDLE_BASE = 0xCD010001u
+    UC_OBJ_CAP = 64,
+    UC_OBJ_NAME_MAX = 64,
+    UC_HANDLE_BASE = 0xCD010001u,
+    UC_OBJ_NONE = 0,
+    UC_OBJ_MUTEX = 1,
+    UC_OBJ_SEMAPHORE = 2,
+    UC_PROCESS_PSEUDO = 0xffffffffu,
+    UC_NORMAL_PRIORITY_CLASS = 0x00000020u
 };
 
 typedef struct UcCritSec {
     uint32_t guest_cs;
     uint8_t initialized;
     uint8_t owned;
-    uint32_t owner_thread; /* index into guest-thread contexts; 0 today */
+    uint32_t owner_thread;
     uint32_t recursion;
 } UcCritSec;
 
-typedef struct UcMutex {
+typedef struct UcKernelObj {
     uint8_t active;
+    uint8_t type;          /* UC_OBJ_MUTEX or UC_OBJ_SEMAPHORE */
     uint8_t named;
-    uint8_t owned;
-    uint32_t owner_thread;
-    char name[UC_MUTEX_NAME_MAX];
-} UcMutex;
+    uint8_t owned;         /* mutex */
+    uint32_t owner_thread; /* mutex */
+    int32_t count;         /* semaphore current */
+    int32_t max_count;     /* semaphore maximum */
+    char name[UC_OBJ_NAME_MAX];
+} UcKernelObj;
 
 static UcCritSec uc_cs_tab[UC_CS_CAP];
 static unsigned uc_cs_n;
-static UcMutex uc_mutex_tab[UC_MUTEX_CAP];
-static unsigned uc_mutex_n;
+static UcKernelObj uc_obj_tab[UC_OBJ_CAP];
+static uint32_t uc_guest_priority_class;
+
+void uc_process_reset(void) {
+    /* Documented initial policy: NORMAL_PRIORITY_CLASS.
+     * SetPriorityClass is not implemented, so the class is immutable today. */
+    uc_guest_priority_class = UC_NORMAL_PRIORITY_CLASS;
+}
+
+uint32_t uc_process_priority_class(void) {
+    return uc_guest_priority_class;
+}
+
+int uc_process_pseudo_handle(uint32_t handle) {
+    return handle == UC_PROCESS_PSEUDO;
+}
 
 void uc_sync_reset(void) {
     unsigned i;
     uc_cs_n = 0;
-    uc_mutex_n = 0;
     for (i = 0; i < UC_CS_CAP; i++) {
         uc_cs_tab[i].guest_cs = 0;
         uc_cs_tab[i].initialized = 0;
@@ -166,13 +186,17 @@ void uc_sync_reset(void) {
         uc_cs_tab[i].owner_thread = 0;
         uc_cs_tab[i].recursion = 0;
     }
-    for (i = 0; i < UC_MUTEX_CAP; i++) {
-        uc_mutex_tab[i].active = 0;
-        uc_mutex_tab[i].named = 0;
-        uc_mutex_tab[i].owned = 0;
-        uc_mutex_tab[i].owner_thread = 0;
-        uc_mutex_tab[i].name[0] = 0;
+    for (i = 0; i < UC_OBJ_CAP; i++) {
+        uc_obj_tab[i].active = 0;
+        uc_obj_tab[i].type = UC_OBJ_NONE;
+        uc_obj_tab[i].named = 0;
+        uc_obj_tab[i].owned = 0;
+        uc_obj_tab[i].owner_thread = 0;
+        uc_obj_tab[i].count = 0;
+        uc_obj_tab[i].max_count = 0;
+        uc_obj_tab[i].name[0] = 0;
     }
+    uc_process_reset();
 }
 
 unsigned uc_sync_critsec_count(void) {
@@ -184,8 +208,15 @@ unsigned uc_sync_critsec_count(void) {
 
 unsigned uc_sync_mutex_count(void) {
     unsigned i, n = 0;
-    for (i = 0; i < UC_MUTEX_CAP; i++)
-        if (uc_mutex_tab[i].active) n++;
+    for (i = 0; i < UC_OBJ_CAP; i++)
+        if (uc_obj_tab[i].active && uc_obj_tab[i].type == UC_OBJ_MUTEX) n++;
+    return n;
+}
+
+unsigned uc_sync_semaphore_count(void) {
+    unsigned i, n = 0;
+    for (i = 0; i < UC_OBJ_CAP; i++)
+        if (uc_obj_tab[i].active && uc_obj_tab[i].type == UC_OBJ_SEMAPHORE) n++;
     return n;
 }
 
@@ -197,11 +228,22 @@ int uc_sync_critsec_initialized(uint32_t guest_cs) {
     return 0;
 }
 
-int uc_sync_mutex_valid(uint32_t guest_handle) {
+static UcKernelObj *uc_obj_from_handle(uint32_t handle) {
     unsigned idx;
-    if (guest_handle < UC_MUTEX_HANDLE_BASE) return 0;
-    idx = guest_handle - UC_MUTEX_HANDLE_BASE;
-    return idx < UC_MUTEX_CAP && uc_mutex_tab[idx].active;
+    if (handle < UC_HANDLE_BASE) return 0;
+    idx = handle - UC_HANDLE_BASE;
+    if (idx >= UC_OBJ_CAP || !uc_obj_tab[idx].active) return 0;
+    return &uc_obj_tab[idx];
+}
+
+int uc_sync_mutex_valid(uint32_t guest_handle) {
+    UcKernelObj *o = uc_obj_from_handle(guest_handle);
+    return o && o->type == UC_OBJ_MUTEX;
+}
+
+int uc_sync_semaphore_valid(uint32_t guest_handle) {
+    UcKernelObj *o = uc_obj_from_handle(guest_handle);
+    return o && o->type == UC_OBJ_SEMAPHORE;
 }
 
 static UcCritSec *uc_cs_find(uint32_t guest_cs) {
@@ -256,79 +298,139 @@ static uint32_t uc_hle_init_critsec(uint32_t cs, int *ok) {
     return 0; /* VOID API; EAX unused by observed callers */
 }
 
-static int uc_mutex_name_eq(const UcMutex *m, uint32_t name_va) {
+static int uc_obj_name_eq(const UcKernelObj *o, uint32_t name_va) {
     unsigned i;
-    if (!m->named) return 0;
-    if (!name_va) return 0;
-    for (i = 0; i < UC_MUTEX_NAME_MAX; i++) {
+    if (!o->named || !name_va) return 0;
+    for (i = 0; i < UC_OBJ_NAME_MAX; i++) {
         uint8_t ch;
         if (!range_ok(name_va + i, 1)) return 0;
         ch = MR8(name_va + i);
-        if ((uint8_t)m->name[i] != ch) return 0;
+        if ((uint8_t)o->name[i] != ch) return 0;
         if (ch == 0) return 1;
     }
     return 0;
 }
 
-static int uc_mutex_copy_name(UcMutex *m, uint32_t name_va) {
+static int uc_obj_copy_name(UcKernelObj *o, uint32_t name_va) {
     unsigned i;
-    m->named = 1;
-    for (i = 0; i < UC_MUTEX_NAME_MAX - 1; i++) {
+    o->named = 1;
+    for (i = 0; i < UC_OBJ_NAME_MAX - 1; i++) {
         uint8_t ch;
         if (!range_ok(name_va + i, 1)) return 0;
         ch = MR8(name_va + i);
-        m->name[i] = (char)ch;
+        o->name[i] = (char)ch;
         if (ch == 0) return 1;
     }
-    m->name[UC_MUTEX_NAME_MAX - 1] = 0;
+    o->name[UC_OBJ_NAME_MAX - 1] = 0;
     return 1;
+}
+
+static UcKernelObj *uc_obj_alloc_slot(void) {
+    unsigned i;
+    for (i = 0; i < UC_OBJ_CAP; i++)
+        if (!uc_obj_tab[i].active) return &uc_obj_tab[i];
+    return 0;
+}
+
+static uint32_t uc_obj_handle(const UcKernelObj *o) {
+    return UC_HANDLE_BASE + (unsigned)(o - uc_obj_tab);
+}
+
+static UcKernelObj *uc_obj_find_named(uint8_t type, uint32_t name_va) {
+    unsigned i;
+    if (!name_va) return 0;
+    for (i = 0; i < UC_OBJ_CAP; i++) {
+        if (uc_obj_tab[i].active && uc_obj_tab[i].type == type &&
+            uc_obj_name_eq(&uc_obj_tab[i], name_va))
+            return &uc_obj_tab[i];
+    }
+    return 0;
 }
 
 static uint32_t uc_hle_create_mutex_a(uint32_t attrs, uint32_t initial_owner,
                                      uint32_t name_va, int *ok) {
-    unsigned i;
-    UcMutex *slot;
+    UcKernelObj *slot;
     *ok = 0;
-    /* lpMutexAttributes: only NULL is supported (observed UC path pushes 0). */
     if (attrs != 0) return 0;
     if (name_va) {
-        for (i = 0; i < UC_MUTEX_CAP; i++) {
-            if (uc_mutex_tab[i].active && uc_mutex_name_eq(&uc_mutex_tab[i], name_va)) {
-                /* Existing named mutex: return same guest handle.
-                 * GetLastError ERROR_ALREADY_EXISTS is not modeled. */
-                *ok = 1;
-                if (initial_owner) {
-                    /* Cannot steal ownership without a scheduler when already owned
-                     * by another context; single-thread: allow if unowned or self. */
-                    if (!uc_mutex_tab[i].owned ||
-                        uc_mutex_tab[i].owner_thread == uc_tls_active_thread) {
-                        uc_mutex_tab[i].owned = 1;
-                        uc_mutex_tab[i].owner_thread = uc_tls_active_thread;
-                    }
-                }
-                return UC_MUTEX_HANDLE_BASE + i;
+        slot = uc_obj_find_named(UC_OBJ_MUTEX, name_va);
+        if (slot) {
+            /* GetLastError ERROR_ALREADY_EXISTS not modeled. */
+            *ok = 1;
+            if (initial_owner &&
+                (!slot->owned || slot->owner_thread == uc_tls_active_thread)) {
+                slot->owned = 1;
+                slot->owner_thread = uc_tls_active_thread;
             }
+            return uc_obj_handle(slot);
         }
+        /* Named object of another type → fail rather than overwrite. */
+        if (uc_obj_find_named(UC_OBJ_SEMAPHORE, name_va)) return 0;
     }
-    slot = 0;
-    for (i = 0; i < UC_MUTEX_CAP; i++) {
-        if (!uc_mutex_tab[i].active) { slot = &uc_mutex_tab[i]; break; }
-    }
+    slot = uc_obj_alloc_slot();
     if (!slot) return 0;
     slot->active = 1;
+    slot->type = UC_OBJ_MUTEX;
     slot->named = 0;
     slot->name[0] = 0;
     slot->owned = initial_owner ? 1 : 0;
     slot->owner_thread = initial_owner ? uc_tls_active_thread : 0;
-    if (name_va) {
-        if (!uc_mutex_copy_name(slot, name_va)) {
-            slot->active = 0;
-            return 0;
-        }
+    slot->count = 0;
+    slot->max_count = 0;
+    if (name_va && !uc_obj_copy_name(slot, name_va)) {
+        slot->active = 0;
+        slot->type = UC_OBJ_NONE;
+        return 0;
     }
-    if (uc_mutex_n < UC_MUTEX_CAP) uc_mutex_n++;
     *ok = 1;
-    return UC_MUTEX_HANDLE_BASE + (unsigned)(slot - uc_mutex_tab);
+    return uc_obj_handle(slot);
+}
+
+static uint32_t uc_hle_create_semaphore_a(uint32_t attrs, uint32_t initial,
+                                         uint32_t maximum, uint32_t name_va,
+                                         int *ok) {
+    UcKernelObj *slot;
+    int32_t init = (int32_t)initial;
+    int32_t maxc = (int32_t)maximum;
+    *ok = 0;
+    if (attrs != 0) return 0;
+    /* Standard constraints: max > 0; initial >= 0; initial <= max. */
+    if (maxc <= 0 || init < 0 || init > maxc) return 0;
+    if (name_va) {
+        slot = uc_obj_find_named(UC_OBJ_SEMAPHORE, name_va);
+        if (slot) {
+            /* Existing named semaphore: return same handle; do not rewrite counts.
+             * ERROR_ALREADY_EXISTS not modeled (no guest last-error yet). */
+            *ok = 1;
+            return uc_obj_handle(slot);
+        }
+        if (uc_obj_find_named(UC_OBJ_MUTEX, name_va)) return 0;
+    }
+    slot = uc_obj_alloc_slot();
+    if (!slot) return 0;
+    slot->active = 1;
+    slot->type = UC_OBJ_SEMAPHORE;
+    slot->named = 0;
+    slot->name[0] = 0;
+    slot->owned = 0;
+    slot->owner_thread = 0;
+    slot->count = init;
+    slot->max_count = maxc;
+    if (name_va && !uc_obj_copy_name(slot, name_va)) {
+        slot->active = 0;
+        slot->type = UC_OBJ_NONE;
+        return 0;
+    }
+    *ok = 1;
+    return uc_obj_handle(slot);
+}
+
+static uint32_t uc_hle_get_priority_class(uint32_t handle, int *ok) {
+    /* stdcall GetPriorityClass(hProcess) → DWORD. Failure returns 0.
+     * Call completes either way (*ok=1); GetLastError not modeled. */
+    *ok = 1;
+    if (!uc_process_pseudo_handle(handle)) return 0;
+    return uc_guest_priority_class;
 }
 
 int uc_abi_callee_bytes(UcAbi abi, int stack_dwords) {
@@ -459,6 +561,17 @@ static uint32_t hle_run(struct CPU *c, const UcImport *imp, const UcDecoded *in,
         (void)in;
         *ok = 1;
         return 0xffffffffu;
+    }
+    if (imp->hle == UC_HLE_GETPRIORITYCLASS) {
+        /* KERNEL32!GetPriorityClass(hProcess): stdcall, 1 arg; DWORD in EAX. */
+        if (in->stack_dwords < 1) return 0;
+        return uc_hle_get_priority_class(in->stack[0], ok);
+    }
+    if (imp->hle == UC_HLE_CREATESEMAPHOREA) {
+        /* CreateSemaphoreA(attrs, initial, maximum, name): stdcall, 4 args; HANDLE. */
+        if (in->stack_dwords < 4) return 0;
+        return uc_hle_create_semaphore_a(in->stack[0], in->stack[1], in->stack[2],
+                                         in->stack[3], ok);
     }
     if (imp->arg_loc == UC_LOC_ST0 || imp->ret_loc == UC_LOC_ST0) {
         if (imp->arg_loc != UC_LOC_ST0 || imp->ret_loc != UC_LOC_ST0) {
