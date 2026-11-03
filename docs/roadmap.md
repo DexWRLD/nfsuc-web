@@ -28,8 +28,9 @@ The order from here:
 6. FUNCTION DISCOVERY REPAIR. Phase 16. CFG-aware fact walk; old 24-instruction cohort mostly promoted; compiler closure holds.
 7. FACTORY PREFIX FROZEN. `0x00B615C4` / `Direct3DCreate9` create path is `BLOCKED_EXTERNAL_PROTECTED_INITIALIZATION`. Resolving that slot is no longer an active objective.
 8. POST-INIT GRAPHICS FRONTIER. Phase 20: DEFINITE device publication via `0x00725200` COM out-param (`CREATEDEVICE_STRONG_CANDIDATE` at VT `+0x40`), but EXTERNAL/BLOCKED (`0x00686000` before publish; factory field needs frozen `0x00B615C4`). PRESENT CODE FOUND; PRESENT RUNTIME BLOCKED. DRAW CODE FOUND via renderer `0x017AA798` (not DEVICE-aliased). RESET/RECOVERY NOT FOUND. PARTIAL post-init seam. D3D9 NOT justified. Estimate UNBOUNDED.
-9. Alias DEVICE into draw/renderer paths; decide whether a host-owned device at `0x013C6510` is an accepted Present-only runtime contract. Do not invent SecuROM callbacks.
-10. FIRST FRAME remains UNBOUNDED until that contract/decision and mapped draw state exist.
+9. Phase 21: optional angr oracle + UC consensus. Device↔renderer **NO_RELATION_FOUND**. Draw is **ENGINE_COM_DRAW** via helper `0x0079E4A0`, not raw DEVICE. Present control PASS / Clear PARTIAL under angr. Seam stays PARTIAL; D3D9 NOT justified; estimate UNBOUNDED.
+10. Expand renderer list/COM provenance (`0x0079E4A0` / `[renderer+0x50]..[+0x54]`) for a DEVICE alias. Do not invent SecuROM callbacks. Do not implement D3D9 until that relationship is understood.
+11. FIRST FRAME remains UNBOUNDED until a clean(er) seam and mapped draw state exist.
 
 The strategy is ordinary static recompilation, then ordinary runtime islands, then this dependency cut, then independent subsystem frontiers, then a first-frame path if one is available.
 

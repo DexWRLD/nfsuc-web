@@ -190,6 +190,10 @@ The factory prefix is frozen as `BLOCKED_EXTERNAL_PROTECTED_INITIALIZATION`. Dow
 
 Device publication is DEFINITE: `push 0x013C6510` into wrapper-shaped CreateDevice (`VT +0x40`) in `0x00725200`. Path-sensitive analysis shows `0x00686000` runs **before** successful publication (allocator), and `[obj+0x10]` from the frozen factory path is mandatory for in-game publication—not for the Present-only prefix of `0x00752AF0`. Reset/recovery that rewrites the device global was not found. Strict COM Draw* shapes exist through renderer `0x017AA798` but are not proven aliases of `0x013C6510`. Architectural classification: `PARTIAL_POST_INIT_SEAM` (host device OK for Present/Clear; full draw still unmapped). D3D9 implementation remains not justified. Estimate UNBOUNDED. Details are in `analysis/undercover/runtime-phase20.md`.
 
+## Phase 21
+
+Optional `angr` 10.0.5 oracle (Python 3.12) compares against the UC analyzer without becoming the lift backend. Present control PASS; Clear PARTIAL. Device↔renderer consensus: **NO_RELATION_FOUND**. Draw candidates remain **ENGINE_COM_DRAW** via helper `0x0079E4A0`, not raw DEVICE. Seam stays PARTIAL; D3D9 not justified; first-frame UNBOUNDED. Details: `analysis/undercover/runtime-phase21.md`, `angr-oracle.md`.
+
 ## Status
 
 STATIC CODE READINESS: established for the repaired ordinary high-confidence `.text` list. 22,770 of 22,779 generate, and every generated function compiles. The old 24-instruction discovery cap is gone.
@@ -202,7 +206,7 @@ X87 CRT ABI: established in Phase 9 for `_CIsin`, `_CIcos`, and `_CIacos` as use
 
 DETERMINISTIC CLUSTER EXECUTION: established. Phase 8 ran the five-function string chain. Phase 9 ran the six-function `0x00A124B0` closure twice from the same state, then once with a second input. Phase 10 ran two larger static closures; the completing paths enter 6 functions and repeat.
 
-MAJOR NATIVE SUBSYSTEMS: future. Phase 20 proves in-game device publication mechanics and a partial post-init seam for Present/Clear, but publication remains externally blocked and draw is not yet DEVICE-aliased. Filesystem, timing, TLS, and Direct3D were not implemented.
+MAJOR NATIVE SUBSYSTEMS: future. Phase 20–21 prove in-game device publication mechanics and a partial post-init seam for Present/Clear, but publication remains externally blocked and Draw is engine COM via the renderer, not a proven DEVICE alias. Filesystem, timing, TLS, and Direct3D were not implemented.
 
 PROTECTED STARTUP: unresolved and outside this work. `Sitext` and the other protected sections are not read, executed, or rewritten.
 
@@ -212,4 +216,4 @@ The atomic helpers remain a single-threaded stand-in. The game does not boot or 
 
 ## Verdict
 
-The `0x00A124B0` closure runs, and Phase 10 can enter larger ordinary closures until a zero indirect slot or a null pointer. Phase 11 shows that slot has an ordinary writer and that executing the writer moves `0x0099DCD0` past it, onto another zero object field. Phase 12 finds the ordinary store for that field and stops at `call 0x00686000`, which is not an ordinary function and is not substituted. Phase 14–16 show that call remains a narrow cut. Phase 16 repaired function discovery. Phase 18 freezes the factory callback table as external/protected. Phase 19–20 map post-init D3D device use and a partial host-device seam, but in-game publication and draw aliasing remain blocked/unproven. The game is not ready to boot.
+The `0x00A124B0` closure runs, and Phase 10 can enter larger ordinary closures until a zero indirect slot or a null pointer. Phase 11 shows that slot has an ordinary writer and that executing the writer moves `0x0099DCD0` past it, onto another zero object field. Phase 12 finds the ordinary store for that field and stops at `call 0x00686000`, which is not an ordinary function and is not substituted. Phase 14–16 show that call remains a narrow cut. Phase 16 repaired function discovery. Phase 18 freezes the factory callback table as external/protected. Phase 19–21 map post-init D3D device use, a partial host-device seam, and (with optional angr) a NO_RELATION_FOUND consensus between DEVICE and renderer Draw. In-game publication remains blocked. The game is not ready to boot.
