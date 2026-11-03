@@ -134,7 +134,9 @@ class DepthScoring(unittest.TestCase):
         if not os.path.isfile(path):
             self.skipTest("runtime-frontier missing")
         fr = p31.load("runtime-frontier.json")
-        self.assertEqual(fr.get("phase"), 31)
+        # Phase 31 recorded zero strict depth-4 potential; later phases may
+        # still report 0 under the same static rule even after proven depth-4 runs.
+        self.assertGreaterEqual(int(fr.get("phase") or 0), 31)
         self.assertEqual(fr.get("enterable_with_depth_4_potential"), 0)
 
 

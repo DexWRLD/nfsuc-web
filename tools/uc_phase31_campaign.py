@@ -246,6 +246,10 @@ def run_campaign(specs=None, harness=None, fmap=None):
             "blocked_va": view["blocked_va"], "blocked_fn": view["blocked_fn"],
             "import": imp_name, "imports": imports,
             "tls_alloc": out.tls_alloc, "tls_set": out.tls_set,
+            "ics_calls": getattr(out, "ics_calls", 0),
+            "mutex_calls": getattr(out, "mutex_calls", 0),
+            "cs_count": getattr(out, "cs_count", 0),
+            "mutex_count": getattr(out, "mutex_count", 0),
             "stubs": [], "esp_delta_ok": out.esp == out.esp_expected,
         })
     return rows, harness

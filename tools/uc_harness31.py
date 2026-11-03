@@ -75,6 +75,8 @@ class Out(ctypes.Structure):
         ("unsupported_why", ctypes.c_char * 48),
         ("mem_eax", ctypes.c_uint32),
         ("diag_hits", ctypes.c_uint32),
+        ("ics_calls", ctypes.c_uint32), ("mutex_calls", ctypes.c_uint32),
+        ("cs_count", ctypes.c_uint32), ("mutex_count", ctypes.c_uint32),
     ]
 
 
@@ -116,6 +118,7 @@ int _fltused;
 guest_fn_t g_dtab[DISPATCH_TEXT_SIZE];
 static int abort_run, blocked_kind, block_tls_set, cur_root;
 static uint32_t blocked_va, blocked_fn, tls_alloc_calls, tls_set_calls;
+static uint32_t ics_calls, mutex_calls;
 static uint32_t entered[%(ent_cap)d];
 static int entered_n, depth_now, depth_max;
 static uint32_t imp_target[%(imp_cap)d], imp_ok[%(imp_cap)d], imp_hle[%(imp_cap)d];
@@ -180,6 +183,8 @@ void dispatch_indirect(CPU *c, uint32_t target) {
     if (nimp < %(imp_cap)d) { imp_target[nimp] = target; imp_hle[nimp] = imp ? (uint32_t)imp->hle : 0xffffu; }
     if (imp && imp->hle == UC_HLE_TLSALLOC) tls_alloc_calls++;
     if (imp && imp->hle == UC_HLE_TLSSETVALUE) tls_set_calls++;
+    if (imp && imp->hle == UC_HLE_INITCRITSEC) ics_calls++;
+    if (imp && imp->hle == UC_HLE_CREATEMUTEXA) mutex_calls++;
     ok = imp ? uc_import_invoke(c, imp, 0) : 0;
     if (nimp < %(imp_cap)d) imp_ok[nimp] = (uint32_t)ok;
     nimp++;
@@ -215,6 +220,7 @@ typedef struct Out {
     char unsupported_why[48];
     uint32_t mem_eax;
     uint32_t diag_hits;
+    uint32_t ics_calls, mutex_calls, cs_count, mutex_count;
 } Out;
 
 static void wr32(uint32_t a, uint32_t v) { uc_guest_store32(a, v, 0); }
@@ -237,12 +243,14 @@ __declspec(dllexport) int uc_p31_run(const Spec *s, Out *out) {
     zero_bytes(out, sizeof *out);
     zero_bytes(c, sizeof *c);
     uc_tls_reset();
+    uc_sync_reset();
     uc_access_fault.active = 0;
     uc_import_fault.active = 0;
     uc_current_fn = 0;
     entered_n = depth_now = depth_max = nimp = 0;
     abort_run = blocked_kind = 0; blocked_va = blocked_fn = 0;
     tls_alloc_calls = tls_set_calls = 0;
+    ics_calls = mutex_calls = 0;
     unsup_why[0] = 0;
     diag_noop_target = s->noop_target; diag_noop_args = s->noop_args; diag_hits = 0;
     for (i = 0; i < 0x1000; i++) uc_guest_store8(0x03004000u + i, 0);
@@ -278,6 +286,8 @@ __declspec(dllexport) int uc_p31_run(const Spec *s, Out *out) {
         out->imp_target[i] = imp_target[i]; out->imp_ok[i] = imp_ok[i]; out->imp_hle[i] = imp_hle[i];
     }
     out->tls_alloc = tls_alloc_calls; out->tls_set = tls_set_calls; out->diag_hits = diag_hits;
+    out->ics_calls = ics_calls; out->mutex_calls = mutex_calls;
+    out->cs_count = uc_sync_critsec_count(); out->mutex_count = uc_sync_mutex_count();
     for (i = 0; i < 47 && unsup_why[i]; i++) out->unsupported_why[i] = unsup_why[i];
     return 0;
 }
