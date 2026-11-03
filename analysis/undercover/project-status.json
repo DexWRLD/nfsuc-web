@@ -1,6 +1,6 @@
 {
-  "current_phase": 25,
-  "strategy": "Phase 25: graphics frozen (FIRST_FRAME_PATH_BLOCKED_BY_PROTECTED_BACKEND). Ordinary runtime frontier ranked; implemented MSVCR80 strncpy HLE (0x0087B6A0). Post-strncpy top single-unlock is _CIsqrt (88). Do not reopen protected submit/backend.",
+  "current_phase": 26,
+  "strategy": "Phase 26: implemented MSVCR80 _CIsqrt HLE (0x00AE5116, ST0\u2192ST0). Consumer 0x00924D30 executed (3,4)\u2192(0.6,0.8,1.0). Campaign: most common next blocker BLOCKED_REQUIRED_STATE. Graphics remain frozen.",
   "boundaries": {
     "0x00686000": {
       "status": "PROTECTED_OR_EXTERNAL_DEPENDENCY",
@@ -100,7 +100,7 @@
     "enterable_now": "NO",
     "object": "0x01318170",
     "esi_slot": "0x00B615C4",
-    "active_objective": "FROZEN: do not recover first-frame / D3D9 / protected submit. Expand ordinary CRT/runtime.",
+    "active_objective": "FROZEN graphics; expand ordinary execution / state contracts",
     "blockers": [
       "FIRST_FRAME_PATH_BLOCKED_BY_PROTECTED_BACKEND",
       "ORDINARY_FRONTEND_PROTECTED_BACKEND",
@@ -166,6 +166,12 @@
       "phase": 25,
       "completed": true,
       "evidence": "Phase 25 test runs this strncpy consumer; strncpy HLE must succeed"
+    },
+    {
+      "address": "0x00924D30",
+      "phase": 26,
+      "completed": true,
+      "evidence": "Phase 26 test: _CIsqrt normalize consumer writes (0.6,0.8,1.0)"
     }
   ],
   "phases": [
@@ -282,6 +288,11 @@
     {
       "phase": 25,
       "name": "Ordinary runtime frontier + strncpy HLE",
+      "state": "completed"
+    },
+    {
+      "phase": 26,
+      "name": "_CIsqrt HLE + ordinary execution campaign",
       "state": "completed"
     }
   ],
