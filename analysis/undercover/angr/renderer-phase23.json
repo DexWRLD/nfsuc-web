@@ -1,0 +1,177 @@
+{
+  "phase": 23,
+  "angr": {
+    "available": true,
+    "version": "10.0.5",
+    "results": {
+      "0x007A40D0": {
+        "role": "insert_A",
+        "ok": true,
+        "summary": "typedef struct st_7a40d0_1 {\n    unsigned int field_0;\n} st_7a40d0_1;\n\ntypedef struct st_7a40d0_0 {\n    char padding_0[4];\n    struct st_7a40d0_1 *field_4;\n} st_7a40d0_0;\n\nint sub_7a40d0(void)\n{\n    unsigned long long v7;  // ldt\n    unsigned long long v8;  // gdt\n    unsigned short v9;  // fs\n    unsigned long long v10;  // 4136\n    unsigned int v11;  // ebx\n    unsigned int v12;  // esi\n    unsigned long long v13;  // 4156\n    unsigned int v0;  // [bp-0x1c]\n    unsigned int v1;  // [bp-0x14]\n ",
+        "raw": {
+          "status": "OK",
+          "angr_function": true,
+          "block_count": 1,
+          "callees": [],
+          "global_refs": [
+            {
+              "va": "0x007A40D0",
+              "abs": "0xFFFFFFFF",
+              "text": "-1"
+            },
+            {
+              "va": "0x007A40E1",
+              "abs": "0x01285688",
+              "text": "eax, dword ptr [0x1285688]"
+            }
+          ],
+          "immediate_hits": [
+            {
+              "abs": "0x017AA798",
+              "name": "RENDERER",
+              "at": "0x007A410C"
+            },
+            {
+              "abs": "0x017AA798",
+              "name": "RENDERER",
+              "at": "0x007A4201"
+            }
+          ],
+          "boundary_hits": [],
+          "decompiler_available": true,
+          "pseudocode_sha": "0e54592233632ecd"
+        }
+      },
+      "0x007A1A20": {
+        "role": "iface_ctor",
+        "ok": true,
+        "summary": "typedef struct st_7a1a20_3 {\n    unsigned int field_0;\n} st_7a1a20_3;\n\ntypedef struct st_7a1a20_1 {\n    char padding_0[4];\n    unsigned int field_4;\n} st_7a1a20_1;\n\ntypedef struct st_7a1a20_2 {\n    char padding_0[96];\n    struct st_7a1a20_3 *field_60;\n} st_7a1a20_2;\n\ntypedef struct st_7a1a20_0 {\n    unsigned int field_0;\n    char padding_4[8];\n    unsigned int field_c;\n    unsigned int field_10;\n    unsigned int field_14;\n    unsigned int field_18;\n    unsigned long long field_1c;\n    unsigned i",
+        "raw": {
+          "status": "OK",
+          "angr_function": true,
+          "block_count": 8,
+          "callees": [],
+          "global_refs": [
+            {
+              "va": "0x007A1A20",
+              "abs": "0xFFFFFFFF",
+              "text": "-1"
+            },
+            {
+              "va": "0x007A1A32",
+              "abs": "0x01285688",
+              "text": "eax, dword ptr [0x1285688]"
+            },
+            {
+              "va": "0x007A1AC4",
+              "abs": "0x012C9740",
+              "text": "edx, dword ptr [0x12c9740]"
+            },
+            {
+              "va": "0x007A1AD0",
+              "abs": "0x012C9740",
+              "text": "ecx, dword ptr [0x12c9740]"
+            }
+          ],
+          "immediate_hits": [
+            {
+              "abs": "0x017AA798",
+              "name": "RENDERER",
+              "at": "0x007A1BBC"
+            }
+          ],
+          "boundary_hits": [],
+          "decompiler_available": true,
+          "pseudocode_sha": "b79ef58c0d2b5126"
+        }
+      },
+      "0x007AD2D0": {
+        "role": "method_148",
+        "ok": true,
+        "summary": "typedef struct st_7ad2d0_5 {\n    char padding_0[12];\n    unsigned int field_c;\n} st_7ad2d0_5;\n\nint sub_7ad2d0(void)\n{\n    st_7ad2d0_5 *v8;  // ecx\n    unsigned int v9;  // esi\n    char v10;  // al\n    unsigned int v0;  // [bp-0x1c]\n    char *v1;  // [bp-0x18]\n    unsigned int v2;  // [bp-0x14]\n    unsigned int v3;  // [bp-0x10]\n    st_7ad2d0_5 *v4;  // [bp-0xc], Other Possible Types: unsigned int\n    unsigned int v5;  // [bp-0x8]\n    unsigned int v6;  // [bp-0x4]\n\n    v5 = v8->field_c;\n    v4 = ",
+        "raw": {
+          "status": "OK",
+          "angr_function": true,
+          "block_count": 6,
+          "callees": [],
+          "global_refs": [
+            {
+              "va": "0x007AD2D6",
+              "abs": "0x017AA798",
+              "text": "eax, dword ptr [0x17aa798]"
+            },
+            {
+              "va": "0x007AD311",
+              "abs": "0x017A9684",
+              "text": "0x17a9684"
+            },
+            {
+              "va": "0x007AD316",
+              "abs": "0x01278700",
+              "text": "0x1278700"
+            }
+          ],
+          "immediate_hits": [
+            {
+              "abs": "0x017AA798",
+              "name": "RENDERER",
+              "at": "0x007AD2D7"
+            },
+            {
+              "abs": "0x017AA798",
+              "name": "RENDERER",
+              "at": "0x007AD346"
+            }
+          ],
+          "boundary_hits": [],
+          "decompiler_available": true,
+          "pseudocode_sha": "05063f03a19e9706"
+        }
+      },
+      "0x0079E4A0": {
+        "role": "selector",
+        "ok": true,
+        "summary": "int sub_79e4a0(void)\n{\n    unsigned int v3;  // ecx\n    unsigned int v4;  // ebx\n    unsigned int v0;  // [bp-0x8]\n    unsigned int v1;  // [bp-0x4]\n\n    v1 = v3;\n    v0 = v4;\n}",
+        "raw": {
+          "status": "OK",
+          "angr_function": true,
+          "block_count": 1,
+          "callees": [],
+          "global_refs": [],
+          "immediate_hits": [],
+          "boundary_hits": [],
+          "decompiler_available": true,
+          "pseudocode_sha": "e740d1135a4d76a8"
+        }
+      }
+    }
+  },
+  "consensus": {
+    "UC": "MIXED_INTERFACE_PUBLICATION",
+    "ANGR": "ORDINARY_INTERFACE_PUBLICATION_VISIBLE",
+    "CONSENSUS": "UC=MIXED_INTERFACE_PUBLICATION; ANGR=ORDINARY_INTERFACE_PUBLICATION_VISIBLE",
+    "angr_materially_helped": true,
+    "strongest_angr_finding": {
+      "va": "0x0079E4A0",
+      "role": "selector",
+      "note": "coherent decompile"
+    }
+  },
+  "dashboard": {
+    "RENDERER_VECTOR": "MAPPED",
+    "VECTOR_INSERTION": "FOUND",
+    "ELEMENT_PLUS04": "PROVENANCE FOUND",
+    "ENGINE_GFX_IFACE_00": "ORDINARY",
+    "VTABLE": "STATIC",
+    "METHOD_148_TERMINUS": "PROTECTED_BOUNDARY",
+    "METHOD_14C_TERMINUS": "PROTECTED_BOUNDARY",
+    "METHOD_154_TERMINUS": "PROTECTED_BOUNDARY",
+    "RAW_DEVICE_DRAW": "NOT FOUND",
+    "INTERFACE_PUBLICATION": "MIXED_INTERFACE_PUBLICATION",
+    "GRAPHICS_BOUNDARY": "PROTECTED_ENGINE_BACKEND_BOUNDARY",
+    "POST_INIT_SEAM": "PARTIAL_POST_INIT_SEAM",
+    "D3D9": "NOT JUSTIFIED",
+    "ENGINE_BACKEND_ADAPTER": "NOT JUSTIFIED",
+    "FIRST_FRAME": "UNBOUNDED"
+  }
+}

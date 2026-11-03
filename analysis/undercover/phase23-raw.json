@@ -1,0 +1,1236 @@
+{
+  "phase": 23,
+  "selection_logic": {
+    "entry": "0x0079E4A0",
+    "element_uses": {
+      "+0x00": {
+        "ops": [],
+        "classification": "UNUSED_BY_SELECTOR",
+        "note": "0x0079E4A0 never reads [elem+0]"
+      },
+      "+0x04": {
+        "ops": [
+          "READ -> ESI",
+          "POINTER_DEREFERENCE VT",
+          "COMPARE/BOOLEAN_TEST via VT+0x70 / VT+0x1DC",
+          "COMPARE float via VT+0x58",
+          "RETURN best ESI"
+        ],
+        "classification": "INTERFACE_POINTER"
+      }
+    },
+    "filters_vs_elem0": "NO_RELATION \u2014 bool stack args gate VT methods, not elem+0"
+  },
+  "inserts": {
+    "insert_sites": [
+      {
+        "id": "INSERT_SITE_A",
+        "function": "0x007A40D0",
+        "instruction_range": [
+          "0x007A415F",
+          "0x007A416C"
+        ],
+        "classification": "VECTOR_INSERT_STRONG",
+        "renderer_provenance": "ECX/EDI = renderer this (caller 0x007B3F71 with ECX=renderer)",
+        "call_target": "0x004A26B0",
+        "call_target_body": "ENCRYPTED_OR_INVALID",
+        "call_target_bytes": "ddf1c58a6f91cf005140eda78c742739",
+        "old_end": "implicit via helper (unavailable body)",
+        "new_end": "implicit via helper (unavailable body)",
+        "element_plus0_source": {
+          "reg": "EBX",
+          "provenance": "FACTORY_DERIVED_POINTER",
+          "path": "arg0 VT+0x04 then VT+0x34 -> EBX",
+          "detail": "mov ecx,[esp+0x20]; call [eax+4]; call [eax+0x34]; mov ebx,eax"
+        },
+        "element_plus4_source": {
+          "reg": "ESI",
+          "provenance": "ORDINARY_CONSTRUCTOR_RETURN",
+          "ctor": "0x007A1A20",
+          "vtable_write": "mov [esi], 0xBB1AAC after ctor",
+          "alloc": "pool via 0x004AC400 on renderer+0x25C or global 0x012A78A0"
+        },
+        "stack_abi": "push ESI(+0x04); push EBX(+0x00); lea ecx,[edi+0x50]; call 0x4A26B0",
+        "side_effect": "mov [edi+0xF0], esi (caches iface on renderer)",
+        "callers": [
+          "0x007B3F71"
+        ],
+        "confidence": "STRONG"
+      },
+      {
+        "id": "INSERT_SITE_B",
+        "function": "0x007AF900",
+        "instruction_range": [
+          "0x007AFC3E",
+          "0x007AFC67"
+        ],
+        "classification": "VECTOR_INSERT_STRONG",
+        "renderer_provenance": "EDI holds renderer (vector at edi+0x50)",
+        "call_target": "0x004A26B0",
+        "call_target_body": "ENCRYPTED_OR_INVALID",
+        "call_target_bytes": "ddf1c58a6f91cf005140eda78c742739",
+        "old_end": "size=(end-begin)>>3 computed before insert",
+        "new_end": "implicit via helper",
+        "element_plus0_source": {
+          "reg": "EAX from [esp+0x20]",
+          "provenance": "CALLER_SUPPLIED_POINTER",
+          "detail": "push esi; push eax; mov ecx, &vector; call insert"
+        },
+        "element_plus4_source": {
+          "reg": "ESI",
+          "provenance": "ORDINARY_CONSTRUCTOR_RETURN",
+          "ctor": "0x007A1A20",
+          "pre_call": "VT+0x200 on new iface before insert"
+        },
+        "stack_abi": "push ESI(+0x04); push EAX(+0x00); ecx=&(edi+0x50)",
+        "side_effect": "mov [edi+0x114], esi",
+        "callers": "see function 0x007AF900 internal / game flow",
+        "confidence": "STRONG"
+      }
+    ],
+    "insert_site_count": 2,
+    "strongest_insert_site": "INSERT_SITE_A",
+    "vector_insertion_confidence": "STRONG",
+    "classic_inlined_push_back_sites": 0,
+    "insert_primitive": {
+      "va": "0x004A26B0",
+      "section": ".text",
+      "body_class": "ENCRYPTED_OR_INVALID",
+      "note": "Call sites ordinary; body is an encrypted .text island (not SecuROM section)."
+    },
+    "mutations": [
+      {
+        "function": "0x007A45B0",
+        "classification": "VECTOR_CLEAR",
+        "note": "zeros begin/end/capacity; calls reserve helper",
+        "call": "0x006CA7C0",
+        "reserve_body": "ENCRYPTED_OR_INVALID",
+        "site": "ctor lea ecx,[esi+0x50]; push 0x0A; call 0x7A45B0",
+        "confidence": "PROVEN"
+      },
+      {
+        "function": "0x004A2AA0",
+        "classification": "VECTOR_REALLOC",
+        "note": "capacity ensure used on temp vectors (VT 0xBB1914 wrapper) and ctor-adjacent inits",
+        "body": "ENCRYPTED_OR_INVALID",
+        "call_sites_sample": [
+          "0x0077C076",
+          "0x0077C269",
+          "0x00780038",
+          "0x007803A8",
+          "0x007803B5",
+          "0x0078472B",
+          "0x00797FBA",
+          "0x007A514D"
+        ],
+        "confidence": "STRONG"
+      },
+      {
+        "function": "0x007A6510",
+        "classification": "VECTOR_ERASE",
+        "note": "size=(end-begin); lea ecx,&vector; falls into/calls erase helper 0x4A1FF0",
+        "call": "0x004A1FF0",
+        "erase_body": "ENCRYPTED_OR_INVALID",
+        "confidence": "STRONG"
+      },
+      {
+        "function": "0x007A06E0",
+        "classification": "VECTOR_CLEAR",
+        "note": "walk begin..end; VT+0 push1 deleting dtor on [elem+4]; end=begin",
+        "confidence": "PROVEN"
+      },
+      {
+        "function": "0x007A0C10",
+        "classification": "VECTOR_CLEAR",
+        "note": "same owned teardown as dtor loop without freeing buffer",
+        "confidence": "PROVEN"
+      }
+    ]
+  },
+  "elements": {
+    "+0x00": {
+      "classification": "ASSOCIATED_OBJECT_POINTER",
+      "confidence": "STRONG",
+      "not": [
+        "boolean matching 0x79E4A0 filters"
+      ],
+      "evidence": [
+        "Insert A: EBX from factory VT+0x34 chain",
+        "Insert B: caller-supplied pointer pushed as first record dword",
+        "Selector 0x79E4A0 never reads elem+0"
+      ],
+      "possible_roles": [
+        "owner",
+        "handle",
+        "paired object",
+        "type cookie pointer"
+      ],
+      "resolved_role": "UNKNOWN_SUBTYPE"
+    },
+    "+0x04": {
+      "classification": "ENGINE_GFX_IFACE_00",
+      "confidence": "PROVEN",
+      "provenance": "ORDINARY_CONSTRUCTOR 0x007A1A20 -> vtable 0x00BB1AAC",
+      "insert_binding": "pushed as second dword of 8-byte record into insert helper"
+    }
+  },
+  "interface": {
+    "id": "ENGINE_GFX_IFACE_00",
+    "construction": {
+      "classification": "ORDINARY_CONSTRUCTED",
+      "ctor": "0x007A1A20",
+      "allocation": {
+        "primary": "0x004AC400 against renderer+0x25C pool",
+        "fallback_global": "0x012A78A0",
+        "class": "ORDINARY_ALLOCATOR_WRAPPER"
+      },
+      "initial_fields": "zeros + timebases; see ctor listing",
+      "vtable_pointer_writes": [
+        {
+          "va": "0x007A1A65",
+          "value": "0x00BB12DC",
+          "note": "transient during ctor"
+        },
+        {
+          "va": "0x007A1AAD",
+          "value": "0x00BB161C",
+          "note": "mid-ctor"
+        },
+        {
+          "va": "0x007A4155",
+          "value": "0x00BB1AAC",
+          "note": "final class VT written at insert site A after ctor"
+        }
+      ],
+      "final_vtable": "0x00BB1AAC",
+      "vtable_classification": "STATIC",
+      "owner": "renderer vector (+ cached at renderer+0xF0 / +0x114)",
+      "lifetime": "owned until vector clear/dtor VT+0 scalar deleting dtor",
+      "ctor_listing_head": [
+        {
+          "va": "0x007A1A20",
+          "text": "push -1"
+        },
+        {
+          "va": "0x007A1A22",
+          "text": "push 0xb3f688"
+        },
+        {
+          "va": "0x007A1A27",
+          "text": "mov eax, dword ptr fs:[0]"
+        },
+        {
+          "va": "0x007A1A2D",
+          "text": "push eax"
+        },
+        {
+          "va": "0x007A1A2E",
+          "text": "push ecx"
+        },
+        {
+          "va": "0x007A1A2F",
+          "text": "push ebx"
+        },
+        {
+          "va": "0x007A1A30",
+          "text": "push esi"
+        },
+        {
+          "va": "0x007A1A31",
+          "text": "push edi"
+        },
+        {
+          "va": "0x007A1A32",
+          "text": "mov eax, dword ptr [0x1285688]"
+        },
+        {
+          "va": "0x007A1A37",
+          "text": "xor eax, esp"
+        },
+        {
+          "va": "0x007A1A39",
+          "text": "push eax"
+        },
+        {
+          "va": "0x007A1A3A",
+          "text": "lea eax, [esp + 0x14]"
+        },
+        {
+          "va": "0x007A1A3E",
+          "text": "mov dword ptr fs:[0], eax"
+        },
+        {
+          "va": "0x007A1A44",
+          "text": "mov esi, ecx"
+        },
+        {
+          "va": "0x007A1A46",
+          "text": "mov dword ptr [esp + 0x10], esi"
+        },
+        {
+          "va": "0x007A1A4A",
+          "text": "mov eax, dword ptr [esp + 0x24]"
+        },
+        {
+          "va": "0x007A1A4E",
+          "text": "mov ecx, dword ptr [esp + 0x2c]"
+        },
+        {
+          "va": "0x007A1A52",
+          "text": "mov edx, dword ptr [esp + 0x30]"
+        },
+        {
+          "va": "0x007A1A56",
+          "text": "movss xmm1, dword ptr [0xb647b4]"
+        },
+        {
+          "va": "0x007A1A5E",
+          "text": "mov dword ptr [esi + 0xc], eax"
+        },
+        {
+          "va": "0x007A1A61",
+          "text": "mov eax, dword ptr [esp + 0x28]"
+        },
+        {
+          "va": "0x007A1A65",
+          "text": "mov dword ptr [esi], 0xbb12dc"
+        },
+        {
+          "va": "0x007A1A6B",
+          "text": "mov dword ptr [esi + 0x10], eax"
+        },
+        {
+          "va": "0x007A1A6E",
+          "text": "mov dword ptr [esi + 0x14], ecx"
+        },
+        {
+          "va": "0x007A1A71",
+          "text": "mov dword ptr [esi + 0x18], edx"
+        },
+        {
+          "va": "0x007A1A74",
+          "text": "movq xmm0, qword ptr [0xb85eac]"
+        },
+        {
+          "va": "0x007A1A7C",
+          "text": "movq qword ptr [esi + 0x1c], xmm0"
+        },
+        {
+          "va": "0x007A1A81",
+          "text": "mov ecx, dword ptr [0xb85eb4]"
+        },
+        {
+          "va": "0x007A1A87",
+          "text": "xorps xmm0, xmm0"
+        },
+        {
+          "va": "0x007A1A8A",
+          "text": "xor ebx, ebx"
+        }
+      ]
+    },
+    "vtable": {
+      "va": "0x00BB1AAC",
+      "section": ".rdata",
+      "slots": {
+        "0x00000000": {
+          "target": "0x007A1B90",
+          "section": ".text",
+          "classification": "ORDINARY_TEXT_TARGET"
+        },
+        "0x00000004": {
+          "target": "0x007AAA70",
+          "section": ".text",
+          "classification": "ORDINARY_TEXT_TARGET"
+        },
+        "0x00000008": {
+          "target": "0x007AAAB0",
+          "section": ".text",
+          "classification": "ORDINARY_TEXT_TARGET"
+        },
+        "0x00000030": {
+          "target": "0x0079C730",
+          "section": ".text",
+          "classification": "ORDINARY_TEXT_TARGET"
+        },
+        "0x00000058": {
+          "target": "0x006FA4E0",
+          "section": ".text",
+          "classification": "ORDINARY_TEXT_TARGET"
+        },
+        "0x00000070": {
+          "target": "0x0079C6B0",
+          "section": ".text",
+          "classification": "ORDINARY_TEXT_TARGET"
+        },
+        "0x00000148": {
+          "target": "0x007AD2D0",
+          "section": ".text",
+          "classification": "ORDINARY_TEXT_TARGET"
+        },
+        "0x0000014C": {
+          "target": "0x007ADC20",
+          "section": ".text",
+          "classification": "ORDINARY_TEXT_TARGET"
+        },
+        "0x00000154": {
+          "target": "0x007ADCC0",
+          "section": ".text",
+          "classification": "ORDINARY_TEXT_TARGET"
+        },
+        "0x000001C0": {
+          "target": "0x007AD600",
+          "section": ".text",
+          "classification": "ORDINARY_TEXT_TARGET"
+        },
+        "0x000001C4": {
+          "target": "0x007AD630",
+          "section": ".text",
+          "classification": "ORDINARY_TEXT_TARGET"
+        },
+        "0x000001D8": {
+          "target": "0x0079CDF0",
+          "section": ".text",
+          "classification": "ORDINARY_TEXT_TARGET"
+        },
+        "0x000001DC": {
+          "target": "0x00A03510",
+          "section": ".text",
+          "classification": "ORDINARY_TEXT_TARGET"
+        },
+        "0x00000200": {
+          "target": "0x007ABF00",
+          "section": ".text",
+          "classification": "ORDINARY_TEXT_TARGET"
+        }
+      }
+    },
+    "methods": {
+      "0x00000148": {
+        "label": "ENGINE_GFX_METHOD_148",
+        "target": "0x007AD2D0",
+        "classification": "ORDINARY_TEXT_TARGET",
+        "reads_renderer_global": true,
+        "reads_device": false,
+        "calls_submit_0x7A51B0": true,
+        "submit_entry_class": "ENCRYPTED_ENTRY_JMP",
+        "backend_terminus": "PROTECTED_BOUNDARY",
+        "listing_head": [
+          {
+            "va": "0x007AD2D0",
+            "text": "sub esp, 8"
+          },
+          {
+            "va": "0x007AD2D3",
+            "text": "mov edx, dword ptr [ecx + 0xc]"
+          },
+          {
+            "va": "0x007AD2D6",
+            "text": "mov eax, dword ptr [0x17aa798]"
+          },
+          {
+            "va": "0x007AD2DB",
+            "text": "mov dword ptr [esp], edx"
+          },
+          {
+            "va": "0x007AD2DE",
+            "text": "mov edx, dword ptr [eax + 0x19c]"
+          },
+          {
+            "va": "0x007AD2E4",
+            "text": "push esi"
+          },
+          {
+            "va": "0x007AD2E5",
+            "text": "movsx esi, byte ptr [edx + 0x118]"
+          },
+          {
+            "va": "0x007AD2EC",
+            "text": "cmp dword ptr [eax + 0x118], esi"
+          },
+          {
+            "va": "0x007AD2F2",
+            "text": "pop esi"
+          },
+          {
+            "va": "0x007AD2F3",
+            "text": "jge 0x7ad307"
+          },
+          {
+            "va": "0x007AD2F5",
+            "text": "movss xmm0, dword ptr [eax + 0x158]"
+          },
+          {
+            "va": "0x007AD2FD",
+            "text": "comiss xmm0, dword ptr [edx + 0x50]"
+          },
+          {
+            "va": "0x007AD301",
+            "text": "jae 0x7ad307"
+          },
+          {
+            "va": "0x007AD303",
+            "text": "xor al, al"
+          },
+          {
+            "va": "0x007AD305",
+            "text": "jmp 0x7ad309"
+          },
+          {
+            "va": "0x007AD307",
+            "text": "mov al, 1"
+          },
+          {
+            "va": "0x007AD309",
+            "text": "xor edx, edx"
+          },
+          {
+            "va": "0x007AD30B",
+            "text": "test al, al"
+          },
+          {
+            "va": "0x007AD30D",
+            "text": "push ecx"
+          },
+          {
+            "va": "0x007AD30E",
+            "text": "setne dl"
+          },
+          {
+            "va": "0x007AD311",
+            "text": "push 0x17a9684"
+          },
+          {
+            "va": "0x007AD316",
+            "text": "push 0x1278700"
+          },
+          {
+            "va": "0x007AD31B",
+            "text": "lea eax, [esp + 0xc]"
+          },
+          {
+            "va": "0x007AD31F",
+            "text": "push eax"
+          },
+          {
+            "va": "0x007AD320",
+            "text": "push 8"
+          }
+        ]
+      },
+      "0x0000014C": {
+        "label": "ENGINE_GFX_METHOD_14C",
+        "target": "0x007ADC20",
+        "classification": "ORDINARY_TEXT_TARGET",
+        "reads_renderer_global": true,
+        "reads_device": false,
+        "calls_submit_0x7A51B0": true,
+        "submit_entry_class": "ENCRYPTED_ENTRY_JMP",
+        "backend_terminus": "PROTECTED_BOUNDARY",
+        "listing_head": [
+          {
+            "va": "0x007ADC20",
+            "text": "sub esp, 8"
+          },
+          {
+            "va": "0x007ADC23",
+            "text": "push esi"
+          },
+          {
+            "va": "0x007ADC24",
+            "text": "mov esi, ecx"
+          },
+          {
+            "va": "0x007ADC26",
+            "text": "mov eax, dword ptr [esi + 0xc]"
+          },
+          {
+            "va": "0x007ADC29",
+            "text": "mov edx, dword ptr [esi]"
+          },
+          {
+            "va": "0x007ADC2B",
+            "text": "mov dword ptr [esp + 4], eax"
+          },
+          {
+            "va": "0x007ADC2F",
+            "text": "mov eax, dword ptr [edx + 0x68]"
+          },
+          {
+            "va": "0x007ADC32",
+            "text": "call eax"
+          },
+          {
+            "va": "0x007ADC34",
+            "text": "fld dword ptr [0xb64c9c]"
+          },
+          {
+            "va": "0x007ADC3A",
+            "text": "fxch st(1)"
+          },
+          {
+            "va": "0x007ADC3C",
+            "text": "mov dword ptr [esp + 8], 2"
+          },
+          {
+            "va": "0x007ADC44",
+            "text": "fcompi st(1)"
+          },
+          {
+            "va": "0x007ADC46",
+            "text": "fstp st(0)"
+          },
+          {
+            "va": "0x007ADC48",
+            "text": "ja 0x7adc52"
+          },
+          {
+            "va": "0x007ADC4A",
+            "text": "mov dword ptr [esp + 8], 1"
+          },
+          {
+            "va": "0x007ADC52",
+            "text": "push esi"
+          },
+          {
+            "va": "0x007ADC53",
+            "text": "push 0x17a9bcc"
+          },
+          {
+            "va": "0x007ADC58",
+            "text": "push 0x1278740"
+          },
+          {
+            "va": "0x007ADC5D",
+            "text": "lea ecx, [esp + 0x10]"
+          },
+          {
+            "va": "0x007ADC61",
+            "text": "push ecx"
+          },
+          {
+            "va": "0x007ADC62",
+            "text": "push 8"
+          },
+          {
+            "va": "0x007ADC64",
+            "text": "call 0x7a51b0"
+          },
+          {
+            "va": "0x007ADC69",
+            "text": "add esp, 0x14"
+          },
+          {
+            "va": "0x007ADC6C",
+            "text": "pop esi"
+          },
+          {
+            "va": "0x007ADC6D",
+            "text": "add esp, 8"
+          }
+        ]
+      },
+      "0x00000154": {
+        "label": "ENGINE_GFX_METHOD_154",
+        "target": "0x007ADCC0",
+        "classification": "ORDINARY_TEXT_TARGET",
+        "reads_renderer_global": false,
+        "reads_device": false,
+        "calls_submit_0x7A51B0": true,
+        "submit_entry_class": "ENCRYPTED_ENTRY_JMP",
+        "backend_terminus": "PROTECTED_BOUNDARY",
+        "listing_head": [
+          {
+            "va": "0x007ADCC0",
+            "text": "push ecx"
+          },
+          {
+            "va": "0x007ADCC1",
+            "text": "mov eax, dword ptr [ecx + 0xc]"
+          },
+          {
+            "va": "0x007ADCC4",
+            "text": "push ecx"
+          },
+          {
+            "va": "0x007ADCC5",
+            "text": "push 0x17a95d4"
+          },
+          {
+            "va": "0x007ADCCA",
+            "text": "push 0x12787b0"
+          },
+          {
+            "va": "0x007ADCCF",
+            "text": "lea ecx, [esp + 0xc]"
+          },
+          {
+            "va": "0x007ADCD3",
+            "text": "push ecx"
+          },
+          {
+            "va": "0x007ADCD4",
+            "text": "push 4"
+          },
+          {
+            "va": "0x007ADCD6",
+            "text": "mov dword ptr [esp + 0x14], eax"
+          },
+          {
+            "va": "0x007ADCDA",
+            "text": "call 0x7a51b0"
+          },
+          {
+            "va": "0x007ADCDF",
+            "text": "add esp, 0x18"
+          },
+          {
+            "va": "0x007ADCE2",
+            "text": "ret "
+          },
+          {
+            "va": "0x007ADCE3",
+            "text": "int3 "
+          },
+          {
+            "va": "0x007ADCE4",
+            "text": "int3 "
+          },
+          {
+            "va": "0x007ADCE5",
+            "text": "int3 "
+          },
+          {
+            "va": "0x007ADCE6",
+            "text": "int3 "
+          },
+          {
+            "va": "0x007ADCE7",
+            "text": "int3 "
+          },
+          {
+            "va": "0x007ADCE8",
+            "text": "int3 "
+          },
+          {
+            "va": "0x007ADCE9",
+            "text": "int3 "
+          },
+          {
+            "va": "0x007ADCEA",
+            "text": "int3 "
+          },
+          {
+            "va": "0x007ADCEB",
+            "text": "int3 "
+          },
+          {
+            "va": "0x007ADCEC",
+            "text": "int3 "
+          },
+          {
+            "va": "0x007ADCED",
+            "text": "int3 "
+          },
+          {
+            "va": "0x007ADCEE",
+            "text": "int3 "
+          },
+          {
+            "va": "0x007ADCEF",
+            "text": "int3 "
+          }
+        ]
+      }
+    },
+    "vtable_pointer_write_count": 3
+  },
+  "ownership": {
+    "model": "OWNED_ENGINE_OBJECT",
+    "confidence": "PROVEN",
+    "evidence": [
+      "dtor 0x007A06E0: mov ecx,[edi+4]; mov eax,[[ecx]]; push 1; call eax",
+      "clear 0x007A0C10: identical VT+0 deleting dtor",
+      "no AddRef/Release pair observed on insert"
+    ],
+    "not": [
+      "BORROWED_POINTER",
+      "OWNED_COM_REFERENCE"
+    ]
+  },
+  "ctor_vector": {
+    "entry": "0x007B5020",
+    "vector_init": {
+      "site": "0x007B50DB..0x007B50E6",
+      "push": "0x0A",
+      "ecx": "lea ecx,[esi+0x50]",
+      "call": "0x007A45B0",
+      "behavior": "zeros +0x50/+0x54/+0x58 then calls reserve 0x6CA7C0",
+      "initial_elements_inserted": false,
+      "reserve_body": "ENCRYPTED_OR_INVALID"
+    },
+    "confidence": "PROVEN"
+  },
+  "dtor_vector": {
+    "entry": "0x007A06E0",
+    "vector_teardown": {
+      "walk": "edi=begin; while edi!=end; iface=[edi+4]; if iface: VT+0(push 1)",
+      "then": "end=begin (0x007A077A)",
+      "buffer_free": "later heap free of begin storage (existing Phase22)",
+      "element_cleanup": "VIRTUAL_DELETING_DTOR"
+    },
+    "calls_0x686030": true,
+    "confidence": "PROVEN"
+  },
+  "helper_0x00686030": {
+    "va": "0x00686030",
+    "classification": "EXTERNAL_PROTECTED_FREE_HELPER",
+    "abi_observed": "cdecl; push ptr; call; add esp,4",
+    "body_class": "ENCRYPTED_OR_INVALID",
+    "body_bytes": "0dbb6f13c788c7c6c85652bc0f7f4997",
+    "note": "Unresolved sibling of frozen 0x00686000; used on renderer scalar-deleting paths (e.g. 0x007A2FA0) and other object teardown. Not implemented.",
+    "caller_count": 799,
+    "callers_sample": [
+      "0x006E5AC9",
+      "0x006EA9E1",
+      "0x006FAC3F",
+      "0x006FAC45",
+      "0x00701BC0",
+      "0x00701C1C",
+      "0x00701C81",
+      "0x00701D37",
+      "0x0070AA62",
+      "0x0070DE60",
+      "0x00710728",
+      "0x00710808"
+    ],
+    "not_automatically_equivalent_to": "0x00686000"
+  },
+  "allocation": {
+    "renderer_vector_buffer": {
+      "via": "0x006CA7C0",
+      "class": "PROTECTED_ALLOCATOR",
+      "body": "ENCRYPTED_OR_INVALID"
+    },
+    "interface_object": {
+      "via": "0x004AC400 / 0x012A78A0",
+      "class": "ORDINARY_ALLOCATOR_WRAPPER"
+    },
+    "submit_helper": {
+      "va": "0x007A51B0",
+      "class": "ENCRYPTED_ENTRY_JMP",
+      "bytes": "6affe9e289c9ff64"
+    },
+    "insert_helper": {
+      "va": "0x004A26B0",
+      "class": "ENCRYPTED_OR_INVALID",
+      "bytes": "ddf1c58a6f91cf00"
+    }
+  },
+  "angr": {
+    "available": true,
+    "version": "10.0.5",
+    "results": {
+      "0x007A40D0": {
+        "role": "insert_A",
+        "ok": true,
+        "summary": "typedef struct st_7a40d0_1 {\n    unsigned int field_0;\n} st_7a40d0_1;\n\ntypedef struct st_7a40d0_0 {\n    char padding_0[4];\n    struct st_7a40d0_1 *field_4;\n} st_7a40d0_0;\n\nint sub_7a40d0(void)\n{\n    unsigned long long v7;  // ldt\n    unsigned long long v8;  // gdt\n    unsigned short v9;  // fs\n    unsigned long long v10;  // 4136\n    unsigned int v11;  // ebx\n    unsigned int v12;  // esi\n    unsigned long long v13;  // 4156\n    unsigned int v0;  // [bp-0x1c]\n    unsigned int v1;  // [bp-0x14]\n ",
+        "raw": {
+          "status": "OK",
+          "angr_function": true,
+          "block_count": 1,
+          "callees": [],
+          "global_refs": [
+            {
+              "va": "0x007A40D0",
+              "abs": "0xFFFFFFFF",
+              "text": "-1"
+            },
+            {
+              "va": "0x007A40E1",
+              "abs": "0x01285688",
+              "text": "eax, dword ptr [0x1285688]"
+            }
+          ],
+          "immediate_hits": [
+            {
+              "abs": "0x017AA798",
+              "name": "RENDERER",
+              "at": "0x007A410C"
+            },
+            {
+              "abs": "0x017AA798",
+              "name": "RENDERER",
+              "at": "0x007A4201"
+            }
+          ],
+          "boundary_hits": [],
+          "decompiler_available": true,
+          "pseudocode_sha": "0e54592233632ecd"
+        }
+      },
+      "0x007A1A20": {
+        "role": "iface_ctor",
+        "ok": true,
+        "summary": "typedef struct st_7a1a20_3 {\n    unsigned int field_0;\n} st_7a1a20_3;\n\ntypedef struct st_7a1a20_1 {\n    char padding_0[4];\n    unsigned int field_4;\n} st_7a1a20_1;\n\ntypedef struct st_7a1a20_2 {\n    char padding_0[96];\n    struct st_7a1a20_3 *field_60;\n} st_7a1a20_2;\n\ntypedef struct st_7a1a20_0 {\n    unsigned int field_0;\n    char padding_4[8];\n    unsigned int field_c;\n    unsigned int field_10;\n    unsigned int field_14;\n    unsigned int field_18;\n    unsigned long long field_1c;\n    unsigned i",
+        "raw": {
+          "status": "OK",
+          "angr_function": true,
+          "block_count": 8,
+          "callees": [],
+          "global_refs": [
+            {
+              "va": "0x007A1A20",
+              "abs": "0xFFFFFFFF",
+              "text": "-1"
+            },
+            {
+              "va": "0x007A1A32",
+              "abs": "0x01285688",
+              "text": "eax, dword ptr [0x1285688]"
+            },
+            {
+              "va": "0x007A1AC4",
+              "abs": "0x012C9740",
+              "text": "edx, dword ptr [0x12c9740]"
+            },
+            {
+              "va": "0x007A1AD0",
+              "abs": "0x012C9740",
+              "text": "ecx, dword ptr [0x12c9740]"
+            }
+          ],
+          "immediate_hits": [
+            {
+              "abs": "0x017AA798",
+              "name": "RENDERER",
+              "at": "0x007A1BBC"
+            }
+          ],
+          "boundary_hits": [],
+          "decompiler_available": true,
+          "pseudocode_sha": "b79ef58c0d2b5126"
+        }
+      },
+      "0x007AD2D0": {
+        "role": "method_148",
+        "ok": true,
+        "summary": "typedef struct st_7ad2d0_5 {\n    char padding_0[12];\n    unsigned int field_c;\n} st_7ad2d0_5;\n\nint sub_7ad2d0(void)\n{\n    st_7ad2d0_5 *v8;  // ecx\n    unsigned int v9;  // esi\n    char v10;  // al\n    unsigned int v0;  // [bp-0x1c]\n    char *v1;  // [bp-0x18]\n    unsigned int v2;  // [bp-0x14]\n    unsigned int v3;  // [bp-0x10]\n    st_7ad2d0_5 *v4;  // [bp-0xc], Other Possible Types: unsigned int\n    unsigned int v5;  // [bp-0x8]\n    unsigned int v6;  // [bp-0x4]\n\n    v5 = v8->field_c;\n    v4 = ",
+        "raw": {
+          "status": "OK",
+          "angr_function": true,
+          "block_count": 6,
+          "callees": [],
+          "global_refs": [
+            {
+              "va": "0x007AD2D6",
+              "abs": "0x017AA798",
+              "text": "eax, dword ptr [0x17aa798]"
+            },
+            {
+              "va": "0x007AD311",
+              "abs": "0x017A9684",
+              "text": "0x17a9684"
+            },
+            {
+              "va": "0x007AD316",
+              "abs": "0x01278700",
+              "text": "0x1278700"
+            }
+          ],
+          "immediate_hits": [
+            {
+              "abs": "0x017AA798",
+              "name": "RENDERER",
+              "at": "0x007AD2D7"
+            },
+            {
+              "abs": "0x017AA798",
+              "name": "RENDERER",
+              "at": "0x007AD346"
+            }
+          ],
+          "boundary_hits": [],
+          "decompiler_available": true,
+          "pseudocode_sha": "05063f03a19e9706"
+        }
+      },
+      "0x0079E4A0": {
+        "role": "selector",
+        "ok": true,
+        "summary": "int sub_79e4a0(void)\n{\n    unsigned int v3;  // ecx\n    unsigned int v4;  // ebx\n    unsigned int v0;  // [bp-0x8]\n    unsigned int v1;  // [bp-0x4]\n\n    v1 = v3;\n    v0 = v4;\n}",
+        "raw": {
+          "status": "OK",
+          "angr_function": true,
+          "block_count": 1,
+          "callees": [],
+          "global_refs": [],
+          "immediate_hits": [],
+          "boundary_hits": [],
+          "decompiler_available": true,
+          "pseudocode_sha": "e740d1135a4d76a8"
+        }
+      }
+    }
+  },
+  "consensus": {
+    "UC": "MIXED_INTERFACE_PUBLICATION",
+    "ANGR": "ORDINARY_INTERFACE_PUBLICATION_VISIBLE",
+    "CONSENSUS": "UC=MIXED_INTERFACE_PUBLICATION; ANGR=ORDINARY_INTERFACE_PUBLICATION_VISIBLE",
+    "angr_materially_helped": true,
+    "strongest_angr_finding": {
+      "va": "0x0079E4A0",
+      "role": "selector",
+      "note": "coherent decompile"
+    }
+  },
+  "interface_graph_v2": {
+    "version": 2,
+    "nodes": [
+      {
+        "id": "renderer",
+        "va": "0x017AA798"
+      },
+      {
+        "id": "vector",
+        "fields": "+0x50/+0x54/+0x58",
+        "type": "MSVC_VECTOR_LIKE"
+      },
+      {
+        "id": "insert_helper_0x4A26B0",
+        "body": "ENCRYPTED_OR_INVALID"
+      },
+      {
+        "id": "INSERT_SITE_A",
+        "va": "0x007A40D0"
+      },
+      {
+        "id": "INSERT_SITE_B",
+        "va": "0x007AF900"
+      },
+      {
+        "id": "iface_ctor_0x7A1A20",
+        "va": "0x007A1A20"
+      },
+      {
+        "id": "ENGINE_GFX_IFACE_00",
+        "vtable": "0x00BB1AAC"
+      },
+      {
+        "id": "vtable_0xBB1AAC",
+        "section": ".rdata",
+        "class": "STATIC"
+      },
+      {
+        "id": "METHOD_148",
+        "va": "0x007AD2D0"
+      },
+      {
+        "id": "METHOD_14C",
+        "va": "0x007ADC20"
+      },
+      {
+        "id": "METHOD_154",
+        "va": "0x007ADCC0"
+      },
+      {
+        "id": "submit_0x7A51B0",
+        "body": "ENCRYPTED_ENTRY_JMP"
+      },
+      {
+        "id": "proven_d3d_device",
+        "va": "0x013C6510"
+      },
+      {
+        "id": "external_protected",
+        "kind": "boundary"
+      }
+    ],
+    "edges": [
+      {
+        "from": "0x007B5020",
+        "to": "renderer",
+        "rel": "PUBLISHES",
+        "confidence": "PROVEN"
+      },
+      {
+        "from": "0x007B5020",
+        "to": "vector",
+        "rel": "CONSTRUCTS",
+        "confidence": "PROVEN",
+        "note": "empty vector via 0x7A45B0"
+      },
+      {
+        "from": "renderer",
+        "to": "vector",
+        "rel": "CONTAINS",
+        "confidence": "PROVEN"
+      },
+      {
+        "from": "INSERT_SITE_A",
+        "to": "vector",
+        "rel": "INSERTS",
+        "confidence": "STRONG"
+      },
+      {
+        "from": "INSERT_SITE_B",
+        "to": "vector",
+        "rel": "INSERTS",
+        "confidence": "STRONG"
+      },
+      {
+        "from": "INSERT_SITE_A",
+        "to": "insert_helper_0x4A26B0",
+        "rel": "CALLS",
+        "confidence": "PROVEN"
+      },
+      {
+        "from": "insert_helper_0x4A26B0",
+        "to": "external_protected",
+        "rel": "PROTECTED_BOUNDARY",
+        "confidence": "STRONG"
+      },
+      {
+        "from": "iface_ctor_0x7A1A20",
+        "to": "ENGINE_GFX_IFACE_00",
+        "rel": "CONSTRUCTS",
+        "confidence": "PROVEN"
+      },
+      {
+        "from": "INSERT_SITE_A",
+        "to": "ENGINE_GFX_IFACE_00",
+        "rel": "PUBLISHES",
+        "confidence": "STRONG",
+        "note": "elem+0x04"
+      },
+      {
+        "from": "vector",
+        "to": "ENGINE_GFX_IFACE_00",
+        "rel": "CONTAINS",
+        "confidence": "PROVEN"
+      },
+      {
+        "from": "0x0079E4A0",
+        "to": "ENGINE_GFX_IFACE_00",
+        "rel": "SELECTS",
+        "confidence": "PROVEN"
+      },
+      {
+        "from": "ENGINE_GFX_IFACE_00",
+        "to": "vtable_0xBB1AAC",
+        "rel": "HAS_VTABLE",
+        "confidence": "PROVEN"
+      },
+      {
+        "from": "vtable_0xBB1AAC",
+        "to": "METHOD_148",
+        "rel": "DISPATCHES",
+        "confidence": "PROVEN"
+      },
+      {
+        "from": "vtable_0xBB1AAC",
+        "to": "METHOD_14C",
+        "rel": "DISPATCHES",
+        "confidence": "PROVEN"
+      },
+      {
+        "from": "vtable_0xBB1AAC",
+        "to": "METHOD_154",
+        "rel": "DISPATCHES",
+        "confidence": "PROVEN"
+      },
+      {
+        "from": "METHOD_148",
+        "to": "submit_0x7A51B0",
+        "rel": "CALLS",
+        "confidence": "PROVEN"
+      },
+      {
+        "from": "METHOD_14C",
+        "to": "submit_0x7A51B0",
+        "rel": "CALLS",
+        "confidence": "PROVEN"
+      },
+      {
+        "from": "METHOD_154",
+        "to": "submit_0x7A51B0",
+        "rel": "CALLS",
+        "confidence": "PROVEN"
+      },
+      {
+        "from": "submit_0x7A51B0",
+        "to": "external_protected",
+        "rel": "PROTECTED_BOUNDARY",
+        "confidence": "STRONG"
+      },
+      {
+        "from": "ENGINE_GFX_IFACE_00",
+        "to": "proven_d3d_device",
+        "rel": "UNKNOWN",
+        "confidence": "UNKNOWN",
+        "note": "no device read in recovered methods"
+      },
+      {
+        "from": "0x007A06E0",
+        "to": "ENGINE_GFX_IFACE_00",
+        "rel": "CALLS",
+        "confidence": "PROVEN",
+        "note": "owned teardown (OWNED_ENGINE_OBJECT)"
+      }
+    ]
+  },
+  "publication": "MIXED_INTERFACE_PUBLICATION",
+  "graphics_boundary": "PROTECTED_ENGINE_BACKEND_BOUNDARY",
+  "seam": {
+    "classification": "PARTIAL_POST_INIT_SEAM",
+    "note": "Iface construction/vtable/methods ordinary, but vector mutator + submit entries are encrypted .text islands."
+  },
+  "implementation": {
+    "D3D9_IMPLEMENTATION_JUSTIFIED": false,
+    "ENGINE_BACKEND_ADAPTER_JUSTIFIED": false,
+    "reasons": [
+      "Recovered methods do not touch 0x013C6510",
+      "Submit helper 0x007A51B0 entry is encrypted (jmp island)",
+      "Insert primitive 0x004A26B0 body unavailable"
+    ]
+  },
+  "frame_root": {
+    "classification": "NO_COMMON_ROOT_FOUND",
+    "note": "unchanged; methods do not reveal EndScene/Present callers"
+  },
+  "raw_device_draw_found": false,
+  "ordinary_d3d9_wrapper_found": false,
+  "ordinary_method_implementations": 3,
+  "deepest_ordinary_backend_chain": "ENGINE_GFX_IFACE_00 -> METHOD_14x -> submit_0x7A51B0[ENCRYPTED] -> PROTECTED_BOUNDARY",
+  "raw_device_relationship": "NO_RELATION_FOUND_IN_METHODS",
+  "first_frame": {
+    "BEST_CASE": "UNBOUNDED",
+    "LIKELY": "UNBOUNDED"
+  },
+  "MINIMUM_FIRST_DRAW_CONTRACT": [
+    "non-empty renderer vector of ENGINE_GFX_IFACE_00",
+    "selector 0x0079E4A0 or direct walk",
+    "METHOD_148/14C/154",
+    "submit 0x007A51B0 (currently encrypted entry)"
+  ],
+  "highest_value_uncertainty": "Runtime decryption / real bodies of 0x004A26B0 (insert) and 0x007A51B0 (submit), and whether submit eventually reaches DEVICE 0x013C6510",
+  "recommended_phase24": "EXPAND POST-INIT GRAPHICS ANALYSIS \u2014 resolve encrypted .text islands that host vector insert/submit without unpacking SecuROM sections; map submit queue globals (0x017A9684 / 0x01278700 family) and any post-decrypt ordinary continuations",
+  "dashboard": {
+    "RENDERER_VECTOR": "MAPPED",
+    "VECTOR_INSERTION": "FOUND",
+    "ELEMENT_PLUS04": "PROVENANCE FOUND",
+    "ENGINE_GFX_IFACE_00": "ORDINARY",
+    "VTABLE": "STATIC",
+    "METHOD_148_TERMINUS": "PROTECTED_BOUNDARY",
+    "METHOD_14C_TERMINUS": "PROTECTED_BOUNDARY",
+    "METHOD_154_TERMINUS": "PROTECTED_BOUNDARY",
+    "RAW_DEVICE_DRAW": "NOT FOUND",
+    "INTERFACE_PUBLICATION": "MIXED_INTERFACE_PUBLICATION",
+    "GRAPHICS_BOUNDARY": "PROTECTED_ENGINE_BACKEND_BOUNDARY",
+    "POST_INIT_SEAM": "PARTIAL_POST_INIT_SEAM",
+    "D3D9": "NOT JUSTIFIED",
+    "ENGINE_BACKEND_ADAPTER": "NOT JUSTIFIED",
+    "FIRST_FRAME": "UNBOUNDED"
+  },
+  "final_directive": "EXPAND POST-INIT GRAPHICS ANALYSIS"
+}
