@@ -1,5 +1,5 @@
 {
-  "phase": 33,
+  "phase": 34,
   "definitions": {
     "ENTERABLE": "All pre-entry required state establishable via primitives, static PE data, standard runtime, or proven ordinary init/ctor. Not merely IMPORT_READY.",
     "DEEPEST_ORDINARY_EXECUTION_CHAIN": "Max nested ordinary UC frames in one harness run.",
@@ -15,7 +15,7 @@
   "compiled": 22770,
   "static_ready": 20762,
   "import_ready": 737,
-  "runtime_ready": 65,
+  "runtime_ready": 69,
   "enterable": 21,
   "enterable_roots": [
     "0x00721050",
@@ -103,7 +103,7 @@
     "0x00B57CD0",
     "0x00B57CF0"
   ],
-  "execution_runs": 47,
+  "execution_runs": 59,
   "deepest_ordinary_execution_chain": 4,
   "largest_executed_ordinary_closure": 11,
   "clean_ordinary_roots": 12,
@@ -142,25 +142,25 @@
     "COMPILED": 22770,
     "STATIC_READY": 20762,
     "IMPORT_READY": 737,
-    "RUNTIME_READY": 65,
+    "RUNTIME_READY": 69,
     "ENTERABLE": 21,
     "EXECUTED": 44,
     "UNIQUE": 44,
-    "EXECUTION_RUNS": 47,
+    "EXECUTION_RUNS": 59,
     "CLEAN_ORDINARY_ROOTS": 12,
     "EXECUTED_ORDINARY_CONSTRUCTORS": 9,
     "DEEPEST": 4,
     "LARGEST_CLOSURE": 11,
     "ENTERABLE_WITH_DEPTH_4_POTENTIAL": 0,
     "PROVEN_DEPTH_4_ROOTS": 3,
-    "LATEST_REAL_RUNTIME_BOUNDARY": "GetCurrentThread",
+    "LATEST_REAL_RUNTIME_BOUNDARY": "QueryPerformanceCounter",
     "MOST_COMMON_REAL_BLOCKER": [
       "REQUIRED_STATE:UNKNOWN_OBJECT",
       2
     ]
   },
   "campaign_summary": {
-    "phase33_attempted": 12,
+    "phase34_attempted": 12,
     "outcomes": {
       "EXECUTED_TO_NEXT_BLOCKER": 1,
       "EXECUTED_CHAIN": 7,
@@ -169,12 +169,12 @@
     },
     "real_blocker_histogram": {
       "REQUIRED_STATE": 4,
-      "IMPORT": 1,
+      "IMPORT": 0,
       "INDIRECT": 0,
       "MEMORY": 0,
       "TLS": 0,
       "FILESYSTEM": 0,
-      "TIMING": 0,
+      "TIMING": 1,
       "EXTERNAL": 0,
       "PROTECTED": 0,
       "CLEAN_RETURN": 7
@@ -197,15 +197,22 @@
     "largest_executed_closure": 11,
     "clean_ordinary_roots": 12,
     "executed_ordinary_constructors": 9,
-    "getpriorityclass_implemented": true,
-    "createsemaphorea_implemented": true,
+    "getcurrentthread_implemented": true,
+    "setpriorityclass_implemented": true,
+    "getthreadpriority_implemented": true,
+    "setthreadpriority_implemented": true,
     "ctor_status": {
-      "before": "EXECUTED_TO_NEXT_BLOCKER / GetPriorityClass",
+      "before": "EXECUTED_TO_NEXT_BLOCKER / GetCurrentThread",
       "after": "EXECUTED_TO_NEXT_BLOCKER",
-      "after_blocker": "GetCurrentThread",
+      "after_blocker": "QueryPerformanceCounter",
+      "blocker_result": "BLOCKED_TIMING",
       "returned_clean": false,
-      "gpc_calls": 1,
-      "priority_class_observed": 32,
+      "gct_calls": 1,
+      "gtp_calls": 1,
+      "spc_calls": 1,
+      "stp_calls": 1,
+      "priority_class_observed": 256,
+      "thread_priority_observed": 15,
       "entered": [
         "0x009E9160",
         "0x009E7710",
@@ -219,12 +226,12 @@
         "0x0097FCD0",
         "0x0097F790"
       ],
-      "depth": 3
+      "depth": 3,
+      "closure": 11
     },
     "semaphore_path_status": {
-      "before": "EXECUTED_TO_NEXT_BLOCKER / CreateSemaphoreA (depth 4)",
+      "before": "EXECUTED_CHAIN clean depth 4",
       "after": "EXECUTED_CHAIN",
-      "after_blocker": "",
       "returned_clean": true,
       "sem_calls": 4,
       "sem_count": 4,
@@ -249,27 +256,21 @@
         "0x00B52140",
         "0x00B57CF0"
       ],
-      "sequence": "static init \u2192 0x00977E20 (ICS) \u2192 0x0087B640(callback) \u2192 0x0087B59B \u2192 SEH frame 0x0087BEB8",
-      "fault": "null / unmapped guest access after CRT helper entry",
-      "globals_touched": [
-        "0x018B1E6C",
-        "0x018B1E68",
-        "IAT 0x00B61398",
-        "IAT 0x00B61394"
-      ],
       "classification": "BLOCKED_CRT_INITIALIZATION",
-      "reason": "CRT atexit/registration path requires initialized CRT lock/heap state and import helpers; PE-zero BSS / unbound CRT IATs are not a defensible ordinary init substitute. NULL callback is not invoked.",
-      "implementation_attempted": false
+      "implementation_attempted": false,
+      "reason": "CRT atexit/registration path requires initialized CRT lock/heap state; unchanged from Phase 33. Not the highest-leverage blocker this campaign."
     },
-    "release_semaphore_reached": false,
-    "wait_reached": false,
-    "closehandle_reached": false,
+    "affinity_reached": false,
+    "affinity_implemented": false,
+    "qpc_reached": true,
+    "qpf_reached": false,
+    "timing_implementation_attempted": false,
     "tlsgetvalue_reached": false,
     "tlsfree_reached": false,
     "scheduler": false,
     "filesystem_reached": false,
-    "timing_reached": false,
     "protected_boundary_encountered": false,
+    "diagnostics_counted": 0,
     "proven_depth_4_roots": [
       "0x0097BB30",
       "0x00B52140",
@@ -282,12 +283,17 @@
     "GetCurrentProcess": "IMPLEMENTED",
     "GetPriorityClass": "IMPLEMENTED",
     "CreateSemaphoreA": "IMPLEMENTED",
-    "GetCurrentThread": "NOT_IMPLEMENTED",
-    "SetPriorityClass": "NOT_IMPLEMENTED",
+    "GetCurrentThread": "IMPLEMENTED",
+    "GetThreadPriority": "IMPLEMENTED",
+    "SetPriorityClass": "IMPLEMENTED",
+    "SetThreadPriority": "IMPLEMENTED",
+    "guest_processes": 1,
     "guest_threads": 1,
-    "scheduler": "NONE"
+    "scheduler": "NONE",
+    "thread_scheduling": "NOT_IMPLEMENTED"
   },
   "first_frame": "FIRST_FRAME_PATH_BLOCKED_BY_PROTECTED_BACKEND",
   "graphics_frozen": true,
-  "recommended_phase34": "GetPriorityClass and CreateSemaphoreA are implemented. Semaphore root 0x0097BB30 now RETURNS CLEAN at depth 4. Constructor advances to GetCurrentThread (pseudo-handle). Phase 34: implement GetCurrentThread (+ optionally SetPriorityClass/GetThreadPriority on the same 0x97F790 affinity block) under EXPAND THREADING/TLS RUNTIME, or harvest more ordinary roots under EXPAND REAL UC EXECUTION. CRT atexit remains BLOCKED_CRT_INITIALIZATION \u2014 do not fabricate registration tables. Graphics frozen."
+  "recommended_phase35": "GetCurrentThread, GetThreadPriority, SetPriorityClass, and SetThreadPriority are implemented with guest-only state (no host scheduling changes). Constructor 0x009E9160 advances past the priority block and stops on QueryPerformanceCounter. Phase 35: EXPAND TIMING RUNTIME \u2014 coherent deterministic guest QPC/QPF (+ SleepEx policy) without wall-clock substitution. Affinity remains a future dependency (no guest processor topology). CRT atexit stays BLOCKED_CRT_INITIALIZATION. Graphics frozen. No scheduler.",
+  "phase31_metric_corrections_preserved": true
 }

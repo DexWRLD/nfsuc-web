@@ -1,6 +1,6 @@
 {
-  "current_phase": 33,
-  "strategy": "Phase 30: KERNEL32!TlsSetValue HLE at 0x00B611C8; ctor 0x009E9160 RETURNED_CLEAN. Graphics frozen.",
+  "current_phase": 34,
+  "strategy": "Phase 34: GetCurrentThread + guest priority APIs; ctor \u2192 QueryPerformanceCounter. Graphics frozen.",
   "boundaries": {
     "0x00686000": {
       "status": "PROTECTED_OR_EXTERNAL_DEPENDENCY",
@@ -394,6 +394,11 @@
     {
       "phase": 33,
       "name": "GetPriorityClass + CreateSemaphoreA",
+      "state": "completed"
+    },
+    {
+      "phase": 34,
+      "name": "GetCurrentThread + guest priority continuation",
       "state": "completed"
     }
   ],

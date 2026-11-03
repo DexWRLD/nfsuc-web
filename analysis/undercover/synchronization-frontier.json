@@ -1,5 +1,5 @@
 {
-  "phase": 33,
+  "phase": 34,
   "category": "WIN32_SYNCHRONIZATION",
   "guest_threads": 1,
   "scheduler": "NONE",
@@ -806,16 +806,137 @@
       "0x00B52140",
       "0x00B57CF0"
     ],
-    "sequence": "static init \u2192 0x00977E20 (ICS) \u2192 0x0087B640(callback) \u2192 0x0087B59B \u2192 SEH frame 0x0087BEB8",
-    "fault": "null / unmapped guest access after CRT helper entry",
-    "globals_touched": [
-      "0x018B1E6C",
-      "0x018B1E68",
-      "IAT 0x00B61398",
-      "IAT 0x00B61394"
-    ],
     "classification": "BLOCKED_CRT_INITIALIZATION",
-    "reason": "CRT atexit/registration path requires initialized CRT lock/heap state and import helpers; PE-zero BSS / unbound CRT IATs are not a defensible ordinary init substitute. NULL callback is not invoked.",
-    "implementation_attempted": false
+    "implementation_attempted": false,
+    "reason": "CRT atexit/registration path requires initialized CRT lock/heap state; unchanged from Phase 33. Not the highest-leverage blocker this campaign."
+  },
+  "thread_scheduling": "NOT_IMPLEMENTED",
+  "get_current_thread": {
+    "slot": "0x00B611DC",
+    "dll": "KERNEL32.dll",
+    "symbol": "GetCurrentThread",
+    "hint": 325,
+    "unbound_name_rva": "0x008A9F2E",
+    "classification": "STANDARD_WIN32_IMPORT",
+    "abi": "stdcall",
+    "stack_dwords": 0,
+    "return": "HANDLE pseudo 0xFFFFFFFE",
+    "abi_confidence": "PROVEN",
+    "call_site_count": 7,
+    "high_caller_count": 7,
+    "high_callers": [
+      "0x0087C5DD",
+      "0x0087C672",
+      "0x0087C714",
+      "0x0087C781",
+      "0x00977300",
+      "0x0097F790",
+      "0x00A07A7A"
+    ],
+    "call_sites": [
+      "0x0087C62B",
+      "0x0087C67E",
+      "0x0087C72A",
+      "0x0087C797",
+      "0x0097731F",
+      "0x0097F7B3",
+      "0x00A07AFA"
+    ],
+    "implemented": true,
+    "reached": true,
+    "hle": "UC_HLE_GETCURRENTTHREAD",
+    "hle_justified": true,
+    "pseudo_handle": "0xFFFFFFFE",
+    "not_thread_id": true,
+    "not_host_handle": true,
+    "real_reached_caller": "0x0097F790",
+    "tests": "uc_phase34_test.py"
+  },
+  "get_thread_priority": {
+    "slot": "0x00B61184",
+    "dll": "KERNEL32.dll",
+    "symbol": "GetThreadPriority",
+    "hint": 475,
+    "unbound_name_rva": "0x008AB18A",
+    "classification": "STANDARD_WIN32_IMPORT",
+    "abi": "stdcall",
+    "stack_dwords": 1,
+    "return": "int",
+    "abi_confidence": "PROVEN",
+    "call_site_count": 2,
+    "high_caller_count": 2,
+    "high_callers": [
+      "0x0087C714",
+      "0x0097F790"
+    ],
+    "call_sites": [
+      "0x0087C73A",
+      "0x0097F7C0"
+    ],
+    "implemented": true,
+    "reached": true,
+    "hle": "UC_HLE_GETTHREADPRIORITY",
+    "default": "THREAD_PRIORITY_NORMAL (0)",
+    "error_return": "THREAD_PRIORITY_ERROR_RETURN (0x7FFFFFFF)",
+    "real_reached_caller": "0x0097F790"
+  },
+  "set_priority_class": {
+    "slot": "0x00B610E8",
+    "dll": "KERNEL32.dll",
+    "symbol": "SetPriorityClass",
+    "hint": 817,
+    "unbound_name_rva": "0x008AB426",
+    "classification": "STANDARD_WIN32_IMPORT",
+    "abi": "stdcall",
+    "stack_dwords": 2,
+    "return": "BOOL",
+    "abi_confidence": "PROVEN",
+    "call_site_count": 2,
+    "high_caller_count": 1,
+    "high_callers": [
+      "0x0097F790"
+    ],
+    "call_sites": [
+      "0x0097F7D0",
+      "0x0097F9BA"
+    ],
+    "implemented": true,
+    "reached": true,
+    "hle": "UC_HLE_SETPRIORITYCLASS",
+    "observed_class": "0x100 REALTIME_PRIORITY_CLASS",
+    "realtime_host_policy": "guest state only; host scheduling unchanged",
+    "real_reached_caller": "0x0097F790"
+  },
+  "set_thread_priority": {
+    "slot": "0x00B61180",
+    "dll": "KERNEL32.dll",
+    "symbol": "SetThreadPriority",
+    "hint": 836,
+    "unbound_name_rva": "0x008AB19E",
+    "classification": "STANDARD_WIN32_IMPORT",
+    "abi": "stdcall",
+    "stack_dwords": 2,
+    "return": "BOOL",
+    "abi_confidence": "PROVEN",
+    "call_site_count": 5,
+    "high_caller_count": 4,
+    "high_callers": [
+      "0x0087C781",
+      "0x008895E0",
+      "0x0088B470",
+      "0x0097F790"
+    ],
+    "call_sites": [
+      "0x0087C7EA",
+      "0x00889659",
+      "0x0088B577",
+      "0x0097F7D9",
+      "0x0097F9CA"
+    ],
+    "implemented": true,
+    "reached": true,
+    "hle": "UC_HLE_SETTHREADPRIORITY",
+    "observed_priority": "0xF THREAD_PRIORITY_TIME_CRITICAL",
+    "real_reached_caller": "0x0097F790"
   }
 }
