@@ -1,8 +1,8 @@
 {
   "project": {
     "name": "nfsuc-web",
-    "current_phase": 17,
-    "strategy": "Direct3DCreate9 is statically reachable via HIGH 0x0072E340. Close ordinary provenance for callback-slot replacement and flag=1 publication without implementing Direct3D. 0x00686000 stays unimplemented."
+    "current_phase": 18,
+    "strategy": "Direct3DCreate9 remains statically REACHABLE via HIGH 0x0072E340, but 0x00B615C4 publication is EXTERNAL_PROTECTED_INITIALIZATION (SecuROM-hosted PE import/IAT; no ordinary writer). Do not invent callbacks or implement Direct3D. Search alternate ordinary graphics routes. 0x00686000 stays unimplemented."
   },
   "discovery": {
     "candidates": 25450,
@@ -33,7 +33,7 @@
       "REJECTED_DATA": 1489,
       "UNKNOWN": 0
     },
-    "note": "The badge is the current high-confidence.json compile record. Green cells are reachable high-confidence functions that generated and compiled."
+    "note": "The badge is the current high-confidence.json compile record. Green cells are discovery-enrolled HIGH functions that generated and compiled. Map 'reachable' means discovery enrollment, not proven call-graph reachability."
   },
   "runtime": {
     "recorded_completed": 4,
@@ -53,7 +53,7 @@
     },
     "ready_closure": 19,
     "ready_with_imports_closure": 35,
-    "note": "A compiled function is not a function that has run."
+    "note": "A compiled function is not a function that has run. DISCOVERED_HIGH != CALL_GRAPH_REACHABLE != RUNTIME_ENTERABLE."
   },
   "initialization": [
     {
@@ -77,18 +77,19 @@
         "0x00729977=2",
         "0x00B4F990=0"
       ],
-      "evidence": "Phase 17: 0x00722D60 is discovery-enrolled HIGH with zero E8/imm/section refs. Map reachable means enrollment, not call-graph reachability."
+      "evidence": "Phase 18: still no ordinary indirect table/dword entry to 0x00722D60. Map reachable means discovery enrollment only."
     },
     {
       "address": "0x01318170",
       "status": "STATIC ZERO OBJECT / ADDRESS-TAKEN ONLY",
-      "evidence": "PE zeroed. Multiple HIGH address-takers; no proven constructor. +0x10 written by factory path."
+      "evidence": "PE zeroed. Multiple HIGH address-takers; no proven constructor. +0x4C0/+0x4C8/+0x4D0 filled via 0x00B615C4 callback before factory."
     },
     {
       "address": "0x00B615C4",
-      "status": "RUNTIME_REPLACEMENT_REQUIRED",
+      "status": "RUNTIME_REPLACEMENT_REQUIRED / EXTERNAL_PROTECTED_PUBLICATION",
       "pe_value": "0x008AA3AE",
-      "evidence": "Not a linear-sweep instruction boundary. Three call esi on the pre-Direct3DCreate9 path load this slot. No ordinary absolute writers."
+      "table": "0x00B61528-0x00B615E4",
+      "evidence": "Home callback table in .rdata. Not PE FirstThunk. No ordinary writers/memcpy/shadow. PE Import+IAT directories are in .securom."
     }
   ],
   "boundaries": {
@@ -127,9 +128,14 @@
     "frontier": "FOUND",
     "static_factory_frontier": "REACHABLE",
     "runtime_factory_frontier": "NOT ENTERABLE",
+    "pre_factory_callback": "UNRESOLVED",
     "factory_frontier_ready": false,
+    "direct3d9_implemented": false,
+    "callback_publication": "EXTERNAL_PROTECTED_INITIALIZATION",
+    "callback_table": "0x00B61528-0x00B615E4",
     "independent_of_0x00686000": "YES",
     "reachable_from_high_graph": "YES",
+    "reachable_means": "discovery_enrollment_and_HIGH_create_calls_thunk",
     "enterable_now": "NO",
     "flag": "0x01311E1C",
     "flag_value_1_writer": "0x00722D60",
@@ -138,13 +144,14 @@
     "esi_slot": "0x00B615C4",
     "esi_slot_valid_entry": false,
     "esi_slot_class": "RUNTIME_REPLACEMENT_REQUIRED",
+    "esi_slot_abi": "stdcall-like 4-arg (code,size,buffer,flags)",
     "shortest_chain": [
       "0x0072E340",
       "0x0087A79C"
     ],
-    "shortest_pre_factory_blocker": "0x00B615C4 -> three call esi before Direct3DCreate9",
+    "shortest_pre_factory_blocker": "0x00B615C4 external/protected publication before three call esi",
     "blockers": [
-      "0x00B615C4 PE target is INVALID_INTERIOR_ENTRY / RUNTIME_REPLACEMENT_REQUIRED on the create prefix",
+      "0x00B615C4 publication is EXTERNAL_PROTECTED_INITIALIZATION (no ordinary writer; PE Import/IAT in .securom)",
       "0x00B611D4 and 0x00B61188 likewise RUNTIME_REPLACEMENT_REQUIRED for outer/wait paths",
       "0x01311E1C=1 writer 0x00722D60 has no ordinary invocation path (discovery-enrolled only)",
       "TLS 0x01882C34 required only on outer 0x00766730",
@@ -156,7 +163,7 @@
     "likely_low": 23,
     "likely_high": 31,
     "is_estimate": true,
-    "uncertainty": "Static factory reachable; runtime blocked by callback-slot replacement and disconnected flag=1 publication. Estimate unchanged from Phase 16."
+    "uncertainty": "External/protected callback publication class established; no legitimate ordinary fill path. Estimate unchanged."
   },
   "phases": [
     {
@@ -242,6 +249,11 @@
     {
       "phase": 17,
       "name": "Factory initialization provenance",
+      "state": "completed"
+    },
+    {
+      "phase": 18,
+      "name": "Callback table publication provenance",
       "state": "current"
     }
   ],
@@ -275,12 +287,16 @@
       "state": "REACHABLE"
     },
     {
+      "name": "PRE-FACTORY CALLBACK",
+      "state": "UNRESOLVED"
+    },
+    {
       "name": "RUNTIME D3D FACTORY FRONTIER",
       "state": "NOT ENTERABLE"
     },
     {
       "name": "GRAPHICS FRONTIER",
-      "state": "BLOCKED"
+      "state": "REQUIRES EXTERNAL INITIALIZATION"
     },
     {
       "name": "D3D9 DEVICE",
