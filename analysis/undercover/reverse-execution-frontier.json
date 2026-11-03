@@ -1,5 +1,5 @@
 {
-  "phase": 28,
+  "phase": 29,
   "seeds": [
     "0x00721070",
     "0x00739B90",
@@ -413,5 +413,12 @@
         "note": "math leaf; harness POD this + floats"
       }
     ]
+  },
+  "depth4_candidates": [],
+  "ctor_parent": {
+    "caller": "0x009E9340",
+    "class": "DIRECT_ORDINARY",
+    "enterable": false,
+    "blocker": "allocator 0x009EB870 / runtime callback"
   }
 }

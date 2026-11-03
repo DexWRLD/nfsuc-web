@@ -1,14 +1,10 @@
 {
-  "phase": 28,
+  "phase": 29,
   "campaign_outcomes": {
-    "EXECUTED_TO_NEXT_BLOCKER": 2,
-    "BLOCKED_REQUIRED_STATE": 6,
-    "BLOCKED_PROTECTED": 1
+    "EXECUTED_TO_NEXT_BLOCKER": 1,
+    "BLOCKED_REQUIRED_STATE": 1,
+    "BLOCKED_IMPORT": 1
   },
-  "most_common_real_blocker": [
-    "BLOCKED_REQUIRED_STATE",
-    6
-  ],
-  "depth3_blocker": "BLOCKED_IMPORT/DISPATCH at 0x009777D0 after depth 3",
-  "track_a": "NO_ORDINARY_INIT_PATH_FOUND"
+  "latest_real_runtime_boundary": "KERNEL32!TlsAlloc @ 0x00B61138",
+  "next_on_ctor_chain": "0x00977800 Win32/IAT (classify in Phase 30)"
 }

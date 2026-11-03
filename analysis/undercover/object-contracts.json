@@ -1,6 +1,28 @@
 {
-  "phase": 28,
+  "phase": 29,
   "contracts": [
+    {
+      "object_id": "tls_index_holder_9777d0",
+      "target_root": "0x009777D0",
+      "required_fields": [
+        {
+          "off": "0x00",
+          "use": "store TlsAlloc index",
+          "pre_entry_read": false
+        }
+      ],
+      "field_provenance": "STANDARD_RUNTIME TlsAlloc",
+      "constructor": null,
+      "initializer": "0x009777D0",
+      "producer": "KERNEL32!TlsAlloc",
+      "vtable": "none",
+      "allocation": "embedded at ctor object +0x240",
+      "ownership": "EMBEDDED_SUBOBJECT",
+      "enterability": "ENTERABLE_AFTER_STANDARD_RUNTIME",
+      "enterability_cost": 3,
+      "chain_potential": 60,
+      "confidence": "PROVEN"
+    },
     {
       "object_id": "refcount_base_9e7710",
       "target_root": "0x009E7710",
@@ -68,14 +90,16 @@
       "field_provenance": "ordinary ctor writes; harness supplies this storage + POD arg",
       "constructor": "0x009E9160",
       "initializer": "0x009E9990",
-      "producer": "0x009E9160",
+      "producer": "0x009E9340 (factory; not ENTERABLE \u2014 allocator)",
       "vtable": "STATIC_ORDINARY_VTABLE 0x00C30E68",
       "allocation": "harness guest buffer CALLER_OWNED",
-      "ownership": "CALLER_OWNED",
+      "ownership": "CALLER_STORAGE",
       "enterability": "ENTERABLE_AFTER_ORDINARY_CTOR",
       "enterability_cost": 3,
       "chain_potential": 90,
-      "confidence": "PROVEN"
+      "confidence": "PROVEN",
+      "parent_candidate": "0x009E9340",
+      "parent_enterable": false
     },
     {
       "object_id": "bss_table_cea3b8",

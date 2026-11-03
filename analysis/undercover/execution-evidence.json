@@ -1,6 +1,52 @@
 {
-  "phase": 28,
+  "phase": 29,
   "roots": [
+    {
+      "root": "0x009E9160",
+      "phase": 29,
+      "result": "EXECUTED_TO_NEXT_BLOCKER",
+      "ordinary_initializers_executed": [
+        "0x009E7710",
+        "0x009E9990"
+      ],
+      "functions_entered": [
+        "0x009E9160",
+        "0x009E7710",
+        "0x009E9990",
+        "0x009E9460",
+        "0x009777D0",
+        "0x009E8AD0"
+      ],
+      "unique_functions_entered": 10,
+      "max_depth": 3,
+      "imports": [
+        "TlsAlloc"
+      ],
+      "indirect_resolved": 1,
+      "termination": "BLOCKED_IMPORT next Win32/IAT via 0x00977800 after TlsAlloc path",
+      "memory_contract": "CALLER_OWNED this; POD source; guest TLS index abstraction",
+      "notes": "TlsAlloc HLE continues past 0x009777D0 into 0x009E8AD0",
+      "evidence": "uc_phase29_test.py",
+      "before": "Phase 28 stopped at stubbed 0x009777D0 / IAT 0x00B61138",
+      "after": "TlsAlloc returns guest index; wrapper stores at this+0x240; registrar entered"
+    },
+    {
+      "root": "0x00947790",
+      "phase": 29,
+      "result": "BLOCKED_REQUIRED_STATE",
+      "functions_entered": [],
+      "max_depth": 0,
+      "notes": "Fallback not required; TlsAlloc HLE justified. Still UNKNOWN for POD grandparent."
+    },
+    {
+      "root": "0x009E9340",
+      "phase": 29,
+      "result": "BLOCKED_IMPORT",
+      "functions_entered": [],
+      "max_depth": 0,
+      "notes": "Ctor parent/factory needs allocator 0x009EB870 callback \u2014 not entered",
+      "classification": "INITIALIZER_OWNER / DIRECT_ORDINARY caller of 0x009E9160"
+    },
     {
       "root": "0x009E9160",
       "phase": 28,
@@ -263,6 +309,7 @@
     "0x00924D30",
     "0x00929972",
     "0x00949920",
+    "0x009777D0",
     "0x009E7710",
     "0x009E78C0",
     "0x009E8AD0",
@@ -271,5 +318,5 @@
     "0x009E9990"
   ],
   "deepest_ordinary_execution_chain": 3,
-  "largest_executed_ordinary_closure": 4
+  "largest_executed_ordinary_closure": 10
 }

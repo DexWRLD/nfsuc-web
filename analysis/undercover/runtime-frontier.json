@@ -1,5 +1,5 @@
 {
-  "phase": 28,
+  "phase": 29,
   "definitions": {
     "ENTERABLE": "All pre-entry required state establishable via primitives, static PE data, standard runtime, or proven ordinary init/ctor. Not merely IMPORT_READY.",
     "DEEPEST_ORDINARY_EXECUTION_CHAIN": "Max nested ordinary UC frames in one harness run.",
@@ -11,8 +11,8 @@
   "compiled": 22770,
   "static_ready": 20762,
   "import_ready": 737,
-  "runtime_ready": 54,
-  "enterable": 12,
+  "runtime_ready": 56,
+  "enterable": 13,
   "enterable_roots": [
     "0x00721050",
     "0x00721070",
@@ -23,6 +23,7 @@
     "0x00929900",
     "0x00929972",
     "0x00949920",
+    "0x009777D0",
     "0x009E7710",
     "0x009E9160",
     "0x009E9990"
@@ -31,7 +32,9 @@
   "enterable_with_depth_3_potential_roots": [
     "0x009E9160"
   ],
-  "unique_uc_functions_executed": 15,
+  "enterable_with_depth_4_potential": 0,
+  "enterable_with_depth_4_potential_roots": [],
+  "unique_uc_functions_executed": 16,
   "unique_uc_functions_executed_list": [
     "0x00721050",
     "0x00721070",
@@ -42,6 +45,7 @@
     "0x00924D30",
     "0x00929972",
     "0x00949920",
+    "0x009777D0",
     "0x009E7710",
     "0x009E78C0",
     "0x009E8AD0",
@@ -49,9 +53,9 @@
     "0x009E9460",
     "0x009E9990"
   ],
-  "execution_runs": 7,
+  "execution_runs": 9,
   "deepest_ordinary_execution_chain": 3,
-  "largest_executed_ordinary_closure": 4,
+  "largest_executed_ordinary_closure": 10,
   "ordinary_init_recovered": 5,
   "init_blocked_external": 0,
   "init_blocked_protected": 1,
@@ -61,159 +65,142 @@
     "COMPILED": 22770,
     "STATIC_READY": 20762,
     "IMPORT_READY": 737,
-    "RUNTIME_READY": 54,
-    "ENTERABLE": 12,
-    "EXECUTED": 15,
-    "ORDINARY_INIT_RECOVERED": 5,
-    "INIT_BLOCKED_EXTERNAL": 0,
-    "INIT_BLOCKED_PROTECTED": 1,
-    "INIT_BLOCKED_UNKNOWN": 4,
-    "ENTERABLE_WITH_DEPTH_3_POTENTIAL": 1,
+    "RUNTIME_READY": 56,
+    "ENTERABLE": 13,
+    "EXECUTED": 16,
     "DEEPEST": 3,
-    "LARGEST_CLOSURE": 4
+    "LARGEST_CLOSURE": 10,
+    "ENTERABLE_WITH_DEPTH_3_POTENTIAL": 1,
+    "ENTERABLE_WITH_DEPTH_4_POTENTIAL": 0,
+    "LATEST_REAL_RUNTIME_BOUNDARY": "KERNEL32!TlsAlloc"
   },
   "campaign_summary": {
-    "phase28_attempted": 9,
+    "phase29_attempted": 3,
     "outcomes": {
-      "EXECUTED_TO_NEXT_BLOCKER": 2,
-      "BLOCKED_REQUIRED_STATE": 6,
-      "BLOCKED_PROTECTED": 1
+      "EXECUTED_TO_NEXT_BLOCKER": 1,
+      "BLOCKED_REQUIRED_STATE": 1,
+      "BLOCKED_IMPORT": 1
     },
     "most_common_next_blocker": [
       "BLOCKED_REQUIRED_STATE",
-      6
+      1
     ],
     "deepest_chain": 3,
-    "largest_executed_closure": 4,
-    "latest_newly_executed_root": "0x009E9160",
+    "largest_executed_closure": 10,
+    "latest_newly_executed_root": "0x009777D0",
     "deepest_successful_sequence": [
       "0x009E9160",
       "0x009E9990",
       "0x009E7710"
     ],
-    "constructor_method_chain": true,
-    "pod_grandparent_chain": false,
+    "tlsalloc_implemented": true,
+    "constructor_chain_continued": true,
+    "fallback_947790_executed": false,
     "CIpow_reached": false,
     "floor_reached": false,
     "malloc_free_reached": false,
     "filesystem_reached": false,
     "timing_reached": false,
-    "tls_reached": false,
-    "seh_required": false,
-    "unresolved_indirect_reached": true
+    "tls_reached": true,
+    "seh_required": false
   },
-  "track_a_a52df0": {
-    "root": "0x00A52DF0",
-    "e8_callers": [],
-    "function_map_predecessors": [],
-    "imm32_sites": [],
-    "layout": {
-      "+0x140": "xmmword read (movaps); 16-byte vector, not proven matrix",
-      "+0x150": "xmmword read (movaps); 16-byte vector",
-      "+0x100": "xmmword write result",
-      "+0x120": "xmmword write result",
-      "stack": "float [ebp+8]; ret 4",
-      "imports": [
-        "_CIsin",
-        "_CIsqrt"
-      ]
-    },
-    "reads_0x140": [
-      {
-        "site": "0x00A52E36",
-        "mnem": "movaps",
-        "op": "xmm1, xmmword ptr [esi + 0x140]",
-        "disp": 320,
-        "width": "xmmword"
-      },
-      {
-        "site": "0x00A52E7C",
-        "mnem": "movaps",
-        "op": "xmm2, xmmword ptr [esi + 0x140]",
-        "disp": 320,
-        "width": "xmmword"
-      }
+  "tlsalloc": {
+    "slot": "0x00B61138",
+    "section": ".rdata",
+    "initial_pe_dword": "0x008AB2CE",
+    "hint": 867,
+    "symbol": "TlsAlloc",
+    "dll": "KERNEL32.dll",
+    "dlls_matching_name": [
+      "KERNEL32.dll"
     ],
-    "reads_0x150": [
-      {
-        "site": "0x00A52E2F",
-        "mnem": "movaps",
-        "op": "xmm3, xmmword ptr [esi + 0x150]",
-        "disp": 336,
-        "width": "xmmword"
-      },
-      {
-        "site": "0x00A52E97",
-        "mnem": "movaps",
-        "op": "xmm1, xmmword ptr [esi + 0x150]",
-        "disp": 336,
-        "width": "xmmword"
-      }
+    "classification": "STANDARD_WIN32_IMPORT",
+    "abi": "stdcall",
+    "stack_dwords": 0,
+    "abi_confidence": "PROVEN",
+    "public_standard": true,
+    "hle_justified": true,
+    "call_sites": [
+      "0x00977356",
+      "0x009777D3",
+      "0x009781C2",
+      "0x0097826D",
+      "0x00978482",
+      "0x00978535",
+      "0x00B55239",
+      "0x00B57E40",
+      "0x00B57E70",
+      "0x00B57E90"
     ],
-    "writes": [
-      {
-        "site": "0x00A52E90",
-        "mnem": "movaps",
-        "op": "xmmword ptr [esi + 0x100], xmm0",
-        "disp": 256,
-        "width": "xmmword"
-      },
-      {
-        "site": "0x00A52EC0",
-        "mnem": "movaps",
-        "op": "xmmword ptr [esi + 0x120], xmm3",
-        "disp": 288,
-        "width": "xmmword"
-      }
-    ],
-    "producer_classification": "NO_ORDINARY_INIT_PATH_FOUND",
-    "enterable": false,
-    "enterability": "BLOCKED_UNKNOWN_STATE",
-    "note": "No E8, no function-map preds, no absolute imm32 refs in mapped image. Do not synthesize +0x140/+0x150. Stop Track A.",
-    "body_prefix": [
-      "push ebp",
-      "mov ebp, esp",
-      "and esp, 0xfffffff0",
-      "sub esp, 0xc",
-      "fld dword ptr [ebp + 8]",
+    "call_site_count": 10,
+    "import_directory_note": "Official PE Import/IAT directories live in .securom; ordinary .rdata B610\u2013B617 window holds unbound hint/name RVAs consumed by ordinary code.",
+    "neighbors": {
+      "0x00B61120": "TlsFree",
+      "0x00B611CC": "TlsGetValue",
+      "0x00B611D0": "GetTickCount"
+    }
+  },
+  "wrap_9777d0": {
+    "function": "0x009777D0",
+    "abi": "thiscall-like wrapper; ret 0; ECX=this storage for TLS index",
+    "body": [
       "push esi",
       "mov esi, ecx",
-      "call 0xae5140",
-      "fstp dword ptr [esp + 8]",
-      "fld dword ptr [esp + 8]",
-      "fstp dword ptr [esp + 8]",
-      "fld dword ptr [esp + 8]",
-      "fmul st(0), st(0)",
-      "fld1 ",
-      "fsubrp st(1)",
-      "fstp dword ptr [esp + 0xc]",
-      "fld dword ptr [esp + 0xc]",
-      "call 0xae5116",
-      "fstp dword ptr [esp + 0xc]",
-      "fld dword ptr [esp + 0xc]",
-      "movaps xmm3, xmmword ptr [esi + 0x150]",
-      "movaps xmm1, xmmword ptr [esi + 0x140]",
-      "fstp dword ptr [esp + 0xc]",
-      "movss xmm0, dword ptr [esp + 0xc]",
-      "movaps xmm4, xmm0",
-      "movss xmm0, dword ptr [esp + 8]",
-      "movaps xmm2, xmm0",
-      "movaps xmm0, xmm3",
-      "shufps xmm0, xmm3, 0xc9",
-      "movaps xmm5, xmm1",
-      "shufps xmm5, xmm1, 0xd2",
-      "mulps xmm0, xmm5",
-      "movaps xmm5, xmm3",
-      "shufps xmm5, xmm3, 0xd2",
-      "shufps xmm1, xmm1, 0xc9",
-      "mulps xmm5, xmm1",
-      "shufps xmm2, xmm2, 0",
-      "subps xmm0, xmm5",
-      "mulps xmm0, xmm2",
-      "movaps xmm2, xmmword ptr [esi + 0x140]"
+      "call dword ptr [0xb61138]",
+      "mov dword ptr [esi], eax",
+      "mov eax, esi",
+      "pop esi",
+      "ret "
+    ],
+    "calls_iat": "0x00B61138",
+    "stack_args_to_import": 0,
+    "argument_provenance": [],
+    "return_contract": "STORE_TO_THIS",
+    "return_detail": "EAX from TlsAlloc stored to dword [ESI]; EAX then returns ESI (this)",
+    "reached_regs_note": "Phase-28/29 path: ECX/ESI = ctor object +0x240 subobject; no stack args; ESP has only retaddr for TlsAlloc."
+  },
+  "fallback_947790": {
+    "root": "0x00947790",
+    "abi": "cdecl-like; two object pointers on stack after frame setup",
+    "insns": 286,
+    "calls": [
+      "0x00929900",
+      "0x00929EF0",
+      "0x009472A0",
+      "0x00947590"
+    ],
+    "required_state": [
+      {
+        "name": "arg0 object ESI",
+        "class": "BUFFER",
+        "prov": "UNKNOWN"
+      },
+      {
+        "name": "arg1 object EBP+0x3000c",
+        "class": "OBJECT_FIELD",
+        "prov": "UNKNOWN"
+      }
+    ],
+    "ordinary_producers": [],
+    "grandparent_path_proven": false,
+    "enterable": false,
+    "note": "Fallback not required; TlsAlloc HLE justified. Still UNKNOWN for POD grandparent.",
+    "sample_reads": [
+      "mov esi, dword ptr [esp + 0x9c]",
+      "fld dword ptr [esi + 0x28]",
+      "mov ebp, dword ptr [esp + 0xa0]",
+      "fstp dword ptr [esp + 0x1c]",
+      "mov eax, dword ptr [ebp + 0x3000c]",
+      "fld dword ptr [esi + 0x30]",
+      "mov ecx, dword ptr [ebp + 0x30010]",
+      "fstp dword ptr [esp + 0x30]",
+      "mov dword ptr [esp + 0x10], eax",
+      "fld dword ptr [esi + 0x38]",
+      "fstp dword ptr [esp + 0x2c]",
+      "mov dword ptr [esp + 0x18], ecx"
     ]
   },
   "first_frame": "FIRST_FRAME_PATH_BLOCKED_BY_PROTECTED_BACKEND",
   "graphics_frozen": true,
-  "recommended_phase29": "Depth 3 achieved via ordinary ctor nesting. Next: either (1) resolve/stub-classify the Win32 IAT at 0x00B61138 blocking completion of 0x009E9160\u21920x009E8AD0, or (2) recover a lower-cost POD grandparent for the 0x00929900 math island (0x00947790 still UNKNOWN). Do not reopen Track A 0x00A52DF0 without new refs. No CRT HLE until a chain reaches it."
+  "recommended_phase30": "TlsAlloc unblocked 0x009777D0\u21920x009E8AD0. Next on the same chain: 0x00977800 calls IAT 0x00B611C8 = KERNEL32!TlsSetValue (classify ABI/args before HLE). Depth stays 3 until parent 0x009E9340 is ENTERABLE. 0x00947790 still UNKNOWN. Do not reopen A52DF0/graphics."
 }
