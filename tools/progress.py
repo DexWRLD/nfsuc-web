@@ -574,6 +574,10 @@ def build():
             json.load(open(os.path.join(ANALYSIS, "process-thread-frontier.json"), encoding="utf-8"))
             if os.path.isfile(os.path.join(ANALYSIS, "process-thread-frontier.json")) else {}
         ),
+        "timing_frontier": (
+            json.load(open(os.path.join(ANALYSIS, "timing-frontier.json"), encoding="utf-8"))
+            if os.path.isfile(os.path.join(ANALYSIS, "timing-frontier.json")) else {}
+        ),
         "initialization": status["initialization"],
         "boundaries": status["boundaries"],
         "helper_cut": helper_summary if helper_summary else "UNKNOWN",
@@ -837,6 +841,21 @@ def _guest_thread_badge(model):
     )
 
 
+def _guest_timing_badge(model):
+    timing = model.get("timing_frontier") or {}
+    if not timing:
+        return "UNMEASURED"
+    qpc = "IMPL" if (timing.get("QueryPerformanceCounter") or {}).get("implemented") else "PEND"
+    qpf = "IMPL" if (timing.get("QueryPerformanceFrequency") or {}).get("implemented") else "PEND"
+    sleepx = timing.get("SleepEx") or {}
+    sx = "ALERTABLE" if sleepx.get("classification") == "BLOCKED_ALERTABLE_WAIT" else (
+        "IMPL" if sleepx.get("implemented") else "PEND")
+    return "QPC=%s QPF=%s f=%s SleepEx=%s sched=%s" % (
+        qpc, qpf, timing.get("frequency_hz") or "?",
+        sx, timing.get("scheduler") or "NONE",
+    )
+
+
 def _sync_html_table(model):
     sync = model.get("sync_frontier") or {}
     fam = sync.get("family_inventory") or {}
@@ -1016,6 +1035,7 @@ def render_svg(model, detailed=False):
         ("WIN32 SYNCHRONIZATION", _sync_badge(model)),
         ("GUEST PROCESS", _guest_process_badge(model)),
         ("GUEST THREAD", _guest_thread_badge(model)),
+        ("GUEST TIMING", _guest_timing_badge(model)),
     ]
     parts = []
     y = badge_row(parts, badges, 14)
@@ -1413,6 +1433,7 @@ def render_png(model):
         ("WIN32 SYNCHRONIZATION", _sync_badge(model)),
         ("GUEST PROCESS", _guest_process_badge(model)),
         ("GUEST THREAD", _guest_thread_badge(model)),
+        ("GUEST TIMING", _guest_timing_badge(model)),
     ]
 
     # Measure height with the same geometry as the SVG.
