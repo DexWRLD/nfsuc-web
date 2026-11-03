@@ -35,6 +35,10 @@ STDCALL_KNOWN = {
     "GetCurrentProcess": (0, "UC_HLE_GETCURRENTPROCESS"),
     "GetPriorityClass": (1, "UC_HLE_GETPRIORITYCLASS"),
     "CreateSemaphoreA": (4, "UC_HLE_CREATESEMAPHOREA"),
+    "GetCurrentThread": (0, "UC_HLE_GETCURRENTTHREAD"),
+    "GetThreadPriority": (1, "UC_HLE_GETTHREADPRIORITY"),
+    "SetPriorityClass": (2, "UC_HLE_SETPRIORITYCLASS"),
+    "SetThreadPriority": (2, "UC_HLE_SETTHREADPRIORITY"),
 }
 # public: void type_info::_type_info_dtor_internal_method(void)
 THISCALL_NO_STACK = "?_type_info_dtor_internal_method@type_info@@QAEXXZ"

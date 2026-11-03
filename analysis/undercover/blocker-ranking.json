@@ -1,5 +1,5 @@
 {
-  "phase": 33,
+  "phase": 34,
   "campaign_outcomes": {
     "EXECUTED_TO_NEXT_BLOCKER": 1,
     "EXECUTED_CHAIN": 7,
@@ -8,12 +8,12 @@
   },
   "real_blocker_histogram": {
     "REQUIRED_STATE": 4,
-    "IMPORT": 1,
+    "IMPORT": 0,
     "INDIRECT": 0,
     "MEMORY": 0,
     "TLS": 0,
     "FILESYSTEM": 0,
-    "TIMING": 0,
+    "TIMING": 1,
     "EXTERNAL": 0,
     "PROTECTED": 0,
     "CLEAN_RETURN": 7
@@ -32,28 +32,26 @@
     "REQUIRED_STATE:UNKNOWN_OBJECT",
     2
   ],
-  "getpriorityclass_cleared": true,
-  "createsemaphorea_cleared": true,
-  "latest_real_runtime_boundary": "GetCurrentThread",
+  "getcurrentthread_cleared": true,
+  "setpriorityclass_cleared": true,
+  "getthreadpriority_cleared": true,
+  "setthreadpriority_cleared": true,
+  "latest_real_runtime_boundary": "QueryPerformanceCounter",
+  "static_import_frequency_vs_execution": {
+    "note": "Affinity and wait APIs appear in IAT but are not constructor blockers.",
+    "execution_blocker": "QueryPerformanceCounter"
+  },
   "next_genuine_blockers": [
     "BLOCKED_CRT_INITIALIZATION",
-    "GetCurrentThread"
+    "QueryPerformanceCounter"
   ],
   "crt_atexit": {
     "roots": [
       "0x00B52140",
       "0x00B57CF0"
     ],
-    "sequence": "static init \u2192 0x00977E20 (ICS) \u2192 0x0087B640(callback) \u2192 0x0087B59B \u2192 SEH frame 0x0087BEB8",
-    "fault": "null / unmapped guest access after CRT helper entry",
-    "globals_touched": [
-      "0x018B1E6C",
-      "0x018B1E68",
-      "IAT 0x00B61398",
-      "IAT 0x00B61394"
-    ],
     "classification": "BLOCKED_CRT_INITIALIZATION",
-    "reason": "CRT atexit/registration path requires initialized CRT lock/heap state and import helpers; PE-zero BSS / unbound CRT IATs are not a defensible ordinary init substitute. NULL callback is not invoked.",
-    "implementation_attempted": false
+    "implementation_attempted": false,
+    "reason": "CRT atexit/registration path requires initialized CRT lock/heap state; unchanged from Phase 33. Not the highest-leverage blocker this campaign."
   }
 }

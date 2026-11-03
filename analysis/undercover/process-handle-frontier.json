@@ -1,74 +1,12 @@
 {
-  "phase": 33,
-  "model": "ONE_LOGICAL_GUEST_PROCESS",
+  "phase": 34,
+  "superseded_by": "process-thread-frontier.json",
+  "model": "ONE_LOGICAL_GUEST_PROCESS / ONE_ACTIVE_GUEST_THREAD",
   "pseudo_handle": "0xFFFFFFFF",
   "priority_class_initial": "NORMAL_PRIORITY_CLASS (0x20)",
-  "priority_class_mutable": false,
+  "priority_class_mutable": true,
   "GetPriorityClass": {
-    "slot": "0x00B610E4",
-    "dll": "KERNEL32.dll",
-    "symbol": "GetPriorityClass",
-    "hint": 405,
-    "unbound_name_rva": "0x008AB43A",
-    "classification": "STANDARD_WIN32_IMPORT",
-    "abi": "stdcall",
-    "stack_dwords": 1,
-    "return": "DWORD",
-    "abi_confidence": "PROVEN",
-    "call_site_count": 1,
-    "high_caller_count": 1,
-    "high_callers": [
-      "0x0097F790"
-    ],
-    "call_sites": [
-      "0x0097F7A9"
-    ],
-    "implemented": true,
-    "reached": true,
-    "hle": "UC_HLE_GETPRIORITYCLASS",
-    "consumer": "0x0097F790",
-    "shape": [
-      "0097F790: push ebp",
-      "0097F791: mov ebp, esp",
-      "0097F793: and esp, 0xfffffff8",
-      "0097F796: sub esp, 0x54",
-      "0097F799: push ebx",
-      "0097F79A: push esi",
-      "0097F79B: push edi",
-      "0097F79C: call dword ptr [0xb611ac]",
-      "0097F7A2: mov edi, eax",
-      "0097F7A4: push edi",
-      "0097F7A5: mov dword ptr [esp + 0x1c], edi",
-      "0097F7A9: call dword ptr [0xb610e4]",
-      "0097F7AF: mov dword ptr [esp + 0x1c], eax",
-      "0097F7B3: call dword ptr [0xb611dc]",
-      "0097F7B9: mov esi, eax",
-      "0097F7BB: push esi",
-      "0097F7BC: mov dword ptr [esp + 0x28], esi",
-      "0097F7C0: call dword ptr [0xb61184]",
-      "0097F7C6: push 0x100",
-      "0097F7CB: push edi",
-      "0097F7CC: mov dword ptr [esp + 0x28], eax",
-      "0097F7D0: call dword ptr [0xb610e8]",
-      "0097F7D6: push 0xf",
-      "0097F7D8: push esi",
-      "0097F7D9: call dword ptr [0xb61180]"
-    ],
-    "argument": "EDI = GetCurrentProcess() result (pseudo-handle 0xFFFFFFFF)",
-    "return_usage": "Stored to local [esp+0x1c]; not used to choose SetPriorityClass argument. SetPriorityClass later uses constant 0x100 (HIGH_PRIORITY_CLASS). Saved class is restored via SetPriorityClass near function epilogue.",
-    "follow_on_imports": [
-      "GetCurrentThread",
-      "GetThreadPriority",
-      "SetPriorityClass",
-      "SetThreadPriority",
-      "QueryPerformanceCounter",
-      "QueryPerformanceFrequency"
-    ],
-    "guest_priority_policy": {
-      "initial": "NORMAL_PRIORITY_CLASS (0x20)",
-      "mutable": false,
-      "note": "SetPriorityClass not implemented; priority class is immutable"
-    }
+    "implemented": true
   },
   "SetPriorityClass": {
     "slot": "0x00B610E8",
@@ -90,10 +28,12 @@
       "0x0097F7D0",
       "0x0097F9BA"
     ],
-    "implemented": false,
-    "reached_phase33": false,
-    "inventoried": true,
-    "note": "Reached only after GetCurrentThread on ctor path"
+    "implemented": true,
+    "reached": true,
+    "hle": "UC_HLE_SETPRIORITYCLASS",
+    "observed_class": "0x100 REALTIME_PRIORITY_CLASS",
+    "realtime_host_policy": "guest state only; host scheduling unchanged",
+    "real_reached_caller": "0x0097F790"
   },
   "GetCurrentThread": {
     "slot": "0x00B611DC",
@@ -104,7 +44,7 @@
     "classification": "STANDARD_WIN32_IMPORT",
     "abi": "stdcall",
     "stack_dwords": 0,
-    "return": "HANDLE pseudo -2",
+    "return": "HANDLE pseudo 0xFFFFFFFE",
     "abi_confidence": "PROVEN",
     "call_site_count": 7,
     "high_caller_count": 7,
@@ -126,9 +66,14 @@
       "0x0097F7B3",
       "0x00A07AFA"
     ],
-    "implemented": false,
-    "reached_phase33": true,
-    "note": "Current constructor next blocker; pseudo-handle -2 not implemented this phase"
-  },
-  "last_error_modeled": false
+    "implemented": true,
+    "reached": true,
+    "hle": "UC_HLE_GETCURRENTTHREAD",
+    "hle_justified": true,
+    "pseudo_handle": "0xFFFFFFFE",
+    "not_thread_id": true,
+    "not_host_handle": true,
+    "real_reached_caller": "0x0097F790",
+    "tests": "uc_phase34_test.py"
+  }
 }
