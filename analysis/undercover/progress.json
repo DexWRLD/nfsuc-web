@@ -1,8 +1,8 @@
 {
   "project": {
     "name": "nfsuc-web",
-    "current_phase": 35,
-    "strategy": "Phase 35: deterministic guest QPC/QPF; ctor \u2192 alertable SleepEx. Graphics frozen."
+    "current_phase": 36,
+    "strategy": "Phase 36: SleepEx timeout-only; ctor \u2192 jump-table INDIRECT in 0x97F9E0. Graphics frozen."
   },
   "discovery": {
     "candidates": 25450,
@@ -62,18 +62,18 @@
     "COMPILED": 22770,
     "STATIC_READY": 20762,
     "IMPORT_READY": 737,
-    "RUNTIME_READY": 71,
+    "RUNTIME_READY": 72,
     "ENTERABLE": 21,
-    "EXECUTED": 44,
-    "UNIQUE": 44,
-    "EXECUTION_RUNS": 71,
+    "EXECUTED": 48,
+    "UNIQUE": 48,
+    "EXECUTION_RUNS": 83,
     "CLEAN_ORDINARY_ROOTS": 12,
     "EXECUTED_ORDINARY_CONSTRUCTORS": 9,
     "DEEPEST": 4,
-    "LARGEST_CLOSURE": 11,
+    "LARGEST_CLOSURE": 15,
     "ENTERABLE_WITH_DEPTH_4_POTENTIAL": 0,
-    "PROVEN_DEPTH_4_ROOTS": 3,
-    "LATEST_REAL_RUNTIME_BOUNDARY": "SleepEx",
+    "PROVEN_DEPTH_4_ROOTS": 4,
+    "LATEST_REAL_RUNTIME_BOUNDARY": "BLOCKED_INDIRECT",
     "MOST_COMMON_REAL_BLOCKER": [
       "REQUIRED_STATE:UNKNOWN_OBJECT",
       2
@@ -81,7 +81,7 @@
   },
   "top_ordinary_island": {},
   "campaign_summary": {
-    "phase35_attempted": 12,
+    "phase36_attempted": 12,
     "outcomes": {
       "EXECUTED_TO_NEXT_BLOCKER": 1,
       "EXECUTED_CHAIN": 7,
@@ -91,12 +91,12 @@
     "real_blocker_histogram": {
       "REQUIRED_STATE": 4,
       "IMPORT": 0,
-      "INDIRECT": 0,
+      "INDIRECT": 1,
       "MEMORY": 0,
       "TLS": 0,
       "FILESYSTEM": 0,
       "TIMING": 0,
-      "ALERTABLE_WAIT": 1,
+      "ALERTABLE_WAIT": 0,
       "EXTERNAL": 0,
       "PROTECTED": 0,
       "CLEAN_RETURN": 7
@@ -116,21 +116,21 @@
       2
     ],
     "deepest_chain": 4,
-    "largest_executed_closure": 11,
+    "largest_executed_closure": 15,
     "clean_ordinary_roots": 12,
     "executed_ordinary_constructors": 9,
-    "qpc_implemented": true,
-    "qpf_implemented": true,
-    "sleepex_implemented": false,
+    "sleepex_implemented": true,
+    "apc_delivery": false,
     "ctor_status": {
-      "before": "EXECUTED_TO_NEXT_BLOCKER / QueryPerformanceCounter",
+      "before": "EXECUTED_TO_NEXT_BLOCKER / SleepEx BLOCKED_ALERTABLE_WAIT",
       "after": "EXECUTED_TO_NEXT_BLOCKER",
-      "after_blocker": "SleepEx",
-      "blocker_result": "BLOCKED_ALERTABLE_WAIT",
+      "after_blocker": "switch/jump-table or unresolved ordinary target 0x0097FA08",
+      "blocker_result": "BLOCKED_INDIRECT",
       "returned_clean": false,
-      "qpc_calls": 6,
-      "qpf_calls": 1,
-      "qpc_ticks_observed": 0,
+      "sleepex_calls": 5,
+      "sleepex_done": 5,
+      "qpc_ticks_after": 2500000,
+      "virtual_ms_elapsed": 25,
       "entered": [
         "0x009E9160",
         "0x009E7710",
@@ -142,16 +142,24 @@
         "0x009EB980",
         "0x00978720",
         "0x0097FCD0",
-        "0x0097F790"
+        "0x0097F790",
+        "0x0087B4F6",
+        "0x0097FAE0",
+        "0x0087B880",
+        "0x0097F9E0"
       ],
-      "depth": 3,
-      "closure": 11
+      "depth": 4,
+      "closure": 15,
+      "new_ordinary_after_sleep": [
+        "0x0087B4F6",
+        "0x0097FAE0",
+        "0x0087B880",
+        "0x0097F9E0"
+      ]
     },
     "semaphore_path_status": {
-      "before": "EXECUTED_CHAIN clean depth 4",
-      "after": "EXECUTED_CHAIN",
-      "returned_clean": true,
-      "sem_calls": 4,
+      "result": "EXECUTED_CHAIN",
+      "clean": true,
       "depth": 4
     },
     "ebc70_status": {
@@ -164,12 +172,9 @@
         "0x00B57CF0"
       ],
       "classification": "BLOCKED_CRT_INITIALIZATION",
-      "implementation_attempted": false,
-      "reason": "Unchanged; not the highest-leverage blocker this campaign."
+      "implementation_attempted": false
     },
     "timing_loop_encountered": false,
-    "instruction_budget_exhaustion": false,
-    "alertable_wait_reached": true,
     "scheduler": false,
     "tlsgetvalue_reached": false,
     "tlsfree_reached": false,
@@ -1627,7 +1632,7 @@
     }
   },
   "timing_frontier": {
-    "phase": 35,
+    "phase": 36,
     "architecture": "DETERMINISTIC_GUEST_MONOTONIC_PERFORMANCE_CLOCK",
     "frequency_hz": 10000000,
     "initial_counter": 0,
@@ -1826,7 +1831,7 @@
       "symbol": "SleepEx",
       "hint": 855,
       "unbound_name_rva": "0x008AB180",
-      "classification": "BLOCKED_ALERTABLE_WAIT",
+      "classification": "IMPLEMENTED_TIMEOUT_ONLY",
       "abi": "stdcall",
       "stack_dwords": 2,
       "return": "DWORD",
@@ -1849,13 +1854,49 @@
         "0x0097789A",
         "0x0097F8D6"
       ],
-      "implemented": false,
+      "implemented": true,
       "legitimately_reached": true,
       "observed_args": {
         "dwMilliseconds": 50,
         "bAlertable": 1
       },
-      "reason": "Alertable SleepEx requires APC delivery / wait completion semantics absent from the single-guest-thread model. Do not fake alertable success."
+      "reason": "Alertable SleepEx requires APC delivery / wait completion semantics absent from the single-guest-thread model. Do not fake alertable success.",
+      "ordinary_caller": "0x0097F790",
+      "instruction": "0x0097F8D6",
+      "args": {
+        "dwMilliseconds": 50,
+        "bAlertable": 1
+      },
+      "arg_provenance": "immediate push 1; push 0x32",
+      "return_usage": "IGNORED \u2014 next insn lea ecx,[esp+0x10]; call QPC",
+      "post_sleep_loop": "je 0x97F8D0 retries SleepEx until calibration threshold 0.25",
+      "shape": [
+        "0097F8D0: fstp st(0)",
+        "0097F8D2: push 1",
+        "0097F8D4: push 0x32",
+        "0097F8D6: call dword ptr [0xb61188]",
+        "0097F8DC: lea ecx, [esp + 0x10]",
+        "0097F8E0: push ecx",
+        "0097F8E1: call ebx",
+        "0097F8E3: rdtsc ",
+        "0097F8E5: mov edi, dword ptr [esp + 0x10]",
+        "0097F8E9: sub edi, dword ptr [esp + 0x28]",
+        "0097F8ED: mov ecx, eax"
+      ],
+      "reached": true,
+      "hle": "UC_HLE_SLEEPEX",
+      "hle_justified": true,
+      "timeout_only_eligible": true,
+      "supported_finite_non_alertable": true,
+      "supported_finite_alertable_timeout": true,
+      "apc_delivery": false,
+      "zero_timeout": "immediate complete; no invented elapsed time",
+      "infinite_timeout": "rejected (*ok=0) \u2014 BLOCKED_INFINITE_WAIT class",
+      "pending_apc_guard": "uc_wait_set_pending_apc(1) refuses timeout-only path",
+      "return_on_timeout": 0,
+      "never_returns_WAIT_IO_COMPLETION_without_callback": true,
+      "virtual_advance_per_50ms": "500,000 QPC ticks / 50,000,000 ns",
+      "tests": "uc_phase36_test.py"
     },
     "GetTickCount": {
       "slot": "0x00B611D0",
@@ -1914,6 +1955,111 @@
       "classification": "BLOCKED_CRT_INITIALIZATION",
       "implementation_attempted": false,
       "reason": "Unchanged; not the highest-leverage blocker this campaign."
+    },
+    "wait_frontier": "wait-frontier.json"
+  },
+  "wait_frontier": {
+    "phase": 36,
+    "SleepEx": {
+      "slot": "0x00B61188",
+      "dll": "KERNEL32.dll",
+      "symbol": "SleepEx",
+      "hint": 855,
+      "unbound_name_rva": "0x008AB180",
+      "classification": "STANDARD_WIN32_IMPORT",
+      "abi": "stdcall",
+      "stack_dwords": 2,
+      "return": "DWORD",
+      "abi_confidence": "PROVEN",
+      "call_site_count": 6,
+      "high_caller_count": 6,
+      "high_callers": [
+        "0x0087C6A2",
+        "0x0087C6B2",
+        "0x0087C859",
+        "0x009773B0",
+        "0x00977870",
+        "0x0097F790"
+      ],
+      "call_sites": [
+        "0x0087C6AA",
+        "0x0087C6D2",
+        "0x0087C8B9",
+        "0x009773B9",
+        "0x0097789A",
+        "0x0097F8D6"
+      ],
+      "ordinary_caller": "0x0097F790",
+      "instruction": "0x0097F8D6",
+      "args": {
+        "dwMilliseconds": 50,
+        "bAlertable": 1
+      },
+      "arg_provenance": "immediate push 1; push 0x32",
+      "return_usage": "IGNORED \u2014 next insn lea ecx,[esp+0x10]; call QPC",
+      "post_sleep_loop": "je 0x97F8D0 retries SleepEx until calibration threshold 0.25",
+      "shape": [
+        "0097F8D0: fstp st(0)",
+        "0097F8D2: push 1",
+        "0097F8D4: push 0x32",
+        "0097F8D6: call dword ptr [0xb61188]",
+        "0097F8DC: lea ecx, [esp + 0x10]",
+        "0097F8E0: push ecx",
+        "0097F8E1: call ebx",
+        "0097F8E3: rdtsc ",
+        "0097F8E5: mov edi, dword ptr [esp + 0x10]",
+        "0097F8E9: sub edi, dword ptr [esp + 0x28]",
+        "0097F8ED: mov ecx, eax"
+      ],
+      "implemented": true,
+      "reached": true,
+      "hle": "UC_HLE_SLEEPEX",
+      "hle_justified": true,
+      "timeout_only_eligible": true,
+      "supported_finite_non_alertable": true,
+      "supported_finite_alertable_timeout": true,
+      "apc_delivery": false,
+      "zero_timeout": "immediate complete; no invented elapsed time",
+      "infinite_timeout": "rejected (*ok=0) \u2014 BLOCKED_INFINITE_WAIT class",
+      "pending_apc_guard": "uc_wait_set_pending_apc(1) refuses timeout-only path",
+      "return_on_timeout": 0,
+      "never_returns_WAIT_IO_COMPLETION_without_callback": true,
+      "virtual_advance_per_50ms": "500,000 QPC ticks / 50,000,000 ns",
+      "tests": "uc_phase36_test.py"
+    },
+    "apc_provenance": {
+      "imported": {
+        "CreateWaitableTimerA": "0x00B61194",
+        "SetWaitableTimer": "0x00B6119C"
+      },
+      "in_ctor_closure": {},
+      "QueueUserAPC": "NOT_IMPORTED",
+      "ReadFileEx": "NOT_IMPORTED",
+      "WriteFileEx": "NOT_IMPORTED",
+      "SetWaitableTimer_on_ctor_path": false,
+      "CreateWaitableTimerA_on_ctor_path": false,
+      "pending_apc_classification": "PROVEN_NO_PENDING_APC_IN_SUPPORTED_MODEL",
+      "note": "SetWaitableTimer/CreateWaitableTimerA are imported but not called on the ordinary constructor closure path that reaches SleepEx. No APC queue exists in the guest runtime. Guest APC pending flag defaults false."
+    },
+    "guest_wait_model": {
+      "representation": "last-wait descriptor: ms, alertable, start_ticks, deadline_ticks; completion counter; pending-APC flag",
+      "threads": 1,
+      "scheduler": "NONE",
+      "advancement": "synchronous HLE advances guest clock to deadline (harness-controlled)",
+      "not": [
+        "CreateThread",
+        "APC delivery",
+        "kernel wait queues",
+        "Web Workers"
+      ]
+    },
+    "crt_atexit": {
+      "roots": [
+        "0x00B52140",
+        "0x00B57CF0"
+      ],
+      "classification": "BLOCKED_CRT_INITIALIZATION",
+      "implementation_attempted": false
     }
   },
   "initialization": [
@@ -2217,6 +2363,11 @@
     {
       "phase": 35,
       "name": "Deterministic guest QPC/QPF clock",
+      "state": "completed"
+    },
+    {
+      "phase": 36,
+      "name": "Deterministic SleepEx timeout",
       "state": "completed"
     }
   ],
