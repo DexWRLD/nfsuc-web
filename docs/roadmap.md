@@ -35,6 +35,7 @@ The order from here:
 13. Prefer ordinary CPU/runtime islands / Present-only host harness. Do not implement D3D9 Draw adapter for opaque submit. Do not invent SecuROM callbacks.
 14. Phase 43: Nov 2026 Ghidra graphics evidence integrated as **synthetic** ordinary models (clamp `0x0071D7E0`, AA probe/fallback correction, mode selection, presentation builder, ownership fixtures). Guest RUNTIME_READY/ENTERABLE unchanged. **FIRST_FRAME** still **BLOCKED_BY_PROTECTED_BACKEND**. D3D9 / engine backend **NOT JUSTIFIED**.
 15. Phase 44: all **74** `BLOCKED_EXTERNAL` cells attributed to allocator `0x00686000` (62 direct / 12 transitive). Callback registration edges for `0x0072B170` / `0x00766730` recorded without execution. No ENTERABLE/RUNTIME_READY inflation. **FIRST_FRAME** unchanged.
+16. Phase 45: helper-cut reconciled (MUST=74≡BLOCKED_EXTERNAL; Phase-14 MUST=11 was an earlier population). Guest harness executed **8** allocator-independent matrix/math leaves (`0x00A12xxx` island) + stateful chain. UNIQUE 67→75, ENTERABLE 33→41. Allocator/backends still opaque. **FIRST_FRAME** unchanged.
 
 The strategy is ordinary static recompilation, then ordinary runtime islands, then this dependency cut, then independent subsystem frontiers, then a first-frame path if one is available.
 
