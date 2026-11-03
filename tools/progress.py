@@ -1017,6 +1017,22 @@ def _graphics_config_synthetic_badge(model):
     return "NOT INTEGRATED"
 
 
+def _first_frame_readiness_badge(model):
+    path = os.path.join(ANALYSIS, "first-frame-readiness.json")
+    if not os.path.isfile(path):
+        return "UNMEASURED"
+    try:
+        ready = json.load(open(path, encoding="utf-8"))
+    except Exception:
+        return "UNMEASURED"
+    flags = ready.get("dashboard_flags") or {}
+    if flags.get("authentic_first_frame_blocked"):
+        clear = "CLEAR-ONLY" if flags.get("clear_only_presentation_path_identified") else "?"
+        opaque = "DRAW-OPAQUE" if flags.get("draw_handoff_remains_opaque") else "?"
+        return "BLOCKED %s %s" % (clear, opaque)
+    return str(ready.get("status") or "UNKNOWN")[:40]
+
+
 def _blocked_external_attribution_badge(model):
     try:
         raw = json.load(open(os.path.join(ANALYSIS, "runtime-frontier.json"), encoding="utf-8"))
@@ -1413,6 +1429,7 @@ def render_svg(model, detailed=False):
         ("GAME TARGET PROVENANCE", _target_provenance_badge(model)),
         ("GRAPHICS CONFIG SYNTHETIC", _graphics_config_synthetic_badge(model)),
         ("BLOCKED_EXTERNAL ATTR", _blocked_external_attribution_badge(model)),
+        ("FIRST-FRAME READINESS", _first_frame_readiness_badge(model)),
     ]
     parts = []
     y = badge_row(parts, badges, 14)
@@ -1562,6 +1579,7 @@ th { color: #8b949e; font-weight: 600; }
 <p>Active objective: %s</p>
 <p>%s</p>
 <p>First-frame estimate: frozen — <code>FIRST_FRAME_PATH_BLOCKED_BY_PROTECTED_BACKEND</code>. Former estimate (%s / %s–%s) is historical only. %s</p>
+<p>First-frame readiness: <code>%s</code> (clear-only Present identified; draw handoff opaque; browser GPU unverified; authentic frame blocked). See <code>first-frame-readiness.json</code>.</p>
 <p>Recorded runs with no function-map cell: %s. Other entered functions whose tests do not record an address stay UNKNOWN.</p>
 <h2>Phases</h2>
 <p>%s</p>
@@ -1699,6 +1717,7 @@ document.querySelectorAll("rect[data-addr]").forEach(function (node) {
         estimate["likely_low"],
         estimate["likely_high"],
         html.escape(estimate["uncertainty"]),
+        html.escape(_first_frame_readiness_badge(model)),
         html.escape(", ".join(model["runtime"]["recorded_without_map_cell"]) or "none"),
         phase_pills,
         html_table(("Milestone", "State"), mile_rows),
@@ -1839,6 +1858,7 @@ def render_png(model):
         ("GAME TARGET PROVENANCE", _target_provenance_badge(model)),
         ("GRAPHICS CONFIG SYNTHETIC", _graphics_config_synthetic_badge(model)),
         ("BLOCKED_EXTERNAL ATTR", _blocked_external_attribution_badge(model)),
+        ("FIRST-FRAME READINESS", _first_frame_readiness_badge(model)),
     ]
 
     # Measure height with the same geometry as the SVG.
