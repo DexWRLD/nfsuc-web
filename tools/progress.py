@@ -20,6 +20,57 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 ANALYSIS = os.path.join(ROOT, "analysis", "undercover")
 PROTECTED = ("Stext", "Sitext", "Srdata", "Sdata", "Sidata", ".securom")
 
+
+def load_angr_cached():
+    """Read cached angr oracle metadata. Never runs angr."""
+    path = os.path.join(ANALYSIS, "angr", "summary.json")
+    gfx_path = os.path.join(ANALYSIS, "angr", "graphics-phase21.json")
+    out = {
+        "status": "NOT RUN",
+        "version": None,
+        "present_control": "NOT RUN",
+        "clear_control": "NOT RUN",
+        "overlap": None,
+        "boundary_disagreements": None,
+        "device_to_renderer": None,
+        "draw_consensus": None,
+    }
+    if os.path.isfile(path):
+        try:
+            s = json.load(open(path, encoding="utf-8"))
+            if s.get("angr_available") and s.get("cfg_ok"):
+                out["status"] = "AVAILABLE"
+            elif s.get("angr_available"):
+                out["status"] = "AVAILABLE"
+            else:
+                out["status"] = "NOT RUN"
+            out["version"] = s.get("angr_version")
+            pc = s.get("present_control") or ""
+            cc = s.get("clear_control") or ""
+            out["present_control"] = pc.replace("ANGR_PRESENT_CONTROL_", "") or "NOT RUN"
+            out["clear_control"] = cc.replace("ANGR_CLEAR_CONTROL_", "") or "NOT RUN"
+        except Exception:
+            pass
+    if os.path.isfile(gfx_path):
+        try:
+            g = json.load(open(gfx_path, encoding="utf-8"))
+            dash = g.get("dashboard") or {}
+            out["device_to_renderer"] = dash.get("DEVICE_TO_RENDERER") or (g.get("relationship") or {}).get("CONSENSUS")
+            out["draw_consensus"] = dash.get("DRAW_CONSENSUS")
+            out["boundary_disagreements"] = dash.get("BOUNDARY_DISAGREEMENTS")
+            out["overlap"] = dash.get("FUNCTION_OVERLAP")
+            if dash.get("ANGR"):
+                out["status"] = dash.get("ANGR")
+            if dash.get("PRESENT_CONTROL"):
+                out["present_control"] = dash.get("PRESENT_CONTROL")
+            if dash.get("CLEAR_CONTROL"):
+                out["clear_control"] = dash.get("CLEAR_CONTROL")
+            if dash.get("ANGR_VERSION"):
+                out["version"] = dash.get("ANGR_VERSION")
+        except Exception:
+            pass
+    return out
+
 TRANSLATION_COLOR = {
     "COMPILED": "#3fb950",
     "GENERATED_NOT_COMPILED": "#d29922",
@@ -543,6 +594,8 @@ def render_svg(model, detailed=False):
     first_clear = gfx.get("first_clear") or "UNKNOWN"
     first_draw = gfx.get("first_draw") or "UNKNOWN"
     first_present = gfx.get("first_present") or "UNKNOWN"
+    angr_meta = load_angr_cached()
+    angr_badge = angr_meta.get("status") or gfx.get("angr") or "NOT RUN"
     badges = [
         ("Functions compiled", "%d/%d" % (trans["compiled"], trans["attempted"])),
         ("Compiler failures", str(trans["compiler_failures"])),
@@ -567,6 +620,11 @@ def render_svg(model, detailed=False):
         ("FIRST CLEAR", first_clear),
         ("FIRST DRAW", first_draw),
         ("FIRST PRESENT", first_present),
+        ("ANGR", angr_badge),
+        ("ANGR PRESENT CONTROL", angr_meta.get("present_control") or gfx.get("angr_present_control") or "NOT RUN"),
+        ("ANGR CLEAR CONTROL", angr_meta.get("clear_control") or gfx.get("angr_clear_control") or "NOT RUN"),
+        ("DEVICE→RENDERER", gfx.get("device_to_renderer") or "UNKNOWN"),
+        ("DRAW CONSENSUS", gfx.get("draw_consensus") or "UNKNOWN"),
         ("STATIC FACTORY", static_factory),
         ("FACTORY FRONTIER READY", frontier_ready),
         ("DIRECT3D9 IMPLEMENTED", d3d_impl),
@@ -615,6 +673,7 @@ def render_html(model, svg):
     estimate = model["first_frame_estimate"]
     cut = model["helper_cut"]
     disc = model.get("discovery") or {}
+    angr_meta = load_angr_cached()
     boundary = model["boundaries"]["0x00686000"]
     unknown_b = model["boundaries"]["0x0055FF30"]
     init_rows = []
@@ -677,6 +736,8 @@ th { color: #8b949e; font-weight: 600; }
 <p>PRESENT CODE: %s. PRESENT RUNTIME: %s. DRAW CODE: %s. RESET/RECOVERY: %s.</p>
 <p>POST-INIT SEAM: %s. D3D9 IMPLEMENTATION: %s. POST-INIT GRAPHICS FRONTIER: %s.</p>
 <p>FIRST CLEAR: %s. FIRST DRAW: %s. FIRST PRESENT: %s.</p>
+<p>ANGR: %s. ANGR VERSION: %s. PRESENT CONTROL: %s. CLEAR CONTROL: %s.</p>
+<p>DEVICE→RENDERER: %s. DRAW CONSENSUS: %s. Boundary disagreements (cached): %s.</p>
 <p>STATIC FACTORY: %s. FACTORY FRONTIER READY: %s. DIRECT3D9 IMPLEMENTED: %s.</p>
 <p>Independent of <code>0x00686000</code>: %s. Discovery-enrolled on HIGH graph: %s. Runtime enterable now: %s. Call <code>%s</code> in <code>%s</code> (%s).</p>
 <p>Active objective: %s</p>
@@ -743,6 +804,13 @@ document.querySelectorAll("rect[data-addr]").forEach(function (node) {
         html.escape(graphics.get("first_clear") or "UNKNOWN"),
         html.escape(graphics.get("first_draw") or "UNKNOWN"),
         html.escape(graphics.get("first_present") or "UNKNOWN"),
+        html.escape(angr_meta.get("status") or graphics.get("angr") or "NOT RUN"),
+        html.escape(str(angr_meta.get("version") or graphics.get("angr_version") or "n/a")),
+        html.escape(str(angr_meta.get("present_control") or graphics.get("angr_present_control") or "NOT RUN")),
+        html.escape(str(angr_meta.get("clear_control") or graphics.get("angr_clear_control") or "NOT RUN")),
+        html.escape(str(angr_meta.get("device_to_renderer") or graphics.get("device_to_renderer") or "UNKNOWN")),
+        html.escape(str(angr_meta.get("draw_consensus") or graphics.get("draw_consensus") or "UNKNOWN")),
+        html.escape(str(angr_meta.get("boundary_disagreements") if angr_meta.get("boundary_disagreements") is not None else "n/a")),
         html.escape(graphics.get("static_factory_frontier") or graphics.get("frontier") or "UNKNOWN"),
         "YES" if graphics.get("factory_frontier_ready") else "NO",
         "YES" if graphics.get("direct3d9_implemented") else "NO",
@@ -815,6 +883,8 @@ def render_png(model):
     first_clear = gfx.get("first_clear") or "UNKNOWN"
     first_draw = gfx.get("first_draw") or "UNKNOWN"
     first_present = gfx.get("first_present") or "UNKNOWN"
+    angr_meta = load_angr_cached()
+    angr_badge = angr_meta.get("status") or gfx.get("angr") or "NOT RUN"
     badges = [
         ("Functions compiled", "%d/%d" % (trans["compiled"], trans["attempted"])),
         ("Compiler failures", str(trans["compiler_failures"])),
@@ -839,6 +909,11 @@ def render_png(model):
         ("FIRST CLEAR", first_clear),
         ("FIRST DRAW", first_draw),
         ("FIRST PRESENT", first_present),
+        ("ANGR", angr_badge),
+        ("ANGR PRESENT CONTROL", angr_meta.get("present_control") or gfx.get("angr_present_control") or "NOT RUN"),
+        ("ANGR CLEAR CONTROL", angr_meta.get("clear_control") or gfx.get("angr_clear_control") or "NOT RUN"),
+        ("DEVICE→RENDERER", gfx.get("device_to_renderer") or "UNKNOWN"),
+        ("DRAW CONSENSUS", gfx.get("draw_consensus") or "UNKNOWN"),
         ("STATIC FACTORY", static_factory),
         ("FACTORY FRONTIER READY", frontier_ready),
         ("DIRECT3D9 IMPLEMENTED", d3d_impl),
