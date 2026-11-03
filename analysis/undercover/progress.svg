@@ -8,7 +8,7 @@
 <rect x="400" y="14" width="148" height="22" rx="4" fill="#161b22" stroke="#30363d"/>
 <text x="408" y="29" fill="#e6edf3" font-size="11" font-family="Segoe UI, sans-serif">Recorded entries  18</text>
 <rect x="556" y="14" width="75" height="22" rx="4" fill="#161b22" stroke="#30363d"/>
-<text x="564" y="29" fill="#e6edf3" font-size="11" font-family="Segoe UI, sans-serif">Phase  38</text>
+<text x="564" y="29" fill="#e6edf3" font-size="11" font-family="Segoe UI, sans-serif">Phase  39</text>
 <rect x="639" y="14" width="207" height="22" rx="4" fill="#161b22" stroke="#30363d"/>
 <text x="647" y="29" fill="#e6edf3" font-size="11" font-family="Segoe UI, sans-serif">External boundary  0x00686000</text>
 <rect x="16" y="42" width="339" height="22" rx="4" fill="#161b22" stroke="#30363d"/>
@@ -124,11 +124,11 @@
 <rect x="16" y="406" width="273" height="22" rx="4" fill="#161b22" stroke="#30363d"/>
 <text x="24" y="421" fill="#e6edf3" font-size="11" font-family="Segoe UI, sans-serif">Runtime factory frontier  NOT ENTERABLE</text>
 <rect x="297" y="406" width="365" height="22" rx="4" fill="#161b22" stroke="#30363d"/>
-<text x="305" y="421" fill="#e6edf3" font-size="11" font-family="Segoe UI, sans-serif">ORDINARY RUNTIME FRONTIER  H22779 C22770 I737 R72 E53</text>
+<text x="305" y="421" fill="#e6edf3" font-size="11" font-family="Segoe UI, sans-serif">ORDINARY RUNTIME FRONTIER  H22779 C22770 I737 R72 E56</text>
 <rect x="670" y="406" width="220" height="22" rx="4" fill="#161b22" stroke="#30363d"/>
 <text x="678" y="421" fill="#e6edf3" font-size="11" font-family="Segoe UI, sans-serif">TOP ORDINARY ISLAND  UNMEASURED</text>
 <rect x="16" y="434" width="715" height="22" rx="4" fill="#161b22" stroke="#30363d"/>
-<text x="24" y="449" fill="#e6edf3" font-size="11" font-family="Segoe UI, sans-serif">REAL UC EXECUTION  enter=25 uniq=53 clean=13 ctors=9 deep=4 clos=18 d4=? blk=REQUIRED_STATE:UNKNOWN_OBJECT</text>
+<text x="24" y="449" fill="#e6edf3" font-size="11" font-family="Segoe UI, sans-serif">REAL UC EXECUTION  enter=29 uniq=56 clean=13 ctors=9 deep=4 clos=18 d4=? blk=REQUIRED_STATE:UNKNOWN_OBJECT</text>
 <rect x="16" y="462" width="372" height="22" rx="4" fill="#161b22" stroke="#30363d"/>
 <text x="24" y="477" fill="#e6edf3" font-size="11" font-family="Segoe UI, sans-serif">ORDINARY INITIALIZATION  rec=? ext=? prot=? unk=? d3=?</text>
 <rect x="396" y="462" width="148" height="22" rx="4" fill="#161b22" stroke="#30363d"/>
@@ -147,8 +147,10 @@
 <text x="503" y="589" fill="#e6edf3" font-size="11" font-family="Segoe UI, sans-serif">GUEST WAITS  SleepEx=IMPL finite=YES alertableTO=YES APC=NO thr=1 sched=NONE</text>
 <rect x="16" y="602" width="339" height="22" rx="4" fill="#161b22" stroke="#30363d"/>
 <text x="24" y="617" fill="#e6edf3" font-size="11" font-family="Segoe UI, sans-serif">ORDINARY INDIRECT DISPATCH  0x0097F9F5 JT=ON EXEC</text>
-<rect x="363" y="602" width="352" height="22" rx="4" fill="#161b22" stroke="#30363d"/>
-<text x="371" y="617" fill="#e6edf3" font-size="11" font-family="Segoe UI, sans-serif">POST-CONSTRUCTOR EXECUTION  ctor=YES seq=6/6 cov=20</text>
+<rect x="363" y="602" width="365" height="22" rx="4" fill="#161b22" stroke="#30363d"/>
+<text x="371" y="617" fill="#e6edf3" font-size="11" font-family="Segoe UI, sans-serif">POST-CONSTRUCTOR EXECUTION  ctor=YES seq=11/12 cov=22</text>
+<rect x="736" y="602" width="286" height="22" rx="4" fill="#161b22" stroke="#30363d"/>
+<text x="744" y="617" fill="#e6edf3" font-size="11" font-family="Segoe UI, sans-serif">GLOBAL PUBLICATION  slots=2/2 enterable=1</text>
 <text x="16" y="656" fill="#e6edf3" font-size="15" font-family="Segoe UI, sans-serif">Function translation</text>
 <rect x="16" y="664" width="68" height="86" fill="#161b22" stroke="#30363d" stroke-width="1"/>
 <rect x="18" y="666" width="2" height="2" fill="#f85149" data-addr="0x00401030"><title>0x00401030 | REJECTED_DATA | UNKNOWN</title></rect>

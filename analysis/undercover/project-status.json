@@ -1,6 +1,6 @@
 {
-  "current_phase": 38,
-  "strategy": "Phase 38: post-constructor stateful sequences (ctor\u2192setter\u2192getter). Graphics frozen.",
+  "current_phase": 39,
+  "strategy": "Phase 39: object lifecycle + published global early-exit consumers. Graphics frozen.",
   "boundaries": {
     "0x00686000": {
       "status": "PROTECTED_OR_EXTERNAL_DEPENDENCY",
@@ -419,6 +419,11 @@
     {
       "phase": 38,
       "name": "Post-constructor ordinary consumers",
+      "state": "completed"
+    },
+    {
+      "phase": 39,
+      "name": "Object lifecycle and global publication consumers",
       "state": "completed"
     }
   ],
