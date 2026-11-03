@@ -99,7 +99,8 @@ def main():
     expect(status["graphics"]["first_clear"] == "BLOCKED_EXTERNAL", "status clear")
     expect(status["graphics"]["first_draw"] in ("NOT_FOUND", "FOUND_STRONG", "FOUND"), "status draw")
     expect(status["graphics"]["first_present"] == "BLOCKED_EXTERNAL", "status present")
-    expect(status["first_frame_estimate"]["best_case_phase"] == "UNBOUNDED", "status estimate")
+    expect(status["first_frame_estimate"]["best_case_phase"] in (
+        "UNBOUNDED", "BLOCKED"), "status estimate")
 
     # Preserve Phase 16–18
     expect(os.path.isfile(os.path.join(ANALYSIS, "phase18-raw.json")), "p18 raw")

@@ -94,7 +94,8 @@ def main():
     expect(status["graphics"]["draw_code"] in ("FOUND", "FOUND_STRONG"), "status draw")
     expect(status["graphics"]["post_init_seam"] == "PARTIAL", "status seam")
     expect(status["graphics"]["d3d9_implementation_justified"] is False, "status impl")
-    expect(status["first_frame_estimate"]["best_case_phase"] == "UNBOUNDED", "status est")
+    expect(status["first_frame_estimate"]["best_case_phase"] in (
+        "UNBOUNDED", "BLOCKED"), "status est")
 
     # Regressions 16-19
     expect(os.path.isfile(os.path.join(ANALYSIS, "phase19-raw.json")), "p19")

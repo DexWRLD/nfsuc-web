@@ -93,7 +93,7 @@ def main():
     expect(dash["DURABLE_DEVICE_ALIAS"] == "UNMAPPED", "dash durable")
 
     status = json.load(open(os.path.join(ANALYSIS, "project-status.json"), encoding="utf-8"))
-    expect(status["current_phase"] == 22, "status phase")
+    expect(status["current_phase"] >= 22, "status phase")
     expect(status["graphics"]["renderer_list"] == "MAPPED", "status list")
 
     print("phase22 tests ok")

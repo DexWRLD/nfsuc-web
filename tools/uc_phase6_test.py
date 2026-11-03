@@ -299,6 +299,31 @@ static void test_abi(void) {
         expect(c->eax, 0);
         expect(c->esp, 0x9a04);
     }
+    {
+        const UcImport *ncpy = uc_import_find(0x0087B6A0u);
+        if (!ncpy || ncpy->hle != UC_HLE_STRNCPY || ncpy->stack_dwords != 3) { fail++; return; }
+        /* Short source: copy + NUL pad to n. */
+        MR8(0x1800) = 0xEE; MR8(0x1801) = 0xEE; MR8(0x1802) = 0xEE; MR8(0x1803) = 0xEE;
+        MR8(0x1810) = 'h'; MR8(0x1811) = 'i'; MR8(0x1812) = 0;
+        args[0] = 0x1800; args[1] = 0x1810; args[2] = 4;
+        plant(c, 0x9c00, 0xddddddddu, args, 3);
+        expect((uint32_t)uc_import_invoke(c, ncpy, 0), 1);
+        expect(c->eax, 0x1800);
+        expect(c->esp, 0x9c04);
+        expect(MR8(0x1800), 'h');
+        expect(MR8(0x1801), 'i');
+        expect(MR8(0x1802), 0);
+        expect(MR8(0x1803), 0);
+        /* Long source truncated without forced NUL. */
+        MR8(0x1820) = 'a'; MR8(0x1821) = 'b'; MR8(0x1822) = 'c'; MR8(0x1823) = 'd'; MR8(0x1824) = 0;
+        MR8(0x1830) = 0xFF; MR8(0x1831) = 0xFF; MR8(0x1832) = 0xFF;
+        args[0] = 0x1830; args[1] = 0x1820; args[2] = 3;
+        plant(c, 0x9e00, 0xeeeeeeeeu, args, 3);
+        expect((uint32_t)uc_import_invoke(c, ncpy, 0), 1);
+        expect(MR8(0x1830), 'a');
+        expect(MR8(0x1831), 'b');
+        expect(MR8(0x1832), 'c');
+    }
 }
 static void test_leaf(void) {
     CPU cpu, *c = &cpu;
