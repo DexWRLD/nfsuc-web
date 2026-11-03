@@ -1,0 +1,116 @@
+{
+  "phase": 43,
+  "size": "0x00000084",
+  "dword_count": 33,
+  "requested_pointer_offset": "0x54",
+  "capabilities_pointer_offset": "0x50",
+  "allocator": "0x00686000",
+  "allocator_status": "OPAQUE",
+  "aa_samples": [
+    0,
+    2,
+    4,
+    8
+  ],
+  "aa_table": "0x00CE6A54",
+  "fields": {
+    "0x10": {
+      "meaning": "g_RoadReflectionEnable",
+      "confidence": "CONFIRMED"
+    },
+    "0x1C": {
+      "meaning": "g_SmokeEnable",
+      "confidence": "CONFIRMED"
+    },
+    "0x2C": {
+      "meaning": "g_WorldLodLevel",
+      "confidence": "CONFIRMED"
+    },
+    "0x34": {
+      "meaning": "g_WorldFXLevel",
+      "confidence": "CONFIRMED"
+    },
+    "0x38": {
+      "meaning": "g_CarEffects",
+      "confidence": "CONFIRMED"
+    },
+    "0x44": {
+      "meaning": "g_CarLodLevel",
+      "confidence": "CONFIRMED"
+    },
+    "0x48": {
+      "meaning": "g_FSAALevel",
+      "confidence": "CONFIRMED"
+    },
+    "0x4C": {
+      "meaning": "g_RainEnable",
+      "confidence": "CONFIRMED"
+    },
+    "0x50": {
+      "meaning": "g_TextureFiltering",
+      "confidence": "CONFIRMED"
+    },
+    "0x58": {
+      "meaning": "g_ShadowEnable",
+      "confidence": "CONFIRMED"
+    },
+    "0x60": {
+      "meaning": "g_CarDamageDetail",
+      "confidence": "CONFIRMED"
+    },
+    "0x64": {
+      "meaning": "g_ShaderDetailLevel",
+      "confidence": "CONFIRMED"
+    },
+    "0x68": {
+      "meaning": "g_AudioDetail",
+      "confidence": "CONFIRMED"
+    },
+    "0x6C": {
+      "meaning": "g_Width",
+      "confidence": "CONFIRMED"
+    },
+    "0x70": {
+      "meaning": "g_Height",
+      "confidence": "CONFIRMED"
+    },
+    "0x74": {
+      "meaning": "g_Refresh",
+      "confidence": "CONFIRMED"
+    },
+    "0x78": {
+      "meaning": "FirstTime / preset-reset trigger",
+      "confidence": "CONFIRMED"
+    },
+    "0x7C": {
+      "meaning": "g_VSyncOn",
+      "confidence": "CONFIRMED"
+    }
+  },
+  "unmapped_offsets": [
+    "0x30",
+    "0x3C",
+    "0x80"
+  ],
+  "clamp_signed": [
+    "0x00000000",
+    "0x00000004",
+    "0x00000008",
+    "0x0000000C",
+    "0x00000010",
+    "0x00000014",
+    "0x00000024",
+    "0x0000002C",
+    "0x00000048",
+    "0x00000050",
+    "0x00000058",
+    "0x00000060"
+  ],
+  "clamp_unsigned": [
+    "0x00000018",
+    "0x00000028",
+    "0x0000004C",
+    "0x00000054",
+    "0x0000001C"
+  ]
+}

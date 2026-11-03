@@ -1,0 +1,2370 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-03",
+  "target": {
+    "program": "nfs.exe",
+    "architecture": "x86:LE:32:default",
+    "image_base": "0x00400000",
+    "sha256": "6b10551649fd70fa630bd7454fd953f51555fa2dd2112faae84ac8ca97844bcd"
+  },
+  "method": "Static read-only Ghidra MCP; no execution, edits, scripts, decryption or protected implementation reconstruction.",
+  "status": "FIRST_FRAME_PATH_BLOCKED_BY_PROTECTED_BACKEND",
+  "confidence_classes": [
+    "CONFIRMED",
+    "STRONGLY_SUPPORTED",
+    "HYPOTHESIS",
+    "BLOCKED"
+  ],
+  "functions": {
+    "0x007279A0": {
+      "retrieved": true,
+      "decompilation_available": true,
+      "assembly_retrieved": true,
+      "assembly_instruction_count": 113,
+      "confidence": "CONFIRMED"
+    },
+    "0x00727B60": {
+      "retrieved": true,
+      "decompilation_available": true,
+      "assembly_retrieved": true,
+      "assembly_instruction_count": 81,
+      "confidence": "CONFIRMED"
+    },
+    "0x0071D7E0": {
+      "retrieved": true,
+      "decompilation_available": true,
+      "assembly_retrieved": true,
+      "assembly_instruction_count": 108,
+      "confidence": "CONFIRMED"
+    },
+    "0x0071DC80": {
+      "retrieved": true,
+      "decompilation_available": true,
+      "assembly_retrieved": false,
+      "assembly_instruction_count": null,
+      "confidence": "CONFIRMED"
+    },
+    "0x0071DC10": {
+      "retrieved": true,
+      "decompilation_available": true,
+      "assembly_retrieved": true,
+      "assembly_instruction_count": 56,
+      "confidence": "CONFIRMED"
+    },
+    "0x00722EC0": {
+      "retrieved": true,
+      "decompilation_available": true,
+      "assembly_retrieved": true,
+      "assembly_instruction_count": 82,
+      "confidence": "CONFIRMED"
+    },
+    "0x00725200": {
+      "retrieved": true,
+      "decompilation_available": true,
+      "assembly_retrieved": true,
+      "assembly_instruction_count": 203,
+      "confidence": "CONFIRMED"
+    },
+    "0x0071D300": {
+      "retrieved": true,
+      "decompilation_available": true,
+      "assembly_retrieved": false,
+      "assembly_instruction_count": null,
+      "confidence": "CONFIRMED"
+    },
+    "0x00723610": {
+      "retrieved": true,
+      "decompilation_available": true,
+      "assembly_retrieved": false,
+      "assembly_instruction_count": null,
+      "confidence": "CONFIRMED"
+    },
+    "0x007237B0": {
+      "retrieved": true,
+      "decompilation_available": true,
+      "assembly_retrieved": true,
+      "assembly_instruction_count": 135,
+      "confidence": "CONFIRMED"
+    },
+    "0x00729750": {
+      "retrieved": true,
+      "decompilation_available": true,
+      "assembly_retrieved": false,
+      "assembly_instruction_count": null,
+      "confidence": "CONFIRMED"
+    },
+    "0x00727C60": {
+      "retrieved": true,
+      "decompilation_available": true,
+      "assembly_retrieved": true,
+      "assembly_instruction_count": 152,
+      "confidence": "CONFIRMED"
+    },
+    "0x00724F90": {
+      "retrieved": true,
+      "decompilation_available": true,
+      "assembly_retrieved": false,
+      "assembly_instruction_count": null,
+      "confidence": "CONFIRMED"
+    },
+    "0x0072B030": {
+      "retrieved": true,
+      "decompilation_available": true,
+      "assembly_retrieved": true,
+      "assembly_instruction_count": 116,
+      "confidence": "CONFIRMED"
+    },
+    "0x00723A00": {
+      "retrieved": true,
+      "decompilation_available": true,
+      "assembly_retrieved": false,
+      "assembly_instruction_count": null,
+      "confidence": "CONFIRMED"
+    },
+    "0x00722DB0": {
+      "retrieved": true,
+      "decompilation_available": true,
+      "assembly_retrieved": true,
+      "assembly_instruction_count": 89,
+      "confidence": "CONFIRMED"
+    },
+    "0x007297D0": {
+      "retrieved": true,
+      "decompilation_available": true,
+      "assembly_retrieved": true,
+      "assembly_instruction_count": 142,
+      "confidence": "CONFIRMED"
+    },
+    "0x0072E8D0": {
+      "retrieved": true,
+      "decompilation_available": true,
+      "assembly_retrieved": false,
+      "assembly_instruction_count": null,
+      "confidence": "CONFIRMED"
+    },
+    "0x00727F40": {
+      "retrieved": true,
+      "decompilation_available": true,
+      "assembly_retrieved": true,
+      "assembly_instruction_count": 38,
+      "confidence": "CONFIRMED"
+    },
+    "0x00727ED0": {
+      "retrieved": true,
+      "decompilation_available": true,
+      "assembly_retrieved": true,
+      "assembly_instruction_count": 30,
+      "confidence": "CONFIRMED"
+    },
+    "0x00730450": {
+      "retrieved": true,
+      "decompilation_available": true,
+      "assembly_retrieved": false,
+      "assembly_instruction_count": null,
+      "confidence": "CONFIRMED"
+    },
+    "0x007304D0": {
+      "retrieved": true,
+      "decompilation_available": true,
+      "assembly_retrieved": false,
+      "assembly_instruction_count": null,
+      "confidence": "CONFIRMED"
+    },
+    "0x00768590": {
+      "retrieved": true,
+      "decompilation_available": true,
+      "assembly_retrieved": true,
+      "assembly_instruction_count": 37,
+      "confidence": "CONFIRMED"
+    },
+    "0x00725110": {
+      "retrieved": true,
+      "decompilation_available": true,
+      "assembly_retrieved": false,
+      "assembly_instruction_count": null,
+      "confidence": "CONFIRMED"
+    },
+    "0x00754740": {
+      "retrieved": true,
+      "decompilation_available": true,
+      "assembly_retrieved": true,
+      "assembly_instruction_count": 78,
+      "confidence": "CONFIRMED"
+    },
+    "0x0076CA20": {
+      "retrieved": true,
+      "decompilation_available": true,
+      "assembly_retrieved": true,
+      "assembly_instruction_count": 124,
+      "confidence": "CONFIRMED"
+    },
+    "0x009782D0": {
+      "retrieved": true,
+      "decompilation_available": true,
+      "assembly_retrieved": false,
+      "assembly_instruction_count": null,
+      "confidence": "CONFIRMED"
+    },
+    "0x0072E5D0": {
+      "retrieved": true,
+      "decompilation_available": true,
+      "assembly_retrieved": true,
+      "assembly_instruction_count": 87,
+      "confidence": "CONFIRMED"
+    },
+    "0x0072E340": {
+      "retrieved": true,
+      "decompilation_available": true,
+      "assembly_retrieved": true,
+      "assembly_instruction_count": 128,
+      "confidence": "CONFIRMED"
+    },
+    "0x00725BB0": {
+      "retrieved": true,
+      "decompilation_available": true,
+      "assembly_retrieved": true,
+      "assembly_instruction_count": 73,
+      "confidence": "CONFIRMED"
+    },
+    "0x0071DE60": {
+      "retrieved": true,
+      "decompilation_available": true,
+      "assembly_retrieved": true,
+      "assembly_instruction_count": 428,
+      "confidence": "CONFIRMED"
+    },
+    "0x0072B170": {
+      "retrieved": true,
+      "decompilation_available": false,
+      "assembly_retrieved": false,
+      "assembly_instruction_count": null,
+      "confidence": "BLOCKED"
+    },
+    "0x0071DD00": {
+      "retrieved": true,
+      "decompilation_available": true,
+      "assembly_retrieved": false,
+      "assembly_instruction_count": null,
+      "confidence": "CONFIRMED"
+    },
+    "0x00723720": {
+      "retrieved": true,
+      "decompilation_available": true,
+      "assembly_retrieved": false,
+      "assembly_instruction_count": null,
+      "confidence": "CONFIRMED"
+    },
+    "0x0071DB40": {
+      "retrieved": true,
+      "decompilation_available": true,
+      "assembly_retrieved": false,
+      "assembly_instruction_count": null,
+      "confidence": "CONFIRMED"
+    },
+    "0x0072E050": {
+      "retrieved": true,
+      "decompilation_available": true,
+      "assembly_retrieved": false,
+      "assembly_instruction_count": null,
+      "confidence": "CONFIRMED"
+    },
+    "0x007277D0": {
+      "retrieved": true,
+      "decompilation_available": true,
+      "assembly_retrieved": false,
+      "assembly_instruction_count": null,
+      "confidence": "CONFIRMED"
+    },
+    "0x0075EFD0": {
+      "retrieved": true,
+      "decompilation_available": true,
+      "assembly_retrieved": false,
+      "assembly_instruction_count": null,
+      "confidence": "CONFIRMED"
+    },
+    "0x009773B0": {
+      "retrieved": true,
+      "decompilation_available": true,
+      "assembly_retrieved": false,
+      "assembly_instruction_count": null,
+      "confidence": "CONFIRMED"
+    },
+    "0x00977420": {
+      "retrieved": true,
+      "decompilation_available": true,
+      "assembly_retrieved": false,
+      "assembly_instruction_count": null,
+      "confidence": "CONFIRMED"
+    },
+    "0x00722C60": {
+      "retrieved": true,
+      "decompilation_available": true,
+      "assembly_retrieved": false,
+      "assembly_instruction_count": null,
+      "confidence": "CONFIRMED"
+    },
+    "0x0071D5E0": {
+      "retrieved": true,
+      "decompilation_available": true,
+      "assembly_retrieved": false,
+      "assembly_instruction_count": null,
+      "confidence": "CONFIRMED"
+    },
+    "0x007408D0": {
+      "retrieved": true,
+      "decompilation_available": true,
+      "assembly_retrieved": false,
+      "assembly_instruction_count": null,
+      "confidence": "CONFIRMED"
+    },
+    "0x0075F240": {
+      "retrieved": true,
+      "decompilation_available": true,
+      "assembly_retrieved": false,
+      "assembly_instruction_count": null,
+      "confidence": "CONFIRMED"
+    },
+    "0x007428B0": {
+      "retrieved": true,
+      "decompilation_available": true,
+      "assembly_retrieved": false,
+      "assembly_instruction_count": null,
+      "confidence": "CONFIRMED"
+    },
+    "0x007530D0": {
+      "retrieved": true,
+      "decompilation_available": true,
+      "assembly_retrieved": false,
+      "assembly_instruction_count": null,
+      "confidence": "CONFIRMED"
+    },
+    "0x007530E0": {
+      "retrieved": true,
+      "decompilation_available": true,
+      "assembly_retrieved": false,
+      "assembly_instruction_count": null,
+      "confidence": "CONFIRMED"
+    },
+    "0x0072DF90": {
+      "retrieved": true,
+      "decompilation_available": true,
+      "assembly_retrieved": false,
+      "assembly_instruction_count": null,
+      "confidence": "CONFIRMED"
+    },
+    "0x0072B7D0": {
+      "retrieved": true,
+      "decompilation_available": true,
+      "assembly_retrieved": false,
+      "assembly_instruction_count": null,
+      "confidence": "CONFIRMED"
+    },
+    "0x0087A79C": {
+      "retrieved": true,
+      "decompilation_available": true,
+      "assembly_retrieved": false,
+      "assembly_instruction_count": null,
+      "confidence": "CONFIRMED"
+    },
+    "0x00977E20": {
+      "retrieved": true,
+      "decompilation_available": true,
+      "assembly_retrieved": false,
+      "assembly_instruction_count": null,
+      "confidence": "CONFIRMED"
+    },
+    "0x00977400": {
+      "retrieved": true,
+      "decompilation_available": true,
+      "assembly_retrieved": false,
+      "assembly_instruction_count": null,
+      "confidence": "CONFIRMED"
+    },
+    "0x0072E700": {
+      "retrieved": true,
+      "decompilation_available": true,
+      "assembly_retrieved": false,
+      "assembly_instruction_count": null,
+      "confidence": "CONFIRMED"
+    },
+    "0x0076CD50": {
+      "retrieved": true,
+      "decompilation_available": true,
+      "assembly_retrieved": false,
+      "assembly_instruction_count": null,
+      "confidence": "CONFIRMED"
+    },
+    "0x0073D900": {
+      "retrieved": true,
+      "decompilation_available": true,
+      "assembly_retrieved": false,
+      "assembly_instruction_count": null,
+      "confidence": "CONFIRMED"
+    },
+    "0x007540E0": {
+      "retrieved": true,
+      "decompilation_available": true,
+      "assembly_retrieved": false,
+      "assembly_instruction_count": null,
+      "confidence": "CONFIRMED"
+    },
+    "0x0075F8F0": {
+      "retrieved": true,
+      "decompilation_available": true,
+      "assembly_retrieved": false,
+      "assembly_instruction_count": null,
+      "confidence": "CONFIRMED"
+    },
+    "0x0072FDF0": {
+      "retrieved": true,
+      "decompilation_available": true,
+      "assembly_retrieved": false,
+      "assembly_instruction_count": null,
+      "confidence": "CONFIRMED"
+    },
+    "0x0071D8F0": {
+      "retrieved": true,
+      "decompilation_available": true,
+      "assembly_retrieved": false,
+      "assembly_instruction_count": null,
+      "confidence": "CONFIRMED"
+    },
+    "0x0071E380": {
+      "retrieved": true,
+      "decompilation_available": true,
+      "assembly_retrieved": false,
+      "assembly_instruction_count": null,
+      "confidence": "BLOCKED",
+      "reason": "Bad-instruction decompilation; opaque boundary."
+    },
+    "0x00723790": {
+      "retrieved": true,
+      "decompilation_available": true,
+      "assembly_retrieved": false,
+      "assembly_instruction_count": null,
+      "confidence": "CONFIRMED"
+    },
+    "0x007278E0": {
+      "retrieved": true,
+      "decompilation_available": true,
+      "assembly_retrieved": false,
+      "assembly_instruction_count": null,
+      "confidence": "CONFIRMED"
+    },
+    "0x00727FB0": {
+      "retrieved": true,
+      "decompilation_available": true,
+      "assembly_retrieved": false,
+      "assembly_instruction_count": null,
+      "confidence": "CONFIRMED"
+    },
+    "0x007A40D0": {
+      "retrieved": true,
+      "decompilation_available": true,
+      "assembly_retrieved": false,
+      "assembly_instruction_count": null,
+      "confidence": "CONFIRMED"
+    },
+    "0x007A8690": {
+      "retrieved": true,
+      "decompilation_available": true,
+      "assembly_retrieved": false,
+      "assembly_instruction_count": null,
+      "confidence": "CONFIRMED"
+    },
+    "0x007A8700": {
+      "retrieved": true,
+      "decompilation_available": true,
+      "assembly_retrieved": false,
+      "assembly_instruction_count": null,
+      "confidence": "CONFIRMED"
+    },
+    "0x007AF900": {
+      "retrieved": true,
+      "decompilation_available": true,
+      "assembly_retrieved": false,
+      "assembly_instruction_count": null,
+      "confidence": "CONFIRMED"
+    },
+    "0x0071E630": {
+      "retrieved": true,
+      "decompilation_available": true,
+      "assembly_retrieved": false,
+      "assembly_instruction_count": null,
+      "confidence": "CONFIRMED"
+    },
+    "0x007661A0": {
+      "retrieved": true,
+      "decompilation_available": true,
+      "assembly_retrieved": false,
+      "assembly_instruction_count": null,
+      "confidence": "CONFIRMED"
+    },
+    "0x0073F4E0": {
+      "retrieved": true,
+      "decompilation_available": true,
+      "assembly_retrieved": false,
+      "assembly_instruction_count": null,
+      "confidence": "CONFIRMED"
+    }
+  },
+  "confirmed_imports": [
+    {
+      "name": "OpenEventA",
+      "address": "EXTERNAL:00000018",
+      "namespace": "KERNEL32.DLL"
+    },
+    {
+      "name": "CreateEventA",
+      "address": "EXTERNAL:0000001b",
+      "namespace": "KERNEL32.DLL"
+    },
+    {
+      "name": "CreateThread",
+      "address": "EXTERNAL:00000039",
+      "namespace": "KERNEL32.DLL"
+    },
+    {
+      "name": "ResetEvent",
+      "address": "EXTERNAL:0000003d",
+      "namespace": "KERNEL32.DLL"
+    },
+    {
+      "name": "SleepEx",
+      "address": "EXTERNAL:00000048",
+      "namespace": "KERNEL32.DLL"
+    },
+    {
+      "name": "SetEvent",
+      "address": "EXTERNAL:0000005b",
+      "namespace": "KERNEL32.DLL"
+    },
+    {
+      "name": "WaitForSingleObject",
+      "address": "EXTERNAL:0000005c",
+      "namespace": "KERNEL32.DLL"
+    },
+    {
+      "name": "Direct3DCreate9",
+      "address": "EXTERNAL:000000d1",
+      "namespace": "D3D9.DLL"
+    },
+    {
+      "name": "DirectInput8Create",
+      "address": "EXTERNAL:000000de",
+      "namespace": "DINPUT8.DLL"
+    },
+    {
+      "name": "DestroyWindow",
+      "address": "EXTERNAL:000000e5",
+      "namespace": "USER32.DLL"
+    },
+    {
+      "name": "UpdateWindow",
+      "address": "EXTERNAL:000000f6",
+      "namespace": "USER32.DLL"
+    },
+    {
+      "name": "CreateWindowExA",
+      "address": "EXTERNAL:000000f7",
+      "namespace": "USER32.DLL"
+    },
+    {
+      "name": "RegisterClassExA",
+      "address": "EXTERNAL:000000f8",
+      "namespace": "USER32.DLL"
+    },
+    {
+      "name": "ShowWindow",
+      "address": "EXTERNAL:00000108",
+      "namespace": "USER32.DLL"
+    },
+    {
+      "name": "DeregisterEventSource",
+      "address": "EXTERNAL:0000015b",
+      "namespace": "ADVAPI32.DLL"
+    },
+    {
+      "name": "ReportEventA",
+      "address": "EXTERNAL:0000015c",
+      "namespace": "ADVAPI32.DLL"
+    },
+    {
+      "name": "RegisterEventSourceA",
+      "address": "EXTERNAL:0000015d",
+      "namespace": "ADVAPI32.DLL"
+    },
+    {
+      "name": "WSAWaitForMultipleEvents",
+      "address": "EXTERNAL:00000184",
+      "namespace": "WS2_32.DLL"
+    },
+    {
+      "name": "WSAResetEvent",
+      "address": "EXTERNAL:00000185",
+      "namespace": "WS2_32.DLL"
+    },
+    {
+      "name": "WSASetEvent",
+      "address": "EXTERNAL:00000188",
+      "namespace": "WS2_32.DLL"
+    },
+    {
+      "name": "WSACloseEvent",
+      "address": "EXTERNAL:00000189",
+      "namespace": "WS2_32.DLL"
+    },
+    {
+      "name": "WSACreateEvent",
+      "address": "EXTERNAL:0000018e",
+      "namespace": "WS2_32.DLL"
+    },
+    {
+      "name": "_beginthreadex",
+      "address": "EXTERNAL:000001a8",
+      "namespace": "MSVCR80.DLL"
+    },
+    {
+      "name": "initterm",
+      "address": "EXTERNAL:00000206",
+      "namespace": "MSVCR80.DLL"
+    },
+    {
+      "name": "initterm_e",
+      "address": "EXTERNAL:00000207",
+      "namespace": "MSVCR80.DLL"
+    }
+  ],
+  "object": {
+    "base": "0x01318170",
+    "minimum_extent": "0x535",
+    "extent_confidence": "CONFIRMED",
+    "exact_size": "BLOCKED",
+    "fields": {
+      "0x00": {
+        "address": "0x01318170",
+        "meaning": "title-like buffer begin",
+        "confidence": "STRONGLY_SUPPORTED"
+      },
+      "0x04": {
+        "address": "0x01318174",
+        "meaning": "buffer end",
+        "confidence": "STRONGLY_SUPPORTED"
+      },
+      "0x08": {
+        "address": "0x01318178",
+        "meaning": "capacity end",
+        "confidence": "STRONGLY_SUPPORTED"
+      },
+      "0x10": {
+        "address": "0x01318180",
+        "meaning": "IDirect3D9-like interface",
+        "confidence": "STRONGLY_SUPPORTED"
+      },
+      "0x14": {
+        "address": "0x01318184",
+        "meaning": "D3DEngine pointer",
+        "confidence": "CONFIRMED"
+      },
+      "0x18": {
+        "address": "0x01318188",
+        "meaning": "window-like call return; HWND unproven",
+        "confidence": "STRONGLY_SUPPORTED"
+      },
+      "0x48": {
+        "address": "0x013181B8",
+        "meaning": "performance level",
+        "confidence": "CONFIRMED"
+      },
+      "0x50": {
+        "address": "0x013181C0",
+        "meaning": "capability config pointer",
+        "confidence": "CONFIRMED"
+      },
+      "0x54": {
+        "address": "0x013181C4",
+        "meaning": "requested config pointer",
+        "confidence": "CONFIRMED"
+      },
+      "0x64": {
+        "address": "0x013181D4",
+        "meaning": "adapter ordinal",
+        "confidence": "STRONGLY_SUPPORTED"
+      },
+      "0x4F8": {
+        "address": "0x01318668",
+        "meaning": "aspect ratio",
+        "confidence": "STRONGLY_SUPPORTED"
+      },
+      "0x4FC": {
+        "address": "0x0131866C",
+        "meaning": "query success byte",
+        "confidence": "CONFIRMED"
+      },
+      "0x500": {
+        "address": "0x01318670",
+        "meaning": "synchronization wrapper",
+        "confidence": "STRONGLY_SUPPORTED"
+      },
+      "0x530": {
+        "address": "0x013186A0",
+        "meaning": "deferred operation flag",
+        "confidence": "CONFIRMED"
+      },
+      "0x534": {
+        "address": "0x013186A4",
+        "meaning": "derived feature byte",
+        "confidence": "CONFIRMED"
+      }
+    }
+  },
+  "config": {
+    "size": "0x84",
+    "requested_pointer_offset": "0x54",
+    "capabilities_pointer_offset": "0x50",
+    "aa_samples": [
+      0,
+      2,
+      4,
+      8
+    ],
+    "aa_table": "0x00CE6A54",
+    "fields": {
+      "0x10": {
+        "size": 4,
+        "meaning": "g_RoadReflectionEnable",
+        "writer": "0x0071DF46",
+        "confidence": "CONFIRMED"
+      },
+      "0x1C": {
+        "size": 4,
+        "meaning": "g_SmokeEnable",
+        "writer": "0x0071E066",
+        "confidence": "CONFIRMED"
+      },
+      "0x2C": {
+        "size": 4,
+        "meaning": "g_WorldLodLevel",
+        "writer": "0x0071DF76",
+        "confidence": "CONFIRMED"
+      },
+      "0x34": {
+        "size": 4,
+        "meaning": "g_WorldFXLevel",
+        "writer": "0x0071DF16",
+        "confidence": "CONFIRMED"
+      },
+      "0x38": {
+        "size": 4,
+        "meaning": "g_CarEffects",
+        "writer": "0x0071DECE",
+        "confidence": "CONFIRMED"
+      },
+      "0x44": {
+        "size": 4,
+        "meaning": "g_CarLodLevel",
+        "writer": "0x0071DFA6",
+        "confidence": "CONFIRMED"
+      },
+      "0x48": {
+        "size": 4,
+        "meaning": "g_FSAALevel",
+        "writer": "0x0071DFD6",
+        "confidence": "CONFIRMED"
+      },
+      "0x4C": {
+        "size": 4,
+        "meaning": "g_RainEnable",
+        "writer": "0x0071E006",
+        "confidence": "CONFIRMED"
+      },
+      "0x50": {
+        "size": 4,
+        "meaning": "g_TextureFiltering",
+        "writer": "0x0071E036",
+        "confidence": "CONFIRMED"
+      },
+      "0x58": {
+        "size": 4,
+        "meaning": "g_ShadowEnable",
+        "writer": "0x0071E142",
+        "confidence": "CONFIRMED"
+      },
+      "0x60": {
+        "size": 4,
+        "meaning": "g_CarDamageDetail",
+        "writer": "0x0071E096",
+        "confidence": "CONFIRMED"
+      },
+      "0x64": {
+        "size": 4,
+        "meaning": "g_ShaderDetailLevel",
+        "writer": "0x0071E171",
+        "confidence": "CONFIRMED"
+      },
+      "0x68": {
+        "size": 4,
+        "meaning": "g_AudioDetail",
+        "writer": "0x0071E1BB",
+        "confidence": "CONFIRMED"
+      },
+      "0x6C": {
+        "size": 4,
+        "meaning": "g_Width",
+        "writer": "0x0071E268",
+        "confidence": "CONFIRMED"
+      },
+      "0x70": {
+        "size": 4,
+        "meaning": "g_Height",
+        "writer": "0x0071E298",
+        "confidence": "CONFIRMED"
+      },
+      "0x74": {
+        "size": 4,
+        "meaning": "g_Refresh",
+        "writer": "0x0071E2C8",
+        "confidence": "CONFIRMED"
+      },
+      "0x78": {
+        "size": 4,
+        "meaning": "FirstTime",
+        "writer": "0x0071E1D0",
+        "confidence": "CONFIRMED"
+      },
+      "0x7C": {
+        "size": 4,
+        "meaning": "g_VSyncOn",
+        "writer": "0x0071E0F6",
+        "confidence": "CONFIRMED"
+      }
+    },
+    "aa_fallback": {
+      "site": "0x00729854",
+      "expression": "c & (((int32)c > 0) - 1)",
+      "valid_tier_result": 0,
+      "confidence": "CONFIRMED"
+    }
+  },
+  "indirect_slots": {
+    "0x00B6157C": {
+      "static_target": "0x008AA540",
+      "candidate": "CreateWindowExA",
+      "identity": "STRONGLY_SUPPORTED",
+      "static_import_link": "BLOCKED"
+    },
+    "0x00B61578": {
+      "static_target": "0x008AA530",
+      "candidate": "UpdateWindow",
+      "identity": "HYPOTHESIS",
+      "explicit_arguments": 1
+    },
+    "0x00B616CC": {
+      "static_target": "0x008AA1C4",
+      "candidate": "Direct3DCreate9",
+      "identity": "STRONGLY_SUPPORTED",
+      "static_import_link": "BLOCKED"
+    },
+    "0x00B615C4": {
+      "identity": "BLOCKED"
+    }
+  },
+  "unresolved_dependencies": [
+    "0x00686000",
+    "0x00686030",
+    "0x00B615C4",
+    "0x004A26B0",
+    "0x007A51B0",
+    "0x0071E380",
+    "Win32 slot-to-import mapping",
+    "D3D9 slot-to-import mapping",
+    "Ghidra function boundaries at 0x00766730 and 0x0072B170"
+  ],
+  "call_sites": {
+    "0x00727A0C": {
+      "function": "0x007279A0",
+      "instruction": "CALL 0x00977e20",
+      "confidence": "CONFIRMED"
+    },
+    "0x00727A63": {
+      "function": "0x007279A0",
+      "instruction": "CALL 0x007530d0",
+      "confidence": "CONFIRMED"
+    },
+    "0x00727ACF": {
+      "function": "0x007279A0",
+      "instruction": "CALL 0x00686000",
+      "confidence": "CONFIRMED"
+    },
+    "0x00727AEA": {
+      "function": "0x007279A0",
+      "instruction": "CALL 0x00724f90",
+      "confidence": "CONFIRMED"
+    },
+    "0x00727AEF": {
+      "function": "0x007279A0",
+      "instruction": "JMP 0x00727af3",
+      "confidence": "CONFIRMED"
+    },
+    "0x00727B12": {
+      "function": "0x007279A0",
+      "instruction": "CALL 0x00686000",
+      "confidence": "CONFIRMED"
+    },
+    "0x00727B97": {
+      "function": "0x00727B60",
+      "instruction": "CALL 0x00686030",
+      "confidence": "CONFIRMED"
+    },
+    "0x00727BA0": {
+      "function": "0x00727B60",
+      "instruction": "CALL 0x00686030",
+      "confidence": "CONFIRMED"
+    },
+    "0x00727BB1": {
+      "function": "0x00727B60",
+      "instruction": "CALL 0x00725110",
+      "confidence": "CONFIRMED"
+    },
+    "0x00727BB7": {
+      "function": "0x00727B60",
+      "instruction": "CALL 0x00686030",
+      "confidence": "CONFIRMED"
+    },
+    "0x00727BCA": {
+      "function": "0x00727B60",
+      "instruction": "CALL 0x00977400",
+      "confidence": "CONFIRMED"
+    },
+    "0x00727C18": {
+      "function": "0x00727B60",
+      "instruction": "CALL 0x005db160",
+      "confidence": "CONFIRMED"
+    },
+    "0x00727C43": {
+      "function": "0x00727B60",
+      "instruction": "CALL 0x005db160",
+      "confidence": "CONFIRMED"
+    },
+    "0x0071DC30": {
+      "function": "0x0071DC10",
+      "instruction": "CALL EAX",
+      "confidence": "CONFIRMED"
+    },
+    "0x0071DC55": {
+      "function": "0x0071DC10",
+      "instruction": "CALL EAX",
+      "confidence": "CONFIRMED"
+    },
+    "0x0071DC73": {
+      "function": "0x0071DC10",
+      "instruction": "CALL EAX",
+      "confidence": "CONFIRMED"
+    },
+    "0x00722F18": {
+      "function": "0x00722EC0",
+      "instruction": "CALL 0x0087b2d6",
+      "confidence": "CONFIRMED"
+    },
+    "0x00722F40": {
+      "function": "0x00722EC0",
+      "instruction": "JMP 0x00722f56",
+      "confidence": "CONFIRMED"
+    },
+    "0x00722F89": {
+      "function": "0x00722EC0",
+      "instruction": "JMP 0x00722f91",
+      "confidence": "CONFIRMED"
+    },
+    "0x0072524C": {
+      "function": "0x00725200",
+      "instruction": "CALL EAX",
+      "confidence": "CONFIRMED"
+    },
+    "0x00725261": {
+      "function": "0x00725200",
+      "instruction": "CALL EAX",
+      "confidence": "CONFIRMED"
+    },
+    "0x00725284": {
+      "function": "0x00725200",
+      "instruction": "CALL ECX",
+      "confidence": "CONFIRMED"
+    },
+    "0x0072528A": {
+      "function": "0x00725200",
+      "instruction": "JMP 0x00725298",
+      "confidence": "CONFIRMED"
+    },
+    "0x007252A6": {
+      "function": "0x00725200",
+      "instruction": "CALL 0x00722ec0",
+      "confidence": "CONFIRMED"
+    },
+    "0x007252CF": {
+      "function": "0x00725200",
+      "instruction": "CALL EDX",
+      "confidence": "CONFIRMED"
+    },
+    "0x007252F5": {
+      "function": "0x00725200",
+      "instruction": "CALL EAX",
+      "confidence": "CONFIRMED"
+    },
+    "0x00725313": {
+      "function": "0x00725200",
+      "instruction": "CALL EDX",
+      "confidence": "CONFIRMED"
+    },
+    "0x0072532F": {
+      "function": "0x00725200",
+      "instruction": "CALL EDX",
+      "confidence": "CONFIRMED"
+    },
+    "0x0072533F": {
+      "function": "0x00725200",
+      "instruction": "CALL EDX",
+      "confidence": "CONFIRMED"
+    },
+    "0x00725350": {
+      "function": "0x00725200",
+      "instruction": "CALL EDX",
+      "confidence": "CONFIRMED"
+    },
+    "0x007253AC": {
+      "function": "0x00725200",
+      "instruction": "CALL 0x00682280",
+      "confidence": "CONFIRMED"
+    },
+    "0x007253E5": {
+      "function": "0x00725200",
+      "instruction": "CALL EDX",
+      "confidence": "CONFIRMED"
+    },
+    "0x007253E9": {
+      "function": "0x00725200",
+      "instruction": "CALL 0x0071d300",
+      "confidence": "CONFIRMED"
+    },
+    "0x00725400": {
+      "function": "0x00725200",
+      "instruction": "JMP 0x00725445",
+      "confidence": "CONFIRMED"
+    },
+    "0x0072541A": {
+      "function": "0x00725200",
+      "instruction": "CALL EDX",
+      "confidence": "CONFIRMED"
+    },
+    "0x00725438": {
+      "function": "0x00725200",
+      "instruction": "CALL EDX",
+      "confidence": "CONFIRMED"
+    },
+    "0x00725447": {
+      "function": "0x00725200",
+      "instruction": "CALL 0x00722db0",
+      "confidence": "CONFIRMED"
+    },
+    "0x0072548F": {
+      "function": "0x00725200",
+      "instruction": "CALL 0x0087b350",
+      "confidence": "CONFIRMED"
+    },
+    "0x00723854": {
+      "function": "0x007237B0",
+      "instruction": "JMP 0x0072385f",
+      "confidence": "CONFIRMED"
+    },
+    "0x00723902": {
+      "function": "0x007237B0",
+      "instruction": "JMP 0x0072390d",
+      "confidence": "CONFIRMED"
+    },
+    "0x00727CBA": {
+      "function": "0x00727C60",
+      "instruction": "CALL 0x007530e0",
+      "confidence": "CONFIRMED"
+    },
+    "0x00727D10": {
+      "function": "0x00727C60",
+      "instruction": "CALL 0x00727fb0",
+      "confidence": "CONFIRMED"
+    },
+    "0x00727E0C": {
+      "function": "0x00727C60",
+      "instruction": "CALL 0x007278e0",
+      "confidence": "CONFIRMED"
+    },
+    "0x00727E25": {
+      "function": "0x00727C60",
+      "instruction": "CALL 0x0071e9a0",
+      "confidence": "CONFIRMED"
+    },
+    "0x00727E3E": {
+      "function": "0x00727C60",
+      "instruction": "CALL 0x0071e930",
+      "confidence": "CONFIRMED"
+    },
+    "0x0072B048": {
+      "function": "0x0072B030",
+      "instruction": "CALL EAX",
+      "confidence": "CONFIRMED"
+    },
+    "0x0072B075": {
+      "function": "0x0072B030",
+      "instruction": "CALL EAX",
+      "confidence": "CONFIRMED"
+    },
+    "0x0072B099": {
+      "function": "0x0072B030",
+      "instruction": "JMP 0x0072b11f",
+      "confidence": "CONFIRMED"
+    },
+    "0x0072B0B5": {
+      "function": "0x0072B030",
+      "instruction": "CALL EAX",
+      "confidence": "CONFIRMED"
+    },
+    "0x0072B110": {
+      "function": "0x0072B030",
+      "instruction": "JMP 0x0072b11f",
+      "confidence": "CONFIRMED"
+    },
+    "0x0072B11A": {
+      "function": "0x0072B030",
+      "instruction": "CALL 0x00729f50",
+      "confidence": "CONFIRMED"
+    },
+    "0x0072B14D": {
+      "function": "0x0072B030",
+      "instruction": "CALL 0x0072a660",
+      "confidence": "CONFIRMED"
+    },
+    "0x0072B15E": {
+      "function": "0x0072B030",
+      "instruction": "CALL 0x00729220",
+      "confidence": "CONFIRMED"
+    },
+    "0x00722DD0": {
+      "function": "0x00722DB0",
+      "instruction": "CALL 0x0072fea0",
+      "confidence": "CONFIRMED"
+    },
+    "0x00722DDB": {
+      "function": "0x00722DB0",
+      "instruction": "CALL dword ptr [0x00b61030]",
+      "confidence": "CONFIRMED"
+    },
+    "0x00722E15": {
+      "function": "0x00722DB0",
+      "instruction": "CALL EDI",
+      "confidence": "CONFIRMED"
+    },
+    "0x00722E41": {
+      "function": "0x00722DB0",
+      "instruction": "CALL EDI",
+      "confidence": "CONFIRMED"
+    },
+    "0x00722E7D": {
+      "function": "0x00722DB0",
+      "instruction": "CALL EAX",
+      "confidence": "CONFIRMED"
+    },
+    "0x00722E8A": {
+      "function": "0x00722DB0",
+      "instruction": "CALL 0x0071e880",
+      "confidence": "CONFIRMED"
+    },
+    "0x00729801": {
+      "function": "0x007297D0",
+      "instruction": "CALL 0x00686000",
+      "confidence": "CONFIRMED"
+    },
+    "0x0072980F": {
+      "function": "0x007297D0",
+      "instruction": "CALL 0x00725bb0",
+      "confidence": "CONFIRMED"
+    },
+    "0x0072981E": {
+      "function": "0x007297D0",
+      "instruction": "CALL 0x0071d7e0",
+      "confidence": "CONFIRMED"
+    },
+    "0x00729836": {
+      "function": "0x007297D0",
+      "instruction": "CALL 0x00725200",
+      "confidence": "CONFIRMED"
+    },
+    "0x0072986A": {
+      "function": "0x007297D0",
+      "instruction": "CALL 0x00725200",
+      "confidence": "CONFIRMED"
+    },
+    "0x00729872": {
+      "function": "0x007297D0",
+      "instruction": "CALL 0x00768590",
+      "confidence": "CONFIRMED"
+    },
+    "0x00729891": {
+      "function": "0x007297D0",
+      "instruction": "CALL EDX",
+      "confidence": "CONFIRMED"
+    },
+    "0x0072989D": {
+      "function": "0x007297D0",
+      "instruction": "CALL ECX",
+      "confidence": "CONFIRMED"
+    },
+    "0x0072989F": {
+      "function": "0x007297D0",
+      "instruction": "CALL 0x0075f240",
+      "confidence": "CONFIRMED"
+    },
+    "0x007298C4": {
+      "function": "0x007297D0",
+      "instruction": "CALL 0x007530e0",
+      "confidence": "CONFIRMED"
+    },
+    "0x007298C9": {
+      "function": "0x007297D0",
+      "instruction": "CALL 0x0071cda0",
+      "confidence": "CONFIRMED"
+    },
+    "0x007298E8": {
+      "function": "0x007297D0",
+      "instruction": "CALL 0x00723160",
+      "confidence": "CONFIRMED"
+    },
+    "0x007298F5": {
+      "function": "0x007297D0",
+      "instruction": "CALL 0x00753240",
+      "confidence": "CONFIRMED"
+    },
+    "0x007298FA": {
+      "function": "0x007297D0",
+      "instruction": "CALL 0x00747770",
+      "confidence": "CONFIRMED"
+    },
+    "0x007298FF": {
+      "function": "0x007297D0",
+      "instruction": "CALL 0x00743d20",
+      "confidence": "CONFIRMED"
+    },
+    "0x00729904": {
+      "function": "0x007297D0",
+      "instruction": "CALL 0x0071d170",
+      "confidence": "CONFIRMED"
+    },
+    "0x00729927": {
+      "function": "0x007297D0",
+      "instruction": "CALL EDX",
+      "confidence": "CONFIRMED"
+    },
+    "0x0072993D": {
+      "function": "0x007297D0",
+      "instruction": "CALL 0x00740df0",
+      "confidence": "CONFIRMED"
+    },
+    "0x0072994E": {
+      "function": "0x007297D0",
+      "instruction": "CALL 0x00686000",
+      "confidence": "CONFIRMED"
+    },
+    "0x00729968": {
+      "function": "0x007297D0",
+      "instruction": "CALL 0x0075efd0",
+      "confidence": "CONFIRMED"
+    },
+    "0x00727F49": {
+      "function": "0x00727F40",
+      "instruction": "CALL 0x0072e8d0",
+      "confidence": "CONFIRMED"
+    },
+    "0x00727F5F": {
+      "function": "0x00727F40",
+      "instruction": "CALL EDI",
+      "confidence": "CONFIRMED"
+    },
+    "0x00727F6C": {
+      "function": "0x00727F40",
+      "instruction": "CALL EDI",
+      "confidence": "CONFIRMED"
+    },
+    "0x00727F79": {
+      "function": "0x00727F40",
+      "instruction": "CALL EDI",
+      "confidence": "CONFIRMED"
+    },
+    "0x00727F86": {
+      "function": "0x00727F40",
+      "instruction": "CALL 0x0071e380",
+      "confidence": "CONFIRMED"
+    },
+    "0x00727F8E": {
+      "function": "0x00727F40",
+      "instruction": "CALL 0x00727ed0",
+      "confidence": "CONFIRMED"
+    },
+    "0x00727F9C": {
+      "function": "0x00727F40",
+      "instruction": "CALL EDX",
+      "confidence": "CONFIRMED"
+    },
+    "0x00727FA2": {
+      "function": "0x00727F40",
+      "instruction": "CALL dword ptr [0x00b61534]",
+      "confidence": "CONFIRMED"
+    },
+    "0x00727ED3": {
+      "function": "0x00727ED0",
+      "instruction": "CALL 0x007277d0",
+      "confidence": "CONFIRMED"
+    },
+    "0x00727EDA": {
+      "function": "0x00727ED0",
+      "instruction": "CALL 0x0075f8f0",
+      "confidence": "CONFIRMED"
+    },
+    "0x00727EDF": {
+      "function": "0x00727ED0",
+      "instruction": "CALL 0x00770720",
+      "confidence": "CONFIRMED"
+    },
+    "0x00727EE9": {
+      "function": "0x00727ED0",
+      "instruction": "CALL 0x0077c8d0",
+      "confidence": "CONFIRMED"
+    },
+    "0x00727EF3": {
+      "function": "0x00727ED0",
+      "instruction": "CALL 0x007701a0",
+      "confidence": "CONFIRMED"
+    },
+    "0x00727F00": {
+      "function": "0x00727ED0",
+      "instruction": "CALL 0x0073e880",
+      "confidence": "CONFIRMED"
+    },
+    "0x00727F15": {
+      "function": "0x00727ED0",
+      "instruction": "CALL EDX",
+      "confidence": "CONFIRMED"
+    },
+    "0x00727F31": {
+      "function": "0x00727ED0",
+      "instruction": "CALL EDX",
+      "confidence": "CONFIRMED"
+    },
+    "0x00768593": {
+      "function": "0x00768590",
+      "instruction": "CALL 0x007540e0",
+      "confidence": "CONFIRMED"
+    },
+    "0x0076859A": {
+      "function": "0x00768590",
+      "instruction": "CALL 0x0071dae0",
+      "confidence": "CONFIRMED"
+    },
+    "0x007685A6": {
+      "function": "0x00768590",
+      "instruction": "CALL 0x0071d8f0",
+      "confidence": "CONFIRMED"
+    },
+    "0x007685B6": {
+      "function": "0x00768590",
+      "instruction": "CALL 0x0071d8f0",
+      "confidence": "CONFIRMED"
+    },
+    "0x007685DA": {
+      "function": "0x00768590",
+      "instruction": "CALL 0x00754740",
+      "confidence": "CONFIRMED"
+    },
+    "0x007685EC": {
+      "function": "0x00768590",
+      "instruction": "CALL 0x00727c60",
+      "confidence": "CONFIRMED"
+    },
+    "0x007685F1": {
+      "function": "0x00768590",
+      "instruction": "CALL 0x00743d20",
+      "confidence": "CONFIRMED"
+    },
+    "0x007685F8": {
+      "function": "0x00768590",
+      "instruction": "CALL 0x0075f9e0",
+      "confidence": "CONFIRMED"
+    },
+    "0x00768603": {
+      "function": "0x00768590",
+      "instruction": "JMP 0x00755c60",
+      "confidence": "CONFIRMED"
+    },
+    "0x00754785": {
+      "function": "0x00754740",
+      "instruction": "CALL EDX",
+      "confidence": "CONFIRMED"
+    },
+    "0x0075479B": {
+      "function": "0x00754740",
+      "instruction": "CALL EDX",
+      "confidence": "CONFIRMED"
+    },
+    "0x007547AD": {
+      "function": "0x00754740",
+      "instruction": "JMP 0x007547d0",
+      "confidence": "CONFIRMED"
+    },
+    "0x007547CE": {
+      "function": "0x00754740",
+      "instruction": "CALL EAX",
+      "confidence": "CONFIRMED"
+    },
+    "0x007547E7": {
+      "function": "0x00754740",
+      "instruction": "CALL 0x007428b0",
+      "confidence": "CONFIRMED"
+    },
+    "0x0076CA47": {
+      "function": "0x0076CA20",
+      "instruction": "CALL 0x0072fdf0",
+      "confidence": "CONFIRMED"
+    },
+    "0x0076CA5D": {
+      "function": "0x0076CA20",
+      "instruction": "CALL EDI",
+      "confidence": "CONFIRMED"
+    },
+    "0x0076CA66": {
+      "function": "0x0076CA20",
+      "instruction": "CALL dword ptr [0x00b612fc]",
+      "confidence": "CONFIRMED"
+    },
+    "0x0076CA6C": {
+      "function": "0x0076CA20",
+      "instruction": "CALL dword ptr [0x00b61204]",
+      "confidence": "CONFIRMED"
+    },
+    "0x0076CA7A": {
+      "function": "0x0076CA20",
+      "instruction": "CALL dword ptr [0x00b612fc]",
+      "confidence": "CONFIRMED"
+    },
+    "0x0076CA90": {
+      "function": "0x0076CA20",
+      "instruction": "CALL 0x0073ff30",
+      "confidence": "CONFIRMED"
+    },
+    "0x0076CAAB": {
+      "function": "0x0076CA20",
+      "instruction": "JMP 0x0076cab0",
+      "confidence": "CONFIRMED"
+    },
+    "0x0076CAB5": {
+      "function": "0x0076CA20",
+      "instruction": "CALL EDI",
+      "confidence": "CONFIRMED"
+    },
+    "0x0076CAF1": {
+      "function": "0x0076CA20",
+      "instruction": "CALL dword ptr [0x00b61094]",
+      "confidence": "CONFIRMED"
+    },
+    "0x0076CB06": {
+      "function": "0x0076CA20",
+      "instruction": "CALL 0x00686000",
+      "confidence": "CONFIRMED"
+    },
+    "0x0076CB1C": {
+      "function": "0x0076CA20",
+      "instruction": "CALL 0x00977860",
+      "confidence": "CONFIRMED"
+    },
+    "0x0076CB21": {
+      "function": "0x0076CA20",
+      "instruction": "JMP 0x0076cb25",
+      "confidence": "CONFIRMED"
+    },
+    "0x0076CB32": {
+      "function": "0x0076CA20",
+      "instruction": "CALL 0x00977840",
+      "confidence": "CONFIRMED"
+    },
+    "0x0076CB45": {
+      "function": "0x0076CA20",
+      "instruction": "CALL 0x009782d0",
+      "confidence": "CONFIRMED"
+    },
+    "0x0076CB51": {
+      "function": "0x0076CA20",
+      "instruction": "CALL 0x00977f10",
+      "confidence": "CONFIRMED"
+    },
+    "0x0076CB61": {
+      "function": "0x0076CA20",
+      "instruction": "CALL 0x00977a30",
+      "confidence": "CONFIRMED"
+    },
+    "0x0076CB66": {
+      "function": "0x0076CA20",
+      "instruction": "CALL 0x00977300",
+      "confidence": "CONFIRMED"
+    },
+    "0x0076CB86": {
+      "function": "0x0076CA20",
+      "instruction": "CALL 0x00693820",
+      "confidence": "CONFIRMED"
+    },
+    "0x0076CB9B": {
+      "function": "0x0076CA20",
+      "instruction": "CALL EDI",
+      "confidence": "CONFIRMED"
+    },
+    "0x0076CBA9": {
+      "function": "0x0076CA20",
+      "instruction": "CALL EDI",
+      "confidence": "CONFIRMED"
+    },
+    "0x0076CBAC": {
+      "function": "0x0076CA20",
+      "instruction": "CALL dword ptr [0x00b612fc]",
+      "confidence": "CONFIRMED"
+    },
+    "0x0072E5DC": {
+      "function": "0x0072E5D0",
+      "instruction": "CALL 0x00977420",
+      "confidence": "CONFIRMED"
+    },
+    "0x0072E5EB": {
+      "function": "0x0072E5D0",
+      "instruction": "JMP 0x0072e5f0",
+      "confidence": "CONFIRMED"
+    },
+    "0x0072E5FD": {
+      "function": "0x0072E5D0",
+      "instruction": "CALL 0x009773b0",
+      "confidence": "CONFIRMED"
+    },
+    "0x0072E612": {
+      "function": "0x0072E5D0",
+      "instruction": "CALL 0x0072e340",
+      "confidence": "CONFIRMED"
+    },
+    "0x0072E621": {
+      "function": "0x0072E5D0",
+      "instruction": "CALL 0x007297d0",
+      "confidence": "CONFIRMED"
+    },
+    "0x0072E64B": {
+      "function": "0x0072E5D0",
+      "instruction": "CALL 0x0077fee0",
+      "confidence": "CONFIRMED"
+    },
+    "0x0072E655": {
+      "function": "0x0072E5D0",
+      "instruction": "CALL 0x00695490",
+      "confidence": "CONFIRMED"
+    },
+    "0x0072E65F": {
+      "function": "0x0072E5D0",
+      "instruction": "CALL 0x007304d0",
+      "confidence": "CONFIRMED"
+    },
+    "0x0072E676": {
+      "function": "0x0072E5D0",
+      "instruction": "CALL EDX",
+      "confidence": "CONFIRMED"
+    },
+    "0x0072E69D": {
+      "function": "0x0072E5D0",
+      "instruction": "JMP 0x0072e6a4",
+      "confidence": "CONFIRMED"
+    },
+    "0x0072E6AC": {
+      "function": "0x0072E5D0",
+      "instruction": "CALL 0x0071dd00",
+      "confidence": "CONFIRMED"
+    },
+    "0x0072E6C8": {
+      "function": "0x0072E5D0",
+      "instruction": "CALL EAX",
+      "confidence": "CONFIRMED"
+    },
+    "0x0072E6D3": {
+      "function": "0x0072E5D0",
+      "instruction": "CALL 0x00731b30",
+      "confidence": "CONFIRMED"
+    },
+    "0x0072E35C": {
+      "function": "0x0072E340",
+      "instruction": "CALL ESI",
+      "confidence": "CONFIRMED"
+    },
+    "0x0072E36A": {
+      "function": "0x0072E340",
+      "instruction": "CALL ESI",
+      "confidence": "CONFIRMED"
+    },
+    "0x0072E378": {
+      "function": "0x0072E340",
+      "instruction": "CALL ESI",
+      "confidence": "CONFIRMED"
+    },
+    "0x0072E3A4": {
+      "function": "0x0072E340",
+      "instruction": "CALL 0x0072dd00",
+      "confidence": "CONFIRMED"
+    },
+    "0x0072E3AF": {
+      "function": "0x0072E340",
+      "instruction": "CALL 0x0072dca0",
+      "confidence": "CONFIRMED"
+    },
+    "0x0072E3B9": {
+      "function": "0x0072E340",
+      "instruction": "CALL 0x0087a79c",
+      "confidence": "CONFIRMED"
+    },
+    "0x0072E3C5": {
+      "function": "0x0072E340",
+      "instruction": "CALL 0x0072dd00",
+      "confidence": "CONFIRMED"
+    },
+    "0x0072E3D0": {
+      "function": "0x0072E340",
+      "instruction": "CALL 0x0072dca0",
+      "confidence": "CONFIRMED"
+    },
+    "0x0072E3DA": {
+      "function": "0x0072E340",
+      "instruction": "CALL 0x0072b7d0",
+      "confidence": "CONFIRMED"
+    },
+    "0x0072E3E2": {
+      "function": "0x0072E340",
+      "instruction": "CALL 0x0071db40",
+      "confidence": "CONFIRMED"
+    },
+    "0x0072E410": {
+      "function": "0x0072E340",
+      "instruction": "CALL 0x0071de60",
+      "confidence": "CONFIRMED"
+    },
+    "0x0072E431": {
+      "function": "0x0072E340",
+      "instruction": "CALL 0x00723610",
+      "confidence": "CONFIRMED"
+    },
+    "0x0072E454": {
+      "function": "0x0072E340",
+      "instruction": "CALL 0x00729750",
+      "confidence": "CONFIRMED"
+    },
+    "0x0072E46A": {
+      "function": "0x0072E340",
+      "instruction": "CALL 0x007237b0",
+      "confidence": "CONFIRMED"
+    },
+    "0x0072E47B": {
+      "function": "0x0072E340",
+      "instruction": "CALL ESI",
+      "confidence": "CONFIRMED"
+    },
+    "0x0072E47E": {
+      "function": "0x0072E340",
+      "instruction": "CALL dword ptr [0x00b61588]",
+      "confidence": "CONFIRMED"
+    },
+    "0x0072E4A7": {
+      "function": "0x0072E340",
+      "instruction": "CALL ESI",
+      "confidence": "CONFIRMED"
+    },
+    "0x0072E4B7": {
+      "function": "0x0072E340",
+      "instruction": "CALL dword ptr [0x00b61584]",
+      "confidence": "CONFIRMED"
+    },
+    "0x0072E4DA": {
+      "function": "0x0072E340",
+      "instruction": "CALL dword ptr [0x00b61580]",
+      "confidence": "CONFIRMED"
+    },
+    "0x00725BC8": {
+      "function": "0x00725BB0",
+      "instruction": "CALL 0x0087b2d6",
+      "confidence": "CONFIRMED"
+    },
+    "0x00725BD2": {
+      "function": "0x00725BB0",
+      "instruction": "CALL 0x00723720",
+      "confidence": "CONFIRMED"
+    },
+    "0x00725C06": {
+      "function": "0x00725BB0",
+      "instruction": "CALL 0x0071dc80",
+      "confidence": "CONFIRMED"
+    },
+    "0x0071DE76": {
+      "function": "0x0071DE60",
+      "instruction": "CALL 0x0072fea0",
+      "confidence": "CONFIRMED"
+    },
+    "0x0071DE81": {
+      "function": "0x0071DE60",
+      "instruction": "CALL dword ptr [0x00b61030]",
+      "confidence": "CONFIRMED"
+    },
+    "0x0071DEC0": {
+      "function": "0x0071DE60",
+      "instruction": "CALL ESI",
+      "confidence": "CONFIRMED"
+    },
+    "0x0071DEDA": {
+      "function": "0x0071DE60",
+      "instruction": "JMP 0x0071dee6",
+      "confidence": "CONFIRMED"
+    },
+    "0x0071DF0C": {
+      "function": "0x0071DE60",
+      "instruction": "CALL ESI",
+      "confidence": "CONFIRMED"
+    },
+    "0x0071DF3C": {
+      "function": "0x0071DE60",
+      "instruction": "CALL ESI",
+      "confidence": "CONFIRMED"
+    },
+    "0x0071DF6C": {
+      "function": "0x0071DE60",
+      "instruction": "CALL ESI",
+      "confidence": "CONFIRMED"
+    },
+    "0x0071DF9C": {
+      "function": "0x0071DE60",
+      "instruction": "CALL ESI",
+      "confidence": "CONFIRMED"
+    },
+    "0x0071DFCC": {
+      "function": "0x0071DE60",
+      "instruction": "CALL ESI",
+      "confidence": "CONFIRMED"
+    },
+    "0x0071DFFC": {
+      "function": "0x0071DE60",
+      "instruction": "CALL ESI",
+      "confidence": "CONFIRMED"
+    },
+    "0x0071E02C": {
+      "function": "0x0071DE60",
+      "instruction": "CALL ESI",
+      "confidence": "CONFIRMED"
+    },
+    "0x0071E05C": {
+      "function": "0x0071DE60",
+      "instruction": "CALL ESI",
+      "confidence": "CONFIRMED"
+    },
+    "0x0071E08C": {
+      "function": "0x0071DE60",
+      "instruction": "CALL ESI",
+      "confidence": "CONFIRMED"
+    },
+    "0x0071E0BC": {
+      "function": "0x0071DE60",
+      "instruction": "CALL ESI",
+      "confidence": "CONFIRMED"
+    },
+    "0x0071E0EC": {
+      "function": "0x0071DE60",
+      "instruction": "CALL ESI",
+      "confidence": "CONFIRMED"
+    },
+    "0x0071E11F": {
+      "function": "0x0071DE60",
+      "instruction": "CALL ESI",
+      "confidence": "CONFIRMED"
+    },
+    "0x0071E151": {
+      "function": "0x0071DE60",
+      "instruction": "CALL ESI",
+      "confidence": "CONFIRMED"
+    },
+    "0x0071E197": {
+      "function": "0x0071DE60",
+      "instruction": "CALL ESI",
+      "confidence": "CONFIRMED"
+    },
+    "0x0071E1C6": {
+      "function": "0x0071DE60",
+      "instruction": "CALL ESI",
+      "confidence": "CONFIRMED"
+    },
+    "0x0071E1F6": {
+      "function": "0x0071DE60",
+      "instruction": "CALL ESI",
+      "confidence": "CONFIRMED"
+    },
+    "0x0071E22A": {
+      "function": "0x0071DE60",
+      "instruction": "CALL ESI",
+      "confidence": "CONFIRMED"
+    },
+    "0x0071E25E": {
+      "function": "0x0071DE60",
+      "instruction": "CALL ESI",
+      "confidence": "CONFIRMED"
+    },
+    "0x0071E28E": {
+      "function": "0x0071DE60",
+      "instruction": "CALL ESI",
+      "confidence": "CONFIRMED"
+    },
+    "0x0071E2BE": {
+      "function": "0x0071DE60",
+      "instruction": "CALL ESI",
+      "confidence": "CONFIRMED"
+    },
+    "0x0071E2D7": {
+      "function": "0x0071DE60",
+      "instruction": "CALL 0x0087b2d6",
+      "confidence": "CONFIRMED"
+    },
+    "0x0071E30A": {
+      "function": "0x0071DE60",
+      "instruction": "CALL ESI",
+      "confidence": "CONFIRMED"
+    },
+    "0x0071E322": {
+      "function": "0x0071DE60",
+      "instruction": "CALL dword ptr [0x00b61074]",
+      "confidence": "CONFIRMED"
+    },
+    "0x0071E364": {
+      "function": "0x0071DE60",
+      "instruction": "CALL dword ptr [0x00b61038]",
+      "confidence": "CONFIRMED"
+    },
+    "0x0071E373": {
+      "function": "0x0071DE60",
+      "instruction": "JMP 0x0071e16e",
+      "confidence": "CONFIRMED"
+    },
+    "0x00766773": {
+      "references": [
+        {
+          "to": "0072e5d0",
+          "type": "UNCONDITIONAL_CALL",
+          "to_function": {
+            "name": "FUN_0072e5d0",
+            "address": "0072e5d0"
+          },
+          "to_label": "FUN_0072e5d0"
+        }
+      ],
+      "confidence": "CONFIRMED"
+    },
+    "0x007667B3": {
+      "references": [
+        {
+          "to": "00723a00",
+          "type": "UNCONDITIONAL_CALL",
+          "to_function": {
+            "name": "FUN_00723a00",
+            "address": "00723a00"
+          },
+          "to_label": "FUN_00723a00"
+        }
+      ],
+      "confidence": "CONFIRMED"
+    },
+    "0x007667FB": {
+      "references": [
+        {
+          "to": "0071e630",
+          "type": "UNCONDITIONAL_CALL",
+          "to_function": {
+            "name": "FUN_0071e630",
+            "address": "0071e630"
+          },
+          "to_label": "FUN_0071e630"
+        }
+      ],
+      "confidence": "CONFIRMED"
+    },
+    "0x00766807": {
+      "references": [
+        {
+          "to": "0072e5c0",
+          "type": "UNCONDITIONAL_CALL",
+          "to_function": {
+            "name": "FUN_0072e5c0",
+            "address": "0072e5c0"
+          },
+          "to_label": "FUN_0072e5c0"
+        }
+      ],
+      "confidence": "CONFIRMED"
+    },
+    "0x00766819": {
+      "references": [
+        {
+          "to": "00723a00",
+          "type": "UNCONDITIONAL_CALL",
+          "to_function": {
+            "name": "FUN_00723a00",
+            "address": "00723a00"
+          },
+          "to_label": "FUN_00723a00"
+        }
+      ],
+      "confidence": "CONFIRMED"
+    },
+    "0x00766833": {
+      "references": [
+        {
+          "to": "007661a0",
+          "type": "UNCONDITIONAL_CALL",
+          "to_function": {
+            "name": "FUN_007661a0",
+            "address": "007661a0"
+          },
+          "to_label": "FUN_007661a0"
+        }
+      ],
+      "confidence": "CONFIRMED"
+    },
+    "0x00766890": {
+      "references": [
+        {
+          "to": "00730450",
+          "type": "UNCONDITIONAL_CALL",
+          "to_function": {
+            "name": "FUN_00730450",
+            "address": "00730450"
+          },
+          "to_label": "FUN_00730450"
+        }
+      ],
+      "confidence": "CONFIRMED"
+    },
+    "0x00766931": {
+      "references": [
+        {
+          "to": "00727f40",
+          "type": "UNCONDITIONAL_CALL",
+          "to_function": {
+            "name": "FUN_00727f40",
+            "address": "00727f40"
+          },
+          "to_label": "FUN_00727f40"
+        }
+      ],
+      "confidence": "CONFIRMED"
+    }
+  },
+  "object_initializers": [
+    {
+      "address": "0x007279CD",
+      "instruction": "MOV dword ptr [EBP],0x189bb18",
+      "confidence": "CONFIRMED"
+    },
+    {
+      "address": "0x007279D4",
+      "instruction": "MOV dword ptr [EBP + 0x4],0x189bb18",
+      "confidence": "CONFIRMED"
+    },
+    {
+      "address": "0x007279DB",
+      "instruction": "MOV dword ptr [EBP + 0x8],0x189bb19",
+      "confidence": "CONFIRMED"
+    },
+    {
+      "address": "0x007279E8",
+      "instruction": "MOV dword ptr [EBP + 0x4e8],EBX",
+      "confidence": "CONFIRMED"
+    },
+    {
+      "address": "0x007279EE",
+      "instruction": "MOV dword ptr [EBP + 0x4ec],EBX",
+      "confidence": "CONFIRMED"
+    },
+    {
+      "address": "0x007279F4",
+      "instruction": "MOV dword ptr [EBP + 0x4f0],EBX",
+      "confidence": "CONFIRMED"
+    },
+    {
+      "address": "0x00727A19",
+      "instruction": "MOV dword ptr [EBP + 0x4c0],EAX",
+      "confidence": "CONFIRMED"
+    },
+    {
+      "address": "0x00727A1F",
+      "instruction": "MOV dword ptr [EBP + 0x4c8],EAX",
+      "confidence": "CONFIRMED"
+    },
+    {
+      "address": "0x00727A25",
+      "instruction": "MOV dword ptr [EBP + 0x4d0],0x18",
+      "confidence": "CONFIRMED"
+    },
+    {
+      "address": "0x00727A2F",
+      "instruction": "MOV dword ptr [EBP + 0x4c4],EBX",
+      "confidence": "CONFIRMED"
+    },
+    {
+      "address": "0x00727A35",
+      "instruction": "MOV dword ptr [EBP + 0x4cc],EBX",
+      "confidence": "CONFIRMED"
+    },
+    {
+      "address": "0x00727A3B",
+      "instruction": "MOV dword ptr [EBP + 0x4d4],EBX",
+      "confidence": "CONFIRMED"
+    },
+    {
+      "address": "0x00727A41",
+      "instruction": "MOVSS dword ptr [EBP + 0x4f8],XMM0",
+      "confidence": "CONFIRMED"
+    },
+    {
+      "address": "0x00727A49",
+      "instruction": "MOV dword ptr [EBP + 0x10],EBX",
+      "confidence": "CONFIRMED"
+    },
+    {
+      "address": "0x00727A4C",
+      "instruction": "MOV dword ptr [EBP + 0x3c],EBX",
+      "confidence": "CONFIRMED"
+    },
+    {
+      "address": "0x00727A4F",
+      "instruction": "MOV dword ptr [EBP + 0x18],EBX",
+      "confidence": "CONFIRMED"
+    },
+    {
+      "address": "0x00727A52",
+      "instruction": "MOV dword ptr [EBP + 0x44],EBX",
+      "confidence": "CONFIRMED"
+    },
+    {
+      "address": "0x00727A55",
+      "instruction": "MOV dword ptr [EBP + 0x48],EBX",
+      "confidence": "CONFIRMED"
+    },
+    {
+      "address": "0x00727A8F",
+      "instruction": "MOV dword ptr [EBP + 0x58],0x64",
+      "confidence": "CONFIRMED"
+    },
+    {
+      "address": "0x00727A96",
+      "instruction": "MOV dword ptr [EBP + 0x5c],ESI",
+      "confidence": "CONFIRMED"
+    },
+    {
+      "address": "0x00727A99",
+      "instruction": "MOV dword ptr [EBP + 0x60],ESI",
+      "confidence": "CONFIRMED"
+    },
+    {
+      "address": "0x00727A9C",
+      "instruction": "MOV dword ptr [EBP + 0x64],EBX",
+      "confidence": "CONFIRMED"
+    },
+    {
+      "address": "0x00727AA7",
+      "instruction": "MOV dword ptr [EBP + 0x4c],EAX",
+      "confidence": "CONFIRMED"
+    },
+    {
+      "address": "0x00727AAA",
+      "instruction": "MOV byte ptr [EBP + 0x4b4],BL",
+      "confidence": "CONFIRMED"
+    },
+    {
+      "address": "0x00727AB0",
+      "instruction": "MOV byte ptr [EBP + 0x4b5],BL",
+      "confidence": "CONFIRMED"
+    },
+    {
+      "address": "0x00727AB6",
+      "instruction": "MOV byte ptr [EBP + 0x4b6],BL",
+      "confidence": "CONFIRMED"
+    },
+    {
+      "address": "0x00727ABC",
+      "instruction": "MOV dword ptr [EBP + 0x4b8],EBX",
+      "confidence": "CONFIRMED"
+    },
+    {
+      "address": "0x00727AC6",
+      "instruction": "MOV byte ptr [EBP + 0x4bc],BL",
+      "confidence": "CONFIRMED"
+    },
+    {
+      "address": "0x00727ACC",
+      "instruction": "MOV dword ptr [EBP + 0x50],EBX",
+      "confidence": "CONFIRMED"
+    },
+    {
+      "address": "0x00727AFF",
+      "instruction": "MOV dword ptr [EBP + 0x14],EAX",
+      "confidence": "CONFIRMED"
+    },
+    {
+      "address": "0x00727B19",
+      "instruction": "MOV dword ptr [EBP + 0x54],EAX",
+      "confidence": "CONFIRMED"
+    },
+    {
+      "address": "0x00727B2B",
+      "instruction": "MOV byte ptr [EBP + 0x4fc],BL",
+      "confidence": "CONFIRMED"
+    },
+    {
+      "address": "0x00727B3B",
+      "instruction": "MOV dword ptr [EBP + 0x40],EBX",
+      "confidence": "CONFIRMED"
+    },
+    {
+      "address": "0x00727B3E",
+      "instruction": "MOV byte ptr [EBP + 0x534],0x1",
+      "confidence": "CONFIRMED"
+    }
+  ],
+  "config_writes": [
+    {
+      "address": "0x00727C7E",
+      "instruction": "MOV dword ptr [EAX + 0x68],ECX",
+      "note": "Interpret through switch case and alias; object fields and config fields both occur."
+    },
+    {
+      "address": "0x00727C8B",
+      "instruction": "MOV dword ptr [EDX + 0x64],EAX",
+      "note": "Interpret through switch case and alias; object fields and config fields both occur."
+    },
+    {
+      "address": "0x00727C9F",
+      "instruction": "MOV dword ptr [ECX + 0x4c],EAX",
+      "note": "Interpret through switch case and alias; object fields and config fields both occur."
+    },
+    {
+      "address": "0x00727CC6",
+      "instruction": "MOV dword ptr [ECX + 0x48],EDX",
+      "note": "Interpret through switch case and alias; object fields and config fields both occur."
+    },
+    {
+      "address": "0x00727CD3",
+      "instruction": "MOV dword ptr [EAX + 0x50],ECX",
+      "note": "Interpret through switch case and alias; object fields and config fields both occur."
+    },
+    {
+      "address": "0x00727CEC",
+      "instruction": "MOV dword ptr [ECX + 0x48],EAX",
+      "note": "Interpret through switch case and alias; object fields and config fields both occur."
+    },
+    {
+      "address": "0x00727CF9",
+      "instruction": "MOV dword ptr [EDX + 0x7c],EAX",
+      "note": "Interpret through switch case and alias; object fields and config fields both occur."
+    },
+    {
+      "address": "0x00727D06",
+      "instruction": "MOV dword ptr [EDX + 0x2c],EAX",
+      "note": "Interpret through switch case and alias; object fields and config fields both occur."
+    },
+    {
+      "address": "0x00727D1F",
+      "instruction": "MOV dword ptr [ECX + 0x44],EDX",
+      "note": "Interpret through switch case and alias; object fields and config fields both occur."
+    },
+    {
+      "address": "0x00727D2C",
+      "instruction": "MOV dword ptr [EAX + 0x10],ECX",
+      "note": "Interpret through switch case and alias; object fields and config fields both occur."
+    },
+    {
+      "address": "0x00727D39",
+      "instruction": "MOV dword ptr [EDX],EAX",
+      "note": "Interpret through switch case and alias; object fields and config fields both occur."
+    },
+    {
+      "address": "0x00727D45",
+      "instruction": "MOV dword ptr [ECX + 0x4c],EDX",
+      "note": "Interpret through switch case and alias; object fields and config fields both occur."
+    },
+    {
+      "address": "0x00727D52",
+      "instruction": "MOV dword ptr [EAX + 0x54],ECX",
+      "note": "Interpret through switch case and alias; object fields and config fields both occur."
+    },
+    {
+      "address": "0x00727D5F",
+      "instruction": "MOV dword ptr [EDX + 0x18],EAX",
+      "note": "Interpret through switch case and alias; object fields and config fields both occur."
+    },
+    {
+      "address": "0x00727D6C",
+      "instruction": "MOV dword ptr [ECX + 0x28],EDX",
+      "note": "Interpret through switch case and alias; object fields and config fields both occur."
+    },
+    {
+      "address": "0x00727D79",
+      "instruction": "MOV dword ptr [EAX + 0x58],ECX",
+      "note": "Interpret through switch case and alias; object fields and config fields both occur."
+    },
+    {
+      "address": "0x00727D86",
+      "instruction": "MOV dword ptr [EDX + 0x78],EAX",
+      "note": "Interpret through switch case and alias; object fields and config fields both occur."
+    },
+    {
+      "address": "0x00727D93",
+      "instruction": "MOV dword ptr [ECX + 0xc],EDX",
+      "note": "Interpret through switch case and alias; object fields and config fields both occur."
+    },
+    {
+      "address": "0x00727DA0",
+      "instruction": "MOV dword ptr [EAX + 0x24],ECX",
+      "note": "Interpret through switch case and alias; object fields and config fields both occur."
+    },
+    {
+      "address": "0x00727DAD",
+      "instruction": "MOV dword ptr [EDX + 0x20],EAX",
+      "note": "Interpret through switch case and alias; object fields and config fields both occur."
+    },
+    {
+      "address": "0x00727DBA",
+      "instruction": "MOV dword ptr [ECX + 0x6c],EDX",
+      "note": "Interpret through switch case and alias; object fields and config fields both occur."
+    },
+    {
+      "address": "0x00727DC7",
+      "instruction": "MOV dword ptr [EAX + 0x70],ECX",
+      "note": "Interpret through switch case and alias; object fields and config fields both occur."
+    },
+    {
+      "address": "0x00727DD4",
+      "instruction": "MOV dword ptr [EDX + 0x74],EAX",
+      "note": "Interpret through switch case and alias; object fields and config fields both occur."
+    },
+    {
+      "address": "0x00727DE1",
+      "instruction": "MOV dword ptr [ECX + 0x1c],EDX",
+      "note": "Interpret through switch case and alias; object fields and config fields both occur."
+    },
+    {
+      "address": "0x00727DEE",
+      "instruction": "MOV dword ptr [EAX + 0x5c],ECX",
+      "note": "Interpret through switch case and alias; object fields and config fields both occur."
+    },
+    {
+      "address": "0x00727DFB",
+      "instruction": "MOV dword ptr [EDX + 0x60],EAX",
+      "note": "Interpret through switch case and alias; object fields and config fields both occur."
+    },
+    {
+      "address": "0x00727E1B",
+      "instruction": "MOV dword ptr [EDX + 0x34],EAX",
+      "note": "Interpret through switch case and alias; object fields and config fields both occur."
+    },
+    {
+      "address": "0x00727E34",
+      "instruction": "MOV dword ptr [EDX + 0x38],EAX",
+      "note": "Interpret through switch case and alias; object fields and config fields both occur."
+    },
+    {
+      "address": "0x00727E4D",
+      "instruction": "MOV dword ptr [ECX + 0x40],EDX",
+      "note": "Interpret through switch case and alias; object fields and config fields both occur."
+    }
+  ],
+  "presentation_writes": [
+    {
+      "address": "0x00722F2E",
+      "instruction": "MOV dword ptr [ESI + 0x160],0x0"
+    },
+    {
+      "address": "0x00722F46",
+      "instruction": "MOV dword ptr [ESI + 0x160],EDX"
+    },
+    {
+      "address": "0x00722F5A",
+      "instruction": "MOV dword ptr [ESI + 0x134],EDX"
+    },
+    {
+      "address": "0x00722F63",
+      "instruction": "MOV dword ptr [ESI + 0x150],EDX"
+    },
+    {
+      "address": "0x00722F7F",
+      "instruction": "MOV dword ptr [ESI + 0x148],0x3"
+    },
+    {
+      "address": "0x00722F8B",
+      "instruction": "MOV dword ptr [ESI + 0x148],EDX"
+    },
+    {
+      "address": "0x00722F91",
+      "instruction": "MOV dword ptr [ESI + 0x138],EBP"
+    },
+    {
+      "address": "0x00722F97",
+      "instruction": "MOV dword ptr [ESI + 0x154],EDX"
+    },
+    {
+      "address": "0x00722FAF",
+      "instruction": "MOV dword ptr [ESI + 0x158],EDI"
+    },
+    {
+      "address": "0x00722FB6",
+      "instruction": "MOV dword ptr [ESI + 0x15c],0x0"
+    },
+    {
+      "address": "0x00722FC3",
+      "instruction": "MOV dword ptr [ESI + 0x15c],0x4"
+    },
+    {
+      "address": "0x00722FDE",
+      "instruction": "MOV dword ptr [ESI + 0x164],EAX"
+    },
+    {
+      "address": "0x00722FEA",
+      "instruction": "MOV dword ptr [ESI + 0x14c],EAX"
+    },
+    {
+      "address": "0x00722FFA",
+      "instruction": "MOV dword ptr [ESI + 0x140],EAX"
+    },
+    {
+      "address": "0x00723000",
+      "instruction": "MOV dword ptr [ESI + 0x144],0x0"
+    },
+    {
+      "address": "0x0072300A",
+      "instruction": "MOV dword ptr [ESI + 0x13c],EDX"
+    }
+  ],
+  "device_creation": {
+    "function": "0x00725200",
+    "convention": "ECX engine, 4 stack arguments, RET 0x10",
+    "return": "EAX=EBX HRESULT",
+    "attempts": [
+      {
+        "site": "0x007252CF",
+        "flags": 64
+      },
+      {
+        "site": "0x007252F5",
+        "flags": 32,
+        "device_type": 1
+      }
+    ],
+    "output": "0x013C6510",
+    "method_identity": "STRONGLY_SUPPORTED"
+  }
+}

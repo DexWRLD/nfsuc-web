@@ -1,0 +1,113 @@
+{
+  "phase": 43,
+  "evidence": "graphics-evidence-2026-11-03.json",
+  "base": "0x01318170",
+  "minimum_extent": "0x00000535",
+  "exact_size": "BLOCKED",
+  "instance": "static",
+  "constructor": "0x007279A0",
+  "destructor": "0x00727B60",
+  "static_wrapper": "0x00B4FB60",
+  "note": "Minimum extent from byte +0x534 access; not proven sizeof.",
+  "fields": {
+    "0x00": {
+      "address": "0x01318170",
+      "meaning": "title-like buffer begin",
+      "confidence": "STRONGLY_SUPPORTED"
+    },
+    "0x04": {
+      "address": "0x01318174",
+      "meaning": "buffer end",
+      "confidence": "STRONGLY_SUPPORTED"
+    },
+    "0x08": {
+      "address": "0x01318178",
+      "meaning": "capacity end",
+      "confidence": "STRONGLY_SUPPORTED"
+    },
+    "0x10": {
+      "address": "0x01318180",
+      "meaning": "IDirect3D9-like interface",
+      "confidence": "STRONGLY_SUPPORTED"
+    },
+    "0x14": {
+      "address": "0x01318184",
+      "meaning": "D3DEngine pointer",
+      "confidence": "CONFIRMED"
+    },
+    "0x18": {
+      "address": "0x01318188",
+      "meaning": "window-like call return; HWND unproven",
+      "confidence": "STRONGLY_SUPPORTED"
+    },
+    "0x3C": {
+      "address": "0x013181AC",
+      "meaning": "windowed-state flag",
+      "confidence": "STRONGLY_SUPPORTED"
+    },
+    "0x40": {
+      "address": "0x013181B0",
+      "meaning": "status",
+      "confidence": "CONFIRMED"
+    },
+    "0x48": {
+      "address": "0x013181B8",
+      "meaning": "performance level",
+      "confidence": "CONFIRMED"
+    },
+    "0x4C": {
+      "address": "0x013181BC",
+      "meaning": "scaled brightness/gamma setting",
+      "confidence": "STRONGLY_SUPPORTED"
+    },
+    "0x50": {
+      "address": "0x013181C0",
+      "meaning": "capability PCDisplayConfig pointer",
+      "confidence": "CONFIRMED"
+    },
+    "0x54": {
+      "address": "0x013181C4",
+      "meaning": "requested PCDisplayConfig pointer",
+      "confidence": "CONFIRMED"
+    },
+    "0x64": {
+      "address": "0x013181D4",
+      "meaning": "adapter ordinal",
+      "confidence": "STRONGLY_SUPPORTED"
+    },
+    "0x4F8": {
+      "address": "0x01318668",
+      "meaning": "aspect-ratio-like float",
+      "confidence": "STRONGLY_SUPPORTED"
+    },
+    "0x4FC": {
+      "address": "0x0131866C",
+      "meaning": "query-success byte",
+      "confidence": "CONFIRMED"
+    },
+    "0x500": {
+      "address": "0x01318670",
+      "meaning": "embedded synchronization wrapper",
+      "confidence": "STRONGLY_SUPPORTED"
+    },
+    "0x530": {
+      "address": "0x013186A0",
+      "meaning": "atomic/deferred state",
+      "confidence": "CONFIRMED"
+    },
+    "0x534": {
+      "address": "0x013186A4",
+      "meaning": "feature byte",
+      "confidence": "CONFIRMED"
+    }
+  },
+  "plus48_distinction": {
+    "graphics_object_0x48": "performance level",
+    "pcdisplayconfig_0x48": "g_FSAALevel / AA tier"
+  },
+  "window_field_0x18": {
+    "confidence": "STRONGLY_SUPPORTED",
+    "hwnd_confirmed": false,
+    "note": "Do not hardcode as HWND."
+  }
+}
