@@ -59,7 +59,9 @@ typedef enum UcHle {
     UC_HLE_GETCURRENTTHREAD,
     UC_HLE_GETTHREADPRIORITY,
     UC_HLE_SETPRIORITYCLASS,
-    UC_HLE_SETTHREADPRIORITY
+    UC_HLE_SETTHREADPRIORITY,
+    UC_HLE_QUERYPERFORMANCECOUNTER,
+    UC_HLE_QUERYPERFORMANCEFREQUENCY
 } UcHle;
 
 /* Where an import argument is read, and where its result is written.
@@ -184,6 +186,13 @@ int uc_process_pseudo_handle(uint32_t handle);
 int uc_thread_pseudo_handle(uint32_t handle);
 int32_t uc_thread_priority(void);
 unsigned uc_active_guest_threads(void);
+
+/* Deterministic guest monotonic performance clock (not host wall-clock). */
+void uc_guest_clock_reset(void);
+int uc_guest_clock_advance_ns(uint64_t delta_ns);
+uint64_t uc_guest_clock_qpc(void);
+uint64_t uc_guest_clock_qpf(void);
+uint64_t uc_guest_clock_tsc(void); /* coherent virtual TSC for rdtsc_shim */
 
 typedef uint32_t (*UcHleFn)(struct CPU *c, const UcDecoded *in, int *ok);
 

@@ -39,6 +39,8 @@ STDCALL_KNOWN = {
     "GetThreadPriority": (1, "UC_HLE_GETTHREADPRIORITY"),
     "SetPriorityClass": (2, "UC_HLE_SETPRIORITYCLASS"),
     "SetThreadPriority": (2, "UC_HLE_SETTHREADPRIORITY"),
+    "QueryPerformanceCounter": (1, "UC_HLE_QUERYPERFORMANCECOUNTER"),
+    "QueryPerformanceFrequency": (1, "UC_HLE_QUERYPERFORMANCEFREQUENCY"),
 }
 # public: void type_info::_type_info_dtor_internal_method(void)
 THISCALL_NO_STACK = "?_type_info_dtor_internal_method@type_info@@QAEXXZ"
