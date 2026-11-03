@@ -1,7 +1,7 @@
 {
   "project": {
     "name": "nfsuc-web",
-    "current_phase": 32,
+    "current_phase": 33,
     "strategy": "Phase 30: KERNEL32!TlsSetValue HLE at 0x00B611C8; ctor 0x009E9160 RETURNED_CLEAN. Graphics frozen."
   },
   "discovery": {
@@ -62,19 +62,18 @@
     "COMPILED": 22770,
     "STATIC_READY": 20762,
     "IMPORT_READY": 737,
-    "RUNTIME_READY": 61,
-    "ENTERABLE": 20,
-    "EXECUTED": 43,
-    "UNIQUE": 43,
-    "EXECUTION_RUNS": 35,
-    "CLEAN_ORDINARY_ROOTS": 11,
-    "EXECUTED_ORDINARY_CONSTRUCTORS": 9,
+    "RUNTIME_READY": 63,
+    "ENTERABLE": 21,
+    "EXECUTED": 44,
+    "UNIQUE": 44,
+    "EXECUTION_RUNS": 47,
+    "CLEAN_ORDINARY_ROOTS": 12,
+    "EXECUTED_ORDINARY_CONSTRUCTORS": 10,
     "DEEPEST": 4,
     "LARGEST_CLOSURE": 11,
-    "ENTERABLE_WITH_DEPTH_3_POTENTIAL": 5,
     "ENTERABLE_WITH_DEPTH_4_POTENTIAL": 0,
     "PROVEN_DEPTH_4_ROOTS": 3,
-    "LATEST_REAL_RUNTIME_BOUNDARY": "GetPriorityClass",
+    "LATEST_REAL_RUNTIME_BOUNDARY": "GetCurrentThread",
     "MOST_COMMON_REAL_BLOCKER": [
       "REQUIRED_STATE:UNKNOWN_OBJECT",
       2
@@ -82,16 +81,16 @@
   },
   "top_ordinary_island": {},
   "campaign_summary": {
-    "phase32_attempted": 12,
+    "phase33_attempted": 12,
     "outcomes": {
-      "EXECUTED_TO_NEXT_BLOCKER": 2,
-      "EXECUTED_CHAIN": 6,
+      "EXECUTED_TO_NEXT_BLOCKER": 1,
+      "EXECUTED_CHAIN": 7,
       "BLOCKED_REQUIRED_STATE": 3,
       "UNKNOWN": 1
     },
     "real_blocker_histogram": {
       "REQUIRED_STATE": 4,
-      "IMPORT": 2,
+      "IMPORT": 1,
       "INDIRECT": 0,
       "MEMORY": 0,
       "TLS": 0,
@@ -99,7 +98,7 @@
       "TIMING": 0,
       "EXTERNAL": 0,
       "PROTECTED": 0,
-      "CLEAN_RETURN": 6
+      "CLEAN_RETURN": 7
     },
     "required_state_histogram": {
       "UNKNOWN_OBJECT": 2,
@@ -117,19 +116,17 @@
     ],
     "deepest_chain": 4,
     "largest_executed_closure": 11,
-    "clean_ordinary_roots": 11,
-    "executed_ordinary_constructors": 9,
-    "ics_implemented": true,
-    "create_mutex_a_implemented": true,
-    "get_current_process_implemented": true,
-    "enter_leave_delete_implemented": false,
+    "clean_ordinary_roots": 12,
+    "executed_ordinary_constructors": 10,
+    "getpriorityclass_implemented": true,
+    "createsemaphorea_implemented": true,
     "ctor_status": {
-      "before_phase32": "EXECUTED_TO_NEXT_BLOCKER / InitializeCriticalSection (no-stub)",
-      "phase30_mislabel": "RETURNED_CLEAN_WITH_STUBS",
-      "after_phase32": "EXECUTED_TO_NEXT_BLOCKER",
-      "after_blocker": "GetPriorityClass",
+      "before": "EXECUTED_TO_NEXT_BLOCKER / GetPriorityClass",
+      "after": "EXECUTED_TO_NEXT_BLOCKER",
+      "after_blocker": "GetCurrentThread",
       "returned_clean": false,
-      "ics_calls": 1,
+      "gpc_calls": 1,
+      "priority_class_observed": 32,
       "entered": [
         "0x009E9160",
         "0x009E7710",
@@ -143,26 +140,62 @@
         "0x0097FCD0",
         "0x0097F790"
       ],
-      "depth": 3,
-      "getcurrentprocess_reached": true,
-      "getcurrentprocess_passed": true,
-      "getcurrentprocess_implemented": true
+      "depth": 3
     },
-    "ics_blocker_reduction": "4 Phase-31 ICS stops cleared on replay",
-    "mutex_blocker_reduction": "1 Phase-31 CreateMutexA stop cleared; next was CRT fault",
-    "proven_depth_4_roots": [
-      "0x0097BB30",
-      "0x00B52140",
-      "0x00B57CF0"
-    ],
-    "tlsalloc_implemented": true,
-    "tlssetvalue_implemented": true,
+    "semaphore_path_status": {
+      "before": "EXECUTED_TO_NEXT_BLOCKER / CreateSemaphoreA (depth 4)",
+      "after": "EXECUTED_CHAIN",
+      "after_blocker": "",
+      "returned_clean": true,
+      "sem_calls": 4,
+      "sem_count": 4,
+      "entered": [
+        "0x0097BB30",
+        "0x00977E20",
+        "0x00977420",
+        "0x00978040",
+        "0x00977FD0",
+        "0x009775E0",
+        "0x00977AF0",
+        "0x00977860"
+      ],
+      "depth": 4
+    },
+    "ebc70_status": {
+      "result": "EXECUTED_CHAIN",
+      "clean": true
+    },
+    "crt_atexit": {
+      "roots": [
+        "0x00B52140",
+        "0x00B57CF0"
+      ],
+      "sequence": "static init \u2192 0x00977E20 (ICS) \u2192 0x0087B640(callback) \u2192 0x0087B59B \u2192 SEH frame 0x0087BEB8",
+      "fault": "null / unmapped guest access after CRT helper entry",
+      "globals_touched": [
+        "0x018B1E6C",
+        "0x018B1E68",
+        "IAT 0x00B61398",
+        "IAT 0x00B61394"
+      ],
+      "classification": "BLOCKED_CRT_INITIALIZATION",
+      "reason": "CRT atexit/registration path requires initialized CRT lock/heap state and import helpers; PE-zero BSS / unbound CRT IATs are not a defensible ordinary init substitute. NULL callback is not invoked.",
+      "implementation_attempted": false
+    },
+    "release_semaphore_reached": false,
+    "wait_reached": false,
+    "closehandle_reached": false,
     "tlsgetvalue_reached": false,
     "tlsfree_reached": false,
     "scheduler": false,
     "filesystem_reached": false,
     "timing_reached": false,
-    "protected_boundary_encountered": false
+    "protected_boundary_encountered": false,
+    "proven_depth_4_roots": [
+      "0x0097BB30",
+      "0x00B52140",
+      "0x00B57CF0"
+    ]
   },
   "cisqrt": {},
   "harness_capability": {},
@@ -248,7 +281,7 @@
     }
   },
   "sync_frontier": {
-    "phase": 32,
+    "phase": 33,
     "category": "WIN32_SYNCHRONIZATION",
     "guest_threads": 1,
     "scheduler": "NONE",
@@ -770,7 +803,437 @@
       "LeaveCriticalSection",
       "DeleteCriticalSection",
       "WaitForSingleObject"
-    ]
+    ],
+    "create_semaphore_a": {
+      "slot": "0x00B6112C",
+      "dll": "KERNEL32.dll",
+      "symbol": "CreateSemaphoreA",
+      "hint": 107,
+      "unbound_name_rva": "0x008AB30E",
+      "classification": "STANDARD_WIN32_IMPORT",
+      "abi": "stdcall",
+      "stack_dwords": 4,
+      "return": "HANDLE",
+      "abi_confidence": "PROVEN",
+      "call_site_count": 2,
+      "high_caller_count": 2,
+      "high_callers": [
+        "0x009775E0",
+        "0x00A0C910"
+      ],
+      "call_sites": [
+        "0x0097762D",
+        "0x00A0C921"
+      ],
+      "wrapper": "0x009775E0",
+      "reached_via": [
+        "0x0097BB30",
+        "0x00978040",
+        "0x00977AF0",
+        "0x009775E0"
+      ],
+      "observed_args_unnamed_path": {
+        "lpSemaphoreAttributes": "NULL (0)",
+        "lInitialCount": "0",
+        "lMaximumCount": "0x3FFFFFFF",
+        "lpName": "NULL"
+      },
+      "return_usage": "stored to object+0; BOOL success = (handle != 0)",
+      "call_site": "0x0097762D",
+      "implemented": true,
+      "reached": true,
+      "hle": "UC_HLE_CREATESEMAPHOREA",
+      "hle_justified": true,
+      "handle_abstraction": "typed guest handles 0xCD010001+ (SEMAPHORE vs MUTEX)",
+      "count_validation": "max>0, initial>=0, initial<=max",
+      "named_policy": "reuse same handle; do not rewrite counts; cross-type name fails",
+      "last_error": "ERROR_ALREADY_EXISTS not modeled",
+      "limitations": [
+        "ReleaseSemaphore/Wait/CloseHandle not implemented",
+        "No guest scheduler / blocking waits"
+      ],
+      "tests": "uc_phase33_test.py"
+    },
+    "get_priority_class": {
+      "slot": "0x00B610E4",
+      "dll": "KERNEL32.dll",
+      "symbol": "GetPriorityClass",
+      "hint": 405,
+      "unbound_name_rva": "0x008AB43A",
+      "classification": "STANDARD_WIN32_IMPORT",
+      "abi": "stdcall",
+      "stack_dwords": 1,
+      "return": "DWORD",
+      "abi_confidence": "PROVEN",
+      "call_site_count": 1,
+      "high_caller_count": 1,
+      "high_callers": [
+        "0x0097F790"
+      ],
+      "call_sites": [
+        "0x0097F7A9"
+      ],
+      "implemented": true,
+      "reached": true,
+      "hle": "UC_HLE_GETPRIORITYCLASS",
+      "consumer": "0x0097F790",
+      "shape": [
+        "0097F790: push ebp",
+        "0097F791: mov ebp, esp",
+        "0097F793: and esp, 0xfffffff8",
+        "0097F796: sub esp, 0x54",
+        "0097F799: push ebx",
+        "0097F79A: push esi",
+        "0097F79B: push edi",
+        "0097F79C: call dword ptr [0xb611ac]",
+        "0097F7A2: mov edi, eax",
+        "0097F7A4: push edi",
+        "0097F7A5: mov dword ptr [esp + 0x1c], edi",
+        "0097F7A9: call dword ptr [0xb610e4]",
+        "0097F7AF: mov dword ptr [esp + 0x1c], eax",
+        "0097F7B3: call dword ptr [0xb611dc]",
+        "0097F7B9: mov esi, eax",
+        "0097F7BB: push esi",
+        "0097F7BC: mov dword ptr [esp + 0x28], esi",
+        "0097F7C0: call dword ptr [0xb61184]",
+        "0097F7C6: push 0x100",
+        "0097F7CB: push edi",
+        "0097F7CC: mov dword ptr [esp + 0x28], eax",
+        "0097F7D0: call dword ptr [0xb610e8]",
+        "0097F7D6: push 0xf",
+        "0097F7D8: push esi",
+        "0097F7D9: call dword ptr [0xb61180]"
+      ],
+      "argument": "EDI = GetCurrentProcess() result (pseudo-handle 0xFFFFFFFF)",
+      "return_usage": "Stored to local [esp+0x1c]; not used to choose SetPriorityClass argument. SetPriorityClass later uses constant 0x100 (HIGH_PRIORITY_CLASS). Saved class is restored via SetPriorityClass near function epilogue.",
+      "follow_on_imports": [
+        "GetCurrentThread",
+        "GetThreadPriority",
+        "SetPriorityClass",
+        "SetThreadPriority",
+        "QueryPerformanceCounter",
+        "QueryPerformanceFrequency"
+      ],
+      "guest_priority_policy": {
+        "initial": "NORMAL_PRIORITY_CLASS (0x20)",
+        "mutable": false,
+        "note": "SetPriorityClass not implemented; priority class is immutable"
+      }
+    },
+    "lifecycle_inventory": {
+      "ReleaseSemaphore": {
+        "slot": "0x00B61124",
+        "dll": "KERNEL32.dll",
+        "symbol": "ReleaseSemaphore",
+        "hint": 707,
+        "unbound_name_rva": "0x008AB33A",
+        "classification": "STANDARD_WIN32_IMPORT",
+        "abi": "stdcall",
+        "stack_dwords": 3,
+        "return": "BOOL",
+        "abi_confidence": "PROVEN",
+        "call_site_count": 3,
+        "high_caller_count": 2,
+        "high_callers": [
+          "0x00977700",
+          "0x00A0C950"
+        ],
+        "call_sites": [
+          "0x00977755",
+          "0x00977783",
+          "0x00A0C95A"
+        ],
+        "implemented": false,
+        "reached_phase33": false
+      },
+      "WaitForSingleObject": {
+        "slot": "0x00B611D8",
+        "dll": "KERNEL32.dll",
+        "symbol": "WaitForSingleObject",
+        "hint": 912,
+        "unbound_name_rva": "0x008A9F42",
+        "classification": "STANDARD_WIN32_IMPORT",
+        "abi": "stdcall",
+        "stack_dwords": 2,
+        "return": "DWORD",
+        "abi_confidence": "PROVEN",
+        "call_site_count": 26,
+        "high_caller_count": 25,
+        "high_callers": [
+          "0x0087C3DA",
+          "0x0087E2F0",
+          "0x0087E545",
+          "0x00973150",
+          "0x00973720",
+          "0x00973760",
+          "0x009738F0",
+          "0x00973920",
+          "0x009739D0",
+          "0x00973A20",
+          "0x00973A90",
+          "0x00973AE0",
+          "0x00973C70",
+          "0x00973CB0",
+          "0x00973CF0",
+          "0x00973D30",
+          "0x00973DD0",
+          "0x00973E10",
+          "0x00977480",
+          "0x00977650",
+          "0x00977870",
+          "0x00A0C940",
+          "0x00AE5380",
+          "0x00AE5398"
+        ],
+        "call_sites": [
+          "0x0087C44B",
+          "0x0087E361",
+          "0x0087E5C5",
+          "0x00973158",
+          "0x00973729",
+          "0x00973768",
+          "0x009738FB",
+          "0x0097392B",
+          "0x009739DB",
+          "0x00973A2B",
+          "0x00973A9B",
+          "0x00973AEB",
+          "0x00973C7B",
+          "0x00973CBB",
+          "0x00973CF9",
+          "0x00973D39",
+          "0x00973DD9",
+          "0x00973E19",
+          "0x00977516",
+          "0x00977694",
+          "0x009776CA",
+          "0x009778D9",
+          "0x00A0C945",
+          "0x00AE538B"
+        ],
+        "implemented": false,
+        "reached_phase33": false
+      },
+      "CloseHandle": {
+        "slot": "0x00B610A4",
+        "dll": "KERNEL32.dll",
+        "symbol": "CloseHandle",
+        "hint": 52,
+        "unbound_name_rva": "0x008AA0D8",
+        "classification": "STANDARD_WIN32_IMPORT",
+        "abi": "stdcall",
+        "stack_dwords": 1,
+        "return": "BOOL",
+        "abi_confidence": "PROVEN",
+        "call_site_count": 35,
+        "high_caller_count": 30,
+        "high_callers": [
+          "0x0072FC70",
+          "0x00740700",
+          "0x0087C4BC",
+          "0x0087C5DD",
+          "0x0087C672",
+          "0x0087C859",
+          "0x0087CE46",
+          "0x0087D288",
+          "0x0087D4CF",
+          "0x0087E209",
+          "0x00886A9E",
+          "0x008895E0",
+          "0x0088B470",
+          "0x0088C740",
+          "0x0088CA50",
+          "0x00907F70",
+          "0x0090BBF8",
+          "0x0090F7F6",
+          "0x00977260",
+          "0x00977400",
+          "0x009775D0",
+          "0x009777B0",
+          "0x00977870",
+          "0x00977930"
+        ],
+        "call_sites": [
+          "0x0072FD8F",
+          "0x00740740",
+          "0x0087C5C1",
+          "0x0087C65D",
+          "0x0087C699",
+          "0x0087C8CC",
+          "0x0087D0B2",
+          "0x0087D108",
+          "0x0087D19E",
+          "0x0087D3CF",
+          "0x0087D794",
+          "0x0087D9E0",
+          "0x0087E269",
+          "0x008876AD",
+          "0x00889666",
+          "0x0088B584",
+          "0x0088C864",
+          "0x0088CAE0",
+          "0x009080A5",
+          "0x0090BC04",
+          "0x0090F800",
+          "0x00977298",
+          "0x009772DF",
+          "0x00977411"
+        ],
+        "implemented": false,
+        "reached_phase33": false
+      }
+    },
+    "crt_atexit": {
+      "roots": [
+        "0x00B52140",
+        "0x00B57CF0"
+      ],
+      "sequence": "static init \u2192 0x00977E20 (ICS) \u2192 0x0087B640(callback) \u2192 0x0087B59B \u2192 SEH frame 0x0087BEB8",
+      "fault": "null / unmapped guest access after CRT helper entry",
+      "globals_touched": [
+        "0x018B1E6C",
+        "0x018B1E68",
+        "IAT 0x00B61398",
+        "IAT 0x00B61394"
+      ],
+      "classification": "BLOCKED_CRT_INITIALIZATION",
+      "reason": "CRT atexit/registration path requires initialized CRT lock/heap state and import helpers; PE-zero BSS / unbound CRT IATs are not a defensible ordinary init substitute. NULL callback is not invoked.",
+      "implementation_attempted": false
+    }
+  },
+  "process_frontier": {
+    "phase": 33,
+    "model": "ONE_LOGICAL_GUEST_PROCESS",
+    "pseudo_handle": "0xFFFFFFFF",
+    "priority_class_initial": "NORMAL_PRIORITY_CLASS (0x20)",
+    "priority_class_mutable": false,
+    "GetPriorityClass": {
+      "slot": "0x00B610E4",
+      "dll": "KERNEL32.dll",
+      "symbol": "GetPriorityClass",
+      "hint": 405,
+      "unbound_name_rva": "0x008AB43A",
+      "classification": "STANDARD_WIN32_IMPORT",
+      "abi": "stdcall",
+      "stack_dwords": 1,
+      "return": "DWORD",
+      "abi_confidence": "PROVEN",
+      "call_site_count": 1,
+      "high_caller_count": 1,
+      "high_callers": [
+        "0x0097F790"
+      ],
+      "call_sites": [
+        "0x0097F7A9"
+      ],
+      "implemented": true,
+      "reached": true,
+      "hle": "UC_HLE_GETPRIORITYCLASS",
+      "consumer": "0x0097F790",
+      "shape": [
+        "0097F790: push ebp",
+        "0097F791: mov ebp, esp",
+        "0097F793: and esp, 0xfffffff8",
+        "0097F796: sub esp, 0x54",
+        "0097F799: push ebx",
+        "0097F79A: push esi",
+        "0097F79B: push edi",
+        "0097F79C: call dword ptr [0xb611ac]",
+        "0097F7A2: mov edi, eax",
+        "0097F7A4: push edi",
+        "0097F7A5: mov dword ptr [esp + 0x1c], edi",
+        "0097F7A9: call dword ptr [0xb610e4]",
+        "0097F7AF: mov dword ptr [esp + 0x1c], eax",
+        "0097F7B3: call dword ptr [0xb611dc]",
+        "0097F7B9: mov esi, eax",
+        "0097F7BB: push esi",
+        "0097F7BC: mov dword ptr [esp + 0x28], esi",
+        "0097F7C0: call dword ptr [0xb61184]",
+        "0097F7C6: push 0x100",
+        "0097F7CB: push edi",
+        "0097F7CC: mov dword ptr [esp + 0x28], eax",
+        "0097F7D0: call dword ptr [0xb610e8]",
+        "0097F7D6: push 0xf",
+        "0097F7D8: push esi",
+        "0097F7D9: call dword ptr [0xb61180]"
+      ],
+      "argument": "EDI = GetCurrentProcess() result (pseudo-handle 0xFFFFFFFF)",
+      "return_usage": "Stored to local [esp+0x1c]; not used to choose SetPriorityClass argument. SetPriorityClass later uses constant 0x100 (HIGH_PRIORITY_CLASS). Saved class is restored via SetPriorityClass near function epilogue.",
+      "follow_on_imports": [
+        "GetCurrentThread",
+        "GetThreadPriority",
+        "SetPriorityClass",
+        "SetThreadPriority",
+        "QueryPerformanceCounter",
+        "QueryPerformanceFrequency"
+      ],
+      "guest_priority_policy": {
+        "initial": "NORMAL_PRIORITY_CLASS (0x20)",
+        "mutable": false,
+        "note": "SetPriorityClass not implemented; priority class is immutable"
+      }
+    },
+    "SetPriorityClass": {
+      "slot": "0x00B610E8",
+      "dll": "KERNEL32.dll",
+      "symbol": "SetPriorityClass",
+      "hint": 817,
+      "unbound_name_rva": "0x008AB426",
+      "classification": "STANDARD_WIN32_IMPORT",
+      "abi": "stdcall",
+      "stack_dwords": 2,
+      "return": "BOOL",
+      "abi_confidence": "PROVEN",
+      "call_site_count": 2,
+      "high_caller_count": 1,
+      "high_callers": [
+        "0x0097F790"
+      ],
+      "call_sites": [
+        "0x0097F7D0",
+        "0x0097F9BA"
+      ],
+      "implemented": false,
+      "reached_phase33": false,
+      "inventoried": true,
+      "note": "Reached only after GetCurrentThread on ctor path"
+    },
+    "GetCurrentThread": {
+      "slot": "0x00B611DC",
+      "dll": "KERNEL32.dll",
+      "symbol": "GetCurrentThread",
+      "hint": 325,
+      "unbound_name_rva": "0x008A9F2E",
+      "classification": "STANDARD_WIN32_IMPORT",
+      "abi": "stdcall",
+      "stack_dwords": 0,
+      "return": "HANDLE pseudo -2",
+      "abi_confidence": "PROVEN",
+      "call_site_count": 7,
+      "high_caller_count": 7,
+      "high_callers": [
+        "0x0087C5DD",
+        "0x0087C672",
+        "0x0087C714",
+        "0x0087C781",
+        "0x00977300",
+        "0x0097F790",
+        "0x00A07A7A"
+      ],
+      "call_sites": [
+        "0x0087C62B",
+        "0x0087C67E",
+        "0x0087C72A",
+        "0x0087C797",
+        "0x0097731F",
+        "0x0097F7B3",
+        "0x00A07AFA"
+      ],
+      "implemented": false,
+      "reached_phase33": true,
+      "note": "Current constructor next blocker; pseudo-handle -2 not implemented this phase"
+    },
+    "last_error_modeled": false
   },
   "initialization": [
     {
@@ -1058,6 +1521,11 @@
     {
       "phase": 32,
       "name": "Win32 synchronization runtime (ICS/Mutex/GCP)",
+      "state": "completed"
+    },
+    {
+      "phase": 33,
+      "name": "GetPriorityClass + CreateSemaphoreA",
       "state": "completed"
     }
   ],

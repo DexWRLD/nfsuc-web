@@ -566,6 +566,10 @@ def build():
             json.load(open(os.path.join(ANALYSIS, "synchronization-frontier.json"), encoding="utf-8"))
             if os.path.isfile(os.path.join(ANALYSIS, "synchronization-frontier.json")) else {}
         ),
+        "process_frontier": (
+            json.load(open(os.path.join(ANALYSIS, "process-handle-frontier.json"), encoding="utf-8"))
+            if os.path.isfile(os.path.join(ANALYSIS, "process-handle-frontier.json")) else {}
+        ),
         "initialization": status["initialization"],
         "boundaries": status["boundaries"],
         "helper_cut": helper_summary if helper_summary else "UNKNOWN",
@@ -795,13 +799,12 @@ def _sync_badge(model):
             return "REACHED"
         return "NOT_IMPL"
 
-    return "ICS=%s Enter=%s Leave=%s Del=%s Mutex=%s GCP=%s thr=%s sched=%s" % (
+    return "ICS=%s Mutex=%s Sem=%s GCP=%s GPC=%s thr=%s sched=%s" % (
         st_row(sync.get("critical_section")),
-        st_row(fam.get("EnterCriticalSection")),
-        st_row(fam.get("LeaveCriticalSection")),
-        st_row(fam.get("DeleteCriticalSection")),
         st_row(sync.get("create_mutex_a")),
+        st_row(sync.get("create_semaphore_a")),
         st_row(sync.get("get_current_process")),
+        st_row(sync.get("get_priority_class")),
         sync.get("guest_threads") or "?",
         sync.get("scheduler") or "NONE",
     )
@@ -814,15 +817,17 @@ def _sync_html_table(model):
         if not row:
             return "PENDING"
         return "IMPLEMENTED" if row.get("implemented") else "NOT_IMPLEMENTED"
+    proc = model.get("process_frontier") or {}
     rows = [
         ("InitializeCriticalSection", impl(sync.get("critical_section"))),
-        ("EnterCriticalSection", impl(fam.get("EnterCriticalSection"))),
-        ("LeaveCriticalSection", impl(fam.get("LeaveCriticalSection"))),
-        ("DeleteCriticalSection", impl(fam.get("DeleteCriticalSection"))),
         ("CreateMutexA", impl(sync.get("create_mutex_a"))),
+        ("CreateSemaphoreA", impl(sync.get("create_semaphore_a"))),
         ("GetCurrentProcess", impl(sync.get("get_current_process"))),
+        ("GetPriorityClass", impl(sync.get("get_priority_class") or proc.get("GetPriorityClass"))),
+        ("Enter/Leave/Delete", "NOT_IMPLEMENTED"),
         ("Guest threads", "%s" % (sync.get("guest_threads") or 1)),
         ("Scheduler", sync.get("scheduler") or "NONE"),
+        ("Process model", proc.get("model") or "ONE_LOGICAL_GUEST_PROCESS"),
         ("Model", sync.get("model") or "SINGLE GUEST THREAD — LIMITED SYNC MODEL"),
     ]
     return html_table(("Item", "Status"), rows)
