@@ -1,5 +1,5 @@
 {
-  "phase": 44,
+  "phase": 45,
   "definitions": {
     "ENTERABLE": "All pre-entry required state establishable via primitives, static PE data, standard runtime, or proven ordinary init/ctor. Not merely IMPORT_READY.",
     "DEEPEST_ORDINARY_EXECUTION_CHAIN": "Max nested ordinary UC frames in one harness run.",
@@ -22,7 +22,7 @@
   "static_ready": 20762,
   "import_ready": 737,
   "runtime_ready": 72,
-  "enterable": 33,
+  "enterable": 41,
   "enterable_roots": [
     "0x00721050",
     "0x00721070",
@@ -56,9 +56,17 @@
     "0x009EB350",
     "0x009EB980",
     "0x009EBC70",
+    "0x00A127E0",
+    "0x00A12850",
+    "0x00A12860",
+    "0x00A128A0",
+    "0x00A12D10",
+    "0x00A12D50",
+    "0x00A12D90",
+    "0x00A130E0",
     "0x00B57CD0"
   ],
-  "unique_uc_functions_executed": 67,
+  "unique_uc_functions_executed": 75,
   "unique_uc_functions_executed_list": [
     "0x00721050",
     "0x00721070",
@@ -124,17 +132,25 @@
     "0x009EB870",
     "0x009EB980",
     "0x009EBC70",
+    "0x00A127E0",
+    "0x00A12850",
+    "0x00A12860",
+    "0x00A128A0",
+    "0x00A12D10",
+    "0x00A12D50",
+    "0x00A12D90",
+    "0x00A130E0",
     "0x00B52140",
     "0x00B57CD0",
     "0x00B57CF0"
   ],
-  "execution_runs": 265,
+  "execution_runs": 282,
   "deepest_ordinary_execution_chain": 4,
-  "largest_executed_ordinary_closure": 18,
+  "largest_executed_ordinary_closure": 20,
   "ordinary_execution_sequence_length": 5,
   "largest_stateful_sequence_coverage": 22,
   "clean_stateful_sequences": 11,
-  "clean_ordinary_roots": 13,
+  "clean_ordinary_roots": 21,
   "clean_ordinary_roots_list": [
     "0x00721070",
     "0x00808770",
@@ -148,6 +164,14 @@
     "0x009EB350",
     "0x009EB980",
     "0x009EBC70",
+    "0x00A127E0",
+    "0x00A12850",
+    "0x00A12860",
+    "0x00A128A0",
+    "0x00A12D10",
+    "0x00A12D50",
+    "0x00A12D90",
+    "0x00A130E0",
     "0x00B57CD0"
   ],
   "executed_ordinary_constructors": 9,
@@ -583,5 +607,46 @@
     "unique_executed_delta": 0,
     "inventory": "blocked-external-attribution.json"
   },
-  "recommended_phase45": "Close allocator-audit caller gaps in static evidence; recover enough of 0x0072B170 / 0x00766730 ordinary bodies to decide whether callback execution edges are justifiable; keep protected backends opaque. Do not promote BLOCKED_EXTERNAL to ENTERABLE without an ordinary allocator-free path."
+  "recommended_phase45": "Close allocator-audit caller gaps in static evidence; recover enough of 0x0072B170 / 0x00766730 ordinary bodies to decide whether callback execution edges are justifiable; keep protected backends opaque. Do not promote BLOCKED_EXTERNAL to ENTERABLE without an ordinary allocator-free path.",
+  "helper_cut_reconciliation": {
+    "must": 74,
+    "may": 139,
+    "independent": 22394,
+    "blocked_external_equals_must": true,
+    "artifact": "helper-cut-reconciliation.json"
+  },
+  "phase45": {
+    "newly_executed": [
+      "0x00A127E0",
+      "0x00A12850",
+      "0x00A12860",
+      "0x00A128A0",
+      "0x00A12D10",
+      "0x00A12D50",
+      "0x00A12D90",
+      "0x00A130E0"
+    ],
+    "enterable_new": [
+      "0x00A127E0",
+      "0x00A12850",
+      "0x00A12860",
+      "0x00A128A0",
+      "0x00A12D10",
+      "0x00A12D50",
+      "0x00A12D90",
+      "0x00A130E0"
+    ],
+    "runs_delta": 17,
+    "matrix_chain_clean": true,
+    "regressions": {
+      "family_a": true,
+      "family_b": true,
+      "family_c": true
+    },
+    "blocked_external_unchanged": 74,
+    "allocator_still_opaque": true,
+    "injected_allocator_tests": 0,
+    "note": "Guest harness execution of allocator-independent matrix/math leaves. No MUST/BLOCKED_EXTERNAL reclassification."
+  },
+  "recommended_phase46": "Expand the 0x00A12xxx matrix island (more leaf ops / short chains); recover ordinary contracts for remaining RUNTIME_READY_NOT_EXECUTED math leaves; continue Family C/+0x14 interface work only with proven providers. Keep 0x00686000 opaque."
 }
