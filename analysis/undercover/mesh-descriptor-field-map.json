@@ -1,0 +1,15 @@
+{
+  "phase": 46,
+  "function": "0x00757B80",
+  "minimum_read_extent": "0x000000FC",
+  "fields": {
+    "0xA8 + 4*i": "batch instance count",
+    "0xDC + 4*i": "stream 1 offset in units of 64 bytes",
+    "0xEC": "mesh metadata pointer",
+    "0xF0": "index count used to compute primitive count",
+    "0xF4": "vertex count argument",
+    "0xF8": "stride"
+  },
+  "source": "first-frame-evidence-2026-11-03.json",
+  "note": "Full descriptor writer/lifetime unresolved."
+}

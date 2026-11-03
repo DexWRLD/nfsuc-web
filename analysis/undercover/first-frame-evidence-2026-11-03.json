@@ -1,0 +1,1864 @@
+{
+  "target": {
+    "name": "nfs.exe",
+    "image_base": "0x00400000",
+    "architecture": "PE32 x86",
+    "sha256": "6b10551649fd70fa630bd7454fd953f51555fa2dd2112faae84ac8ca97844bcd"
+  },
+  "status": "FIRST_FRAME_PATH_BLOCKED_BY_PROTECTED_BACKEND",
+  "coverage": {
+    "device_xrefs": 142,
+    "defined_functions_disassembled": 69,
+    "call_pattern_scan_exhaustive_for_indirect_aliases": false
+  },
+  "call_sites": [
+    {
+      "address": "0x00725313",
+      "function": "0x00725200",
+      "method": "BeginScene",
+      "arguments": "()",
+      "receiver": "device loaded from 0x013C6510, directly or via a local register alias",
+      "confidence": "instruction verified, method strongly supported by vtable layout and receiver",
+      "instructions": [
+        [
+          "0x007252F3",
+          "PUSH EDX"
+        ],
+        [
+          "0x007252F4",
+          "PUSH EBP"
+        ],
+        [
+          "0x007252F5",
+          "CALL EAX"
+        ],
+        [
+          "0x007252F7",
+          "MOV EBX,EAX"
+        ],
+        [
+          "0x007252F9",
+          "CMP EBX,0x8876086c"
+        ],
+        [
+          "0x007252FF",
+          "JLE 0x00725352"
+        ],
+        [
+          "0x00725301",
+          "TEST EBX,EBX"
+        ],
+        [
+          "0x00725303",
+          "JNZ 0x00725352"
+        ],
+        [
+          "0x00725305",
+          "MOV EAX,[0x013c6510]"
+        ],
+        [
+          "0x0072530A",
+          "MOV ECX,dword ptr [EAX]"
+        ],
+        [
+          "0x0072530C",
+          "MOV EDX,dword ptr [ECX + 0xa4]"
+        ],
+        [
+          "0x00725312",
+          "PUSH EAX"
+        ],
+        [
+          "0x00725313",
+          "CALL EDX"
+        ]
+      ]
+    },
+    {
+      "address": "0x0072532F",
+      "function": "0x00725200",
+      "method": "Clear",
+      "arguments": "(0, NULL, 7, 0, 1.0f, 0)",
+      "receiver": "device loaded from 0x013C6510, directly or via a local register alias",
+      "confidence": "instruction verified, method strongly supported by vtable layout and receiver",
+      "instructions": [
+        [
+          "0x00725315",
+          "FLD1"
+        ],
+        [
+          "0x00725317",
+          "MOV EAX,[0x013c6510]"
+        ],
+        [
+          "0x0072531C",
+          "MOV ECX,dword ptr [EAX]"
+        ],
+        [
+          "0x0072531E",
+          "MOV EDX,dword ptr [ECX + 0xac]"
+        ],
+        [
+          "0x00725324",
+          "PUSH EBX"
+        ],
+        [
+          "0x00725325",
+          "PUSH ECX"
+        ],
+        [
+          "0x00725326",
+          "FSTP float ptr [ESP]"
+        ],
+        [
+          "0x00725329",
+          "PUSH EBX"
+        ],
+        [
+          "0x0072532A",
+          "PUSH 0x7"
+        ],
+        [
+          "0x0072532C",
+          "PUSH EBX"
+        ],
+        [
+          "0x0072532D",
+          "PUSH EBX"
+        ],
+        [
+          "0x0072532E",
+          "PUSH EAX"
+        ],
+        [
+          "0x0072532F",
+          "CALL EDX"
+        ]
+      ]
+    },
+    {
+      "address": "0x0072533F",
+      "function": "0x00725200",
+      "method": "EndScene",
+      "arguments": "()",
+      "receiver": "device loaded from 0x013C6510, directly or via a local register alias",
+      "confidence": "instruction verified, method strongly supported by vtable layout and receiver",
+      "instructions": [
+        [
+          "0x00725325",
+          "PUSH ECX"
+        ],
+        [
+          "0x00725326",
+          "FSTP float ptr [ESP]"
+        ],
+        [
+          "0x00725329",
+          "PUSH EBX"
+        ],
+        [
+          "0x0072532A",
+          "PUSH 0x7"
+        ],
+        [
+          "0x0072532C",
+          "PUSH EBX"
+        ],
+        [
+          "0x0072532D",
+          "PUSH EBX"
+        ],
+        [
+          "0x0072532E",
+          "PUSH EAX"
+        ],
+        [
+          "0x0072532F",
+          "CALL EDX"
+        ],
+        [
+          "0x00725331",
+          "MOV EAX,[0x013c6510]"
+        ],
+        [
+          "0x00725336",
+          "MOV ECX,dword ptr [EAX]"
+        ],
+        [
+          "0x00725338",
+          "MOV EDX,dword ptr [ECX + 0xa8]"
+        ],
+        [
+          "0x0072533E",
+          "PUSH EAX"
+        ],
+        [
+          "0x0072533F",
+          "CALL EDX"
+        ]
+      ]
+    },
+    {
+      "address": "0x00725350",
+      "function": "0x00725200",
+      "method": "Present",
+      "arguments": "(NULL, NULL, NULL, NULL)",
+      "receiver": "device loaded from 0x013C6510, directly or via a local register alias",
+      "confidence": "instruction verified, method strongly supported by vtable layout and receiver",
+      "instructions": [
+        [
+          "0x00725336",
+          "MOV ECX,dword ptr [EAX]"
+        ],
+        [
+          "0x00725338",
+          "MOV EDX,dword ptr [ECX + 0xa8]"
+        ],
+        [
+          "0x0072533E",
+          "PUSH EAX"
+        ],
+        [
+          "0x0072533F",
+          "CALL EDX"
+        ],
+        [
+          "0x00725341",
+          "MOV EAX,[0x013c6510]"
+        ],
+        [
+          "0x00725346",
+          "MOV ECX,dword ptr [EAX]"
+        ],
+        [
+          "0x00725348",
+          "MOV EDX,dword ptr [ECX + 0x44]"
+        ],
+        [
+          "0x0072534B",
+          "PUSH EBX"
+        ],
+        [
+          "0x0072534C",
+          "PUSH EBX"
+        ],
+        [
+          "0x0072534D",
+          "PUSH EBX"
+        ],
+        [
+          "0x0072534E",
+          "PUSH EBX"
+        ],
+        [
+          "0x0072534F",
+          "PUSH EAX"
+        ],
+        [
+          "0x00725350",
+          "CALL EDX"
+        ]
+      ]
+    },
+    {
+      "address": "0x0074286D",
+      "function": "0x00742810",
+      "method": "SetRenderTarget",
+      "arguments": "(0, surface in ECX)",
+      "receiver": "device loaded from 0x013C6510, directly or via a local register alias",
+      "confidence": "instruction verified, method strongly supported by vtable layout and receiver",
+      "instructions": [
+        [
+          "0x00742846",
+          "MOV dword ptr [EAX + 0x1c],EDX"
+        ],
+        [
+          "0x00742849",
+          "MOV DL,byte ptr [ESP + 0x20]"
+        ],
+        [
+          "0x0074284D",
+          "MOV dword ptr [EAX + 0x8],ECX"
+        ],
+        [
+          "0x00742850",
+          "MOV dword ptr [EAX + 0x14],0x1"
+        ],
+        [
+          "0x00742857",
+          "MOV byte ptr [EAX + 0x20],DL"
+        ],
+        [
+          "0x0074285A",
+          "JZ 0x007428a1"
+        ],
+        [
+          "0x0074285C",
+          "MOV EAX,[0x013c6510]"
+        ],
+        [
+          "0x00742861",
+          "MOV EDX,dword ptr [EAX]"
+        ],
+        [
+          "0x00742863",
+          "PUSH ECX"
+        ],
+        [
+          "0x00742864",
+          "PUSH 0x0"
+        ],
+        [
+          "0x00742866",
+          "PUSH EAX"
+        ],
+        [
+          "0x00742867",
+          "MOV EAX,dword ptr [EDX + 0x94]"
+        ],
+        [
+          "0x0074286D",
+          "CALL EAX"
+        ]
+      ]
+    },
+    {
+      "address": "0x0074287F",
+      "function": "0x00742810",
+      "method": "SetDepthStencilSurface",
+      "arguments": "(NULL)",
+      "receiver": "device loaded from 0x013C6510, directly or via a local register alias",
+      "confidence": "instruction verified, method strongly supported by vtable layout and receiver",
+      "instructions": [
+        [
+          "0x0074285C",
+          "MOV EAX,[0x013c6510]"
+        ],
+        [
+          "0x00742861",
+          "MOV EDX,dword ptr [EAX]"
+        ],
+        [
+          "0x00742863",
+          "PUSH ECX"
+        ],
+        [
+          "0x00742864",
+          "PUSH 0x0"
+        ],
+        [
+          "0x00742866",
+          "PUSH EAX"
+        ],
+        [
+          "0x00742867",
+          "MOV EAX,dword ptr [EDX + 0x94]"
+        ],
+        [
+          "0x0074286D",
+          "CALL EAX"
+        ],
+        [
+          "0x0074286F",
+          "MOV EAX,[0x013c6510]"
+        ],
+        [
+          "0x00742874",
+          "MOV ECX,dword ptr [EAX]"
+        ],
+        [
+          "0x00742876",
+          "MOV EDX,dword ptr [ECX + 0x9c]"
+        ],
+        [
+          "0x0074287C",
+          "PUSH 0x0"
+        ],
+        [
+          "0x0074287E",
+          "PUSH EAX"
+        ],
+        [
+          "0x0074287F",
+          "CALL EDX"
+        ]
+      ]
+    },
+    {
+      "address": "0x0074289F",
+      "function": "0x00742810",
+      "method": "Clear",
+      "arguments": "(0, NULL, 1, 0, 1.0f, 0)",
+      "receiver": "device loaded from 0x013C6510, directly or via a local register alias",
+      "confidence": "instruction verified, method strongly supported by vtable layout and receiver",
+      "instructions": [
+        [
+          "0x00742881",
+          "FLD1"
+        ],
+        [
+          "0x00742883",
+          "MOV EAX,[0x013c6510]"
+        ],
+        [
+          "0x00742888",
+          "MOV ECX,dword ptr [EAX]"
+        ],
+        [
+          "0x0074288A",
+          "MOV EDX,dword ptr [ECX + 0xac]"
+        ],
+        [
+          "0x00742890",
+          "PUSH 0x0"
+        ],
+        [
+          "0x00742892",
+          "PUSH ECX"
+        ],
+        [
+          "0x00742893",
+          "FSTP float ptr [ESP]"
+        ],
+        [
+          "0x00742896",
+          "PUSH 0x0"
+        ],
+        [
+          "0x00742898",
+          "PUSH 0x1"
+        ],
+        [
+          "0x0074289A",
+          "PUSH 0x0"
+        ],
+        [
+          "0x0074289C",
+          "PUSH 0x0"
+        ],
+        [
+          "0x0074289E",
+          "PUSH EAX"
+        ],
+        [
+          "0x0074289F",
+          "CALL EDX"
+        ]
+      ]
+    },
+    {
+      "address": "0x007666E4",
+      "function": "0x00766480",
+      "method": "SetVertexDeclaration",
+      "arguments": "(selected declaration)",
+      "receiver": "device loaded from 0x013C6510, directly or via a local register alias",
+      "confidence": "instruction verified, method strongly supported by vtable layout and receiver",
+      "instructions": [
+        [
+          "0x007666B2",
+          "CALL 0x00529120"
+        ],
+        [
+          "0x007666B7",
+          "MOV EAX,dword ptr [ESP + 0x10]"
+        ],
+        [
+          "0x007666BB",
+          "MOV ECX,dword ptr [EAX + 0x84]"
+        ],
+        [
+          "0x007666C1",
+          "MOV EAX,dword ptr [ECX + 0x324]"
+        ],
+        [
+          "0x007666C7",
+          "CMP dword ptr [0x01311cb0],EAX"
+        ],
+        [
+          "0x007666CD",
+          "JZ 0x007666e6"
+        ],
+        [
+          "0x007666CF",
+          "MOV ECX,dword ptr [0x013c6510]"
+        ],
+        [
+          "0x007666D5",
+          "MOV [0x01311cb0],EAX"
+        ],
+        [
+          "0x007666DA",
+          "MOV EDX,dword ptr [ECX]"
+        ],
+        [
+          "0x007666DC",
+          "PUSH EAX"
+        ],
+        [
+          "0x007666DD",
+          "MOV EAX,dword ptr [EDX + 0x15c]"
+        ],
+        [
+          "0x007666E3",
+          "PUSH ECX"
+        ],
+        [
+          "0x007666E4",
+          "CALL EAX"
+        ]
+      ]
+    },
+    {
+      "address": "0x0075EF3F",
+      "function": "0x0075EF20",
+      "method": "SetVertexDeclaration",
+      "arguments": "([descriptor])",
+      "receiver": "device loaded from 0x013C6510, directly or via a local register alias",
+      "confidence": "instruction verified, method strongly supported by vtable layout and receiver",
+      "instructions": [
+        [
+          "0x0075EF20",
+          "MOV EAX,dword ptr [ECX]"
+        ],
+        [
+          "0x0075EF22",
+          "CMP dword ptr [0x01311cb0],EAX"
+        ],
+        [
+          "0x0075EF28",
+          "JZ 0x0075ef41"
+        ],
+        [
+          "0x0075EF2A",
+          "MOV ECX,dword ptr [0x013c6510]"
+        ],
+        [
+          "0x0075EF30",
+          "MOV [0x01311cb0],EAX"
+        ],
+        [
+          "0x0075EF35",
+          "MOV EDX,dword ptr [ECX]"
+        ],
+        [
+          "0x0075EF37",
+          "PUSH EAX"
+        ],
+        [
+          "0x0075EF38",
+          "MOV EAX,dword ptr [EDX + 0x15c]"
+        ],
+        [
+          "0x0075EF3E",
+          "PUSH ECX"
+        ],
+        [
+          "0x0075EF3F",
+          "CALL EAX"
+        ]
+      ]
+    },
+    {
+      "address": "0x0075EFAE",
+      "function": "0x0075EF20",
+      "method": "SetStreamSource",
+      "arguments": "(stream index, buffer from 0179F2DC table, 0, stride & 0x7FFF)",
+      "receiver": "device loaded from 0x013C6510, directly or via a local register alias",
+      "confidence": "instruction verified, method strongly supported by vtable layout and receiver",
+      "instructions": [
+        [
+          "0x0075EF8C",
+          "JZ 0x0075efb0"
+        ],
+        [
+          "0x0075EF8E",
+          "MOV EDX,dword ptr [0x013c6510]"
+        ],
+        [
+          "0x0075EF94",
+          "PUSH EAX"
+        ],
+        [
+          "0x0075EF95",
+          "PUSH 0x0"
+        ],
+        [
+          "0x0075EF97",
+          "PUSH ECX"
+        ],
+        [
+          "0x0075EF98",
+          "MOV dword ptr [ESI + -0x4],ECX"
+        ],
+        [
+          "0x0075EF9B",
+          "MOV dword ptr [ESI],0x0"
+        ],
+        [
+          "0x0075EFA1",
+          "MOV dword ptr [ESI + 0x4],EAX"
+        ],
+        [
+          "0x0075EFA4",
+          "MOV EBP,dword ptr [EDX]"
+        ],
+        [
+          "0x0075EFA6",
+          "MOV ECX,dword ptr [EBP + 0x190]"
+        ],
+        [
+          "0x0075EFAC",
+          "PUSH EBX"
+        ],
+        [
+          "0x0075EFAD",
+          "PUSH EDX"
+        ],
+        [
+          "0x0075EFAE",
+          "CALL ECX"
+        ]
+      ]
+    },
+    {
+      "address": "0x00757C29",
+      "function": "0x00757B80",
+      "method": "SetIndices",
+      "arguments": "(selected index buffer from 0179F2DC + 0x10 table)",
+      "receiver": "device loaded from 0x013C6510, directly or via a local register alias",
+      "confidence": "instruction verified, method strongly supported by vtable layout and receiver",
+      "instructions": [
+        [
+          "0x00757C02",
+          "AND EAX,0x7fffffff"
+        ],
+        [
+          "0x00757C07",
+          "LEA EAX,[EAX + EAX*0x2]"
+        ],
+        [
+          "0x00757C0A",
+          "MOV EAX,dword ptr [EDX + EAX*0x4 + 0x4]"
+        ],
+        [
+          "0x00757C0E",
+          "ADD ESP,0x14"
+        ],
+        [
+          "0x00757C11",
+          "CMP dword ptr [0x00ce480c],EAX"
+        ],
+        [
+          "0x00757C17",
+          "POP EBP"
+        ],
+        [
+          "0x00757C18",
+          "JZ 0x00757c2b"
+        ],
+        [
+          "0x00757C1A",
+          "MOV [0x00ce480c],EAX"
+        ],
+        [
+          "0x00757C1F",
+          "MOV ECX,dword ptr [EDI]"
+        ],
+        [
+          "0x00757C21",
+          "MOV EDX,dword ptr [ECX + 0x1a0]"
+        ],
+        [
+          "0x00757C27",
+          "PUSH EAX"
+        ],
+        [
+          "0x00757C28",
+          "PUSH EDI"
+        ],
+        [
+          "0x00757C29",
+          "CALL EDX"
+        ]
+      ]
+    },
+    {
+      "address": "0x00757B06",
+      "function": "0x00757A50",
+      "method": "SetIndices",
+      "arguments": "([ESI+0x10])",
+      "receiver": "device loaded from 0x013C6510, directly or via a local register alias",
+      "confidence": "instruction verified, method strongly supported by vtable layout and receiver",
+      "instructions": [
+        [
+          "0x00757ADD",
+          "PUSH EAX"
+        ],
+        [
+          "0x00757ADE",
+          "CALL 0x0071b6b0"
+        ],
+        [
+          "0x00757AE3",
+          "MOV EAX,dword ptr [ESI + 0x10]"
+        ],
+        [
+          "0x00757AE6",
+          "ADD ESP,0x14"
+        ],
+        [
+          "0x00757AE9",
+          "CMP dword ptr [0x00ce480c],EAX"
+        ],
+        [
+          "0x00757AEF",
+          "JZ 0x00757b08"
+        ],
+        [
+          "0x00757AF1",
+          "MOV ECX,dword ptr [0x013c6510]"
+        ],
+        [
+          "0x00757AF7",
+          "MOV [0x00ce480c],EAX"
+        ],
+        [
+          "0x00757AFC",
+          "MOV EDX,dword ptr [ECX]"
+        ],
+        [
+          "0x00757AFE",
+          "PUSH EAX"
+        ],
+        [
+          "0x00757AFF",
+          "MOV EAX,dword ptr [EDX + 0x1a0]"
+        ],
+        [
+          "0x00757B05",
+          "PUSH ECX"
+        ],
+        [
+          "0x00757B06",
+          "CALL EAX"
+        ]
+      ]
+    },
+    {
+      "address": "0x00764AC1",
+      "function": "0x007649A0",
+      "method": "SetVertexShader",
+      "arguments": "(shader from [material+0xCC]+0x108)",
+      "receiver": "device loaded from 0x013C6510, directly or via a local register alias",
+      "confidence": "instruction verified, method strongly supported by vtable layout and receiver",
+      "instructions": [
+        [
+          "0x00764A90",
+          "ADD ECX,0x8"
+        ],
+        [
+          "0x00764A93",
+          "CALL 0x00750b60"
+        ],
+        [
+          "0x00764A98",
+          "MOV EDX,dword ptr [EBP + 0xcc]"
+        ],
+        [
+          "0x00764A9E",
+          "MOV EAX,dword ptr [EDX + 0x108]"
+        ],
+        [
+          "0x00764AA4",
+          "CMP dword ptr [0x01311ca8],EAX"
+        ],
+        [
+          "0x00764AAA",
+          "JZ 0x00764ac3"
+        ],
+        [
+          "0x00764AAC",
+          "MOV ECX,dword ptr [0x013c6510]"
+        ],
+        [
+          "0x00764AB2",
+          "MOV [0x01311ca8],EAX"
+        ],
+        [
+          "0x00764AB7",
+          "MOV EDX,dword ptr [ECX]"
+        ],
+        [
+          "0x00764AB9",
+          "PUSH EAX"
+        ],
+        [
+          "0x00764ABA",
+          "MOV EAX,dword ptr [EDX + 0x170]"
+        ],
+        [
+          "0x00764AC0",
+          "PUSH ECX"
+        ],
+        [
+          "0x00764AC1",
+          "CALL EAX"
+        ]
+      ]
+    },
+    {
+      "address": "0x00764AFB",
+      "function": "0x007649A0",
+      "method": "SetPixelShader",
+      "arguments": "(NULL)",
+      "receiver": "device loaded from 0x013C6510, directly or via a local register alias",
+      "confidence": "instruction verified, method strongly supported by vtable layout and receiver",
+      "instructions": [
+        [
+          "0x00764ACE",
+          "CALL 0x0075dbc0"
+        ],
+        [
+          "0x00764AD3",
+          "POP ESI"
+        ],
+        [
+          "0x00764AD4",
+          "POP EBP"
+        ],
+        [
+          "0x00764AD5",
+          "RET 0x4"
+        ],
+        [
+          "0x00764AD8",
+          "CMP dword ptr [0x01311cac],0x0"
+        ],
+        [
+          "0x00764ADF",
+          "JZ 0x00764afd"
+        ],
+        [
+          "0x00764AE1",
+          "MOV EAX,[0x013c6510]"
+        ],
+        [
+          "0x00764AE6",
+          "MOV dword ptr [0x01311cac],0x0"
+        ],
+        [
+          "0x00764AF0",
+          "MOV ECX,dword ptr [EAX]"
+        ],
+        [
+          "0x00764AF2",
+          "MOV EDX,dword ptr [ECX + 0x1ac]"
+        ],
+        [
+          "0x00764AF8",
+          "PUSH 0x0"
+        ],
+        [
+          "0x00764AFA",
+          "PUSH EAX"
+        ],
+        [
+          "0x00764AFB",
+          "CALL EDX"
+        ]
+      ]
+    },
+    {
+      "address": "0x0073EEC7",
+      "function": "0x0073EE70",
+      "method": "SetRenderState",
+      "arguments": "(0x16, [EDI])",
+      "receiver": "device loaded from 0x013C6510, directly or via a local register alias",
+      "confidence": "instruction verified, method strongly supported by vtable layout and receiver",
+      "instructions": [
+        [
+          "0x0073EEA6",
+          "JNZ 0x0073eeb9"
+        ],
+        [
+          "0x0073EEA8",
+          "TEST EBP,EBP"
+        ],
+        [
+          "0x0073EEAA",
+          "JZ 0x0073eeb9"
+        ],
+        [
+          "0x0073EEAC",
+          "MOV EAX,[0x00cf0dcc]"
+        ],
+        [
+          "0x0073EEB1",
+          "CMP EAX,dword ptr [EDI]"
+        ],
+        [
+          "0x0073EEB3",
+          "JZ 0x0073ef52"
+        ],
+        [
+          "0x0073EEB9",
+          "MOV EDX,dword ptr [EDI]"
+        ],
+        [
+          "0x0073EEBB",
+          "MOV ECX,dword ptr [ESI]"
+        ],
+        [
+          "0x0073EEBD",
+          "MOV EAX,dword ptr [ECX + 0xe4]"
+        ],
+        [
+          "0x0073EEC3",
+          "PUSH EDX"
+        ],
+        [
+          "0x0073EEC4",
+          "PUSH 0x16"
+        ],
+        [
+          "0x0073EEC6",
+          "PUSH ESI"
+        ],
+        [
+          "0x0073EEC7",
+          "CALL EAX"
+        ]
+      ]
+    },
+    {
+      "address": "0x00731B52",
+      "function": "0x00731B30",
+      "method": "CreateIndexBuffer",
+      "arguments": "(0x40000, 0x208, 0, 0, this+0x364, NULL)",
+      "receiver": "device loaded from 0x013C6510, directly or via a local register alias",
+      "confidence": "instruction verified, method strongly supported by vtable layout and receiver",
+      "instructions": [
+        [
+          "0x00731B30",
+          "MOV EAX,[0x013c6510]"
+        ],
+        [
+          "0x00731B35",
+          "MOV EDX,dword ptr [EAX]"
+        ],
+        [
+          "0x00731B37",
+          "PUSH 0x0"
+        ],
+        [
+          "0x00731B39",
+          "ADD ECX,0x364"
+        ],
+        [
+          "0x00731B3F",
+          "PUSH ECX"
+        ],
+        [
+          "0x00731B40",
+          "PUSH 0x0"
+        ],
+        [
+          "0x00731B42",
+          "PUSH 0x0"
+        ],
+        [
+          "0x00731B44",
+          "PUSH 0x208"
+        ],
+        [
+          "0x00731B49",
+          "PUSH 0x40000"
+        ],
+        [
+          "0x00731B4E",
+          "PUSH EAX"
+        ],
+        [
+          "0x00731B4F",
+          "MOV EAX,dword ptr [EDX + 0x68]"
+        ],
+        [
+          "0x00731B52",
+          "CALL EAX"
+        ]
+      ]
+    },
+    {
+      "address": "0x007508B9",
+      "function": "0x00750870",
+      "method": "CreateVertexShader",
+      "arguments": "(bytecode, output slot)",
+      "receiver": "device loaded from 0x013C6510, directly or via a local register alias",
+      "confidence": "instruction verified, method strongly supported by vtable layout and receiver",
+      "instructions": [
+        [
+          "0x00750898",
+          "TEST EAX,EAX"
+        ],
+        [
+          "0x0075089A",
+          "JZ 0x007508a5"
+        ],
+        [
+          "0x0075089C",
+          "PUSH EAX"
+        ],
+        [
+          "0x0075089D",
+          "CALL 0x00686030"
+        ],
+        [
+          "0x007508A2",
+          "ADD ESP,0x4"
+        ],
+        [
+          "0x007508A5",
+          "MOV EAX,[0x013c6510]"
+        ],
+        [
+          "0x007508AA",
+          "MOV ECX,dword ptr [EAX]"
+        ],
+        [
+          "0x007508AC",
+          "MOV EDX,dword ptr [ECX + 0x16c]"
+        ],
+        [
+          "0x007508B2",
+          "PUSH EDI"
+        ],
+        [
+          "0x007508B3",
+          "MOV EDI,dword ptr [ESP + 0x18]"
+        ],
+        [
+          "0x007508B7",
+          "PUSH EDI"
+        ],
+        [
+          "0x007508B8",
+          "PUSH EAX"
+        ],
+        [
+          "0x007508B9",
+          "CALL EDX"
+        ]
+      ]
+    },
+    {
+      "address": "0x00750939",
+      "function": "0x007508F0",
+      "method": "CreatePixelShader",
+      "arguments": "(bytecode, output slot)",
+      "receiver": "device loaded from 0x013C6510, directly or via a local register alias",
+      "confidence": "instruction verified, method strongly supported by vtable layout and receiver",
+      "instructions": [
+        [
+          "0x00750918",
+          "TEST EAX,EAX"
+        ],
+        [
+          "0x0075091A",
+          "JZ 0x00750925"
+        ],
+        [
+          "0x0075091C",
+          "PUSH EAX"
+        ],
+        [
+          "0x0075091D",
+          "CALL 0x00686030"
+        ],
+        [
+          "0x00750922",
+          "ADD ESP,0x4"
+        ],
+        [
+          "0x00750925",
+          "MOV EAX,[0x013c6510]"
+        ],
+        [
+          "0x0075092A",
+          "MOV ECX,dword ptr [EAX]"
+        ],
+        [
+          "0x0075092C",
+          "MOV EDX,dword ptr [ECX + 0x1a8]"
+        ],
+        [
+          "0x00750932",
+          "PUSH EDI"
+        ],
+        [
+          "0x00750933",
+          "MOV EDI,dword ptr [ESP + 0x1c]"
+        ],
+        [
+          "0x00750937",
+          "PUSH EDI"
+        ],
+        [
+          "0x00750938",
+          "PUSH EAX"
+        ],
+        [
+          "0x00750939",
+          "CALL EDX"
+        ]
+      ]
+    },
+    {
+      "address": "0x00752BB5",
+      "function": "0x00752AF0",
+      "method": "SetTexture",
+      "arguments": "(stage ESI, NULL), state cleanup",
+      "receiver": "device loaded from 0x013C6510, directly or via a local register alias",
+      "confidence": "instruction verified, method strongly supported by vtable layout and receiver",
+      "instructions": [
+        [
+          "0x00752B90",
+          "PUSH EAX"
+        ],
+        [
+          "0x00752B91",
+          "CALL EDX"
+        ],
+        [
+          "0x00752B93",
+          "XOR ESI,ESI"
+        ],
+        [
+          "0x00752B95",
+          "CMP dword ptr [ESI*0x4 + 0x1311bc0],EBX"
+        ],
+        [
+          "0x00752B9C",
+          "JZ 0x00752bb7"
+        ],
+        [
+          "0x00752B9E",
+          "MOV EAX,[0x013c6510]"
+        ],
+        [
+          "0x00752BA3",
+          "PUSH EBX"
+        ],
+        [
+          "0x00752BA4",
+          "MOV dword ptr [ESI*0x4 + 0x1311bc0],EBX"
+        ],
+        [
+          "0x00752BAB",
+          "MOV ECX,dword ptr [EAX]"
+        ],
+        [
+          "0x00752BAD",
+          "MOV EDX,dword ptr [ECX + 0x104]"
+        ],
+        [
+          "0x00752BB3",
+          "PUSH ESI"
+        ],
+        [
+          "0x00752BB4",
+          "PUSH EAX"
+        ],
+        [
+          "0x00752BB5",
+          "CALL EDX"
+        ]
+      ]
+    },
+    {
+      "address": "0x00752B14",
+      "function": "0x00752AF0",
+      "method": "Present",
+      "arguments": "(NULL, NULL, NULL, NULL), before cleanup",
+      "receiver": "device loaded from 0x013C6510, directly or via a local register alias",
+      "confidence": "instruction verified, method strongly supported by vtable layout and receiver",
+      "instructions": [
+        [
+          "0x00752AFF",
+          "PUSH EDI"
+        ],
+        [
+          "0x00752B00",
+          "PUSH EAX"
+        ],
+        [
+          "0x00752B01",
+          "CALL EDX"
+        ],
+        [
+          "0x00752B03",
+          "MOV EAX,[0x013c6510]"
+        ],
+        [
+          "0x00752B08",
+          "MOV ECX,dword ptr [EAX]"
+        ],
+        [
+          "0x00752B0A",
+          "MOV EDX,dword ptr [ECX + 0x44]"
+        ],
+        [
+          "0x00752B0D",
+          "XOR EBX,EBX"
+        ],
+        [
+          "0x00752B0F",
+          "PUSH EBX"
+        ],
+        [
+          "0x00752B10",
+          "PUSH EBX"
+        ],
+        [
+          "0x00752B11",
+          "PUSH EBX"
+        ],
+        [
+          "0x00752B12",
+          "PUSH EBX"
+        ],
+        [
+          "0x00752B13",
+          "PUSH EAX"
+        ],
+        [
+          "0x00752B14",
+          "CALL EDX"
+        ]
+      ]
+    },
+    {
+      "address": "0x00752B01",
+      "function": "0x00752AF0",
+      "method": "EndScene",
+      "arguments": "()",
+      "receiver": "device loaded from 0x013C6510, directly or via a local register alias",
+      "confidence": "instruction verified, method strongly supported by vtable layout and receiver",
+      "instructions": [
+        [
+          "0x00752AF0",
+          "MOV EAX,[0x013c6510]"
+        ],
+        [
+          "0x00752AF5",
+          "MOV ECX,dword ptr [EAX]"
+        ],
+        [
+          "0x00752AF7",
+          "MOV EDX,dword ptr [ECX + 0xa8]"
+        ],
+        [
+          "0x00752AFD",
+          "PUSH EBX"
+        ],
+        [
+          "0x00752AFE",
+          "PUSH ESI"
+        ],
+        [
+          "0x00752AFF",
+          "PUSH EDI"
+        ],
+        [
+          "0x00752B00",
+          "PUSH EAX"
+        ],
+        [
+          "0x00752B01",
+          "CALL EDX"
+        ]
+      ]
+    },
+    {
+      "address": "0x0075DBED",
+      "function": "0x0075DBC0",
+      "method": "SetPixelShader",
+      "arguments": "([shader descriptor+0x88])",
+      "receiver": "device loaded from 0x013C6510, directly or via a local register alias",
+      "confidence": "instruction verified, method strongly supported by vtable layout and receiver",
+      "instructions": [
+        [
+          "0x0075DBC3",
+          "PUSH EBX"
+        ],
+        [
+          "0x0075DBC4",
+          "MOV EBX,ECX"
+        ],
+        [
+          "0x0075DBC6",
+          "MOV EAX,dword ptr [EBX + 0x88]"
+        ],
+        [
+          "0x0075DBCC",
+          "CMP dword ptr [0x01311cac],EAX"
+        ],
+        [
+          "0x0075DBD2",
+          "MOV dword ptr [ESP + 0x8],EBX"
+        ],
+        [
+          "0x0075DBD6",
+          "JZ 0x0075dbef"
+        ],
+        [
+          "0x0075DBD8",
+          "MOV ECX,dword ptr [0x013c6510]"
+        ],
+        [
+          "0x0075DBDE",
+          "MOV [0x01311cac],EAX"
+        ],
+        [
+          "0x0075DBE3",
+          "MOV EDX,dword ptr [ECX]"
+        ],
+        [
+          "0x0075DBE5",
+          "PUSH EAX"
+        ],
+        [
+          "0x0075DBE6",
+          "MOV EAX,dword ptr [EDX + 0x1ac]"
+        ],
+        [
+          "0x0075DBEC",
+          "PUSH ECX"
+        ],
+        [
+          "0x0075DBED",
+          "CALL EAX"
+        ]
+      ]
+    },
+    {
+      "address": "0x007515D3",
+      "function": "0x00751360",
+      "method": "CreateTexture",
+      "arguments": "(width, height, levels, 0, format, pool 1, output, NULL)",
+      "receiver": "device loaded from 0x013C6510, directly or via a local register alias",
+      "confidence": "instruction verified, method strongly supported by vtable layout and receiver",
+      "instructions": [
+        [
+          "0x007515BD",
+          "PUSH 0x0"
+        ],
+        [
+          "0x007515BF",
+          "ADD ESI,0x10"
+        ],
+        [
+          "0x007515C2",
+          "PUSH ESI"
+        ],
+        [
+          "0x007515C3",
+          "PUSH 0x1"
+        ],
+        [
+          "0x007515C5",
+          "PUSH EBX"
+        ],
+        [
+          "0x007515C6",
+          "PUSH 0x0"
+        ],
+        [
+          "0x007515C8",
+          "PUSH EDX"
+        ],
+        [
+          "0x007515C9",
+          "MOV EDX,dword ptr [ESP + 0x38]"
+        ],
+        [
+          "0x007515CD",
+          "PUSH EDX"
+        ],
+        [
+          "0x007515CE",
+          "PUSH EDI"
+        ],
+        [
+          "0x007515CF",
+          "PUSH EAX"
+        ],
+        [
+          "0x007515D0",
+          "MOV EAX,dword ptr [ECX + 0x5c]"
+        ],
+        [
+          "0x007515D3",
+          "CALL EAX"
+        ]
+      ]
+    },
+    {
+      "address": "0x007707CC",
+      "function": "0x00770750",
+      "method": "Clear",
+      "arguments": "(0, NULL, 3, 0, 1.0f, 0)",
+      "receiver": "device loaded from 0x013C6510, directly or via a local register alias",
+      "confidence": "instruction verified, method strongly supported by vtable layout and receiver",
+      "instructions": [
+        [
+          "0x007707AD",
+          "MOV EAX,[0x013c6510]"
+        ],
+        [
+          "0x007707B2",
+          "MOV ECX,dword ptr [EAX]"
+        ],
+        [
+          "0x007707B4",
+          "MOV EDX,dword ptr [ECX + 0xac]"
+        ],
+        [
+          "0x007707BA",
+          "ADD ESP,0xc"
+        ],
+        [
+          "0x007707BD",
+          "PUSH 0x0"
+        ],
+        [
+          "0x007707BF",
+          "PUSH ECX"
+        ],
+        [
+          "0x007707C0",
+          "FSTP float ptr [ESP]"
+        ],
+        [
+          "0x007707C3",
+          "PUSH 0x0"
+        ],
+        [
+          "0x007707C5",
+          "PUSH 0x3"
+        ],
+        [
+          "0x007707C7",
+          "PUSH 0x0"
+        ],
+        [
+          "0x007707C9",
+          "PUSH 0x0"
+        ],
+        [
+          "0x007707CB",
+          "PUSH EAX"
+        ],
+        [
+          "0x007707CC",
+          "CALL EDX"
+        ]
+      ]
+    },
+    {
+      "address": "0x00770803",
+      "function": "0x00770750",
+      "method": "SetDepthStencilSurface",
+      "arguments": "(NULL)",
+      "receiver": "device loaded from 0x013C6510, directly or via a local register alias",
+      "confidence": "instruction verified, method strongly supported by vtable layout and receiver",
+      "instructions": [
+        [
+          "0x007707DB",
+          "MOV ECX,dword ptr [ESP + 0x18]"
+        ],
+        [
+          "0x007707DF",
+          "PUSH EAX"
+        ],
+        [
+          "0x007707E0",
+          "ADD ECX,0x180"
+        ],
+        [
+          "0x007707E6",
+          "PUSH ECX"
+        ],
+        [
+          "0x007707E7",
+          "PUSH 0x1"
+        ],
+        [
+          "0x007707E9",
+          "MOV ECX,0x17913e0"
+        ],
+        [
+          "0x007707EE",
+          "CALL 0x0076fc30"
+        ],
+        [
+          "0x007707F3",
+          "MOV EAX,[0x013c6510]"
+        ],
+        [
+          "0x007707F8",
+          "MOV EDX,dword ptr [EAX]"
+        ],
+        [
+          "0x007707FA",
+          "PUSH 0x0"
+        ],
+        [
+          "0x007707FC",
+          "PUSH EAX"
+        ],
+        [
+          "0x007707FD",
+          "MOV EAX,dword ptr [EDX + 0x9c]"
+        ],
+        [
+          "0x00770803",
+          "CALL EAX"
+        ]
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "0x00766730",
+      "site": "0x00766773",
+      "to": "0x0072E5D0",
+      "kind": "direct",
+      "context": "thread callback body",
+      "confidence": "static"
+    },
+    {
+      "from": "0x0072E5D0",
+      "site": "0x0072E612",
+      "to": "0x0072E340",
+      "kind": "direct",
+      "context": "gate 01311E1C equals 1",
+      "confidence": "static"
+    },
+    {
+      "from": "0x0072E5D0",
+      "site": "0x0072E621",
+      "to": "0x007297D0",
+      "kind": "direct",
+      "context": "AL nonzero",
+      "confidence": "static"
+    },
+    {
+      "from": "0x007297D0",
+      "site": "0x00729836",
+      "to": "0x00725200",
+      "kind": "direct",
+      "context": "first device-creation wrapper call",
+      "confidence": "static"
+    },
+    {
+      "from": "0x007297D0",
+      "site": "0x0072986A",
+      "to": "0x00725200",
+      "kind": "direct",
+      "context": "AA fallback retry",
+      "confidence": "static"
+    },
+    {
+      "from": "0x00766730",
+      "site": "0x007667FB",
+      "to": "0x0071E630",
+      "kind": "direct",
+      "context": "device status",
+      "confidence": "static"
+    },
+    {
+      "from": "0x00766730",
+      "site": "0x00766807",
+      "to": "0x0072E5C0",
+      "kind": "direct",
+      "context": "specific device-lost HRESULT branch",
+      "confidence": "static"
+    },
+    {
+      "from": "0x00766730",
+      "site": "0x00766833",
+      "to": "0x007661A0",
+      "kind": "direct",
+      "context": "buffer queue processing",
+      "confidence": "static"
+    },
+    {
+      "from": "0x007661A0",
+      "site": "0x0076631F",
+      "to": "0x00766100",
+      "kind": "direct",
+      "context": "secondary queue / range reclamation",
+      "confidence": "static"
+    },
+    {
+      "from": "0x00766730",
+      "site": "0x00766931",
+      "to": "0x00727F40",
+      "kind": "direct",
+      "context": "exit cleanup",
+      "confidence": "static"
+    },
+    {
+      "from": "0x0076CA20",
+      "site": "0x0076CB40",
+      "to": "0x00766730",
+      "kind": "callback registration",
+      "context": "entry address argument, no runtime invocation observed",
+      "confidence": "static"
+    },
+    {
+      "from": "0x0072E340",
+      "site": "0x0072E497",
+      "to": "0x0072B170",
+      "kind": "callback registration",
+      "context": "window class callback",
+      "confidence": "static"
+    },
+    {
+      "from": null,
+      "site": "0x00777253",
+      "to": "0x00770750",
+      "kind": "direct",
+      "context": "caller function undefined",
+      "confidence": "static"
+    },
+    {
+      "from": "0x00770750",
+      "site": "0x007707EE",
+      "to": "0x0076FC30",
+      "kind": "direct",
+      "context": "instancing preparation",
+      "confidence": "static"
+    },
+    {
+      "from": "0x0076FC30",
+      "site": "0x0076FDA4",
+      "to": "0x00757B80",
+      "kind": "direct",
+      "context": "conditional instanced mesh path",
+      "confidence": "static"
+    },
+    {
+      "from": "0x00757B80",
+      "site": "0x00757C9A",
+      "to": "0x006860F0",
+      "kind": "opaque boundary",
+      "context": "indexed draw-shaped call",
+      "confidence": "static"
+    },
+    {
+      "from": "0x00766480",
+      "site": "0x00766700",
+      "to": "0x00686290",
+      "kind": "opaque boundary",
+      "context": "non-indexed draw-shaped call",
+      "confidence": "static"
+    },
+    {
+      "from": null,
+      "site": "0x00782355",
+      "to": "0x00766480",
+      "kind": "direct",
+      "context": "caller function undefined",
+      "confidence": "static"
+    },
+    {
+      "from": null,
+      "site": "0x00758674",
+      "to": "0x00752AF0",
+      "kind": "direct",
+      "context": "caller function undefined",
+      "confidence": "static"
+    },
+    {
+      "from": null,
+      "site": "0x007B5979",
+      "to": "0x007B36A0",
+      "kind": "direct",
+      "context": "caller function undefined",
+      "confidence": "static"
+    },
+    {
+      "from": null,
+      "site": "0x007B5972",
+      "to": "0x007B2BA0",
+      "kind": "direct",
+      "context": "caller function undefined",
+      "confidence": "static"
+    },
+    {
+      "from": "0x007B36A0",
+      "site": "0x007B3F71",
+      "to": "0x007A40D0",
+      "kind": "direct",
+      "context": "scene object branch",
+      "confidence": "static"
+    },
+    {
+      "from": "0x007B36A0",
+      "site": "0x007B3FFA",
+      "to": "0x007AF900",
+      "kind": "direct",
+      "context": "scene object branch",
+      "confidence": "static"
+    },
+    {
+      "from": "0x007A40D0",
+      "site": "0x007A416C",
+      "to": "0x004A26B0",
+      "kind": "opaque boundary",
+      "context": "backend",
+      "confidence": "static"
+    },
+    {
+      "from": "0x007AF900",
+      "site": "0x007AFC67",
+      "to": "0x004A26B0",
+      "kind": "opaque boundary",
+      "context": "backend",
+      "confidence": "static"
+    },
+    {
+      "from": "0x007B2BA0",
+      "site": "0x007B2EA0",
+      "to": "0x007AEA40",
+      "kind": "direct",
+      "context": "scene state dispatch",
+      "confidence": "static"
+    },
+    {
+      "from": "0x007AEA40",
+      "site": "0x007AED59",
+      "to": "0x007A8690",
+      "kind": "direct",
+      "context": "conditional path",
+      "confidence": "static"
+    },
+    {
+      "from": "0x007A8690",
+      "site": "0x007A86E0",
+      "to": "0x007A51B0",
+      "kind": "opaque boundary",
+      "context": "submission",
+      "confidence": "static"
+    }
+  ],
+  "structures": {
+    "buffer_update_record": {
+      "size": 20,
+      "reader": "0x007661A0",
+      "writer": null,
+      "fields": {
+        "0x00": "buffer selector, high bit selects table",
+        "0x04": "first term of element offset",
+        "0x08": "lock byte count",
+        "0x0C": "second term of element offset",
+        "0x10": "copy source"
+      },
+      "formula": "lock offset = (field04 + field0C) * selected stride at [buffer metadata+0x9C64]",
+      "confidence": "consumer decompilation, exact producer pending"
+    },
+    "buffer_manager": {
+      "address_global": "0x0179F2DC",
+      "fields": {
+        "0x00": "primary table pointer",
+        "0x10": "alternate table pointer",
+        "0x30": "update begin",
+        "0x34": "update end",
+        "0x80": "secondary begin",
+        "0x84": "secondary end",
+        "0x100": "busy byte written by consumer",
+        "0x180": "byte polled by consumer"
+      },
+      "writer": "0x0075EFD0 publishes manager",
+      "reader": "0x007661A0",
+      "secondary_record_size": 8
+    },
+    "mesh_instance_descriptor": {
+      "reader": "0x00757B80",
+      "writer": "0x0076FC30 populates related per-instance storage, exact descriptor producer unresolved",
+      "minimum_read_extent": "0xFC",
+      "fields": {
+        "0xA8 + 4*i": "batch instance count",
+        "0xDC + 4*i": "stream 1 offset in units of 64 bytes",
+        "0xEC": "mesh metadata pointer",
+        "0xF0": "index count used to compute primitive count",
+        "0xF4": "vertex count argument",
+        "0xF8": "stride"
+      },
+      "confidence": "assembly and decompilation, complete object layout unknown"
+    },
+    "scene_list": {
+      "readers": [
+        "0x007AF900",
+        "0x007AEA40"
+      ],
+      "record_size": 8,
+      "begin_offset": "0x50",
+      "end_offset": "0x54",
+      "record_fields": {
+        "0x04": "pointer tested through game-object virtual methods"
+      },
+      "writer": null,
+      "confidence": "decompilation supported, renderability meaning inferred"
+    }
+  },
+  "draw_handoffs": [
+    {
+      "site": "0x00757C9A",
+      "target": "0x006860F0",
+      "shape": "indexed",
+      "arguments": [
+        "label",
+        "device",
+        4,
+        0,
+        0,
+        "[mesh+0xF4]",
+        0,
+        "floor([mesh+0xF0]/3)",
+        1
+      ]
+    },
+    {
+      "site": "0x00766700",
+      "target": "0x00686290",
+      "shape": "non-indexed user-memory draw",
+      "arguments": [
+        "label",
+        "device",
+        6,
+        2,
+        "stack vertex address",
+        24
+      ]
+    }
+  ],
+  "rejected_candidates": [
+    {
+      "site": "0x00766F7A",
+      "reason": "parameter-derived receiver and single output pointer argument, not device Present"
+    }
+  ],
+  "unresolved": [
+    "callback-to-scene scheduling edge",
+    "mesh and scene branches to either ordinary Present caller",
+    "implementation and reachability of 0x006860F0, 0x00686290 and 0x006861B0",
+    "0x004A26B0",
+    "0x007A51B0",
+    "0x00686000",
+    "0x00686030",
+    "0x0071E380",
+    "authentic scene payload and runtime ordering"
+  ]
+}

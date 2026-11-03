@@ -1,0 +1,26 @@
+{
+  "phase": 46,
+  "buffer_update_record": {
+    "size": 20,
+    "reader": "0x007661A0",
+    "writer": null,
+    "fields": {
+      "0x00": "buffer selector, high bit selects table",
+      "0x04": "first term of element offset",
+      "0x08": "lock byte count",
+      "0x0C": "second term of element offset",
+      "0x10": "copy source"
+    },
+    "formula": "lock offset = (field04 + field0C) * selected stride at [buffer metadata+0x9C64]",
+    "confidence": "consumer decompilation, exact producer pending"
+  },
+  "secondary_queue": {
+    "stride": "0x00000008",
+    "reader": "0x007661A0",
+    "helper": "0x00766100"
+  },
+  "stream_cache": {
+    "base": "0x01311AE0",
+    "stride": "0x0000000C"
+  }
+}

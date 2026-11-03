@@ -1,0 +1,15 @@
+{
+  "phase": 46,
+  "cache_base": "0x01311AE0",
+  "record_stride": "0x0000000C",
+  "fields": [
+    "buffer identity",
+    "byte offset",
+    "stride"
+  ],
+  "hit_return_site": "0x0071B6E2",
+  "hit_return_value": 0,
+  "function": "0x0071B6B0",
+  "explicit_forward_reference": "0x0075EFAE",
+  "miss_path": "Independently disassembled at 0x0071B6E6 (cache write + device vtable +0x190 call); tests inject the setter rather than claiming a complete translated function."
+}

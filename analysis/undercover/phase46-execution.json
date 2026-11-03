@@ -1,0 +1,325 @@
+{
+  "phase": 46,
+  "results": [
+    {
+      "name": "reg_ctor_a",
+      "root": "0x009E9160",
+      "clean": true,
+      "eax": "0x03004000",
+      "blocked_kind": "NONE",
+      "blocked_va": null,
+      "depth_max": 4,
+      "entered": [
+        "0x009E9160",
+        "0x009E7710",
+        "0x009E9990",
+        "0x009E9460",
+        "0x009773C0",
+        "0x00977E20",
+        "0x00977420",
+        "0x009EB980",
+        "0x00978720",
+        "0x0097FCD0",
+        "0x0097F790",
+        "0x0087B4F6",
+        "0x0097FAE0",
+        "0x0087B880",
+        "0x0097F9E0",
+        "0x009777D0",
+        "0x009E8AD0",
+        "0x00977800"
+      ],
+      "unique_entered": 18,
+      "oracle_ok": null,
+      "notes": null
+    },
+    {
+      "name": "reg_setter",
+      "root": "0x009E9140",
+      "clean": true,
+      "eax": "0x0000005A",
+      "blocked_kind": "NONE",
+      "blocked_va": null,
+      "depth_max": 4,
+      "entered": [
+        "0x009E9160",
+        "0x009E7710",
+        "0x009E9990",
+        "0x009E9460",
+        "0x009773C0",
+        "0x00977E20",
+        "0x00977420",
+        "0x009EB980",
+        "0x00978720",
+        "0x0097FCD0",
+        "0x0097F790",
+        "0x0087B4F6",
+        "0x0097FAE0",
+        "0x0087B880",
+        "0x0097F9E0",
+        "0x009777D0",
+        "0x009E8AD0",
+        "0x00977800",
+        "0x009E9140"
+      ],
+      "unique_entered": 19,
+      "oracle_ok": null,
+      "notes": null
+    },
+    {
+      "name": "reg_getter",
+      "root": "0x009E9150",
+      "clean": true,
+      "eax": "0x0000005A",
+      "blocked_kind": "NONE",
+      "blocked_va": null,
+      "depth_max": 4,
+      "entered": [
+        "0x009E9160",
+        "0x009E7710",
+        "0x009E9990",
+        "0x009E9460",
+        "0x009773C0",
+        "0x00977E20",
+        "0x00977420",
+        "0x009EB980",
+        "0x00978720",
+        "0x0097FCD0",
+        "0x0097F790",
+        "0x0087B4F6",
+        "0x0097FAE0",
+        "0x0087B880",
+        "0x0097F9E0",
+        "0x009777D0",
+        "0x009E8AD0",
+        "0x00977800",
+        "0x009E9140",
+        "0x009E9150"
+      ],
+      "unique_entered": 20,
+      "oracle_ok": true,
+      "notes": null
+    },
+    {
+      "name": "reg_ctor_b",
+      "root": "0x009E98F0",
+      "clean": true,
+      "eax": "0x03004300",
+      "blocked_kind": "NONE",
+      "blocked_va": null,
+      "depth_max": 2,
+      "entered": [
+        "0x009E98F0",
+        "0x009E7710",
+        "0x009E0880"
+      ],
+      "unique_entered": 3,
+      "oracle_ok": null,
+      "notes": null
+    },
+    {
+      "name": "reg_export_b",
+      "root": "0x009E9A30",
+      "clean": true,
+      "eax": "0x03004400",
+      "blocked_kind": "NONE",
+      "blocked_va": null,
+      "depth_max": 2,
+      "entered": [
+        "0x009E98F0",
+        "0x009E7710",
+        "0x009E0880",
+        "0x009E9A30"
+      ],
+      "unique_entered": 4,
+      "oracle_ok": true,
+      "notes": null
+    },
+    {
+      "name": "reg_ctor_c",
+      "root": "0x009EB350",
+      "clean": true,
+      "eax": "0x03004480",
+      "blocked_kind": "NONE",
+      "blocked_va": null,
+      "depth_max": 2,
+      "entered": [
+        "0x009EB350",
+        "0x009E7710"
+      ],
+      "unique_entered": 2,
+      "oracle_ok": null,
+      "notes": null
+    },
+    {
+      "name": "reg_field_c",
+      "root": "0x009EB2B0",
+      "clean": true,
+      "eax": "0x0300448C",
+      "blocked_kind": "NONE",
+      "blocked_va": null,
+      "depth_max": 2,
+      "entered": [
+        "0x009EB350",
+        "0x009E7710",
+        "0x009EB2B0"
+      ],
+      "unique_entered": 3,
+      "oracle_ok": true,
+      "notes": null
+    },
+    {
+      "name": "const_ptr",
+      "root": "0x00A12850",
+      "clean": true,
+      "eax": "0x0129E5D0",
+      "blocked_kind": "NONE",
+      "blocked_va": null,
+      "depth_max": 1,
+      "entered": [
+        "0x00A12850"
+      ],
+      "unique_entered": 1,
+      "oracle_ok": true,
+      "notes": null
+    },
+    {
+      "name": "matrix_add_smoke",
+      "root": "0x00A12D10",
+      "clean": true,
+      "eax": "0x03004680",
+      "blocked_kind": "NONE",
+      "blocked_va": null,
+      "depth_max": 1,
+      "entered": [
+        "0x00A12D10"
+      ],
+      "unique_entered": 1,
+      "oracle_ok": true,
+      "notes": null
+    },
+    {
+      "name": "scale_rows_vx",
+      "root": "0x00A128F0",
+      "clean": true,
+      "eax": "0x03004780",
+      "blocked_kind": "NONE",
+      "blocked_va": null,
+      "depth_max": 1,
+      "entered": [
+        "0x00A128F0"
+      ],
+      "unique_entered": 1,
+      "oracle_ok": true,
+      "notes": "this = broadcast(vec.x)*mat_rows; ABI thiscall ret8"
+    },
+    {
+      "name": "madd_rows_vx",
+      "root": "0x00A12940",
+      "clean": true,
+      "eax": "0x03004780",
+      "blocked_kind": "NONE",
+      "blocked_va": null,
+      "depth_max": 1,
+      "entered": [
+        "0x00A12940"
+      ],
+      "unique_entered": 1,
+      "oracle_ok": true,
+      "notes": "this += broadcast(vec.x)*mat_rows; ABI thiscall ret8"
+    },
+    {
+      "name": "mul_3x3",
+      "root": "0x00A12E60",
+      "clean": true,
+      "eax": "0x030046F0",
+      "blocked_kind": "NONE",
+      "blocked_va": null,
+      "depth_max": 1,
+      "entered": [
+        "0x00A12E60"
+      ],
+      "unique_entered": 1,
+      "oracle_ok": true,
+      "notes": "got=[2.0, 6.0, 12.0, 0.0, 8.0, 15.0, 24.0, 0.0, 14.0, 24.0, 36.0, 0.0]"
+    },
+    {
+      "name": "matrix_chain_transpose_scale_rows_add",
+      "root": "STATEFUL:matrix_chain_p46",
+      "clean": true,
+      "eax": "0x03004680",
+      "blocked_kind": "NONE",
+      "blocked_va": null,
+      "depth_max": 1,
+      "entered": [
+        "0x00A128A0",
+        "0x00A128A0",
+        "0x00A128F0",
+        "0x00A128A0",
+        "0x00A128F0",
+        "0x00A12D10"
+      ],
+      "unique_entered": 3,
+      "sequence_length": 3,
+      "oracle_ok": true,
+      "notes": "guest chain copy_transpose \u2192 scale_rows_vx \u2192 add"
+    },
+    {
+      "name": "range_reclaim_empty",
+      "root": "0x00766100",
+      "clean": true,
+      "eax": "0x03004800",
+      "blocked_kind": "NONE",
+      "blocked_va": null,
+      "depth_max": 1,
+      "entered": [
+        "0x00766100"
+      ],
+      "unique_entered": 1,
+      "oracle_ok": true,
+      "notes": "empty circular list; ABI thiscall ret4"
+    },
+    {
+      "name": "range_reclaim_exact_single",
+      "root": "0x00766100",
+      "clean": true,
+      "eax": "0x03004820",
+      "blocked_kind": "NONE",
+      "blocked_va": null,
+      "depth_max": 1,
+      "entered": [
+        "0x00766100"
+      ],
+      "unique_entered": 1,
+      "oracle_ok": true,
+      "notes": "mark free on exact key; guest execution"
+    }
+  ],
+  "newly_executed": [
+    "0x00766100",
+    "0x00A128F0",
+    "0x00A12940",
+    "0x00A12E60"
+  ],
+  "enterable_new": [
+    "0x00766100",
+    "0x00A128F0",
+    "0x00A12940",
+    "0x00A12E60"
+  ],
+  "synthetic": {
+    "stream_cache_tested": true,
+    "indexed_draw_prep_tested": true,
+    "range_reclaim_synthetic": true,
+    "d3d9_recorder_clear_only": true,
+    "not_authentic_frame": true
+  },
+  "metrics_delta": {
+    "unique_before": 75,
+    "unique_after": 79,
+    "enterable_before": 41,
+    "enterable_after": 45,
+    "runs_before": 282,
+    "runs_after": 297
+  }
+}

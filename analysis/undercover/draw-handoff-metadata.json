@@ -1,0 +1,39 @@
+{
+  "phase": 46,
+  "handoffs": [
+    {
+      "site": "0x00757C9A",
+      "target": "0x006860F0",
+      "shape": "indexed",
+      "arguments": [
+        "label",
+        "device",
+        4,
+        0,
+        0,
+        "[mesh+0xF4]",
+        0,
+        "floor([mesh+0xF0]/3)",
+        1
+      ]
+    },
+    {
+      "site": "0x00766700",
+      "target": "0x00686290",
+      "shape": "non-indexed user-memory draw",
+      "arguments": [
+        "label",
+        "device",
+        6,
+        2,
+        "stack vertex address",
+        24
+      ]
+    }
+  ],
+  "do_not_reconstruct": [
+    "0x006860F0",
+    "0x00686290",
+    "0x006861B0"
+  ]
+}

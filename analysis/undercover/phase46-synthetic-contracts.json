@@ -1,0 +1,160 @@
+{
+  "phase": 46,
+  "kind": "HOST_SYNTHETIC",
+  "stream_cache": {
+    "miss_then_hit": [
+      0,
+      0
+    ],
+    "stride_mismatch_miss": 0,
+    "other_stream": [
+      0,
+      0
+    ],
+    "recorded_setters": [
+      {
+        "method": "SetStreamSource",
+        "device": 3553624065,
+        "stream": 1,
+        "buffer": 4096,
+        "offset": 0,
+        "stride": 24
+      },
+      {
+        "method": "SetStreamSource",
+        "device": 3553624065,
+        "stream": 1,
+        "buffer": 4096,
+        "offset": 0,
+        "stride": 32
+      },
+      {
+        "method": "SetStreamSource",
+        "device": 3553624065,
+        "stream": 2,
+        "buffer": 8192,
+        "offset": 64,
+        "stride": 16
+      }
+    ]
+  },
+  "range_reclaim": {
+    "classification": "SYNTHETIC_ONLY",
+    "abi_observed": "thiscall ret 4 (0x00766100)",
+    "no_match": false,
+    "exact_match": true,
+    "exact_live_after": 1,
+    "prev_coalesce": true,
+    "prev_nodes": [
+      [
+        256,
+        32,
+        true
+      ]
+    ],
+    "next_coalesce": true,
+    "next_nodes": [
+      [
+        256,
+        32,
+        true
+      ]
+    ],
+    "both_coalesce": true,
+    "both_nodes": [
+      [
+        256,
+        48,
+        true
+      ]
+    ]
+  },
+  "d3d9_recorder": {
+    "clear_only_present": [
+      {
+        "method": "BeginScene"
+      },
+      {
+        "method": "Clear",
+        "count": 0,
+        "rects": null,
+        "flags": 7,
+        "color": 0,
+        "z": 1.0,
+        "stencil": 0
+      },
+      {
+        "method": "EndScene"
+      },
+      {
+        "method": "Present",
+        "src": null,
+        "dst": null,
+        "hwnd": null,
+        "dirty": null
+      }
+    ],
+    "later_present": [
+      {
+        "method": "EndScene"
+      },
+      {
+        "method": "Present",
+        "src": null,
+        "dst": null,
+        "hwnd": null,
+        "dirty": null
+      }
+    ],
+    "stream_index_sample": [
+      {
+        "method": "SetStreamSource",
+        "stream": 0,
+        "buffer": 43981,
+        "offset": 0,
+        "stride": 24
+      },
+      {
+        "method": "SetIndices",
+        "index_buffer": 4096
+      },
+      {
+        "method": "SetVertexDeclaration",
+        "declaration": 8192
+      }
+    ],
+    "not_browser_gpu": true
+  },
+  "indexed_draw_prep": {
+    "single_batch": {
+      "diagnostic_label": 12246916,
+      "device": 3389,
+      "prim_type": 4,
+      "unused0": 0,
+      "unused1": 0,
+      "vertex_count": 12,
+      "start_index": 0,
+      "prim_count": 3,
+      "flag": 1,
+      "opaque_target": 6840560
+    },
+    "index10_prim_count": 3,
+    "index9_prim_count": 3,
+    "scaled_offset_batch0": 192,
+    "multi_batch_args": {
+      "diagnostic_label": 12246916,
+      "device": 3389,
+      "prim_type": 4,
+      "unused0": 0,
+      "unused1": 0,
+      "vertex_count": 20,
+      "start_index": 0,
+      "prim_count": 3,
+      "flag": 1,
+      "opaque_target": 6840560
+    },
+    "opaque_target": "0x006860F0",
+    "note": "Preparation only; opaque handoff not executed.",
+    "empty_batch_is_none": true
+  }
+}

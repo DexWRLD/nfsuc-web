@@ -1,0 +1,278 @@
+{
+  "phase": 46,
+  "source": "first-frame-evidence-2026-11-03.json",
+  "status": "FIRST_FRAME_PATH_BLOCKED_BY_PROTECTED_BACKEND",
+  "coverage": {
+    "device_xrefs": 142,
+    "defined_functions_disassembled": 69,
+    "call_pattern_scan_exhaustive_for_indirect_aliases": false
+  },
+  "device_global": "0x013C6510",
+  "call_site_count": 25,
+  "edge_count": 28,
+  "call_sites": [
+    {
+      "address": "0x00725313",
+      "function": "0x00725200",
+      "method": "BeginScene",
+      "arguments": "()",
+      "receiver": "device loaded from 0x013C6510, directly or via a local register alias",
+      "confidence": "instruction verified, method strongly supported by vtable layout and receiver",
+      "method_confirmed_import": false,
+      "note": "Method name strongly supported by vtable layout/args; not marked as a confirmed PE import."
+    },
+    {
+      "address": "0x0072532F",
+      "function": "0x00725200",
+      "method": "Clear",
+      "arguments": "(0, NULL, 7, 0, 1.0f, 0)",
+      "receiver": "device loaded from 0x013C6510, directly or via a local register alias",
+      "confidence": "instruction verified, method strongly supported by vtable layout and receiver",
+      "method_confirmed_import": false,
+      "note": "Method name strongly supported by vtable layout/args; not marked as a confirmed PE import."
+    },
+    {
+      "address": "0x0072533F",
+      "function": "0x00725200",
+      "method": "EndScene",
+      "arguments": "()",
+      "receiver": "device loaded from 0x013C6510, directly or via a local register alias",
+      "confidence": "instruction verified, method strongly supported by vtable layout and receiver",
+      "method_confirmed_import": false,
+      "note": "Method name strongly supported by vtable layout/args; not marked as a confirmed PE import."
+    },
+    {
+      "address": "0x00725350",
+      "function": "0x00725200",
+      "method": "Present",
+      "arguments": "(NULL, NULL, NULL, NULL)",
+      "receiver": "device loaded from 0x013C6510, directly or via a local register alias",
+      "confidence": "instruction verified, method strongly supported by vtable layout and receiver",
+      "method_confirmed_import": false,
+      "note": "Method name strongly supported by vtable layout/args; not marked as a confirmed PE import."
+    },
+    {
+      "address": "0x0074286D",
+      "function": "0x00742810",
+      "method": "SetRenderTarget",
+      "arguments": "(0, surface in ECX)",
+      "receiver": "device loaded from 0x013C6510, directly or via a local register alias",
+      "confidence": "instruction verified, method strongly supported by vtable layout and receiver",
+      "method_confirmed_import": false,
+      "note": "Method name strongly supported by vtable layout/args; not marked as a confirmed PE import."
+    },
+    {
+      "address": "0x0074287F",
+      "function": "0x00742810",
+      "method": "SetDepthStencilSurface",
+      "arguments": "(NULL)",
+      "receiver": "device loaded from 0x013C6510, directly or via a local register alias",
+      "confidence": "instruction verified, method strongly supported by vtable layout and receiver",
+      "method_confirmed_import": false,
+      "note": "Method name strongly supported by vtable layout/args; not marked as a confirmed PE import."
+    },
+    {
+      "address": "0x0074289F",
+      "function": "0x00742810",
+      "method": "Clear",
+      "arguments": "(0, NULL, 1, 0, 1.0f, 0)",
+      "receiver": "device loaded from 0x013C6510, directly or via a local register alias",
+      "confidence": "instruction verified, method strongly supported by vtable layout and receiver",
+      "method_confirmed_import": false,
+      "note": "Method name strongly supported by vtable layout/args; not marked as a confirmed PE import."
+    },
+    {
+      "address": "0x007666E4",
+      "function": "0x00766480",
+      "method": "SetVertexDeclaration",
+      "arguments": "(selected declaration)",
+      "receiver": "device loaded from 0x013C6510, directly or via a local register alias",
+      "confidence": "instruction verified, method strongly supported by vtable layout and receiver",
+      "method_confirmed_import": false,
+      "note": "Method name strongly supported by vtable layout/args; not marked as a confirmed PE import."
+    },
+    {
+      "address": "0x0075EF3F",
+      "function": "0x0075EF20",
+      "method": "SetVertexDeclaration",
+      "arguments": "([descriptor])",
+      "receiver": "device loaded from 0x013C6510, directly or via a local register alias",
+      "confidence": "instruction verified, method strongly supported by vtable layout and receiver",
+      "method_confirmed_import": false,
+      "note": "Method name strongly supported by vtable layout/args; not marked as a confirmed PE import."
+    },
+    {
+      "address": "0x0075EFAE",
+      "function": "0x0075EF20",
+      "method": "SetStreamSource",
+      "arguments": "(stream index, buffer from 0179F2DC table, 0, stride & 0x7FFF)",
+      "receiver": "device loaded from 0x013C6510, directly or via a local register alias",
+      "confidence": "instruction verified, method strongly supported by vtable layout and receiver",
+      "method_confirmed_import": false,
+      "note": "Method name strongly supported by vtable layout/args; not marked as a confirmed PE import."
+    },
+    {
+      "address": "0x00757C29",
+      "function": "0x00757B80",
+      "method": "SetIndices",
+      "arguments": "(selected index buffer from 0179F2DC + 0x10 table)",
+      "receiver": "device loaded from 0x013C6510, directly or via a local register alias",
+      "confidence": "instruction verified, method strongly supported by vtable layout and receiver",
+      "method_confirmed_import": false,
+      "note": "Method name strongly supported by vtable layout/args; not marked as a confirmed PE import."
+    },
+    {
+      "address": "0x00757B06",
+      "function": "0x00757A50",
+      "method": "SetIndices",
+      "arguments": "([ESI+0x10])",
+      "receiver": "device loaded from 0x013C6510, directly or via a local register alias",
+      "confidence": "instruction verified, method strongly supported by vtable layout and receiver",
+      "method_confirmed_import": false,
+      "note": "Method name strongly supported by vtable layout/args; not marked as a confirmed PE import."
+    },
+    {
+      "address": "0x00764AC1",
+      "function": "0x007649A0",
+      "method": "SetVertexShader",
+      "arguments": "(shader from [material+0xCC]+0x108)",
+      "receiver": "device loaded from 0x013C6510, directly or via a local register alias",
+      "confidence": "instruction verified, method strongly supported by vtable layout and receiver",
+      "method_confirmed_import": false,
+      "note": "Method name strongly supported by vtable layout/args; not marked as a confirmed PE import."
+    },
+    {
+      "address": "0x00764AFB",
+      "function": "0x007649A0",
+      "method": "SetPixelShader",
+      "arguments": "(NULL)",
+      "receiver": "device loaded from 0x013C6510, directly or via a local register alias",
+      "confidence": "instruction verified, method strongly supported by vtable layout and receiver",
+      "method_confirmed_import": false,
+      "note": "Method name strongly supported by vtable layout/args; not marked as a confirmed PE import."
+    },
+    {
+      "address": "0x0073EEC7",
+      "function": "0x0073EE70",
+      "method": "SetRenderState",
+      "arguments": "(0x16, [EDI])",
+      "receiver": "device loaded from 0x013C6510, directly or via a local register alias",
+      "confidence": "instruction verified, method strongly supported by vtable layout and receiver",
+      "method_confirmed_import": false,
+      "note": "Method name strongly supported by vtable layout/args; not marked as a confirmed PE import."
+    },
+    {
+      "address": "0x00731B52",
+      "function": "0x00731B30",
+      "method": "CreateIndexBuffer",
+      "arguments": "(0x40000, 0x208, 0, 0, this+0x364, NULL)",
+      "receiver": "device loaded from 0x013C6510, directly or via a local register alias",
+      "confidence": "instruction verified, method strongly supported by vtable layout and receiver",
+      "method_confirmed_import": false,
+      "note": "Method name strongly supported by vtable layout/args; not marked as a confirmed PE import."
+    },
+    {
+      "address": "0x007508B9",
+      "function": "0x00750870",
+      "method": "CreateVertexShader",
+      "arguments": "(bytecode, output slot)",
+      "receiver": "device loaded from 0x013C6510, directly or via a local register alias",
+      "confidence": "instruction verified, method strongly supported by vtable layout and receiver",
+      "method_confirmed_import": false,
+      "note": "Method name strongly supported by vtable layout/args; not marked as a confirmed PE import."
+    },
+    {
+      "address": "0x00750939",
+      "function": "0x007508F0",
+      "method": "CreatePixelShader",
+      "arguments": "(bytecode, output slot)",
+      "receiver": "device loaded from 0x013C6510, directly or via a local register alias",
+      "confidence": "instruction verified, method strongly supported by vtable layout and receiver",
+      "method_confirmed_import": false,
+      "note": "Method name strongly supported by vtable layout/args; not marked as a confirmed PE import."
+    },
+    {
+      "address": "0x00752BB5",
+      "function": "0x00752AF0",
+      "method": "SetTexture",
+      "arguments": "(stage ESI, NULL), state cleanup",
+      "receiver": "device loaded from 0x013C6510, directly or via a local register alias",
+      "confidence": "instruction verified, method strongly supported by vtable layout and receiver",
+      "method_confirmed_import": false,
+      "note": "Method name strongly supported by vtable layout/args; not marked as a confirmed PE import."
+    },
+    {
+      "address": "0x00752B14",
+      "function": "0x00752AF0",
+      "method": "Present",
+      "arguments": "(NULL, NULL, NULL, NULL), before cleanup",
+      "receiver": "device loaded from 0x013C6510, directly or via a local register alias",
+      "confidence": "instruction verified, method strongly supported by vtable layout and receiver",
+      "method_confirmed_import": false,
+      "note": "Method name strongly supported by vtable layout/args; not marked as a confirmed PE import."
+    },
+    {
+      "address": "0x00752B01",
+      "function": "0x00752AF0",
+      "method": "EndScene",
+      "arguments": "()",
+      "receiver": "device loaded from 0x013C6510, directly or via a local register alias",
+      "confidence": "instruction verified, method strongly supported by vtable layout and receiver",
+      "method_confirmed_import": false,
+      "note": "Method name strongly supported by vtable layout/args; not marked as a confirmed PE import."
+    },
+    {
+      "address": "0x0075DBED",
+      "function": "0x0075DBC0",
+      "method": "SetPixelShader",
+      "arguments": "([shader descriptor+0x88])",
+      "receiver": "device loaded from 0x013C6510, directly or via a local register alias",
+      "confidence": "instruction verified, method strongly supported by vtable layout and receiver",
+      "method_confirmed_import": false,
+      "note": "Method name strongly supported by vtable layout/args; not marked as a confirmed PE import."
+    },
+    {
+      "address": "0x007515D3",
+      "function": "0x00751360",
+      "method": "CreateTexture",
+      "arguments": "(width, height, levels, 0, format, pool 1, output, NULL)",
+      "receiver": "device loaded from 0x013C6510, directly or via a local register alias",
+      "confidence": "instruction verified, method strongly supported by vtable layout and receiver",
+      "method_confirmed_import": false,
+      "note": "Method name strongly supported by vtable layout/args; not marked as a confirmed PE import."
+    },
+    {
+      "address": "0x007707CC",
+      "function": "0x00770750",
+      "method": "Clear",
+      "arguments": "(0, NULL, 3, 0, 1.0f, 0)",
+      "receiver": "device loaded from 0x013C6510, directly or via a local register alias",
+      "confidence": "instruction verified, method strongly supported by vtable layout and receiver",
+      "method_confirmed_import": false,
+      "note": "Method name strongly supported by vtable layout/args; not marked as a confirmed PE import."
+    },
+    {
+      "address": "0x00770803",
+      "function": "0x00770750",
+      "method": "SetDepthStencilSurface",
+      "arguments": "(NULL)",
+      "receiver": "device loaded from 0x013C6510, directly or via a local register alias",
+      "confidence": "instruction verified, method strongly supported by vtable layout and receiver",
+      "method_confirmed_import": false,
+      "note": "Method name strongly supported by vtable layout/args; not marked as a confirmed PE import."
+    }
+  ],
+  "method_names_are_confirmed_imports": false,
+  "opaque_boundaries": {
+    "0x00686000": "allocator",
+    "0x00686030": "free",
+    "0x004A26B0": "backend",
+    "0x007A51B0": "submission",
+    "0x0071E380": "cleanup",
+    "0x00B615C4": "protected",
+    "0x006860F0": "opaque indexed-draw-shaped handoff",
+    "0x00686290": "opaque user-memory draw-shaped handoff",
+    "0x006861B0": "opaque bad/overlapping instruction entry",
+    "note": "Independently recorded targets; relationship unresolved."
+  }
+}

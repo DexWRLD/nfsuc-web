@@ -1,0 +1,81 @@
+{
+  "phase": 46,
+  "status": "FIRST_FRAME_PATH_BLOCKED_BY_PROTECTED_BACKEND",
+  "authentic_game_frame": "Blocked",
+  "prerequisites": [
+    {
+      "requirement": "Device setup evidence",
+      "status": "Identified"
+    },
+    {
+      "requirement": "Clear-only presentation path",
+      "status": "Identified"
+    },
+    {
+      "requirement": "Scene geometry producer",
+      "status": "Partially identified"
+    },
+    {
+      "requirement": "Draw argument preparation",
+      "status": "Partially identified"
+    },
+    {
+      "requirement": "Opaque draw implementation",
+      "status": "Blocked"
+    },
+    {
+      "requirement": "Render callback \u2192 scene path",
+      "status": "Unverified"
+    },
+    {
+      "requirement": "Scene path \u2192 later Present",
+      "status": "Unverified"
+    },
+    {
+      "requirement": "Real asset/geometry payload",
+      "status": "Unverified"
+    },
+    {
+      "requirement": "Material texture bindings",
+      "status": "Incomplete"
+    },
+    {
+      "requirement": "Browser GPU submission",
+      "status": "Unverified"
+    },
+    {
+      "requirement": "Authentic game frame",
+      "status": "Blocked"
+    }
+  ],
+  "dashboard_flags": {
+    "device_initialized_evidence": true,
+    "clear_only_presentation_path_identified": true,
+    "draw_argument_producer_identified": true,
+    "draw_handoff_remains_opaque": true,
+    "scene_to_present_chain_unresolved": true,
+    "browser_gpu_backend_unverified": true,
+    "authentic_first_frame_blocked": true
+  },
+  "warnings": [
+    "Static call-site discovery is not runtime execution.",
+    "A synthetic draw-command recorder is not proof of an authentic frame.",
+    "Method names are vtable-supported interpretations, not confirmed imports."
+  ],
+  "coverage_from_evidence": {
+    "device_xrefs": 142,
+    "defined_functions_disassembled": 69,
+    "call_pattern_scan_exhaustive_for_indirect_aliases": false
+  },
+  "unresolved_from_evidence": [
+    "callback-to-scene scheduling edge",
+    "mesh and scene branches to either ordinary Present caller",
+    "implementation and reachability of 0x006860F0, 0x00686290 and 0x006861B0",
+    "0x004A26B0",
+    "0x007A51B0",
+    "0x00686000",
+    "0x00686030",
+    "0x0071E380",
+    "authentic scene payload and runtime ordering"
+  ]
+}

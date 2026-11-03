@@ -1,0 +1,41 @@
+{
+  "phase": 46,
+  "candidates": [
+    {
+      "address": "0x00A128F0",
+      "role": "scale matrix rows by broadcast(vec.x)",
+      "abi": "thiscall ret8",
+      "classification": "INDEPENDENT"
+    },
+    {
+      "address": "0x00A12940",
+      "role": "madd matrix rows by broadcast(vec.x)",
+      "abi": "thiscall ret8",
+      "classification": "INDEPENDENT"
+    },
+    {
+      "address": "0x00A12E60",
+      "role": "3x3 matrix multiply into this",
+      "abi": "thiscall ret8",
+      "classification": "INDEPENDENT"
+    },
+    {
+      "address": "0x00766100",
+      "role": "buffer range reclaim / coalesce",
+      "abi": "thiscall ret4",
+      "classification": "GUEST_WHERE_FIXTURED + SYNTHETIC coalesce cases"
+    },
+    {
+      "address": "0x0071B6B0",
+      "role": "stream cache hit / injected miss",
+      "abi": "cdecl 5 args",
+      "classification": "SYNTHETIC (hit verified; miss injected)"
+    },
+    {
+      "address": "0x00757B80",
+      "role": "indexed draw arg preparation (ordinary)",
+      "abi": "thiscall ret8",
+      "classification": "SYNTHETIC prep model; opaque 0x006860F0"
+    }
+  ]
+}

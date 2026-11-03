@@ -1,0 +1,476 @@
+{
+  "phase": 46,
+  "status": "FIRST_FRAME_PATH_BLOCKED_BY_PROTECTED_BACKEND",
+  "confirmed_direct_edges": [
+    {
+      "from": "0x00766730",
+      "site": "0x00766773",
+      "to": "0x0072E5D0",
+      "kind": "direct",
+      "context": "thread callback body",
+      "opaque": false
+    },
+    {
+      "from": "0x0072E5D0",
+      "site": "0x0072E612",
+      "to": "0x0072E340",
+      "kind": "direct",
+      "context": "gate 01311E1C equals 1",
+      "opaque": false
+    },
+    {
+      "from": "0x0072E5D0",
+      "site": "0x0072E621",
+      "to": "0x007297D0",
+      "kind": "direct",
+      "context": "AL nonzero",
+      "opaque": false
+    },
+    {
+      "from": "0x007297D0",
+      "site": "0x00729836",
+      "to": "0x00725200",
+      "kind": "direct",
+      "context": "first device-creation wrapper call",
+      "opaque": false
+    },
+    {
+      "from": "0x007297D0",
+      "site": "0x0072986A",
+      "to": "0x00725200",
+      "kind": "direct",
+      "context": "AA fallback retry",
+      "opaque": false
+    },
+    {
+      "from": "0x00766730",
+      "site": "0x007667FB",
+      "to": "0x0071E630",
+      "kind": "direct",
+      "context": "device status",
+      "opaque": false
+    },
+    {
+      "from": "0x00766730",
+      "site": "0x00766807",
+      "to": "0x0072E5C0",
+      "kind": "direct",
+      "context": "specific device-lost HRESULT branch",
+      "opaque": false
+    },
+    {
+      "from": "0x00766730",
+      "site": "0x00766833",
+      "to": "0x007661A0",
+      "kind": "direct",
+      "context": "buffer queue processing",
+      "opaque": false
+    },
+    {
+      "from": "0x007661A0",
+      "site": "0x0076631F",
+      "to": "0x00766100",
+      "kind": "direct",
+      "context": "secondary queue / range reclamation",
+      "opaque": false
+    },
+    {
+      "from": "0x00766730",
+      "site": "0x00766931",
+      "to": "0x00727F40",
+      "kind": "direct",
+      "context": "exit cleanup",
+      "opaque": false
+    },
+    {
+      "from": null,
+      "site": "0x00777253",
+      "to": "0x00770750",
+      "kind": "direct",
+      "context": "caller function undefined",
+      "opaque": false
+    },
+    {
+      "from": "0x00770750",
+      "site": "0x007707EE",
+      "to": "0x0076FC30",
+      "kind": "direct",
+      "context": "instancing preparation",
+      "opaque": false
+    },
+    {
+      "from": "0x0076FC30",
+      "site": "0x0076FDA4",
+      "to": "0x00757B80",
+      "kind": "direct",
+      "context": "conditional instanced mesh path",
+      "opaque": false
+    },
+    {
+      "from": null,
+      "site": "0x00782355",
+      "to": "0x00766480",
+      "kind": "direct",
+      "context": "caller function undefined",
+      "opaque": false
+    },
+    {
+      "from": null,
+      "site": "0x00758674",
+      "to": "0x00752AF0",
+      "kind": "direct",
+      "context": "caller function undefined",
+      "opaque": false
+    },
+    {
+      "from": null,
+      "site": "0x007B5979",
+      "to": "0x007B36A0",
+      "kind": "direct",
+      "context": "caller function undefined",
+      "opaque": false
+    },
+    {
+      "from": null,
+      "site": "0x007B5972",
+      "to": "0x007B2BA0",
+      "kind": "direct",
+      "context": "caller function undefined",
+      "opaque": false
+    },
+    {
+      "from": "0x007B36A0",
+      "site": "0x007B3F71",
+      "to": "0x007A40D0",
+      "kind": "direct",
+      "context": "scene object branch",
+      "opaque": false
+    },
+    {
+      "from": "0x007B36A0",
+      "site": "0x007B3FFA",
+      "to": "0x007AF900",
+      "kind": "direct",
+      "context": "scene object branch",
+      "opaque": false
+    },
+    {
+      "from": "0x007B2BA0",
+      "site": "0x007B2EA0",
+      "to": "0x007AEA40",
+      "kind": "direct",
+      "context": "scene state dispatch",
+      "opaque": false
+    },
+    {
+      "from": "0x007AEA40",
+      "site": "0x007AED59",
+      "to": "0x007A8690",
+      "kind": "direct",
+      "context": "conditional path",
+      "opaque": false
+    }
+  ],
+  "callback_registration_edges": [
+    {
+      "from": "0x0076CA20",
+      "site": "0x0076CB40",
+      "to": "0x00766730",
+      "kind": "callback registration",
+      "context": "entry address argument, no runtime invocation observed",
+      "opaque": false
+    },
+    {
+      "from": "0x0072E340",
+      "site": "0x0072E497",
+      "to": "0x0072B170",
+      "kind": "callback registration",
+      "context": "window class callback",
+      "opaque": false
+    }
+  ],
+  "opaque_edges": [
+    {
+      "from": "0x00757B80",
+      "site": "0x00757C9A",
+      "to": "0x006860F0",
+      "kind": "opaque boundary",
+      "context": "indexed draw-shaped call",
+      "opaque": true
+    },
+    {
+      "from": "0x00766480",
+      "site": "0x00766700",
+      "to": "0x00686290",
+      "kind": "opaque boundary",
+      "context": "non-indexed draw-shaped call",
+      "opaque": true
+    },
+    {
+      "from": "0x007A40D0",
+      "site": "0x007A416C",
+      "to": "0x004A26B0",
+      "kind": "opaque boundary",
+      "context": "backend",
+      "opaque": true
+    },
+    {
+      "from": "0x007AF900",
+      "site": "0x007AFC67",
+      "to": "0x004A26B0",
+      "kind": "opaque boundary",
+      "context": "backend",
+      "opaque": true
+    },
+    {
+      "from": "0x007A8690",
+      "site": "0x007A86E0",
+      "to": "0x007A51B0",
+      "kind": "opaque boundary",
+      "context": "submission",
+      "opaque": true
+    }
+  ],
+  "unresolved_scheduling": [
+    {
+      "relationship": "render callback 0x00766730 \u2192 scene producer ~0x00777253",
+      "status": "UNVERIFIED"
+    },
+    {
+      "relationship": "render callback \u2192 scene dispatch ~0x007B5972/0x007B5979",
+      "status": "UNVERIFIED"
+    },
+    {
+      "relationship": "scene/mesh submission \u2192 later Present caller ~0x00758674",
+      "status": "UNVERIFIED"
+    }
+  ],
+  "edges": [
+    {
+      "from": "0x00766730",
+      "site": "0x00766773",
+      "to": "0x0072E5D0",
+      "kind": "direct",
+      "context": "thread callback body",
+      "confidence": "static"
+    },
+    {
+      "from": "0x0072E5D0",
+      "site": "0x0072E612",
+      "to": "0x0072E340",
+      "kind": "direct",
+      "context": "gate 01311E1C equals 1",
+      "confidence": "static"
+    },
+    {
+      "from": "0x0072E5D0",
+      "site": "0x0072E621",
+      "to": "0x007297D0",
+      "kind": "direct",
+      "context": "AL nonzero",
+      "confidence": "static"
+    },
+    {
+      "from": "0x007297D0",
+      "site": "0x00729836",
+      "to": "0x00725200",
+      "kind": "direct",
+      "context": "first device-creation wrapper call",
+      "confidence": "static"
+    },
+    {
+      "from": "0x007297D0",
+      "site": "0x0072986A",
+      "to": "0x00725200",
+      "kind": "direct",
+      "context": "AA fallback retry",
+      "confidence": "static"
+    },
+    {
+      "from": "0x00766730",
+      "site": "0x007667FB",
+      "to": "0x0071E630",
+      "kind": "direct",
+      "context": "device status",
+      "confidence": "static"
+    },
+    {
+      "from": "0x00766730",
+      "site": "0x00766807",
+      "to": "0x0072E5C0",
+      "kind": "direct",
+      "context": "specific device-lost HRESULT branch",
+      "confidence": "static"
+    },
+    {
+      "from": "0x00766730",
+      "site": "0x00766833",
+      "to": "0x007661A0",
+      "kind": "direct",
+      "context": "buffer queue processing",
+      "confidence": "static"
+    },
+    {
+      "from": "0x007661A0",
+      "site": "0x0076631F",
+      "to": "0x00766100",
+      "kind": "direct",
+      "context": "secondary queue / range reclamation",
+      "confidence": "static"
+    },
+    {
+      "from": "0x00766730",
+      "site": "0x00766931",
+      "to": "0x00727F40",
+      "kind": "direct",
+      "context": "exit cleanup",
+      "confidence": "static"
+    },
+    {
+      "from": "0x0076CA20",
+      "site": "0x0076CB40",
+      "to": "0x00766730",
+      "kind": "callback registration",
+      "context": "entry address argument, no runtime invocation observed",
+      "confidence": "static"
+    },
+    {
+      "from": "0x0072E340",
+      "site": "0x0072E497",
+      "to": "0x0072B170",
+      "kind": "callback registration",
+      "context": "window class callback",
+      "confidence": "static"
+    },
+    {
+      "from": null,
+      "site": "0x00777253",
+      "to": "0x00770750",
+      "kind": "direct",
+      "context": "caller function undefined",
+      "confidence": "static"
+    },
+    {
+      "from": "0x00770750",
+      "site": "0x007707EE",
+      "to": "0x0076FC30",
+      "kind": "direct",
+      "context": "instancing preparation",
+      "confidence": "static"
+    },
+    {
+      "from": "0x0076FC30",
+      "site": "0x0076FDA4",
+      "to": "0x00757B80",
+      "kind": "direct",
+      "context": "conditional instanced mesh path",
+      "confidence": "static"
+    },
+    {
+      "from": "0x00757B80",
+      "site": "0x00757C9A",
+      "to": "0x006860F0",
+      "kind": "opaque boundary",
+      "context": "indexed draw-shaped call",
+      "confidence": "static"
+    },
+    {
+      "from": "0x00766480",
+      "site": "0x00766700",
+      "to": "0x00686290",
+      "kind": "opaque boundary",
+      "context": "non-indexed draw-shaped call",
+      "confidence": "static"
+    },
+    {
+      "from": null,
+      "site": "0x00782355",
+      "to": "0x00766480",
+      "kind": "direct",
+      "context": "caller function undefined",
+      "confidence": "static"
+    },
+    {
+      "from": null,
+      "site": "0x00758674",
+      "to": "0x00752AF0",
+      "kind": "direct",
+      "context": "caller function undefined",
+      "confidence": "static"
+    },
+    {
+      "from": null,
+      "site": "0x007B5979",
+      "to": "0x007B36A0",
+      "kind": "direct",
+      "context": "caller function undefined",
+      "confidence": "static"
+    },
+    {
+      "from": null,
+      "site": "0x007B5972",
+      "to": "0x007B2BA0",
+      "kind": "direct",
+      "context": "caller function undefined",
+      "confidence": "static"
+    },
+    {
+      "from": "0x007B36A0",
+      "site": "0x007B3F71",
+      "to": "0x007A40D0",
+      "kind": "direct",
+      "context": "scene object branch",
+      "confidence": "static"
+    },
+    {
+      "from": "0x007B36A0",
+      "site": "0x007B3FFA",
+      "to": "0x007AF900",
+      "kind": "direct",
+      "context": "scene object branch",
+      "confidence": "static"
+    },
+    {
+      "from": "0x007A40D0",
+      "site": "0x007A416C",
+      "to": "0x004A26B0",
+      "kind": "opaque boundary",
+      "context": "backend",
+      "confidence": "static"
+    },
+    {
+      "from": "0x007AF900",
+      "site": "0x007AFC67",
+      "to": "0x004A26B0",
+      "kind": "opaque boundary",
+      "context": "backend",
+      "confidence": "static"
+    },
+    {
+      "from": "0x007B2BA0",
+      "site": "0x007B2EA0",
+      "to": "0x007AEA40",
+      "kind": "direct",
+      "context": "scene state dispatch",
+      "confidence": "static"
+    },
+    {
+      "from": "0x007AEA40",
+      "site": "0x007AED59",
+      "to": "0x007A8690",
+      "kind": "direct",
+      "context": "conditional path",
+      "confidence": "static"
+    },
+    {
+      "from": "0x007A8690",
+      "site": "0x007A86E0",
+      "to": "0x007A51B0",
+      "kind": "opaque boundary",
+      "context": "submission",
+      "confidence": "static"
+    }
+  ],
+  "note": "Callback registration is not runtime invocation. Static call-site discovery is not guest execution.",
+  "raw_edge_count": 28
+}
