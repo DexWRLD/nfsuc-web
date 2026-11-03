@@ -22,9 +22,10 @@ PROTECTED = ("Stext", "Sitext", "Srdata", "Sdata", "Sidata", ".securom")
 
 
 def load_angr_cached():
-    """Read cached angr oracle metadata. Never runs angr."""
+    """Read cached angr/oracle metadata. Never runs angr."""
     path = os.path.join(ANALYSIS, "angr", "summary.json")
     gfx_path = os.path.join(ANALYSIS, "angr", "graphics-phase21.json")
+    p22_path = os.path.join(ANALYSIS, "angr", "renderer-phase22.json")
     out = {
         "status": "NOT RUN",
         "version": None,
@@ -34,6 +35,12 @@ def load_angr_cached():
         "boundary_disagreements": None,
         "device_to_renderer": None,
         "draw_consensus": None,
+        "renderer_list": None,
+        "backend_handoff": None,
+        "raw_device_draw": None,
+        "durable_device_alias": None,
+        "frame_root": None,
+        "graphics_boundary": None,
     }
     if os.path.isfile(path):
         try:
@@ -67,6 +74,22 @@ def load_angr_cached():
                 out["clear_control"] = dash.get("CLEAR_CONTROL")
             if dash.get("ANGR_VERSION"):
                 out["version"] = dash.get("ANGR_VERSION")
+        except Exception:
+            pass
+    if os.path.isfile(p22_path):
+        try:
+            g = json.load(open(p22_path, encoding="utf-8"))
+            dash = g.get("dashboard") or {}
+            out["renderer_list"] = dash.get("RENDERER_LIST")
+            out["backend_handoff"] = dash.get("BACKEND_HANDOFF")
+            out["raw_device_draw"] = dash.get("RAW_DEVICE_DRAW")
+            out["durable_device_alias"] = dash.get("DURABLE_DEVICE_ALIAS")
+            out["frame_root"] = dash.get("FRAME_ROOT")
+            out["graphics_boundary"] = dash.get("GRAPHICS_BOUNDARY")
+            if dash.get("ANGR"):
+                out["status"] = dash.get("ANGR")
+            if dash.get("DRAW_CODE"):
+                out["draw_consensus"] = dash.get("DRAW_CONSENSUS") or out["draw_consensus"] or "ENGINE_COM_DRAW"
         except Exception:
             pass
     return out
@@ -625,6 +648,14 @@ def render_svg(model, detailed=False):
         ("ANGR CLEAR CONTROL", angr_meta.get("clear_control") or gfx.get("angr_clear_control") or "NOT RUN"),
         ("DEVICE→RENDERER", gfx.get("device_to_renderer") or "UNKNOWN"),
         ("DRAW CONSENSUS", gfx.get("draw_consensus") or "UNKNOWN"),
+        ("RENDERER", gfx.get("renderer_classification") or "PROVEN ENGINE OBJECT"),
+        ("RENDERER LIST", angr_meta.get("renderer_list") or gfx.get("renderer_list") or "UNKNOWN"),
+        ("ENGINE DRAW", gfx.get("engine_draw") or "FOUND"),
+        ("BACKEND HANDOFF", angr_meta.get("backend_handoff") or gfx.get("backend_handoff") or "UNKNOWN"),
+        ("RAW DEVICE DRAW", angr_meta.get("raw_device_draw") or gfx.get("raw_device_draw") or "UNKNOWN"),
+        ("DURABLE DEVICE ALIAS", angr_meta.get("durable_device_alias") or gfx.get("durable_device_alias") or "UNKNOWN"),
+        ("FRAME ROOT", angr_meta.get("frame_root") or gfx.get("frame_root") or "UNKNOWN"),
+        ("GRAPHICS BOUNDARY", angr_meta.get("graphics_boundary") or gfx.get("graphics_boundary") or "UNKNOWN"),
         ("STATIC FACTORY", static_factory),
         ("FACTORY FRONTIER READY", frontier_ready),
         ("DIRECT3D9 IMPLEMENTED", d3d_impl),
@@ -738,6 +769,8 @@ th { color: #8b949e; font-weight: 600; }
 <p>FIRST CLEAR: %s. FIRST DRAW: %s. FIRST PRESENT: %s.</p>
 <p>ANGR: %s. ANGR VERSION: %s. PRESENT CONTROL: %s. CLEAR CONTROL: %s.</p>
 <p>DEVICE→RENDERER: %s. DRAW CONSENSUS: %s. Boundary disagreements (cached): %s.</p>
+<p>RENDERER LIST: %s. BACKEND HANDOFF: %s. RAW DEVICE DRAW: %s. DURABLE DEVICE ALIAS: %s.</p>
+<p>FRAME ROOT: %s. GRAPHICS BOUNDARY: %s.</p>
 <p>STATIC FACTORY: %s. FACTORY FRONTIER READY: %s. DIRECT3D9 IMPLEMENTED: %s.</p>
 <p>Independent of <code>0x00686000</code>: %s. Discovery-enrolled on HIGH graph: %s. Runtime enterable now: %s. Call <code>%s</code> in <code>%s</code> (%s).</p>
 <p>Active objective: %s</p>
@@ -811,6 +844,12 @@ document.querySelectorAll("rect[data-addr]").forEach(function (node) {
         html.escape(str(angr_meta.get("device_to_renderer") or graphics.get("device_to_renderer") or "UNKNOWN")),
         html.escape(str(angr_meta.get("draw_consensus") or graphics.get("draw_consensus") or "UNKNOWN")),
         html.escape(str(angr_meta.get("boundary_disagreements") if angr_meta.get("boundary_disagreements") is not None else "n/a")),
+        html.escape(str(angr_meta.get("renderer_list") or graphics.get("renderer_list") or "UNKNOWN")),
+        html.escape(str(angr_meta.get("backend_handoff") or graphics.get("backend_handoff") or "UNKNOWN")),
+        html.escape(str(angr_meta.get("raw_device_draw") or graphics.get("raw_device_draw") or "UNKNOWN")),
+        html.escape(str(angr_meta.get("durable_device_alias") or graphics.get("durable_device_alias") or "UNKNOWN")),
+        html.escape(str(angr_meta.get("frame_root") or graphics.get("frame_root") or "UNKNOWN")),
+        html.escape(str(angr_meta.get("graphics_boundary") or graphics.get("graphics_boundary") or "UNKNOWN")),
         html.escape(graphics.get("static_factory_frontier") or graphics.get("frontier") or "UNKNOWN"),
         "YES" if graphics.get("factory_frontier_ready") else "NO",
         "YES" if graphics.get("direct3d9_implemented") else "NO",
@@ -914,6 +953,14 @@ def render_png(model):
         ("ANGR CLEAR CONTROL", angr_meta.get("clear_control") or gfx.get("angr_clear_control") or "NOT RUN"),
         ("DEVICE→RENDERER", gfx.get("device_to_renderer") or "UNKNOWN"),
         ("DRAW CONSENSUS", gfx.get("draw_consensus") or "UNKNOWN"),
+        ("RENDERER", gfx.get("renderer_classification") or "PROVEN ENGINE OBJECT"),
+        ("RENDERER LIST", angr_meta.get("renderer_list") or gfx.get("renderer_list") or "UNKNOWN"),
+        ("ENGINE DRAW", gfx.get("engine_draw") or "FOUND"),
+        ("BACKEND HANDOFF", angr_meta.get("backend_handoff") or gfx.get("backend_handoff") or "UNKNOWN"),
+        ("RAW DEVICE DRAW", angr_meta.get("raw_device_draw") or gfx.get("raw_device_draw") or "UNKNOWN"),
+        ("DURABLE DEVICE ALIAS", angr_meta.get("durable_device_alias") or gfx.get("durable_device_alias") or "UNKNOWN"),
+        ("FRAME ROOT", angr_meta.get("frame_root") or gfx.get("frame_root") or "UNKNOWN"),
+        ("GRAPHICS BOUNDARY", angr_meta.get("graphics_boundary") or gfx.get("graphics_boundary") or "UNKNOWN"),
         ("STATIC FACTORY", static_factory),
         ("FACTORY FRONTIER READY", frontier_ready),
         ("DIRECT3D9 IMPLEMENTED", d3d_impl),
