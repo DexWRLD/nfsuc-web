@@ -45,6 +45,7 @@ class Metadata(unittest.TestCase):
         self.assertGreaterEqual(fam["phase"], 40)
         self.assertGreaterEqual(vt["phase"], 40)
         self.assertGreaterEqual(post["phase"], 40)
+        # Phase 41+ may raise family counts; keep Phase-40 floor.
         self.assertIn("independent_object_families_executed", fr)
         self.assertIn("clean_independent_object_lifecycles", fr)
         self.assertIn("real_vtable_dispatches_executed", fr)
