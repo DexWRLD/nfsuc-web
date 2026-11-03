@@ -1,8 +1,8 @@
 {
   "project": {
     "name": "nfsuc-web",
-    "current_phase": 56,
-    "strategy": "Apt header constructor and synthetic stack ABI verified in Edge. Historical empty-stack trace classified as fixture failure. Allocation and native method dispatch remain unverified."
+    "current_phase": 57,
+    "strategy": "Original Apt lookup-to-hash prefix selects localToGlobal candidate in Edge. Full comparison, cache and native dispatch remain unverified."
   },
   "discovery": {
     "candidates": 25450,
