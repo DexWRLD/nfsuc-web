@@ -43,7 +43,7 @@ class Metadata(unittest.TestCase):
             ANALYSIS, "global-publication-frontier.json"), encoding="utf-8"))
         fr = json.load(open(os.path.join(
             ANALYSIS, "runtime-frontier.json"), encoding="utf-8"))
-        self.assertEqual(post["phase"], 39)
+        self.assertGreaterEqual(post["phase"], 39)
         self.assertTrue(post["runtime_vtable_check"]["matches_static"])
         self.assertEqual(post["runtime_vtable_check"]["slot14"], "0x009E9150")
         self.assertGreaterEqual(post["clean_stateful_sequences"], 6)

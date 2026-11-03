@@ -598,6 +598,14 @@ def build():
             json.load(open(os.path.join(ANALYSIS, "global-publication-frontier.json"), encoding="utf-8"))
             if os.path.isfile(os.path.join(ANALYSIS, "global-publication-frontier.json")) else {}
         ),
+        "object_family_frontier": (
+            json.load(open(os.path.join(ANALYSIS, "object-family-frontier.json"), encoding="utf-8"))
+            if os.path.isfile(os.path.join(ANALYSIS, "object-family-frontier.json")) else {}
+        ),
+        "vtable_execution_frontier": (
+            json.load(open(os.path.join(ANALYSIS, "vtable-execution-frontier.json"), encoding="utf-8"))
+            if os.path.isfile(os.path.join(ANALYSIS, "vtable-execution-frontier.json")) else {}
+        ),
         "initialization": status["initialization"],
         "boundaries": status["boundaries"],
         "helper_cut": helper_summary if helper_summary else "UNKNOWN",
@@ -943,6 +951,47 @@ def _global_publication_badge(model):
     return "slots=%d/%d enterable=%d" % (ok, len(rows), enterable)
 
 
+def _object_families_badge(model):
+    fam = model.get("object_family_frontier") or {}
+    orf = model.get("ordinary_runtime_frontier") or {}
+    try:
+        raw = json.load(open(os.path.join(ANALYSIS, "runtime-frontier.json"), encoding="utf-8"))
+        orf = raw.get("ordinary_runtime_frontier") or orf
+        of = raw.get("object_families") or {}
+    except Exception:
+        of = {}
+    if not fam and not of:
+        return "UNMEASURED"
+    cands = len(fam.get("ranked_constructor_candidates") or [])
+    executed = (orf.get("INDEPENDENT_OBJECT_FAMILIES_EXECUTED")
+                or fam.get("independent_object_families_executed")
+                or of.get("executed") or "?")
+    clean = (orf.get("CLEAN_INDEPENDENT_OBJECT_LIFECYCLES")
+             or fam.get("clean_independent_object_lifecycles")
+             or of.get("clean_lifecycles") or "?")
+    blocked = sum(1 for f in (fam.get("families") or [])
+                  if "BLOCKED" in str(f.get("lifecycle_execution_result") or ""))
+    return "cand=%s exec=%s life=%s blk=%s" % (cands or "?", executed, clean, blocked)
+
+
+def _virtual_dispatch_badge(model):
+    vt = model.get("vtable_execution_frontier") or {}
+    orf = model.get("ordinary_runtime_frontier") or {}
+    try:
+        raw = json.load(open(os.path.join(ANALYSIS, "runtime-frontier.json"), encoding="utf-8"))
+        orf = raw.get("ordinary_runtime_frontier") or orf
+        vd = raw.get("virtual_dispatch") or {}
+    except Exception:
+        vd = {}
+    if not vt and not vd:
+        return "UNMEASURED"
+    sites = len(vt.get("sites") or [])
+    executed = (orf.get("REAL_VTABLE_DISPATCHES_EXECUTED")
+                or vt.get("real_vtable_dispatches_executed") or 0)
+    status = (vt.get("result") or vd or {}).get("status") or "?"
+    return "sites=%s real=%s %s" % (sites or "?", executed, status)
+
+
 def _global_publication_html_table(model):
     glob = model.get("global_publication_frontier") or {}
     rows = []
@@ -956,6 +1005,61 @@ def _global_publication_html_table(model):
     if not rows:
         rows = [("status", "UNMEASURED", "", "")]
     return html_table(("Global", "Class", "Value", "Eligibility"), rows)
+
+
+def _object_families_html_table(model):
+    fam = model.get("object_family_frontier") or {}
+    orf = model.get("ordinary_runtime_frontier") or {}
+    try:
+        raw = json.load(open(os.path.join(ANALYSIS, "runtime-frontier.json"), encoding="utf-8"))
+        orf = raw.get("ordinary_runtime_frontier") or orf
+    except Exception:
+        pass
+    ranked = fam.get("ranked_constructor_candidates") or []
+    families = fam.get("families") or []
+    executed_ctors = sum(
+        1 for f in families
+        if "EXECUTED" in str(f.get("lifecycle_execution_result") or ""))
+    blocked = sum(
+        1 for f in families
+        if "BLOCKED" in str(f.get("lifecycle_execution_result") or ""))
+    rows = [
+        ("Candidate constructors", len(ranked)),
+        ("Executed constructors/families",
+         orf.get("INDEPENDENT_OBJECT_FAMILIES_EXECUTED")
+         or fam.get("independent_object_families_executed") or executed_ctors),
+        ("Independent families",
+         orf.get("INDEPENDENT_OBJECT_FAMILIES_EXECUTED") or "?"),
+        ("Clean lifecycles",
+         orf.get("CLEAN_INDEPENDENT_OBJECT_LIFECYCLES") or "?"),
+        ("Blocked families", blocked),
+        ("Strongest new family", fam.get("strongest_new_family") or "?"),
+    ]
+    return html_table(("Item", "Value"), rows)
+
+
+def _virtual_dispatch_html_table(model):
+    vt = model.get("vtable_execution_frontier") or {}
+    orf = model.get("ordinary_runtime_frontier") or {}
+    try:
+        raw = json.load(open(os.path.join(ANALYSIS, "runtime-frontier.json"), encoding="utf-8"))
+        orf = raw.get("ordinary_runtime_frontier") or orf
+    except Exception:
+        pass
+    result = vt.get("result") or {}
+    rows = [
+        ("Proven static vtables", "C30E68 / C30F2C / C30D5C"),
+        ("Eligible ordinary call sites",
+         result.get("eligible_ordinary_call_sites") or 0),
+        ("Sampled virtual-call sites", len(vt.get("sites") or [])),
+        ("Real virtual dispatches executed",
+         orf.get("REAL_VTABLE_DISPATCHES_EXECUTED")
+         or vt.get("real_vtable_dispatches_executed") or 0),
+        ("Status", result.get("status") or "?"),
+        ("Outstanding blockers",
+         str(result.get("continuation_blocker") or result.get("detail") or "?")[:80]),
+    ]
+    return html_table(("Item", "Value"), rows)
 
 
 def _post_constructor_html_table(model):
@@ -1195,6 +1299,8 @@ def render_svg(model, detailed=False):
         ("ORDINARY INDIRECT DISPATCH", _indirect_dispatch_badge(model)),
         ("POST-CONSTRUCTOR EXECUTION", _post_constructor_badge(model)),
         ("GLOBAL PUBLICATION", _global_publication_badge(model)),
+        ("ORDINARY OBJECT FAMILIES", _object_families_badge(model)),
+        ("VIRTUAL DISPATCH", _virtual_dispatch_badge(model)),
     ]
     parts = []
     y = badge_row(parts, badges, 14)
@@ -1332,6 +1438,10 @@ th { color: #8b949e; font-weight: 600; }
 %s
 <h2>Global publication</h2>
 %s
+<h2>Ordinary object families</h2>
+%s
+<h2>Virtual dispatch</h2>
+%s
 <p>FIRST FRAME: <strong>BLOCKED — PROTECTED BACKEND</strong>. D3D9: <strong>NOT JUSTIFIED</strong>. ENGINE BACKEND: <strong>NOT JUSTIFIED</strong>.</p>
 <p>CRT <code>_CIsqrt</code>: %s. ABI: X87 ST0→ST0.</p>
 <p>Independent of <code>0x00686000</code>: %s. Discovery-enrolled on HIGH graph: %s. Runtime enterable now: %s. Call <code>%s</code> in <code>%s</code> (%s).</p>
@@ -1459,6 +1569,8 @@ document.querySelectorAll("rect[data-addr]").forEach(function (node) {
         _indirect_dispatch_html_table(model),
         _post_constructor_html_table(model),
         _global_publication_html_table(model),
+        _object_families_html_table(model),
+        _virtual_dispatch_html_table(model),
         html.escape(_cisqrt_badge(model)),
         html.escape(graphics["independent_of_0x00686000"]),
         html.escape(graphics["reachable_from_high_graph"]),
@@ -1607,6 +1719,8 @@ def render_png(model):
         ("ORDINARY INDIRECT DISPATCH", _indirect_dispatch_badge(model)),
         ("POST-CONSTRUCTOR EXECUTION", _post_constructor_badge(model)),
         ("GLOBAL PUBLICATION", _global_publication_badge(model)),
+        ("ORDINARY OBJECT FAMILIES", _object_families_badge(model)),
+        ("VIRTUAL DISPATCH", _virtual_dispatch_badge(model)),
     ]
 
     # Measure height with the same geometry as the SVG.
