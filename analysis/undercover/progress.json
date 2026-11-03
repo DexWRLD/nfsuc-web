@@ -1,8 +1,8 @@
 {
   "project": {
     "name": "nfsuc-web",
-    "current_phase": 18,
-    "strategy": "Direct3DCreate9 remains statically REACHABLE via HIGH 0x0072E340, but 0x00B615C4 publication is EXTERNAL_PROTECTED_INITIALIZATION (SecuROM-hosted PE import/IAT; no ordinary writer). Do not invent callbacks or implement Direct3D. Search alternate ordinary graphics routes. 0x00686000 stays unimplemented."
+    "current_phase": 19,
+    "strategy": "Factory prefix via 0x00B615C4 is BLOCKED_EXTERNAL_PROTECTED_INITIALIZATION (frozen). Active objective: ordinary post-init graphics boundary around proven device 0x013C6510 (Present/Clear/EndScene). Do not reconstruct SecuROM binding or invent callbacks. Do not implement D3D9 until an ordinary publisher or accepted external-state contract exists. 0x00686000 stays unimplemented."
   },
   "discovery": {
     "candidates": 25450,
@@ -77,19 +77,24 @@
         "0x00729977=2",
         "0x00B4F990=0"
       ],
-      "evidence": "Phase 18: still no ordinary indirect table/dword entry to 0x00722D60. Map reachable means discovery enrollment only."
+      "evidence": "No ordinary invocation path to value-1 writer."
     },
     {
       "address": "0x01318170",
       "status": "STATIC ZERO OBJECT / ADDRESS-TAKEN ONLY",
-      "evidence": "PE zeroed. Multiple HIGH address-takers; no proven constructor. +0x4C0/+0x4C8/+0x4D0 filled via 0x00B615C4 callback before factory."
+      "evidence": "Factory thiscall object; +0x10 holds Direct3DCreate9 result on blocked path."
     },
     {
       "address": "0x00B615C4",
-      "status": "RUNTIME_REPLACEMENT_REQUIRED / EXTERNAL_PROTECTED_PUBLICATION",
+      "status": "BLOCKED_EXTERNAL_PROTECTED_INITIALIZATION",
       "pe_value": "0x008AA3AE",
       "table": "0x00B61528-0x00B615E4",
-      "evidence": "Home callback table in .rdata. Not PE FirstThunk. No ordinary writers/memcpy/shadow. PE Import+IAT directories are in .securom."
+      "evidence": "Frozen Phase 18 boundary."
+    },
+    {
+      "address": "0x013C6510",
+      "status": "PROVEN_D3D9_DEVICE / NO ORDINARY WRITER",
+      "evidence": "Present/BeginScene/EndScene/Clear-shaped COM; published as COM out-param in 0x00725200; caller 0x007297D0 hits 0x00686000."
     }
   ],
   "boundaries": {
@@ -102,7 +107,7 @@
       "substituted": false,
       "lifted": false,
       "executed": false,
-      "note": "Create path is NO_PATH in helper-cut.json. Site census remains Phase 13."
+      "note": "Device publisher caller 0x007297D0 hits this helper. Create path remains NO_PATH in helper-cut."
     },
     "0x0055FF30": {
       "status": "UNKNOWN",
@@ -110,6 +115,10 @@
       "implemented": false,
       "lifted": false,
       "executed": false
+    },
+    "0x00B615C4": {
+      "status": "BLOCKED_EXTERNAL_PROTECTED_INITIALIZATION",
+      "note": "Phase 18/19 freeze. Not an active reverse-engineering target."
     }
   },
   "helper_cut": {
@@ -126,44 +135,48 @@
     "function": "0x0072E340",
     "confidence": "HIGH_CONFIDENCE",
     "frontier": "FOUND",
+    "factory_initialization": "EXTERNAL/PROTECTED BLOCKED",
     "static_factory_frontier": "REACHABLE",
     "runtime_factory_frontier": "NOT ENTERABLE",
-    "pre_factory_callback": "UNRESOLVED",
     "factory_frontier_ready": false,
+    "pre_factory_callback": "UNRESOLVED",
     "direct3d9_implemented": false,
     "callback_publication": "EXTERNAL_PROTECTED_INITIALIZATION",
-    "callback_table": "0x00B61528-0x00B615E4",
+    "post_init_graphics_frontier": "FOUND",
+    "device_pointer": "PROVEN",
+    "device_va": "0x013C6510",
+    "device_confidence": "PROVEN_D3D9_DEVICE",
+    "first_clear": "BLOCKED_EXTERNAL",
+    "first_draw": "NOT_FOUND",
+    "first_present": "BLOCKED_EXTERNAL",
     "independent_of_0x00686000": "YES",
     "reachable_from_high_graph": "YES",
     "reachable_means": "discovery_enrollment_and_HIGH_create_calls_thunk",
     "enterable_now": "NO",
     "flag": "0x01311E1C",
     "flag_value_1_writer": "0x00722D60",
-    "flag_value_1_writer_ordinary_callers": 0,
     "object": "0x01318170",
     "esi_slot": "0x00B615C4",
-    "esi_slot_valid_entry": false,
-    "esi_slot_class": "RUNTIME_REPLACEMENT_REQUIRED",
-    "esi_slot_abi": "stdcall-like 4-arg (code,size,buffer,flags)",
+    "esi_slot_class": "BLOCKED_EXTERNAL_PROTECTED_INITIALIZATION",
     "shortest_chain": [
       "0x0072E340",
       "0x0087A79C"
     ],
-    "shortest_pre_factory_blocker": "0x00B615C4 external/protected publication before three call esi",
+    "active_objective": "Find legitimate ordinary post-initialization graphics boundary",
     "blockers": [
-      "0x00B615C4 publication is EXTERNAL_PROTECTED_INITIALIZATION (no ordinary writer; PE Import/IAT in .securom)",
-      "0x00B611D4 and 0x00B61188 likewise RUNTIME_REPLACEMENT_REQUIRED for outer/wait paths",
-      "0x01311E1C=1 writer 0x00722D60 has no ordinary invocation path (discovery-enrolled only)",
-      "TLS 0x01882C34 required only on outer 0x00766730",
-      "Direct3DCreate9 unimplemented (stop before call once frontier is ready)"
+      "Factory prefix frozen: 0x00B615C4 EXTERNAL/PROTECTED",
+      "Device 0x013C6510 has no ordinary writer; publisher caller hits 0x00686000",
+      "FIRST_CLEAR / FIRST_PRESENT are BLOCKED_EXTERNAL",
+      "FIRST_DRAW not found on device load pattern",
+      "Direct3D9 not implemented"
     ]
   },
   "first_frame_estimate": {
-    "best_case_phase": 20,
-    "likely_low": 23,
-    "likely_high": 31,
+    "best_case_phase": "UNBOUNDED",
+    "likely_low": "UNBOUNDED",
+    "likely_high": "UNBOUNDED",
     "is_estimate": true,
-    "uncertainty": "External/protected callback publication class established; no legitimate ordinary fill path. Estimate unchanged."
+    "uncertainty": "Post-init interfaces found, but device publication requires external/protected code. Optimistic phase countdown removed."
   },
   "phases": [
     {
@@ -254,6 +267,11 @@
     {
       "phase": 18,
       "name": "Callback table publication provenance",
+      "state": "completed"
+    },
+    {
+      "phase": 19,
+      "name": "Post-init graphics frontier",
       "state": "current"
     }
   ],
@@ -287,16 +305,32 @@
       "state": "REACHABLE"
     },
     {
-      "name": "PRE-FACTORY CALLBACK",
-      "state": "UNRESOLVED"
+      "name": "FACTORY INITIALIZATION",
+      "state": "EXTERNAL/PROTECTED BLOCKED"
+    },
+    {
+      "name": "POST-INIT GRAPHICS FRONTIER",
+      "state": "FOUND"
+    },
+    {
+      "name": "DEVICE POINTER",
+      "state": "PROVEN"
+    },
+    {
+      "name": "FIRST CLEAR",
+      "state": "BLOCKED_EXTERNAL"
+    },
+    {
+      "name": "FIRST DRAW",
+      "state": "NOT_FOUND"
+    },
+    {
+      "name": "FIRST PRESENT",
+      "state": "BLOCKED_EXTERNAL"
     },
     {
       "name": "RUNTIME D3D FACTORY FRONTIER",
       "state": "NOT ENTERABLE"
-    },
-    {
-      "name": "GRAPHICS FRONTIER",
-      "state": "REQUIRES EXTERNAL INITIALIZATION"
     },
     {
       "name": "D3D9 DEVICE",
@@ -304,7 +338,7 @@
     },
     {
       "name": "FIRST FRAME",
-      "state": "NOT STARTED"
+      "state": "UNBOUNDED"
     },
     {
       "name": "INPUT / SIMULATION",

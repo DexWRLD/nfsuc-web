@@ -530,6 +530,12 @@ def render_svg(model, detailed=False):
     frontier_ready = "YES" if gfx.get("factory_frontier_ready") else "NO"
     pre_cb = gfx.get("pre_factory_callback") or "UNRESOLVED"
     d3d_impl = "YES" if gfx.get("direct3d9_implemented") else "NO"
+    factory_init = gfx.get("factory_initialization") or "EXTERNAL/PROTECTED BLOCKED"
+    post_init = gfx.get("post_init_graphics_frontier") or "UNKNOWN"
+    device_ptr = gfx.get("device_pointer") or "UNKNOWN"
+    first_clear = gfx.get("first_clear") or "UNKNOWN"
+    first_draw = gfx.get("first_draw") or "UNKNOWN"
+    first_present = gfx.get("first_present") or "UNKNOWN"
     badges = [
         ("Functions compiled", "%d/%d" % (trans["compiled"], trans["attempted"])),
         ("Compiler failures", str(trans["compiler_failures"])),
@@ -541,8 +547,13 @@ def render_svg(model, detailed=False):
         ("MEDIUM", str(disc.get("medium", "?"))),
         ("CFG-complete", str(disc.get("cfg_complete", "?"))),
         ("CFG-budget", str(disc.get("cfg_budget_exceeded", "?"))),
+        ("FACTORY INITIALIZATION", factory_init),
+        ("POST-INIT GRAPHICS FRONTIER", post_init),
+        ("DEVICE POINTER", device_ptr),
+        ("FIRST CLEAR", first_clear),
+        ("FIRST DRAW", first_draw),
+        ("FIRST PRESENT", first_present),
         ("STATIC FACTORY", static_factory),
-        ("PRE-FACTORY CALLBACK", pre_cb),
         ("FACTORY FRONTIER READY", frontier_ready),
         ("DIRECT3D9 IMPLEMENTED", d3d_impl),
         ("Runtime factory frontier", runtime_factory),
@@ -648,10 +659,13 @@ th { color: #8b949e; font-weight: 600; }
 <h2>Current frontier</h2>
 <p>Current blocker: <code>0x00686000</code>, %s.</p>
 <p>Strategy: %s</p>
-<p>STATIC FACTORY: %s. PRE-FACTORY CALLBACK: %s. FACTORY FRONTIER READY: %s. DIRECT3D9 IMPLEMENTED: %s.</p>
+<p>FACTORY INITIALIZATION: %s. POST-INIT GRAPHICS FRONTIER: %s. DEVICE POINTER: %s.</p>
+<p>FIRST CLEAR: %s. FIRST DRAW: %s. FIRST PRESENT: %s.</p>
+<p>STATIC FACTORY: %s. FACTORY FRONTIER READY: %s. DIRECT3D9 IMPLEMENTED: %s.</p>
 <p>Independent of <code>0x00686000</code>: %s. Discovery-enrolled on HIGH graph: %s. Runtime enterable now: %s. Call <code>%s</code> in <code>%s</code> (%s).</p>
+<p>Active objective: %s</p>
 <p>%s</p>
-<p>First-frame estimate, marked as an estimate: best case phase %d, likely %d–%d. %s</p>
+<p>First-frame estimate, marked as an estimate: best case phase %s, likely %s–%s. %s</p>
 <p>Recorded runs with no function-map cell: %s. Other entered functions whose tests do not record an address stay UNKNOWN.</p>
 <h2>Phases</h2>
 <p>%s</p>
@@ -700,8 +714,13 @@ document.querySelectorAll("rect[data-addr]").forEach(function (node) {
         html.escape(unknown_b["status"]),
         html.escape(boundary["status"]),
         html.escape(model["project"]["strategy"]),
+        html.escape(graphics.get("factory_initialization") or "EXTERNAL/PROTECTED BLOCKED"),
+        html.escape(graphics.get("post_init_graphics_frontier") or "UNKNOWN"),
+        html.escape(graphics.get("device_pointer") or "UNKNOWN"),
+        html.escape(graphics.get("first_clear") or "UNKNOWN"),
+        html.escape(graphics.get("first_draw") or "UNKNOWN"),
+        html.escape(graphics.get("first_present") or "UNKNOWN"),
         html.escape(graphics.get("static_factory_frontier") or graphics.get("frontier") or "UNKNOWN"),
-        html.escape(graphics.get("pre_factory_callback") or "UNRESOLVED"),
         "YES" if graphics.get("factory_frontier_ready") else "NO",
         "YES" if graphics.get("direct3d9_implemented") else "NO",
         html.escape(graphics["independent_of_0x00686000"]),
@@ -710,6 +729,7 @@ document.querySelectorAll("rect[data-addr]").forEach(function (node) {
         html.escape(graphics["call"]),
         html.escape(graphics["function"]),
         html.escape(graphics["confidence"]),
+        html.escape(graphics.get("active_objective") or "Find legitimate ordinary post-initialization graphics boundary"),
         html.escape("; ".join(graphics.get("blockers") or []) or "No blocker list."),
         estimate["best_case_phase"],
         estimate["likely_low"],
@@ -759,6 +779,12 @@ def render_png(model):
     frontier_ready = "YES" if gfx.get("factory_frontier_ready") else "NO"
     pre_cb = gfx.get("pre_factory_callback") or "UNRESOLVED"
     d3d_impl = "YES" if gfx.get("direct3d9_implemented") else "NO"
+    factory_init = gfx.get("factory_initialization") or "EXTERNAL/PROTECTED BLOCKED"
+    post_init = gfx.get("post_init_graphics_frontier") or "UNKNOWN"
+    device_ptr = gfx.get("device_pointer") or "UNKNOWN"
+    first_clear = gfx.get("first_clear") or "UNKNOWN"
+    first_draw = gfx.get("first_draw") or "UNKNOWN"
+    first_present = gfx.get("first_present") or "UNKNOWN"
     badges = [
         ("Functions compiled", "%d/%d" % (trans["compiled"], trans["attempted"])),
         ("Compiler failures", str(trans["compiler_failures"])),
@@ -770,8 +796,13 @@ def render_png(model):
         ("MEDIUM", str(disc.get("medium", "?"))),
         ("CFG-complete", str(disc.get("cfg_complete", "?"))),
         ("CFG-budget", str(disc.get("cfg_budget_exceeded", "?"))),
+        ("FACTORY INITIALIZATION", factory_init),
+        ("POST-INIT GRAPHICS FRONTIER", post_init),
+        ("DEVICE POINTER", device_ptr),
+        ("FIRST CLEAR", first_clear),
+        ("FIRST DRAW", first_draw),
+        ("FIRST PRESENT", first_present),
         ("STATIC FACTORY", static_factory),
-        ("PRE-FACTORY CALLBACK", pre_cb),
         ("FACTORY FRONTIER READY", frontier_ready),
         ("DIRECT3D9 IMPLEMENTED", d3d_impl),
         ("Runtime factory frontier", runtime_factory),
