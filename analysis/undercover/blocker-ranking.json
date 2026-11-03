@@ -1,10 +1,10 @@
 {
-  "phase": 38,
+  "phase": 39,
   "campaign_outcomes": {
     "EXECUTED_CHAIN": 8,
     "BLOCKED_REQUIRED_STATE": 3,
     "UNKNOWN": 1,
-    "EXECUTED_STATEFUL_SEQUENCE": 6
+    "EXECUTED_STATEFUL_SEQUENCE": 11
   },
   "real_blocker_histogram": {
     "REQUIRED_STATE": 4,
@@ -33,6 +33,6 @@
     "REQUIRED_STATE:UNKNOWN_OBJECT",
     2
   ],
-  "stateful_clean_sequences": 6,
-  "latest_real_runtime_boundary": "STATEFUL ctor\u2192setter\u2192getter CLEAN"
+  "clean_stateful_sequences": 11,
+  "latest_real_runtime_boundary": "STATEFUL object+global consumers; D1A4 meaningful path BLOCKED_ALLOCATOR/factory"
 }

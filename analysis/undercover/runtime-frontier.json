@@ -1,5 +1,5 @@
 {
-  "phase": 38,
+  "phase": 39,
   "definitions": {
     "ENTERABLE": "All pre-entry required state establishable via primitives, static PE data, standard runtime, or proven ordinary init/ctor. Not merely IMPORT_READY.",
     "DEEPEST_ORDINARY_EXECUTION_CHAIN": "Max nested ordinary UC frames in one harness run.",
@@ -16,7 +16,7 @@
   "static_ready": 20762,
   "import_ready": 737,
   "runtime_ready": 72,
-  "enterable": 25,
+  "enterable": 29,
   "enterable_roots": [
     "0x00721050",
     "0x00721070",
@@ -33,6 +33,10 @@
     "0x0097BB30",
     "0x009E7710",
     "0x009E7780",
+    "0x009E78C0",
+    "0x009E83D0",
+    "0x009E8400",
+    "0x009E8460",
     "0x009E9140",
     "0x009E9150",
     "0x009E9160",
@@ -44,24 +48,7 @@
     "0x009EBC70",
     "0x00B57CD0"
   ],
-  "enterable_with_depth_3_potential": 5,
-  "enterable_with_depth_3_potential_roots": [
-    "0x0097BB30",
-    "0x009E9160",
-    "0x009EBC70",
-    "0x00B52140",
-    "0x00B57CF0"
-  ],
-  "enterable_with_depth_4_potential": 0,
-  "enterable_with_depth_4_potential_roots": [],
-  "proven_depth_4_roots": [
-    "0x0097BB30",
-    "0x009E9160",
-    "0x00B52140",
-    "0x00B57CF0"
-  ],
-  "proven_depth_5_roots": [],
-  "unique_uc_functions_executed": 53,
+  "unique_uc_functions_executed": 56,
   "unique_uc_functions_executed_list": [
     "0x00721050",
     "0x00721070",
@@ -98,8 +85,11 @@
     "0x009E0880",
     "0x009E7710",
     "0x009E7780",
+    "0x009E77D0",
     "0x009E78C0",
+    "0x009E83D0",
     "0x009E8400",
+    "0x009E8460",
     "0x009E8AD0",
     "0x009E9140",
     "0x009E9150",
@@ -117,11 +107,13 @@
     "0x00B57CD0",
     "0x00B57CF0"
   ],
-  "execution_runs": 113,
+  "execution_runs": 137,
   "deepest_ordinary_execution_chain": 4,
   "largest_executed_ordinary_closure": 18,
-  "ordinary_execution_sequence_length": 3,
-  "largest_stateful_sequence_coverage": 20,
+  "ordinary_execution_sequence_length": 5,
+  "largest_stateful_sequence_coverage": 22,
+  "clean_stateful_sequences": 11,
+  "proven_post_constructor_consumers": 8,
   "clean_ordinary_roots": 13,
   "clean_ordinary_roots_list": [
     "0x00721070",
@@ -150,38 +142,55 @@
     "0x009EB350",
     "0x009EBC70"
   ],
-  "ordinary_init_recovered": 10,
+  "enterable_with_depth_3_potential": 5,
+  "enterable_with_depth_3_potential_roots": [
+    "0x0097BB30",
+    "0x009E9160",
+    "0x009EBC70",
+    "0x00B52140",
+    "0x00B57CF0"
+  ],
+  "enterable_with_depth_4_potential": 0,
+  "enterable_with_depth_4_potential_roots": [],
+  "proven_depth_4_roots": [
+    "0x0097BB30",
+    "0x009E9160",
+    "0x00B52140",
+    "0x00B57CF0"
+  ],
+  "proven_depth_5_roots": [],
   "ordinary_runtime_frontier": {
     "HIGH": 22779,
     "COMPILED": 22770,
     "STATIC_READY": 20762,
     "IMPORT_READY": 737,
     "RUNTIME_READY": 72,
-    "ENTERABLE": 25,
-    "EXECUTED": 53,
-    "UNIQUE": 53,
-    "EXECUTION_RUNS": 113,
+    "ENTERABLE": 29,
+    "EXECUTED": 56,
+    "UNIQUE": 56,
+    "EXECUTION_RUNS": 137,
     "CLEAN_ORDINARY_ROOTS": 13,
     "EXECUTED_ORDINARY_CONSTRUCTORS": 9,
     "DEEPEST": 4,
     "LARGEST_CLOSURE": 18,
-    "ORDINARY_EXECUTION_SEQUENCE_LENGTH": 3,
-    "LARGEST_STATEFUL_SEQUENCE_COVERAGE": 20,
-    "LATEST_REAL_RUNTIME_BOUNDARY": "STATEFUL ctor\u2192setter\u2192getter CLEAN",
+    "ORDINARY_EXECUTION_SEQUENCE_LENGTH": 5,
+    "LARGEST_STATEFUL_SEQUENCE_COVERAGE": 22,
+    "CLEAN_STATEFUL_SEQUENCES": 11,
+    "PROVEN_POST_CONSTRUCTOR_CONSUMERS": 8,
+    "LATEST_REAL_RUNTIME_BOUNDARY": "STATEFUL object+global consumers; D1A4 meaningful path BLOCKED_ALLOCATOR/factory",
     "MOST_COMMON_REAL_BLOCKER": [
       "REQUIRED_STATE:UNKNOWN_OBJECT",
       2
     ]
   },
   "campaign_summary": {
-    "phase38_attempted_roots": 12,
-    "phase38_stateful_sequences": 6,
-    "clean_stateful_sequences": 6,
+    "phase39_stateful_sequences": 12,
+    "clean_stateful_sequences": 11,
     "outcomes": {
       "EXECUTED_CHAIN": 8,
       "BLOCKED_REQUIRED_STATE": 3,
       "UNKNOWN": 1,
-      "EXECUTED_STATEFUL_SEQUENCE": 6
+      "EXECUTED_STATEFUL_SEQUENCE": 11
     },
     "real_blocker_histogram": {
       "REQUIRED_STATE": 4,
@@ -211,13 +220,10 @@
       2
     ],
     "ctor_clean": true,
-    "reset_validated": true,
     "new_functions": [
-      "0x009E7780",
-      "0x009E8400",
-      "0x009E9140",
-      "0x009E9150",
-      "0x009E9980"
+      "0x009E77D0",
+      "0x009E83D0",
+      "0x009E8460"
     ],
     "tlsgetvalue_reached": false,
     "tlsfree_reached": false,
@@ -228,16 +234,18 @@
   },
   "post_constructor": {
     "clean_constructor": true,
-    "eligible_consumers": 5,
-    "stateful_sequences_tested": 6,
-    "clean_stateful_sequences": 6,
-    "largest_sequence_coverage": 20,
-    "longest_sequence_length": 3,
+    "eligible_consumers": 8,
+    "stateful_sequences_tested": 12,
+    "clean_stateful_sequences": 11,
+    "largest_sequence_coverage": 22,
+    "longest_sequence_length": 5,
     "deepest_nested": 4,
-    "next_blocker": [
-      "REQUIRED_STATE:UNKNOWN_OBJECT",
-      2
-    ]
+    "global_consumers_verified": 1,
+    "next_blocker": {
+      "kind": "FAULT",
+      "va": null,
+      "at_step": "cb"
+    }
   },
   "synchronization": {
     "InitializeCriticalSection": "IMPLEMENTED",
@@ -281,6 +289,6 @@
   },
   "first_frame": "FIRST_FRAME_PATH_BLOCKED_BY_PROTECTED_BACKEND",
   "graphics_frozen": true,
-  "recommended_phase39": "Stateful ctor\u2192setter\u2192getter and vtable leaf methods execute cleanly. Phase 39: EXPAND REAL UC EXECUTION \u2014 pursue additional SAME_VTABLE_FAMILY methods with proven field prerequisites (avoid dtors/allocator), or ordinary global consumers of 0x0189D1A4/0x0189D198 published during ctor. Do not reopen protected allocator/factory. Graphics frozen.",
+  "recommended_phase40": "Object method frontier and published-callback early-exit are proven. Meaningful work through 0x0189D1A4 still needs factory publication of 0x0189DA84 (allocator-blocked). Phase 40: EXPAND REAL UC EXECUTION on other ordinary object families / POD constructors without allocator dependence, or deepen same-vtable methods that only need constructor-produced fields. Graphics frozen.",
   "phase31_metric_corrections_preserved": true
 }
