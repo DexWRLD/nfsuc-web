@@ -85,6 +85,8 @@ class Out(ctypes.Structure):
         ("qpc_calls", ctypes.c_uint32), ("qpf_calls", ctypes.c_uint32),
         ("qpc_ticks_lo", ctypes.c_uint32), ("qpc_ticks_hi", ctypes.c_uint32),
         ("sleepex_calls", ctypes.c_uint32), ("sleepex_done", ctypes.c_uint32),
+        # Guest UC bodies entered via DISPATCH_CALL → dispatch_indirect (not uc_direct).
+        ("uc_indirect_enters", ctypes.c_uint32),
     ]
 
 
@@ -124,6 +126,13 @@ C_HEAD = r'''
 uint8_t *g_mem;
 int _fltused;
 guest_fn_t g_dtab[DISPATCH_TEXT_SIZE];
+/* UC .text exceeds NFSU2-sized DISPATCH_TEXT_SIZE; sparse table covers lifted
+ * ordinary bodies so DISPATCH_CALL → dispatch_indirect can enter them. */
+#define UC_SPARSE_CAP 512
+static uint32_t uc_sparse_va[UC_SPARSE_CAP];
+static guest_fn_t uc_sparse_fn[UC_SPARSE_CAP];
+static int uc_sparse_n;
+static uint32_t uc_indirect_enters;
 static int abort_run, blocked_kind, block_tls_set, cur_root;
 static uint32_t blocked_va, blocked_fn, tls_alloc_calls, tls_set_calls;
 static uint32_t ics_calls, mutex_calls, gpc_calls, sem_calls;
@@ -135,6 +144,10 @@ static uint32_t imp_target[%(imp_cap)d], imp_ok[%(imp_cap)d], imp_hle[%(imp_cap)
 static int nimp;
 static char unsup_why[48];
 static uint32_t diag_noop_target, diag_noop_args, diag_hits;
+static guest_fn_t uc_sparse_lookup(uint32_t a) {
+    int i; for (i = 0; i < uc_sparse_n; i++) if (uc_sparse_va[i] == a) return uc_sparse_fn[i];
+    return (guest_fn_t)0;
+}
 '''
 
 C_RUNTIME = r'''
@@ -183,13 +196,22 @@ static void uc_direct(uint32_t target, CPU *c) {
     }
 }
 void dispatch_indirect(CPU *c, uint32_t target) {
-    const UcImport *imp = uc_import_find_dispatch_target(target);
+    const UcImport *imp;
+    guest_fn_t gf;
     int ok;
     if (abort_run) { POP32(c->eip); return; }
     if (uc_access_fault.active) note_block(uc_access_fault.address, 6);
+    /* Ordinary UC body outside DISPATCH_TEXT_SIZE: real guest indirect/vtable call. */
+    gf = uc_sparse_lookup(target);
+    if (gf) {
+        uc_indirect_enters++;
+        gf(c);
+        return;
+    }
     if (diag_noop_target && target == diag_noop_target) {
         POP32(c->eip); c->esp += 4u * diag_noop_args; c->eax = 1; diag_hits++; return;
     }
+    imp = uc_import_find_dispatch_target(target);
     if (nimp < %(imp_cap)d) { imp_target[nimp] = target; imp_hle[nimp] = imp ? (uint32_t)imp->hle : 0xffffu; }
     if (imp && imp->hle == UC_HLE_TLSALLOC) tls_alloc_calls++;
     if (imp && imp->hle == UC_HLE_TLSSETVALUE) tls_set_calls++;
@@ -254,6 +276,7 @@ typedef struct Out {
     int32_t thread_priority;
     uint32_t qpc_calls, qpf_calls, qpc_ticks_lo, qpc_ticks_hi;
     uint32_t sleepex_calls, sleepex_done;
+    uint32_t uc_indirect_enters;
 } Out;
 
 static void wr32(uint32_t a, uint32_t v) { uc_guest_store32(a, v, 0); }
@@ -267,6 +290,9 @@ __declspec(dllexport) int uc_p31_setup(
     if (uc_image_add_private("obj", 0x03004000u, 0x4000u, UC_MEM_READ|UC_MEM_WRITE)) return 4;
     if (uc_image_add_private("teb", 0x03010000u, 0x1000u, UC_MEM_READ|UC_MEM_WRITE)) return 5;
     (void)uc_import_bind_hle_iats();
+    /* Register lifted ordinary bodies for DISPATCH_CALL outside NFSU2 g_dtab span. */
+    uc_sparse_n = 0;
+%(sparse_reg)s
     return 0;
 }
 
@@ -309,6 +335,7 @@ __declspec(dllexport) int uc_p31_step(const Spec *s, Out *out, uint32_t flags) {
         gct_calls = gtp_calls = spc_calls = stp_calls = 0;
         qpc_calls = qpf_calls = sleepex_calls = 0;
         diag_hits = 0;
+        uc_indirect_enters = 0;
     }
     unsup_why[0] = 0;
     diag_noop_target = s->noop_target; diag_noop_args = s->noop_args;
@@ -363,6 +390,7 @@ __declspec(dllexport) int uc_p31_step(const Spec *s, Out *out, uint32_t flags) {
     }
     out->sleepex_calls = sleepex_calls;
     out->sleepex_done = uc_wait_sleepex_completions();
+    out->uc_indirect_enters = uc_indirect_enters;
     for (i = 0; i < 47 && unsup_why[i]; i++) out->unsupported_why[i] = unsup_why[i];
     return 0;
 }
@@ -375,11 +403,20 @@ __declspec(dllexport) int uc_p31_run(const Spec *s, Out *out) {
 
 
 def build_source(bodies):
-    decls, switch = [], []
+    decls, switch, sparse = [], [], []
     for addr, name, _c in bodies:
         decls.append("void %s_impl(CPU *restrict c);" % name)
         switch.append("    case 0x%08xu: %s_impl(c); break;" % (addr, name))
-    fmt = {"ent_cap": ENT_CAP, "imp_cap": IMP_CAP, "switch": "\n".join(switch)}
+        sparse.append(
+            "    if (uc_sparse_n < UC_SPARSE_CAP) {"
+            " uc_sparse_va[uc_sparse_n] = 0x%08xu;"
+            " uc_sparse_fn[uc_sparse_n] = %s_impl; uc_sparse_n++; }"
+            % (addr, name))
+    fmt = {
+        "ent_cap": ENT_CAP, "imp_cap": IMP_CAP,
+        "switch": "\n".join(switch),
+        "sparse_reg": "\n".join(sparse),
+    }
     joined = "\n".join(c for _a, _n, c in bodies)
     return (C_HEAD % fmt + "\n" + "\n".join(decls) + "\n"
             + C_RUNTIME % fmt + "\n" + joined + "\n" + C_RUN % fmt)
