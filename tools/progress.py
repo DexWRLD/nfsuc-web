@@ -594,6 +594,10 @@ def build():
             json.load(open(os.path.join(ANALYSIS, "constructor-state-frontier.json"), encoding="utf-8"))
             if os.path.isfile(os.path.join(ANALYSIS, "constructor-state-frontier.json")) else {}
         ),
+        "global_publication_frontier": (
+            json.load(open(os.path.join(ANALYSIS, "global-publication-frontier.json"), encoding="utf-8"))
+            if os.path.isfile(os.path.join(ANALYSIS, "global-publication-frontier.json")) else {}
+        ),
         "initialization": status["initialization"],
         "boundaries": status["boundaries"],
         "helper_cut": helper_summary if helper_summary else "UNKNOWN",
@@ -907,27 +911,51 @@ def _indirect_dispatch_badge(model):
 
 def _post_constructor_badge(model):
     post = model.get("post_constructor_frontier") or {}
-    camp = model.get("campaign_summary") or {}
     orf = model.get("ordinary_runtime_frontier") or {}
-    pc = orf  # may embed post_constructor from runtime-frontier via campaign
-    # Prefer dedicated frontier; else runtime-frontier.post_constructor via model rebuild.
     rf_post = {}
     try:
         raw = json.load(open(os.path.join(ANALYSIS, "runtime-frontier.json"), encoding="utf-8"))
         rf_post = raw.get("post_constructor") or {}
+        orf = raw.get("ordinary_runtime_frontier") or orf
     except Exception:
         rf_post = {}
     if not post and not rf_post:
         return "UNMEASURED"
-    clean_ctor = "YES" if (post.get("constructor") or rf_post.get("clean_constructor")) else "?"
-    if rf_post.get("clean_constructor") is True:
-        clean_ctor = "YES"
+    clean_ctor = "YES" if rf_post.get("clean_constructor") or post.get("constructor") else "?"
     seqs = rf_post.get("stateful_sequences_tested") or len(post.get("stateful_sequences") or [])
     clean_s = rf_post.get("clean_stateful_sequences")
     if clean_s is None:
-        clean_s = sum(1 for r in (post.get("stateful_sequences") or []) if r.get("clean"))
-    cov = rf_post.get("largest_sequence_coverage") or orf.get("LARGEST_STATEFUL_SEQUENCE_COVERAGE") or "?"
+        clean_s = post.get("clean_stateful_sequences")
+        if clean_s is None:
+            clean_s = sum(1 for r in (post.get("stateful_sequences") or []) if r.get("clean"))
+    cov = (rf_post.get("largest_sequence_coverage")
+           or orf.get("LARGEST_STATEFUL_SEQUENCE_COVERAGE") or "?")
     return "ctor=%s seq=%s/%s cov=%s" % (clean_ctor, clean_s, seqs, cov)
+
+
+def _global_publication_badge(model):
+    glob = model.get("global_publication_frontier") or {}
+    rows = glob.get("globals") or []
+    if not rows:
+        return "UNMEASURED"
+    ok = sum(1 for g in rows if g.get("matches_constructor_write"))
+    enterable = sum(1 for g in rows if g.get("eligibility") == "ENTERABLE_AFTER_CONSTRUCTOR")
+    return "slots=%d/%d enterable=%d" % (ok, len(rows), enterable)
+
+
+def _global_publication_html_table(model):
+    glob = model.get("global_publication_frontier") or {}
+    rows = []
+    for g in glob.get("globals") or []:
+        rows.append((
+            g.get("address") or "?",
+            g.get("classification") or "?",
+            g.get("runtime_value") or "?",
+            g.get("eligibility") or "?",
+        ))
+    if not rows:
+        rows = [("status", "UNMEASURED", "", "")]
+    return html_table(("Global", "Class", "Value", "Eligibility"), rows)
 
 
 def _post_constructor_html_table(model):
@@ -1166,6 +1194,7 @@ def render_svg(model, detailed=False):
         ("GUEST WAITS", _guest_waits_badge(model)),
         ("ORDINARY INDIRECT DISPATCH", _indirect_dispatch_badge(model)),
         ("POST-CONSTRUCTOR EXECUTION", _post_constructor_badge(model)),
+        ("GLOBAL PUBLICATION", _global_publication_badge(model)),
     ]
     parts = []
     y = badge_row(parts, badges, 14)
@@ -1301,6 +1330,8 @@ th { color: #8b949e; font-weight: 600; }
 %s
 <h2>Post-constructor execution</h2>
 %s
+<h2>Global publication</h2>
+%s
 <p>FIRST FRAME: <strong>BLOCKED — PROTECTED BACKEND</strong>. D3D9: <strong>NOT JUSTIFIED</strong>. ENGINE BACKEND: <strong>NOT JUSTIFIED</strong>.</p>
 <p>CRT <code>_CIsqrt</code>: %s. ABI: X87 ST0→ST0.</p>
 <p>Independent of <code>0x00686000</code>: %s. Discovery-enrolled on HIGH graph: %s. Runtime enterable now: %s. Call <code>%s</code> in <code>%s</code> (%s).</p>
@@ -1427,6 +1458,7 @@ document.querySelectorAll("rect[data-addr]").forEach(function (node) {
         _sync_html_table(model),
         _indirect_dispatch_html_table(model),
         _post_constructor_html_table(model),
+        _global_publication_html_table(model),
         html.escape(_cisqrt_badge(model)),
         html.escape(graphics["independent_of_0x00686000"]),
         html.escape(graphics["reachable_from_high_graph"]),
@@ -1574,6 +1606,7 @@ def render_png(model):
         ("GUEST WAITS", _guest_waits_badge(model)),
         ("ORDINARY INDIRECT DISPATCH", _indirect_dispatch_badge(model)),
         ("POST-CONSTRUCTOR EXECUTION", _post_constructor_badge(model)),
+        ("GLOBAL PUBLICATION", _global_publication_badge(model)),
     ]
 
     # Measure height with the same geometry as the SVG.
