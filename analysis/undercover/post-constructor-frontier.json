@@ -1,0 +1,530 @@
+{
+  "phase": 38,
+  "constructor": "0x009E9160",
+  "vtable_main": "0x00C30E68",
+  "candidates": [
+    {
+      "va": 10391872,
+      "slot": 13,
+      "abi": "thiscall ret 4",
+      "class": "DIRECT_OBJECT_CONSUMER",
+      "object_source": "CTOR_THIS / OBJ_BASE",
+      "args": "uint8 selector via stack arg0",
+      "fields_read": [],
+      "fields_write": [
+        "+0xDC"
+      ],
+      "imports": [],
+      "indirect": false,
+      "protected": false,
+      "confidence": "HIGH",
+      "note": "vtable[13] setter for byte at this+0xDC",
+      "independently_enterable": false,
+      "enterable_after_constructor": true,
+      "execution": {
+        "sequence": "ctor_setter_getter",
+        "result": "EXECUTED_STATEFUL_SEQUENCE",
+        "clean": true,
+        "blocker": null
+      }
+    },
+    {
+      "va": 10391888,
+      "slot": 14,
+      "abi": "thiscall ret 0",
+      "class": "DIRECT_OBJECT_CONSUMER",
+      "object_source": "CTOR_THIS / OBJ_BASE",
+      "args": "none",
+      "fields_read": [
+        "+0xDC"
+      ],
+      "fields_write": [],
+      "imports": [],
+      "indirect": false,
+      "protected": false,
+      "confidence": "HIGH",
+      "note": "vtable[14] getter; pairs with setter",
+      "independently_enterable": false,
+      "enterable_after_constructor": true,
+      "execution": {
+        "sequence": "ctor_then_getter",
+        "result": "EXECUTED_STATEFUL_SEQUENCE",
+        "clean": true,
+        "blocker": null
+      }
+    },
+    {
+      "va": 10385280,
+      "slot": 2,
+      "abi": "thiscall ret 0",
+      "class": "SAME_VTABLE_FAMILY",
+      "object_source": "CTOR_THIS",
+      "args": "none",
+      "fields_read": [],
+      "fields_write": [],
+      "imports": [],
+      "indirect": false,
+      "protected": false,
+      "confidence": "HIGH",
+      "note": "returns static 0x00C30DE4; no object field dependency",
+      "independently_enterable": false,
+      "enterable_after_constructor": true,
+      "execution": {
+        "sequence": "ctor_then_rtti",
+        "result": "EXECUTED_STATEFUL_SEQUENCE",
+        "clean": true,
+        "blocker": null
+      }
+    },
+    {
+      "va": 10393984,
+      "slot": 2,
+      "abi": "thiscall ret 0",
+      "class": "EMBEDDED_SUBOBJECT_CONSUMER",
+      "object_source": "OBJ_BASE+4 (pod subobject vtable 0x00C30F2C)",
+      "args": "none",
+      "fields_read": [],
+      "fields_write": [],
+      "imports": [],
+      "indirect": false,
+      "protected": false,
+      "confidence": "HIGH",
+      "note": "returns static 0x00C30F38 on embedded +4 object",
+      "independently_enterable": false,
+      "enterable_after_constructor": true,
+      "execution": {
+        "sequence": "ctor_then_pod_rtti",
+        "result": "EXECUTED_STATEFUL_SEQUENCE",
+        "clean": true,
+        "blocker": null
+      }
+    },
+    {
+      "va": 10392352,
+      "slot": 0,
+      "abi": "thiscall ret 4",
+      "class": "DIRECT_OBJECT_CONSUMER",
+      "object_source": "CTOR_THIS",
+      "args": "flags",
+      "fields_read": [
+        "ownership"
+      ],
+      "imports": [],
+      "indirect": false,
+      "protected": true,
+      "confidence": "HIGH",
+      "rejected": true,
+      "reject_reason": "scalar deleting dtor; may call protected 0x00686030",
+      "independently_enterable": false,
+      "enterable_after_constructor": null,
+      "execution": null
+    },
+    {
+      "va": 10388480,
+      "slot": 11,
+      "abi": "thiscall ret 0",
+      "class": "DIRECT_OBJECT_CONSUMER",
+      "object_source": "CTOR_THIS",
+      "args": "none",
+      "fields_read": [
+        "+0xBC",
+        "+0xC0"
+      ],
+      "imports": [],
+      "indirect": true,
+      "protected": false,
+      "confidence": "MEDIUM",
+      "note": "requires list pointers at +0xBC/+0xC0; may be null after ctor",
+      "independently_enterable": false,
+      "enterable_after_constructor": true,
+      "execution": {
+        "sequence": "ctor_then_list_walk",
+        "result": "EXECUTED_STATEFUL_SEQUENCE",
+        "clean": true,
+        "blocker": null
+      }
+    },
+    {
+      "va": 10392384,
+      "slot": null,
+      "abi": "factory",
+      "class": "UNRELATED_OBJECT",
+      "object_source": "ALLOCATOR_RESULT",
+      "rejected": true,
+      "reject_reason": "sole ctor caller; depends on protected-initialized allocator",
+      "confidence": "PROVEN",
+      "independently_enterable": false,
+      "enterable_after_constructor": null,
+      "execution": null
+    }
+  ],
+  "stateful_sequences": [
+    {
+      "name": "ctor_only",
+      "result": "EXECUTED_STATEFUL_SEQUENCE",
+      "clean": true,
+      "sequence_length": 1,
+      "steps": [
+        {
+          "label": "ctor",
+          "root": "0x009E9160",
+          "clean": true,
+          "eax": "0x03004000",
+          "blocked_kind": "NONE",
+          "blocked_va": null,
+          "depth_max": 4,
+          "entered_n": 18
+        }
+      ],
+      "unique_entered": 18,
+      "entered": [
+        "0x0087B4F6",
+        "0x0087B880",
+        "0x009773C0",
+        "0x00977420",
+        "0x009777D0",
+        "0x00977800",
+        "0x00977E20",
+        "0x00978720",
+        "0x0097F790",
+        "0x0097F9E0",
+        "0x0097FAE0",
+        "0x0097FCD0",
+        "0x009E7710",
+        "0x009E8AD0",
+        "0x009E9160",
+        "0x009E9460",
+        "0x009E9990",
+        "0x009EB980"
+      ],
+      "depth_max_nested": 4,
+      "blocker": null,
+      "sleepex_done": 5,
+      "qpc_ticks": 2500000
+    },
+    {
+      "name": "ctor_then_getter",
+      "result": "EXECUTED_STATEFUL_SEQUENCE",
+      "clean": true,
+      "sequence_length": 2,
+      "steps": [
+        {
+          "label": "ctor",
+          "root": "0x009E9160",
+          "clean": true,
+          "eax": "0x03004000",
+          "blocked_kind": "NONE",
+          "blocked_va": null,
+          "depth_max": 4,
+          "entered_n": 18
+        },
+        {
+          "label": "getter",
+          "root": "0x009E9150",
+          "clean": true,
+          "eax": "0x00000000",
+          "blocked_kind": "NONE",
+          "blocked_va": null,
+          "depth_max": 4,
+          "entered_n": 19
+        }
+      ],
+      "unique_entered": 19,
+      "entered": [
+        "0x0087B4F6",
+        "0x0087B880",
+        "0x009773C0",
+        "0x00977420",
+        "0x009777D0",
+        "0x00977800",
+        "0x00977E20",
+        "0x00978720",
+        "0x0097F790",
+        "0x0097F9E0",
+        "0x0097FAE0",
+        "0x0097FCD0",
+        "0x009E7710",
+        "0x009E8AD0",
+        "0x009E9150",
+        "0x009E9160",
+        "0x009E9460",
+        "0x009E9990",
+        "0x009EB980"
+      ],
+      "depth_max_nested": 4,
+      "blocker": null,
+      "sleepex_done": true,
+      "getter_al": 0
+    },
+    {
+      "name": "ctor_setter_getter",
+      "result": "EXECUTED_STATEFUL_SEQUENCE",
+      "clean": true,
+      "sequence_length": 3,
+      "steps": [
+        {
+          "label": "ctor",
+          "root": "0x009E9160",
+          "clean": true,
+          "eax": "0x03004000",
+          "blocked_kind": "NONE",
+          "blocked_va": null,
+          "depth_max": 4,
+          "entered_n": 18
+        },
+        {
+          "label": "setter",
+          "root": "0x009E9140",
+          "clean": true,
+          "eax": "0x0000005A",
+          "blocked_kind": "NONE",
+          "blocked_va": null,
+          "depth_max": 4,
+          "entered_n": 19
+        },
+        {
+          "label": "getter",
+          "root": "0x009E9150",
+          "clean": true,
+          "eax": "0x0000005A",
+          "blocked_kind": "NONE",
+          "blocked_va": null,
+          "depth_max": 4,
+          "entered_n": 20
+        }
+      ],
+      "unique_entered": 20,
+      "entered": [
+        "0x0087B4F6",
+        "0x0087B880",
+        "0x009773C0",
+        "0x00977420",
+        "0x009777D0",
+        "0x00977800",
+        "0x00977E20",
+        "0x00978720",
+        "0x0097F790",
+        "0x0097F9E0",
+        "0x0097FAE0",
+        "0x0097FCD0",
+        "0x009E7710",
+        "0x009E8AD0",
+        "0x009E9140",
+        "0x009E9150",
+        "0x009E9160",
+        "0x009E9460",
+        "0x009E9990",
+        "0x009EB980"
+      ],
+      "depth_max_nested": 4,
+      "blocker": null,
+      "sleepex_done": true,
+      "getter_al": 90,
+      "obj_dc_byte": 90
+    },
+    {
+      "name": "ctor_then_rtti",
+      "result": "EXECUTED_STATEFUL_SEQUENCE",
+      "clean": true,
+      "sequence_length": 2,
+      "steps": [
+        {
+          "label": "ctor",
+          "root": "0x009E9160",
+          "clean": true,
+          "eax": "0x03004000",
+          "blocked_kind": "NONE",
+          "blocked_va": null,
+          "depth_max": 4,
+          "entered_n": 18
+        },
+        {
+          "label": "rtti",
+          "root": "0x009E7780",
+          "clean": true,
+          "eax": "0x00C30DE4",
+          "blocked_kind": "NONE",
+          "blocked_va": null,
+          "depth_max": 4,
+          "entered_n": 19
+        }
+      ],
+      "unique_entered": 19,
+      "entered": [
+        "0x0087B4F6",
+        "0x0087B880",
+        "0x009773C0",
+        "0x00977420",
+        "0x009777D0",
+        "0x00977800",
+        "0x00977E20",
+        "0x00978720",
+        "0x0097F790",
+        "0x0097F9E0",
+        "0x0097FAE0",
+        "0x0097FCD0",
+        "0x009E7710",
+        "0x009E7780",
+        "0x009E8AD0",
+        "0x009E9160",
+        "0x009E9460",
+        "0x009E9990",
+        "0x009EB980"
+      ],
+      "depth_max_nested": 4,
+      "blocker": null,
+      "sleepex_done": true,
+      "eax": "0x00C30DE4"
+    },
+    {
+      "name": "ctor_then_pod_rtti",
+      "result": "EXECUTED_STATEFUL_SEQUENCE",
+      "clean": true,
+      "sequence_length": 2,
+      "steps": [
+        {
+          "label": "ctor",
+          "root": "0x009E9160",
+          "clean": true,
+          "eax": "0x03004000",
+          "blocked_kind": "NONE",
+          "blocked_va": null,
+          "depth_max": 4,
+          "entered_n": 18
+        },
+        {
+          "label": "pod_rtti",
+          "root": "0x009E9980",
+          "clean": true,
+          "eax": "0x00C30F38",
+          "blocked_kind": "NONE",
+          "blocked_va": null,
+          "depth_max": 4,
+          "entered_n": 19
+        }
+      ],
+      "unique_entered": 19,
+      "entered": [
+        "0x0087B4F6",
+        "0x0087B880",
+        "0x009773C0",
+        "0x00977420",
+        "0x009777D0",
+        "0x00977800",
+        "0x00977E20",
+        "0x00978720",
+        "0x0097F790",
+        "0x0097F9E0",
+        "0x0097FAE0",
+        "0x0097FCD0",
+        "0x009E7710",
+        "0x009E8AD0",
+        "0x009E9160",
+        "0x009E9460",
+        "0x009E9980",
+        "0x009E9990",
+        "0x009EB980"
+      ],
+      "depth_max_nested": 4,
+      "blocker": null,
+      "sleepex_done": true,
+      "eax": "0x00C30F38"
+    },
+    {
+      "name": "ctor_then_list_walk",
+      "result": "EXECUTED_STATEFUL_SEQUENCE",
+      "clean": true,
+      "sequence_length": 2,
+      "steps": [
+        {
+          "label": "ctor",
+          "root": "0x009E9160",
+          "clean": true,
+          "eax": "0x03004000",
+          "blocked_kind": "NONE",
+          "blocked_va": null,
+          "depth_max": 4,
+          "entered_n": 18
+        },
+        {
+          "label": "list",
+          "root": "0x009E8400",
+          "clean": true,
+          "eax": "0x00000001",
+          "blocked_kind": "NONE",
+          "blocked_va": null,
+          "depth_max": 4,
+          "entered_n": 19
+        }
+      ],
+      "unique_entered": 19,
+      "entered": [
+        "0x0087B4F6",
+        "0x0087B880",
+        "0x009773C0",
+        "0x00977420",
+        "0x009777D0",
+        "0x00977800",
+        "0x00977E20",
+        "0x00978720",
+        "0x0097F790",
+        "0x0097F9E0",
+        "0x0097FAE0",
+        "0x0097FCD0",
+        "0x009E7710",
+        "0x009E8400",
+        "0x009E8AD0",
+        "0x009E9160",
+        "0x009E9460",
+        "0x009E9990",
+        "0x009EB980"
+      ],
+      "depth_max_nested": 4,
+      "blocker": null,
+      "sleepex_done": true
+    }
+  ],
+  "reset_between_runs_validated": true,
+  "strongest_consumer": {
+    "va": "0x009E9140",
+    "pair": "0x009E9150",
+    "reason": "trivial ABI, field +0xDC initialized (zero) by ctor extent, proven vtable slots 13/14",
+    "sequence": "ctor_setter_getter",
+    "result": "EXECUTED_STATEFUL_SEQUENCE"
+  },
+  "rejected_unrelated": [
+    {
+      "va": 10392352,
+      "slot": 0,
+      "abi": "thiscall ret 4",
+      "class": "DIRECT_OBJECT_CONSUMER",
+      "object_source": "CTOR_THIS",
+      "args": "flags",
+      "fields_read": [
+        "ownership"
+      ],
+      "imports": [],
+      "indirect": false,
+      "protected": true,
+      "confidence": "HIGH",
+      "rejected": true,
+      "reject_reason": "scalar deleting dtor; may call protected 0x00686030",
+      "independently_enterable": false,
+      "enterable_after_constructor": null,
+      "execution": null
+    },
+    {
+      "va": 10392384,
+      "slot": null,
+      "abi": "factory",
+      "class": "UNRELATED_OBJECT",
+      "object_source": "ALLOCATOR_RESULT",
+      "rejected": true,
+      "reject_reason": "sole ctor caller; depends on protected-initialized allocator",
+      "confidence": "PROVEN",
+      "independently_enterable": false,
+      "enterable_after_constructor": null,
+      "execution": null
+    }
+  ]
+}
