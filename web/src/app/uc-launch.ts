@@ -68,6 +68,7 @@ export interface UcLaunchOptions {
   /** Force memory store (Node / tests). */
   memoryOnly?: boolean;
   quotaBytes?: number | null;
+  pageOrigin?: string;
   onUi?: (s: LaunchUiState) => void;
   developmentPreview?: boolean;
 }
@@ -98,6 +99,7 @@ export class UcLaunchController {
       store,
       fetch: this.opts.fetch,
       quotaBytes: this.opts.quotaBytes ?? null,
+      pageOrigin: this.opts.pageOrigin,
       onProgress: p => this.emit(p),
     });
 

@@ -81,8 +81,51 @@ export class AssetCache {
     if (data.byteLength !== meta.size) {
       throw new Error(`cache write size mismatch for ${meta.id}`);
     }
-    await this.store.put(dataKey(meta.id, meta.sha256), data);
+    // Atomic publish: stage under a temp key, then swap to the canonical key
+    // and only then update meta (so readers never see unverified bytes).
+    const finalKey = dataKey(meta.id, meta.sha256);
+    const stageKey = `${finalKey}.staging`;
+    await this.store.put(stageKey, data);
+    const staged = await this.store.get(stageKey);
+    if (!staged || staged.byteLength !== meta.size) {
+      await this.store.delete(stageKey);
+      throw new Error(`staging failed for ${meta.id}`);
+    }
+    await this.store.put(finalKey, staged);
+    await this.store.delete(stageKey);
+    // Drop previous hash for this id if different.
+    const prev = this.meta.get(meta.id);
+    if (prev && prev.sha256 !== meta.sha256.toLowerCase()) {
+      await this.store.delete(dataKey(meta.id, prev.sha256));
+    }
     this.meta.set(meta.id, { ...meta, sha256: meta.sha256.toLowerCase() });
+    await this.saveMeta();
+  }
+
+  /** Re-hash cached bytes; drop on mismatch (corruption). */
+  async verifyStored(
+    id: string,
+    sha256: string,
+    size: number,
+    hashFn: (data: Uint8Array) => Promise<string>,
+  ): Promise<boolean> {
+    const bytes = await this.read(id, sha256);
+    if (!bytes || bytes.byteLength !== size) {
+      await this.invalidate(id, sha256);
+      return false;
+    }
+    const got = await hashFn(bytes);
+    if (got !== sha256.toLowerCase()) {
+      await this.invalidate(id, sha256);
+      return false;
+    }
+    return true;
+  }
+
+  async invalidate(id: string, sha256: string): Promise<void> {
+    await this.store.delete(dataKey(id, sha256));
+    const m = this.meta.get(id);
+    if (m && m.sha256 === sha256.toLowerCase()) this.meta.delete(id);
     await this.saveMeta();
   }
 

@@ -2,12 +2,12 @@
 // Maps stable virtual paths to cached bytes. Read-only for immutable game
 // resources. Does not load or execute the original Windows nfs.exe.
 
-import type { AssetManifest } from './uc-asset-manifest';
+import { sanitizeAssetPath, type AssetManifest, ManifestError } from './uc-asset-manifest';
 import type { UcDownloadManager } from './uc-download-manager';
 
 export type FsResult =
-  | { ok: true; path: string; bytes: Uint8Array; contentType: string }
-  | { ok: false; path: string; code: 'NOT_FOUND' | 'NOT_CACHED' | 'UNSUPPORTED'; error: string };
+  | { ok: true; path: string; bytes: Uint8Array; contentType: string; size: number }
+  | { ok: false; path: string; code: 'NOT_FOUND' | 'NOT_CACHED' | 'UNSUPPORTED' | 'PATH_TRAVERSAL' | 'SIZE_MISMATCH'; error: string };
 
 export class UcFilesystemBridge {
   constructor(
@@ -20,9 +20,16 @@ export class UcFilesystemBridge {
   /** Normalize a guest/virtual path to a manifest path. */
   virtualToManifestPath(virtualPath: string): string | null {
     const p = virtualPath.replace(/\\/g, '/');
-    if (p.startsWith(this.root)) return p.slice(this.root.length).replace(/^\/+/, '');
-    if (p.startsWith('/')) return p.slice(1);
-    return p;
+    let rel: string;
+    if (p.startsWith(this.root)) rel = p.slice(this.root.length);
+    else if (p.startsWith('/')) rel = p.slice(1);
+    else rel = p;
+    try {
+      return sanitizeAssetPath(rel);
+    } catch (e) {
+      if (e instanceof ManifestError && e.code === 'PATH_TRAVERSAL') return null;
+      throw e;
+    }
   }
 
   listVirtualPaths(): string[] {
@@ -30,9 +37,12 @@ export class UcFilesystemBridge {
   }
 
   async open(virtualPath: string): Promise<FsResult> {
+    if (virtualPath.includes('\0') || /(?:^|[\\/])\.\.(?:[\\/]|$)/.test(virtualPath)) {
+      return { ok: false, path: virtualPath, code: 'PATH_TRAVERSAL', error: 'path escapes virtual root' };
+    }
     const rel = this.virtualToManifestPath(virtualPath);
     if (rel == null) {
-      return { ok: false, path: virtualPath, code: 'NOT_FOUND', error: 'invalid path' };
+      return { ok: false, path: virtualPath, code: 'PATH_TRAVERSAL', error: 'invalid or escaping path' };
     }
     const entry = this.manifest.assets.find(
       a => a.path === rel || a.path.toLowerCase() === rel.toLowerCase(),
@@ -62,11 +72,20 @@ export class UcFilesystemBridge {
         error: `asset ${entry.id} not in cache`,
       };
     }
+    if (bytes.byteLength !== entry.size) {
+      return {
+        ok: false,
+        path: virtualPath,
+        code: 'SIZE_MISMATCH',
+        error: `cached ${bytes.byteLength} != expected ${entry.size}`,
+      };
+    }
     return {
       ok: true,
       path: this.root + entry.path,
       bytes,
       contentType: entry.contentType,
+      size: bytes.byteLength,
     };
   }
 

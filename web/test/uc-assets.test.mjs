@@ -106,8 +106,10 @@ test('download + hash verify + cache hit', async () => {
 
 test('hash mismatch rejected', async () => {
   const store = new C.MemoryAssetStore();
+  // Same length as fixture readme so size checks pass and SHA-256 fails.
+  const bad = Buffer.alloc(fixtureReadme.length, 0x41);
   const files = {
-    'startup/readme.txt': Buffer.from('CORRUPTED'),
+    'startup/readme.txt': bad,
     'startup/boot-marker.json': fixtureMarker,
   };
   const mgr = new D.UcDownloadManager({ store, fetch: mockFetch(files), maxRetries: 0 });
@@ -289,4 +291,66 @@ test('source unavailable mode', async () => {
   });
   const status = await mgr.ensureRequired(manifest);
   assert.equal(status.phase, 'source_unavailable');
+});
+
+test('path traversal rejected in manifest', () => {
+  assert.throws(() => M.parseManifest({
+    ...shipped,
+    assets: [{
+      id: 'evil', path: '../secret', url: '../secret', size: 1,
+      sha256: '0'.repeat(64), contentType: 'text/plain', category: 'fixture',
+      required: false, license: 'synthetic-fixture',
+    }],
+  }), /PATH_TRAVERSAL|traversal/i);
+});
+
+test('duplicate asset id rejected', () => {
+  const a = shipped.assets[0];
+  assert.throws(() => M.parseManifest({
+    ...shipped,
+    assets: [a, { ...a, path: 'other/path.txt' }],
+  }), /duplicate/i);
+});
+
+test('cross-origin absolute URL rejected with pageOrigin', () => {
+  const m = makeManifest();
+  const entry = {
+    ...m.assets[0],
+    url: 'https://evil.example/steal.bin',
+  };
+  assert.throws(
+    () => M.resolveAssetUrl(m, entry, 'http://localhost:8080'),
+    /URL_RESTRICTED|cross-origin|not allowed/i,
+  );
+});
+
+test('filesystem rejects path traversal', async () => {
+  const store = new C.MemoryAssetStore();
+  const files = {
+    'startup/readme.txt': fixtureReadme,
+    'startup/boot-marker.json': fixtureMarker,
+  };
+  const mgr = new D.UcDownloadManager({ store, fetch: mockFetch(files) });
+  const manifest = makeManifest();
+  await mgr.ensureRequired(manifest);
+  const bridge = new F.UcFilesystemBridge(manifest, mgr);
+  const bad = await bridge.open('/uc/../startup/readme.txt');
+  assert.equal(bad.ok, false);
+  assert.ok(bad.code === 'PATH_TRAVERSAL' || bad.code === 'NOT_FOUND');
+});
+
+test('cache corruption detected on reverify', async () => {
+  const store = new C.MemoryAssetStore();
+  const files = {
+    'startup/readme.txt': fixtureReadme,
+    'startup/boot-marker.json': fixtureMarker,
+  };
+  const mgr = new D.UcDownloadManager({ store, fetch: mockFetch(files), reverifyCached: true });
+  const manifest = makeManifest();
+  await mgr.ensureRequired(manifest);
+  // Corrupt cached bytes in place
+  const key = C.dataKey('startup.readme', sha256(fixtureReadme));
+  await store.put(key, Buffer.from('CORRUPTED-BYTES-XXXX'));
+  const plan = await mgr.plan(manifest);
+  assert.ok(plan.missing.some(a => a.id === 'startup.readme') || plan.stale.some(a => a.id === 'startup.readme'));
 });

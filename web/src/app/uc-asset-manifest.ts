@@ -69,6 +69,19 @@ export class ManifestError extends Error {
   }
 }
 
+/** Reject path traversal and absolute escapes in asset paths. */
+export function sanitizeAssetPath(path: string): string {
+  const cleaned = path.replace(/\\/g, '/').replace(/^\/+/, '');
+  const parts = cleaned.split('/').filter(p => p && p !== '.');
+  if (parts.some(p => p === '..')) {
+    throw new ManifestError(`path traversal rejected: ${path}`, 'PATH_TRAVERSAL');
+  }
+  if (parts.some(p => /[\0]/.test(p))) {
+    throw new ManifestError(`invalid path byte: ${path}`, 'PATH_INVALID');
+  }
+  return parts.join('/');
+}
+
 export function parseManifest(raw: unknown): AssetManifest {
   if (!raw || typeof raw !== 'object') throw new ManifestError('manifest is not an object', 'MANIFEST_INVALID');
   const m = raw as Record<string, unknown>;
@@ -83,20 +96,51 @@ export function parseManifest(raw: unknown): AssetManifest {
   if (!source || typeof source.mode !== 'string' || typeof source.baseUrl !== 'string') {
     throw new ManifestError('source.mode/baseUrl required', 'MANIFEST_SOURCE');
   }
+  if (!['fixtures', 'authorized', 'unavailable'].includes(source.mode)) {
+    throw new ManifestError(`unknown source.mode ${source.mode}`, 'MANIFEST_SOURCE');
+  }
+  const baseUrl = source.baseUrl.endsWith('/') ? source.baseUrl : source.baseUrl + '/';
+  if (/^https?:\/\//i.test(baseUrl)) {
+    try { new URL(baseUrl); } catch {
+      throw new ManifestError('source.baseUrl is not a valid URL', 'MANIFEST_SOURCE');
+    }
+  } else if (!baseUrl.startsWith('/')) {
+    throw new ManifestError('source.baseUrl must be absolute path or http(s) URL', 'MANIFEST_SOURCE');
+  }
+
   const assets: AssetEntry[] = [];
+  const ids = new Set<string>();
+  const paths = new Set<string>();
   for (const a of m.assets as AssetEntry[]) {
     if (!a || typeof a.id !== 'string' || typeof a.path !== 'string') {
       throw new ManifestError('asset missing id/path', 'MANIFEST_ASSET');
     }
+    if (!a.id.trim() || /[\/\\]/.test(a.id)) {
+      throw new ManifestError(`asset id invalid: ${a.id}`, 'MANIFEST_ASSET');
+    }
+    if (ids.has(a.id)) throw new ManifestError(`duplicate asset id ${a.id}`, 'MANIFEST_DUP');
     if (typeof a.sha256 !== 'string' || !/^[0-9a-f]{64}$/i.test(a.sha256)) {
       throw new ManifestError(`asset ${a.id}: sha256 required`, 'MANIFEST_HASH');
     }
-    if (typeof a.size !== 'number' || a.size < 0) {
+    if (typeof a.size !== 'number' || !Number.isFinite(a.size) || a.size < 0 || a.size > 1 << 30) {
       throw new ManifestError(`asset ${a.id}: size invalid`, 'MANIFEST_SIZE');
     }
+    if (typeof a.url !== 'string' || !a.url) {
+      throw new ManifestError(`asset ${a.id}: url required`, 'MANIFEST_ASSET');
+    }
+    const path = sanitizeAssetPath(a.path);
+    if (paths.has(path.toLowerCase())) {
+      throw new ManifestError(`duplicate asset path ${path}`, 'MANIFEST_DUP');
+    }
+    // Relative urls must not traverse.
+    if (!/^https?:\/\//i.test(a.url) && !a.url.startsWith('/')) {
+      sanitizeAssetPath(a.url);
+    }
+    ids.add(a.id);
+    paths.add(path.toLowerCase());
     assets.push({
       id: a.id,
-      path: a.path.replace(/^\/+/, ''),
+      path,
       url: a.url,
       size: a.size,
       sha256: a.sha256.toLowerCase(),
@@ -114,7 +158,7 @@ export function parseManifest(raw: unknown): AssetManifest {
     targetSha256: String(m.targetSha256 || UC_TARGET_SHA256),
     source: {
       mode: source.mode as AssetSourceConfig['mode'],
-      baseUrl: source.baseUrl.endsWith('/') ? source.baseUrl : source.baseUrl + '/',
+      baseUrl,
       productionAssetsAuthorized: !!source.productionAssetsAuthorized,
       note: source.note || '',
     },
@@ -122,9 +166,40 @@ export function parseManifest(raw: unknown): AssetManifest {
   };
 }
 
-export function resolveAssetUrl(manifest: AssetManifest, entry: AssetEntry): string {
-  if (/^https?:\/\//i.test(entry.url) || entry.url.startsWith('/')) return entry.url;
-  return manifest.source.baseUrl + entry.url.replace(/^\.\//, '');
+/** Resolve and validate asset URL against manifest base (same-origin or configured host). */
+export function resolveAssetUrl(manifest: AssetManifest, entry: AssetEntry, pageOrigin?: string): string {
+  let url: string;
+  if (/^https?:\/\//i.test(entry.url)) url = entry.url;
+  else if (entry.url.startsWith('/')) url = entry.url;
+  else url = manifest.source.baseUrl + entry.url.replace(/^\.\//, '');
+
+  if (/^https?:\/\//i.test(url)) {
+    let parsed: URL;
+    try { parsed = new URL(url); } catch {
+      throw new ManifestError(`invalid asset URL ${url}`, 'URL_INVALID');
+    }
+    if (parsed.username || parsed.password) {
+      throw new ManifestError('asset URL must not include credentials', 'URL_RESTRICTED');
+    }
+    if (pageOrigin) {
+      const origin = new URL(pageOrigin);
+      const baseIsHttp = /^https?:\/\//i.test(manifest.source.baseUrl);
+      if (baseIsHttp) {
+        const allowed = new URL(manifest.source.baseUrl);
+        if (parsed.origin !== allowed.origin) {
+          throw new ManifestError(`asset host ${parsed.origin} not allowed`, 'URL_RESTRICTED');
+        }
+      } else if (parsed.origin !== origin.origin) {
+        throw new ManifestError(`cross-origin asset URL rejected: ${parsed.origin}`, 'URL_RESTRICTED');
+      }
+    }
+  } else if (!url.startsWith('/')) {
+    throw new ManifestError(`asset URL must be absolute: ${url}`, 'URL_INVALID');
+  } else {
+    // path-only: still reject traversal encoded in the URL path
+    sanitizeAssetPath(url);
+  }
+  return url;
 }
 
 export function requiredAssets(manifest: AssetManifest): AssetEntry[] {

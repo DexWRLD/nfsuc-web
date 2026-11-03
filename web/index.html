@@ -82,8 +82,13 @@
       <p class="hint">Automatic download of project fixtures. No game install folder required. Production Undercover assets stay unavailable until a rights-authorized source is configured.</p>
       <p class="status" id="uc-asset-status" role="status">Checking files</p>
       <p class="status-sub" id="uc-asset-detail">Preparing asset manifest…</p>
+      <p class="hint" id="uc-asset-bytes" aria-live="polite"></p>
       <div class="bar" id="uc-asset-progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
         <div class="bar-fill" id="uc-asset-progress-fill"></div>
+      </div>
+      <div class="row" id="uc-asset-actions">
+        <button type="button" class="btn" id="uc-asset-retry" hidden>Retry</button>
+        <button type="button" class="btn" id="uc-asset-cancel" hidden>Cancel</button>
       </div>
       <p class="msg" id="uc-asset-note">GAME_CODE_TARGET=NFS_UNDERCOVER_PC · authentic Play remains disabled</p>
       <canvas id="uc-clear-smoke" width="64" height="36" hidden aria-hidden="true"></canvas>

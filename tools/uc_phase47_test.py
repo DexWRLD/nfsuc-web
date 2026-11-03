@@ -38,7 +38,10 @@ class AssetDistribution(unittest.TestCase):
 
     def test_readiness_artifact(self):
         r = _load("asset-distribution-readiness.json")
-        self.assertEqual(r["asset_distribution_readiness"], "FIXTURE_PIPELINE_READY")
+        self.assertIn(
+            r["asset_distribution_readiness"],
+            ("FIXTURE_PIPELINE_READY", "FIXTURE_PIPELINE_HARDENED"),
+        )
         self.assertEqual(
             r["production_undercover_assets"],
             "UNAVAILABLE_PENDING_AUTHORIZED_SOURCE")

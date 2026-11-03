@@ -25,6 +25,9 @@ export function runClearSmoke(
   canvas: { width: number; height: number; getContext: (id: string, attrs?: object) => unknown },
 ): ClearSmokeResult {
   const commands: string[] = [];
+  // Normalize degenerate sizes (resize / hidden canvas).
+  if (!canvas.width || canvas.width < 1) (canvas as { width: number }).width = 1;
+  if (!canvas.height || canvas.height < 1) (canvas as { height: number }).height = 1;
   const base = {
     classification: CLEAR_SMOKE_CLASSIFICATION,
     firstFrameStatus: FIRST_FRAME_STATUS,

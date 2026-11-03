@@ -41,3 +41,9 @@ __pycache__/
 *.o
 *.log
 .DS_Store
+
+# Machine-local Node path discovered by Phase 48 tooling (WinGet/portable).
+/tools/.node-path.txt
+
+# Accidental progress.py --help output directory (Phase 48 note; leave alone).
+/--help/
