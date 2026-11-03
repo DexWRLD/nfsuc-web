@@ -130,6 +130,12 @@ test('authorized EA bumper plays over the LAN asset pipeline', { skip: !process.
   assert.doesNotMatch(await page.locator('body').innerText(), /Underground 2/i);
   await page.locator('#play-preview').click();
   if (process.env.UC_BROWSER_INIT_TEST) {
+    await page.locator('#guest-init-title + p').waitFor();
+    await page.locator('#guest-init-trace').locator('..').locator('summary').click();
+    await page.locator('#apt-constructor').click();
+    await page.waitForFunction(() => document.querySelector('#apt-result')?.textContent.includes('18 zeroed'));
+    await page.locator('#apt-fixture').click();
+    await page.waitForFunction(() => document.querySelector('#apt-result')?.textContent.includes('Both calls restored ESP'));
     const trace = page.waitForEvent('console', { predicate: msg => msg.text().startsWith('[uc-init]') });
     await page.locator('#run-guest-init').click();
     const message = await trace;

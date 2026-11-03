@@ -1,5 +1,5 @@
 import './app/undercover-home.css';
-import { runUndercoverInitializer } from './app/uc-browser-init';
+import { runAptDiagnostic, runUndercoverInitializer } from './app/uc-browser-init';
 import { bootUcAssets } from './app/uc-boot';
 import { bootUcAssetPreviews } from './app/uc-asset-preview-boot';
 import { bootUcStartupPreview } from './app/uc-startup-boot';
@@ -35,7 +35,7 @@ runInit.addEventListener('click', async () => {
   initTrace.textContent = '';
   try {
     const trace = await runUndercoverInitializer();
-    initResult.textContent = 'Initializer completed. Startup probe stopped on an uninitialized object field.';
+    initResult.textContent = 'Initializer completed. Historical Apt fixture failed its empty-stack precondition.';
     const hex = (value: number) => '0x' + value.toString(16).toUpperCase().padStart(8, '0');
     initTrace.textContent = [
       'Initializer ' + hex(trace.entry) + ' · ' + trace.writes + ' writes',
@@ -46,7 +46,7 @@ runInit.addEventListener('click', async () => {
       'Last successful instruction: 0x009E4B46 · backing pointer ' + hex(trace.prefix.backingPointer),
       'Count minus index: ' + trace.prefix.countMinusIndex,
       'Read at 0x009E4B49 → ' + hex(trace.prefix.faultAddress) + ' · rejected by guest bounds',
-      'Phase 55: verified the publisher at 0x009E46A1. Allocation remains unresolved.',
+      'Fixture arguments were supplied by the harness. Original invocation is unverified.',
       'Missing producer: allocator-backed field 0x0189D0A8',
     ].join('\n');
     console.info('[uc-init]', trace);
@@ -56,3 +56,18 @@ runInit.addEventListener('click', async () => {
     runInit.disabled = false;
   }
 });
+
+const aptResult = document.querySelector<HTMLElement>('#apt-result')!;
+for (const mode of ['constructor', 'fixture'] as const) {
+  const button = document.querySelector<HTMLButtonElement>('#apt-' + mode)!;
+  button.addEventListener('click', async () => {
+    button.disabled = true;
+    try {
+      aptResult.textContent = await runAptDiagnostic(mode);
+    } catch (error) {
+      aptResult.textContent = error instanceof Error ? error.message : String(error);
+    } finally {
+      button.disabled = false;
+    }
+  });
+}

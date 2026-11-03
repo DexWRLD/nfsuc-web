@@ -37,9 +37,13 @@ PREFIX_BRIDGE = r"""
 static u32 stack[64], zero_fields[3], zero_core, fault, trace[8], entered;
 static int equal, less;
 static u32 read_base, read_delta;
+static u32 apt_mode, apt_headers[19], apt_cell, apt_calls;
+static const u32 apt_offsets[] = {0, 12, 24, 36, 48, 64};
 static u32 *access(u32 a) {
     if (!(a & 3u)) {
         if (a >= 0x0300ef00u && a < 0x0300f000u) return &stack[(a-0x0300ef00u)/4u];
+        if (apt_mode && a >= 0x0189d0a0u && a < 0x0189d0ecu) return &apt_headers[(a-0x0189d0a0u)/4u];
+        if (apt_mode == 2 && a == 0x0300ee00u) return &apt_cell;
         if (a >= 0x0189d0a0u && a <= 0x0189d0a8u) return &zero_fields[(a-0x0189d0a0u)/4u];
         if (a == 0x0189da84u) return &zero_core;
         if (a == 0x0189d1a4u) return mapped(a);
@@ -105,6 +109,54 @@ def build_prefix(lifter):
         bodies.append(body)
     return "\n".join(bodies)
 
+APT_EXPORTS = r"""
+static void apt_frame(u32 argument, u32 has_argument) {
+    cpu = (CPU){.esp=0x0300effcu - 4u * has_argument, .ecx=0x0189d0a0u};
+    *access(cpu.esp) = 0x00dec0deu;
+    if (has_argument) *access(cpu.esp+4) = argument;
+}
+u32 run_apt_constructor(void) {
+    if (apt_mode) __builtin_trap();
+    apt_mode = 1;
+    for (u32 i=0; i<19; i++) apt_headers[i] = 0xaaaaaaaa;
+    apt_frame(0,0);
+    sub_009e7540(&cpu);
+    if (apt_calls != 6 || apt_headers[15] != 0xaaaaaaaa) __builtin_trap();
+    for (u32 i=0; i<6; i++) {
+        u32 j = apt_offsets[i]/4;
+        if (apt_headers[j] || apt_headers[j+1] || apt_headers[j+2]) __builtin_trap();
+    }
+    return apt_calls;
+}
+u32 run_apt_fixture(void) {
+    if (apt_mode || entered) __builtin_trap();
+    apt_mode = 2;
+    apt_headers[1] = 1;
+    apt_headers[2] = 0x0300ee00u;
+    apt_frame(0x0300ee04u,1);
+    sub_009e47d0(&cpu);
+    if (cpu.eip != 0x00dec0deu || cpu.esp != 0x0300f000u ||
+        apt_headers[0] != 1 || apt_cell != 0x0300ee04u) __builtin_trap();
+    apt_frame(0,1);
+    sub_009b6290(&cpu);
+    if (cpu.eip != 0x00dec0deu || cpu.esp != 0x0300f000u ||
+        cpu.eax != apt_cell || read_base != 0x0300ee00u || read_delta != 1)
+        __builtin_trap();
+    return cpu.eax;
+}
+"""
+
+def build_apt(lifter):
+    leaf, leaf_calls = lifter.lift(0x009E75A0)
+    ctor, ctor_calls = lifter.lift(0x009E7540)
+    push, push_calls = lifter.lift(0x009E47D0)
+    cut = "    PUSH32(0x9e7591u); sub_009c1830(c);"
+    if (leaf_calls or push_calls or ctor_calls != {0x009E75A0, 0x009C1830}
+            or ctor.count(cut) != 1 or ctor.count("sub_009e75a0(c);") != 6):
+        raise ValueError("Unexpected Apt lifecycle instruction shape")
+    leaf = leaf.replace("    goto L_009e75a0;", "    apt_calls++;\n    goto L_009e75a0;")
+    return "\n".join((leaf, ctor.split(cut)[0] + "}", push, APT_EXPORTS))
+
 EXPORTS = r"""
 static CPU cpu;
 u32 read_slot(u32 addr) { return *mapped(addr); }
@@ -141,11 +193,11 @@ def main():
     clang = p7.clang()
     linker = Path(clang).with_name("wasm-ld.exe")
     linker_arg = ["--ld-path=" + str(linker)] if linker.is_file() else []
-    exports = ["run_init", "read_slot", "write_count", "guest_esp", "guest_eax", "run_prefix", "prefix_fault", "prefix_entry", "prefix_read_base", "prefix_read_delta"]
+    exports = ["run_init", "read_slot", "write_count", "guest_esp", "guest_eax", "run_prefix", "prefix_fault", "prefix_entry", "prefix_read_base", "prefix_read_delta", "run_apt_constructor", "run_apt_fixture"]
     args.output.parent.mkdir(parents=True, exist_ok=True)
     with tempfile.TemporaryDirectory() as tmp:
         source = Path(tmp) / "init.c"
-        source.write_text(BRIDGE + body + EXPORTS + PREFIX_BRIDGE + build_prefix(lifter) + PREFIX_EXPORTS, encoding="utf-8")
+        source.write_text(BRIDGE + body + EXPORTS + PREFIX_BRIDGE + build_prefix(lifter) + PREFIX_EXPORTS + build_apt(lifter), encoding="utf-8")
         subprocess.run([clang, "--target=wasm32-unknown-unknown", *linker_arg, "-O2",
                         "-ffreestanding", "-nostdlib", "-Wl,--no-entry",
                         *["-Wl,--export=" + name for name in exports],

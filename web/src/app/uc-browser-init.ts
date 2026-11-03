@@ -1,5 +1,7 @@
 interface InitializerExports {
   run_init(): number;
+  run_apt_constructor(): number;
+  run_apt_fixture(): number;
   read_slot(address: number): number;
   write_count(): number;
   guest_esp(): number;
@@ -11,13 +13,27 @@ interface InitializerExports {
   prefix_entry(index: number): number;
 }
 
-export async function runUndercoverInitializer() {
+async function loadInitializer() {
   const response = await fetch('/uc-init-009e8ad0.wasm');
   if (!response.ok) throw new Error('Local initializer module unavailable (HTTP ' + response.status + ')');
   const module = await WebAssembly.compile(await response.arrayBuffer());
   if (WebAssembly.Module.imports(module).length) throw new Error('Unsupported initializer imports');
   const instance = await WebAssembly.instantiate(module);
-  const guest = instance.exports as unknown as InitializerExports;
+  return instance.exports as unknown as InitializerExports;
+}
+
+export async function runAptDiagnostic(mode: 'constructor' | 'fixture') {
+  const guest = await loadInitializer();
+  if (mode === 'constructor') {
+    if (guest.run_apt_constructor() !== 6) throw new Error('Unexpected Apt constructor trace');
+    return 'Original 0x009E7540 → 0x009E75A0 ×6. Verified 18 zeroed header words. Stopped before 0x009E758C.';
+  }
+  if (guest.run_apt_fixture() !== 0x0300ee04) throw new Error('Unexpected Apt fixture result');
+  return 'Synthetic storage: push 0x009E47D0 stored 0x0300EE04 and incremented count. Depth-zero read 0x009B6290 → 0x009E4B10 returned the same value. Both calls restored ESP.';
+}
+
+export async function runUndercoverInitializer() {
+  const guest = await loadInitializer();
   const slot = 0x0189d1a4;
   const before = guest.read_slot(slot);
   const eip = guest.run_init();
