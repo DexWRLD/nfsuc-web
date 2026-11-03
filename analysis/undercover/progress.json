@@ -1,8 +1,8 @@
 {
   "project": {
     "name": "nfsuc-web",
-    "current_phase": 59,
-    "strategy": "Both original boot-screen completion callback bodies verified in Edge with fixture entry. Native registration, flag consumers and original screen display remain unverified."
+    "current_phase": 60,
+    "strategy": "Original frontend frame call edge and bounded branches verified in Edge with synthetic state. Frame work and original resource spans remain unverified."
   },
   "discovery": {
     "candidates": 25450,
