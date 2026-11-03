@@ -1,0 +1,111 @@
+{
+  "nodes": [
+    {
+      "id": "renderer",
+      "va": "0x017AA798"
+    },
+    {
+      "id": "container",
+      "fields": "+0x50/+0x54/+0x58"
+    },
+    {
+      "id": "ENGINE_GFX_IFACE_00",
+      "kind": "engine_com"
+    },
+    {
+      "id": "proven_d3d_device",
+      "va": "0x013C6510"
+    },
+    {
+      "id": "present",
+      "va": "0x00752AF0"
+    },
+    {
+      "id": "external_protected",
+      "kind": "boundary"
+    }
+  ],
+  "edges": [
+    {
+      "from": "renderer",
+      "to": "container",
+      "rel": "CONTAINS"
+    },
+    {
+      "from": "0x007B5020",
+      "to": "renderer",
+      "rel": "PUBLISHES"
+    },
+    {
+      "from": "0x007A06E0",
+      "to": "renderer",
+      "rel": "PUBLISHES",
+      "note": "NULL"
+    },
+    {
+      "from": "0x0079D1E0",
+      "to": "renderer",
+      "rel": "PUBLISHES",
+      "note": "NULL"
+    },
+    {
+      "from": "container",
+      "to": "ENGINE_GFX_IFACE_00",
+      "rel": "RETURNS",
+      "via": "0x0079E4A0"
+    },
+    {
+      "from": "ENGINE_GFX_IFACE_00",
+      "to": "ENGINE_GFX_IFACE_00",
+      "rel": "CALLS",
+      "note": "draw-like VT"
+    },
+    {
+      "from": "proven_d3d_device",
+      "to": "present",
+      "rel": "CALLS",
+      "note": "EndScene/Present"
+    },
+    {
+      "from": "ENGINE_GFX_IFACE_00",
+      "to": "proven_d3d_device",
+      "rel": "UNKNOWN"
+    },
+    {
+      "from": "0x007A06E0",
+      "to": "external_protected",
+      "rel": "CALLS",
+      "note": "0x00686030 unresolved"
+    },
+    {
+      "from": "0x007B2AC0",
+      "to": "ENGINE_GFX_IFACE_00",
+      "rel": "CALLS",
+      "offset": "0x00000148"
+    },
+    {
+      "from": "0x007B36A0",
+      "to": "ENGINE_GFX_IFACE_00",
+      "rel": "CALLS",
+      "offset": "0x00000148"
+    },
+    {
+      "from": "0x007A1400",
+      "to": "ENGINE_GFX_IFACE_00",
+      "rel": "CALLS",
+      "offset": "0x0000014C"
+    },
+    {
+      "from": "0x007B2930",
+      "to": "ENGINE_GFX_IFACE_00",
+      "rel": "CALLS",
+      "offset": "0x0000014C"
+    },
+    {
+      "from": "0x007B1850",
+      "to": "ENGINE_GFX_IFACE_00",
+      "rel": "CALLS",
+      "offset": "0x00000154"
+    }
+  ]
+}
