@@ -1,6 +1,58 @@
 {
-  "version": 2,
+  "version": 3,
+  "phase": 24,
+  "opaque_policy": "no edges leave PROTECTED_GFX_CALL_* except UNKNOWN/PROTECTED_BOUNDARY markers",
   "nodes": [
+    {
+      "id": "ENGINE_GFX_IFACE_00",
+      "vtable": "0x00BB1AAC"
+    },
+    {
+      "id": "METHOD_148",
+      "va": "0x007AD2D0"
+    },
+    {
+      "id": "METHOD_14C",
+      "va": "0x007ADC20"
+    },
+    {
+      "id": "METHOD_154",
+      "va": "0x007ADCC0"
+    },
+    {
+      "id": "SUBMIT_RECORD_148",
+      "size": 8
+    },
+    {
+      "id": "SUBMIT_RECORD_14C",
+      "size": 8
+    },
+    {
+      "id": "SUBMIT_RECORD_154",
+      "size": 4
+    },
+    {
+      "id": "PROTECTED_GFX_CALL_00",
+      "target": "0x007A51B0",
+      "opaque": true
+    },
+    {
+      "id": "PROTECTED_GFX_CALL_01",
+      "target": "0x004A26B0",
+      "opaque": true
+    },
+    {
+      "id": "proven_d3d_device",
+      "va": "0x013C6510"
+    },
+    {
+      "id": "present",
+      "va": "0x00752AF0"
+    },
+    {
+      "id": "opaque_boundary",
+      "kind": "PROTECTED"
+    },
     {
       "id": "renderer",
       "va": "0x017AA798"
@@ -27,33 +79,13 @@
       "va": "0x007A1A20"
     },
     {
-      "id": "ENGINE_GFX_IFACE_00",
-      "vtable": "0x00BB1AAC"
-    },
-    {
       "id": "vtable_0xBB1AAC",
       "section": ".rdata",
       "class": "STATIC"
     },
     {
-      "id": "METHOD_148",
-      "va": "0x007AD2D0"
-    },
-    {
-      "id": "METHOD_14C",
-      "va": "0x007ADC20"
-    },
-    {
-      "id": "METHOD_154",
-      "va": "0x007ADCC0"
-    },
-    {
       "id": "submit_0x7A51B0",
       "body": "ENCRYPTED_ENTRY_JMP"
-    },
-    {
-      "id": "proven_d3d_device",
-      "va": "0x013C6510"
     },
     {
       "id": "external_protected",
@@ -61,6 +93,86 @@
     }
   ],
   "edges": [
+    {
+      "from": "ENGINE_GFX_IFACE_00",
+      "to": "METHOD_148",
+      "rel": "DISPATCHES",
+      "confidence": "PROVEN"
+    },
+    {
+      "from": "ENGINE_GFX_IFACE_00",
+      "to": "METHOD_14C",
+      "rel": "DISPATCHES",
+      "confidence": "PROVEN"
+    },
+    {
+      "from": "ENGINE_GFX_IFACE_00",
+      "to": "METHOD_154",
+      "rel": "DISPATCHES",
+      "confidence": "PROVEN"
+    },
+    {
+      "from": "METHOD_148",
+      "to": "SUBMIT_RECORD_148",
+      "rel": "CONSTRUCTS",
+      "confidence": "STRONG"
+    },
+    {
+      "from": "METHOD_14C",
+      "to": "SUBMIT_RECORD_14C",
+      "rel": "CONSTRUCTS",
+      "confidence": "STRONG"
+    },
+    {
+      "from": "METHOD_154",
+      "to": "SUBMIT_RECORD_154",
+      "rel": "CONSTRUCTS",
+      "confidence": "STRONG"
+    },
+    {
+      "from": "METHOD_148",
+      "to": "PROTECTED_GFX_CALL_00",
+      "rel": "CALLS",
+      "confidence": "PROVEN",
+      "note": "opaque \u2014 no outgoing edges from protected node"
+    },
+    {
+      "from": "METHOD_14C",
+      "to": "PROTECTED_GFX_CALL_00",
+      "rel": "CALLS",
+      "confidence": "PROVEN"
+    },
+    {
+      "from": "METHOD_154",
+      "to": "PROTECTED_GFX_CALL_00",
+      "rel": "CALLS",
+      "confidence": "PROVEN"
+    },
+    {
+      "from": "PROTECTED_GFX_CALL_00",
+      "to": "opaque_boundary",
+      "rel": "PROTECTED_BOUNDARY",
+      "confidence": "PROVEN"
+    },
+    {
+      "from": "INSERT_SITE",
+      "to": "PROTECTED_GFX_CALL_01",
+      "rel": "CALLS",
+      "confidence": "PROVEN"
+    },
+    {
+      "from": "present",
+      "to": "proven_d3d_device",
+      "rel": "USES_DEVICE",
+      "confidence": "PROVEN"
+    },
+    {
+      "from": "PROTECTED_GFX_CALL_00",
+      "to": "proven_d3d_device",
+      "rel": "UNKNOWN",
+      "confidence": "UNKNOWN",
+      "note": "no ordinary evidence linking submit globals to DEVICE"
+    },
     {
       "from": "0x007B5020",
       "to": "renderer",
@@ -191,5 +303,301 @@
       "confidence": "PROVEN",
       "note": "owned teardown (OWNED_ENGINE_OBJECT)"
     }
-  ]
+  ],
+  "submit_shapes": [
+    {
+      "id": "SUBMIT_SHAPE_A",
+      "arg_count": 5,
+      "size": "0x00000008",
+      "paired_globals": true,
+      "return": "UNUSED",
+      "count": 20,
+      "examples": [
+        "0x007A86E0",
+        "0x007A9095",
+        "0x007AACCD",
+        "0x007AB32A",
+        "0x007ABBB7"
+      ]
+    },
+    {
+      "id": "SUBMIT_SHAPE_B",
+      "arg_count": 5,
+      "size": "0x00000008",
+      "paired_globals": true,
+      "return": "TESTED",
+      "count": 9,
+      "examples": [
+        "0x007A8785",
+        "0x007AC1CA",
+        "0x007AC849",
+        "0x007AD068",
+        "0x007AD0BA"
+      ]
+    },
+    {
+      "id": "SUBMIT_SHAPE_C",
+      "arg_count": 5,
+      "size": "0x00000004",
+      "paired_globals": true,
+      "return": "UNUSED",
+      "count": 8,
+      "examples": [
+        "0x007A87DC",
+        "0x007A8846",
+        "0x007A88BD",
+        "0x007AC892",
+        "0x007ACFB6"
+      ]
+    },
+    {
+      "id": "SUBMIT_SHAPE_D",
+      "arg_count": 0,
+      "size": "?",
+      "paired_globals": false,
+      "return": "UNUSED",
+      "count": 5,
+      "examples": [
+        "0x007A8804",
+        "0x007AAAA3",
+        "0x007AB623",
+        "0x007AC6BB",
+        "0x007ACF83"
+      ]
+    },
+    {
+      "id": "SUBMIT_SHAPE_E",
+      "arg_count": 5,
+      "size": "0x00000004",
+      "paired_globals": true,
+      "return": "TESTED",
+      "count": 2,
+      "examples": [
+        "0x007A887D",
+        "0x007AE678"
+      ]
+    },
+    {
+      "id": "SUBMIT_SHAPE_F",
+      "arg_count": 6,
+      "size": "0x00000001",
+      "paired_globals": true,
+      "return": "UNUSED",
+      "count": 10,
+      "examples": [
+        "0x007A88E4",
+        "0x007A8904",
+        "0x007A8924",
+        "0x007A8944",
+        "0x007A8964"
+      ]
+    },
+    {
+      "id": "SUBMIT_SHAPE_G",
+      "arg_count": 5,
+      "size": "0x00000001",
+      "paired_globals": true,
+      "return": "UNUSED",
+      "count": 4,
+      "examples": [
+        "0x007A8A1C",
+        "0x007A8A39",
+        "0x007A8A56",
+        "0x007B13A9"
+      ]
+    },
+    {
+      "id": "SUBMIT_SHAPE_H",
+      "arg_count": 8,
+      "size": "0x0000000C",
+      "paired_globals": true,
+      "return": "UNUSED",
+      "count": 4,
+      "examples": [
+        "0x007AAB15",
+        "0x007ACF5A",
+        "0x007AD72A",
+        "0x007ADD53"
+      ]
+    },
+    {
+      "id": "SUBMIT_SHAPE_I",
+      "arg_count": 6,
+      "size": "0x00000004",
+      "paired_globals": true,
+      "return": "UNUSED",
+      "count": 34,
+      "examples": [
+        "0x007AAB5A",
+        "0x007AAB8A",
+        "0x007AB65A",
+        "0x007AB68A",
+        "0x007AB6EA"
+      ]
+    },
+    {
+      "id": "SUBMIT_SHAPE_J",
+      "arg_count": 7,
+      "size": "0x00000008",
+      "paired_globals": true,
+      "return": "UNUSED",
+      "count": 29,
+      "examples": [
+        "0x007AABC4",
+        "0x007AABF4",
+        "0x007AAC8E",
+        "0x007AB55B",
+        "0x007AB6C4"
+      ]
+    },
+    {
+      "id": "SUBMIT_SHAPE_K",
+      "arg_count": 5,
+      "size": "0x00000014",
+      "paired_globals": true,
+      "return": "UNUSED",
+      "count": 3,
+      "examples": [
+        "0x007AB2AC",
+        "0x007ABAAF",
+        "0x007B0C7B"
+      ]
+    },
+    {
+      "id": "SUBMIT_SHAPE_L",
+      "arg_count": 6,
+      "size": "0x00000004",
+      "paired_globals": true,
+      "return": "TESTED",
+      "count": 6,
+      "examples": [
+        "0x007AB2DA",
+        "0x007ABADA",
+        "0x007AC24A",
+        "0x007AD75A",
+        "0x007AD7DA"
+      ]
+    },
+    {
+      "id": "SUBMIT_SHAPE_M",
+      "arg_count": 5,
+      "size": "0x0000001C",
+      "paired_globals": true,
+      "return": "UNUSED",
+      "count": 1,
+      "examples": [
+        "0x007AB4DB"
+      ]
+    },
+    {
+      "id": "SUBMIT_SHAPE_N",
+      "arg_count": 5,
+      "size": "0x00000020",
+      "paired_globals": true,
+      "return": "UNUSED",
+      "count": 2,
+      "examples": [
+        "0x007AB809",
+        "0x007AB986"
+      ]
+    },
+    {
+      "id": "SUBMIT_SHAPE_O",
+      "arg_count": 5,
+      "size": "0x00000010",
+      "paired_globals": true,
+      "return": "UNUSED",
+      "count": 2,
+      "examples": [
+        "0x007ABA1D",
+        "0x007B0FF8"
+      ]
+    },
+    {
+      "id": "SUBMIT_SHAPE_P",
+      "arg_count": 5,
+      "size": "0x0000000C",
+      "paired_globals": true,
+      "return": "TESTED",
+      "count": 2,
+      "examples": [
+        "0x007ABB52",
+        "0x007AC30C"
+      ]
+    },
+    {
+      "id": "SUBMIT_SHAPE_Q",
+      "arg_count": 6,
+      "size": "0x00000004",
+      "paired_globals": false,
+      "return": "UNUSED",
+      "count": 1,
+      "examples": [
+        "0x007ABD6A"
+      ]
+    },
+    {
+      "id": "SUBMIT_SHAPE_R",
+      "arg_count": 5,
+      "size": "0x0000000C",
+      "paired_globals": true,
+      "return": "UNUSED",
+      "count": 11,
+      "examples": [
+        "0x007ABF2F",
+        "0x007AC7A5",
+        "0x007AC91D",
+        "0x007AC96D",
+        "0x007AC9B7"
+      ]
+    },
+    {
+      "id": "SUBMIT_SHAPE_S",
+      "arg_count": 5,
+      "size": "0x00000014",
+      "paired_globals": true,
+      "return": "TESTED",
+      "count": 2,
+      "examples": [
+        "0x007AC0E4",
+        "0x007AC576"
+      ]
+    },
+    {
+      "id": "SUBMIT_SHAPE_T",
+      "arg_count": 7,
+      "size": "0x00000008",
+      "paired_globals": true,
+      "return": "TESTED",
+      "count": 1,
+      "examples": [
+        "0x007AC604"
+      ]
+    },
+    {
+      "id": "SUBMIT_SHAPE_U",
+      "arg_count": 8,
+      "size": "0x0000000C",
+      "paired_globals": true,
+      "return": "TESTED",
+      "count": 3,
+      "examples": [
+        "0x007AD42B",
+        "0x007AD48B",
+        "0x007AD4EB"
+      ]
+    },
+    {
+      "id": "SUBMIT_SHAPE_V",
+      "arg_count": 6,
+      "size": "0x00000008",
+      "paired_globals": true,
+      "return": "UNUSED",
+      "count": 1,
+      "examples": [
+        "0x007AECD2"
+      ]
+    }
+  ],
+  "submit_caller_count": 160
 }

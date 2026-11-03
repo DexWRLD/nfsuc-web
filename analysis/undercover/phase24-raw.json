@@ -1,0 +1,2904 @@
+{
+  "phase": 24,
+  "opaque_targets": [
+    "0x007A51B0",
+    "0x004A26B0"
+  ],
+  "policy": "NO_PROTECTED_BODY_RECOVERY",
+  "submit": {
+    "target": "0x007A51B0",
+    "caller_count": 160,
+    "size_histogram": {
+      "0x00000008": 60,
+      "0x00000004": 51,
+      "0x0000000C": 20,
+      "0x00000001": 14,
+      "0x00000014": 5,
+      "0x00000020": 2,
+      "0x00000010": 2,
+      "0x0000001C": 1
+    },
+    "unique_descriptor_pairs": 135,
+    "sites_sample": [
+      {
+        "call_site": "0x007A86E0",
+        "owner": "0x007A8690",
+        "owner_label": "HIGH_CONFIDENCE",
+        "stack_args": [
+          {
+            "text": "0",
+            "imm": "0x00000000"
+          },
+          {
+            "text": "0x17a95e4",
+            "imm": "0x017A95E4"
+          },
+          {
+            "text": "0x1278670",
+            "imm": "0x01278670"
+          },
+          {
+            "text": "eax",
+            "imm": null
+          },
+          {
+            "text": "8",
+            "imm": "0x00000008"
+          }
+        ],
+        "arg_bytes": 20,
+        "arg_count": 5,
+        "size_arg": "0x00000008",
+        "global_17a9": "0x017A95E4",
+        "global_1278": "0x01278670",
+        "cleanup": "esp, 0x14",
+        "post": [
+          "mov eax, dword ptr [esp + 0x14]",
+          "add esp, 0x14",
+          "add esp, 8",
+          "ret ",
+          "xor eax, eax",
+          "add esp, 8"
+        ],
+        "return_observed": "UNUSED"
+      },
+      {
+        "call_site": "0x007A8785",
+        "owner": "0x007A8700",
+        "owner_label": "HIGH_CONFIDENCE",
+        "stack_args": [
+          {
+            "text": "0",
+            "imm": "0x00000000"
+          },
+          {
+            "text": "0x17a9754",
+            "imm": "0x017A9754"
+          },
+          {
+            "text": "0x1278718",
+            "imm": "0x01278718"
+          },
+          {
+            "text": "eax",
+            "imm": null
+          },
+          {
+            "text": "8",
+            "imm": "0x00000008"
+          }
+        ],
+        "arg_bytes": 20,
+        "arg_count": 5,
+        "size_arg": "0x00000008",
+        "global_17a9": "0x017A9754",
+        "global_1278": "0x01278718",
+        "cleanup": "esp, 0x14",
+        "post": [
+          "mov eax, dword ptr [esp + 0x18]",
+          "add esp, 0x14",
+          "pop esi",
+          "add esp, 8",
+          "ret ",
+          "xor eax, eax"
+        ],
+        "return_observed": "TESTED"
+      },
+      {
+        "call_site": "0x007A87DC",
+        "owner": "0x007A87A0",
+        "owner_label": "HIGH_CONFIDENCE",
+        "stack_args": [
+          {
+            "text": "0",
+            "imm": "0x00000000"
+          },
+          {
+            "text": "0x17a9934",
+            "imm": "0x017A9934"
+          },
+          {
+            "text": "0x1278768",
+            "imm": "0x01278768"
+          },
+          {
+            "text": "eax",
+            "imm": null
+          },
+          {
+            "text": "4",
+            "imm": "0x00000004"
+          }
+        ],
+        "arg_bytes": 20,
+        "arg_count": 5,
+        "size_arg": "0x00000004",
+        "global_17a9": "0x017A9934",
+        "global_1278": "0x01278768",
+        "cleanup": "esp, 0x14",
+        "post": [
+          "mov eax, dword ptr [esp + 0x18]",
+          "add esp, 0x14",
+          "ret ",
+          "int3 ",
+          "int3 ",
+          "int3 "
+        ],
+        "return_observed": "UNUSED"
+      },
+      {
+        "call_site": "0x007A8804",
+        "owner": "0x007A87F0",
+        "owner_label": "HIGH_CONFIDENCE",
+        "stack_args": [],
+        "arg_bytes": null,
+        "arg_count": 0,
+        "size_arg": null,
+        "global_17a9": null,
+        "global_1278": null,
+        "cleanup": null,
+        "post": [],
+        "return_observed": "UNUSED"
+      },
+      {
+        "call_site": "0x007A8846",
+        "owner": "0x007A8810",
+        "owner_label": "HIGH_CONFIDENCE",
+        "stack_args": [
+          {
+            "text": "0",
+            "imm": "0x00000000"
+          },
+          {
+            "text": "0x17a996c",
+            "imm": "0x017A996C"
+          },
+          {
+            "text": "0x1278808",
+            "imm": "0x01278808"
+          },
+          {
+            "text": "edx",
+            "imm": null
+          },
+          {
+            "text": "4",
+            "imm": "0x00000004"
+          }
+        ],
+        "arg_bytes": 20,
+        "arg_count": 5,
+        "size_arg": "0x00000004",
+        "global_17a9": "0x017A996C",
+        "global_1278": "0x01278808",
+        "cleanup": "esp, 0x14",
+        "post": [
+          "add esp, 0x14",
+          "ret ",
+          "int3 ",
+          "push ecx",
+          "cmp dword ptr [0x17aa798], 0",
+          "je 0x7a8885"
+        ],
+        "return_observed": "UNUSED"
+      },
+      {
+        "call_site": "0x007A887D",
+        "owner": "0x007A8850",
+        "owner_label": "HIGH_CONFIDENCE",
+        "stack_args": [
+          {
+            "text": "0",
+            "imm": "0x00000000"
+          },
+          {
+            "text": "0x17a9a44",
+            "imm": "0x017A9A44"
+          },
+          {
+            "text": "0x12787e0",
+            "imm": "0x012787E0"
+          },
+          {
+            "text": "ecx",
+            "imm": null
+          },
+          {
+            "text": "4",
+            "imm": "0x00000004"
+          }
+        ],
+        "arg_bytes": 20,
+        "arg_count": 5,
+        "size_arg": "0x00000004",
+        "global_17a9": "0x017A9A44",
+        "global_1278": "0x012787E0",
+        "cleanup": "esp, 0x14",
+        "post": [
+          "add esp, 0x14",
+          "pop ecx",
+          "ret ",
+          "int3 ",
+          "int3 ",
+          "int3 "
+        ],
+        "return_observed": "TESTED"
+      },
+      {
+        "call_site": "0x007A88BD",
+        "owner": "0x007A8890",
+        "owner_label": "HIGH_CONFIDENCE",
+        "stack_args": [
+          {
+            "text": "0",
+            "imm": "0x00000000"
+          },
+          {
+            "text": "0x17a9c54",
+            "imm": "0x017A9C54"
+          },
+          {
+            "text": "0x12787d8",
+            "imm": "0x012787D8"
+          },
+          {
+            "text": "ecx",
+            "imm": null
+          },
+          {
+            "text": "4",
+            "imm": "0x00000004"
+          }
+        ],
+        "arg_bytes": 20,
+        "arg_count": 5,
+        "size_arg": "0x00000004",
+        "global_17a9": "0x017A9C54",
+        "global_1278": "0x012787D8",
+        "cleanup": "esp, 0x14",
+        "post": [
+          "add esp, 0x14",
+          "pop ecx",
+          "ret ",
+          "int3 ",
+          "int3 ",
+          "int3 "
+        ],
+        "return_observed": "UNUSED"
+      },
+      {
+        "call_site": "0x007A88E4",
+        "owner": "0x007A88D0",
+        "owner_label": "HIGH_CONFIDENCE",
+        "stack_args": [
+          {
+            "text": "ecx",
+            "imm": null
+          },
+          {
+            "text": "0",
+            "imm": "0x00000000"
+          },
+          {
+            "text": "0x17a9604",
+            "imm": "0x017A9604"
+          },
+          {
+            "text": "0x1278830",
+            "imm": "0x01278830"
+          },
+          {
+            "text": "eax",
+            "imm": null
+          },
+          {
+            "text": "1",
+            "imm": "0x00000001"
+          }
+        ],
+        "arg_bytes": 24,
+        "arg_count": 6,
+        "size_arg": "0x00000001",
+        "global_17a9": "0x017A9604",
+        "global_1278": "0x01278830",
+        "cleanup": "esp, 0x18",
+        "post": [
+          "add esp, 0x18",
+          "ret ",
+          "int3 ",
+          "int3 ",
+          "int3 ",
+          "push ecx"
+        ],
+        "return_observed": "UNUSED"
+      },
+      {
+        "call_site": "0x007A8904",
+        "owner": "0x007A88D0",
+        "owner_label": "HIGH_CONFIDENCE",
+        "stack_args": [
+          {
+            "text": "ecx",
+            "imm": null
+          },
+          {
+            "text": "0",
+            "imm": "0x00000000"
+          },
+          {
+            "text": "0x17a9904",
+            "imm": "0x017A9904"
+          },
+          {
+            "text": "0x1278838",
+            "imm": "0x01278838"
+          },
+          {
+            "text": "eax",
+            "imm": null
+          },
+          {
+            "text": "1",
+            "imm": "0x00000001"
+          }
+        ],
+        "arg_bytes": 24,
+        "arg_count": 6,
+        "size_arg": "0x00000001",
+        "global_17a9": "0x017A9904",
+        "global_1278": "0x01278838",
+        "cleanup": "esp, 0x18",
+        "post": [
+          "add esp, 0x18",
+          "ret ",
+          "int3 ",
+          "int3 ",
+          "int3 ",
+          "push ecx"
+        ],
+        "return_observed": "UNUSED"
+      },
+      {
+        "call_site": "0x007A8924",
+        "owner": "0x007A8910",
+        "owner_label": "HIGH_CONFIDENCE",
+        "stack_args": [
+          {
+            "text": "ecx",
+            "imm": null
+          },
+          {
+            "text": "0",
+            "imm": "0x00000000"
+          },
+          {
+            "text": "0x17a9ba4",
+            "imm": "0x017A9BA4"
+          },
+          {
+            "text": "0x12787f8",
+            "imm": "0x012787F8"
+          },
+          {
+            "text": "eax",
+            "imm": null
+          },
+          {
+            "text": "1",
+            "imm": "0x00000001"
+          }
+        ],
+        "arg_bytes": 24,
+        "arg_count": 6,
+        "size_arg": "0x00000001",
+        "global_17a9": "0x017A9BA4",
+        "global_1278": "0x012787F8",
+        "cleanup": "esp, 0x18",
+        "post": [
+          "add esp, 0x18",
+          "ret ",
+          "int3 ",
+          "int3 ",
+          "int3 ",
+          "push ecx"
+        ],
+        "return_observed": "UNUSED"
+      },
+      {
+        "call_site": "0x007A8944",
+        "owner": "0x007A8930",
+        "owner_label": "HIGH_CONFIDENCE",
+        "stack_args": [
+          {
+            "text": "ecx",
+            "imm": null
+          },
+          {
+            "text": "0",
+            "imm": "0x00000000"
+          },
+          {
+            "text": "0x17a9c04",
+            "imm": "0x017A9C04"
+          },
+          {
+            "text": "0x1278828",
+            "imm": "0x01278828"
+          },
+          {
+            "text": "eax",
+            "imm": null
+          },
+          {
+            "text": "1",
+            "imm": "0x00000001"
+          }
+        ],
+        "arg_bytes": 24,
+        "arg_count": 6,
+        "size_arg": "0x00000001",
+        "global_17a9": "0x017A9C04",
+        "global_1278": "0x01278828",
+        "cleanup": "esp, 0x18",
+        "post": [
+          "add esp, 0x18",
+          "ret ",
+          "int3 ",
+          "int3 ",
+          "int3 ",
+          "push ecx"
+        ],
+        "return_observed": "UNUSED"
+      },
+      {
+        "call_site": "0x007A8964",
+        "owner": "0x007A8950",
+        "owner_label": "HIGH_CONFIDENCE",
+        "stack_args": [
+          {
+            "text": "ecx",
+            "imm": null
+          },
+          {
+            "text": "0",
+            "imm": "0x00000000"
+          },
+          {
+            "text": "0x17a971c",
+            "imm": "0x017A971C"
+          },
+          {
+            "text": "0x1278800",
+            "imm": "0x01278800"
+          },
+          {
+            "text": "eax",
+            "imm": null
+          },
+          {
+            "text": "1",
+            "imm": "0x00000001"
+          }
+        ],
+        "arg_bytes": 24,
+        "arg_count": 6,
+        "size_arg": "0x00000001",
+        "global_17a9": "0x017A971C",
+        "global_1278": "0x01278800",
+        "cleanup": "esp, 0x18",
+        "post": [
+          "add esp, 0x18",
+          "ret ",
+          "int3 ",
+          "int3 ",
+          "int3 ",
+          "push ecx"
+        ],
+        "return_observed": "UNUSED"
+      },
+      {
+        "call_site": "0x007A8984",
+        "owner": "0x007A8970",
+        "owner_label": "HIGH_CONFIDENCE",
+        "stack_args": [
+          {
+            "text": "ecx",
+            "imm": null
+          },
+          {
+            "text": "0",
+            "imm": "0x00000000"
+          },
+          {
+            "text": "0x17a9be4",
+            "imm": "0x017A9BE4"
+          },
+          {
+            "text": "0x12787e8",
+            "imm": "0x012787E8"
+          },
+          {
+            "text": "eax",
+            "imm": null
+          },
+          {
+            "text": "1",
+            "imm": "0x00000001"
+          }
+        ],
+        "arg_bytes": 24,
+        "arg_count": 6,
+        "size_arg": "0x00000001",
+        "global_17a9": "0x017A9BE4",
+        "global_1278": "0x012787E8",
+        "cleanup": "esp, 0x18",
+        "post": [
+          "add esp, 0x18",
+          "ret ",
+          "int3 ",
+          "int3 ",
+          "int3 ",
+          "push ecx"
+        ],
+        "return_observed": "UNUSED"
+      },
+      {
+        "call_site": "0x007A89A4",
+        "owner": "0x007A8990",
+        "owner_label": "HIGH_CONFIDENCE",
+        "stack_args": [
+          {
+            "text": "ecx",
+            "imm": null
+          },
+          {
+            "text": "0",
+            "imm": "0x00000000"
+          },
+          {
+            "text": "0x17a9a0c",
+            "imm": "0x017A9A0C"
+          },
+          {
+            "text": "0x12787f0",
+            "imm": "0x012787F0"
+          },
+          {
+            "text": "eax",
+            "imm": null
+          },
+          {
+            "text": "1",
+            "imm": "0x00000001"
+          }
+        ],
+        "arg_bytes": 24,
+        "arg_count": 6,
+        "size_arg": "0x00000001",
+        "global_17a9": "0x017A9A0C",
+        "global_1278": "0x012787F0",
+        "cleanup": "esp, 0x18",
+        "post": [
+          "add esp, 0x18",
+          "ret ",
+          "int3 ",
+          "int3 ",
+          "int3 ",
+          "push ecx"
+        ],
+        "return_observed": "UNUSED"
+      },
+      {
+        "call_site": "0x007A89C4",
+        "owner": "0x007A89B0",
+        "owner_label": "HIGH_CONFIDENCE",
+        "stack_args": [
+          {
+            "text": "ecx",
+            "imm": null
+          },
+          {
+            "text": "0",
+            "imm": "0x00000000"
+          },
+          {
+            "text": "0x17a962c",
+            "imm": "0x017A962C"
+          },
+          {
+            "text": "0x1278840",
+            "imm": "0x01278840"
+          },
+          {
+            "text": "eax",
+            "imm": null
+          },
+          {
+            "text": "1",
+            "imm": "0x00000001"
+          }
+        ],
+        "arg_bytes": 24,
+        "arg_count": 6,
+        "size_arg": "0x00000001",
+        "global_17a9": "0x017A962C",
+        "global_1278": "0x01278840",
+        "cleanup": "esp, 0x18",
+        "post": [
+          "add esp, 0x18",
+          "ret ",
+          "int3 ",
+          "int3 ",
+          "int3 ",
+          "push ecx"
+        ],
+        "return_observed": "UNUSED"
+      },
+      {
+        "call_site": "0x007A89E4",
+        "owner": "0x007A89D0",
+        "owner_label": "HIGH_CONFIDENCE",
+        "stack_args": [
+          {
+            "text": "ecx",
+            "imm": null
+          },
+          {
+            "text": "0",
+            "imm": "0x00000000"
+          },
+          {
+            "text": "0x17a9a3c",
+            "imm": "0x017A9A3C"
+          },
+          {
+            "text": "0x1278820",
+            "imm": "0x01278820"
+          },
+          {
+            "text": "eax",
+            "imm": null
+          },
+          {
+            "text": "1",
+            "imm": "0x00000001"
+          }
+        ],
+        "arg_bytes": 24,
+        "arg_count": 6,
+        "size_arg": "0x00000001",
+        "global_17a9": "0x017A9A3C",
+        "global_1278": "0x01278820",
+        "cleanup": "esp, 0x18",
+        "post": [
+          "add esp, 0x18",
+          "ret ",
+          "int3 ",
+          "int3 ",
+          "int3 ",
+          "push ecx"
+        ],
+        "return_observed": "UNUSED"
+      },
+      {
+        "call_site": "0x007A8A1C",
+        "owner": "0x007A89F0",
+        "owner_label": "HIGH_CONFIDENCE",
+        "stack_args": [
+          {
+            "text": "eax",
+            "imm": null
+          },
+          {
+            "text": "0x17a9834",
+            "imm": "0x017A9834"
+          },
+          {
+            "text": "0x12788e0",
+            "imm": "0x012788E0"
+          },
+          {
+            "text": "eax",
+            "imm": null
+          },
+          {
+            "text": "1",
+            "imm": "0x00000001"
+          }
+        ],
+        "arg_bytes": 20,
+        "arg_count": 5,
+        "size_arg": "0x00000001",
+        "global_17a9": "0x017A9834",
+        "global_1278": "0x012788E0",
+        "cleanup": "esp, 0x14",
+        "post": [
+          "add esp, 0x14",
+          "pop ecx",
+          "ret ",
+          "push 0",
+          "push 0x17a979c",
+          "push 0x1278900"
+        ],
+        "return_observed": "UNUSED"
+      },
+      {
+        "call_site": "0x007A8A39",
+        "owner": "0x007A89F0",
+        "owner_label": "HIGH_CONFIDENCE",
+        "stack_args": [
+          {
+            "text": "0",
+            "imm": "0x00000000"
+          },
+          {
+            "text": "0x17a979c",
+            "imm": "0x017A979C"
+          },
+          {
+            "text": "0x1278900",
+            "imm": "0x01278900"
+          },
+          {
+            "text": "ecx",
+            "imm": null
+          },
+          {
+            "text": "1",
+            "imm": "0x00000001"
+          }
+        ],
+        "arg_bytes": 20,
+        "arg_count": 5,
+        "size_arg": "0x00000001",
+        "global_17a9": "0x017A979C",
+        "global_1278": "0x01278900",
+        "cleanup": "esp, 0x14",
+        "post": [
+          "add esp, 0x14",
+          "pop ecx",
+          "ret ",
+          "push 0",
+          "push 0x17a98bc",
+          "push 0x1278c68"
+        ],
+        "return_observed": "UNUSED"
+      },
+      {
+        "call_site": "0x007A8A56",
+        "owner": "0x007A89F0",
+        "owner_label": "HIGH_CONFIDENCE",
+        "stack_args": [
+          {
+            "text": "0",
+            "imm": "0x00000000"
+          },
+          {
+            "text": "0x17a98bc",
+            "imm": "0x017A98BC"
+          },
+          {
+            "text": "0x1278c68",
+            "imm": "0x01278C68"
+          },
+          {
+            "text": "edx",
+            "imm": null
+          },
+          {
+            "text": "1",
+            "imm": "0x00000001"
+          }
+        ],
+        "arg_bytes": 20,
+        "arg_count": 5,
+        "size_arg": "0x00000001",
+        "global_17a9": "0x017A98BC",
+        "global_1278": "0x01278C68",
+        "cleanup": "esp, 0x14",
+        "post": [
+          "add esp, 0x14",
+          "pop ecx",
+          "ret ",
+          "push ebp",
+          "mov ebp, esp",
+          "and esp, 0xfffffff8"
+        ],
+        "return_observed": "UNUSED"
+      },
+      {
+        "call_site": "0x007A9095",
+        "owner": "0x007A8A60",
+        "owner_label": "HIGH_CONFIDENCE",
+        "stack_args": [
+          {
+            "text": "ecx",
+            "imm": null
+          },
+          {
+            "text": "0x17a997c",
+            "imm": "0x017A997C"
+          },
+          {
+            "text": "0x1278c58",
+            "imm": "0x01278C58"
+          },
+          {
+            "text": "ecx",
+            "imm": null
+          },
+          {
+            "text": "8",
+            "imm": "0x00000008"
+          }
+        ],
+        "arg_bytes": 20,
+        "arg_count": 5,
+        "size_arg": "0x00000008",
+        "global_17a9": "0x017A997C",
+        "global_1278": "0x01278C58",
+        "cleanup": "esp, 0x14",
+        "post": [
+          "add esp, 0x14",
+          "lea ecx, [esp + 0x24]",
+          "mov byte ptr [esp + 0x40], bl",
+          "call 0x462440",
+          "lea ecx, [esp + 0x14]",
+          "mov dword ptr [esp + 0x40], 0xffffffff"
+        ],
+        "return_observed": "UNUSED"
+      },
+      {
+        "call_site": "0x007AAAA3",
+        "owner": "0x007AA9C0",
+        "owner_label": "HIGH_CONFIDENCE",
+        "stack_args": [],
+        "arg_bytes": null,
+        "arg_count": 0,
+        "size_arg": null,
+        "global_17a9": null,
+        "global_1278": null,
+        "cleanup": null,
+        "post": [],
+        "return_observed": "UNUSED"
+      },
+      {
+        "call_site": "0x007AAB15",
+        "owner": "0x007AAAB0",
+        "owner_label": "HIGH_CONFIDENCE",
+        "stack_args": [
+          {
+            "text": "ecx",
+            "imm": null
+          },
+          {
+            "text": "0x17a9a24",
+            "imm": "0x017A9A24"
+          },
+          {
+            "text": "0x1278668",
+            "imm": "0x01278668"
+          },
+          {
+            "text": "eax",
+            "imm": null
+          },
+          {
+            "text": "0xc",
+            "imm": "0x0000000C"
+          }
+        ],
+        "arg_bytes": 32,
+        "arg_count": 8,
+        "size_arg": "0x0000000C",
+        "global_17a9": "0x017A9A24",
+        "global_1278": "0x01278668",
+        "cleanup": "esp, 0x20",
+        "post": [
+          "add esp, 0x20",
+          "ret ",
+          "int3 ",
+          "int3 ",
+          "push ecx",
+          "push ecx"
+        ],
+        "return_observed": "UNUSED"
+      },
+      {
+        "call_site": "0x007AAB33",
+        "owner": "0x007AAAB0",
+        "owner_label": "HIGH_CONFIDENCE",
+        "stack_args": [
+          {
+            "text": "ecx",
+            "imm": null
+          },
+          {
+            "text": "ecx",
+            "imm": null
+          },
+          {
+            "text": "0x17a9b84",
+            "imm": "0x017A9B84"
+          },
+          {
+            "text": "0x12788b8",
+            "imm": "0x012788B8"
+          },
+          {
+            "text": "eax",
+            "imm": null
+          },
+          {
+            "text": "1",
+            "imm": "0x00000001"
+          }
+        ],
+        "arg_bytes": 24,
+        "arg_count": 6,
+        "size_arg": "0x00000001",
+        "global_17a9": "0x017A9B84",
+        "global_1278": "0x012788B8",
+        "cleanup": "esp, 0x18",
+        "post": [
+          "add esp, 0x18",
+          "ret ",
+          "int3 ",
+          "int3 ",
+          "int3 ",
+          "int3 "
+        ],
+        "return_observed": "UNUSED"
+      },
+      {
+        "call_site": "0x007AAB5A",
+        "owner": "0x007AAB40",
+        "owner_label": "HIGH_CONFIDENCE",
+        "stack_args": [
+          {
+            "text": "ecx",
+            "imm": null
+          },
+          {
+            "text": "ecx",
+            "imm": null
+          },
+          {
+            "text": "0x17a99f4",
+            "imm": "0x017A99F4"
+          },
+          {
+            "text": "0x1278880",
+            "imm": "0x01278880"
+          },
+          {
+            "text": "ecx",
+            "imm": null
+          },
+          {
+            "text": "4",
+            "imm": "0x00000004"
+          }
+        ],
+        "arg_bytes": 24,
+        "arg_count": 6,
+        "size_arg": "0x00000004",
+        "global_17a9": "0x017A99F4",
+        "global_1278": "0x01278880",
+        "cleanup": "esp, 0x18",
+        "post": [
+          "add esp, 0x18",
+          "ret ",
+          "int3 ",
+          "int3 ",
+          "int3 ",
+          "int3 "
+        ],
+        "return_observed": "UNUSED"
+      },
+      {
+        "call_site": "0x007AAB8A",
+        "owner": "0x007AAB70",
+        "owner_label": "HIGH_CONFIDENCE",
+        "stack_args": [
+          {
+            "text": "ecx",
+            "imm": null
+          },
+          {
+            "text": "ecx",
+            "imm": null
+          },
+          {
+            "text": "0x17a99cc",
+            "imm": "0x017A99CC"
+          },
+          {
+            "text": "0x1278888",
+            "imm": "0x01278888"
+          },
+          {
+            "text": "ecx",
+            "imm": null
+          },
+          {
+            "text": "4",
+            "imm": "0x00000004"
+          }
+        ],
+        "arg_bytes": 24,
+        "arg_count": 6,
+        "size_arg": "0x00000004",
+        "global_17a9": "0x017A99CC",
+        "global_1278": "0x01278888",
+        "cleanup": "esp, 0x18",
+        "post": [
+          "add esp, 0x18",
+          "ret ",
+          "int3 ",
+          "int3 ",
+          "int3 ",
+          "int3 "
+        ],
+        "return_observed": "UNUSED"
+      }
+    ],
+    "sites_total": 160
+  },
+  "insert": {
+    "target": "0x004A26B0",
+    "classification": "RENDERER_OBJECT_INFRASTRUCTURE",
+    "caller_count": 2,
+    "sites": [
+      {
+        "call_site": "0x007A416C",
+        "owner": "0x007A40D0",
+        "label": "HIGH_CONFIDENCE",
+        "subsystem": "RENDERER_VECTOR_PUBLICATION",
+        "note": "lea ecx,&(renderer+0x50); push iface; push associated; call opaque insert"
+      },
+      {
+        "call_site": "0x007AFC67",
+        "owner": "0x007AF900",
+        "label": "HIGH_CONFIDENCE",
+        "subsystem": "RENDERER_VECTOR_PUBLICATION",
+        "note": "lea ecx,&(renderer+0x50); push iface; push associated; call opaque insert"
+      }
+    ],
+    "not": [
+      "draw_submit",
+      "raw_d3d9"
+    ]
+  },
+  "descriptors": [
+    {
+      "id": "PROTECTED_GFX_CALL_00",
+      "target": "0x007A51B0",
+      "role": "GRAPHICS_SUBMIT_OPAQUE",
+      "abi_evidence": "cdecl-like; 5\u20138 stack dwords; add esp cleanup; no thiscall ECX requirement at call site",
+      "argument_sources": "size imm; stack record*; paired globals 0x1278xxxx + 0x17A9xxxx; often iface/this",
+      "result_usage": "UNUSED (void-like) at nearly all sites",
+      "side_state": "caller-visible only via pre-built record and chosen global pair",
+      "input_completeness": "PARTIAL_VISIBLE_CONTRACT",
+      "output_completeness": "NO_VISIBLE_OUTPUT",
+      "caller_count": 160
+    },
+    {
+      "id": "PROTECTED_GFX_CALL_01",
+      "target": "0x004A26B0",
+      "role": "VECTOR_INSERT_OPAQUE",
+      "abi_evidence": "thiscall on &vector; two pointer stack args",
+      "argument_sources": "associated ptr + ENGINE_GFX_IFACE_00",
+      "result_usage": "UNUSED; ordinary continuation updates renderer fields",
+      "side_state": "renderer vector begin/end (not inspected inside helper)",
+      "input_completeness": "PARTIAL_VISIBLE_CONTRACT",
+      "output_completeness": "ORDINARY_STATE_VISIBLE",
+      "caller_count": 2
+    }
+  ],
+  "shapes": [
+    {
+      "id": "SUBMIT_SHAPE_A",
+      "arg_count": 5,
+      "size": "0x00000008",
+      "paired_globals": true,
+      "return": "UNUSED",
+      "count": 20,
+      "examples": [
+        "0x007A86E0",
+        "0x007A9095",
+        "0x007AACCD",
+        "0x007AB32A",
+        "0x007ABBB7"
+      ]
+    },
+    {
+      "id": "SUBMIT_SHAPE_B",
+      "arg_count": 5,
+      "size": "0x00000008",
+      "paired_globals": true,
+      "return": "TESTED",
+      "count": 9,
+      "examples": [
+        "0x007A8785",
+        "0x007AC1CA",
+        "0x007AC849",
+        "0x007AD068",
+        "0x007AD0BA"
+      ]
+    },
+    {
+      "id": "SUBMIT_SHAPE_C",
+      "arg_count": 5,
+      "size": "0x00000004",
+      "paired_globals": true,
+      "return": "UNUSED",
+      "count": 8,
+      "examples": [
+        "0x007A87DC",
+        "0x007A8846",
+        "0x007A88BD",
+        "0x007AC892",
+        "0x007ACFB6"
+      ]
+    },
+    {
+      "id": "SUBMIT_SHAPE_D",
+      "arg_count": 0,
+      "size": "?",
+      "paired_globals": false,
+      "return": "UNUSED",
+      "count": 5,
+      "examples": [
+        "0x007A8804",
+        "0x007AAAA3",
+        "0x007AB623",
+        "0x007AC6BB",
+        "0x007ACF83"
+      ]
+    },
+    {
+      "id": "SUBMIT_SHAPE_E",
+      "arg_count": 5,
+      "size": "0x00000004",
+      "paired_globals": true,
+      "return": "TESTED",
+      "count": 2,
+      "examples": [
+        "0x007A887D",
+        "0x007AE678"
+      ]
+    },
+    {
+      "id": "SUBMIT_SHAPE_F",
+      "arg_count": 6,
+      "size": "0x00000001",
+      "paired_globals": true,
+      "return": "UNUSED",
+      "count": 10,
+      "examples": [
+        "0x007A88E4",
+        "0x007A8904",
+        "0x007A8924",
+        "0x007A8944",
+        "0x007A8964"
+      ]
+    },
+    {
+      "id": "SUBMIT_SHAPE_G",
+      "arg_count": 5,
+      "size": "0x00000001",
+      "paired_globals": true,
+      "return": "UNUSED",
+      "count": 4,
+      "examples": [
+        "0x007A8A1C",
+        "0x007A8A39",
+        "0x007A8A56",
+        "0x007B13A9"
+      ]
+    },
+    {
+      "id": "SUBMIT_SHAPE_H",
+      "arg_count": 8,
+      "size": "0x0000000C",
+      "paired_globals": true,
+      "return": "UNUSED",
+      "count": 4,
+      "examples": [
+        "0x007AAB15",
+        "0x007ACF5A",
+        "0x007AD72A",
+        "0x007ADD53"
+      ]
+    },
+    {
+      "id": "SUBMIT_SHAPE_I",
+      "arg_count": 6,
+      "size": "0x00000004",
+      "paired_globals": true,
+      "return": "UNUSED",
+      "count": 34,
+      "examples": [
+        "0x007AAB5A",
+        "0x007AAB8A",
+        "0x007AB65A",
+        "0x007AB68A",
+        "0x007AB6EA"
+      ]
+    },
+    {
+      "id": "SUBMIT_SHAPE_J",
+      "arg_count": 7,
+      "size": "0x00000008",
+      "paired_globals": true,
+      "return": "UNUSED",
+      "count": 29,
+      "examples": [
+        "0x007AABC4",
+        "0x007AABF4",
+        "0x007AAC8E",
+        "0x007AB55B",
+        "0x007AB6C4"
+      ]
+    },
+    {
+      "id": "SUBMIT_SHAPE_K",
+      "arg_count": 5,
+      "size": "0x00000014",
+      "paired_globals": true,
+      "return": "UNUSED",
+      "count": 3,
+      "examples": [
+        "0x007AB2AC",
+        "0x007ABAAF",
+        "0x007B0C7B"
+      ]
+    },
+    {
+      "id": "SUBMIT_SHAPE_L",
+      "arg_count": 6,
+      "size": "0x00000004",
+      "paired_globals": true,
+      "return": "TESTED",
+      "count": 6,
+      "examples": [
+        "0x007AB2DA",
+        "0x007ABADA",
+        "0x007AC24A",
+        "0x007AD75A",
+        "0x007AD7DA"
+      ]
+    },
+    {
+      "id": "SUBMIT_SHAPE_M",
+      "arg_count": 5,
+      "size": "0x0000001C",
+      "paired_globals": true,
+      "return": "UNUSED",
+      "count": 1,
+      "examples": [
+        "0x007AB4DB"
+      ]
+    },
+    {
+      "id": "SUBMIT_SHAPE_N",
+      "arg_count": 5,
+      "size": "0x00000020",
+      "paired_globals": true,
+      "return": "UNUSED",
+      "count": 2,
+      "examples": [
+        "0x007AB809",
+        "0x007AB986"
+      ]
+    },
+    {
+      "id": "SUBMIT_SHAPE_O",
+      "arg_count": 5,
+      "size": "0x00000010",
+      "paired_globals": true,
+      "return": "UNUSED",
+      "count": 2,
+      "examples": [
+        "0x007ABA1D",
+        "0x007B0FF8"
+      ]
+    },
+    {
+      "id": "SUBMIT_SHAPE_P",
+      "arg_count": 5,
+      "size": "0x0000000C",
+      "paired_globals": true,
+      "return": "TESTED",
+      "count": 2,
+      "examples": [
+        "0x007ABB52",
+        "0x007AC30C"
+      ]
+    },
+    {
+      "id": "SUBMIT_SHAPE_Q",
+      "arg_count": 6,
+      "size": "0x00000004",
+      "paired_globals": false,
+      "return": "UNUSED",
+      "count": 1,
+      "examples": [
+        "0x007ABD6A"
+      ]
+    },
+    {
+      "id": "SUBMIT_SHAPE_R",
+      "arg_count": 5,
+      "size": "0x0000000C",
+      "paired_globals": true,
+      "return": "UNUSED",
+      "count": 11,
+      "examples": [
+        "0x007ABF2F",
+        "0x007AC7A5",
+        "0x007AC91D",
+        "0x007AC96D",
+        "0x007AC9B7"
+      ]
+    },
+    {
+      "id": "SUBMIT_SHAPE_S",
+      "arg_count": 5,
+      "size": "0x00000014",
+      "paired_globals": true,
+      "return": "TESTED",
+      "count": 2,
+      "examples": [
+        "0x007AC0E4",
+        "0x007AC576"
+      ]
+    },
+    {
+      "id": "SUBMIT_SHAPE_T",
+      "arg_count": 7,
+      "size": "0x00000008",
+      "paired_globals": true,
+      "return": "TESTED",
+      "count": 1,
+      "examples": [
+        "0x007AC604"
+      ]
+    },
+    {
+      "id": "SUBMIT_SHAPE_U",
+      "arg_count": 8,
+      "size": "0x0000000C",
+      "paired_globals": true,
+      "return": "TESTED",
+      "count": 3,
+      "examples": [
+        "0x007AD42B",
+        "0x007AD48B",
+        "0x007AD4EB"
+      ]
+    },
+    {
+      "id": "SUBMIT_SHAPE_V",
+      "arg_count": 6,
+      "size": "0x00000008",
+      "paired_globals": true,
+      "return": "UNUSED",
+      "count": 1,
+      "examples": [
+        "0x007AECD2"
+      ]
+    }
+  ],
+  "methods": {
+    "METHOD_148": {
+      "entry": "0x007AD2D0",
+      "ordinary_prefix": [
+        {
+          "va": "0x007AD2D0",
+          "text": "sub esp, 8"
+        },
+        {
+          "va": "0x007AD2D3",
+          "text": "mov edx, dword ptr [ecx + 0xc]"
+        },
+        {
+          "va": "0x007AD2D6",
+          "text": "mov eax, dword ptr [0x17aa798]"
+        },
+        {
+          "va": "0x007AD2DB",
+          "text": "mov dword ptr [esp], edx"
+        },
+        {
+          "va": "0x007AD2DE",
+          "text": "mov edx, dword ptr [eax + 0x19c]"
+        },
+        {
+          "va": "0x007AD2E4",
+          "text": "push esi"
+        },
+        {
+          "va": "0x007AD2E5",
+          "text": "movsx esi, byte ptr [edx + 0x118]"
+        },
+        {
+          "va": "0x007AD2EC",
+          "text": "cmp dword ptr [eax + 0x118], esi"
+        },
+        {
+          "va": "0x007AD2F2",
+          "text": "pop esi"
+        },
+        {
+          "va": "0x007AD2F3",
+          "text": "jge 0x7ad307"
+        },
+        {
+          "va": "0x007AD2F5",
+          "text": "movss xmm0, dword ptr [eax + 0x158]"
+        },
+        {
+          "va": "0x007AD2FD",
+          "text": "comiss xmm0, dword ptr [edx + 0x50]"
+        },
+        {
+          "va": "0x007AD301",
+          "text": "jae 0x7ad307"
+        },
+        {
+          "va": "0x007AD303",
+          "text": "xor al, al"
+        },
+        {
+          "va": "0x007AD305",
+          "text": "jmp 0x7ad309"
+        },
+        {
+          "va": "0x007AD307",
+          "text": "mov al, 1"
+        },
+        {
+          "va": "0x007AD309",
+          "text": "xor edx, edx"
+        },
+        {
+          "va": "0x007AD30B",
+          "text": "test al, al"
+        },
+        {
+          "va": "0x007AD30D",
+          "text": "push ecx"
+        },
+        {
+          "va": "0x007AD30E",
+          "text": "setne dl"
+        },
+        {
+          "va": "0x007AD311",
+          "text": "push 0x17a9684"
+        },
+        {
+          "va": "0x007AD316",
+          "text": "push 0x1278700"
+        },
+        {
+          "va": "0x007AD31B",
+          "text": "lea eax, [esp + 0xc]"
+        },
+        {
+          "va": "0x007AD31F",
+          "text": "push eax"
+        },
+        {
+          "va": "0x007AD320",
+          "text": "push 8"
+        },
+        {
+          "va": "0x007AD322",
+          "text": "add edx, 1"
+        },
+        {
+          "va": "0x007AD325",
+          "text": "mov dword ptr [esp + 0x18], edx"
+        },
+        {
+          "va": "0x007AD329",
+          "text": "call 0x7a51b0"
+        }
+      ],
+      "stops_at": {
+        "call_site": "0x007AD329",
+        "target": "0x007A51B0"
+      },
+      "abi": "thiscall; no stack args; ret",
+      "ecx": "ENGINE_GFX_IFACE_00",
+      "reads": [
+        "[this+0xC]",
+        "renderer 0x017AA798",
+        "[renderer+0x19C]",
+        "[renderer+0x118]",
+        "[renderer+0x158]"
+      ],
+      "record": {
+        "id": "SUBMIT_RECORD_148",
+        "size": 8,
+        "fields": {
+          "+0x00": "[this+0xC] ASSOCIATED field / handle",
+          "+0x04": "uint32 1 or 2 from renderer LOD/visibility gate"
+        }
+      },
+      "boundary_args": [
+        "arg0 size=8",
+        "arg1 &SUBMIT_RECORD_148",
+        "arg2 global 0x01278700",
+        "arg3 global 0x017A9684",
+        "arg4 this (iface)"
+      ],
+      "globals_pair": [
+        "0x017A9684",
+        "0x01278700"
+      ],
+      "return_after": "add esp,0x1C; ret \u2014 return UNUSED",
+      "contract": "PARTIAL_VISIBLE_CONTRACT",
+      "input_completeness": "PARTIAL_VISIBLE_CONTRACT",
+      "output_completeness": "NO_VISIBLE_OUTPUT"
+    },
+    "METHOD_14C": {
+      "entry": "0x007ADC20",
+      "ordinary_prefix": [
+        {
+          "va": "0x007ADC20",
+          "text": "sub esp, 8"
+        },
+        {
+          "va": "0x007ADC23",
+          "text": "push esi"
+        },
+        {
+          "va": "0x007ADC24",
+          "text": "mov esi, ecx"
+        },
+        {
+          "va": "0x007ADC26",
+          "text": "mov eax, dword ptr [esi + 0xc]"
+        },
+        {
+          "va": "0x007ADC29",
+          "text": "mov edx, dword ptr [esi]"
+        },
+        {
+          "va": "0x007ADC2B",
+          "text": "mov dword ptr [esp + 4], eax"
+        },
+        {
+          "va": "0x007ADC2F",
+          "text": "mov eax, dword ptr [edx + 0x68]"
+        },
+        {
+          "va": "0x007ADC32",
+          "text": "call eax"
+        },
+        {
+          "va": "0x007ADC34",
+          "text": "fld dword ptr [0xb64c9c]"
+        },
+        {
+          "va": "0x007ADC3A",
+          "text": "fxch st(1)"
+        },
+        {
+          "va": "0x007ADC3C",
+          "text": "mov dword ptr [esp + 8], 2"
+        },
+        {
+          "va": "0x007ADC44",
+          "text": "fcompi st(1)"
+        },
+        {
+          "va": "0x007ADC46",
+          "text": "fstp st(0)"
+        },
+        {
+          "va": "0x007ADC48",
+          "text": "ja 0x7adc52"
+        },
+        {
+          "va": "0x007ADC4A",
+          "text": "mov dword ptr [esp + 8], 1"
+        },
+        {
+          "va": "0x007ADC52",
+          "text": "push esi"
+        },
+        {
+          "va": "0x007ADC53",
+          "text": "push 0x17a9bcc"
+        },
+        {
+          "va": "0x007ADC58",
+          "text": "push 0x1278740"
+        },
+        {
+          "va": "0x007ADC5D",
+          "text": "lea ecx, [esp + 0x10]"
+        },
+        {
+          "va": "0x007ADC61",
+          "text": "push ecx"
+        },
+        {
+          "va": "0x007ADC62",
+          "text": "push 8"
+        },
+        {
+          "va": "0x007ADC64",
+          "text": "call 0x7a51b0"
+        }
+      ],
+      "stops_at": {
+        "call_site": "0x007ADC64",
+        "target": "0x007A51B0"
+      },
+      "abi": "thiscall; no stack args; ret",
+      "ecx": "ENGINE_GFX_IFACE_00",
+      "reads": [
+        "[this+0xC]",
+        "VT+0x68 float compare vs const"
+      ],
+      "record": {
+        "id": "SUBMIT_RECORD_14C",
+        "size": 8,
+        "fields": {
+          "+0x00/+0x04": "includes [this+0xC] and selector 1|2 from VT+0x68 compare"
+        }
+      },
+      "boundary_args": [
+        "arg0 size=8",
+        "arg1 record*",
+        "arg2 global 0x01278740",
+        "arg3 global 0x017A9BCC",
+        "arg4 this"
+      ],
+      "globals_pair": [
+        "0x017A9BCC",
+        "0x01278740"
+      ],
+      "return_after": "add esp,0x14; pop; add esp,8; ret \u2014 return UNUSED",
+      "contract": "PARTIAL_VISIBLE_CONTRACT",
+      "input_completeness": "PARTIAL_VISIBLE_CONTRACT",
+      "output_completeness": "NO_VISIBLE_OUTPUT"
+    },
+    "METHOD_154": {
+      "entry": "0x007ADCC0",
+      "ordinary_prefix": [
+        {
+          "va": "0x007ADCC0",
+          "text": "push ecx"
+        },
+        {
+          "va": "0x007ADCC1",
+          "text": "mov eax, dword ptr [ecx + 0xc]"
+        },
+        {
+          "va": "0x007ADCC4",
+          "text": "push ecx"
+        },
+        {
+          "va": "0x007ADCC5",
+          "text": "push 0x17a95d4"
+        },
+        {
+          "va": "0x007ADCCA",
+          "text": "push 0x12787b0"
+        },
+        {
+          "va": "0x007ADCCF",
+          "text": "lea ecx, [esp + 0xc]"
+        },
+        {
+          "va": "0x007ADCD3",
+          "text": "push ecx"
+        },
+        {
+          "va": "0x007ADCD4",
+          "text": "push 4"
+        },
+        {
+          "va": "0x007ADCD6",
+          "text": "mov dword ptr [esp + 0x14], eax"
+        },
+        {
+          "va": "0x007ADCDA",
+          "text": "call 0x7a51b0"
+        }
+      ],
+      "stops_at": {
+        "call_site": "0x007ADCDA",
+        "target": "0x007A51B0"
+      },
+      "abi": "thiscall; no stack args; ret",
+      "ecx": "ENGINE_GFX_IFACE_00",
+      "reads": [
+        "[this+0xC]"
+      ],
+      "record": {
+        "id": "SUBMIT_RECORD_154",
+        "size": 4,
+        "fields": {
+          "+0x00": "[this+0xC]"
+        }
+      },
+      "boundary_args": [
+        "arg0 size=4",
+        "arg1 record*",
+        "arg2 global 0x012787B0",
+        "arg3 global 0x017A95D4",
+        "arg4 this",
+        "extra stack slot used for record materialization"
+      ],
+      "globals_pair": [
+        "0x017A95D4",
+        "0x012787B0"
+      ],
+      "return_after": "add esp,0x18; ret \u2014 return UNUSED",
+      "contract": "PARTIAL_VISIBLE_CONTRACT",
+      "input_completeness": "PARTIAL_VISIBLE_CONTRACT",
+      "output_completeness": "NO_VISIBLE_OUTPUT"
+    }
+  },
+  "opcodes_or_descriptors": [
+    {
+      "global_17a9": "0x017A95E4",
+      "global_1278": "0x01278670",
+      "size": "0x00000008",
+      "count": 7,
+      "class": "DESCRIPTOR_PAIR_NOT_PROVEN_OPCODE"
+    },
+    {
+      "global_17a9": "0x017A96EC",
+      "global_1278": "0x01278688",
+      "size": "0x0000000C",
+      "count": 6,
+      "class": "DESCRIPTOR_PAIR_NOT_PROVEN_OPCODE"
+    },
+    {
+      "global_17a9": "0x017A9754",
+      "global_1278": "0x01278718",
+      "size": "0x00000008",
+      "count": 2,
+      "class": "DESCRIPTOR_PAIR_NOT_PROVEN_OPCODE"
+    },
+    {
+      "global_17a9": "0x017A9934",
+      "global_1278": "0x01278768",
+      "size": "0x00000004",
+      "count": 2,
+      "class": "DESCRIPTOR_PAIR_NOT_PROVEN_OPCODE"
+    },
+    {
+      "global_17a9": "0x017A9C2C",
+      "global_1278": "0x01278878",
+      "size": "0x00000008",
+      "count": 2,
+      "class": "DESCRIPTOR_PAIR_NOT_PROVEN_OPCODE"
+    },
+    {
+      "global_17a9": "0x017AA760",
+      "global_1278": "0x01278DB8",
+      "size": "0x00000010",
+      "count": 2,
+      "class": "DESCRIPTOR_PAIR_NOT_PROVEN_OPCODE"
+    },
+    {
+      "global_17a9": "0x017A97DC",
+      "global_1278": "0x01278DB0",
+      "size": "0x00000014",
+      "count": 2,
+      "class": "DESCRIPTOR_PAIR_NOT_PROVEN_OPCODE"
+    },
+    {
+      "global_17a9": "0x017A983C",
+      "global_1278": "0x01278CC0",
+      "size": "0x00000008",
+      "count": 2,
+      "class": "DESCRIPTOR_PAIR_NOT_PROVEN_OPCODE"
+    },
+    {
+      "global_17a9": "0x017A987C",
+      "global_1278": "0x012789C0",
+      "size": "0x00000008",
+      "count": 2,
+      "class": "DESCRIPTOR_PAIR_NOT_PROVEN_OPCODE"
+    },
+    {
+      "global_17a9": "0x017A9794",
+      "global_1278": "0x01278D60",
+      "size": "0x0000000C",
+      "count": 2,
+      "class": "DESCRIPTOR_PAIR_NOT_PROVEN_OPCODE"
+    },
+    {
+      "global_17a9": "0x017A996C",
+      "global_1278": "0x01278808",
+      "size": "0x00000004",
+      "count": 1,
+      "class": "DESCRIPTOR_PAIR_NOT_PROVEN_OPCODE"
+    },
+    {
+      "global_17a9": "0x017A9A44",
+      "global_1278": "0x012787E0",
+      "size": "0x00000004",
+      "count": 1,
+      "class": "DESCRIPTOR_PAIR_NOT_PROVEN_OPCODE"
+    },
+    {
+      "global_17a9": "0x017A9C54",
+      "global_1278": "0x012787D8",
+      "size": "0x00000004",
+      "count": 1,
+      "class": "DESCRIPTOR_PAIR_NOT_PROVEN_OPCODE"
+    },
+    {
+      "global_17a9": "0x017A9604",
+      "global_1278": "0x01278830",
+      "size": "0x00000001",
+      "count": 1,
+      "class": "DESCRIPTOR_PAIR_NOT_PROVEN_OPCODE"
+    },
+    {
+      "global_17a9": "0x017A9904",
+      "global_1278": "0x01278838",
+      "size": "0x00000001",
+      "count": 1,
+      "class": "DESCRIPTOR_PAIR_NOT_PROVEN_OPCODE"
+    },
+    {
+      "global_17a9": "0x017A9BA4",
+      "global_1278": "0x012787F8",
+      "size": "0x00000001",
+      "count": 1,
+      "class": "DESCRIPTOR_PAIR_NOT_PROVEN_OPCODE"
+    },
+    {
+      "global_17a9": "0x017A9C04",
+      "global_1278": "0x01278828",
+      "size": "0x00000001",
+      "count": 1,
+      "class": "DESCRIPTOR_PAIR_NOT_PROVEN_OPCODE"
+    },
+    {
+      "global_17a9": "0x017A971C",
+      "global_1278": "0x01278800",
+      "size": "0x00000001",
+      "count": 1,
+      "class": "DESCRIPTOR_PAIR_NOT_PROVEN_OPCODE"
+    },
+    {
+      "global_17a9": "0x017A9BE4",
+      "global_1278": "0x012787E8",
+      "size": "0x00000001",
+      "count": 1,
+      "class": "DESCRIPTOR_PAIR_NOT_PROVEN_OPCODE"
+    },
+    {
+      "global_17a9": "0x017A9A0C",
+      "global_1278": "0x012787F0",
+      "size": "0x00000001",
+      "count": 1,
+      "class": "DESCRIPTOR_PAIR_NOT_PROVEN_OPCODE"
+    },
+    {
+      "global_17a9": "0x017A962C",
+      "global_1278": "0x01278840",
+      "size": "0x00000001",
+      "count": 1,
+      "class": "DESCRIPTOR_PAIR_NOT_PROVEN_OPCODE"
+    },
+    {
+      "global_17a9": "0x017A9A3C",
+      "global_1278": "0x01278820",
+      "size": "0x00000001",
+      "count": 1,
+      "class": "DESCRIPTOR_PAIR_NOT_PROVEN_OPCODE"
+    },
+    {
+      "global_17a9": "0x017A9834",
+      "global_1278": "0x012788E0",
+      "size": "0x00000001",
+      "count": 1,
+      "class": "DESCRIPTOR_PAIR_NOT_PROVEN_OPCODE"
+    },
+    {
+      "global_17a9": "0x017A979C",
+      "global_1278": "0x01278900",
+      "size": "0x00000001",
+      "count": 1,
+      "class": "DESCRIPTOR_PAIR_NOT_PROVEN_OPCODE"
+    },
+    {
+      "global_17a9": "0x017A98BC",
+      "global_1278": "0x01278C68",
+      "size": "0x00000001",
+      "count": 1,
+      "class": "DESCRIPTOR_PAIR_NOT_PROVEN_OPCODE"
+    },
+    {
+      "global_17a9": "0x017A997C",
+      "global_1278": "0x01278C58",
+      "size": "0x00000008",
+      "count": 1,
+      "class": "DESCRIPTOR_PAIR_NOT_PROVEN_OPCODE"
+    },
+    {
+      "global_17a9": "0x017A9A24",
+      "global_1278": "0x01278668",
+      "size": "0x0000000C",
+      "count": 1,
+      "class": "DESCRIPTOR_PAIR_NOT_PROVEN_OPCODE"
+    },
+    {
+      "global_17a9": "0x017A9B84",
+      "global_1278": "0x012788B8",
+      "size": "0x00000001",
+      "count": 1,
+      "class": "DESCRIPTOR_PAIR_NOT_PROVEN_OPCODE"
+    },
+    {
+      "global_17a9": "0x017A99F4",
+      "global_1278": "0x01278880",
+      "size": "0x00000004",
+      "count": 1,
+      "class": "DESCRIPTOR_PAIR_NOT_PROVEN_OPCODE"
+    },
+    {
+      "global_17a9": "0x017A99CC",
+      "global_1278": "0x01278888",
+      "size": "0x00000004",
+      "count": 1,
+      "class": "DESCRIPTOR_PAIR_NOT_PROVEN_OPCODE"
+    },
+    {
+      "global_17a9": "0x017A972C",
+      "global_1278": "0x012786F8",
+      "size": "0x00000008",
+      "count": 1,
+      "class": "DESCRIPTOR_PAIR_NOT_PROVEN_OPCODE"
+    },
+    {
+      "global_17a9": "0x017AA770",
+      "global_1278": "0x01278708",
+      "size": "0x00000008",
+      "count": 1,
+      "class": "DESCRIPTOR_PAIR_NOT_PROVEN_OPCODE"
+    },
+    {
+      "global_17a9": "0x017A991C",
+      "global_1278": "0x012787B8",
+      "size": "0x00000014",
+      "count": 1,
+      "class": "DESCRIPTOR_PAIR_NOT_PROVEN_OPCODE"
+    },
+    {
+      "global_17a9": "0x017A9B64",
+      "global_1278": "0x012786E8",
+      "size": "0x00000004",
+      "count": 1,
+      "class": "DESCRIPTOR_PAIR_NOT_PROVEN_OPCODE"
+    },
+    {
+      "global_17a9": "0x017A98CC",
+      "global_1278": "0x012786D8",
+      "size": "0x00000008",
+      "count": 1,
+      "class": "DESCRIPTOR_PAIR_NOT_PROVEN_OPCODE"
+    },
+    {
+      "global_17a9": "0x017A967C",
+      "global_1278": "0x012786E0",
+      "size": "0x0000001C",
+      "count": 1,
+      "class": "DESCRIPTOR_PAIR_NOT_PROVEN_OPCODE"
+    },
+    {
+      "global_17a9": "0x017A9C74",
+      "global_1278": "0x012787C0",
+      "size": "0x00000008",
+      "count": 1,
+      "class": "DESCRIPTOR_PAIR_NOT_PROVEN_OPCODE"
+    },
+    {
+      "global_17a9": "0x017A9C4C",
+      "global_1278": "0x01278D20",
+      "size": "0x00000004",
+      "count": 1,
+      "class": "DESCRIPTOR_PAIR_NOT_PROVEN_OPCODE"
+    },
+    {
+      "global_17a9": "0x017A96D4",
+      "global_1278": "0x012786F0",
+      "size": "0x00000004",
+      "count": 1,
+      "class": "DESCRIPTOR_PAIR_NOT_PROVEN_OPCODE"
+    },
+    {
+      "global_17a9": "0x017A9C14",
+      "global_1278": "0x01278950",
+      "size": "0x00000008",
+      "count": 1,
+      "class": "DESCRIPTOR_PAIR_NOT_PROVEN_OPCODE"
+    }
+  ],
+  "queue": {
+    "candidates": [
+      {
+        "id": "SUBMIT_DESCRIPTOR_TABLES",
+        "evidence": "134 unique (0x017A9xxx, 0x01278xxx, size) triples across 154 paired calls; 1:1 pairing suggests registered submit descriptors, not a single ring buffer in ordinary code",
+        "confidence": "STRONG_AS_DESCRIPTOR_PAIR",
+        "queue_pattern": false,
+        "note": "No ordinary begin/end/index ring found; do not classify as command queue without more evidence"
+      }
+    ],
+    "queue_confidence": "WEAK_AS_QUEUE / STRONG_AS_DESCRIPTOR_MAP"
+  },
+  "device": {
+    "device": "0x013C6510",
+    "ordinary_refs": 167,
+    "methods": [
+      {
+        "offset": "0x0000006C",
+        "count": 5,
+        "class": "UNKNOWN_DEVICE_METHOD"
+      },
+      {
+        "offset": "0x00000068",
+        "count": 4,
+        "class": "UNKNOWN_DEVICE_METHOD"
+      },
+      {
+        "offset": "0x0000002C",
+        "count": 3,
+        "class": "UNKNOWN_DEVICE_METHOD"
+      },
+      {
+        "offset": "0x00000198",
+        "count": 3,
+        "class": "UNKNOWN_DEVICE_METHOD"
+      },
+      {
+        "offset": "0x00000048",
+        "count": 3,
+        "class": "UNKNOWN_DEVICE_METHOD"
+      },
+      {
+        "offset": "0x00000158",
+        "count": 2,
+        "class": "UNKNOWN_DEVICE_METHOD"
+      },
+      {
+        "offset": "0x00000060",
+        "count": 2,
+        "class": "UNKNOWN_DEVICE_METHOD"
+      },
+      {
+        "offset": "0x00000088",
+        "count": 2,
+        "class": "UNKNOWN_DEVICE_METHOD"
+      },
+      {
+        "offset": "0x00000070",
+        "count": 2,
+        "class": "UNKNOWN_DEVICE_METHOD"
+      },
+      {
+        "offset": "0x00000094",
+        "count": 2,
+        "class": "UNKNOWN_DEVICE_METHOD"
+      },
+      {
+        "offset": "0x00000054",
+        "count": 2,
+        "class": "UNKNOWN_DEVICE_METHOD"
+      },
+      {
+        "offset": "0x000000A0",
+        "count": 2,
+        "class": "UNKNOWN_DEVICE_METHOD"
+      },
+      {
+        "offset": "0x0000009C",
+        "count": 2,
+        "class": "UNKNOWN_DEVICE_METHOD"
+      },
+      {
+        "offset": "0x000000BC",
+        "count": 2,
+        "class": "UNKNOWN_DEVICE_METHOD"
+      },
+      {
+        "offset": "0x00000040",
+        "count": 1,
+        "class": "STRONG_D3D9_METHOD"
+      },
+      {
+        "offset": "0x000001D8",
+        "count": 1,
+        "class": "UNKNOWN_DEVICE_METHOD"
+      },
+      {
+        "offset": "0x000000E4",
+        "count": 1,
+        "class": "STRONG_D3D9_METHOD"
+      },
+      {
+        "offset": "0x00000064",
+        "count": 1,
+        "class": "UNKNOWN_DEVICE_METHOD"
+      },
+      {
+        "offset": "0x0000005C",
+        "count": 1,
+        "class": "UNKNOWN_DEVICE_METHOD"
+      },
+      {
+        "offset": "0x000000AC",
+        "count": 1,
+        "class": "UNKNOWN_DEVICE_METHOD"
+      },
+      {
+        "offset": "0x00000030",
+        "count": 1,
+        "class": "UNKNOWN_DEVICE_METHOD"
+      },
+      {
+        "offset": "0x00000044",
+        "count": 1,
+        "class": "PROVEN_D3D9_METHOD"
+      },
+      {
+        "offset": "0x000000A8",
+        "count": 0,
+        "class": "PROVEN_D3D9_METHOD",
+        "note": "from prior phases / Present decode"
+      }
+    ],
+    "resource_ops_found": true,
+    "note": "Ordinary raw-device traffic exists (Clear/EndScene/Present-shaped); CreateDevice-shaped +0x40 on publication path."
+  },
+  "frame": {
+    "classification": "NO_COMMON_ROOT_FOUND",
+    "frame_state_correlation": "NO_RELATION_FOUND",
+    "shared_absolutes": [],
+    "note": "METHOD_14x submit prefixes share no absolute globals with Present 0x00752AF0. Renderer global appears in methods only. Presentation remains raw-DEVICE; draw submission is opaque frontend\u2192protected backend.",
+    "relationship_raw_vs_submit": "NO_RELATION_FOUND",
+    "distinction": "SHARED_CALL_GRAPH=no; SHARED_FRAME_STATE=no among inventoried absolutes"
+  },
+  "angr": {
+    "available": true,
+    "version": "10.0.5",
+    "opaque_stub_policy": "UNKNOWN_SIDE_EFFECTS_UNKNOWN_RETURN",
+    "results": {
+      "0x007AD2D0": {
+        "role": "method_148",
+        "ok": true,
+        "summary": "typedef struct st_7ad2d0_5 {\n    char padding_0[12];\n    unsigned int field_c;\n} st_7ad2d0_5;\n\nint sub_7ad2d0(void)\n{\n    st_7ad2d0_5 *v8;  // ecx\n    unsigned int v9;  // esi\n    char v10;  // al\n    unsigned int v0;  // [bp-0x1c]\n    char *v1;  // [bp-0x18]\n    unsigned int v2;  // [bp-0x14]\n    unsigned int v3;  // [bp-0x10]\n    st_7ad2d0_5 *v4;  // [bp-0xc], Other Possible Types: unsigned int\n",
+        "callees_ordinary_only": [],
+        "boundary_hits": [],
+        "note": "Protected callees modeled as opaque boundary hits only"
+      },
+      "0x007ADC20": {
+        "role": "method_14c",
+        "ok": true,
+        "summary": "typedef struct st_7adc20_2 {\n    struct st_7adc20_0 *field_0;\n    char padding_4[8];\n    unsigned int field_c;\n} st_7adc20_2;\n\ntypedef struct st_7adc20_1 {\n    unsigned int field_0;\n} st_7adc20_1;\n\ntypedef struct st_7adc20_0 {\n    char padding_0[104];\n    struct st_7adc20_1 *field_68;\n} st_7adc20_0;\n\nint sub_7adc20(void)\n{\n    unsigned int v3;  // esi\n    st_7adc20_2 *v4;  // ecx\n    unsigned int ",
+        "callees_ordinary_only": [],
+        "boundary_hits": [],
+        "note": "Protected callees modeled as opaque boundary hits only"
+      },
+      "0x007ADCC0": {
+        "role": "method_154",
+        "ok": true,
+        "summary": "typedef struct st_7adcc0_0 {\n    char padding_0[12];\n    unsigned int field_c;\n} st_7adcc0_0;\n\nint sub_7adcc0(void)\n{\n    st_7adcc0_0 *v7;  // ecx\n    unsigned int v0;  // [bp-0x18]\n    st_7adcc0_0 **v1;  // [bp-0x14]\n    unsigned int v2;  // [bp-0x10]\n    unsigned int v3;  // [bp-0xc]\n    st_7adcc0_0 *v4;  // [bp-0x8]\n    st_7adcc0_0 *v5;  // [bp-0x4], Other Possible Types: unsigned int\n\n    v5 =",
+        "callees_ordinary_only": [],
+        "boundary_hits": [],
+        "note": "Protected callees modeled as opaque boundary hits only"
+      },
+      "0x007A40D0": {
+        "role": "insert_caller",
+        "ok": true,
+        "summary": "typedef struct st_7a40d0_1 {\n    unsigned int field_0;\n} st_7a40d0_1;\n\ntypedef struct st_7a40d0_0 {\n    char padding_0[4];\n    struct st_7a40d0_1 *field_4;\n} st_7a40d0_0;\n\nint sub_7a40d0(void)\n{\n    unsigned long long v7;  // ldt\n    unsigned long long v8;  // gdt\n    unsigned short v9;  // fs\n    unsigned long long v10;  // 4136\n    unsigned int v11;  // ebx\n    unsigned int v12;  // esi\n    unsi",
+        "callees_ordinary_only": [],
+        "boundary_hits": [],
+        "note": "Protected callees modeled as opaque boundary hits only"
+      },
+      "0x00752AF0": {
+        "role": "present",
+        "ok": true,
+        "summary": "void sub_752af0(void)\n{\n    unsigned int v5;  // ebx\n    unsigned int v6;  // esi\n    unsigned int v7;  // edi\n    unsigned int v0;  // [bp-0x10]\n    unsigned int v1;  // [bp-0xc]\n    unsigned int v2;  // [bp-0x8]\n    unsigned int v3;  // [bp-0x4]\n\n    v3 = v5;\n    v2 = v6;\n    v1 = v7;\n    v0 = *(int *)0x13c6510;\n    (*(int *)(*(int *)*(int *)0x13c6510 + 168))();\n}",
+        "callees_ordinary_only": [],
+        "boundary_hits": [],
+        "note": "Protected callees modeled as opaque boundary hits only"
+      },
+      "0x007A51B0": {
+        "role": "submit_OPAQUE_SKIP",
+        "ok": false,
+        "skipped": true,
+        "reason": "OPAQUE_PROTECTED_TARGET \u2014 not decompiled"
+      }
+    }
+  },
+  "consensus": {
+    "UC": {
+      "architecture": "ORDINARY_FRONTEND_PROTECTED_BACKEND",
+      "safe_seam": "NO_MEANINGFUL_RENDER_SEAM",
+      "first_frame": "FIRST_FRAME_PATH_BLOCKED_BY_PROTECTED_BACKEND",
+      "submit_contract": "PARTIAL_VISIBLE_CONTRACT",
+      "output": "NO_VISIBLE_OUTPUT"
+    },
+    "ANGR": {
+      "architecture": "ORDINARY_PREFIXES_CONFIRM_SUBMIT_CALL",
+      "note": "angr used on ordinary prefixes only; opaque targets skipped",
+      "helped": true
+    },
+    "CONSENSUS": {
+      "architecture": "ORDINARY_FRONTEND_PROTECTED_BACKEND",
+      "safe_seam": "NO_MEANINGFUL_RENDER_SEAM",
+      "first_frame": "FIRST_FRAME_PATH_BLOCKED_BY_PROTECTED_BACKEND",
+      "submit_contract": "PARTIAL_VISIBLE_CONTRACT",
+      "output": "NO_VISIBLE_OUTPUT"
+    },
+    "angr_materially_helped": true
+  },
+  "architecture": "ORDINARY_FRONTEND_PROTECTED_BACKEND",
+  "safe_seam": "NO_MEANINGFUL_RENDER_SEAM",
+  "first_frame": "FIRST_FRAME_PATH_BLOCKED_BY_PROTECTED_BACKEND",
+  "implementation": {
+    "D3D9_IMPLEMENTATION_JUSTIFIED": false,
+    "ENGINE_BACKEND_ADAPTER_JUSTIFIED": false,
+    "reasons": [
+      "Draw submission requires opaque game-specific submit with private descriptor globals",
+      "Adapter would encode unavailable protected semantics, not a public API",
+      "Ordinary raw D3D9 traffic (Present/Clear) already known; does not unlock Draw"
+    ]
+  },
+  "protected_analysis_further_needed": false,
+  "highest_ordinary_uncertainty": "Exact meaning of 0x01278xxx/0x017A9xxx descriptor pair fields in ordinary data (still no link from those tables into DEVICE without crossing opaque submit)",
+  "recommended_phase25": "EXPAND CPU/RUNTIME FIRST \u2014 first-frame draw path is blocked by protected submit. Ordinary work should focus on non-graphics runtime islands / Present-only host harness, not further protected-backend recovery.",
+  "dashboard": {
+    "ENGINE_FRONTEND": "ORDINARY",
+    "SUBMIT_BACKEND": "PROTECTED",
+    "VISIBLE_SUBMIT_CONTRACT": "PARTIAL",
+    "RAW_D3D9_RESOURCE_TRAFFIC": "FOUND",
+    "FRAME_CORRELATION": "UNKNOWN",
+    "GRAPHICS_ARCHITECTURE": "ORDINARY_FRONTEND_PROTECTED_BACKEND",
+    "SAFE_RUNTIME_SEAM": "NO_MEANINGFUL_RENDER_SEAM",
+    "FIRST_FRAME": "BLOCKED",
+    "D3D9": "NOT JUSTIFIED",
+    "ENGINE_BACKEND_ADAPTER": "NOT JUSTIFIED",
+    "GRAPHICS_BOUNDARY": "PROTECTED_ENGINE_BACKEND_BOUNDARY"
+  },
+  "final_directive": "FIRST-FRAME PATH IS BLOCKED BY PROTECTED BACKEND",
+  "interface_graph_v3": {
+    "version": 3,
+    "phase": 24,
+    "opaque_policy": "no edges leave PROTECTED_GFX_CALL_* except UNKNOWN/PROTECTED_BOUNDARY markers",
+    "nodes": [
+      {
+        "id": "ENGINE_GFX_IFACE_00",
+        "vtable": "0x00BB1AAC"
+      },
+      {
+        "id": "METHOD_148",
+        "va": "0x007AD2D0"
+      },
+      {
+        "id": "METHOD_14C",
+        "va": "0x007ADC20"
+      },
+      {
+        "id": "METHOD_154",
+        "va": "0x007ADCC0"
+      },
+      {
+        "id": "SUBMIT_RECORD_148",
+        "size": 8
+      },
+      {
+        "id": "SUBMIT_RECORD_14C",
+        "size": 8
+      },
+      {
+        "id": "SUBMIT_RECORD_154",
+        "size": 4
+      },
+      {
+        "id": "PROTECTED_GFX_CALL_00",
+        "target": "0x007A51B0",
+        "opaque": true
+      },
+      {
+        "id": "PROTECTED_GFX_CALL_01",
+        "target": "0x004A26B0",
+        "opaque": true
+      },
+      {
+        "id": "proven_d3d_device",
+        "va": "0x013C6510"
+      },
+      {
+        "id": "present",
+        "va": "0x00752AF0"
+      },
+      {
+        "id": "opaque_boundary",
+        "kind": "PROTECTED"
+      },
+      {
+        "id": "renderer",
+        "va": "0x017AA798"
+      },
+      {
+        "id": "vector",
+        "fields": "+0x50/+0x54/+0x58",
+        "type": "MSVC_VECTOR_LIKE"
+      },
+      {
+        "id": "insert_helper_0x4A26B0",
+        "body": "ENCRYPTED_OR_INVALID"
+      },
+      {
+        "id": "INSERT_SITE_A",
+        "va": "0x007A40D0"
+      },
+      {
+        "id": "INSERT_SITE_B",
+        "va": "0x007AF900"
+      },
+      {
+        "id": "iface_ctor_0x7A1A20",
+        "va": "0x007A1A20"
+      },
+      {
+        "id": "vtable_0xBB1AAC",
+        "section": ".rdata",
+        "class": "STATIC"
+      },
+      {
+        "id": "submit_0x7A51B0",
+        "body": "ENCRYPTED_ENTRY_JMP"
+      },
+      {
+        "id": "external_protected",
+        "kind": "boundary"
+      }
+    ],
+    "edges": [
+      {
+        "from": "ENGINE_GFX_IFACE_00",
+        "to": "METHOD_148",
+        "rel": "DISPATCHES",
+        "confidence": "PROVEN"
+      },
+      {
+        "from": "ENGINE_GFX_IFACE_00",
+        "to": "METHOD_14C",
+        "rel": "DISPATCHES",
+        "confidence": "PROVEN"
+      },
+      {
+        "from": "ENGINE_GFX_IFACE_00",
+        "to": "METHOD_154",
+        "rel": "DISPATCHES",
+        "confidence": "PROVEN"
+      },
+      {
+        "from": "METHOD_148",
+        "to": "SUBMIT_RECORD_148",
+        "rel": "CONSTRUCTS",
+        "confidence": "STRONG"
+      },
+      {
+        "from": "METHOD_14C",
+        "to": "SUBMIT_RECORD_14C",
+        "rel": "CONSTRUCTS",
+        "confidence": "STRONG"
+      },
+      {
+        "from": "METHOD_154",
+        "to": "SUBMIT_RECORD_154",
+        "rel": "CONSTRUCTS",
+        "confidence": "STRONG"
+      },
+      {
+        "from": "METHOD_148",
+        "to": "PROTECTED_GFX_CALL_00",
+        "rel": "CALLS",
+        "confidence": "PROVEN",
+        "note": "opaque \u2014 no outgoing edges from protected node"
+      },
+      {
+        "from": "METHOD_14C",
+        "to": "PROTECTED_GFX_CALL_00",
+        "rel": "CALLS",
+        "confidence": "PROVEN"
+      },
+      {
+        "from": "METHOD_154",
+        "to": "PROTECTED_GFX_CALL_00",
+        "rel": "CALLS",
+        "confidence": "PROVEN"
+      },
+      {
+        "from": "PROTECTED_GFX_CALL_00",
+        "to": "opaque_boundary",
+        "rel": "PROTECTED_BOUNDARY",
+        "confidence": "PROVEN"
+      },
+      {
+        "from": "INSERT_SITE",
+        "to": "PROTECTED_GFX_CALL_01",
+        "rel": "CALLS",
+        "confidence": "PROVEN"
+      },
+      {
+        "from": "present",
+        "to": "proven_d3d_device",
+        "rel": "USES_DEVICE",
+        "confidence": "PROVEN"
+      },
+      {
+        "from": "PROTECTED_GFX_CALL_00",
+        "to": "proven_d3d_device",
+        "rel": "UNKNOWN",
+        "confidence": "UNKNOWN",
+        "note": "no ordinary evidence linking submit globals to DEVICE"
+      },
+      {
+        "from": "0x007B5020",
+        "to": "renderer",
+        "rel": "PUBLISHES",
+        "confidence": "PROVEN"
+      },
+      {
+        "from": "0x007B5020",
+        "to": "vector",
+        "rel": "CONSTRUCTS",
+        "confidence": "PROVEN",
+        "note": "empty vector via 0x7A45B0"
+      },
+      {
+        "from": "renderer",
+        "to": "vector",
+        "rel": "CONTAINS",
+        "confidence": "PROVEN"
+      },
+      {
+        "from": "INSERT_SITE_A",
+        "to": "vector",
+        "rel": "INSERTS",
+        "confidence": "STRONG"
+      },
+      {
+        "from": "INSERT_SITE_B",
+        "to": "vector",
+        "rel": "INSERTS",
+        "confidence": "STRONG"
+      },
+      {
+        "from": "INSERT_SITE_A",
+        "to": "insert_helper_0x4A26B0",
+        "rel": "CALLS",
+        "confidence": "PROVEN"
+      },
+      {
+        "from": "insert_helper_0x4A26B0",
+        "to": "external_protected",
+        "rel": "PROTECTED_BOUNDARY",
+        "confidence": "STRONG"
+      },
+      {
+        "from": "iface_ctor_0x7A1A20",
+        "to": "ENGINE_GFX_IFACE_00",
+        "rel": "CONSTRUCTS",
+        "confidence": "PROVEN"
+      },
+      {
+        "from": "INSERT_SITE_A",
+        "to": "ENGINE_GFX_IFACE_00",
+        "rel": "PUBLISHES",
+        "confidence": "STRONG",
+        "note": "elem+0x04"
+      },
+      {
+        "from": "vector",
+        "to": "ENGINE_GFX_IFACE_00",
+        "rel": "CONTAINS",
+        "confidence": "PROVEN"
+      },
+      {
+        "from": "0x0079E4A0",
+        "to": "ENGINE_GFX_IFACE_00",
+        "rel": "SELECTS",
+        "confidence": "PROVEN"
+      },
+      {
+        "from": "ENGINE_GFX_IFACE_00",
+        "to": "vtable_0xBB1AAC",
+        "rel": "HAS_VTABLE",
+        "confidence": "PROVEN"
+      },
+      {
+        "from": "vtable_0xBB1AAC",
+        "to": "METHOD_148",
+        "rel": "DISPATCHES",
+        "confidence": "PROVEN"
+      },
+      {
+        "from": "vtable_0xBB1AAC",
+        "to": "METHOD_14C",
+        "rel": "DISPATCHES",
+        "confidence": "PROVEN"
+      },
+      {
+        "from": "vtable_0xBB1AAC",
+        "to": "METHOD_154",
+        "rel": "DISPATCHES",
+        "confidence": "PROVEN"
+      },
+      {
+        "from": "METHOD_148",
+        "to": "submit_0x7A51B0",
+        "rel": "CALLS",
+        "confidence": "PROVEN"
+      },
+      {
+        "from": "METHOD_14C",
+        "to": "submit_0x7A51B0",
+        "rel": "CALLS",
+        "confidence": "PROVEN"
+      },
+      {
+        "from": "METHOD_154",
+        "to": "submit_0x7A51B0",
+        "rel": "CALLS",
+        "confidence": "PROVEN"
+      },
+      {
+        "from": "submit_0x7A51B0",
+        "to": "external_protected",
+        "rel": "PROTECTED_BOUNDARY",
+        "confidence": "STRONG"
+      },
+      {
+        "from": "ENGINE_GFX_IFACE_00",
+        "to": "proven_d3d_device",
+        "rel": "UNKNOWN",
+        "confidence": "UNKNOWN",
+        "note": "no device read in recovered methods"
+      },
+      {
+        "from": "0x007A06E0",
+        "to": "ENGINE_GFX_IFACE_00",
+        "rel": "CALLS",
+        "confidence": "PROVEN",
+        "note": "owned teardown (OWNED_ENGINE_OBJECT)"
+      }
+    ],
+    "submit_shapes": [
+      {
+        "id": "SUBMIT_SHAPE_A",
+        "arg_count": 5,
+        "size": "0x00000008",
+        "paired_globals": true,
+        "return": "UNUSED",
+        "count": 20,
+        "examples": [
+          "0x007A86E0",
+          "0x007A9095",
+          "0x007AACCD",
+          "0x007AB32A",
+          "0x007ABBB7"
+        ]
+      },
+      {
+        "id": "SUBMIT_SHAPE_B",
+        "arg_count": 5,
+        "size": "0x00000008",
+        "paired_globals": true,
+        "return": "TESTED",
+        "count": 9,
+        "examples": [
+          "0x007A8785",
+          "0x007AC1CA",
+          "0x007AC849",
+          "0x007AD068",
+          "0x007AD0BA"
+        ]
+      },
+      {
+        "id": "SUBMIT_SHAPE_C",
+        "arg_count": 5,
+        "size": "0x00000004",
+        "paired_globals": true,
+        "return": "UNUSED",
+        "count": 8,
+        "examples": [
+          "0x007A87DC",
+          "0x007A8846",
+          "0x007A88BD",
+          "0x007AC892",
+          "0x007ACFB6"
+        ]
+      },
+      {
+        "id": "SUBMIT_SHAPE_D",
+        "arg_count": 0,
+        "size": "?",
+        "paired_globals": false,
+        "return": "UNUSED",
+        "count": 5,
+        "examples": [
+          "0x007A8804",
+          "0x007AAAA3",
+          "0x007AB623",
+          "0x007AC6BB",
+          "0x007ACF83"
+        ]
+      },
+      {
+        "id": "SUBMIT_SHAPE_E",
+        "arg_count": 5,
+        "size": "0x00000004",
+        "paired_globals": true,
+        "return": "TESTED",
+        "count": 2,
+        "examples": [
+          "0x007A887D",
+          "0x007AE678"
+        ]
+      },
+      {
+        "id": "SUBMIT_SHAPE_F",
+        "arg_count": 6,
+        "size": "0x00000001",
+        "paired_globals": true,
+        "return": "UNUSED",
+        "count": 10,
+        "examples": [
+          "0x007A88E4",
+          "0x007A8904",
+          "0x007A8924",
+          "0x007A8944",
+          "0x007A8964"
+        ]
+      },
+      {
+        "id": "SUBMIT_SHAPE_G",
+        "arg_count": 5,
+        "size": "0x00000001",
+        "paired_globals": true,
+        "return": "UNUSED",
+        "count": 4,
+        "examples": [
+          "0x007A8A1C",
+          "0x007A8A39",
+          "0x007A8A56",
+          "0x007B13A9"
+        ]
+      },
+      {
+        "id": "SUBMIT_SHAPE_H",
+        "arg_count": 8,
+        "size": "0x0000000C",
+        "paired_globals": true,
+        "return": "UNUSED",
+        "count": 4,
+        "examples": [
+          "0x007AAB15",
+          "0x007ACF5A",
+          "0x007AD72A",
+          "0x007ADD53"
+        ]
+      },
+      {
+        "id": "SUBMIT_SHAPE_I",
+        "arg_count": 6,
+        "size": "0x00000004",
+        "paired_globals": true,
+        "return": "UNUSED",
+        "count": 34,
+        "examples": [
+          "0x007AAB5A",
+          "0x007AAB8A",
+          "0x007AB65A",
+          "0x007AB68A",
+          "0x007AB6EA"
+        ]
+      },
+      {
+        "id": "SUBMIT_SHAPE_J",
+        "arg_count": 7,
+        "size": "0x00000008",
+        "paired_globals": true,
+        "return": "UNUSED",
+        "count": 29,
+        "examples": [
+          "0x007AABC4",
+          "0x007AABF4",
+          "0x007AAC8E",
+          "0x007AB55B",
+          "0x007AB6C4"
+        ]
+      },
+      {
+        "id": "SUBMIT_SHAPE_K",
+        "arg_count": 5,
+        "size": "0x00000014",
+        "paired_globals": true,
+        "return": "UNUSED",
+        "count": 3,
+        "examples": [
+          "0x007AB2AC",
+          "0x007ABAAF",
+          "0x007B0C7B"
+        ]
+      },
+      {
+        "id": "SUBMIT_SHAPE_L",
+        "arg_count": 6,
+        "size": "0x00000004",
+        "paired_globals": true,
+        "return": "TESTED",
+        "count": 6,
+        "examples": [
+          "0x007AB2DA",
+          "0x007ABADA",
+          "0x007AC24A",
+          "0x007AD75A",
+          "0x007AD7DA"
+        ]
+      },
+      {
+        "id": "SUBMIT_SHAPE_M",
+        "arg_count": 5,
+        "size": "0x0000001C",
+        "paired_globals": true,
+        "return": "UNUSED",
+        "count": 1,
+        "examples": [
+          "0x007AB4DB"
+        ]
+      },
+      {
+        "id": "SUBMIT_SHAPE_N",
+        "arg_count": 5,
+        "size": "0x00000020",
+        "paired_globals": true,
+        "return": "UNUSED",
+        "count": 2,
+        "examples": [
+          "0x007AB809",
+          "0x007AB986"
+        ]
+      },
+      {
+        "id": "SUBMIT_SHAPE_O",
+        "arg_count": 5,
+        "size": "0x00000010",
+        "paired_globals": true,
+        "return": "UNUSED",
+        "count": 2,
+        "examples": [
+          "0x007ABA1D",
+          "0x007B0FF8"
+        ]
+      },
+      {
+        "id": "SUBMIT_SHAPE_P",
+        "arg_count": 5,
+        "size": "0x0000000C",
+        "paired_globals": true,
+        "return": "TESTED",
+        "count": 2,
+        "examples": [
+          "0x007ABB52",
+          "0x007AC30C"
+        ]
+      },
+      {
+        "id": "SUBMIT_SHAPE_Q",
+        "arg_count": 6,
+        "size": "0x00000004",
+        "paired_globals": false,
+        "return": "UNUSED",
+        "count": 1,
+        "examples": [
+          "0x007ABD6A"
+        ]
+      },
+      {
+        "id": "SUBMIT_SHAPE_R",
+        "arg_count": 5,
+        "size": "0x0000000C",
+        "paired_globals": true,
+        "return": "UNUSED",
+        "count": 11,
+        "examples": [
+          "0x007ABF2F",
+          "0x007AC7A5",
+          "0x007AC91D",
+          "0x007AC96D",
+          "0x007AC9B7"
+        ]
+      },
+      {
+        "id": "SUBMIT_SHAPE_S",
+        "arg_count": 5,
+        "size": "0x00000014",
+        "paired_globals": true,
+        "return": "TESTED",
+        "count": 2,
+        "examples": [
+          "0x007AC0E4",
+          "0x007AC576"
+        ]
+      },
+      {
+        "id": "SUBMIT_SHAPE_T",
+        "arg_count": 7,
+        "size": "0x00000008",
+        "paired_globals": true,
+        "return": "TESTED",
+        "count": 1,
+        "examples": [
+          "0x007AC604"
+        ]
+      },
+      {
+        "id": "SUBMIT_SHAPE_U",
+        "arg_count": 8,
+        "size": "0x0000000C",
+        "paired_globals": true,
+        "return": "TESTED",
+        "count": 3,
+        "examples": [
+          "0x007AD42B",
+          "0x007AD48B",
+          "0x007AD4EB"
+        ]
+      },
+      {
+        "id": "SUBMIT_SHAPE_V",
+        "arg_count": 6,
+        "size": "0x00000008",
+        "paired_globals": true,
+        "return": "UNUSED",
+        "count": 1,
+        "examples": [
+          "0x007AECD2"
+        ]
+      }
+    ],
+    "submit_caller_count": 160
+  }
+}

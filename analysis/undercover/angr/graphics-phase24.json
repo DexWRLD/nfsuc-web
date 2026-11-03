@@ -1,0 +1,91 @@
+{
+  "phase": 24,
+  "angr": {
+    "available": true,
+    "version": "10.0.5",
+    "opaque_stub_policy": "UNKNOWN_SIDE_EFFECTS_UNKNOWN_RETURN",
+    "results": {
+      "0x007AD2D0": {
+        "role": "method_148",
+        "ok": true,
+        "summary": "typedef struct st_7ad2d0_5 {\n    char padding_0[12];\n    unsigned int field_c;\n} st_7ad2d0_5;\n\nint sub_7ad2d0(void)\n{\n    st_7ad2d0_5 *v8;  // ecx\n    unsigned int v9;  // esi\n    char v10;  // al\n    unsigned int v0;  // [bp-0x1c]\n    char *v1;  // [bp-0x18]\n    unsigned int v2;  // [bp-0x14]\n    unsigned int v3;  // [bp-0x10]\n    st_7ad2d0_5 *v4;  // [bp-0xc], Other Possible Types: unsigned int\n",
+        "callees_ordinary_only": [],
+        "boundary_hits": [],
+        "note": "Protected callees modeled as opaque boundary hits only"
+      },
+      "0x007ADC20": {
+        "role": "method_14c",
+        "ok": true,
+        "summary": "typedef struct st_7adc20_2 {\n    struct st_7adc20_0 *field_0;\n    char padding_4[8];\n    unsigned int field_c;\n} st_7adc20_2;\n\ntypedef struct st_7adc20_1 {\n    unsigned int field_0;\n} st_7adc20_1;\n\ntypedef struct st_7adc20_0 {\n    char padding_0[104];\n    struct st_7adc20_1 *field_68;\n} st_7adc20_0;\n\nint sub_7adc20(void)\n{\n    unsigned int v3;  // esi\n    st_7adc20_2 *v4;  // ecx\n    unsigned int ",
+        "callees_ordinary_only": [],
+        "boundary_hits": [],
+        "note": "Protected callees modeled as opaque boundary hits only"
+      },
+      "0x007ADCC0": {
+        "role": "method_154",
+        "ok": true,
+        "summary": "typedef struct st_7adcc0_0 {\n    char padding_0[12];\n    unsigned int field_c;\n} st_7adcc0_0;\n\nint sub_7adcc0(void)\n{\n    st_7adcc0_0 *v7;  // ecx\n    unsigned int v0;  // [bp-0x18]\n    st_7adcc0_0 **v1;  // [bp-0x14]\n    unsigned int v2;  // [bp-0x10]\n    unsigned int v3;  // [bp-0xc]\n    st_7adcc0_0 *v4;  // [bp-0x8]\n    st_7adcc0_0 *v5;  // [bp-0x4], Other Possible Types: unsigned int\n\n    v5 =",
+        "callees_ordinary_only": [],
+        "boundary_hits": [],
+        "note": "Protected callees modeled as opaque boundary hits only"
+      },
+      "0x007A40D0": {
+        "role": "insert_caller",
+        "ok": true,
+        "summary": "typedef struct st_7a40d0_1 {\n    unsigned int field_0;\n} st_7a40d0_1;\n\ntypedef struct st_7a40d0_0 {\n    char padding_0[4];\n    struct st_7a40d0_1 *field_4;\n} st_7a40d0_0;\n\nint sub_7a40d0(void)\n{\n    unsigned long long v7;  // ldt\n    unsigned long long v8;  // gdt\n    unsigned short v9;  // fs\n    unsigned long long v10;  // 4136\n    unsigned int v11;  // ebx\n    unsigned int v12;  // esi\n    unsi",
+        "callees_ordinary_only": [],
+        "boundary_hits": [],
+        "note": "Protected callees modeled as opaque boundary hits only"
+      },
+      "0x00752AF0": {
+        "role": "present",
+        "ok": true,
+        "summary": "void sub_752af0(void)\n{\n    unsigned int v5;  // ebx\n    unsigned int v6;  // esi\n    unsigned int v7;  // edi\n    unsigned int v0;  // [bp-0x10]\n    unsigned int v1;  // [bp-0xc]\n    unsigned int v2;  // [bp-0x8]\n    unsigned int v3;  // [bp-0x4]\n\n    v3 = v5;\n    v2 = v6;\n    v1 = v7;\n    v0 = *(int *)0x13c6510;\n    (*(int *)(*(int *)*(int *)0x13c6510 + 168))();\n}",
+        "callees_ordinary_only": [],
+        "boundary_hits": [],
+        "note": "Protected callees modeled as opaque boundary hits only"
+      },
+      "0x007A51B0": {
+        "role": "submit_OPAQUE_SKIP",
+        "ok": false,
+        "skipped": true,
+        "reason": "OPAQUE_PROTECTED_TARGET \u2014 not decompiled"
+      }
+    }
+  },
+  "consensus": {
+    "UC": {
+      "architecture": "ORDINARY_FRONTEND_PROTECTED_BACKEND",
+      "safe_seam": "NO_MEANINGFUL_RENDER_SEAM",
+      "first_frame": "FIRST_FRAME_PATH_BLOCKED_BY_PROTECTED_BACKEND",
+      "submit_contract": "PARTIAL_VISIBLE_CONTRACT",
+      "output": "NO_VISIBLE_OUTPUT"
+    },
+    "ANGR": {
+      "architecture": "ORDINARY_PREFIXES_CONFIRM_SUBMIT_CALL",
+      "note": "angr used on ordinary prefixes only; opaque targets skipped",
+      "helped": true
+    },
+    "CONSENSUS": {
+      "architecture": "ORDINARY_FRONTEND_PROTECTED_BACKEND",
+      "safe_seam": "NO_MEANINGFUL_RENDER_SEAM",
+      "first_frame": "FIRST_FRAME_PATH_BLOCKED_BY_PROTECTED_BACKEND",
+      "submit_contract": "PARTIAL_VISIBLE_CONTRACT",
+      "output": "NO_VISIBLE_OUTPUT"
+    },
+    "angr_materially_helped": true
+  },
+  "dashboard": {
+    "ENGINE_FRONTEND": "ORDINARY",
+    "SUBMIT_BACKEND": "PROTECTED",
+    "VISIBLE_SUBMIT_CONTRACT": "PARTIAL",
+    "RAW_D3D9_RESOURCE_TRAFFIC": "FOUND",
+    "FRAME_CORRELATION": "UNKNOWN",
+    "GRAPHICS_ARCHITECTURE": "ORDINARY_FRONTEND_PROTECTED_BACKEND",
+    "SAFE_RUNTIME_SEAM": "NO_MEANINGFUL_RENDER_SEAM",
+    "FIRST_FRAME": "BLOCKED",
+    "D3D9": "NOT JUSTIFIED",
+    "ENGINE_BACKEND_ADAPTER": "NOT JUSTIFIED",
+    "GRAPHICS_BOUNDARY": "PROTECTED_ENGINE_BACKEND_BOUNDARY"
+  }
+}
