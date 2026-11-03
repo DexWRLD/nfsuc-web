@@ -1,8 +1,8 @@
 {
   "project": {
     "name": "nfsuc-web",
-    "current_phase": 22,
-    "strategy": "Phase 22: renderer 0x017AA798 holds an MSVC-like vector at +0x50/+0x54/+0x58 of 8-byte elements; [elem+4] is ENGINE_GFX_IFACE_00 (dynamic COM). Helper 0x0079E4A0 selects from that list. Draw remains ENGINE_COM_DRAW terminating at ENGINE_BACKEND with no ordinary DEVICE bridge. Phase21 durable +0x1B0 corrected as false alias. PARTIAL seam; D3D9/adapter NOT justified; first-frame UNBOUNDED."
+    "current_phase": 23,
+    "strategy": "Phase 23: vector inserts at 0x007A40D0/0x007AF900 via encrypted helper 0x004A26B0. Element +0x04 from ordinary ctor 0x007A1A20 with static VT 0x00BB1AAC; +148/+14C/+154 resolve to ordinary methods that call encrypted submit 0x007A51B0 (PROTECTED terminus). MIXED_INTERFACE_PUBLICATION; PROTECTED_ENGINE_BACKEND_BOUNDARY; PARTIAL seam; D3D9/adapter NOT justified; first-frame UNBOUNDED."
   },
   "discovery": {
     "candidates": 25450,

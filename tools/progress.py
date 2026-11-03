@@ -26,6 +26,7 @@ def load_angr_cached():
     path = os.path.join(ANALYSIS, "angr", "summary.json")
     gfx_path = os.path.join(ANALYSIS, "angr", "graphics-phase21.json")
     p22_path = os.path.join(ANALYSIS, "angr", "renderer-phase22.json")
+    p23_path = os.path.join(ANALYSIS, "angr", "renderer-phase23.json")
     out = {
         "status": "NOT RUN",
         "version": None,
@@ -41,6 +42,17 @@ def load_angr_cached():
         "durable_device_alias": None,
         "frame_root": None,
         "graphics_boundary": None,
+        "vector_insertion": None,
+        "element_plus04": None,
+        "iface_publication": None,
+        "vtable_class": None,
+        "method_148_terminus": None,
+        "method_14c_terminus": None,
+        "method_154_terminus": None,
+        "post_init_seam": None,
+        "d3d9": None,
+        "engine_backend_adapter": None,
+        "first_frame": None,
     }
     if os.path.isfile(path):
         try:
@@ -90,6 +102,52 @@ def load_angr_cached():
                 out["status"] = dash.get("ANGR")
             if dash.get("DRAW_CODE"):
                 out["draw_consensus"] = dash.get("DRAW_CONSENSUS") or out["draw_consensus"] or "ENGINE_COM_DRAW"
+        except Exception:
+            pass
+    if os.path.isfile(p23_path):
+        try:
+            g = json.load(open(p23_path, encoding="utf-8"))
+            dash = g.get("dashboard") or {}
+            out["vector_insertion"] = dash.get("VECTOR_INSERTION")
+            out["element_plus04"] = dash.get("ELEMENT_PLUS04")
+            out["iface_publication"] = dash.get("INTERFACE_PUBLICATION")
+            out["vtable_class"] = dash.get("VTABLE")
+            out["method_148_terminus"] = dash.get("METHOD_148_TERMINUS")
+            out["method_14c_terminus"] = dash.get("METHOD_14C_TERMINUS")
+            out["method_154_terminus"] = dash.get("METHOD_154_TERMINUS")
+            out["raw_device_draw"] = dash.get("RAW_DEVICE_DRAW") or out["raw_device_draw"]
+            out["graphics_boundary"] = dash.get("GRAPHICS_BOUNDARY") or out["graphics_boundary"]
+            out["post_init_seam"] = dash.get("POST_INIT_SEAM")
+            out["d3d9"] = dash.get("D3D9")
+            out["engine_backend_adapter"] = dash.get("ENGINE_BACKEND_ADAPTER")
+            out["first_frame"] = dash.get("FIRST_FRAME")
+            if dash.get("ENGINE_GFX_IFACE_00"):
+                out["renderer_list"] = dash.get("ENGINE_GFX_IFACE_00")
+        except Exception:
+            pass
+    # Prefer phase23-raw dashboard when present
+    p23_raw = os.path.join(ANALYSIS, "phase23-raw.json")
+    if os.path.isfile(p23_raw):
+        try:
+            g = json.load(open(p23_raw, encoding="utf-8"))
+            dash = g.get("dashboard") or {}
+            for k_src, k_dst in (
+                ("VECTOR_INSERTION", "vector_insertion"),
+                ("ELEMENT_PLUS04", "element_plus04"),
+                ("INTERFACE_PUBLICATION", "iface_publication"),
+                ("VTABLE", "vtable_class"),
+                ("METHOD_148_TERMINUS", "method_148_terminus"),
+                ("METHOD_14C_TERMINUS", "method_14c_terminus"),
+                ("METHOD_154_TERMINUS", "method_154_terminus"),
+                ("RAW_DEVICE_DRAW", "raw_device_draw"),
+                ("GRAPHICS_BOUNDARY", "graphics_boundary"),
+                ("POST_INIT_SEAM", "post_init_seam"),
+                ("D3D9", "d3d9"),
+                ("ENGINE_BACKEND_ADAPTER", "engine_backend_adapter"),
+                ("FIRST_FRAME", "first_frame"),
+            ):
+                if dash.get(k_src) is not None:
+                    out[k_dst] = dash.get(k_src)
         except Exception:
             pass
     return out
@@ -656,6 +714,18 @@ def render_svg(model, detailed=False):
         ("DURABLE DEVICE ALIAS", angr_meta.get("durable_device_alias") or gfx.get("durable_device_alias") or "UNKNOWN"),
         ("FRAME ROOT", angr_meta.get("frame_root") or gfx.get("frame_root") or "UNKNOWN"),
         ("GRAPHICS BOUNDARY", angr_meta.get("graphics_boundary") or gfx.get("graphics_boundary") or "UNKNOWN"),
+        ("RENDERER VECTOR", "MAPPED"),
+        ("VECTOR INSERTION", angr_meta.get("vector_insertion") or "UNKNOWN"),
+        ("ELEMENT +0x04", angr_meta.get("element_plus04") or "UNKNOWN"),
+        ("IFACE PUBLICATION", angr_meta.get("iface_publication") or "UNKNOWN"),
+        ("VTABLE", angr_meta.get("vtable_class") or "UNKNOWN"),
+        ("METHOD +148", angr_meta.get("method_148_terminus") or "UNKNOWN"),
+        ("METHOD +14C", angr_meta.get("method_14c_terminus") or "UNKNOWN"),
+        ("METHOD +154", angr_meta.get("method_154_terminus") or "UNKNOWN"),
+        ("P23 SEAM", angr_meta.get("post_init_seam") or seam),
+        ("P23 D3D9", angr_meta.get("d3d9") or d3d_just),
+        ("P23 BACKEND ADAPTER", angr_meta.get("engine_backend_adapter") or "UNKNOWN"),
+        ("FIRST FRAME", angr_meta.get("first_frame") or "UNBOUNDED"),
         ("STATIC FACTORY", static_factory),
         ("FACTORY FRONTIER READY", frontier_ready),
         ("DIRECT3D9 IMPLEMENTED", d3d_impl),
@@ -771,6 +841,8 @@ th { color: #8b949e; font-weight: 600; }
 <p>DEVICE→RENDERER: %s. DRAW CONSENSUS: %s. Boundary disagreements (cached): %s.</p>
 <p>RENDERER LIST: %s. BACKEND HANDOFF: %s. RAW DEVICE DRAW: %s. DURABLE DEVICE ALIAS: %s.</p>
 <p>FRAME ROOT: %s. GRAPHICS BOUNDARY: %s.</p>
+<p>RENDERER VECTOR: MAPPED. VECTOR INSERTION: %s. ELEMENT +0x04: %s. IFACE PUBLICATION: %s. VTABLE: %s.</p>
+<p>METHOD +148: %s. METHOD +14C: %s. METHOD +154: %s. FIRST FRAME: %s.</p>
 <p>STATIC FACTORY: %s. FACTORY FRONTIER READY: %s. DIRECT3D9 IMPLEMENTED: %s.</p>
 <p>Independent of <code>0x00686000</code>: %s. Discovery-enrolled on HIGH graph: %s. Runtime enterable now: %s. Call <code>%s</code> in <code>%s</code> (%s).</p>
 <p>Active objective: %s</p>
@@ -850,6 +922,14 @@ document.querySelectorAll("rect[data-addr]").forEach(function (node) {
         html.escape(str(angr_meta.get("durable_device_alias") or graphics.get("durable_device_alias") or "UNKNOWN")),
         html.escape(str(angr_meta.get("frame_root") or graphics.get("frame_root") or "UNKNOWN")),
         html.escape(str(angr_meta.get("graphics_boundary") or graphics.get("graphics_boundary") or "UNKNOWN")),
+        html.escape(str(angr_meta.get("vector_insertion") or "UNKNOWN")),
+        html.escape(str(angr_meta.get("element_plus04") or "UNKNOWN")),
+        html.escape(str(angr_meta.get("iface_publication") or "UNKNOWN")),
+        html.escape(str(angr_meta.get("vtable_class") or "UNKNOWN")),
+        html.escape(str(angr_meta.get("method_148_terminus") or "UNKNOWN")),
+        html.escape(str(angr_meta.get("method_14c_terminus") or "UNKNOWN")),
+        html.escape(str(angr_meta.get("method_154_terminus") or "UNKNOWN")),
+        html.escape(str(angr_meta.get("first_frame") or "UNBOUNDED")),
         html.escape(graphics.get("static_factory_frontier") or graphics.get("frontier") or "UNKNOWN"),
         "YES" if graphics.get("factory_frontier_ready") else "NO",
         "YES" if graphics.get("direct3d9_implemented") else "NO",
@@ -961,6 +1041,18 @@ def render_png(model):
         ("DURABLE DEVICE ALIAS", angr_meta.get("durable_device_alias") or gfx.get("durable_device_alias") or "UNKNOWN"),
         ("FRAME ROOT", angr_meta.get("frame_root") or gfx.get("frame_root") or "UNKNOWN"),
         ("GRAPHICS BOUNDARY", angr_meta.get("graphics_boundary") or gfx.get("graphics_boundary") or "UNKNOWN"),
+        ("RENDERER VECTOR", "MAPPED"),
+        ("VECTOR INSERTION", angr_meta.get("vector_insertion") or "UNKNOWN"),
+        ("ELEMENT +0x04", angr_meta.get("element_plus04") or "UNKNOWN"),
+        ("IFACE PUBLICATION", angr_meta.get("iface_publication") or "UNKNOWN"),
+        ("VTABLE", angr_meta.get("vtable_class") or "UNKNOWN"),
+        ("METHOD +148", angr_meta.get("method_148_terminus") or "UNKNOWN"),
+        ("METHOD +14C", angr_meta.get("method_14c_terminus") or "UNKNOWN"),
+        ("METHOD +154", angr_meta.get("method_154_terminus") or "UNKNOWN"),
+        ("P23 SEAM", angr_meta.get("post_init_seam") or seam),
+        ("P23 D3D9", angr_meta.get("d3d9") or d3d_just),
+        ("P23 BACKEND ADAPTER", angr_meta.get("engine_backend_adapter") or "UNKNOWN"),
+        ("FIRST FRAME", angr_meta.get("first_frame") or "UNBOUNDED"),
         ("STATIC FACTORY", static_factory),
         ("FACTORY FRONTIER READY", frontier_ready),
         ("DIRECT3D9 IMPLEMENTED", d3d_impl),
