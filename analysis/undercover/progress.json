@@ -1,8 +1,8 @@
 {
   "project": {
     "name": "nfsuc-web",
-    "current_phase": 24,
-    "strategy": "Phase 24: ordinary frontend submits via opaque 0x007A51B0 (160 callers; size+record+paired 0x017A9xxx/0x01278xxx globals). METHOD_14x prefixes fully ordinary until that boundary. Architecture ORDINARY_FRONTEND_PROTECTED_BACKEND. No meaningful render seam without protected semantics. FIRST_FRAME_PATH_BLOCKED_BY_PROTECTED_BACKEND. D3D9/adapter NOT justified. Further protected-body analysis not allowed/needed."
+    "current_phase": 25,
+    "strategy": "Phase 25: graphics frozen (FIRST_FRAME_PATH_BLOCKED_BY_PROTECTED_BACKEND). Ordinary runtime frontier ranked; implemented MSVCR80 strncpy HLE (0x0087B6A0). Post-strncpy top single-unlock is _CIsqrt (88). Do not reopen protected submit/backend."
   },
   "discovery": {
     "candidates": 25450,
@@ -36,24 +36,92 @@
     "note": "The badge is the current high-confidence.json compile record. Green cells are discovery-enrolled HIGH functions that generated and compiled. Map 'reachable' means discovery enrollment, not proven call-graph reachability."
   },
   "runtime": {
-    "recorded_completed": 4,
-    "recorded_entries": 5,
+    "recorded_completed": 5,
+    "recorded_entries": 6,
     "recorded_without_map_cell": [],
     "unlogged_entries": "UNKNOWN",
     "counts": {
-      "EXECUTED": 4,
+      "EXECUTED": 5,
       "READY": 0,
       "RUNTIME_READY_NOT_EXECUTED": 54,
       "BLOCKED_INITIALIZATION": 0,
       "BLOCKED_INDIRECT": 131,
-      "BLOCKED_IMPORT": 902,
+      "BLOCKED_IMPORT": 785,
       "BLOCKED_EXTERNAL": 74,
       "PROTECTED_BOUNDARY": 793,
-      "UNKNOWN": 23492
+      "UNKNOWN": 23608
     },
     "ready_closure": 19,
     "ready_with_imports_closure": 35,
     "note": "A compiled function is not a function that has run. DISCOVERED_HIGH != CALL_GRAPH_REACHABLE != RUNTIME_ENTERABLE."
+  },
+  "ordinary_runtime_frontier": {
+    "HIGH": 22779,
+    "COMPILED": 22770,
+    "RUNTIME_READY_EST": 54,
+    "EXECUTED": 6,
+    "BLOCKED_STANDARD_RUNTIME": 733,
+    "BLOCKED_PROTECTED": 585,
+    "BLOCKED_GRAPHICS": 124,
+    "UNKNOWN": 79
+  },
+  "top_ordinary_island": {
+    "root": "0x009F0D20",
+    "function_count": 274,
+    "edge_count": 774,
+    "imports": [
+      [
+        "strchr",
+        5
+      ],
+      [
+        "sprintf",
+        3
+      ],
+      [
+        "memcpy",
+        3
+      ],
+      [
+        "isdigit",
+        3
+      ],
+      [
+        "isspace",
+        2
+      ],
+      [
+        "longjmp",
+        2
+      ],
+      [
+        "iscntrl",
+        2
+      ],
+      [
+        "isalnum",
+        2
+      ]
+    ],
+    "missing_imports": [
+      "_CIpow",
+      "_setjmp3",
+      "floor",
+      "isalnum",
+      "isalpha",
+      "iscntrl",
+      "isdigit",
+      "isspace"
+    ],
+    "indirects": 0,
+    "initialization": "UNKNOWN",
+    "subsystem_guess": "CRT/string",
+    "exact_blockers": [
+      "BLOCKED_EXTERNAL",
+      "BLOCKED_IMPORT"
+    ],
+    "estimated_runtime_work": "import HLE only",
+    "leverage": 692
   },
   "initialization": [
     {
@@ -162,12 +230,11 @@
     "enterable_now": "NO",
     "object": "0x01318170",
     "esi_slot": "0x00B615C4",
-    "active_objective": "Recover constructors/vtables of renderer vector element COM objects; find insert sites",
+    "active_objective": "FROZEN: do not recover first-frame / D3D9 / protected submit. Expand ordinary CRT/runtime.",
     "blockers": [
-      "In-game DEVICE publication EXTERNAL/BLOCKED",
-      "ENGINE_GFX_IFACE_00 vtables runtime-only; no ordinary method bodies mapped",
-      "No DEVICE bridge from engine Draw path",
-      "List element publishers not fully mapped",
+      "FIRST_FRAME_PATH_BLOCKED_BY_PROTECTED_BACKEND",
+      "ORDINARY_FRONTEND_PROTECTED_BACKEND",
+      "NO_MEANINGFUL_RENDER_SEAM",
       "D3D9 / engine-backend adapter not justified"
     ],
     "angr": "AVAILABLE",
@@ -187,11 +254,11 @@
     "engine_backend_adapter_justified": false
   },
   "first_frame_estimate": {
-    "best_case_phase": "UNBOUNDED",
-    "likely_low": "UNBOUNDED",
-    "likely_high": "UNBOUNDED",
-    "is_estimate": true,
-    "uncertainty": "Engine Draw mapped to dynamic COM list without backend\u2192device handoff."
+    "best_case_phase": "BLOCKED",
+    "likely_low": "BLOCKED",
+    "likely_high": "BLOCKED",
+    "is_estimate": false,
+    "uncertainty": "FIRST_FRAME_PATH_BLOCKED_BY_PROTECTED_BACKEND \u2014 Phase 24 final; not an open estimate."
   },
   "phases": [
     {
@@ -303,6 +370,11 @@
       "phase": 22,
       "name": "Renderer COM container and backend handoff",
       "state": "current"
+    },
+    {
+      "phase": 25,
+      "name": "Ordinary runtime frontier + strncpy HLE",
+      "state": "completed"
     }
   ],
   "milestones": [
@@ -400,7 +472,7 @@
       "compiler_failures": 0
     },
     {
-      "source": "runtime-frontier.json",
+      "source": "runtime-frontier-closures.json",
       "largest_ready_closure": 19,
       "largest_ready_with_imports": 35
     }
@@ -85645,9 +85717,8 @@
       "translation_status": "COMPILED",
       "runtime_status": "BLOCKED_IMPORT",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
+      "blocker": "strstr",
       "unimplemented_imports": [
-        "strncpy",
         "strstr"
       ],
       "direct_callees": 5
@@ -85947,11 +86018,10 @@
       "translation_status": "COMPILED",
       "runtime_status": "BLOCKED_IMPORT",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
+      "blocker": "strchr",
       "unimplemented_imports": [
         "_stricmp",
-        "strchr",
-        "strncpy"
+        "strchr"
       ],
       "direct_callees": 4
     },
@@ -88643,12 +88713,8 @@
       "generated": true,
       "compiled": true,
       "translation_status": "COMPILED",
-      "runtime_status": "BLOCKED_IMPORT",
+      "runtime_status": "UNKNOWN",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
-      "unimplemented_imports": [
-        "strncpy"
-      ],
       "direct_callees": 1
     },
     {
@@ -88684,12 +88750,11 @@
       "generated": true,
       "compiled": true,
       "translation_status": "COMPILED",
-      "runtime_status": "BLOCKED_IMPORT",
+      "runtime_status": "EXECUTED",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
-      "unimplemented_imports": [
-        "strncpy"
-      ],
+      "recorded_execution": true,
+      "completed": true,
+      "first_observed_phase": 25,
       "direct_callees": 1
     },
     {
@@ -88699,12 +88764,8 @@
       "generated": true,
       "compiled": true,
       "translation_status": "COMPILED",
-      "runtime_status": "BLOCKED_IMPORT",
+      "runtime_status": "UNKNOWN",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
-      "unimplemented_imports": [
-        "strncpy"
-      ],
       "direct_callees": 1
     },
     {
@@ -88714,12 +88775,8 @@
       "generated": true,
       "compiled": true,
       "translation_status": "COMPILED",
-      "runtime_status": "BLOCKED_IMPORT",
+      "runtime_status": "UNKNOWN",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
-      "unimplemented_imports": [
-        "strncpy"
-      ],
       "direct_callees": 2
     },
     {
@@ -88729,12 +88786,8 @@
       "generated": true,
       "compiled": true,
       "translation_status": "COMPILED",
-      "runtime_status": "BLOCKED_IMPORT",
+      "runtime_status": "UNKNOWN",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
-      "unimplemented_imports": [
-        "strncpy"
-      ],
       "direct_callees": 1
     },
     {
@@ -88744,12 +88797,8 @@
       "generated": true,
       "compiled": true,
       "translation_status": "COMPILED",
-      "runtime_status": "BLOCKED_IMPORT",
+      "runtime_status": "UNKNOWN",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
-      "unimplemented_imports": [
-        "strncpy"
-      ],
       "direct_callees": 1
     },
     {
@@ -88759,12 +88808,8 @@
       "generated": true,
       "compiled": true,
       "translation_status": "COMPILED",
-      "runtime_status": "BLOCKED_IMPORT",
+      "runtime_status": "UNKNOWN",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
-      "unimplemented_imports": [
-        "strncpy"
-      ],
       "direct_callees": 2
     },
     {
@@ -88774,12 +88819,8 @@
       "generated": true,
       "compiled": true,
       "translation_status": "COMPILED",
-      "runtime_status": "BLOCKED_IMPORT",
+      "runtime_status": "UNKNOWN",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
-      "unimplemented_imports": [
-        "strncpy"
-      ],
       "direct_callees": 3
     },
     {
@@ -88840,11 +88881,10 @@
       "translation_status": "COMPILED",
       "runtime_status": "BLOCKED_IMPORT",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
+      "blocker": "sprintf",
       "unimplemented_imports": [
         "_findclose",
-        "sprintf",
-        "strncpy"
+        "sprintf"
       ],
       "direct_callees": 8
     },
@@ -88969,12 +89009,8 @@
       "generated": true,
       "compiled": true,
       "translation_status": "COMPILED",
-      "runtime_status": "BLOCKED_IMPORT",
+      "runtime_status": "UNKNOWN",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
-      "unimplemented_imports": [
-        "strncpy"
-      ],
       "direct_callees": 3
     },
     {
@@ -89025,12 +89061,11 @@
       "translation_status": "COMPILED",
       "runtime_status": "BLOCKED_IMPORT",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
+      "blocker": "sprintf",
       "unimplemented_imports": [
         "_rmdir",
         "remove",
-        "sprintf",
-        "strncpy"
+        "sprintf"
       ],
       "direct_callees": 12
     },
@@ -89382,12 +89417,8 @@
       "generated": true,
       "compiled": true,
       "translation_status": "COMPILED",
-      "runtime_status": "BLOCKED_IMPORT",
+      "runtime_status": "UNKNOWN",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
-      "unimplemented_imports": [
-        "strncpy"
-      ],
       "direct_callees": 2
     },
     {
@@ -89408,12 +89439,8 @@
       "generated": true,
       "compiled": true,
       "translation_status": "COMPILED",
-      "runtime_status": "BLOCKED_IMPORT",
+      "runtime_status": "UNKNOWN",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
-      "unimplemented_imports": [
-        "strncpy"
-      ],
       "direct_callees": 2
     },
     {
@@ -91155,12 +91182,8 @@
       "generated": true,
       "compiled": true,
       "translation_status": "COMPILED",
-      "runtime_status": "BLOCKED_IMPORT",
+      "runtime_status": "UNKNOWN",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
-      "unimplemented_imports": [
-        "strncpy"
-      ],
       "direct_callees": 1
     },
     {
@@ -92168,12 +92191,8 @@
       "generated": true,
       "compiled": true,
       "translation_status": "COMPILED",
-      "runtime_status": "BLOCKED_IMPORT",
+      "runtime_status": "UNKNOWN",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
-      "unimplemented_imports": [
-        "strncpy"
-      ],
       "direct_callees": 1
     },
     {
@@ -92205,12 +92224,8 @@
       "generated": true,
       "compiled": true,
       "translation_status": "COMPILED",
-      "runtime_status": "BLOCKED_IMPORT",
+      "runtime_status": "UNKNOWN",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
-      "unimplemented_imports": [
-        "strncpy"
-      ],
       "direct_callees": 1
     },
     {
@@ -92497,12 +92512,8 @@
       "generated": true,
       "compiled": true,
       "translation_status": "COMPILED",
-      "runtime_status": "BLOCKED_IMPORT",
+      "runtime_status": "UNKNOWN",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
-      "unimplemented_imports": [
-        "strncpy"
-      ],
       "direct_callees": 1
     },
     {
@@ -92514,10 +92525,9 @@
       "translation_status": "COMPILED",
       "runtime_status": "BLOCKED_IMPORT",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
+      "blocker": "_stricmp",
       "unimplemented_imports": [
-        "_stricmp",
-        "strncpy"
+        "_stricmp"
       ],
       "direct_callees": 2
     },
@@ -92584,12 +92594,8 @@
       "generated": true,
       "compiled": true,
       "translation_status": "COMPILED",
-      "runtime_status": "BLOCKED_IMPORT",
+      "runtime_status": "UNKNOWN",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
-      "unimplemented_imports": [
-        "strncpy"
-      ],
       "direct_callees": 1
     },
     {
@@ -92707,12 +92713,8 @@
       "generated": true,
       "compiled": true,
       "translation_status": "COMPILED",
-      "runtime_status": "BLOCKED_IMPORT",
+      "runtime_status": "UNKNOWN",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
-      "unimplemented_imports": [
-        "strncpy"
-      ],
       "direct_callees": 1
     },
     {
@@ -92735,9 +92737,8 @@
       "translation_status": "COMPILED",
       "runtime_status": "BLOCKED_IMPORT",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
+      "blocker": "strstr",
       "unimplemented_imports": [
-        "strncpy",
         "strstr"
       ],
       "direct_callees": 4
@@ -92760,12 +92761,8 @@
       "generated": true,
       "compiled": true,
       "translation_status": "COMPILED",
-      "runtime_status": "BLOCKED_IMPORT",
+      "runtime_status": "UNKNOWN",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
-      "unimplemented_imports": [
-        "strncpy"
-      ],
       "direct_callees": 1
     },
     {
@@ -93268,12 +93265,8 @@
       "generated": true,
       "compiled": true,
       "translation_status": "COMPILED",
-      "runtime_status": "BLOCKED_IMPORT",
+      "runtime_status": "UNKNOWN",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
-      "unimplemented_imports": [
-        "strncpy"
-      ],
       "direct_callees": 1
     },
     {
@@ -93283,12 +93276,8 @@
       "generated": true,
       "compiled": true,
       "translation_status": "COMPILED",
-      "runtime_status": "BLOCKED_IMPORT",
+      "runtime_status": "UNKNOWN",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
-      "unimplemented_imports": [
-        "strncpy"
-      ],
       "direct_callees": 1
     },
     {
@@ -93309,12 +93298,8 @@
       "generated": true,
       "compiled": true,
       "translation_status": "COMPILED",
-      "runtime_status": "BLOCKED_IMPORT",
+      "runtime_status": "UNKNOWN",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
-      "unimplemented_imports": [
-        "strncpy"
-      ],
       "direct_callees": 1
     },
     {
@@ -93324,12 +93309,8 @@
       "generated": true,
       "compiled": true,
       "translation_status": "COMPILED",
-      "runtime_status": "BLOCKED_IMPORT",
+      "runtime_status": "UNKNOWN",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
-      "unimplemented_imports": [
-        "strncpy"
-      ],
       "direct_callees": 1
     },
     {
@@ -93739,12 +93720,8 @@
       "generated": true,
       "compiled": true,
       "translation_status": "COMPILED",
-      "runtime_status": "BLOCKED_IMPORT",
+      "runtime_status": "UNKNOWN",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
-      "unimplemented_imports": [
-        "strncpy"
-      ],
       "direct_callees": 1
     },
     {
@@ -93787,12 +93764,8 @@
       "generated": true,
       "compiled": true,
       "translation_status": "COMPILED",
-      "runtime_status": "BLOCKED_IMPORT",
+      "runtime_status": "UNKNOWN",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
-      "unimplemented_imports": [
-        "strncpy"
-      ],
       "direct_callees": 1
     },
     {
@@ -93916,12 +93889,8 @@
       "generated": true,
       "compiled": true,
       "translation_status": "COMPILED",
-      "runtime_status": "BLOCKED_IMPORT",
+      "runtime_status": "UNKNOWN",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
-      "unimplemented_imports": [
-        "strncpy"
-      ],
       "direct_callees": 1
     },
     {
@@ -94082,12 +94051,8 @@
       "generated": true,
       "compiled": true,
       "translation_status": "COMPILED",
-      "runtime_status": "BLOCKED_IMPORT",
+      "runtime_status": "UNKNOWN",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
-      "unimplemented_imports": [
-        "strncpy"
-      ],
       "direct_callees": 1
     },
     {
@@ -94097,12 +94062,8 @@
       "generated": true,
       "compiled": true,
       "translation_status": "COMPILED",
-      "runtime_status": "BLOCKED_IMPORT",
+      "runtime_status": "UNKNOWN",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
-      "unimplemented_imports": [
-        "strncpy"
-      ],
       "direct_callees": 1
     },
     {
@@ -94112,12 +94073,8 @@
       "generated": true,
       "compiled": true,
       "translation_status": "COMPILED",
-      "runtime_status": "BLOCKED_IMPORT",
+      "runtime_status": "UNKNOWN",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
-      "unimplemented_imports": [
-        "strncpy"
-      ],
       "direct_callees": 1
     },
     {
@@ -94228,10 +94185,9 @@
       "translation_status": "COMPILED",
       "runtime_status": "BLOCKED_IMPORT",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
+      "blocker": "printf",
       "unimplemented_imports": [
-        "printf",
-        "strncpy"
+        "printf"
       ],
       "direct_callees": 2
     },
@@ -95783,12 +95739,8 @@
       "generated": true,
       "compiled": true,
       "translation_status": "COMPILED",
-      "runtime_status": "BLOCKED_IMPORT",
+      "runtime_status": "UNKNOWN",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
-      "unimplemented_imports": [
-        "strncpy"
-      ],
       "direct_callees": 1
     },
     {
@@ -96078,12 +96030,8 @@
       "generated": true,
       "compiled": true,
       "translation_status": "COMPILED",
-      "runtime_status": "BLOCKED_IMPORT",
+      "runtime_status": "UNKNOWN",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
-      "unimplemented_imports": [
-        "strncpy"
-      ],
       "direct_callees": 1
     },
     {
@@ -96422,12 +96370,8 @@
       "generated": true,
       "compiled": true,
       "translation_status": "COMPILED",
-      "runtime_status": "BLOCKED_IMPORT",
+      "runtime_status": "UNKNOWN",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
-      "unimplemented_imports": [
-        "strncpy"
-      ],
       "direct_callees": 3
     },
     {
@@ -96439,9 +96383,8 @@
       "translation_status": "COMPILED",
       "runtime_status": "BLOCKED_IMPORT",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
+      "blocker": "strtok",
       "unimplemented_imports": [
-        "strncpy",
         "strtok"
       ],
       "direct_callees": 2
@@ -96503,10 +96446,9 @@
       "translation_status": "COMPILED",
       "runtime_status": "BLOCKED_IMPORT",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
+      "blocker": "sprintf",
       "unimplemented_imports": [
-        "sprintf",
-        "strncpy"
+        "sprintf"
       ],
       "direct_callees": 5
     },
@@ -96690,11 +96632,10 @@
       "translation_status": "COMPILED",
       "runtime_status": "BLOCKED_IMPORT",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
+      "blocker": "sprintf",
       "unimplemented_imports": [
         "atof",
-        "sprintf",
-        "strncpy"
+        "sprintf"
       ],
       "direct_callees": 5
     },
@@ -96881,12 +96822,8 @@
       "generated": true,
       "compiled": true,
       "translation_status": "COMPILED",
-      "runtime_status": "BLOCKED_IMPORT",
+      "runtime_status": "UNKNOWN",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
-      "unimplemented_imports": [
-        "strncpy"
-      ],
       "direct_callees": 5
     },
     {
@@ -96922,12 +96859,8 @@
       "generated": true,
       "compiled": true,
       "translation_status": "COMPILED",
-      "runtime_status": "BLOCKED_IMPORT",
+      "runtime_status": "UNKNOWN",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
-      "unimplemented_imports": [
-        "strncpy"
-      ],
       "direct_callees": 5
     },
     {
@@ -97062,12 +96995,8 @@
       "generated": true,
       "compiled": true,
       "translation_status": "COMPILED",
-      "runtime_status": "BLOCKED_IMPORT",
+      "runtime_status": "UNKNOWN",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
-      "unimplemented_imports": [
-        "strncpy"
-      ],
       "direct_callees": 1
     },
     {
@@ -97077,12 +97006,8 @@
       "generated": true,
       "compiled": true,
       "translation_status": "COMPILED",
-      "runtime_status": "BLOCKED_IMPORT",
+      "runtime_status": "UNKNOWN",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
-      "unimplemented_imports": [
-        "strncpy"
-      ],
       "direct_callees": 1
     },
     {
@@ -97092,12 +97017,8 @@
       "generated": true,
       "compiled": true,
       "translation_status": "COMPILED",
-      "runtime_status": "BLOCKED_IMPORT",
+      "runtime_status": "UNKNOWN",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
-      "unimplemented_imports": [
-        "strncpy"
-      ],
       "direct_callees": 1
     },
     {
@@ -97107,12 +97028,8 @@
       "generated": true,
       "compiled": true,
       "translation_status": "COMPILED",
-      "runtime_status": "BLOCKED_IMPORT",
+      "runtime_status": "UNKNOWN",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
-      "unimplemented_imports": [
-        "strncpy"
-      ],
       "direct_callees": 1
     },
     {
@@ -97729,12 +97646,8 @@
       "generated": true,
       "compiled": true,
       "translation_status": "COMPILED",
-      "runtime_status": "BLOCKED_IMPORT",
+      "runtime_status": "UNKNOWN",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
-      "unimplemented_imports": [
-        "strncpy"
-      ],
       "direct_callees": 4
     },
     {
@@ -97909,12 +97822,8 @@
       "generated": true,
       "compiled": true,
       "translation_status": "COMPILED",
-      "runtime_status": "BLOCKED_IMPORT",
+      "runtime_status": "UNKNOWN",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
-      "unimplemented_imports": [
-        "strncpy"
-      ],
       "direct_callees": 1
     },
     {
@@ -98511,11 +98420,10 @@
       "translation_status": "COMPILED",
       "runtime_status": "BLOCKED_IMPORT",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
+      "blocker": "sprintf",
       "unimplemented_imports": [
         "sprintf",
-        "sscanf",
-        "strncpy"
+        "sscanf"
       ],
       "direct_callees": 6
     },
@@ -99059,11 +98967,10 @@
       "translation_status": "COMPILED",
       "runtime_status": "BLOCKED_IMPORT",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
+      "blocker": "sprintf",
       "unimplemented_imports": [
         "sprintf",
-        "sscanf",
-        "strncpy"
+        "sscanf"
       ],
       "direct_callees": 5
     },
@@ -99415,12 +99322,8 @@
       "generated": true,
       "compiled": true,
       "translation_status": "COMPILED",
-      "runtime_status": "BLOCKED_IMPORT",
+      "runtime_status": "UNKNOWN",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
-      "unimplemented_imports": [
-        "strncpy"
-      ],
       "direct_callees": 1
     },
     {
@@ -99430,12 +99333,8 @@
       "generated": true,
       "compiled": true,
       "translation_status": "COMPILED",
-      "runtime_status": "BLOCKED_IMPORT",
+      "runtime_status": "UNKNOWN",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
-      "unimplemented_imports": [
-        "strncpy"
-      ],
       "direct_callees": 1
     },
     {
@@ -99777,11 +99676,10 @@
       "translation_status": "COMPILED",
       "runtime_status": "BLOCKED_IMPORT",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
+      "blocker": "sprintf",
       "unimplemented_imports": [
         "sprintf",
-        "sscanf",
-        "strncpy"
+        "sscanf"
       ],
       "direct_callees": 5
     },
@@ -99965,12 +99863,11 @@
       "translation_status": "COMPILED",
       "runtime_status": "BLOCKED_IMPORT",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
+      "blocker": "sprintf",
       "unimplemented_imports": [
         "atof",
         "sprintf",
-        "sscanf",
-        "strncpy"
+        "sscanf"
       ],
       "direct_callees": 7
     },
@@ -100033,12 +99930,8 @@
       "generated": true,
       "compiled": true,
       "translation_status": "COMPILED",
-      "runtime_status": "BLOCKED_IMPORT",
+      "runtime_status": "UNKNOWN",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
-      "unimplemented_imports": [
-        "strncpy"
-      ],
       "direct_callees": 4
     },
     {
@@ -100288,12 +100181,8 @@
       "generated": true,
       "compiled": true,
       "translation_status": "COMPILED",
-      "runtime_status": "BLOCKED_IMPORT",
+      "runtime_status": "UNKNOWN",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
-      "unimplemented_imports": [
-        "strncpy"
-      ],
       "direct_callees": 5
     },
     {
@@ -100305,10 +100194,9 @@
       "translation_status": "COMPILED",
       "runtime_status": "BLOCKED_IMPORT",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
+      "blocker": "sscanf",
       "unimplemented_imports": [
-        "sscanf",
-        "strncpy"
+        "sscanf"
       ],
       "direct_callees": 7
     },
@@ -100372,7 +100260,6 @@
         "malloc",
         "printf",
         "sscanf",
-        "strncpy",
         "tolower"
       ],
       "direct_callees": 10
@@ -100627,10 +100514,9 @@
       "translation_status": "COMPILED",
       "runtime_status": "BLOCKED_IMPORT",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
+      "blocker": "printf",
       "unimplemented_imports": [
-        "printf",
-        "strncpy"
+        "printf"
       ],
       "direct_callees": 9
     },
@@ -101916,10 +101802,9 @@
       "translation_status": "COMPILED",
       "runtime_status": "BLOCKED_IMPORT",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
+      "blocker": "sscanf",
       "unimplemented_imports": [
-        "sscanf",
-        "strncpy"
+        "sscanf"
       ],
       "direct_callees": 6
     },
@@ -103633,12 +103518,8 @@
       "generated": true,
       "compiled": true,
       "translation_status": "COMPILED",
-      "runtime_status": "BLOCKED_IMPORT",
+      "runtime_status": "UNKNOWN",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
-      "unimplemented_imports": [
-        "strncpy"
-      ],
       "direct_callees": 1
     },
     {
@@ -103801,12 +103682,8 @@
       "generated": true,
       "compiled": true,
       "translation_status": "COMPILED",
-      "runtime_status": "BLOCKED_IMPORT",
+      "runtime_status": "UNKNOWN",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
-      "unimplemented_imports": [
-        "strncpy"
-      ],
       "direct_callees": 1
     },
     {
@@ -103920,12 +103797,8 @@
       "generated": true,
       "compiled": true,
       "translation_status": "COMPILED",
-      "runtime_status": "BLOCKED_IMPORT",
+      "runtime_status": "UNKNOWN",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
-      "unimplemented_imports": [
-        "strncpy"
-      ],
       "direct_callees": 1
     },
     {
@@ -104117,12 +103990,8 @@
       "generated": true,
       "compiled": true,
       "translation_status": "COMPILED",
-      "runtime_status": "BLOCKED_IMPORT",
+      "runtime_status": "UNKNOWN",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
-      "unimplemented_imports": [
-        "strncpy"
-      ],
       "direct_callees": 1
     },
     {
@@ -104399,12 +104268,8 @@
       "generated": true,
       "compiled": true,
       "translation_status": "COMPILED",
-      "runtime_status": "BLOCKED_IMPORT",
+      "runtime_status": "UNKNOWN",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
-      "unimplemented_imports": [
-        "strncpy"
-      ],
       "direct_callees": 3
     },
     {
@@ -104619,12 +104484,8 @@
       "generated": true,
       "compiled": true,
       "translation_status": "COMPILED",
-      "runtime_status": "BLOCKED_IMPORT",
+      "runtime_status": "UNKNOWN",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
-      "unimplemented_imports": [
-        "strncpy"
-      ],
       "direct_callees": 1
     },
     {
@@ -104645,12 +104506,8 @@
       "generated": true,
       "compiled": true,
       "translation_status": "COMPILED",
-      "runtime_status": "BLOCKED_IMPORT",
+      "runtime_status": "UNKNOWN",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
-      "unimplemented_imports": [
-        "strncpy"
-      ],
       "direct_callees": 1
     },
     {
@@ -104660,12 +104517,8 @@
       "generated": true,
       "compiled": true,
       "translation_status": "COMPILED",
-      "runtime_status": "BLOCKED_IMPORT",
+      "runtime_status": "UNKNOWN",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
-      "unimplemented_imports": [
-        "strncpy"
-      ],
       "direct_callees": 1
     },
     {
@@ -104697,12 +104550,8 @@
       "generated": true,
       "compiled": true,
       "translation_status": "COMPILED",
-      "runtime_status": "BLOCKED_IMPORT",
+      "runtime_status": "UNKNOWN",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
-      "unimplemented_imports": [
-        "strncpy"
-      ],
       "direct_callees": 2
     },
     {
@@ -104712,12 +104561,8 @@
       "generated": true,
       "compiled": true,
       "translation_status": "COMPILED",
-      "runtime_status": "BLOCKED_IMPORT",
+      "runtime_status": "UNKNOWN",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
-      "unimplemented_imports": [
-        "strncpy"
-      ],
       "direct_callees": 1
     },
     {
@@ -104804,12 +104649,8 @@
       "generated": true,
       "compiled": true,
       "translation_status": "COMPILED",
-      "runtime_status": "BLOCKED_IMPORT",
+      "runtime_status": "UNKNOWN",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
-      "unimplemented_imports": [
-        "strncpy"
-      ],
       "direct_callees": 4
     },
     {
@@ -105094,12 +104935,8 @@
       "generated": true,
       "compiled": true,
       "translation_status": "COMPILED",
-      "runtime_status": "BLOCKED_IMPORT",
+      "runtime_status": "UNKNOWN",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
-      "unimplemented_imports": [
-        "strncpy"
-      ],
       "direct_callees": 1
     },
     {
@@ -105120,12 +104957,8 @@
       "generated": true,
       "compiled": true,
       "translation_status": "COMPILED",
-      "runtime_status": "BLOCKED_IMPORT",
+      "runtime_status": "UNKNOWN",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
-      "unimplemented_imports": [
-        "strncpy"
-      ],
       "direct_callees": 1
     },
     {
@@ -105135,12 +104968,8 @@
       "generated": true,
       "compiled": true,
       "translation_status": "COMPILED",
-      "runtime_status": "BLOCKED_IMPORT",
+      "runtime_status": "UNKNOWN",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
-      "unimplemented_imports": [
-        "strncpy"
-      ],
       "direct_callees": 2
     },
     {
@@ -105183,12 +105012,8 @@
       "generated": true,
       "compiled": true,
       "translation_status": "COMPILED",
-      "runtime_status": "BLOCKED_IMPORT",
+      "runtime_status": "UNKNOWN",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
-      "unimplemented_imports": [
-        "strncpy"
-      ],
       "direct_callees": 1
     },
     {
@@ -105407,12 +105232,8 @@
       "generated": true,
       "compiled": true,
       "translation_status": "COMPILED",
-      "runtime_status": "BLOCKED_IMPORT",
+      "runtime_status": "UNKNOWN",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
-      "unimplemented_imports": [
-        "strncpy"
-      ],
       "direct_callees": 1
     },
     {
@@ -105477,12 +105298,8 @@
       "generated": true,
       "compiled": true,
       "translation_status": "COMPILED",
-      "runtime_status": "BLOCKED_IMPORT",
+      "runtime_status": "UNKNOWN",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
-      "unimplemented_imports": [
-        "strncpy"
-      ],
       "direct_callees": 1
     },
     {
@@ -105701,12 +105518,8 @@
       "generated": true,
       "compiled": true,
       "translation_status": "COMPILED",
-      "runtime_status": "BLOCKED_IMPORT",
+      "runtime_status": "UNKNOWN",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
-      "unimplemented_imports": [
-        "strncpy"
-      ],
       "direct_callees": 2
     },
     {
@@ -105760,12 +105573,8 @@
       "generated": true,
       "compiled": true,
       "translation_status": "COMPILED",
-      "runtime_status": "BLOCKED_IMPORT",
+      "runtime_status": "UNKNOWN",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
-      "unimplemented_imports": [
-        "strncpy"
-      ],
       "direct_callees": 2
     },
     {
@@ -105999,12 +105808,8 @@
       "generated": true,
       "compiled": true,
       "translation_status": "COMPILED",
-      "runtime_status": "BLOCKED_IMPORT",
+      "runtime_status": "UNKNOWN",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
-      "unimplemented_imports": [
-        "strncpy"
-      ],
       "direct_callees": 8
     },
     {
@@ -106036,12 +105841,8 @@
       "generated": true,
       "compiled": true,
       "translation_status": "COMPILED",
-      "runtime_status": "BLOCKED_IMPORT",
+      "runtime_status": "UNKNOWN",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
-      "unimplemented_imports": [
-        "strncpy"
-      ],
       "direct_callees": 5
     },
     {
@@ -106095,12 +105896,8 @@
       "generated": true,
       "compiled": true,
       "translation_status": "COMPILED",
-      "runtime_status": "BLOCKED_IMPORT",
+      "runtime_status": "UNKNOWN",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
-      "unimplemented_imports": [
-        "strncpy"
-      ],
       "direct_callees": 4
     },
     {
@@ -106176,12 +105973,8 @@
       "generated": true,
       "compiled": true,
       "translation_status": "COMPILED",
-      "runtime_status": "BLOCKED_IMPORT",
+      "runtime_status": "UNKNOWN",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
-      "unimplemented_imports": [
-        "strncpy"
-      ],
       "direct_callees": 5
     },
     {
@@ -106191,12 +105984,8 @@
       "generated": true,
       "compiled": true,
       "translation_status": "COMPILED",
-      "runtime_status": "BLOCKED_IMPORT",
+      "runtime_status": "UNKNOWN",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
-      "unimplemented_imports": [
-        "strncpy"
-      ],
       "direct_callees": 4
     },
     {
@@ -106547,12 +106336,8 @@
       "generated": true,
       "compiled": true,
       "translation_status": "COMPILED",
-      "runtime_status": "BLOCKED_IMPORT",
+      "runtime_status": "UNKNOWN",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
-      "unimplemented_imports": [
-        "strncpy"
-      ],
       "direct_callees": 3
     },
     {
@@ -106562,12 +106347,8 @@
       "generated": true,
       "compiled": true,
       "translation_status": "COMPILED",
-      "runtime_status": "BLOCKED_IMPORT",
+      "runtime_status": "UNKNOWN",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
-      "unimplemented_imports": [
-        "strncpy"
-      ],
       "direct_callees": 3
     },
     {
@@ -106577,12 +106358,8 @@
       "generated": true,
       "compiled": true,
       "translation_status": "COMPILED",
-      "runtime_status": "BLOCKED_IMPORT",
+      "runtime_status": "UNKNOWN",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
-      "unimplemented_imports": [
-        "strncpy"
-      ],
       "direct_callees": 1
     },
     {
@@ -106592,12 +106369,8 @@
       "generated": true,
       "compiled": true,
       "translation_status": "COMPILED",
-      "runtime_status": "BLOCKED_IMPORT",
+      "runtime_status": "UNKNOWN",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
-      "unimplemented_imports": [
-        "strncpy"
-      ],
       "direct_callees": 1
     },
     {
@@ -107392,12 +107165,8 @@
       "generated": true,
       "compiled": true,
       "translation_status": "COMPILED",
-      "runtime_status": "BLOCKED_IMPORT",
+      "runtime_status": "UNKNOWN",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
-      "unimplemented_imports": [
-        "strncpy"
-      ],
       "direct_callees": 6
     },
     {
@@ -107792,12 +107561,8 @@
       "generated": true,
       "compiled": true,
       "translation_status": "COMPILED",
-      "runtime_status": "BLOCKED_IMPORT",
+      "runtime_status": "UNKNOWN",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
-      "unimplemented_imports": [
-        "strncpy"
-      ],
       "direct_callees": 14
     },
     {
@@ -107840,12 +107605,8 @@
       "generated": true,
       "compiled": true,
       "translation_status": "COMPILED",
-      "runtime_status": "BLOCKED_IMPORT",
+      "runtime_status": "UNKNOWN",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
-      "unimplemented_imports": [
-        "strncpy"
-      ],
       "direct_callees": 10
     },
     {
@@ -107866,12 +107627,8 @@
       "generated": true,
       "compiled": true,
       "translation_status": "COMPILED",
-      "runtime_status": "BLOCKED_IMPORT",
+      "runtime_status": "UNKNOWN",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
-      "unimplemented_imports": [
-        "strncpy"
-      ],
       "direct_callees": 9
     },
     {
@@ -107903,12 +107660,8 @@
       "generated": true,
       "compiled": true,
       "translation_status": "COMPILED",
-      "runtime_status": "BLOCKED_IMPORT",
+      "runtime_status": "UNKNOWN",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
-      "unimplemented_imports": [
-        "strncpy"
-      ],
       "direct_callees": 15
     },
     {
@@ -108204,12 +107957,8 @@
       "generated": true,
       "compiled": true,
       "translation_status": "COMPILED",
-      "runtime_status": "BLOCKED_IMPORT",
+      "runtime_status": "UNKNOWN",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
-      "unimplemented_imports": [
-        "strncpy"
-      ],
       "direct_callees": 15
     },
     {
@@ -108263,12 +108012,8 @@
       "generated": true,
       "compiled": true,
       "translation_status": "COMPILED",
-      "runtime_status": "BLOCKED_IMPORT",
+      "runtime_status": "UNKNOWN",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
-      "unimplemented_imports": [
-        "strncpy"
-      ],
       "direct_callees": 21
     },
     {
@@ -108388,12 +108133,8 @@
       "generated": true,
       "compiled": true,
       "translation_status": "COMPILED",
-      "runtime_status": "BLOCKED_IMPORT",
+      "runtime_status": "UNKNOWN",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
-      "unimplemented_imports": [
-        "strncpy"
-      ],
       "direct_callees": 8
     },
     {
@@ -108667,12 +108408,8 @@
       "generated": true,
       "compiled": true,
       "translation_status": "COMPILED",
-      "runtime_status": "BLOCKED_IMPORT",
+      "runtime_status": "UNKNOWN",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
-      "unimplemented_imports": [
-        "strncpy"
-      ],
       "direct_callees": 14
     },
     {
@@ -108770,12 +108507,8 @@
       "generated": true,
       "compiled": true,
       "translation_status": "COMPILED",
-      "runtime_status": "BLOCKED_IMPORT",
+      "runtime_status": "UNKNOWN",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
-      "unimplemented_imports": [
-        "strncpy"
-      ],
       "direct_callees": 8
     },
     {
@@ -108787,10 +108520,9 @@
       "translation_status": "COMPILED",
       "runtime_status": "BLOCKED_IMPORT",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
+      "blocker": "_stricmp",
       "unimplemented_imports": [
-        "_stricmp",
-        "strncpy"
+        "_stricmp"
       ],
       "direct_callees": 30
     },
@@ -108801,12 +108533,8 @@
       "generated": true,
       "compiled": true,
       "translation_status": "COMPILED",
-      "runtime_status": "BLOCKED_IMPORT",
+      "runtime_status": "UNKNOWN",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
-      "unimplemented_imports": [
-        "strncpy"
-      ],
       "direct_callees": 8
     },
     {
@@ -109212,12 +108940,8 @@
       "generated": true,
       "compiled": true,
       "translation_status": "COMPILED",
-      "runtime_status": "BLOCKED_IMPORT",
+      "runtime_status": "UNKNOWN",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
-      "unimplemented_imports": [
-        "strncpy"
-      ],
       "direct_callees": 4
     },
     {
@@ -110358,12 +110082,8 @@
       "generated": true,
       "compiled": true,
       "translation_status": "COMPILED",
-      "runtime_status": "BLOCKED_IMPORT",
+      "runtime_status": "UNKNOWN",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
-      "unimplemented_imports": [
-        "strncpy"
-      ],
       "direct_callees": 1
     },
     {
@@ -113036,12 +112756,8 @@
       "generated": true,
       "compiled": true,
       "translation_status": "COMPILED",
-      "runtime_status": "BLOCKED_IMPORT",
+      "runtime_status": "UNKNOWN",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
-      "unimplemented_imports": [
-        "strncpy"
-      ],
       "direct_callees": 1
     },
     {
@@ -113579,12 +113295,8 @@
       "generated": true,
       "compiled": true,
       "translation_status": "COMPILED",
-      "runtime_status": "BLOCKED_IMPORT",
+      "runtime_status": "UNKNOWN",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
-      "unimplemented_imports": [
-        "strncpy"
-      ],
       "direct_callees": 6
     },
     {
@@ -114614,12 +114326,8 @@
       "generated": true,
       "compiled": true,
       "translation_status": "COMPILED",
-      "runtime_status": "BLOCKED_IMPORT",
+      "runtime_status": "UNKNOWN",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
-      "unimplemented_imports": [
-        "strncpy"
-      ],
       "direct_callees": 1
     },
     {
@@ -115300,12 +115008,8 @@
       "generated": true,
       "compiled": true,
       "translation_status": "COMPILED",
-      "runtime_status": "BLOCKED_IMPORT",
+      "runtime_status": "UNKNOWN",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
-      "unimplemented_imports": [
-        "strncpy"
-      ],
       "direct_callees": 5
     },
     {
@@ -115326,12 +115030,8 @@
       "generated": true,
       "compiled": true,
       "translation_status": "COMPILED",
-      "runtime_status": "BLOCKED_IMPORT",
+      "runtime_status": "UNKNOWN",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
-      "unimplemented_imports": [
-        "strncpy"
-      ],
       "direct_callees": 5
     },
     {
@@ -116236,12 +115936,8 @@
       "generated": true,
       "compiled": true,
       "translation_status": "COMPILED",
-      "runtime_status": "BLOCKED_IMPORT",
+      "runtime_status": "UNKNOWN",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
-      "unimplemented_imports": [
-        "strncpy"
-      ],
       "direct_callees": 2
     },
     {
@@ -116864,12 +116560,8 @@
       "generated": true,
       "compiled": true,
       "translation_status": "COMPILED",
-      "runtime_status": "BLOCKED_IMPORT",
+      "runtime_status": "UNKNOWN",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
-      "unimplemented_imports": [
-        "strncpy"
-      ],
       "direct_callees": 2
     },
     {
@@ -119318,12 +119010,8 @@
       "generated": true,
       "compiled": true,
       "translation_status": "COMPILED",
-      "runtime_status": "BLOCKED_IMPORT",
+      "runtime_status": "UNKNOWN",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
-      "unimplemented_imports": [
-        "strncpy"
-      ],
       "direct_callees": 11
     },
     {
@@ -119861,12 +119549,8 @@
       "generated": true,
       "compiled": true,
       "translation_status": "COMPILED",
-      "runtime_status": "BLOCKED_IMPORT",
+      "runtime_status": "UNKNOWN",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
-      "unimplemented_imports": [
-        "strncpy"
-      ],
       "direct_callees": 4
     },
     {
@@ -120151,12 +119835,8 @@
       "generated": true,
       "compiled": true,
       "translation_status": "COMPILED",
-      "runtime_status": "BLOCKED_IMPORT",
+      "runtime_status": "UNKNOWN",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
-      "unimplemented_imports": [
-        "strncpy"
-      ],
       "direct_callees": 29
     },
     {
@@ -120537,12 +120217,8 @@
       "generated": true,
       "compiled": true,
       "translation_status": "COMPILED",
-      "runtime_status": "BLOCKED_IMPORT",
+      "runtime_status": "UNKNOWN",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
-      "unimplemented_imports": [
-        "strncpy"
-      ],
       "direct_callees": 7
     },
     {
@@ -121573,12 +121249,8 @@
       "generated": true,
       "compiled": true,
       "translation_status": "COMPILED",
-      "runtime_status": "BLOCKED_IMPORT",
+      "runtime_status": "UNKNOWN",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
-      "unimplemented_imports": [
-        "strncpy"
-      ],
       "direct_callees": 3
     },
     {
@@ -123066,12 +122738,8 @@
       "generated": true,
       "compiled": true,
       "translation_status": "COMPILED",
-      "runtime_status": "BLOCKED_IMPORT",
+      "runtime_status": "UNKNOWN",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
-      "unimplemented_imports": [
-        "strncpy"
-      ],
       "direct_callees": 3
     },
     {
@@ -123338,12 +123006,8 @@
       "generated": true,
       "compiled": true,
       "translation_status": "COMPILED",
-      "runtime_status": "BLOCKED_IMPORT",
+      "runtime_status": "UNKNOWN",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
-      "unimplemented_imports": [
-        "strncpy"
-      ],
       "direct_callees": 2
     },
     {
@@ -123529,12 +123193,8 @@
       "generated": true,
       "compiled": true,
       "translation_status": "COMPILED",
-      "runtime_status": "BLOCKED_IMPORT",
+      "runtime_status": "UNKNOWN",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
-      "unimplemented_imports": [
-        "strncpy"
-      ],
       "direct_callees": 4
     },
     {
@@ -123612,9 +123272,8 @@
       "translation_status": "COMPILED",
       "runtime_status": "BLOCKED_IMPORT",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
+      "blocker": "strnlen",
       "unimplemented_imports": [
-        "strncpy",
         "strnlen"
       ],
       "direct_callees": 7
@@ -123927,9 +123586,8 @@
       "translation_status": "COMPILED",
       "runtime_status": "BLOCKED_IMPORT",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
+      "blocker": "strnlen",
       "unimplemented_imports": [
-        "strncpy",
         "strnlen"
       ],
       "direct_callees": 12
@@ -124266,9 +123924,8 @@
       "translation_status": "COMPILED",
       "runtime_status": "BLOCKED_IMPORT",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
+      "blocker": "strnlen",
       "unimplemented_imports": [
-        "strncpy",
         "strnlen"
       ],
       "direct_callees": 6
@@ -124524,9 +124181,8 @@
       "translation_status": "COMPILED",
       "runtime_status": "BLOCKED_IMPORT",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
+      "blocker": "strnlen",
       "unimplemented_imports": [
-        "strncpy",
         "strnlen"
       ],
       "direct_callees": 8
@@ -124815,9 +124471,8 @@
       "translation_status": "COMPILED",
       "runtime_status": "BLOCKED_IMPORT",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
+      "blocker": "strnlen",
       "unimplemented_imports": [
-        "strncpy",
         "strnlen"
       ],
       "direct_callees": 6
@@ -124984,12 +124639,8 @@
       "generated": true,
       "compiled": true,
       "translation_status": "COMPILED",
-      "runtime_status": "BLOCKED_IMPORT",
+      "runtime_status": "UNKNOWN",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
-      "unimplemented_imports": [
-        "strncpy"
-      ],
       "direct_callees": 2
     },
     {
@@ -125198,12 +124849,8 @@
       "generated": true,
       "compiled": true,
       "translation_status": "COMPILED",
-      "runtime_status": "BLOCKED_IMPORT",
+      "runtime_status": "UNKNOWN",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
-      "unimplemented_imports": [
-        "strncpy"
-      ],
       "direct_callees": 4
     },
     {
@@ -125289,7 +124936,6 @@
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
       "blocker": "RESOLVABLE_INDIRECT_CALL",
       "unimplemented_imports": [
-        "strncpy",
         "strnlen"
       ],
       "direct_callees": 4
@@ -126086,9 +125732,8 @@
       "translation_status": "COMPILED",
       "runtime_status": "BLOCKED_IMPORT",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
+      "blocker": "strnlen",
       "unimplemented_imports": [
-        "strncpy",
         "strnlen"
       ],
       "direct_callees": 6
@@ -126514,9 +126159,8 @@
       "translation_status": "COMPILED",
       "runtime_status": "BLOCKED_IMPORT",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
+      "blocker": "strnlen",
       "unimplemented_imports": [
-        "strncpy",
         "strnlen"
       ],
       "direct_callees": 3
@@ -126953,9 +126597,8 @@
       "translation_status": "COMPILED",
       "runtime_status": "BLOCKED_IMPORT",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
+      "blocker": "strnlen",
       "unimplemented_imports": [
-        "strncpy",
         "strnlen"
       ],
       "direct_callees": 3
@@ -127736,9 +127379,8 @@
       "translation_status": "COMPILED",
       "runtime_status": "BLOCKED_IMPORT",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
+      "blocker": "strnlen",
       "unimplemented_imports": [
-        "strncpy",
         "strnlen"
       ],
       "direct_callees": 3
@@ -135995,8 +135637,7 @@
       "unimplemented_imports": [
         "fclose",
         "fseek",
-        "fwrite",
-        "strncpy"
+        "fwrite"
       ],
       "direct_callees": 6
     },
@@ -141879,12 +141520,8 @@
       "generated": true,
       "compiled": true,
       "translation_status": "COMPILED",
-      "runtime_status": "BLOCKED_IMPORT",
+      "runtime_status": "UNKNOWN",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
-      "unimplemented_imports": [
-        "strncpy"
-      ],
       "direct_callees": 2
     },
     {
@@ -143467,12 +143104,8 @@
       "generated": true,
       "compiled": true,
       "translation_status": "COMPILED",
-      "runtime_status": "BLOCKED_IMPORT",
+      "runtime_status": "UNKNOWN",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
-      "unimplemented_imports": [
-        "strncpy"
-      ],
       "direct_callees": 1
     },
     {
@@ -143717,12 +143350,8 @@
       "generated": true,
       "compiled": true,
       "translation_status": "COMPILED",
-      "runtime_status": "BLOCKED_IMPORT",
+      "runtime_status": "UNKNOWN",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
-      "unimplemented_imports": [
-        "strncpy"
-      ],
       "direct_callees": 1
     },
     {
@@ -143743,12 +143372,8 @@
       "generated": true,
       "compiled": true,
       "translation_status": "COMPILED",
-      "runtime_status": "BLOCKED_IMPORT",
+      "runtime_status": "UNKNOWN",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
-      "unimplemented_imports": [
-        "strncpy"
-      ],
       "direct_callees": 3
     },
     {
@@ -144894,10 +144519,9 @@
       "translation_status": "COMPILED",
       "runtime_status": "BLOCKED_IMPORT",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
+      "blocker": "strchr",
       "unimplemented_imports": [
-        "strchr",
-        "strncpy"
+        "strchr"
       ],
       "direct_callees": 4
     },
@@ -145246,12 +144870,8 @@
       "generated": true,
       "compiled": true,
       "translation_status": "COMPILED",
-      "runtime_status": "BLOCKED_IMPORT",
+      "runtime_status": "UNKNOWN",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
-      "unimplemented_imports": [
-        "strncpy"
-      ],
       "direct_callees": 6
     },
     {
@@ -145579,10 +145199,9 @@
       "translation_status": "COMPILED",
       "runtime_status": "BLOCKED_IMPORT",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
+      "blocker": "strchr",
       "unimplemented_imports": [
-        "strchr",
-        "strncpy"
+        "strchr"
       ],
       "direct_callees": 11
     },
@@ -159349,9 +158968,6 @@
       "runtime_status": "PROTECTED_BOUNDARY",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
       "blocker": "PROTECTED_BOUNDARY",
-      "unimplemented_imports": [
-        "strncpy"
-      ],
       "direct_callees": 2
     },
     {
@@ -165742,12 +165358,8 @@
       "generated": true,
       "compiled": true,
       "translation_status": "COMPILED",
-      "runtime_status": "BLOCKED_IMPORT",
+      "runtime_status": "UNKNOWN",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
-      "unimplemented_imports": [
-        "strncpy"
-      ],
       "direct_callees": 7
     },
     {
@@ -165790,12 +165402,8 @@
       "generated": true,
       "compiled": true,
       "translation_status": "COMPILED",
-      "runtime_status": "BLOCKED_IMPORT",
+      "runtime_status": "UNKNOWN",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
-      "unimplemented_imports": [
-        "strncpy"
-      ],
       "direct_callees": 8
     },
     {
@@ -165838,12 +165446,8 @@
       "generated": true,
       "compiled": true,
       "translation_status": "COMPILED",
-      "runtime_status": "BLOCKED_IMPORT",
+      "runtime_status": "UNKNOWN",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
-      "unimplemented_imports": [
-        "strncpy"
-      ],
       "direct_callees": 9
     },
     {
@@ -178032,11 +177636,10 @@
       "translation_status": "COMPILED",
       "runtime_status": "BLOCKED_IMPORT",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
+      "blocker": "strncat",
       "unimplemented_imports": [
         "strcspn",
-        "strncat",
-        "strncpy"
+        "strncat"
       ],
       "direct_callees": 3
     },
@@ -181647,10 +181250,9 @@
       "translation_status": "COMPILED",
       "runtime_status": "BLOCKED_IMPORT",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
+      "blocker": "qsort",
       "unimplemented_imports": [
-        "qsort",
-        "strncpy"
+        "qsort"
       ],
       "direct_callees": 2
     },
@@ -181713,12 +181315,8 @@
       "generated": true,
       "compiled": true,
       "translation_status": "COMPILED",
-      "runtime_status": "BLOCKED_IMPORT",
+      "runtime_status": "UNKNOWN",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
-      "unimplemented_imports": [
-        "strncpy"
-      ],
       "direct_callees": 1
     },
     {
@@ -181728,12 +181326,8 @@
       "generated": true,
       "compiled": true,
       "translation_status": "COMPILED",
-      "runtime_status": "BLOCKED_IMPORT",
+      "runtime_status": "UNKNOWN",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
-      "unimplemented_imports": [
-        "strncpy"
-      ],
       "direct_callees": 2
     },
     {
@@ -181864,12 +181458,8 @@
       "generated": true,
       "compiled": true,
       "translation_status": "COMPILED",
-      "runtime_status": "BLOCKED_IMPORT",
+      "runtime_status": "UNKNOWN",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
-      "unimplemented_imports": [
-        "strncpy"
-      ],
       "direct_callees": 2
     },
     {
@@ -181912,12 +181502,8 @@
       "generated": true,
       "compiled": true,
       "translation_status": "COMPILED",
-      "runtime_status": "BLOCKED_IMPORT",
+      "runtime_status": "UNKNOWN",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
-      "unimplemented_imports": [
-        "strncpy"
-      ],
       "direct_callees": 4
     },
     {
@@ -181993,12 +181579,8 @@
       "generated": true,
       "compiled": true,
       "translation_status": "COMPILED",
-      "runtime_status": "BLOCKED_IMPORT",
+      "runtime_status": "UNKNOWN",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
-      "unimplemented_imports": [
-        "strncpy"
-      ],
       "direct_callees": 3
     },
     {
@@ -182148,12 +181730,8 @@
       "generated": true,
       "compiled": true,
       "translation_status": "COMPILED",
-      "runtime_status": "BLOCKED_IMPORT",
+      "runtime_status": "UNKNOWN",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
-      "unimplemented_imports": [
-        "strncpy"
-      ],
       "direct_callees": 11
     },
     {
@@ -183984,12 +183562,8 @@
       "generated": true,
       "compiled": true,
       "translation_status": "COMPILED",
-      "runtime_status": "BLOCKED_IMPORT",
+      "runtime_status": "UNKNOWN",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
-      "unimplemented_imports": [
-        "strncpy"
-      ],
       "direct_callees": 1
     },
     {
@@ -229658,12 +229232,8 @@
       "generated": true,
       "compiled": true,
       "translation_status": "COMPILED",
-      "runtime_status": "BLOCKED_IMPORT",
+      "runtime_status": "UNKNOWN",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
-      "blocker": "strncpy",
-      "unimplemented_imports": [
-        "strncpy"
-      ],
       "direct_callees": 2
     },
     {

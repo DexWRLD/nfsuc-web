@@ -320,10 +320,31 @@ def better(current, proposed):
     return current
 
 
+def load_frontier_pair():
+    """Closure frontier (uc_frontier) plus Phase-25 ordinary frontier summary."""
+    closures_path = os.path.join(ANALYSIS, "runtime-frontier-closures.json")
+    ordinary_path = os.path.join(ANALYSIS, "runtime-frontier.json")
+    closures = {}
+    ordinary = {}
+    if os.path.isfile(closures_path):
+        closures = json.load(open(closures_path, encoding="utf-8"))
+    raw = json.load(open(ordinary_path, encoding="utf-8")) if os.path.isfile(ordinary_path) else {}
+    if raw.get("all_node_extremes"):
+        # Still the classic closure document.
+        closures = raw
+    elif raw.get("ordinary_runtime_frontier") or raw.get("phase") == 25:
+        ordinary = raw
+        if not closures and os.path.isfile(closures_path):
+            closures = json.load(open(closures_path, encoding="utf-8"))
+    else:
+        closures = raw
+    return closures, ordinary
+
+
 def build():
     function_map = load_json("function-map.json")
     compiled = load_json("high-confidence.json")
-    frontier = load_json("runtime-frontier.json")
+    frontier, ordinary = load_frontier_pair()
     abi = load_json("import-abi.json")
     status = load_json("project-status.json")
     pe = load_json("nfs-pe.json")
@@ -524,13 +545,16 @@ def build():
                 if item["address"].upper() not in {row["address"].upper() for row in functions}),
             "unlogged_entries": "UNKNOWN",
             "counts": runtime_counts,
-            "ready_closure": frontier["all_node_extremes"]["READY"]["size"],
-            "ready_with_imports_closure": frontier["all_node_extremes"]["READY_WITH_IMPLEMENTED_IMPORTS"]["size"],
+            "ready_closure": ((frontier.get("all_node_extremes") or {}).get("READY") or {}).get("size"),
+            "ready_with_imports_closure": ((frontier.get("all_node_extremes") or {}).get(
+                "READY_WITH_IMPLEMENTED_IMPORTS") or {}).get("size"),
             "note": (
                 "A compiled function is not a function that has run. "
                 "DISCOVERED_HIGH != CALL_GRAPH_REACHABLE != RUNTIME_ENTERABLE."
             ),
         },
+        "ordinary_runtime_frontier": ordinary.get("ordinary_runtime_frontier") or {},
+        "top_ordinary_island": ordinary.get("top_ordinary_island") or {},
         "initialization": status["initialization"],
         "boundaries": status["boundaries"],
         "helper_cut": helper_summary if helper_summary else "UNKNOWN",
@@ -551,9 +575,10 @@ def build():
                 "compiler_failures": compiled["compiler_failures"],
             },
             {
-                "source": "runtime-frontier.json",
-                "largest_ready_closure": frontier["all_node_extremes"]["READY"]["size"],
-                "largest_ready_with_imports": frontier["all_node_extremes"]["READY_WITH_IMPLEMENTED_IMPORTS"]["size"],
+                "source": "runtime-frontier-closures.json",
+                "largest_ready_closure": ((frontier.get("all_node_extremes") or {}).get("READY") or {}).get("size"),
+                "largest_ready_with_imports": ((frontier.get("all_node_extremes") or {}).get(
+                    "READY_WITH_IMPLEMENTED_IMPORTS") or {}).get("size"),
             },
         ],
         "functions": functions,
@@ -652,6 +677,27 @@ def legend(parts, x, y, colors):
                      % (cursor + 14, y + 9, MUTED, html.escape(name)))
         cursor += 14 + 7 * len(name) + 10
     return y + 18
+
+
+def _ordinary_frontier_badge(model):
+    orf = model.get("ordinary_runtime_frontier") or {}
+    if not orf:
+        return "UNMEASURED"
+    return "H%d C%d R%d E%d" % (
+        int(orf.get("HIGH") or 0),
+        int(orf.get("COMPILED") or 0),
+        int(orf.get("RUNTIME_READY_EST") or 0),
+        int(orf.get("EXECUTED") or 0),
+    )
+
+
+def _top_island_badge(model):
+    top = model.get("top_ordinary_island") or {}
+    if not top:
+        return "UNMEASURED"
+    blockers = top.get("exact_blockers") or []
+    primary = blockers[0] if blockers else "none"
+    return "%s fn=%s %s" % (top.get("root") or "?", top.get("function_count") or "?", primary)
 
 
 def badge_row(parts, badges, y):
@@ -754,7 +800,9 @@ def render_svg(model, detailed=False):
         ("P23 SEAM", angr_meta.get("post_init_seam") or seam),
         ("P23 D3D9", angr_meta.get("d3d9") or d3d_just),
         ("P23 BACKEND ADAPTER", angr_meta.get("engine_backend_adapter") or "UNKNOWN"),
-        ("FIRST FRAME", angr_meta.get("first_frame") or "UNBOUNDED"),
+        ("FIRST FRAME", "BLOCKED — PROTECTED BACKEND"),
+        ("D3D9", "NOT JUSTIFIED"),
+        ("ENGINE BACKEND", "NOT JUSTIFIED"),
         ("ENGINE FRONTEND", angr_meta.get("engine_frontend") or "UNKNOWN"),
         ("SUBMIT BACKEND", angr_meta.get("submit_backend") or "UNKNOWN"),
         ("VISIBLE SUBMIT CONTRACT", angr_meta.get("visible_submit_contract") or "UNKNOWN"),
@@ -766,6 +814,8 @@ def render_svg(model, detailed=False):
         ("FACTORY FRONTIER READY", frontier_ready),
         ("DIRECT3D9 IMPLEMENTED", d3d_impl),
         ("Runtime factory frontier", runtime_factory),
+        ("ORDINARY RUNTIME FRONTIER", _ordinary_frontier_badge(model)),
+        ("TOP ORDINARY ISLAND", _top_island_badge(model)),
     ]
     parts = []
     y = badge_row(parts, badges, 14)
@@ -878,14 +928,19 @@ th { color: #8b949e; font-weight: 600; }
 <p>RENDERER LIST: %s. BACKEND HANDOFF: %s. RAW DEVICE DRAW: %s. DURABLE DEVICE ALIAS: %s.</p>
 <p>FRAME ROOT: %s. GRAPHICS BOUNDARY: %s.</p>
 <p>RENDERER VECTOR: MAPPED. VECTOR INSERTION: %s. ELEMENT +0x04: %s. IFACE PUBLICATION: %s. VTABLE: %s.</p>
-<p>METHOD +148: %s. METHOD +14C: %s. METHOD +154: %s. FIRST FRAME: %s.</p>
+<p>METHOD +148: %s. METHOD +14C: %s. METHOD +154: %s. FIRST FRAME: <strong>BLOCKED — PROTECTED BACKEND</strong>.</p>
+<p>D3D9: <strong>NOT JUSTIFIED</strong>. ENGINE BACKEND: <strong>NOT JUSTIFIED</strong>. Graphics investigation frozen after Phase 24.</p>
 <p>ENGINE FRONTEND: %s. SUBMIT BACKEND: %s. VISIBLE SUBMIT CONTRACT: %s. RAW D3D9 RESOURCE TRAFFIC: %s.</p>
 <p>FRAME CORRELATION: %s. GRAPHICS ARCHITECTURE: %s. SAFE RUNTIME SEAM: %s.</p>
 <p>STATIC FACTORY: %s. FACTORY FRONTIER READY: %s. DIRECT3D9 IMPLEMENTED: %s.</p>
+<h2>Ordinary runtime frontier</h2>
+%s
+<h2>Top ordinary island</h2>
+%s
 <p>Independent of <code>0x00686000</code>: %s. Discovery-enrolled on HIGH graph: %s. Runtime enterable now: %s. Call <code>%s</code> in <code>%s</code> (%s).</p>
 <p>Active objective: %s</p>
 <p>%s</p>
-<p>First-frame estimate, marked as an estimate: best case phase %s, likely %s–%s. %s</p>
+<p>First-frame estimate: frozen — <code>FIRST_FRAME_PATH_BLOCKED_BY_PROTECTED_BACKEND</code>. Former estimate (%s / %s–%s) is historical only. %s</p>
 <p>Recorded runs with no function-map cell: %s. Other entered functions whose tests do not record an address stay UNKNOWN.</p>
 <h2>Phases</h2>
 <p>%s</p>
@@ -967,7 +1022,6 @@ document.querySelectorAll("rect[data-addr]").forEach(function (node) {
         html.escape(str(angr_meta.get("method_148_terminus") or "UNKNOWN")),
         html.escape(str(angr_meta.get("method_14c_terminus") or "UNKNOWN")),
         html.escape(str(angr_meta.get("method_154_terminus") or "UNKNOWN")),
-        html.escape(str(angr_meta.get("first_frame") or "UNBOUNDED")),
         html.escape(str(angr_meta.get("engine_frontend") or "UNKNOWN")),
         html.escape(str(angr_meta.get("submit_backend") or "UNKNOWN")),
         html.escape(str(angr_meta.get("visible_submit_contract") or "UNKNOWN")),
@@ -978,13 +1032,30 @@ document.querySelectorAll("rect[data-addr]").forEach(function (node) {
         html.escape(graphics.get("static_factory_frontier") or graphics.get("frontier") or "UNKNOWN"),
         "YES" if graphics.get("factory_frontier_ready") else "NO",
         "YES" if graphics.get("direct3d9_implemented") else "NO",
+        html_table(("Metric", "Value"), [
+            (k, v) for k, v in (model.get("ordinary_runtime_frontier") or {
+                "status": "UNMEASURED"}).items()
+        ]),
+        html_table(("Field", "Value"), [
+            ("root", (model.get("top_ordinary_island") or {}).get("root") or "UNMEASURED"),
+            ("functions", (model.get("top_ordinary_island") or {}).get("function_count") or "?"),
+            ("status", "enterable" if (model.get("top_ordinary_island") or {}).get("estimated_runtime_work") == "enterable"
+             else ((model.get("top_ordinary_island") or {}).get("estimated_runtime_work") or "?")),
+            ("primary blocker", ((model.get("top_ordinary_island") or {}).get("exact_blockers") or ["none"])[0]),
+            ("next blocker", (
+                ((model.get("top_ordinary_island") or {}).get("exact_blockers") or ["none", "none"]) + ["none"]
+            )[1] if len((model.get("top_ordinary_island") or {}).get("exact_blockers") or []) > 1
+            else ((model.get("top_ordinary_island") or {}).get("missing_imports") or ["none"])[0]
+                 if (model.get("top_ordinary_island") or {}).get("missing_imports") else "none"),
+            ("missing imports", ", ".join((model.get("top_ordinary_island") or {}).get("missing_imports") or []) or "none"),
+        ]),
         html.escape(graphics["independent_of_0x00686000"]),
         html.escape(graphics["reachable_from_high_graph"]),
         html.escape(graphics["enterable_now"]),
         html.escape(graphics["call"]),
         html.escape(graphics["function"]),
         html.escape(graphics["confidence"]),
-        html.escape(graphics.get("active_objective") or "Map DEVICE aliases into draw paths; decide host-device Present contract"),
+        html.escape(graphics.get("active_objective") or "Expand ordinary CPU/runtime islands; graphics frozen"),
         html.escape("; ".join(graphics.get("blockers") or []) or "No blocker list."),
         estimate["best_case_phase"],
         estimate["likely_low"],
@@ -1097,7 +1168,9 @@ def render_png(model):
         ("P23 SEAM", angr_meta.get("post_init_seam") or seam),
         ("P23 D3D9", angr_meta.get("d3d9") or d3d_just),
         ("P23 BACKEND ADAPTER", angr_meta.get("engine_backend_adapter") or "UNKNOWN"),
-        ("FIRST FRAME", angr_meta.get("first_frame") or "UNBOUNDED"),
+        ("FIRST FRAME", "BLOCKED — PROTECTED BACKEND"),
+        ("D3D9", "NOT JUSTIFIED"),
+        ("ENGINE BACKEND", "NOT JUSTIFIED"),
         ("ENGINE FRONTEND", angr_meta.get("engine_frontend") or "UNKNOWN"),
         ("SUBMIT BACKEND", angr_meta.get("submit_backend") or "UNKNOWN"),
         ("VISIBLE SUBMIT CONTRACT", angr_meta.get("visible_submit_contract") or "UNKNOWN"),
@@ -1109,6 +1182,8 @@ def render_png(model):
         ("FACTORY FRONTIER READY", frontier_ready),
         ("DIRECT3D9 IMPLEMENTED", d3d_impl),
         ("Runtime factory frontier", runtime_factory),
+        ("ORDINARY RUNTIME FRONTIER", _ordinary_frontier_badge(model)),
+        ("TOP ORDINARY ISLAND", _top_island_badge(model)),
     ]
 
     # Measure height with the same geometry as the SVG.
