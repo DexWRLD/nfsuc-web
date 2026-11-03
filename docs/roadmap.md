@@ -26,9 +26,10 @@ The order from here:
 4. ORDINARY OBJECT INITIALIZATION. Stopped. The writers of `0x0189DA84` and `[0x0189D0A0+8]` follow `call 0x00686000`. That address is an unavailable protected or external dependency. It is not substituted.
 5. DEPENDENCY CUT. Phase 14. Eleven reachable functions must hit that call, 31 can hit it on some walk, and 6,456 have no path to it. The 102-function closure at `0x0099DCD0` is in the last set and still needs the object field this call feeds. It is not the primary frontier.
 6. FUNCTION DISCOVERY REPAIR. Phase 16. CFG-aware fact walk; old 24-instruction cohort mostly promoted; compiler closure holds.
-7. INDEPENDENT SUBSYSTEM FRONTIERS. `Direct3DCreate9` is statically reachable HIGH. Phase 17: create prefix blocked by `0x00B615C4` (`RUNTIME_REPLACEMENT_REQUIRED`); flag=1 writer enrolled but uninvoked; TLS only on the outer root. `FACTORY_FRONTIER_READY` is false. Direct3D was not implemented.
-8. FACTORY FRONTIER READY, then Direct3D9 factory implementation. Not started.
-9. FIRST FRAME, if a path becomes available. Not started. A factory pointer is not a frame.
+7. INDEPENDENT SUBSYSTEM FRONTIERS. `Direct3DCreate9` is statically REACHABLE HIGH. Phase 18: `0x00B615C4` lives in `.rdata` table `0x00B61528`–`0x00B615E4`; publication class is `EXTERNAL_PROTECTED_INITIALIZATION` (PE Import/IAT in `.securom`; no ordinary writer). PRE-FACTORY CALLBACK UNRESOLVED. `FACTORY_FRONTIER_READY` is false. Direct3D was not implemented.
+8. Alternate ordinary graphics routes, or accept external initialization. Do not invent callback bodies.
+9. FACTORY FRONTIER READY, then Direct3D9 factory implementation. Not started.
+10. FIRST FRAME, if a path becomes available. Not started. A factory pointer is not a frame.
 
 The strategy is ordinary static recompilation, then ordinary runtime islands, then this dependency cut, then independent subsystem frontiers, then a first-frame path if one is available.
 
