@@ -562,6 +562,10 @@ def build():
             json.load(open(os.path.join(ANALYSIS, "tls-frontier.json"), encoding="utf-8"))
             if os.path.isfile(os.path.join(ANALYSIS, "tls-frontier.json")) else {}
         ),
+        "sync_frontier": (
+            json.load(open(os.path.join(ANALYSIS, "synchronization-frontier.json"), encoding="utf-8"))
+            if os.path.isfile(os.path.join(ANALYSIS, "synchronization-frontier.json")) else {}
+        ),
         "initialization": status["initialization"],
         "boundaries": status["boundaries"],
         "helper_cut": helper_summary if helper_summary else "UNKNOWN",
@@ -776,6 +780,54 @@ def _tls_badge(model):
     )
 
 
+def _sync_badge(model):
+    sync = model.get("sync_frontier") or {}
+    if not sync:
+        return "UNMEASURED"
+    fam = sync.get("family_inventory") or {}
+
+    def st_row(row):
+        if not row:
+            return "PENDING"
+        if row.get("implemented"):
+            return "IMPLEMENTED"
+        if row.get("reached") or row.get("reached_legitimately") or row.get("reached_phase32"):
+            return "REACHED"
+        return "NOT_IMPL"
+
+    return "ICS=%s Enter=%s Leave=%s Del=%s Mutex=%s GCP=%s thr=%s sched=%s" % (
+        st_row(sync.get("critical_section")),
+        st_row(fam.get("EnterCriticalSection")),
+        st_row(fam.get("LeaveCriticalSection")),
+        st_row(fam.get("DeleteCriticalSection")),
+        st_row(sync.get("create_mutex_a")),
+        st_row(sync.get("get_current_process")),
+        sync.get("guest_threads") or "?",
+        sync.get("scheduler") or "NONE",
+    )
+
+
+def _sync_html_table(model):
+    sync = model.get("sync_frontier") or {}
+    fam = sync.get("family_inventory") or {}
+    def impl(row):
+        if not row:
+            return "PENDING"
+        return "IMPLEMENTED" if row.get("implemented") else "NOT_IMPLEMENTED"
+    rows = [
+        ("InitializeCriticalSection", impl(sync.get("critical_section"))),
+        ("EnterCriticalSection", impl(fam.get("EnterCriticalSection"))),
+        ("LeaveCriticalSection", impl(fam.get("LeaveCriticalSection"))),
+        ("DeleteCriticalSection", impl(fam.get("DeleteCriticalSection"))),
+        ("CreateMutexA", impl(sync.get("create_mutex_a"))),
+        ("GetCurrentProcess", impl(sync.get("get_current_process"))),
+        ("Guest threads", "%s" % (sync.get("guest_threads") or 1)),
+        ("Scheduler", sync.get("scheduler") or "NONE"),
+        ("Model", sync.get("model") or "SINGLE GUEST THREAD — LIMITED SYNC MODEL"),
+    ]
+    return html_table(("Item", "Status"), rows)
+
+
 def _tls_html_table(model):
     tls = model.get("tls_frontier") or {}
     dyn = tls.get("dynamic_tls") or {}
@@ -924,6 +976,7 @@ def render_svg(model, detailed=False):
         ("ORDINARY INITIALIZATION", _ordinary_init_badge(model)),
         ("CRT _CIsqrt", _cisqrt_badge(model)),
         ("DYNAMIC WIN32 TLS", _tls_badge(model)),
+        ("WIN32 SYNCHRONIZATION", _sync_badge(model)),
     ]
     parts = []
     y = badge_row(parts, badges, 14)
@@ -1052,6 +1105,9 @@ th { color: #8b949e; font-weight: 600; }
 <h2>Dynamic Win32 TLS</h2>
 %s
 <p>Guest-managed indices/values only. Not host TLS. Not a general threading runtime.</p>
+<h2>Win32 synchronization</h2>
+%s
+<p>SINGLE GUEST THREAD — LIMITED SYNC MODEL. No guest scheduler.</p>
 <p>CRT <code>_CIsqrt</code>: %s. ABI: X87 ST0→ST0.</p>
 <p>Independent of <code>0x00686000</code>: %s. Discovery-enrolled on HIGH graph: %s. Runtime enterable now: %s. Call <code>%s</code> in <code>%s</code> (%s).</p>
 <p>Active objective: %s</p>
@@ -1174,6 +1230,7 @@ document.querySelectorAll("rect[data-addr]").forEach(function (node) {
             ("depth-3 potential", (model.get("ordinary_runtime_frontier") or {}).get("ENTERABLE_WITH_DEPTH_3_POTENTIAL") or "?"),
         ]),
         _tls_html_table(model),
+        _sync_html_table(model),
         html.escape(_cisqrt_badge(model)),
         html.escape(graphics["independent_of_0x00686000"]),
         html.escape(graphics["reachable_from_high_graph"]),
@@ -1314,6 +1371,7 @@ def render_png(model):
         ("ORDINARY INITIALIZATION", _ordinary_init_badge(model)),
         ("CRT _CIsqrt", _cisqrt_badge(model)),
         ("DYNAMIC WIN32 TLS", _tls_badge(model)),
+        ("WIN32 SYNCHRONIZATION", _sync_badge(model)),
     ]
 
     # Measure height with the same geometry as the SVG.
