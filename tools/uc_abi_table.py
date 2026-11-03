@@ -30,6 +30,9 @@ KNOWN = {
 STDCALL_KNOWN = {
     "TlsAlloc": (0, "UC_HLE_TLSALLOC"),
     "TlsSetValue": (2, "UC_HLE_TLSSETVALUE"),
+    "InitializeCriticalSection": (1, "UC_HLE_INITCRITSEC"),
+    "CreateMutexA": (3, "UC_HLE_CREATEMUTEXA"),
+    "GetCurrentProcess": (0, "UC_HLE_GETCURRENTPROCESS"),
 }
 # public: void type_info::_type_info_dtor_internal_method(void)
 THISCALL_NO_STACK = "?_type_info_dtor_internal_method@type_info@@QAEXXZ"

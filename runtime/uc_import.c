@@ -5,8 +5,10 @@
 extern void uc_guest_store8(uint32_t addr, uint8_t value);
 extern void uc_guest_store32(uint32_t addr, uint32_t value, int *ok);
 #define UC_ST8(addr, value) uc_guest_store8((uint32_t)(addr), (uint8_t)(value))
+#define UC_ST32(addr, value) do { int _ok = 0; uc_guest_store32((uint32_t)(addr), (uint32_t)(value), &_ok); (void)_ok; } while (0)
 #else
 #define UC_ST8(addr, value) (MR8(addr) = (uint8_t)(value))
+#define UC_ST32(addr, value) (MR32(addr) = (uint32_t)(value))
 #endif
 
 uint32_t uc_guest_limit;
@@ -52,6 +54,8 @@ static int x87_replace(struct CPU *c, UcHostUnary fn, const char *missing) {
 }
 
 #include "uc_import_table.inc"
+
+static int range_ok(uint32_t addr, uint32_t len);
 
 /* Dynamic Win32 TLS — guest-managed indices/values, not host OS TLS.
  * Today: one active guest-thread context (single-thread harness).
@@ -113,6 +117,218 @@ static uint32_t uc_tls_set_value(uint32_t index, uint32_t value) {
     if (uc_tls_active_thread >= UC_TLS_THREAD_MAX) return 0;
     uc_tls_values[uc_tls_active_thread][index] = value;
     return 1;
+}
+
+/* Guest Win32 synchronization — single guest-thread context, no scheduler.
+ *
+ * CRITICAL_SECTION is the 32-bit Windows layout written into guest memory.
+ * Runtime ownership/recursion lives in a side table keyed by guest VA so no
+ * host pointer is ever stored in the guest image.
+ *
+ * Mutexes are opaque guest handles (not host HANDLEs, not guest pointers). */
+enum {
+    UC_CS_SIZE = 0x18,          /* sizeof(RTL_CRITICAL_SECTION) on x86 */
+    UC_CS_CAP = 64,
+    UC_MUTEX_CAP = 32,
+    UC_MUTEX_NAME_MAX = 64,
+    UC_MUTEX_HANDLE_BASE = 0xCD010001u
+};
+
+typedef struct UcCritSec {
+    uint32_t guest_cs;
+    uint8_t initialized;
+    uint8_t owned;
+    uint32_t owner_thread; /* index into guest-thread contexts; 0 today */
+    uint32_t recursion;
+} UcCritSec;
+
+typedef struct UcMutex {
+    uint8_t active;
+    uint8_t named;
+    uint8_t owned;
+    uint32_t owner_thread;
+    char name[UC_MUTEX_NAME_MAX];
+} UcMutex;
+
+static UcCritSec uc_cs_tab[UC_CS_CAP];
+static unsigned uc_cs_n;
+static UcMutex uc_mutex_tab[UC_MUTEX_CAP];
+static unsigned uc_mutex_n;
+
+void uc_sync_reset(void) {
+    unsigned i;
+    uc_cs_n = 0;
+    uc_mutex_n = 0;
+    for (i = 0; i < UC_CS_CAP; i++) {
+        uc_cs_tab[i].guest_cs = 0;
+        uc_cs_tab[i].initialized = 0;
+        uc_cs_tab[i].owned = 0;
+        uc_cs_tab[i].owner_thread = 0;
+        uc_cs_tab[i].recursion = 0;
+    }
+    for (i = 0; i < UC_MUTEX_CAP; i++) {
+        uc_mutex_tab[i].active = 0;
+        uc_mutex_tab[i].named = 0;
+        uc_mutex_tab[i].owned = 0;
+        uc_mutex_tab[i].owner_thread = 0;
+        uc_mutex_tab[i].name[0] = 0;
+    }
+}
+
+unsigned uc_sync_critsec_count(void) {
+    unsigned i, n = 0;
+    for (i = 0; i < uc_cs_n; i++)
+        if (uc_cs_tab[i].initialized) n++;
+    return n;
+}
+
+unsigned uc_sync_mutex_count(void) {
+    unsigned i, n = 0;
+    for (i = 0; i < UC_MUTEX_CAP; i++)
+        if (uc_mutex_tab[i].active) n++;
+    return n;
+}
+
+int uc_sync_critsec_initialized(uint32_t guest_cs) {
+    unsigned i;
+    for (i = 0; i < uc_cs_n; i++)
+        if (uc_cs_tab[i].guest_cs == guest_cs && uc_cs_tab[i].initialized)
+            return 1;
+    return 0;
+}
+
+int uc_sync_mutex_valid(uint32_t guest_handle) {
+    unsigned idx;
+    if (guest_handle < UC_MUTEX_HANDLE_BASE) return 0;
+    idx = guest_handle - UC_MUTEX_HANDLE_BASE;
+    return idx < UC_MUTEX_CAP && uc_mutex_tab[idx].active;
+}
+
+static UcCritSec *uc_cs_find(uint32_t guest_cs) {
+    unsigned i;
+    for (i = 0; i < uc_cs_n; i++)
+        if (uc_cs_tab[i].guest_cs == guest_cs)
+            return &uc_cs_tab[i];
+    return 0;
+}
+
+static UcCritSec *uc_cs_alloc(uint32_t guest_cs) {
+    UcCritSec *row = uc_cs_find(guest_cs);
+    if (row) return row;
+    if (uc_cs_n >= UC_CS_CAP) return 0;
+    row = &uc_cs_tab[uc_cs_n++];
+    row->guest_cs = guest_cs;
+    row->initialized = 0;
+    row->owned = 0;
+    row->owner_thread = 0;
+    row->recursion = 0;
+    return row;
+}
+
+/* 32-bit RTL_CRITICAL_SECTION field stores. DebugInfo is NULL — never a host
+ * pointer. LockCount = -1 means unlocked (Windows convention). */
+static int uc_cs_write_guest(uint32_t cs) {
+    if (!range_ok(cs, UC_CS_SIZE)) return 0;
+    UC_ST32(cs + 0x00, 0);          /* DebugInfo */
+    UC_ST32(cs + 0x04, 0xffffffffu); /* LockCount = -1 */
+    UC_ST32(cs + 0x08, 0);          /* RecursionCount */
+    UC_ST32(cs + 0x0c, 0);          /* OwningThread */
+    UC_ST32(cs + 0x10, 0);          /* LockSemaphore */
+    UC_ST32(cs + 0x14, 0);          /* SpinCount */
+    return 1;
+}
+
+static uint32_t uc_hle_init_critsec(uint32_t cs, int *ok) {
+    UcCritSec *row;
+    *ok = 0;
+    if (!cs) return 0; /* NULL → fail; do not claim success */
+    if (!range_ok(cs, UC_CS_SIZE)) return 0;
+    row = uc_cs_alloc(cs);
+    if (!row) return 0;
+    if (!uc_cs_write_guest(cs)) return 0;
+    /* Re-init of an existing CS: Windows documents this as undefined.
+     * We reset runtime ownership and rewrite the guest fields. */
+    row->initialized = 1;
+    row->owned = 0;
+    row->owner_thread = 0;
+    row->recursion = 0;
+    *ok = 1;
+    return 0; /* VOID API; EAX unused by observed callers */
+}
+
+static int uc_mutex_name_eq(const UcMutex *m, uint32_t name_va) {
+    unsigned i;
+    if (!m->named) return 0;
+    if (!name_va) return 0;
+    for (i = 0; i < UC_MUTEX_NAME_MAX; i++) {
+        uint8_t ch;
+        if (!range_ok(name_va + i, 1)) return 0;
+        ch = MR8(name_va + i);
+        if ((uint8_t)m->name[i] != ch) return 0;
+        if (ch == 0) return 1;
+    }
+    return 0;
+}
+
+static int uc_mutex_copy_name(UcMutex *m, uint32_t name_va) {
+    unsigned i;
+    m->named = 1;
+    for (i = 0; i < UC_MUTEX_NAME_MAX - 1; i++) {
+        uint8_t ch;
+        if (!range_ok(name_va + i, 1)) return 0;
+        ch = MR8(name_va + i);
+        m->name[i] = (char)ch;
+        if (ch == 0) return 1;
+    }
+    m->name[UC_MUTEX_NAME_MAX - 1] = 0;
+    return 1;
+}
+
+static uint32_t uc_hle_create_mutex_a(uint32_t attrs, uint32_t initial_owner,
+                                     uint32_t name_va, int *ok) {
+    unsigned i;
+    UcMutex *slot;
+    *ok = 0;
+    /* lpMutexAttributes: only NULL is supported (observed UC path pushes 0). */
+    if (attrs != 0) return 0;
+    if (name_va) {
+        for (i = 0; i < UC_MUTEX_CAP; i++) {
+            if (uc_mutex_tab[i].active && uc_mutex_name_eq(&uc_mutex_tab[i], name_va)) {
+                /* Existing named mutex: return same guest handle.
+                 * GetLastError ERROR_ALREADY_EXISTS is not modeled. */
+                *ok = 1;
+                if (initial_owner) {
+                    /* Cannot steal ownership without a scheduler when already owned
+                     * by another context; single-thread: allow if unowned or self. */
+                    if (!uc_mutex_tab[i].owned ||
+                        uc_mutex_tab[i].owner_thread == uc_tls_active_thread) {
+                        uc_mutex_tab[i].owned = 1;
+                        uc_mutex_tab[i].owner_thread = uc_tls_active_thread;
+                    }
+                }
+                return UC_MUTEX_HANDLE_BASE + i;
+            }
+        }
+    }
+    slot = 0;
+    for (i = 0; i < UC_MUTEX_CAP; i++) {
+        if (!uc_mutex_tab[i].active) { slot = &uc_mutex_tab[i]; break; }
+    }
+    if (!slot) return 0;
+    slot->active = 1;
+    slot->named = 0;
+    slot->name[0] = 0;
+    slot->owned = initial_owner ? 1 : 0;
+    slot->owner_thread = initial_owner ? uc_tls_active_thread : 0;
+    if (name_va) {
+        if (!uc_mutex_copy_name(slot, name_va)) {
+            slot->active = 0;
+            return 0;
+        }
+    }
+    if (uc_mutex_n < UC_MUTEX_CAP) uc_mutex_n++;
+    *ok = 1;
+    return UC_MUTEX_HANDLE_BASE + (unsigned)(slot - uc_mutex_tab);
 }
 
 int uc_abi_callee_bytes(UcAbi abi, int stack_dwords) {
@@ -226,6 +442,23 @@ static uint32_t hle_run(struct CPU *c, const UcImport *imp, const UcDecoded *in,
         if (in->stack_dwords < 2) return 0;
         *ok = 1;
         return uc_tls_set_value(in->stack[0], in->stack[1]);
+    }
+    if (imp->hle == UC_HLE_INITCRITSEC) {
+        /* KERNEL32!InitializeCriticalSection(lpCriticalSection): stdcall, 1 arg; VOID. */
+        if (in->stack_dwords < 1) return 0;
+        return uc_hle_init_critsec(in->stack[0], ok);
+    }
+    if (imp->hle == UC_HLE_CREATEMUTEXA) {
+        /* KERNEL32!CreateMutexA(attrs, initialOwner, name): stdcall, 3 args; HANDLE. */
+        if (in->stack_dwords < 3) return 0;
+        return uc_hle_create_mutex_a(in->stack[0], in->stack[1], in->stack[2], ok);
+    }
+    if (imp->hle == UC_HLE_GETCURRENTPROCESS) {
+        /* KERNEL32!GetCurrentProcess(): stdcall, 0 args; returns pseudo-handle -1.
+         * Not a host HANDLE and not a guest pointer. */
+        (void)in;
+        *ok = 1;
+        return 0xffffffffu;
     }
     if (imp->arg_loc == UC_LOC_ST0 || imp->ret_loc == UC_LOC_ST0) {
         if (imp->arg_loc != UC_LOC_ST0 || imp->ret_loc != UC_LOC_ST0) {

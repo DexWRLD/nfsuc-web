@@ -50,7 +50,10 @@ typedef enum UcHle {
     UC_HLE_CIACOS,
     UC_HLE_CISQRT,
     UC_HLE_TLSALLOC,
-    UC_HLE_TLSSETVALUE
+    UC_HLE_TLSSETVALUE,
+    UC_HLE_INITCRITSEC,
+    UC_HLE_CREATEMUTEXA,
+    UC_HLE_GETCURRENTPROCESS
 } UcHle;
 
 /* Where an import argument is read, and where its result is written.
@@ -159,6 +162,13 @@ void uc_tls_reset(void);
 uint32_t uc_tls_get_value(uint32_t index);
 int uc_tls_slot_allocated(uint32_t index);
 unsigned uc_tls_thread_context_count(void);
+
+/* Guest Win32 synchronization (single guest-thread model; no scheduler). */
+void uc_sync_reset(void);
+unsigned uc_sync_critsec_count(void);
+unsigned uc_sync_mutex_count(void);
+int uc_sync_critsec_initialized(uint32_t guest_cs);
+int uc_sync_mutex_valid(uint32_t guest_handle);
 
 typedef uint32_t (*UcHleFn)(struct CPU *c, const UcDecoded *in, int *ok);
 
