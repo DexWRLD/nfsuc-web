@@ -174,6 +174,10 @@ The next cluster was taken from the high-confidence graph, not from a preselecte
 
 The 24-instruction unreachable-candidate sketch was replaced by a CFG-aware fact walk with explicit safety budgets and termination reasons. Strong CFG-complete padding/prologue candidates were enrolled into the ordinary graph. Reachable HIGH rose from 6,597 to 22,779; CFG coverage of ordinary `.text` rose from 24% to 50%. Of the old 1,782 `insns==24` MEDIUM cohort, 1,769 promoted to HIGH. Generation 22,770/22,779, compile 22,770/22,770. The helper cut remains narrow (74 must / 139 may / 22,394 independent). `0x0072E340` is now reachable HIGH and independent of `0x00686000`, but Direct3DCreate9 is still not enterable: flag=1 writer disconnected, callback slots invalid, TLS unwitten, object zeroed. Details are in `analysis/undercover/runtime-phase16.md`.
 
+## Phase 17
+
+`function-map` `reachable` for `0x00722D60` means discovery enrollment (int3-padded CFG-complete), not a call-graph path: zero `E8`, zero section dwords, zero immediates. Flag transitions 0/1/2 via unlocked `xchg` are confirmed; value 1 is the `0x0072E5D0` gate. All three `.rdata` graphics slots classify `RUNTIME_REPLACEMENT_REQUIRED` (PE targets off linear-sweep boundaries; no writers). The shortest create prefix loads `[0x00B615C4]` into ESI and performs three `call esi` before `Direct3DCreate9`. TLS is required only on outer `0x00766730`. `FACTORY_FRONTIER_READY` is false. Direct3D was not implemented. Details are in `analysis/undercover/runtime-phase17.md`.
+
 ## Status
 
 STATIC CODE READINESS: established for the repaired ordinary high-confidence `.text` list. 22,770 of 22,779 generate, and every generated function compiles. The old 24-instruction discovery cap is gone.
