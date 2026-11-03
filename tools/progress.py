@@ -1033,6 +1033,28 @@ def _first_frame_readiness_badge(model):
     return str(ready.get("status") or "UNKNOWN")[:40]
 
 
+def _asset_distribution_badge(model):
+    path = os.path.join(ANALYSIS, "asset-distribution-readiness.json")
+    if not os.path.isfile(path):
+        try:
+            raw = json.load(open(os.path.join(ANALYSIS, "runtime-frontier.json"), encoding="utf-8"))
+            p = raw.get("phase47") or {}
+            if p.get("asset_distribution"):
+                return str(p["asset_distribution"])[:40]
+        except Exception:
+            pass
+        return "UNMEASURED"
+    try:
+        ready = json.load(open(path, encoding="utf-8"))
+    except Exception:
+        return "UNMEASURED"
+    mode = ready.get("asset_distribution_readiness") or "?"
+    prod = ready.get("production_undercover_assets") or "?"
+    if prod.startswith("UNAVAILABLE"):
+        return "%s · PROD UNAVAIL" % mode
+    return str(mode)[:40]
+
+
 def _blocked_external_attribution_badge(model):
     try:
         raw = json.load(open(os.path.join(ANALYSIS, "runtime-frontier.json"), encoding="utf-8"))
@@ -1430,6 +1452,7 @@ def render_svg(model, detailed=False):
         ("GRAPHICS CONFIG SYNTHETIC", _graphics_config_synthetic_badge(model)),
         ("BLOCKED_EXTERNAL ATTR", _blocked_external_attribution_badge(model)),
         ("FIRST-FRAME READINESS", _first_frame_readiness_badge(model)),
+        ("ASSET DISTRIBUTION", _asset_distribution_badge(model)),
     ]
     parts = []
     y = badge_row(parts, badges, 14)
@@ -1859,6 +1882,7 @@ def render_png(model):
         ("GRAPHICS CONFIG SYNTHETIC", _graphics_config_synthetic_badge(model)),
         ("BLOCKED_EXTERNAL ATTR", _blocked_external_attribution_badge(model)),
         ("FIRST-FRAME READINESS", _first_frame_readiness_badge(model)),
+        ("ASSET DISTRIBUTION", _asset_distribution_badge(model)),
     ]
 
     # Measure height with the same geometry as the SVG.

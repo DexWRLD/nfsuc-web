@@ -1,0 +1,58 @@
+{
+  "manifestVersion": 1,
+  "game": "NFS_UNDERCOVER_PC",
+  "toolingOrigin": "NFSU2-WEB",
+  "targetSha256": "6b10551649fd70fa630bd7454fd953f51555fa2dd2112faae84ac8ca97844bcd",
+  "source": {
+    "mode": "fixtures",
+    "baseUrl": "/uc-fixtures/",
+    "productionAssetsAuthorized": false,
+    "note": "Synthetic fixtures only. Production Undercover asset downloads remain unavailable until a rights-authorized endpoint is configured."
+  },
+  "assets": [
+    {
+      "id": "startup.readme",
+      "path": "startup/readme.txt",
+      "url": "startup/readme.txt",
+      "size": 94,
+      "sha256": "c1bd947fe89a5ae3d53139dc3356e6d51f90a612bf12c9ebabdb2f138ffaed63",
+      "contentType": "text/plain",
+      "category": "startup",
+      "required": true,
+      "license": "synthetic-fixture"
+    },
+    {
+      "id": "startup.boot-marker",
+      "path": "startup/boot-marker.json",
+      "url": "startup/boot-marker.json",
+      "size": 70,
+      "sha256": "48b43435618d7d510d6461a8eeb39e4b39701cda982372c4e88401e294b80bd8",
+      "contentType": "application/json",
+      "category": "startup",
+      "required": true,
+      "license": "synthetic-fixture"
+    },
+    {
+      "id": "menu.placeholder",
+      "path": "menu/placeholder.bin",
+      "url": "menu/placeholder.bin",
+      "size": 54,
+      "sha256": "79b84125cf6bd6a94cf36fe130a7c71e824cc12c73108c01ed5f2c52b04ea2f5",
+      "contentType": "application/octet-stream",
+      "category": "menu",
+      "required": false,
+      "license": "synthetic-fixture"
+    },
+    {
+      "id": "production.game-data.placeholder",
+      "path": "production/UNDERCOVER_GAME_DATA.placeholder",
+      "url": "production/UNDERCOVER_GAME_DATA.placeholder",
+      "size": 0,
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "contentType": "application/octet-stream",
+      "category": "gameplay",
+      "required": false,
+      "license": "copyrighted-unavailable"
+    }
+  ]
+}

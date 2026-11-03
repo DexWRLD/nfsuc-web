@@ -47,7 +47,15 @@ fs.mkdirSync(DIST, { recursive: true });
 // the start page (its script and stylesheet are main.js / main.css), and its files as they are (src/static: the
 // app's manifest and icons, for installing it on a phone's home screen or as a desktop app)
 fs.copyFileSync('index.html', path.join(DIST, 'index.html'));
-for (const f of fs.readdirSync('src/static')) fs.copyFileSync(path.join('src/static', f), path.join(DIST, f));
+function copyStatic(src, dst) {
+  fs.mkdirSync(dst, { recursive: true });
+  for (const name of fs.readdirSync(src)) {
+    const from = path.join(src, name), to = path.join(dst, name);
+    if (fs.statSync(from).isDirectory()) copyStatic(from, to);
+    else fs.copyFileSync(from, to);
+  }
+}
+copyStatic('src/static', DIST);
 // the start page's languages (src/app/lang, i18n.ts): /lang/<language>.json, fetched once a player picks one
 fs.rmSync(path.join(DIST, 'lang'), { recursive: true, force: true });
 fs.mkdirSync(path.join(DIST, 'lang'));
