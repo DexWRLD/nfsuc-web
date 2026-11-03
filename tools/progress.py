@@ -516,6 +516,10 @@ def render_svg(model, detailed=False):
     cut_text = "UNKNOWN" if cut == "UNKNOWN" else "%d must / %d may / %d independent" % (
         cut["must"], cut["may"], cut["independent"])
     disc = model.get("discovery") or {}
+    gfx = model.get("graphics") or {}
+    static_factory = "REACHABLE" if gfx.get("reachable_from_high_graph") == "YES" else "NOT REACHABLE"
+    runtime_factory = "ENTERABLE" if gfx.get("enterable_now") == "YES" else "NOT ENTERABLE"
+    frontier_ready = "YES" if gfx.get("factory_frontier_ready") else "NO"
     badges = [
         ("Functions compiled", "%d/%d" % (trans["compiled"], trans["attempted"])),
         ("Compiler failures", str(trans["compiler_failures"])),
@@ -527,6 +531,9 @@ def render_svg(model, detailed=False):
         ("MEDIUM", str(disc.get("medium", "?"))),
         ("CFG-complete", str(disc.get("cfg_complete", "?"))),
         ("CFG-budget", str(disc.get("cfg_budget_exceeded", "?"))),
+        ("Static factory frontier", static_factory),
+        ("Runtime factory frontier", runtime_factory),
+        ("FACTORY_FRONTIER_READY", frontier_ready),
     ]
     parts = []
     y = badge_row(parts, badges, 14)
@@ -726,6 +733,10 @@ def render_png(model):
     cut_text = "UNKNOWN" if cut == "UNKNOWN" else "%d must / %d may / %d independent" % (
         cut["must"], cut["may"], cut["independent"])
     disc = model.get("discovery") or {}
+    gfx = model.get("graphics") or {}
+    static_factory = "REACHABLE" if gfx.get("reachable_from_high_graph") == "YES" else "NOT REACHABLE"
+    runtime_factory = "ENTERABLE" if gfx.get("enterable_now") == "YES" else "NOT ENTERABLE"
+    frontier_ready = "YES" if gfx.get("factory_frontier_ready") else "NO"
     badges = [
         ("Functions compiled", "%d/%d" % (trans["compiled"], trans["attempted"])),
         ("Compiler failures", str(trans["compiler_failures"])),
@@ -737,6 +748,9 @@ def render_png(model):
         ("MEDIUM", str(disc.get("medium", "?"))),
         ("CFG-complete", str(disc.get("cfg_complete", "?"))),
         ("CFG-budget", str(disc.get("cfg_budget_exceeded", "?"))),
+        ("Static factory frontier", static_factory),
+        ("Runtime factory frontier", runtime_factory),
+        ("FACTORY_FRONTIER_READY", frontier_ready),
     ]
 
     # Measure height with the same geometry as the SVG.

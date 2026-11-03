@@ -1,8 +1,8 @@
 {
   "project": {
     "name": "nfsuc-web",
-    "current_phase": 16,
-    "strategy": "CFG discovery repaired. Expand ordinary graphics initialization provenance without implementing Direct3D. 0x00686000 stays unimplemented."
+    "current_phase": 17,
+    "strategy": "Direct3DCreate9 is statically reachable via HIGH 0x0072E340. Close ordinary provenance for callback-slot replacement and flag=1 publication without implementing Direct3D. 0x00686000 stays unimplemented."
   },
   "discovery": {
     "candidates": 25450,
@@ -62,26 +62,12 @@
       "writer": "0x009E8AD0",
       "store": "0x009E8B16",
       "value": "0x009E78C0",
-      "slot_writes": 49,
-      "slot_span": "0x0189D198..0x0189D270",
-      "evidence": "init-provenance.json WRITE at 0x009E8B16; phase 11 test requires the writer and the value"
+      "evidence": "init-provenance.json WRITE at 0x009E8B16"
     },
     {
       "address": "0x0189DA84",
       "status": "BLOCKED BY EXTERNAL INITIALIZATION PATH",
       "evidence": "The publishing store follows call 0x00686000"
-    },
-    {
-      "address": "0x0189D0A0+8",
-      "status": "BLOCKED BY SAME EXTERNAL INITIALIZATION PATH",
-      "evidence": "The field writer follows the same unavailable call"
-    },
-    {
-      "address": "0x0188DAFC",
-      "status": "ORDINARY WRITER KNOWN / NOT EXECUTED",
-      "writer": "0x00B523E0",
-      "store": "0x00B551A3",
-      "evidence": "Ordinary byte store. The phase 11 run left the flag at 0"
     },
     {
       "address": "0x01311E1C",
@@ -91,12 +77,18 @@
         "0x00729977=2",
         "0x00B4F990=0"
       ],
-      "evidence": "Phase 15 xchg writers. Phase 16: 0x00722D60 is HIGH and reachable but still has zero ordinary E8 callers and zero call-graph predecessors."
+      "evidence": "Phase 17: 0x00722D60 is discovery-enrolled HIGH with zero E8/imm/section refs. Map reachable means enrollment, not call-graph reachability."
     },
     {
       "address": "0x01318170",
       "status": "STATIC ZERO OBJECT / ADDRESS-TAKEN ONLY",
-      "evidence": "PE starts zeroed. Phase 16 finds ADDRESS_TAKEN references only; no ordinary constructor/zeroing writer newly proven."
+      "evidence": "PE zeroed. Multiple HIGH address-takers; no proven constructor. +0x10 written by factory path."
+    },
+    {
+      "address": "0x00B615C4",
+      "status": "RUNTIME_REPLACEMENT_REQUIRED",
+      "pe_value": "0x008AA3AE",
+      "evidence": "Not a linear-sweep instruction boundary. Three call esi on the pre-Direct3DCreate9 path load this slot. No ordinary absolute writers."
     }
   ],
   "boundaries": {
@@ -109,15 +101,14 @@
       "substituted": false,
       "lifted": false,
       "executed": false,
-      "note": "Site census is the Phase 13 count. The Phase 16 control-flow cut is helper-cut.json (74 must / 139 may / 22394 independent)."
+      "note": "Create path is NO_PATH in helper-cut.json. Site census remains Phase 13."
     },
     "0x0055FF30": {
       "status": "UNKNOWN",
       "direct_call_sites": 4,
       "implemented": false,
       "lifted": false,
-      "executed": false,
-      "note": "Four ordinary callers remain. Body is still not a function. Classification unchanged."
+      "executed": false
     }
   },
   "helper_cut": {
@@ -134,6 +125,9 @@
     "function": "0x0072E340",
     "confidence": "HIGH_CONFIDENCE",
     "frontier": "FOUND",
+    "static_factory_frontier": "REACHABLE",
+    "runtime_factory_frontier": "NOT ENTERABLE",
+    "factory_frontier_ready": false,
     "independent_of_0x00686000": "YES",
     "reachable_from_high_graph": "YES",
     "enterable_now": "NO",
@@ -143,15 +137,18 @@
     "object": "0x01318170",
     "esi_slot": "0x00B615C4",
     "esi_slot_valid_entry": false,
+    "esi_slot_class": "RUNTIME_REPLACEMENT_REQUIRED",
     "shortest_chain": [
       "0x0072E340",
       "0x0087A79C"
     ],
+    "shortest_pre_factory_blocker": "0x00B615C4 -> three call esi before Direct3DCreate9",
     "blockers": [
-      "0x01311E1C must be 1; definite writer 0x00722D60 has no ordinary caller",
-      "0x00B615C4 / 0x00B611D4 / 0x00B61188 PE targets are not instruction boundaries",
-      "static object 0x01318170 is zero-filled",
-      "TLS index 0x01882C34 still has no ordinary absolute writer"
+      "0x00B615C4 PE target is INVALID_INTERIOR_ENTRY / RUNTIME_REPLACEMENT_REQUIRED on the create prefix",
+      "0x00B611D4 and 0x00B61188 likewise RUNTIME_REPLACEMENT_REQUIRED for outer/wait paths",
+      "0x01311E1C=1 writer 0x00722D60 has no ordinary invocation path (discovery-enrolled only)",
+      "TLS 0x01882C34 required only on outer 0x00766730",
+      "Direct3DCreate9 unimplemented (stop before call once frontier is ready)"
     ]
   },
   "first_frame_estimate": {
@@ -159,7 +156,7 @@
     "likely_low": 23,
     "likely_high": 31,
     "is_estimate": true,
-    "uncertainty": "Discovery repair removed the MEDIUM-cap blocker and put Direct3DCreate9 on a reachable HIGH path, but flag=1, invalid callback slots, TLS, and the zero graphics object remain. Estimate advances one phase for the repaired map."
+    "uncertainty": "Static factory reachable; runtime blocked by callback-slot replacement and disconnected flag=1 publication. Estimate unchanged from Phase 16."
   },
   "phases": [
     {
@@ -240,6 +237,11 @@
     {
       "phase": 16,
       "name": "CFG discovery repair",
+      "state": "completed"
+    },
+    {
+      "phase": 17,
+      "name": "Factory initialization provenance",
       "state": "current"
     }
   ],
@@ -267,6 +269,14 @@
     {
       "name": "FUNCTION DISCOVERY",
       "state": "REPAIRED"
+    },
+    {
+      "name": "STATIC D3D FACTORY FRONTIER",
+      "state": "REACHABLE"
+    },
+    {
+      "name": "RUNTIME D3D FACTORY FRONTIER",
+      "state": "NOT ENTERABLE"
     },
     {
       "name": "GRAPHICS FRONTIER",
