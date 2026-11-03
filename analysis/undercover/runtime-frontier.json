@@ -1,5 +1,5 @@
 {
-  "phase": 37,
+  "phase": 38,
   "definitions": {
     "ENTERABLE": "All pre-entry required state establishable via primitives, static PE data, standard runtime, or proven ordinary init/ctor. Not merely IMPORT_READY.",
     "DEEPEST_ORDINARY_EXECUTION_CHAIN": "Max nested ordinary UC frames in one harness run.",
@@ -16,7 +16,7 @@
   "static_ready": 20762,
   "import_ready": 737,
   "runtime_ready": 72,
-  "enterable": 21,
+  "enterable": 25,
   "enterable_roots": [
     "0x00721050",
     "0x00721070",
@@ -32,8 +32,12 @@
     "0x00977800",
     "0x0097BB30",
     "0x009E7710",
+    "0x009E7780",
+    "0x009E9140",
+    "0x009E9150",
     "0x009E9160",
     "0x009E98F0",
+    "0x009E9980",
     "0x009E9990",
     "0x009EB350",
     "0x009EB980",
@@ -57,7 +61,7 @@
     "0x00B57CF0"
   ],
   "proven_depth_5_roots": [],
-  "unique_uc_functions_executed": 48,
+  "unique_uc_functions_executed": 53,
   "unique_uc_functions_executed_list": [
     "0x00721050",
     "0x00721070",
@@ -93,12 +97,17 @@
     "0x009D9310",
     "0x009E0880",
     "0x009E7710",
+    "0x009E7780",
     "0x009E78C0",
+    "0x009E8400",
     "0x009E8AD0",
+    "0x009E9140",
+    "0x009E9150",
     "0x009E9160",
     "0x009E9450",
     "0x009E9460",
     "0x009E98F0",
+    "0x009E9980",
     "0x009E9990",
     "0x009EB350",
     "0x009EB870",
@@ -108,9 +117,11 @@
     "0x00B57CD0",
     "0x00B57CF0"
   ],
-  "execution_runs": 95,
+  "execution_runs": 113,
   "deepest_ordinary_execution_chain": 4,
   "largest_executed_ordinary_closure": 18,
+  "ordinary_execution_sequence_length": 3,
+  "largest_stateful_sequence_coverage": 20,
   "clean_ordinary_roots": 13,
   "clean_ordinary_roots_list": [
     "0x00721070",
@@ -140,37 +151,37 @@
     "0x009EBC70"
   ],
   "ordinary_init_recovered": 10,
-  "init_blocked_external": 0,
-  "init_blocked_protected": 2,
-  "init_blocked_unknown": 4,
   "ordinary_runtime_frontier": {
     "HIGH": 22779,
     "COMPILED": 22770,
     "STATIC_READY": 20762,
     "IMPORT_READY": 737,
     "RUNTIME_READY": 72,
-    "ENTERABLE": 21,
-    "EXECUTED": 48,
-    "UNIQUE": 48,
-    "EXECUTION_RUNS": 95,
+    "ENTERABLE": 25,
+    "EXECUTED": 53,
+    "UNIQUE": 53,
+    "EXECUTION_RUNS": 113,
     "CLEAN_ORDINARY_ROOTS": 13,
     "EXECUTED_ORDINARY_CONSTRUCTORS": 9,
     "DEEPEST": 4,
     "LARGEST_CLOSURE": 18,
-    "ENTERABLE_WITH_DEPTH_4_POTENTIAL": 0,
-    "PROVEN_DEPTH_4_ROOTS": 4,
-    "LATEST_REAL_RUNTIME_BOUNDARY": "0x009E9160 RETURNED_CLEAN",
+    "ORDINARY_EXECUTION_SEQUENCE_LENGTH": 3,
+    "LARGEST_STATEFUL_SEQUENCE_COVERAGE": 20,
+    "LATEST_REAL_RUNTIME_BOUNDARY": "STATEFUL ctor\u2192setter\u2192getter CLEAN",
     "MOST_COMMON_REAL_BLOCKER": [
       "REQUIRED_STATE:UNKNOWN_OBJECT",
       2
     ]
   },
   "campaign_summary": {
-    "phase37_attempted": 12,
+    "phase38_attempted_roots": 12,
+    "phase38_stateful_sequences": 6,
+    "clean_stateful_sequences": 6,
     "outcomes": {
       "EXECUTED_CHAIN": 8,
       "BLOCKED_REQUIRED_STATE": 3,
-      "UNKNOWN": 1
+      "UNKNOWN": 1,
+      "EXECUTED_STATEFUL_SEQUENCE": 6
     },
     "real_blocker_histogram": {
       "REQUIRED_STATE": 4,
@@ -199,63 +210,34 @@
       "REQUIRED_STATE:UNKNOWN_OBJECT",
       2
     ],
-    "deepest_chain": 4,
-    "largest_executed_closure": 18,
-    "clean_ordinary_roots": 13,
-    "executed_ordinary_constructors": 9,
-    "jtswitch_enabled_in_harness": true,
-    "ctor_status": {
-      "before": "EXECUTED_TO_NEXT_BLOCKER / BLOCKED_INDIRECT @ 0x0097FA08",
-      "after": "EXECUTED_CHAIN",
-      "blocker_result": null,
-      "returned_clean": true,
-      "hist": "CLEAN_RETURN",
-      "sleepex_done": 5,
-      "qpc_ticks": 2500000,
-      "virtual_ms": 250,
-      "entered": [
-        "0x009E9160",
-        "0x009E7710",
-        "0x009E9990",
-        "0x009E9460",
-        "0x009773C0",
-        "0x00977E20",
-        "0x00977420",
-        "0x009EB980",
-        "0x00978720",
-        "0x0097FCD0",
-        "0x0097F790",
-        "0x0087B4F6",
-        "0x0097FAE0",
-        "0x0087B880",
-        "0x0097F9E0",
-        "0x009777D0",
-        "0x009E8AD0",
-        "0x00977800"
-      ],
-      "depth": 4,
-      "closure": 18,
-      "first_ordinary_after_prior_switch_stop": [
-        "0x009777D0",
-        "0x009E8AD0",
-        "0x00977800"
-      ]
-    },
-    "semaphore_path_status": {
-      "result": "EXECUTED_CHAIN",
-      "clean": true,
-      "depth": 4
-    },
-    "ebc70_status": {
-      "result": "EXECUTED_CHAIN",
-      "clean": true
-    },
+    "ctor_clean": true,
+    "reset_validated": true,
+    "new_functions": [
+      "0x009E7780",
+      "0x009E8400",
+      "0x009E9140",
+      "0x009E9150",
+      "0x009E9980"
+    ],
     "tlsgetvalue_reached": false,
     "tlsfree_reached": false,
     "filesystem_reached": false,
     "scheduler": false,
     "protected_boundary_encountered": false,
     "diagnostics_counted": 0
+  },
+  "post_constructor": {
+    "clean_constructor": true,
+    "eligible_consumers": 5,
+    "stateful_sequences_tested": 6,
+    "clean_stateful_sequences": 6,
+    "largest_sequence_coverage": 20,
+    "longest_sequence_length": 3,
+    "deepest_nested": 4,
+    "next_blocker": [
+      "REQUIRED_STATE:UNKNOWN_OBJECT",
+      2
+    ]
   },
   "synchronization": {
     "InitializeCriticalSection": "IMPLEMENTED",
@@ -299,6 +281,6 @@
   },
   "first_frame": "FIRST_FRAME_PATH_BLOCKED_BY_PROTECTED_BACKEND",
   "graphics_frozen": true,
-  "recommended_phase38": "Constructor 0x009E9160 RETURNED CLEAN (EXECUTED_CHAIN) after JTSWITCH harness enablement. Phase 38: EXPAND REAL UC EXECUTION \u2014 harvest additional ordinary roots that benefit from jump-table lowering, or deepen post-ctor consumers now that the timing/priority/TLS init object constructs successfully. Graphics remain frozen.",
+  "recommended_phase39": "Stateful ctor\u2192setter\u2192getter and vtable leaf methods execute cleanly. Phase 39: EXPAND REAL UC EXECUTION \u2014 pursue additional SAME_VTABLE_FAMILY methods with proven field prerequisites (avoid dtors/allocator), or ordinary global consumers of 0x0189D1A4/0x0189D198 published during ctor. Do not reopen protected allocator/factory. Graphics frozen.",
   "phase31_metric_corrections_preserved": true
 }
