@@ -223,11 +223,16 @@ class Live(unittest.TestCase):
 
     def test_ctor_past_sleepex(self):
         row = next(r for r in self.rows if r["root"] == 0x9E9160)
-        self.assertGreaterEqual(row["sleepex_done"], 1)
+        self.assertGreaterEqual(row["sleepex_done"], 5)
         self.assertGreaterEqual(row["sleepex_calls"], 1)
-        self.assertEqual(row["result"], "EXECUTED_TO_NEXT_BLOCKER")
-        self.assertEqual(row.get("blocker_result"), "BLOCKED_INDIRECT")
-        self.assertFalse(row["clean"])
+        # Phase 36: past SleepEx to jump-table. Phase 37+: JTSWITCH → clean.
+        self.assertIn(row["result"], (
+            "EXECUTED_TO_NEXT_BLOCKER", "EXECUTED_CHAIN", "EXECUTED_CLEAN"))
+        if row["result"] == "EXECUTED_TO_NEXT_BLOCKER":
+            self.assertEqual(row.get("blocker_result"), "BLOCKED_INDIRECT")
+            self.assertFalse(row["clean"])
+        else:
+            self.assertTrue(row["clean"])
         self.assertGreaterEqual(row["depth_max"], 4)
         self.assertGreaterEqual(row["unique_entered"], 12)
         ticks = row["qpc_ticks_lo"] | (row["qpc_ticks_hi"] << 32)

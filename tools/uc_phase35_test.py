@@ -227,9 +227,16 @@ class Live(unittest.TestCase):
             or row.get("blocker_result") in (
                 "BLOCKED_ALERTABLE_WAIT", "BLOCKED_INDIRECT", "BLOCKED_IMPORT")
             or (row.get("sleepex_done") or 0) >= 1
-            or row.get("hist") in ("ALERTABLE_WAIT", "INDIRECT", "IMPORT", "TIMING"))
-        self.assertEqual(row["result"], "EXECUTED_TO_NEXT_BLOCKER")
-        self.assertFalse(row["clean"])
+            or row.get("hist") in (
+                "ALERTABLE_WAIT", "INDIRECT", "IMPORT", "TIMING", "CLEAN_RETURN")
+            or row.get("clean"))
+        # Phase 35: blocked after QPC. Phase 36+: SleepEx then switch. Phase 37+: clean.
+        self.assertIn(row["result"], (
+            "EXECUTED_TO_NEXT_BLOCKER", "EXECUTED_CHAIN", "EXECUTED_CLEAN"))
+        if row["result"] == "EXECUTED_TO_NEXT_BLOCKER":
+            self.assertFalse(row["clean"])
+        else:
+            self.assertTrue(row["clean"])
 
     def test_semaphore_path_clean(self):
         row = next(r for r in self.rows if r["root"] == 0x97BB30)
