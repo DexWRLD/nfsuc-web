@@ -1,6 +1,6 @@
 {
-  "current_phase": 26,
-  "strategy": "Phase 26: implemented MSVCR80 _CIsqrt HLE (0x00AE5116, ST0\u2192ST0). Consumer 0x00924D30 executed (3,4)\u2192(0.6,0.8,1.0). Campaign: most common next blocker BLOCKED_REQUIRED_STATE. Graphics remain frozen.",
+  "current_phase": 27,
+  "strategy": "Phase 27: ordinary initialization. Recovered POD contracts; executed 0x00929972\u21920x00924D30 chain (depth 2) and 0x00949920. 0x0072EAE0 blocked by .securom jump slot 0x023AF9C8. Graphics frozen.",
   "boundaries": {
     "0x00686000": {
       "status": "PROTECTED_OR_EXTERNAL_DEPENDENCY",
@@ -100,7 +100,7 @@
     "enterable_now": "NO",
     "object": "0x01318170",
     "esi_slot": "0x00B615C4",
-    "active_objective": "FROZEN graphics; expand ordinary execution / state contracts",
+    "active_objective": "FROZEN; expand ordinary init/execution depth",
     "blockers": [
       "FIRST_FRAME_PATH_BLOCKED_BY_PROTECTED_BACKEND",
       "ORDINARY_FRONTEND_PROTECTED_BACKEND",
@@ -172,6 +172,18 @@
       "phase": 26,
       "completed": true,
       "evidence": "Phase 26 test: _CIsqrt normalize consumer writes (0.6,0.8,1.0)"
+    },
+    {
+      "address": "0x00929972",
+      "phase": 27,
+      "completed": true,
+      "evidence": "Phase 27: case-0 body chain into 0x00924D30; depth 2"
+    },
+    {
+      "address": "0x00949920",
+      "phase": 27,
+      "completed": true,
+      "evidence": "Phase 27: math leaf POD contract; cos/sin/sqrt HLE"
     }
   ],
   "phases": [
@@ -293,6 +305,11 @@
     {
       "phase": 26,
       "name": "_CIsqrt HLE + ordinary execution campaign",
+      "state": "completed"
+    },
+    {
+      "phase": 27,
+      "name": "Ordinary initialization frontier",
       "state": "completed"
     }
   ],
