@@ -1,0 +1,49 @@
+{
+  "phase": 45,
+  "definitions": {
+    "MUST": "helper-cut: every returning ordinary CFG walk hits 0x00686000 or a callee already MUST. Painted BLOCKED_EXTERNAL in progress.py.",
+    "MAY": "helper-cut: some returning walks hit the MUST set, some do not. Not BLOCKED_EXTERNAL.",
+    "INDEPENDENT": "helper-cut independent_count = reachable_high - must - may (no ordinary path to allocator). progress NO_PATH_TO_EXTERNAL_HELPER is the per-function label for that class among classified rows.",
+    "BLOCKED_EXTERNAL_dashboard": "Exactly the current helper-cut MUST set (74). Not the eight protected-boundary roots from the Ghidra audit."
+  },
+  "current_helper_cut": {
+    "source": "tools/uc_phase16.py + uc_phase14_cut.analyze(); reachable high-confidence call graph",
+    "reachable_high": 22607,
+    "must_count": 74,
+    "may_count": 139,
+    "independent_count": 22394,
+    "direct_functions": 110,
+    "direct_sites": 221
+  },
+  "historical_phase14_helper_cut": {
+    "source": "analysis/undercover/external-helper-cut.md (Phase 14 narrative)",
+    "must": 11,
+    "may": 31,
+    "independent": 6456,
+    "reachable_high_stated": 6498,
+    "note": "Phase-14 cut used an earlier reachable-HIGH population (~6.5k). Phase-16 regenerated helper-cut.json over ~22.6k reachable HIGH."
+  },
+  "dashboard_blocked_external": {
+    "count": 74,
+    "equals_current_must": true,
+    "intersection_with_must": 74,
+    "only_in_blocked_external": [],
+    "only_in_must": []
+  },
+  "progress_external_helper_labels": {
+    "MUST_REACH_EXTERNAL_HELPER": 74,
+    "MAY_REACH_EXTERNAL_HELPER": 139,
+    "NO_PATH_TO_EXTERNAL_HELPER": 22566,
+    "must_label_equals_cut_must": true,
+    "may_label_equals_cut_may": true
+  },
+  "intersections": {
+    "must_and_may": [],
+    "blocked_external_and_may": [],
+    "attribution_rooted": 74,
+    "attribution_direct": 62,
+    "attribution_transitive": 12
+  },
+  "why_counts_differ_from_phase14_doc": "Different analysis stage and reachable-HIGH population. Phase-14 documented MUST=11/MAY=31/INDEP=6456 on ~6498 reachable HIGH. Current helper-cut.json (Phase 16+) has MUST=74/MAY=139/INDEP=22394 on reachable_high=22607. Dashboard BLOCKED_EXTERNAL=74 tracks current MUST, not the historical Phase-14 MUST=11.",
+  "all_74_allocator_rooted_represented": true
+}

@@ -1,0 +1,102 @@
+{
+  "phase": 45,
+  "selection_policy": "Prefer allocator-independent HIGH leaves with known ABI and deterministic memory/float oracles; extend matrix island chains.",
+  "candidates": [
+    {
+      "address": "0x00A12850",
+      "role": "constant pointer return",
+      "classification": "RUNTIME_READY_NOT_EXECUTED / INDEPENDENT",
+      "dependencies": "none",
+      "globals": "returns 0x0129E5D0",
+      "side_effects": "none",
+      "testability": "HIGH",
+      "coverage_value": "leaf enterable",
+      "confidence": "CONFIRMED",
+      "abi": "cdecl/ret0"
+    },
+    {
+      "address": "0x00A12860",
+      "role": "in-place 3x3 off-diagonal swap on this",
+      "classification": "INDEPENDENT leaf",
+      "dependencies": "caller this 0x30",
+      "globals": "none",
+      "side_effects": "mutates this",
+      "testability": "HIGH",
+      "coverage_value": "matrix chain",
+      "confidence": "CONFIRMED",
+      "abi": "thiscall ret0"
+    },
+    {
+      "address": "0x00A128A0",
+      "role": "copy/transpose 3x3 into this from arg0",
+      "classification": "RUNTIME_READY_NOT_EXECUTED",
+      "dependencies": "src + this buffers",
+      "globals": "none",
+      "side_effects": "writes this",
+      "testability": "HIGH",
+      "coverage_value": "matrix chain",
+      "confidence": "CONFIRMED",
+      "abi": "thiscall ret4"
+    },
+    {
+      "address": "0x00A12D10",
+      "role": "this += arg0 (3 xmm rows)",
+      "classification": "INDEPENDENT leaf",
+      "dependencies": "aligned-ish 0x30 buffers",
+      "globals": "none",
+      "side_effects": "mutates this",
+      "testability": "HIGH",
+      "coverage_value": "matrix chain",
+      "confidence": "CONFIRMED",
+      "abi": "thiscall ret4"
+    },
+    {
+      "address": "0x00A12D50",
+      "role": "this -= arg0 (3 xmm rows)",
+      "classification": "INDEPENDENT leaf",
+      "dependencies": "0x30 buffers",
+      "globals": "none",
+      "side_effects": "mutates this",
+      "testability": "HIGH",
+      "coverage_value": "matrix chain",
+      "confidence": "CONFIRMED",
+      "abi": "thiscall ret4"
+    },
+    {
+      "address": "0x00A12D90",
+      "role": "scale this rows by broadcast scalar at [arg0]",
+      "classification": "INDEPENDENT leaf",
+      "dependencies": "scalar + this",
+      "globals": "none",
+      "side_effects": "mutates this",
+      "testability": "HIGH",
+      "coverage_value": "matrix chain",
+      "confidence": "CONFIRMED",
+      "abi": "thiscall ret4"
+    },
+    {
+      "address": "0x00A127E0",
+      "role": "x87 max of two float stack args",
+      "classification": "INDEPENDENT leaf",
+      "dependencies": "two float args",
+      "globals": "none",
+      "side_effects": "ST(0) result",
+      "testability": "HIGH",
+      "coverage_value": "math leaf",
+      "confidence": "CONFIRMED",
+      "abi": "cdecl 2 args"
+    },
+    {
+      "address": "0x00A130E0",
+      "role": "return arg0 or global default if null",
+      "classification": "INDEPENDENT leaf",
+      "dependencies": "optional global 0x018AD618",
+      "globals": "0x018AD618",
+      "side_effects": "none",
+      "testability": "HIGH",
+      "coverage_value": "leaf enterable",
+      "confidence": "CONFIRMED",
+      "abi": "cdecl 1 arg"
+    }
+  ]
+}
