@@ -1,6 +1,6 @@
 {
-  "current_phase": 49,
-  "strategy": "Phase 49: private LAN HTTPS hosting, curated asset endpoint, boot-stage diagnostics; FIRST_FRAME frozen.",
+  "current_phase": 50,
+  "strategy": "Phase 50: BC1 decoder, provenance-gated texture preview, vertex-decl + mesh validators; authentic payloads still missing; FIRST_FRAME frozen.",
   "boundaries": {
     "0x00686000": {
       "status": "PROTECTED_OR_EXTERNAL_DEPENDENCY",
@@ -349,7 +349,7 @@
     {
       "phase": 22,
       "name": "Renderer COM container and backend handoff",
-      "state": "current"
+      "state": "completed"
     },
     {
       "phase": 25,
@@ -473,8 +473,13 @@
     },
     {
       "phase": 49,
-      "title": "Private LAN asset host & clean-PC boot",
-      "status": "complete"
+      "name": "Private LAN asset host & clean-PC boot",
+      "state": "completed"
+    },
+    {
+      "phase": 50,
+      "name": "DXT1 decoder & asset preview contracts",
+      "state": "completed"
     }
   ],
   "milestones": [
@@ -540,7 +545,7 @@
     },
     {
       "name": "FIRST FRAME",
-      "state": "UNBOUNDED"
+      "state": "BLOCKED_BY_PROTECTED_BACKEND"
     },
     {
       "name": "INPUT / SIMULATION",
@@ -557,6 +562,34 @@
     {
       "name": "PLAYABLE WEB BUILD",
       "state": "NOT STARTED"
+    },
+    {
+      "name": "SYNTHETIC TEXTURE DECODER",
+      "state": "ACHIEVED"
+    },
+    {
+      "name": "SYNTHETIC MESH VIEWER",
+      "state": "ACHIEVED"
+    },
+    {
+      "name": "AUTHENTIC TEXTURE SOURCE",
+      "state": "MISSING"
+    },
+    {
+      "name": "AUTHENTIC TEXTURE PREVIEW",
+      "state": "BLOCKED"
+    },
+    {
+      "name": "AUTHENTIC MESH SOURCE",
+      "state": "MISSING"
+    },
+    {
+      "name": "AUTHENTIC MESH PREVIEW",
+      "state": "BLOCKED"
+    },
+    {
+      "name": "BROWSER GAME RENDERER",
+      "state": "NOT READY"
     }
   ]
 }

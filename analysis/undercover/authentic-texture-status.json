@@ -1,0 +1,24 @@
+{
+  "phase": 50,
+  "synthetic_texture_decoder": "WORKING",
+  "synthetic_mesh_viewer": "WORKING",
+  "authentic_texture_source_identified": false,
+  "authentic_texture_preview_verified": false,
+  "authentic_mesh_source_identified": false,
+  "authentic_mesh_preview_verified": false,
+  "browser_game_renderer_ready": false,
+  "authentic_first_frame_ready": false,
+  "first_frame": "FIRST_FRAME_PATH_BLOCKED_BY_PROTECTED_BACKEND",
+  "local_install_observed": "C:\\Games\\Need For Speed Undercover",
+  "local_install_note": "Install path exists on the host machine but no independently verified DXT1 byte span (offset/length/dimensions/format digests) is available. Authentic preview remains blocked.",
+  "named_mesh_candidates": ["XP_SMOKEBALL_CURL", "XP_SMOKEBALL_PUFF"],
+  "named_mesh_note": "Lookup visible at 0x00782A50; archive IDs and matching vertex declarations unresolved.",
+  "missing_for_authentic_texture": [
+    "verified resource identifier",
+    "source file SHA256",
+    "exact byte offset and length",
+    "width/height/format confirmation from that span",
+    "independent payload SHA256",
+    "authorization category authorized-verified"
+  ]
+}

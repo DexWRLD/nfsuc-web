@@ -1,0 +1,23 @@
+{
+  "phase": 50,
+  "metrics_delta": {
+    "unique_before": 84,
+    "unique_after": 84,
+    "enterable_before": 50,
+    "enterable_after": 50,
+    "runs_before": 334,
+    "runs_after": 346
+  },
+  "newly_executed": [],
+  "families": {
+    "family_a": true,
+    "family_b": true,
+    "family_c": true
+  },
+  "node": {
+    "dxt1": true,
+    "assets": true,
+    "lan": true,
+    "build": true
+  }
+}

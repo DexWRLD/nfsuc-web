@@ -1,0 +1,11 @@
+{
+  "phase": 50,
+  "correction": "CreateCubeTexture_not_CreateVolumeTexture",
+  "site": "0x007513E2",
+  "uploader": "0x00751360",
+  "create2d": "0x007515D3",
+  "prior_incorrect_label": "volume-texture-shaped method",
+  "evidence": "analysis/undercover/undercover-asset-browser-report.md",
+  "discriminator_string_site": "0x00B7277C",
+  "note": "Six-face path supports CreateCubeTexture. Do not infer archive layout from runtime upload alignment."
+}

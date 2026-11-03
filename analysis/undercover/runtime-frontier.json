@@ -1,5 +1,5 @@
 {
-  "phase": 49,
+  "phase": 50,
   "definitions": {
     "ENTERABLE": "All pre-entry required state establishable via primitives, static PE data, standard runtime, or proven ordinary init/ctor. Not merely IMPORT_READY.",
     "DEEPEST_ORDINARY_EXECUTION_CHAIN": "Max nested ordinary UC frames in one harness run.",
@@ -162,7 +162,7 @@
     "0x00B57CD0",
     "0x00B57CF0"
   ],
-  "execution_runs": 334,
+  "execution_runs": 346,
   "deepest_ordinary_execution_chain": 4,
   "largest_executed_ordinary_closure": 20,
   "ordinary_execution_sequence_length": 5,
@@ -787,5 +787,25 @@
     "two_pc_physical": "NOT_EXECUTED_IN_THIS_ENVIRONMENT",
     "note": "Private LAN HTTPS host + curated asset endpoint + boot stages; automated loopback HTTPS Playwright; physical second PC remains manual."
   },
-  "recommended_phase50": "On authorized curated data: map real Undercover resource formats into /uc; recover scene-scheduling edges toward Present while keeping opaque draw backends (0x006860F0 / 0x00686290) untouched; expand remaining RUNTIME_READY_NOT_EXECUTED leaves only with verified ABIs."
+  "recommended_phase50": "On authorized curated data: map real Undercover resource formats into /uc; recover scene-scheduling edges toward Present while keeping opaque draw backends (0x006860F0 / 0x00686290) untouched; expand remaining RUNTIME_READY_NOT_EXECUTED leaves only with verified ABIs.",
+  "phase50": {
+    "dxt1_decoder_tests_passed": true,
+    "node_uc_assets_passed": true,
+    "lan_server_tests_passed": true,
+    "frontend_build_passed": true,
+    "blocked_external_unchanged": 74,
+    "synthetic_texture_decoder": "WORKING",
+    "synthetic_mesh_viewer": "WORKING",
+    "authentic_texture_source_identified": false,
+    "authentic_texture_preview_verified": false,
+    "authentic_mesh_source_identified": false,
+    "authentic_mesh_preview_verified": false,
+    "browser_game_renderer_ready": false,
+    "cube_texture_correction": "0x007513E2_CreateCubeTexture",
+    "asset_distribution": "PRIVATE_LAN_FIXTURE_HOST_READY",
+    "lan_testing_readiness": "PRIVATE_LAN_HTTPS_READY",
+    "browser_renderer": "SYNTHETIC_TEXTURE_AND_MESH_PREVIEW",
+    "note": "Strict BC1 decoder + provenance + synthetic previews; authentic Undercover texture/mesh sources still unverified."
+  },
+  "recommended_phase51": "Locate one readable authorized DXT1 span with proven offset/size/format digests; or match XP_SMOKEBALL_* vertex/index spans to a verified 0x50 declaration; keep opaque draw backends untouched; FIRST_FRAME remains blocked."
 }

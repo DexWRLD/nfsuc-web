@@ -1,0 +1,366 @@
+{
+  "target": {
+    "sha256": "6b10551649fd70fa630bd7454fd953f51555fa2dd2112faae84ac8ca97844bcd",
+    "architecture": "PE32 x86",
+    "base": "0x00400000"
+  },
+  "status": "RUNTIME_ASSET_CONTRACT_PARTIALLY_RECOVERED_SOURCE_PAYLOAD_UNVERIFIED",
+  "mesh": {
+    "named_candidates": [
+      "XP_SMOKEBALL_CURL",
+      "XP_SMOKEBALL_PUFF"
+    ],
+    "writer": "0x00782570",
+    "fields": [
+      {
+        "offset": "0xEC",
+        "size": 4,
+        "value": "source mesh record M",
+        "site": "0x0078257A"
+      },
+      {
+        "offset": "0xF0",
+        "size": 4,
+        "value": "3 * M.u32(0x30)",
+        "site": "0x0078258A"
+      },
+      {
+        "offset": "0xF4",
+        "size": 4,
+        "value": "floor(S.u32(0x6C) / stride)",
+        "site": "0x007825B5"
+      },
+      {
+        "offset": "0xF8",
+        "size": 4,
+        "value": "S.u16(0x72) & 0x7FFF",
+        "site": "0x0078259A"
+      },
+      {
+        "offset": "0xA4",
+        "size": 4,
+        "value": "associated record from input table at +0x2C, 12-byte entries indexed by S.u8(0x30), entry +8",
+        "site": "0x007825D0",
+        "confidence": "lookup confirmed, material interpretation unproven"
+      },
+      {
+        "offset": "0xA8+4*i",
+        "size": 4,
+        "value": "instance count",
+        "site": "0x00757C2B"
+      },
+      {
+        "offset": "0xDC+4*i",
+        "size": 4,
+        "value": "stream 1 offset in 64-byte units",
+        "site": "0x00757C46"
+      }
+    ],
+    "source": {
+      "section": "S = M.ptr(0x14)",
+      "vertex_pointer": "S.ptr(0x64)",
+      "vertex_bytes": "S.u32(0x6C)",
+      "index_pointer": "M.ptr(0x20)",
+      "index_bytes": "2 * index count",
+      "index_type": "u16 little-endian for the observed path",
+      "evidence": [
+        "0x00782581",
+        "0x00780DA2",
+        "0x00780DA7",
+        "0x00780DAD",
+        "0x00780DBC",
+        "0x00780DC4",
+        "0x0077A800"
+      ]
+    },
+    "stream": {
+      "handle": "S.u32(0x68)",
+      "base_vertex": "S.u32(0x74)",
+      "byte_offset": "base_vertex * stride",
+      "bind": "0x00757BEB",
+      "index_handle": "M.u32(0x28)",
+      "index_bind": "0x00757C29",
+      "manager": "0x0179F2DC",
+      "record_size": 12,
+      "record_fields": {
+        "0x00": "allocator metadata pointer, stride at metadata+0x9C64",
+        "0x04": "COM buffer pointer",
+        "0x08": "CPU backing pointer used by upload routines"
+      },
+      "direct_uploads": [
+        "0x00751020",
+        "0x007510A0"
+      ]
+    },
+    "draw": {
+      "call_site": "0x00757C9A",
+      "opaque_target": "0x006860F0",
+      "primitive_type": 4,
+      "base_vertex": 0,
+      "min_vertex": 0,
+      "start_index": 0,
+      "vertex_count": "mesh+0xF4",
+      "primitive_count": "floor(mesh.u32(0xF0)/3)",
+      "instance_stride": 64,
+      "confidence": "ordinary argument preparation confirmed, opaque implementation excluded"
+    }
+  },
+  "declaration": {
+    "builder": "0x0073F300",
+    "descriptor_size": 80,
+    "record_size": 4,
+    "record": [
+      "stream",
+      "usage lookup index",
+      "type and width lookup index",
+      "usage index"
+    ],
+    "count_offset": "0x40",
+    "stride_offsets": "0x44 + 4*stream",
+    "output_size": 8,
+    "output": [
+      "u16 stream",
+      "u16 offset",
+      "u8 type",
+      "u8 method=0",
+      "u8 usage",
+      "u8 usageIndex"
+    ],
+    "terminator": [
+      255,
+      0,
+      0,
+      0,
+      17,
+      0,
+      0,
+      0
+    ],
+    "tables": {
+      "width": {
+        "address": "0x00CF0E20",
+        "values": [
+          4,
+          8,
+          12,
+          16,
+          4,
+          4,
+          8,
+          4,
+          4,
+          8,
+          4,
+          8,
+          4,
+          8,
+          4,
+          4,
+          4,
+          1,
+          0
+        ],
+        "site": "0x0073F376"
+      },
+      "usage": {
+        "address": "0x00CF0E6C",
+        "values": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          10,
+          11
+        ],
+        "site": "0x0073F366"
+      },
+      "type": {
+        "address": "0x00CF0E98",
+        "values": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          15,
+          16,
+          17,
+          9,
+          10,
+          9,
+          10,
+          9,
+          10,
+          17,
+          5,
+          8,
+          17,
+          17
+        ],
+        "site": "0x0073F354"
+      }
+    },
+    "create_calls": [
+      "0x0074D590",
+      "0x0073015D"
+    ],
+    "bind": "0x0075EF3F",
+    "confidence": "record translation confirmed, mapping to one on-disk named asset unverified"
+  },
+  "texture": {
+    "uploader": "0x00751360",
+    "caller_region_tail_jump": "0x00758664",
+    "job": {
+      "descriptor": "0x08",
+      "requested_mips": "0x0C",
+      "free_cpu_payload_flag": "0x10"
+    },
+    "descriptor": {
+      "0x00": "platform pointer P",
+      "0x10": "kind discriminator, compared with 0x012BAD1C",
+      "0x24": "base level byte-count term",
+      "0x28": "s16 width",
+      "0x2A": "s16 height",
+      "0x32": "s8 source mip count",
+      "0x50": "CPU payload pointer"
+    },
+    "platform": {
+      "0x0C": "D3D format DWORD",
+      "0x10": "GPU texture output pointer"
+    },
+    "sites": {
+      "format": "0x00751374",
+      "source_mips": "0x00751377",
+      "payload": "0x00751380",
+      "base_size": "0x00751383",
+      "kind": "0x007513B5",
+      "width": "0x00751576",
+      "height": "0x0075157A",
+      "create2d": "0x007515D3",
+      "create_cube": "0x007513E2",
+      "lock2d": "0x00751676",
+      "copy2d": "0x00751698",
+      "align_next": "0x007516A4",
+      "unlock2d": "0x007516C1",
+      "free": "0x007516E2"
+    },
+    "compressed_formats": [
+      "DXT1",
+      "DXT2",
+      "DXT3",
+      "DXT4",
+      "DXT5"
+    ],
+    "block_bytes": {
+      "DXT1": 8,
+      "DXT2": 16,
+      "DXT3": 16,
+      "DXT4": 16,
+      "DXT5": 16
+    },
+    "cube_kind_label": "Cubic Environment Map",
+    "source_archive_mapping": null
+  },
+  "edges": [
+    {
+      "from": "0x00782A50",
+      "site": "0x00782AD8",
+      "to": "0x00782570",
+      "type": "direct"
+    },
+    {
+      "from": "0x00782570",
+      "site": "0x007825BB",
+      "to": "0x00780D60",
+      "type": "direct"
+    },
+    {
+      "from": "0x00780D60",
+      "site": "0x00780DE3",
+      "to": "0x0077A610",
+      "type": "direct"
+    },
+    {
+      "from": "0x0077A610",
+      "site": "0x0077A84F",
+      "to": "0x00777F30",
+      "type": "direct"
+    },
+    {
+      "from": "0x00777F30",
+      "site": "0x00777FB1",
+      "to": "0x00777D60",
+      "type": "direct on matching TLS"
+    },
+    {
+      "from": "0x00777D60",
+      "site": "0x00777D9B",
+      "to": "0x007510A0",
+      "type": "direct"
+    },
+    {
+      "from": null,
+      "site": "0x0077A874",
+      "to": "0x00777D00",
+      "type": "direct, caller function undefined"
+    },
+    {
+      "from": "0x00777D00",
+      "site": "0x00777D3F",
+      "to": "0x00751020",
+      "type": "direct"
+    },
+    {
+      "from": "0x0077C150",
+      "site": "0x0077C32B",
+      "to": "0x0074D540",
+      "type": "direct, effect usage file path"
+    },
+    {
+      "from": "0x00770750",
+      "site": "0x007707EE",
+      "to": "0x0076FC30",
+      "type": "direct"
+    },
+    {
+      "from": "0x0076FC30",
+      "site": "0x0076FDA4",
+      "to": "0x00757B80",
+      "type": "conditional direct"
+    },
+    {
+      "from": "0x0076FC30",
+      "site": "0x0076FDB2",
+      "to": "0x00768EC0",
+      "type": "conditional direct"
+    },
+    {
+      "from": "0x00757B80",
+      "site": "0x00757C9A",
+      "to": "0x006860F0",
+      "type": "opaque"
+    },
+    {
+      "from": null,
+      "site": "0x00758664",
+      "to": "0x00751360",
+      "type": "tail jump, ECX loaded from stack argument"
+    }
+  ],
+  "unresolved": [
+    "archive record to CPU vertex/index/texture span mapping",
+    "complete named mesh attribute association",
+    "authentic readable payload fixture",
+    "material shader and texture key mapping",
+    "matrix convention and original frame parity",
+    "opaque name resolver 0x004AA010",
+    "opaque allocator 0x00686000 and free 0x00686030",
+    "opaque draw wrapper 0x006860F0",
+    "unresolved buffer lock dispatch 0x007720F9"
+  ]
+}
