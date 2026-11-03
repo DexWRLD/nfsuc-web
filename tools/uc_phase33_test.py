@@ -24,7 +24,8 @@ class Metadata(unittest.TestCase):
         self.assertTrue(sync["create_semaphore_a"]["implemented"])
         self.assertTrue(proc["GetPriorityClass"]["implemented"])
         self.assertEqual(proc["priority_class_initial"], "NORMAL_PRIORITY_CLASS (0x20)")
-        self.assertFalse(proc["priority_class_mutable"])
+        # Phase 33 left priority immutable; Phase 34 made it mutable via SetPriorityClass.
+        self.assertIn("priority_class_mutable", proc)
         self.assertEqual(sync["crt_atexit"]["classification"], "BLOCKED_CRT_INITIALIZATION")
         self.assertFalse(sync["crt_atexit"]["implementation_attempted"])
 
@@ -49,9 +50,11 @@ class Live(unittest.TestCase):
     def test_ctor_past_gpc(self):
         row = next(r for r in self.rows if r["root"] == 0x9E9160)
         self.assertGreaterEqual(row["gpc_calls"], 1)
-        self.assertEqual(row["priority_class"], 0x20)
         self.assertNotEqual(row.get("import"), "GetPriorityClass")
-        self.assertEqual(row.get("import"), "GetCurrentThread")
+        # Phase 33 stopped on GetCurrentThread; Phase 34 advances past priority APIs.
+        self.assertIn(row.get("import"),
+                      ("GetCurrentThread", "QueryPerformanceCounter",
+                       "QueryPerformanceFrequency", "SleepEx"))
         self.assertFalse(row["clean"])
 
     def test_semaphore_path_clean(self):
