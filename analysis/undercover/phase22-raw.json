@@ -1,0 +1,874 @@
+{
+  "phase": 22,
+  "helper_0x0079E4A0": {
+    "entry": "0x0079E4A0",
+    "uc_label": "MEDIUM_CONFIDENCE",
+    "abi": {
+      "form": "thiscall + 2 stack bytes/bools (ret 8)",
+      "ecx": "renderer object (saved EBX)",
+      "stack_args": [
+        {
+          "slot": "[esp+0x18] after setup",
+          "role": "bool filter A (gate VT+0x70)"
+        },
+        {
+          "slot": "[esp+0x1C]",
+          "role": "bool filter B (gate VT+0x1DC)"
+        }
+      ],
+      "return": "EAX = selected COM iface pointer, or NULL",
+      "ret_bytes": 8
+    },
+    "fields_read": [
+      "+0x50 begin",
+      "+0x54 end"
+    ],
+    "anomalous_jmp": {
+      "va": "0x0079E4AA",
+      "target": "0x0048FCD6",
+      "note": "Unconditional jmp to a site that does not decode as a coherent empty-check stub. Functional iteration body follows at 0x0079E4AF (jne/empty/ret). Treat 0x48FCD6 as unresolved/anomaly; do not follow.",
+      "class": "UNKNOWN_ANOMALY"
+    },
+    "iteration": {
+      "begin": "[renderer+0x50] -> EBP",
+      "end": "[renderer+0x54]",
+      "stride": 8,
+      "element_iface": "[EBP+4] -> ESI",
+      "select": "keeps EDI as best candidate via VT+0x58 float compare",
+      "filters": [
+        "VT+0x70 (bool)",
+        "VT+0x1DC (bool)"
+      ]
+    },
+    "indirect_calls": [
+      {
+        "offset": "0x70",
+        "role": "predicate/filter"
+      },
+      {
+        "offset": "0x1DC",
+        "role": "predicate/filter"
+      },
+      {
+        "offset": "0x58",
+        "role": "float metric / priority"
+      }
+    ],
+    "listing_head": [
+      {
+        "va": "0x0079E4A0",
+        "text": "push ecx"
+      },
+      {
+        "va": "0x0079E4A1",
+        "text": "push ebx"
+      },
+      {
+        "va": "0x0079E4A2",
+        "text": "mov ebx, ecx"
+      },
+      {
+        "va": "0x0079E4A4",
+        "text": "mov eax, dword ptr [ebx + 0x54]"
+      },
+      {
+        "va": "0x0079E4A7",
+        "text": "sub eax, dword ptr [ebx + 0x50]"
+      },
+      {
+        "va": "0x0079E4AA",
+        "text": "jmp 0x48fcd6"
+      },
+      {
+        "va": "0x0079E4AF",
+        "text": "jne 0x79e4b8"
+      },
+      {
+        "va": "0x0079E4B1",
+        "text": "xor eax, eax"
+      },
+      {
+        "va": "0x0079E4B3",
+        "text": "pop ebx"
+      },
+      {
+        "va": "0x0079E4B4",
+        "text": "pop ecx"
+      },
+      {
+        "va": "0x0079E4B5",
+        "text": "ret 8"
+      }
+    ],
+    "ANGR": {
+      "angr_function": true,
+      "size": 15,
+      "blocks": 1,
+      "immediate_hits": [],
+      "mentions_device": false,
+      "mentions_renderer": false,
+      "sha": "e740d1135a4d76a8",
+      "excerpt_head": "int sub_79e4a0(void)\n{\n    unsigned int v3;  // ecx\n    unsigned int v4;  // ebx\n    unsigned int v0;  // [bp-0x8]\n    unsigned int v1;  // [bp-0x4]\n\n    v1 = v3;\n    v0 = v4;\n}"
+    }
+  },
+  "container": {
+    "fields": {
+      "+0x50": "begin pointer",
+      "+0x54": "end pointer",
+      "+0x58": "end_of_storage / capacity pointer"
+    },
+    "type": "MSVC_VECTOR_LIKE",
+    "confidence": "STRONG",
+    "evidence": [
+      "0x007A45B0 with ECX=&renderer+0x50 zeros [0],[4],[8] (begin/end/capacity)",
+      "0x0079E4A0 / 0x007A1400 iterate EBP from begin to end with add EBP, 8",
+      "0x007B18ED / 0x007A099F: sub end,begin; sar 3 => element count (size 8)",
+      "0x007A06E0 destructor frees (end-begin) bytes via heap helper after sar/scale",
+      "0x007A077A clear: mov [esi+0x54], ecx with ecx=[esi+0x50] (end=begin)"
+    ],
+    "bounds_representation": "begin/end pointers (not pointer/count)",
+    "element_size": 8,
+    "element_layout": {
+      "+0x00": "UNKNOWN (metadata / paired pointer)",
+      "+0x04": "COM/interface pointer (engine graphics iface)",
+      "confidence": "STRONG for +0x04 iface; +0x00 UNKNOWN"
+    }
+  },
+  "ctor_0x007B5020": {
+    "entry": "0x007B5020",
+    "role": "RENDERER_CONSTRUCTOR_PUBLISHER",
+    "classification": "DEFINITE_PUBLISHER",
+    "publishes": {
+      "global": "0x017AA798",
+      "value": "this (ESI); via lea eax,[edi-0x44] where edi=esi+0x44",
+      "sites": [
+        "0x007B506B",
+        "0x007B5072(null fallback)"
+      ]
+    },
+    "same_vtables_as_dtor_object": [
+      "0xBB1964",
+      "0xBB195C",
+      "0xBB1944",
+      "0xBB1924",
+      "0xBB191C"
+    ],
+    "container_init": {
+      "call": "0x007A45B0",
+      "ecx": "lea ecx,[esi+0x50]",
+      "push": "0x0A capacity hint?"
+    },
+    "events": [
+      {
+        "va": "0x007B503D",
+        "text": "lea eax, [esp + 0x50]"
+      },
+      {
+        "va": "0x007B504F",
+        "text": "call 0x793cf0"
+      },
+      {
+        "va": "0x007B5068",
+        "text": "lea eax, [edi - 0x44]"
+      },
+      {
+        "va": "0x007B506B",
+        "text": "mov dword ptr [0x17aa798], eax"
+      },
+      {
+        "va": "0x007B5072",
+        "text": "mov dword ptr [0x17aa798], ebx"
+      },
+      {
+        "va": "0x007B5095",
+        "text": "mov dword ptr [esi], 0xbb1964"
+      },
+      {
+        "va": "0x007B509B",
+        "text": "mov dword ptr [esi + 4], 0xbb195c"
+      },
+      {
+        "va": "0x007B50A2",
+        "text": "mov dword ptr [esi + 0x24], 0xbb1944"
+      },
+      {
+        "va": "0x007B50A9",
+        "text": "mov dword ptr [esi + 0x30], 0xbb1924"
+      },
+      {
+        "va": "0x007B50B0",
+        "text": "mov dword ptr [esi + 0x40], 0xbb191c"
+      },
+      {
+        "va": "0x007B50B7",
+        "text": "call 0x78bde0"
+      },
+      {
+        "va": "0x007B50D6",
+        "text": "call 0x78bde0"
+      },
+      {
+        "va": "0x007B50DD",
+        "text": "lea ecx, [esi + 0x50]"
+      },
+      {
+        "va": "0x007B50E6",
+        "text": "call 0x7a45b0"
+      },
+      {
+        "va": "0x007B5118",
+        "text": "call 0x7a50d0"
+      },
+      {
+        "va": "0x007B5147",
+        "text": "mov dword ptr [esi + 0xf8], 0xbb1914"
+      }
+    ],
+    "uc_label": "HIGH_CONFIDENCE"
+  },
+  "dtor_0x007A06E0": {
+    "entry": "0x007A06E0",
+    "role": "RENDERER_DESTRUCTOR_CLEANUP",
+    "classification": "DEFINITE_NULL_ON_EXIT",
+    "publishes": {
+      "global": "0x017AA798",
+      "value": "EBP which remains 0 after xor ebp,ebp",
+      "site": "0x007A09BB",
+      "means": "NULL clear, not live-object publish"
+    },
+    "list_ops": [
+      "reads +0x50/+0x54; on non-empty frees buffer (sar 3 * 8)",
+      "clear-style end=begin at 0x007A077A early in body"
+    ],
+    "calls_0x686030": true,
+    "note": "Phase 21 listed this as DEFINITE_PUBLISHER; corrected to destructor/null.",
+    "uc_label": "HIGH_CONFIDENCE"
+  },
+  "null_stub_0x0079D1E0": {
+    "entry": "0x0079D1E0",
+    "role": "RENDERER_GLOBAL_NULL_STUB",
+    "classification": "NULL_CLEAR",
+    "body": "mov dword ptr [0x017AA798], 0; ret",
+    "note": "Standalone function after int3 padding. Phase 21 owner-attributed it to 0x0079D150; 0x0079D150 is a different buffer helper that returns before the stub.",
+    "uc_label": null,
+    "prior_fn_0x79d150": {
+      "role": "unrelated buffer grow/shrink helper (not renderer null)",
+      "classification": "NOT_RENDERER_SHUTDOWN"
+    }
+  },
+  "lifecycle": {
+    "CREATE/INIT": {
+      "fn": "0x007B5020",
+      "confidence": "PROVEN"
+    },
+    "PUBLISH": {
+      "global": "0x017AA798",
+      "fn": "0x007B5020",
+      "confidence": "PROVEN"
+    },
+    "USE": {
+      "helper": "0x0079E4A0",
+      "draw_owners": [
+        "0x007B2AC0",
+        "0x007B36A0",
+        "0x007A1400",
+        "0x007B2930",
+        "0x007B1850"
+      ],
+      "confidence": "PROVEN"
+    },
+    "DRAW": {
+      "confidence": "PROVEN",
+      "kind": "ENGINE_COM_DRAW"
+    },
+    "SHUTDOWN/REPLACE": {
+      "fn": "0x007A06E0",
+      "confidence": "STRONG"
+    },
+    "NULL": {
+      "fns": [
+        "0x0079D1E0",
+        "0x007A06E0 epilogue"
+      ],
+      "confidence": "PROVEN"
+    }
+  },
+  "interfaces": {
+    "ENGINE_GFX_IFACE_00": {
+      "source": "renderer vector element [elem+4]",
+      "vtable_address": "RUNTIME_ONLY",
+      "mapped_section": null,
+      "ordinary_targets": "UNRESOLVED (indirect)",
+      "observed_method_offsets": [
+        "0x00000028",
+        "0x00000030",
+        "0x00000034",
+        "0x00000058",
+        "0x00000060",
+        "0x00000068",
+        "0x00000070",
+        "0x000000BC",
+        "0x00000128",
+        "0x00000148",
+        "0x0000014C",
+        "0x00000154",
+        "0x000001DC",
+        "0x000001E4"
+      ],
+      "clusters": {
+        "draw_like": [
+          "0x00000148",
+          "0x0000014C",
+          "0x00000154"
+        ],
+        "predicate_filter": [
+          "0x00000070",
+          "0x000001DC"
+        ],
+        "metric_float": [
+          "0x00000058"
+        ],
+        "other": [
+          "0x00000028",
+          "0x00000030",
+          "0x00000034",
+          "0x00000060",
+          "0x00000068",
+          "0x000000BC",
+          "0x00000128",
+          "0x000001E4"
+        ]
+      },
+      "note": "No static vtable in ordinary sections recovered; cannot enumerate code targets."
+    },
+    "count": 1,
+    "vtables_recovered_static": 0,
+    "ordinary_vtable_methods": 0
+  },
+  "draw_candidates": [
+    {
+      "owner": "0x007B2AC0",
+      "call": "0x007B2AE7",
+      "offset": "0x00000148",
+      "soft": "DrawPrimitive-shaped",
+      "interface": "ENGINE_GFX_IFACE_00",
+      "provenance": "HELPER_0x79E4A0",
+      "uses_renderer_global": true,
+      "uses_helper": true,
+      "implementation_target": "INDIRECT_COM",
+      "terminus": "ENGINE_BACKEND",
+      "device_in_owner": false,
+      "UC_classification": "ENGINE_COM_DRAW",
+      "note": null
+    },
+    {
+      "owner": "0x007B36A0",
+      "call": "0x007B39D3",
+      "offset": "0x00000148",
+      "soft": "DrawPrimitive-shaped",
+      "interface": "ENGINE_GFX_IFACE_00",
+      "provenance": "DIRECT_VECTOR_WALK",
+      "uses_renderer_global": false,
+      "uses_helper": false,
+      "implementation_target": "INDIRECT_COM",
+      "terminus": "ENGINE_BACKEND",
+      "device_in_owner": false,
+      "UC_classification": "ENGINE_COM_DRAW",
+      "note": null
+    },
+    {
+      "owner": "0x007A1400",
+      "call": "0x007A14FD",
+      "offset": "0x0000014C",
+      "soft": "DrawIndexedPrimitive-shaped",
+      "interface": "ENGINE_GFX_IFACE_00",
+      "provenance": "DIRECT_VECTOR_WALK",
+      "uses_renderer_global": true,
+      "uses_helper": false,
+      "implementation_target": "INDIRECT_COM",
+      "terminus": "ENGINE_BACKEND",
+      "device_in_owner": false,
+      "UC_classification": "ENGINE_COM_DRAW",
+      "note": null
+    },
+    {
+      "owner": "0x007B2930",
+      "call": "0x007B29F7",
+      "offset": "0x0000014C",
+      "soft": "DrawIndexedPrimitive-shaped",
+      "interface": "ENGINE_GFX_IFACE_00",
+      "provenance": "HELPER_0x79E4A0",
+      "uses_renderer_global": true,
+      "uses_helper": true,
+      "implementation_target": "INDIRECT_COM",
+      "terminus": "ENGINE_BACKEND",
+      "device_in_owner": false,
+      "UC_classification": "ENGINE_COM_DRAW",
+      "note": "Phase20 call site 0x7B29E7 was +0x1E4; true +0x14C call is via jmp to 0x7B29F7"
+    },
+    {
+      "owner": "0x007B1850",
+      "call": "0x007B1C78",
+      "offset": "0x00000154",
+      "soft": "DrawIndexedPrimitiveUP-shaped",
+      "interface": "ENGINE_GFX_IFACE_00",
+      "provenance": "DIRECT_VECTOR_WALK",
+      "uses_renderer_global": true,
+      "uses_helper": false,
+      "implementation_target": "INDIRECT_COM",
+      "terminus": "ENGINE_BACKEND",
+      "device_in_owner": false,
+      "UC_classification": "ENGINE_COM_DRAW",
+      "note": "Phase20 owner 0x7B17C0 was prior function; draw body starts 0x7B1850"
+    }
+  ],
+  "raw_device_draw_found": false,
+  "durable_alias": {
+    "site": "0x007253F1",
+    "owner": "0x00725200",
+    "field": "graphics_object+0x1B0",
+    "phase21_claim": "durable DEVICE field store",
+    "phase22_correction": "FALSE_DEVICE_ALIAS",
+    "actual_value": "return of call 0x0071D300 (capability/feature index; compared to 3)",
+    "evidence": [
+      "DEVICE used earlier for SetRenderState VT+0xE4; EAX clobbered by call 0x71D300",
+      "cmp eax, 3; mov [esi+0x1B0], eax; set flag [esi+0x1B4]"
+    ],
+    "writer": "0x00725200",
+    "readers": "not exhaustively enumerated; field is status/index shaped",
+    "relationship_to_renderer": "NO_RELATION_FOUND",
+    "durable_device_alias_mapped": false
+  },
+  "handoff_candidates": [
+    {
+      "fn": "0x0079E4A0",
+      "score": 40,
+      "why": "selects ENGINE_GFX_IFACE_00 for Draw owners",
+      "negatives": [
+        "no DEVICE read",
+        "dynamic COM return"
+      ],
+      "UC": "ENGINE_LIST_SELECT",
+      "device_bridge": false
+    },
+    {
+      "fn": "0x007A1400",
+      "score": 35,
+      "why": "direct vector walk + VT+0x14C",
+      "negatives": [
+        "no DEVICE read in owner"
+      ],
+      "UC": "ENGINE_COM_DRAW",
+      "device_bridge": false
+    },
+    {
+      "fn": "0x007B2AC0",
+      "score": 35,
+      "why": "helper + VT+0x148",
+      "negatives": [
+        "no DEVICE read in owner"
+      ],
+      "UC": "ENGINE_COM_DRAW",
+      "device_bridge": false
+    },
+    {
+      "fn": "0x007A4860",
+      "score": 15,
+      "why": "called with selected iface on Draw path",
+      "negatives": [
+        "no DEVICE read"
+      ],
+      "UC": "ENGINE_WRAPPER",
+      "device_bridge": false
+    }
+  ],
+  "strongest_handoff": {
+    "fn": "0x0079E4A0",
+    "score": 40,
+    "why": "selects ENGINE_GFX_IFACE_00 for Draw owners",
+    "negatives": [
+      "no DEVICE read",
+      "dynamic COM return"
+    ],
+    "UC": "ENGINE_LIST_SELECT",
+    "device_bridge": false
+  },
+  "angr": {
+    "available": true,
+    "version": "10.0.5",
+    "targets": {
+      "0x0079E4A0": {
+        "angr_function": true,
+        "size": 15,
+        "blocks": 1,
+        "immediate_hits": [],
+        "mentions_device": false,
+        "mentions_renderer": false,
+        "sha": "e740d1135a4d76a8",
+        "excerpt_head": "int sub_79e4a0(void)\n{\n    unsigned int v3;  // ecx\n    unsigned int v4;  // ebx\n    unsigned int v0;  // [bp-0x8]\n    unsigned int v1;  // [bp-0x4]\n\n    v1 = v3;\n    v0 = v4;\n}"
+      },
+      "0x007B5020": {
+        "angr_function": true,
+        "size": 2097,
+        "blocks": 82,
+        "immediate_hits": [
+          {
+            "abs": "0x017AA798",
+            "name": "RENDERER",
+            "at": "0x007B506C"
+          },
+          {
+            "abs": "0x017AA798",
+            "name": "RENDERER",
+            "at": "0x007B5074"
+          },
+          {
+            "abs": "0x017AA798",
+            "name": "RENDERER",
+            "at": "0x007B54F4"
+          },
+          {
+            "abs": "0x017AA798",
+            "name": "RENDERER",
+            "at": "0x007B5589"
+          }
+        ],
+        "mentions_device": false,
+        "mentions_renderer": false,
+        "sha": "cb64a2add2c8c8fa",
+        "excerpt_head": "typedef struct st_7b5020_1 {\n    char padding_0[20];\n    unsigned int field_14;\n} st_7b5020_1;\n\ntypedef struct st_7b5020_3 {\n    unsigned int field_0;\n} st_7b5020_3;\n\ntypedef struct st_7b5020_7 {\n    struct st_7b5020_3 *field_0;\n    struct st_7b5020_3 *field_4;\n    struct st_7b5020_3 *field_8;\n    char padding_c[100];\n    struct st_7b5020_0 *field_70;\n    unsigned int field_74;\n    unsigned int field_78;\n    struct st_7b5020_0 *field_7c;\n    unsigned int field_80;\n    unsigned int field_84;\n    unsigned int field_88;\n    unsigned int field_8c;\n    char padding_90[28];\n    unsigned long long field_ac;\n    unsigned int field_b4;\n    unsigned long long field_b8;\n    unsigned int field_c0;\n    unsigned long long field_c4;\n    unsigned int field_cc;\n    unsigned int field_d0;\n    unsigned int field_d4;\n    unsigned int field_d8;\n    unsigned int field_dc;\n    unsigned int field_e0;\n    unsigned int field_e4;\n    unsigned int field_e8;\n    unsigned int field_ec;\n    char padding_f0[24];\n    unsigned int field_108;\n    unsigned int field_10c;\n    char padding_110[96];\n    unsigned int field_170;\n    unsigned int field_174;\n    unsigned int field_178;\n    unsigned int field_17c;\n    unsign"
+      },
+      "0x007A06E0": {
+        "angr_function": true,
+        "size": 770,
+        "blocks": 60,
+        "immediate_hits": [
+          {
+            "abs": "0x017AA798",
+            "name": "RENDERER",
+            "at": "0x007A09BD"
+          }
+        ],
+        "mentions_device": false,
+        "mentions_renderer": true,
+        "sha": "e05585709aec2b0c",
+        "excerpt_head": "typedef struct st_7a06e0_1 {\n    struct st_7a06e0_0 *field_0;\n} st_7a06e0_1;\n\ntypedef struct st_7a06e0_0 {\n    unsigned int field_0;\n} st_7a06e0_0;\n\ntypedef struct st_7a06e0_4 {\n    unsigned int field_0;\n    unsigned int field_4;\n    unsigned int field_8;\n    char padding_c[4];\n    struct st_7a06e0_2 *field_10;\n    struct st_7a06e0_2 *field_14;\n    unsigned int field_18;\n    char padding_1c[140];\n    struct st_7a06e0_1 *field_a8;\n    unsigned int field_ac;\n    unsigned int field_b0;\n    struct st_7a06e0_1 *field_b4;\n    unsigned int field_b8;\n    unsigned int field_bc;\n    unsigned int field_c0;\n    unsigned int field_c4;\n    char padding_c8[272];\n    struct st_7a06e0_1 *field_1d8;\n    struct st_7a06e0_1 *field_1dc;\n    struct st_7a06e0_1 *field_1e0;\n    struct st_7a06e0_1 *field_1e4;\n    char padding_1e8[44];\n    unsigned int field_214;\n    unsigned int field_218;\n    unsigned int field_21c;\n    char padding_220[12];\n    unsigned int field_22c;\n    unsigned int field_230;\n    unsigned int field_234;\n    unsigned int field_238;\n    unsigned int field_23c;\n    unsigned int field_240;\n} st_7a06e0_4;\n\ntypedef struct st_7a06e0_3 {\n    unsigned int field_0;\n    unsigned int field_4;\n   "
+      },
+      "0x007B2AC0": {
+        "angr_function": true,
+        "size": 66,
+        "blocks": 7,
+        "immediate_hits": [
+          {
+            "abs": "0x017AA798",
+            "name": "RENDERER",
+            "at": "0x007B2AC3"
+          },
+          {
+            "abs": "0x017AA798",
+            "name": "RENDERER",
+            "at": "0x007B2B2F"
+          }
+        ],
+        "mentions_device": false,
+        "mentions_renderer": true,
+        "sha": "02dcb82cb5f0df0b",
+        "excerpt_head": "typedef struct st_7b2ac0_2 {\n    char padding_0[12];\n    struct st_7b2ac0_1 *field_c;\n} st_7b2ac0_2;\n\ntypedef struct st_7b2ac0_0 {\n    char padding_0[328];\n    struct st_7b2ac0_1 *field_148;\n} st_7b2ac0_0;\n\ntypedef struct st_7b2ac0_1 {\n    unsigned int field_0;\n} st_7b2ac0_1;\n\nint sub_7b2ac0(void)\n{\n    st_7b2ac0_0 **v4;  // eax\n    st_7b2ac0_2 **v5;  // ecx\n    unsigned int v6;  // eax\n    unsigned int v0;  // [bp-0x14]\n    unsigned int v1;  // [bp-0x10]\n    unsigned int v2;  // [bp-0xc]\n\n    if (!*(int *)0x17aa798)\n        return v6;\n    v2 = 1;\n    v1 = 0;\n    v4 = 7988384();\n    if (!v4)\n    {\n        8041280();\n        v0 = 0xffffffff;\n        *v5->field_c();\n    }\n    *v4->field_148();\n}"
+      },
+      "0x007A1400": {
+        "angr_function": true,
+        "size": 102,
+        "blocks": 9,
+        "immediate_hits": [
+          {
+            "abs": "0x017AA798",
+            "name": "RENDERER",
+            "at": "0x007A1404"
+          }
+        ],
+        "mentions_device": false,
+        "mentions_renderer": true,
+        "sha": "f97eb725444d6085",
+        "excerpt_head": "typedef struct st_7a1400_7 {\n    struct st_7a1400_4 *field_0;\n} st_7a1400_7;\n\ntypedef struct st_7a1400_5 {\n    unsigned int field_0;\n} st_7a1400_5;\n\ntypedef struct st_7a1400_4 {\n    char padding_0[40];\n    struct st_7a1400_5 *field_28;\n} st_7a1400_4;\n\ntypedef struct st_7a1400_1 {\n    char padding_0[64];\n    unsigned int field_40;\n} st_7a1400_1;\n\ntypedef struct st_7a1400_6 {\n    char padding_0[4];\n    struct st_7a1400_7 *field_4;\n} st_7a1400_6;\n\nst_7a1400_1 * sub_7a1400(void)\n{\n    st_7a1400_1 *v6;  // eax\n    unsigned int v7;  // edi\n    unsigned int v8;  // ebx\n    unsigned int v9;  // esi\n    st_7a1400_1 *v10;  // eax\n    unsigned int v0;  // [bp-0x14]\n    unsigned int v1;  // [bp-0x10]\n    unsigned int v2;  // [bp-0xc]\n    unsigned int v3;  // [bp-0x4]\n    st_7a1400_1 *v4;  // [bp+0x4]\n    st_7a1400_6 *v5;  // [bp+0x4]\n\n    if (*(int *)(*(int *)0x17aa798 + 336) != 2)\n        return v10;\n    v6 = *(int *)(*(int *)0x17aa798 + 488);\n    if (v6 && v6 != 0x1)\n        return v6;\n    if (*(short *)(*(int *)0x17aa798 + 360) > 1)\n        return v6;\n    v2 = v7;\n    v3 = v4->field_40;\n    v5 = *(int *)(*(int *)0x17aa798 + 80);\n    if (v5 == *(int *)(*(int *)0x17aa798 + 84))\n        return"
+      },
+      "0x00752AF0": {
+        "angr_function": true,
+        "size": 19,
+        "blocks": 1,
+        "immediate_hits": [
+          {
+            "abs": "0x013C6510",
+            "name": "DEVICE",
+            "at": "0x00752AF1"
+          },
+          {
+            "abs": "0x013C6510",
+            "name": "DEVICE",
+            "at": "0x00752B04"
+          },
+          {
+            "abs": "0x013C6510",
+            "name": "DEVICE",
+            "at": "0x00752B54"
+          },
+          {
+            "abs": "0x013C6510",
+            "name": "DEVICE",
+            "at": "0x00752B7D"
+          },
+          {
+            "abs": "0x013C6510",
+            "name": "DEVICE",
+            "at": "0x00752B9F"
+          },
+          {
+            "abs": "0x013C6510",
+            "name": "DEVICE",
+            "at": "0x00752BC8"
+          },
+          {
+            "abs": "0x013C6510",
+            "name": "DEVICE",
+            "at": "0x00752BE7"
+          }
+        ],
+        "mentions_device": true,
+        "mentions_renderer": false,
+        "sha": "9de27636d0bc0361",
+        "excerpt_head": "void sub_752af0(void)\n{\n    unsigned int v5;  // ebx\n    unsigned int v6;  // esi\n    unsigned int v7;  // edi\n    unsigned int v0;  // [bp-0x10]\n    unsigned int v1;  // [bp-0xc]\n    unsigned int v2;  // [bp-0x8]\n    unsigned int v3;  // [bp-0x4]\n\n    v3 = v5;\n    v2 = v6;\n    v1 = v7;\n    v0 = *(int *)0x13c6510;\n    (*(int *)(*(int *)*(int *)0x13c6510 + 168))();\n}"
+      }
+    },
+    "handoff": {
+      "UC_ANALYZER": "NO_ORDINARY_DEVICE_BRIDGE",
+      "ANGR": "NO_DEVICE_BRIDGE_IN_DRAW_SELECT",
+      "CONSENSUS": "NO_ORDINARY_DEVICE_BRIDGE",
+      "confidence": "AGREE",
+      "negative_weight": "NEGATIVE_STRONG"
+    }
+  },
+  "interface_graph": {
+    "nodes": [
+      {
+        "id": "renderer",
+        "va": "0x017AA798"
+      },
+      {
+        "id": "container",
+        "fields": "+0x50/+0x54/+0x58"
+      },
+      {
+        "id": "ENGINE_GFX_IFACE_00",
+        "kind": "engine_com"
+      },
+      {
+        "id": "proven_d3d_device",
+        "va": "0x013C6510"
+      },
+      {
+        "id": "present",
+        "va": "0x00752AF0"
+      },
+      {
+        "id": "external_protected",
+        "kind": "boundary"
+      }
+    ],
+    "edges": [
+      {
+        "from": "renderer",
+        "to": "container",
+        "rel": "CONTAINS"
+      },
+      {
+        "from": "0x007B5020",
+        "to": "renderer",
+        "rel": "PUBLISHES"
+      },
+      {
+        "from": "0x007A06E0",
+        "to": "renderer",
+        "rel": "PUBLISHES",
+        "note": "NULL"
+      },
+      {
+        "from": "0x0079D1E0",
+        "to": "renderer",
+        "rel": "PUBLISHES",
+        "note": "NULL"
+      },
+      {
+        "from": "container",
+        "to": "ENGINE_GFX_IFACE_00",
+        "rel": "RETURNS",
+        "via": "0x0079E4A0"
+      },
+      {
+        "from": "ENGINE_GFX_IFACE_00",
+        "to": "ENGINE_GFX_IFACE_00",
+        "rel": "CALLS",
+        "note": "draw-like VT"
+      },
+      {
+        "from": "proven_d3d_device",
+        "to": "present",
+        "rel": "CALLS",
+        "note": "EndScene/Present"
+      },
+      {
+        "from": "ENGINE_GFX_IFACE_00",
+        "to": "proven_d3d_device",
+        "rel": "UNKNOWN"
+      },
+      {
+        "from": "0x007A06E0",
+        "to": "external_protected",
+        "rel": "CALLS",
+        "note": "0x00686030 unresolved"
+      },
+      {
+        "from": "0x007B2AC0",
+        "to": "ENGINE_GFX_IFACE_00",
+        "rel": "CALLS",
+        "offset": "0x00000148"
+      },
+      {
+        "from": "0x007B36A0",
+        "to": "ENGINE_GFX_IFACE_00",
+        "rel": "CALLS",
+        "offset": "0x00000148"
+      },
+      {
+        "from": "0x007A1400",
+        "to": "ENGINE_GFX_IFACE_00",
+        "rel": "CALLS",
+        "offset": "0x0000014C"
+      },
+      {
+        "from": "0x007B2930",
+        "to": "ENGINE_GFX_IFACE_00",
+        "rel": "CALLS",
+        "offset": "0x0000014C"
+      },
+      {
+        "from": "0x007B1850",
+        "to": "ENGINE_GFX_IFACE_00",
+        "rel": "CALLS",
+        "offset": "0x00000154"
+      }
+    ]
+  },
+  "frame_root": {
+    "classification": "NO_COMMON_ROOT_FOUND",
+    "note": "Present/EndScene proven on DEVICE at 0x00752AF0; ENGINE_COM_DRAW uses renderer list without a shared ordinary caller proven this phase.",
+    "ordering": {
+      "BeginScene\u2192engine Draw\u2192EndScene\u2192Present": "UNKNOWN",
+      "EndScene\u2192Present on DEVICE prefix": "PROVEN_DIRECT"
+    }
+  },
+  "boundary": {
+    "classification": "MIXED_BOUNDARY",
+    "detail": "RAW_D3D9_BOUNDARY for Present/Clear/EndScene on 0x013C6510; ENGINE_BACKEND_BOUNDARY for Draw via ENGINE_GFX_IFACE_00. No ordinary bridge between them proven."
+  },
+  "seam": {
+    "classification": "PARTIAL_POST_INIT_SEAM",
+    "rationale": "Unchanged: host DEVICE still legitimizes Present/Clear. Engine Draw path mapped to a vector of dynamic COM ifaces, but without a backend\u2192device handoff the seam is not CLEAN."
+  },
+  "implementation": {
+    "D3D9_IMPLEMENTATION_JUSTIFIED": false,
+    "ENGINE_BACKEND_ADAPTER_JUSTIFIED": false,
+    "reason": "ENGINE_COM_DRAW terminates at dynamic ENGINE_GFX_IFACE_00 with no ordinary implementation targets and no DEVICE bridge. Adapter would require inventing iface semantics.",
+    "highest_value_uncertainty": "Static identity / constructors of objects stored in renderer vector elements ([elem+4] COM): where they are inserted, which concrete vtables they use, and whether those method bodies eventually read 0x013C6510."
+  },
+  "contracts": {
+    "MINIMUM_FIRST_DRAW_CONTRACT": {
+      "fabricated": false,
+      "items": [
+        {
+          "item": "renderer at 0x017AA798",
+          "class": "EXTERNAL_INITIALIZED"
+        },
+        {
+          "item": "non-empty vector +0x50..+0x54 of ENGINE_GFX_IFACE_00",
+          "class": "UNKNOWN"
+        },
+        {
+          "item": "backend behind iface methods",
+          "class": "UNKNOWN"
+        }
+      ],
+      "blocked_by": "list element publication + iface implementation provenance"
+    },
+    "MINIMUM_FIRST_PRESENT_CONTRACT": {
+      "fabricated": false,
+      "items": [
+        {
+          "item": "IDirect3DDevice9* at 0x013C6510",
+          "class": "D3D_DEVICE_STATE"
+        },
+        {
+          "item": "0x00752AF0",
+          "class": "ORDINARY_CODE"
+        }
+      ],
+      "blocked_by": "live device publication EXTERNAL/BLOCKED for in-game path"
+    }
+  },
+  "initialization": {
+    "root": "0x007B5020",
+    "dependencies": {
+      "DEVICE_STATE": "NOT_REQUIRED_IN_CTOR_BODY",
+      "FACTORY_STATE": "UNKNOWN",
+      "0x00686000": "NOT_DIRECT",
+      "0x00686030": "DTOR_ONLY_UNRESOLVED",
+      "0x00B615C4": "UNKNOWN",
+      "ordinary_code": "YES",
+      "allocator": "0x007A45B0 -> call 0x006CA7C0 (body unresolved/non-coherent at entry)"
+    },
+    "0x00686030": {
+      "va": "0x00686030",
+      "uc_label": "MEDIUM_CONFIDENCE",
+      "insns": 2,
+      "reachable": true,
+      "relationship_to_0x686000": "NEARBY_SIBLING_ADDRESS_ONLY",
+      "classification": "UNKNOWN_NON_ORDINARY_BODY",
+      "note": "MEDIUM_CONFIDENCE with non-coherent decode at entry (similar failure mode to 0x00686000). Called from renderer destructor 0x007A06E0. Not treated as equivalent to frozen 0x00686000; not followed; EXTERNAL_STATE risk.",
+      "not_frozen_slot": true
+    }
+  },
+  "first_frame_estimate": {
+    "best_case_phase": "UNBOUNDED",
+    "likely_range": "UNBOUNDED"
+  },
+  "resource_evidence": {
+    "found": false,
+    "note": "No VB/IB/texture/shader object linkage proven from list-element methods this phase."
+  },
+  "execution": {
+    "ran": false
+  },
+  "dashboard": {
+    "RENDERER": "PROVEN ENGINE OBJECT",
+    "RENDERER_LIST": "MAPPED",
+    "ENGINE_DRAW": "FOUND",
+    "BACKEND_HANDOFF": "UNKNOWN",
+    "RAW_DEVICE_DRAW": "NOT FOUND",
+    "DURABLE_DEVICE_ALIAS": "UNMAPPED",
+    "FRAME_ROOT": "UNKNOWN",
+    "GRAPHICS_BOUNDARY": "MIXED",
+    "POST_INIT_SEAM": "PARTIAL",
+    "D3D9_IMPLEMENTATION": "NOT JUSTIFIED",
+    "ENGINE_BACKEND_ADAPTER": "NOT JUSTIFIED",
+    "FIRST_FRAME": "UNBOUNDED",
+    "ANGR": "AVAILABLE",
+    "DEVICE_CODE": "PROVEN",
+    "DEVICE_PUBLICATION": "EXTERNAL/BLOCKED",
+    "PRESENT_CODE": "FOUND",
+    "DRAW_CODE": "FOUND_STRONG"
+  },
+  "recommended_phase23": "EXPAND_RENDERER_STATE_PROVENANCE",
+  "angr_quality": {
+    "materially_helped": true,
+    "strongest_finding": "NO_DEVICE_BRIDGE_IN_DRAW_SELECT",
+    "negative_weight": "NEGATIVE_STRONG"
+  }
+}
