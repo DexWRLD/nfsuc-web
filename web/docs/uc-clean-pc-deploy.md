@@ -1,6 +1,8 @@
-# Undercover clean-PC delivery (Phase 48)
+# Undercover clean-PC delivery (Phase 48–49)
 
 `GAME_CODE_TARGET=NFS_UNDERCOVER_PC` · `TOOLING_ORIGIN=NFSU2-WEB`
+
+For the **private two-PC LAN HTTPS workflow**, see [`uc-private-lan.md`](uc-private-lan.md) and `Start-UndercoverLAN.ps1`.
 
 ## What a clean Windows PC needs
 

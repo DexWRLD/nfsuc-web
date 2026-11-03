@@ -55,7 +55,10 @@ class Phase48(unittest.TestCase):
 
     def test_readiness(self):
         r = _load("asset-distribution-readiness.json")
-        self.assertEqual(r["asset_distribution_readiness"], "FIXTURE_PIPELINE_HARDENED")
+        self.assertIn(
+            r["asset_distribution_readiness"],
+            ("FIXTURE_PIPELINE_HARDENED", "PRIVATE_LAN_FIXTURE_HOST_READY"),
+        )
         self.assertFalse(r["clean_pc_ux"]["authentic_play_enabled"])
 
 

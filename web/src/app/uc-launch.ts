@@ -1,6 +1,6 @@
-// Clean-PC first-launch controller for Undercover assets (Phase 47).
-// Orchestrates check → download → verify → initialize bridge. Play remains
-// disabled until authentic runtime readiness is established separately.
+// Clean-PC first-launch controller for Undercover assets (Phase 47–49).
+// Explicit stages: BOOT → MANIFEST → CACHE_CHECK → DOWNLOAD → VERIFY → FS_MOUNT → RUNTIME_INIT → READY_OR_BLOCKED
+// Play remains disabled until authentic runtime readiness is established separately.
 
 import {
   DEFAULT_MANIFEST_URL,
@@ -16,6 +16,12 @@ import {
 } from './uc-download-manager';
 import { UcFilesystemBridge } from './uc-fs-bridge';
 import { runClearSmoke, type ClearSmokeResult } from './uc-clear-smoke';
+import {
+  BootStageTracker,
+  reportSecureContext,
+  type BootStage,
+  type SecureContextReport,
+} from './uc-boot-stages';
 
 export interface LaunchUiState {
   phase: LaunchPhase;
@@ -24,6 +30,8 @@ export interface LaunchUiState {
   progressPct: number;
   playEnabled: boolean;
   developmentPreview: boolean;
+  bootStage?: BootStage;
+  secureContextWarning?: string | null;
 }
 
 const LABELS: Record<LaunchPhase, string> = {
@@ -41,6 +49,8 @@ const LABELS: Record<LaunchPhase, string> = {
 
 export function uiStateFromProgress(p: DownloadProgress, opts?: {
   developmentPreview?: boolean;
+  bootStage?: BootStage;
+  secureContextWarning?: string | null;
 }): LaunchUiState {
   const pct = p.totalBytes > 0 ? Math.min(100, Math.round(100 * p.haveBytes / p.totalBytes)) : 0;
   return {
@@ -59,6 +69,8 @@ export function uiStateFromProgress(p: DownloadProgress, opts?: {
     // Never enable authentic Play from this controller alone.
     playEnabled: false,
     developmentPreview: !!opts?.developmentPreview,
+    bootStage: opts?.bootStage,
+    secureContextWarning: opts?.secureContextWarning ?? null,
   };
 }
 
@@ -71,6 +83,8 @@ export interface UcLaunchOptions {
   pageOrigin?: string;
   onUi?: (s: LaunchUiState) => void;
   developmentPreview?: boolean;
+  /** Optional location-like object for secure-context diagnostics. */
+  location?: { protocol: string; hostname: string; origin?: string };
 }
 
 export class UcLaunchController {
@@ -78,6 +92,8 @@ export class UcLaunchController {
   manager: UcDownloadManager | null = null;
   bridge: UcFilesystemBridge | null = null;
   lastSmoke: ClearSmokeResult | null = null;
+  stages = new BootStageTracker();
+  secure: SecureContextReport | null = null;
   private opts: UcLaunchOptions;
 
   constructor(opts: UcLaunchOptions = {}) {
@@ -87,11 +103,27 @@ export class UcLaunchController {
   private emit(p: DownloadProgress) {
     this.opts.onUi?.(uiStateFromProgress(p, {
       developmentPreview: this.opts.developmentPreview,
+      bootStage: this.stages.stage,
+      secureContextWarning: this.secure?.message ?? null,
     }));
   }
 
   async boot(): Promise<LaunchUiState> {
-    const store = this.opts.memoryOnly
+    this.stages.enter('BOOT', 'clean-PC boot start');
+
+    const loc = this.opts.location
+      ?? (typeof location !== 'undefined'
+        ? { protocol: location.protocol, hostname: location.hostname, origin: location.origin }
+        : undefined);
+    const hasOpfs = typeof navigator !== 'undefined'
+      && !!(navigator as { storage?: { getDirectory?: unknown } }).storage?.getDirectory;
+    this.secure = reportSecureContext(loc, { hasStorageGetDirectory: hasOpfs });
+    if (this.secure.message) {
+      this.stages.enter('BOOT', this.secure.message, true);
+    }
+
+    const preferMemory = this.opts.memoryOnly || !this.secure.isSecureContext;
+    const store = preferMemory
       ? new MemoryAssetStore()
       : await openOpfsAssetStore().catch(() => new MemoryAssetStore());
 
@@ -100,32 +132,58 @@ export class UcLaunchController {
       fetch: this.opts.fetch,
       quotaBytes: this.opts.quotaBytes ?? null,
       pageOrigin: this.opts.pageOrigin,
-      onProgress: p => this.emit(p),
+      onProgress: p => {
+        if (p.phase === 'checking') this.stages.enter('CACHE_CHECK', 'planning cache');
+        if (p.phase === 'downloading') this.stages.enter('DOWNLOAD', p.currentId || 'download');
+        if (p.phase === 'verifying') this.stages.enter('VERIFY', p.currentId || 'verify');
+        this.emit(p);
+      },
     });
 
     const url = this.opts.manifestUrl || DEFAULT_MANIFEST_URL;
+    this.stages.enter('MANIFEST', url);
     try {
       this.manifest = await this.manager.loadManifest(url);
     } catch (e) {
+      const msg = e instanceof Error ? e.message : String(e);
+      this.stages.fail(msg);
       const failed: DownloadProgress = {
         phase: 'download_failed',
         haveBytes: 0,
         totalBytes: 0,
         requiredReady: 0,
         requiredTotal: 0,
-        error: e instanceof Error ? e.message : String(e),
+        error: msg,
       };
       this.emit(failed);
-      return uiStateFromProgress(failed, { developmentPreview: this.opts.developmentPreview });
+      return uiStateFromProgress(failed, {
+        developmentPreview: this.opts.developmentPreview,
+        bootStage: this.stages.stage,
+        secureContextWarning: this.secure?.message ?? null,
+      });
     }
 
-    // If production mode is unavailable but fixtures exist, still download fixtures.
+    this.stages.enter('CACHE_CHECK', 'ensureRequired');
     const status = await this.manager.ensureRequired(this.manifest);
     if (status.phase === 'ready_to_initialize' || status.phase === 'runtime_not_playable'
         || status.phase === 'offline_cached') {
+      this.stages.enter('FS_MOUNT', 'mount /uc bridge');
       this.bridge = new UcFilesystemBridge(this.manifest, this.manager);
+      this.stages.enter('RUNTIME_INIT', 'runtime probes (non-playable)');
+      this.stages.enter(
+        'READY_OR_BLOCKED',
+        'assets ready; FIRST_FRAME_PATH_BLOCKED_BY_PROTECTED_BACKEND; Play disabled',
+      );
+    } else if (status.phase === 'download_failed' || status.phase === 'insufficient_storage'
+        || status.phase === 'source_unavailable') {
+      this.stages.fail(status.error || status.phase);
     }
-    const ui = uiStateFromProgress(status, { developmentPreview: this.opts.developmentPreview });
+
+    const ui = uiStateFromProgress(status, {
+      developmentPreview: this.opts.developmentPreview,
+      bootStage: this.stages.stage,
+      secureContextWarning: this.secure?.message ?? null,
+    });
     this.opts.onUi?.(ui);
     return ui;
   }

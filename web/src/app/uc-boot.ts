@@ -20,8 +20,22 @@ function applyUi(s: LaunchUiState, haveBytes?: number, totalBytes?: number): voi
   const bytes = $('#uc-asset-bytes');
   const retry = $('#uc-asset-retry') as HTMLButtonElement | null;
   const cancel = $('#uc-asset-cancel') as HTMLButtonElement | null;
+  const stageEl = $('#uc-boot-stage');
+  const warn = $('#uc-secure-warning');
   if (status) status.textContent = s.label;
-  if (detail) detail.textContent = s.detail;
+  const detailParts = [s.detail];
+  if (s.bootStage) detailParts.unshift(`[${s.bootStage}]`);
+  if (detail) detail.textContent = detailParts.join(' ');
+  if (stageEl && s.bootStage) stageEl.textContent = `Boot stage: ${s.bootStage}`;
+  if (warn) {
+    if (s.secureContextWarning) {
+      warn.hidden = false;
+      warn.textContent = s.secureContextWarning;
+    } else {
+      warn.hidden = true;
+      warn.textContent = '';
+    }
+  }
   if (bar) bar.setAttribute('aria-valuenow', String(s.progressPct));
   if (fill) (fill as HTMLElement).style.width = `${s.progressPct}%`;
   if (bytes && totalBytes != null && haveBytes != null) {

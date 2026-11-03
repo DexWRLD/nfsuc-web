@@ -79,7 +79,9 @@
 
     <section class="panel" id="uc-assets" aria-labelledby="uc-assets-title">
       <h2 id="uc-assets-title">Undercover assets (clean PC)</h2>
-      <p class="hint">Automatic download of project fixtures. No game install folder required. Production Undercover assets stay unavailable until a rights-authorized source is configured.</p>
+      <p class="hint">Automatic download from the private LAN host. No game install folder on this PC. Production Undercover assets stay unavailable until a rights-authorized curated source is configured.</p>
+      <p class="msg" id="uc-secure-warning" hidden role="alert"></p>
+      <p class="hint" id="uc-boot-stage" aria-live="polite">Boot stage: BOOT</p>
       <p class="status" id="uc-asset-status" role="status">Checking files</p>
       <p class="status-sub" id="uc-asset-detail">Preparing asset manifest…</p>
       <p class="hint" id="uc-asset-bytes" aria-live="polite"></p>
@@ -90,7 +92,7 @@
         <button type="button" class="btn" id="uc-asset-retry" hidden>Retry</button>
         <button type="button" class="btn" id="uc-asset-cancel" hidden>Cancel</button>
       </div>
-      <p class="msg" id="uc-asset-note">GAME_CODE_TARGET=NFS_UNDERCOVER_PC · authentic Play remains disabled</p>
+      <p class="msg" id="uc-asset-note">GAME_CODE_TARGET=NFS_UNDERCOVER_PC · authentic Play remains disabled · FIRST_FRAME blocked</p>
       <canvas id="uc-clear-smoke" width="64" height="36" hidden aria-hidden="true"></canvas>
       <p class="hint" id="uc-clear-smoke-note" hidden></p>
     </section>

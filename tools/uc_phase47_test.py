@@ -40,7 +40,11 @@ class AssetDistribution(unittest.TestCase):
         r = _load("asset-distribution-readiness.json")
         self.assertIn(
             r["asset_distribution_readiness"],
-            ("FIXTURE_PIPELINE_READY", "FIXTURE_PIPELINE_HARDENED"),
+            (
+                "FIXTURE_PIPELINE_READY",
+                "FIXTURE_PIPELINE_HARDENED",
+                "PRIVATE_LAN_FIXTURE_HOST_READY",
+            ),
         )
         self.assertEqual(
             r["production_undercover_assets"],

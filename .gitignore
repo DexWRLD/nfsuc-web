@@ -47,3 +47,10 @@ __pycache__/
 
 # Accidental progress.py --help output directory (Phase 48 note; leave alone).
 /--help/
+
+# Private LAN development TLS material (must stay outside the repo; belt-and-suspenders).
+*.pem
+**/lan-certs/
+.ca.crt
+/server.key
+/ca.key
