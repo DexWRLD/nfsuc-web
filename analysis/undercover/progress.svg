@@ -6,9 +6,9 @@
 <rect x="244" y="14" width="148" height="22" rx="4" fill="#161b22" stroke="#30363d"/>
 <text x="252" y="29" fill="#e6edf3" font-size="11" font-family="Segoe UI, sans-serif">Compiler failures  0</text>
 <rect x="400" y="14" width="148" height="22" rx="4" fill="#161b22" stroke="#30363d"/>
-<text x="408" y="29" fill="#e6edf3" font-size="11" font-family="Segoe UI, sans-serif">Recorded entries  15</text>
+<text x="408" y="29" fill="#e6edf3" font-size="11" font-family="Segoe UI, sans-serif">Recorded entries  16</text>
 <rect x="556" y="14" width="75" height="22" rx="4" fill="#161b22" stroke="#30363d"/>
-<text x="564" y="29" fill="#e6edf3" font-size="11" font-family="Segoe UI, sans-serif">Phase  28</text>
+<text x="564" y="29" fill="#e6edf3" font-size="11" font-family="Segoe UI, sans-serif">Phase  29</text>
 <rect x="639" y="14" width="207" height="22" rx="4" fill="#161b22" stroke="#30363d"/>
 <text x="647" y="29" fill="#e6edf3" font-size="11" font-family="Segoe UI, sans-serif">External boundary  0x00686000</text>
 <rect x="16" y="42" width="339" height="22" rx="4" fill="#161b22" stroke="#30363d"/>
@@ -124,13 +124,13 @@
 <rect x="16" y="406" width="273" height="22" rx="4" fill="#161b22" stroke="#30363d"/>
 <text x="24" y="421" fill="#e6edf3" font-size="11" font-family="Segoe UI, sans-serif">Runtime factory frontier  NOT ENTERABLE</text>
 <rect x="297" y="406" width="365" height="22" rx="4" fill="#161b22" stroke="#30363d"/>
-<text x="305" y="421" fill="#e6edf3" font-size="11" font-family="Segoe UI, sans-serif">ORDINARY RUNTIME FRONTIER  H22779 C22770 I737 R54 E15</text>
+<text x="305" y="421" fill="#e6edf3" font-size="11" font-family="Segoe UI, sans-serif">ORDINARY RUNTIME FRONTIER  H22779 C22770 I737 R56 E16</text>
 <rect x="670" y="406" width="220" height="22" rx="4" fill="#161b22" stroke="#30363d"/>
 <text x="678" y="421" fill="#e6edf3" font-size="11" font-family="Segoe UI, sans-serif">TOP ORDINARY ISLAND  UNMEASURED</text>
 <rect x="16" y="434" width="478" height="22" rx="4" fill="#161b22" stroke="#30363d"/>
-<text x="24" y="449" fill="#e6edf3" font-size="11" font-family="Segoe UI, sans-serif">REAL UC EXECUTION  uniq=15 deep=3 enter=12 next=BLOCKED_REQUIRED_STATE</text>
+<text x="24" y="449" fill="#e6edf3" font-size="11" font-family="Segoe UI, sans-serif">REAL UC EXECUTION  uniq=16 deep=3 enter=13 next=BLOCKED_REQUIRED_STATE</text>
 <rect x="502" y="434" width="372" height="22" rx="4" fill="#161b22" stroke="#30363d"/>
-<text x="510" y="449" fill="#e6edf3" font-size="11" font-family="Segoe UI, sans-serif">ORDINARY INITIALIZATION  rec=5 ext=? prot=1 unk=4 d3=1</text>
+<text x="510" y="449" fill="#e6edf3" font-size="11" font-family="Segoe UI, sans-serif">ORDINARY INITIALIZATION  rec=? ext=? prot=? unk=? d3=1</text>
 <rect x="882" y="434" width="148" height="22" rx="4" fill="#161b22" stroke="#30363d"/>
 <text x="890" y="449" fill="#e6edf3" font-size="11" font-family="Segoe UI, sans-serif">CRT _CIsqrt  UNKNOWN</text>
 <text x="16" y="488" fill="#e6edf3" font-size="15" font-family="Segoe UI, sans-serif">Function translation</text>
@@ -12863,7 +12863,7 @@
 <rect x="651" y="622" width="3" height="3" fill="#3fb950" data-addr="0x00977650"><title>0x00977650 | COMPILED | UNKNOWN</title></rect>
 <rect x="655" y="622" width="2" height="3" fill="#3fb950" data-addr="0x00977700"><title>0x00977700 | COMPILED | UNKNOWN</title></rect>
 <rect x="658" y="622" width="3" height="3" fill="#3fb950" data-addr="0x009777B0"><title>0x009777B0 | COMPILED | UNKNOWN</title></rect>
-<rect x="662" y="622" width="2" height="3" fill="#3fb950" data-addr="0x009777D0"><title>0x009777D0 | COMPILED | UNKNOWN</title></rect>
+<rect x="662" y="622" width="2" height="3" fill="#3fb950" data-addr="0x009777D0"><title>0x009777D0 | COMPILED | EXECUTED</title></rect>
 <rect x="665" y="622" width="3" height="3" fill="#3fb950" data-addr="0x009777E0"><title>0x009777E0 | COMPILED | UNKNOWN</title></rect>
 <rect x="669" y="622" width="3" height="3" fill="#3fb950" data-addr="0x009777F0"><title>0x009777F0 | COMPILED | UNKNOWN</title></rect>
 <rect x="465" y="626" width="2" height="2" fill="#3fb950" data-addr="0x00977800"><title>0x00977800 | COMPILED | PROTECTED_BOUNDARY</title></rect>
@@ -36486,7 +36486,7 @@
 <rect x="432" y="1240" width="14" height="3" fill="#484f58" data-addr="0x008FFF10"><title>0x008FFF10 | COMPILED | UNKNOWN</title></rect>
 <rect x="447" y="1240" width="14" height="3" fill="#484f58" data-addr="0x008FFF30"><title>0x008FFF30 | COMPILED | UNKNOWN</title></rect>
 <rect x="463" y="910" width="212" height="336" fill="#161b22" stroke="#30363d" stroke-width="1"/>
-<text x="467" y="921" fill="#8b949e" font-size="10" font-family="Segoe UI, sans-serif">0x009xxxxx 41/5148 1%</text>
+<text x="467" y="921" fill="#8b949e" font-size="10" font-family="Segoe UI, sans-serif">0x009xxxxx 42/5148 1%</text>
 <rect x="465" y="926" width="2" height="2" fill="#484f58" data-addr="0x00900080"><title>0x00900080 | COMPILED | UNKNOWN</title></rect>
 <rect x="468" y="926" width="3" height="2" fill="#484f58" data-addr="0x009000E0"><title>0x009000E0 | COMPILED | UNKNOWN</title></rect>
 <rect x="472" y="926" width="2" height="2" fill="#484f58" data-addr="0x00900160"><title>0x00900160 | COMPILED | UNKNOWN</title></rect>
@@ -38340,7 +38340,7 @@
 <rect x="651" y="1036" width="3" height="3" fill="#484f58" data-addr="0x00977650"><title>0x00977650 | COMPILED | UNKNOWN</title></rect>
 <rect x="655" y="1036" width="2" height="3" fill="#484f58" data-addr="0x00977700"><title>0x00977700 | COMPILED | UNKNOWN</title></rect>
 <rect x="658" y="1036" width="3" height="3" fill="#484f58" data-addr="0x009777B0"><title>0x009777B0 | COMPILED | UNKNOWN</title></rect>
-<rect x="662" y="1036" width="2" height="3" fill="#484f58" data-addr="0x009777D0"><title>0x009777D0 | COMPILED | UNKNOWN</title></rect>
+<rect x="662" y="1036" width="2" height="3" fill="#56d364" data-addr="0x009777D0"><title>0x009777D0 | COMPILED | EXECUTED</title></rect>
 <rect x="665" y="1036" width="3" height="3" fill="#484f58" data-addr="0x009777E0"><title>0x009777E0 | COMPILED | UNKNOWN</title></rect>
 <rect x="669" y="1036" width="3" height="3" fill="#484f58" data-addr="0x009777F0"><title>0x009777F0 | COMPILED | UNKNOWN</title></rect>
 <rect x="465" y="1040" width="2" height="2" fill="#ff7b72" data-addr="0x00977800"><title>0x00977800 | COMPILED | PROTECTED_BOUNDARY</title></rect>

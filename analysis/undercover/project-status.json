@@ -1,6 +1,6 @@
 {
-  "current_phase": 28,
-  "strategy": "Phase 28: ordinary init depth. Track A 0x00A52DF0 NO_ORDINARY_INIT_PATH. Executed ctor 0x009E9160\u21920x009E9990\u21920x009E7710 depth 3; BSS parent 0x0072D640\u2192leaf then protected. Graphics frozen.",
+  "current_phase": 29,
+  "strategy": "Phase 29: KERNEL32!TlsAlloc HLE at 0x00B61138 continues ctor chain past 0x009777D0 into 0x009E8AD0. Graphics frozen.",
   "boundaries": {
     "0x00686000": {
       "status": "PROTECTED_OR_EXTERNAL_DEPENDENCY",
@@ -220,6 +220,12 @@
       "phase": 28,
       "completed": true,
       "evidence": "Phase 28: table mix helper"
+    },
+    {
+      "address": "0x009777D0",
+      "phase": 29,
+      "completed": true,
+      "evidence": "Phase 29: TlsAlloc wrapper; stores guest TLS index"
     }
   ],
   "phases": [
@@ -351,6 +357,11 @@
     {
       "phase": 28,
       "name": "Ordinary initialization depth",
+      "state": "completed"
+    },
+    {
+      "phase": 29,
+      "name": "TlsAlloc depth-3 boundary",
       "state": "completed"
     }
   ],

@@ -1,8 +1,8 @@
 {
   "project": {
     "name": "nfsuc-web",
-    "current_phase": 28,
-    "strategy": "Phase 28: ordinary init depth. Track A 0x00A52DF0 NO_ORDINARY_INIT_PATH. Executed ctor 0x009E9160\u21920x009E9990\u21920x009E7710 depth 3; BSS parent 0x0072D640\u2192leaf then protected. Graphics frozen."
+    "current_phase": 29,
+    "strategy": "Phase 29: KERNEL32!TlsAlloc HLE at 0x00B61138 continues ctor chain past 0x009777D0 into 0x009E8AD0. Graphics frozen."
   },
   "discovery": {
     "candidates": 25450,
@@ -36,14 +36,14 @@
     "note": "The badge is the current high-confidence.json compile record. Green cells are discovery-enrolled HIGH functions that generated and compiled. Map 'reachable' means discovery enrollment, not proven call-graph reachability."
   },
   "runtime": {
-    "recorded_completed": 13,
-    "recorded_entries": 15,
+    "recorded_completed": 14,
+    "recorded_entries": 16,
     "recorded_without_map_cell": [
       "0x00929972"
     ],
     "unlogged_entries": "UNKNOWN",
     "counts": {
-      "EXECUTED": 13,
+      "EXECUTED": 14,
       "READY": 0,
       "RUNTIME_READY_NOT_EXECUTED": 54,
       "BLOCKED_INITIALIZATION": 0,
@@ -51,7 +51,7 @@
       "BLOCKED_IMPORT": 732,
       "BLOCKED_EXTERNAL": 74,
       "PROTECTED_BOUNDARY": 793,
-      "UNKNOWN": 23653
+      "UNKNOWN": 23652
     },
     "ready_closure": 19,
     "ready_with_imports_closure": 35,
@@ -62,47 +62,45 @@
     "COMPILED": 22770,
     "STATIC_READY": 20762,
     "IMPORT_READY": 737,
-    "RUNTIME_READY": 54,
-    "ENTERABLE": 12,
-    "EXECUTED": 15,
-    "ORDINARY_INIT_RECOVERED": 5,
-    "INIT_BLOCKED_EXTERNAL": 0,
-    "INIT_BLOCKED_PROTECTED": 1,
-    "INIT_BLOCKED_UNKNOWN": 4,
-    "ENTERABLE_WITH_DEPTH_3_POTENTIAL": 1,
+    "RUNTIME_READY": 56,
+    "ENTERABLE": 13,
+    "EXECUTED": 16,
     "DEEPEST": 3,
-    "LARGEST_CLOSURE": 4
+    "LARGEST_CLOSURE": 10,
+    "ENTERABLE_WITH_DEPTH_3_POTENTIAL": 1,
+    "ENTERABLE_WITH_DEPTH_4_POTENTIAL": 0,
+    "LATEST_REAL_RUNTIME_BOUNDARY": "KERNEL32!TlsAlloc"
   },
   "top_ordinary_island": {},
   "campaign_summary": {
-    "phase28_attempted": 9,
+    "phase29_attempted": 3,
     "outcomes": {
-      "EXECUTED_TO_NEXT_BLOCKER": 2,
-      "BLOCKED_REQUIRED_STATE": 6,
-      "BLOCKED_PROTECTED": 1
+      "EXECUTED_TO_NEXT_BLOCKER": 1,
+      "BLOCKED_REQUIRED_STATE": 1,
+      "BLOCKED_IMPORT": 1
     },
     "most_common_next_blocker": [
       "BLOCKED_REQUIRED_STATE",
-      6
+      1
     ],
     "deepest_chain": 3,
-    "largest_executed_closure": 4,
-    "latest_newly_executed_root": "0x009E9160",
+    "largest_executed_closure": 10,
+    "latest_newly_executed_root": "0x009777D0",
     "deepest_successful_sequence": [
       "0x009E9160",
       "0x009E9990",
       "0x009E7710"
     ],
-    "constructor_method_chain": true,
-    "pod_grandparent_chain": false,
+    "tlsalloc_implemented": true,
+    "constructor_chain_continued": true,
+    "fallback_947790_executed": false,
     "CIpow_reached": false,
     "floor_reached": false,
     "malloc_free_reached": false,
     "filesystem_reached": false,
     "timing_reached": false,
-    "tls_reached": false,
-    "seh_required": false,
-    "unresolved_indirect_reached": true
+    "tls_reached": true,
+    "seh_required": false
   },
   "cisqrt": {},
   "harness_capability": {},
@@ -372,6 +370,11 @@
     {
       "phase": 28,
       "name": "Ordinary initialization depth",
+      "state": "completed"
+    },
+    {
+      "phase": 29,
+      "name": "TlsAlloc depth-3 boundary",
       "state": "completed"
     }
   ],
@@ -143195,8 +143198,11 @@
       "generated": true,
       "compiled": true,
       "translation_status": "COMPILED",
-      "runtime_status": "UNKNOWN",
+      "runtime_status": "EXECUTED",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
+      "recorded_execution": true,
+      "completed": true,
+      "first_observed_phase": 29,
       "direct_callees": 0
     },
     {
