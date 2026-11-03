@@ -570,6 +570,10 @@ def build():
             json.load(open(os.path.join(ANALYSIS, "process-handle-frontier.json"), encoding="utf-8"))
             if os.path.isfile(os.path.join(ANALYSIS, "process-handle-frontier.json")) else {}
         ),
+        "process_thread_frontier": (
+            json.load(open(os.path.join(ANALYSIS, "process-thread-frontier.json"), encoding="utf-8"))
+            if os.path.isfile(os.path.join(ANALYSIS, "process-thread-frontier.json")) else {}
+        ),
         "initialization": status["initialization"],
         "boundaries": status["boundaries"],
         "helper_cut": helper_summary if helper_summary else "UNKNOWN",
@@ -799,14 +803,37 @@ def _sync_badge(model):
             return "REACHED"
         return "NOT_IMPL"
 
-    return "ICS=%s Mutex=%s Sem=%s GCP=%s GPC=%s thr=%s sched=%s" % (
+    return "ICS=%s Mutex=%s Sem=%s GCP=%s GCT=%s GPC=%s thr=%s sched=%s" % (
         st_row(sync.get("critical_section")),
         st_row(sync.get("create_mutex_a")),
         st_row(sync.get("create_semaphore_a")),
         st_row(sync.get("get_current_process")),
+        st_row(sync.get("get_current_thread")),
         st_row(sync.get("get_priority_class")),
         sync.get("guest_threads") or "?",
         sync.get("scheduler") or "NONE",
+    )
+
+
+def _guest_process_badge(model):
+    pt = model.get("process_thread_frontier") or model.get("process_frontier") or {}
+    if not pt:
+        return "UNMEASURED"
+    return "proc=%s class=%s mutable=%s" % (
+        pt.get("guest_processes") or 1,
+        (pt.get("priority_class_initial") or "?").split()[0],
+        "YES" if pt.get("priority_class_mutable") else "NO",
+    )
+
+
+def _guest_thread_badge(model):
+    pt = model.get("process_thread_frontier") or {}
+    sync = model.get("sync_frontier") or {}
+    thr = pt.get("guest_threads") or sync.get("guest_threads") or 1
+    return "thr=%s GCT=%s sched=%s" % (
+        thr,
+        "IMPL" if (pt.get("GetCurrentThread") or {}).get("implemented") else "PEND",
+        pt.get("scheduler") or sync.get("scheduler") or "NONE",
     )
 
 
@@ -824,9 +851,14 @@ def _sync_html_table(model):
         ("CreateSemaphoreA", impl(sync.get("create_semaphore_a"))),
         ("GetCurrentProcess", impl(sync.get("get_current_process"))),
         ("GetPriorityClass", impl(sync.get("get_priority_class") or proc.get("GetPriorityClass"))),
+        ("GetCurrentThread", impl(sync.get("get_current_thread"))),
+        ("Get/SetThreadPriority", impl(sync.get("get_thread_priority"))),
+        ("SetPriorityClass", impl(sync.get("set_priority_class"))),
         ("Enter/Leave/Delete", "NOT_IMPLEMENTED"),
+        ("Guest processes", "1"),
         ("Guest threads", "%s" % (sync.get("guest_threads") or 1)),
         ("Scheduler", sync.get("scheduler") or "NONE"),
+        ("Thread scheduling", sync.get("thread_scheduling") or "NOT_IMPLEMENTED"),
         ("Process model", proc.get("model") or "ONE_LOGICAL_GUEST_PROCESS"),
         ("Model", sync.get("model") or "SINGLE GUEST THREAD — LIMITED SYNC MODEL"),
     ]
@@ -982,6 +1014,8 @@ def render_svg(model, detailed=False):
         ("CRT _CIsqrt", _cisqrt_badge(model)),
         ("DYNAMIC WIN32 TLS", _tls_badge(model)),
         ("WIN32 SYNCHRONIZATION", _sync_badge(model)),
+        ("GUEST PROCESS", _guest_process_badge(model)),
+        ("GUEST THREAD", _guest_thread_badge(model)),
     ]
     parts = []
     y = badge_row(parts, badges, 14)
@@ -1377,6 +1411,8 @@ def render_png(model):
         ("CRT _CIsqrt", _cisqrt_badge(model)),
         ("DYNAMIC WIN32 TLS", _tls_badge(model)),
         ("WIN32 SYNCHRONIZATION", _sync_badge(model)),
+        ("GUEST PROCESS", _guest_process_badge(model)),
+        ("GUEST THREAD", _guest_thread_badge(model)),
     ]
 
     # Measure height with the same geometry as the SVG.
