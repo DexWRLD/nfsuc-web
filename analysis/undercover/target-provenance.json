@@ -1,0 +1,71 @@
+{
+  "tooling_origin": "NFSU2-WEB",
+  "game_code_target": "NFS_UNDERCOVER_PC",
+  "expected": {
+    "filename": "nfs.exe",
+    "version": "1.1.2.1",
+    "sha256": "6b10551649fd70fa630bd7454fd953f51555fa2dd2112faae84ac8ca97844bcd",
+    "architecture": "PE32/x86",
+    "machine": "0x014C",
+    "image_base": "0x00400000",
+    "entry_va": "0x01FCA510",
+    "ordinary_text_va": "0x00401000"
+  },
+  "input_present": true,
+  "input_path_recorded": false,
+  "verification_status": "VERIFIED_UNDERCOVER_1_1_2_1",
+  "sha256_match": true,
+  "pe_match": true,
+  "ordinary_text_provenance": true,
+  "mismatch": null,
+  "ordinary_samples_checked": [
+    {
+      "va": "0x009E9160",
+      "ok": true,
+      "observed_prefix": "5356578bf1e8a6e5ffff8b442410508d",
+      "expected_prefix": "5356578bf1e8a6e5ffff8b442410508d"
+    },
+    {
+      "va": "0x009E98F0",
+      "ok": true,
+      "observed_prefix": "83ec44568bf1e815deffff33c0b91000",
+      "expected_prefix": "83ec44568bf1e815deffff33c0b91000"
+    },
+    {
+      "va": "0x009E9980",
+      "ok": true,
+      "observed_prefix": "b8380fc300c3",
+      "expected_prefix": "b8380fc300c3"
+    },
+    {
+      "va": "0x009E8E00",
+      "ok": true,
+      "observed_prefix": "83ec1453558b6c24208b45008b501456",
+      "expected_prefix": "83ec1453558b6c24208b45008b501456"
+    },
+    {
+      "va": "0x009E9A30",
+      "ok": true,
+      "observed_prefix": "8b51488b4424048950108b514489500c",
+      "expected_prefix": "8b51488b4424048950108b514489500c"
+    },
+    {
+      "va": "0x009EB350",
+      "ok": true,
+      "observed_prefix": "568bf1e8b8c3ffff8b44241033c9",
+      "expected_prefix": "568bf1e8b8c3ffff8b44241033c9"
+    }
+  ],
+  "input_basename": "nfs.exe",
+  "observed_sha256": "6b10551649fd70fa630bd7454fd953f51555fa2dd2112faae84ac8ca97844bcd",
+  "observed": {
+    "machine": "0x014C",
+    "image_base": "0x00400000",
+    "entry_va": "0x01FCA510",
+    "version": "1.1.2.1",
+    "ordinary_text": {
+      "va": "0x00401000",
+      "vsize": "0x0075F3FB"
+    }
+  }
+}
