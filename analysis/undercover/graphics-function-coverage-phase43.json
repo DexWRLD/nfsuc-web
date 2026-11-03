@@ -1,0 +1,211 @@
+{
+  "phase": 43,
+  "evidence_date": "2026-11-03",
+  "game_code_target": "NFS_UNDERCOVER_PC",
+  "tooling_origin": "NFSU2-WEB",
+  "first_frame": "FIRST_FRAME_PATH_BLOCKED_BY_PROTECTED_BACKEND",
+  "d3d9_implementation": "NOT_JUSTIFIED",
+  "engine_backend": "NOT_JUSTIFIED",
+  "aa_fallback_correction": {
+    "site": "0x00729848",
+    "expression": "c & (((int32)c > 0) - 1)",
+    "not": "tier_minus_one",
+    "valid_tiers_0_3_result": 0
+  },
+  "functions": [
+    {
+      "address": "0x0071D7E0",
+      "role": "PCDisplayConfig clamp",
+      "tier": "A",
+      "implementation": "SYNTHETIC_PURE",
+      "test_status": "PASS",
+      "dependency_status": "NONE",
+      "runtime_ready": false,
+      "classification": "SYNTHETIC_TESTABLE"
+    },
+    {
+      "address": "0x00723790",
+      "role": "selected-mode pointer",
+      "tier": "A",
+      "implementation": "SYNTHETIC_PURE",
+      "test_status": "PASS",
+      "dependency_status": "VALID_INDEX_PRECONDITION",
+      "runtime_ready": false,
+      "classification": "SYNTHETIC_TESTABLE"
+    },
+    {
+      "address": "0x007237B0",
+      "role": "display-mode selection",
+      "tier": "A",
+      "implementation": "SYNTHETIC_PURE",
+      "test_status": "PASS",
+      "dependency_status": "ASPECT_TOLERANCE_INJECTED",
+      "runtime_ready": false,
+      "classification": "SYNTHETIC_TESTABLE"
+    },
+    {
+      "address": "0x00727FB0",
+      "role": "reflection derived fields",
+      "tier": "A",
+      "implementation": "SYNTHETIC_PURE",
+      "test_status": "PASS",
+      "dependency_status": "NONE",
+      "runtime_ready": false,
+      "classification": "SYNTHETIC_TESTABLE"
+    },
+    {
+      "address": "0x0071D8F0",
+      "role": "settings getter",
+      "tier": "A",
+      "implementation": "SYNTHETIC_PURE",
+      "test_status": "PASS",
+      "dependency_status": "NONE",
+      "runtime_ready": false,
+      "classification": "SYNTHETIC_TESTABLE"
+    },
+    {
+      "address": "0x00722EC0",
+      "role": "D3DPRESENT_PARAMETERS builder",
+      "tier": "A",
+      "implementation": "SYNTHETIC_PURE",
+      "test_status": "PASS",
+      "dependency_status": "MEMSET_INJECTED",
+      "runtime_ready": false,
+      "classification": "SYNTHETIC_TESTABLE"
+    },
+    {
+      "address": "0x0071DC10",
+      "role": "AA multisample probe",
+      "tier": "B",
+      "implementation": "SYNTHETIC_WITH_MOCK_D3D9",
+      "test_status": "PASS",
+      "dependency_status": "FAKE_IDIRECT3D9",
+      "runtime_ready": false,
+      "classification": "SYNTHETIC_TESTABLE"
+    },
+    {
+      "address": "0x0071DC80",
+      "role": "AA tier probe policy",
+      "tier": "B",
+      "implementation": "SYNTHETIC_WITH_MOCK_D3D9",
+      "test_status": "PASS",
+      "dependency_status": "FAKE_IDIRECT3D9",
+      "runtime_ready": false,
+      "classification": "SYNTHETIC_TESTABLE"
+    },
+    {
+      "address": "0x00725200",
+      "role": "CreateDevice retry sequence",
+      "tier": "B",
+      "implementation": "SYNTHETIC_SEQUENCE_MODEL",
+      "test_status": "PASS",
+      "dependency_status": "FAKE_CREATEDEVICE",
+      "runtime_ready": false,
+      "classification": "SYNTHETIC_TESTABLE"
+    },
+    {
+      "address": "0x00727B60",
+      "role": "graphics-object destructor ownership",
+      "tier": "B",
+      "implementation": "SYNTHETIC_OWNERSHIP_FIXTURE",
+      "test_status": "PASS",
+      "dependency_status": "OPAQUE_FREE",
+      "runtime_ready": false,
+      "classification": "SYNTHETIC_TESTABLE"
+    },
+    {
+      "address": "0x00727F40",
+      "role": "live device shutdown",
+      "tier": "B",
+      "implementation": "SYNTHETIC_OWNERSHIP_FIXTURE",
+      "test_status": "PASS",
+      "dependency_status": "OPAQUE_0071E380",
+      "runtime_ready": false,
+      "classification": "SYNTHETIC_TESTABLE"
+    },
+    {
+      "address": "0x007428B0",
+      "role": "resource release rules",
+      "tier": "B",
+      "implementation": "SYNTHETIC_OWNERSHIP_FIXTURE",
+      "test_status": "PASS",
+      "dependency_status": "FAKE_COM",
+      "runtime_ready": false,
+      "classification": "SYNTHETIC_TESTABLE"
+    },
+    {
+      "address": "0x00727C60",
+      "role": "settings setter",
+      "tier": "B",
+      "implementation": "PARTIAL_NOT_FULLY_INTEGRATED",
+      "test_status": "DEFERRED",
+      "dependency_status": "SIDE_EFFECT_CALLBACKS",
+      "runtime_ready": false,
+      "classification": "RESEARCH",
+      "note": "Verified cases only; side-effect helpers remain injected/deferred."
+    },
+    {
+      "address": "0x00754740",
+      "role": "resource creation candidate",
+      "tier": "C",
+      "implementation": "NOT_IMPLEMENTED",
+      "test_status": "N/A",
+      "dependency_status": "DEVICE_SIDE_EFFECTS",
+      "runtime_ready": false,
+      "classification": "RESEARCH"
+    },
+    {
+      "address": "0x00730450",
+      "role": "input-edge processing",
+      "tier": "C",
+      "implementation": "NOT_IMPLEMENTED",
+      "test_status": "N/A",
+      "dependency_status": "SEPARATE_INPUT_OBJECT",
+      "runtime_ready": false,
+      "classification": "RESEARCH"
+    },
+    {
+      "address": "0x007661A0",
+      "role": "queued buffer work",
+      "tier": "C",
+      "implementation": "NOT_IMPLEMENTED",
+      "test_status": "N/A",
+      "dependency_status": "BUFFER_MANAGER_GLOBAL",
+      "runtime_ready": false,
+      "classification": "RESEARCH"
+    },
+    {
+      "address": "0x007408D0",
+      "role": "TLS render-thread gate",
+      "tier": "C",
+      "implementation": "NOT_IMPLEMENTED",
+      "test_status": "N/A",
+      "dependency_status": "TLS_CONTRACT",
+      "runtime_ready": false,
+      "classification": "RESEARCH"
+    },
+    {
+      "address": "0x009782D0",
+      "role": "thread wrapper",
+      "tier": "C",
+      "implementation": "NOT_IMPLEMENTED",
+      "test_status": "N/A",
+      "dependency_status": "OS_SLOT_UNRESOLVED",
+      "runtime_ready": false,
+      "classification": "RESEARCH"
+    }
+  ],
+  "protected_boundaries": [
+    "0x00686000",
+    "0x00686030",
+    "0x00B615C4",
+    "0x004A26B0",
+    "0x007A51B0",
+    "0x0071E380"
+  ],
+  "win32_slot_mapping": {
+    "0x00B6157C": "STRONGLY_SUPPORTED CreateWindowExA candidate; static import link BLOCKED",
+    "0x00B61578": "UpdateWindow HYPOTHESIS; not hardcoded",
+    "0x00B616CC": "Direct3DCreate9 STRONGLY_SUPPORTED; static import link BLOCKED"
+  }
+}

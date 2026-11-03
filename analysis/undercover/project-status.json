@@ -1,6 +1,6 @@
 {
-  "current_phase": 42,
-  "strategy": "Phase 42: Family C field-slot consumer + typed virtual interface provenance. Graphics frozen.",
+  "current_phase": 43,
+  "strategy": "Phase 43: graphics evidence integration \u2014 synthetic PCDisplayConfig clamp, AA probe/fallback correction, mode selection, presentation builder, and ownership fixtures. FIRST_FRAME remains BLOCKED_BY_PROTECTED_BACKEND.",
   "boundaries": {
     "0x00686000": {
       "status": "PROTECTED_OR_EXTERNAL_DEPENDENCY",
@@ -439,6 +439,11 @@
     {
       "phase": 42,
       "name": "Family C consumers and typed virtual-call provenance",
+      "state": "completed"
+    },
+    {
+      "phase": 43,
+      "name": "Graphics evidence integration and synthetic device lifecycle",
       "state": "completed"
     }
   ],

@@ -1,5 +1,5 @@
 {
-  "phase": 42,
+  "phase": 43,
   "definitions": {
     "ENTERABLE": "All pre-entry required state establishable via primitives, static PE data, standard runtime, or proven ordinary init/ctor. Not merely IMPORT_READY.",
     "DEEPEST_ORDINARY_EXECUTION_CHAIN": "Max nested ordinary UC frames in one harness run.",
@@ -543,5 +543,30 @@
   "first_frame": "FIRST_FRAME_PATH_BLOCKED_BY_PROTECTED_BACKEND",
   "graphics_frozen": true,
   "recommended_phase43": "Family C field-slot getter `0x009EB2B0` validates constructor payload layout beyond RTTI; vt-slot3/interface consumers remain blocked without a real interface at +0x14. Virtual call at `0x009E8E15` needs a proven ordinary producer of a ret0 string/field getter at slot+0x14 \u2014 none enterable without fabrication. Phase 43: EXPAND REAL UC EXECUTION on proven interface producers for typed virtual calls, or deeper Family C when +0x14 interface objects are ordinarily constructed. Graphics frozen.",
-  "phase31_metric_corrections_preserved": true
+  "phase31_metric_corrections_preserved": true,
+  "graphics_config_phase43": {
+    "synthetic_implemented": true,
+    "tests_executed": 44,
+    "tests_passed": true,
+    "first_frame_unblocked": false,
+    "d3d9_implementation_justified": false,
+    "engine_backend_justified": false,
+    "guest_harness_graphics_roots_added": 0,
+    "runtime_ready_delta": 0,
+    "enterable_delta": 0,
+    "unique_executed_delta": 0,
+    "note": "Phase 43 adds synthetic ordinary-code models and tests only. Guest RUNTIME_READY/ENTERABLE/UNIQUE unchanged from Phase 42.",
+    "previous_phase": 42,
+    "tier_a": [
+      "0x0071D7E0",
+      "0x00723790",
+      "0x007237B0",
+      "0x00727FB0",
+      "0x0071D8F0",
+      "0x00722EC0"
+    ],
+    "aa_fallback_corrected": true,
+    "evidence": "graphics-evidence-2026-11-03.json"
+  },
+  "recommended_phase44": "Integrate verified setter cases of 0x00727C60 with injected side-effect callbacks; resolve aspect/window slot contracts without fabricating Win32/D3D9 import links; keep protected backend opaque."
 }
