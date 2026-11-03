@@ -1,0 +1,417 @@
+{
+  "phase": 28,
+  "seeds": [
+    "0x00721070",
+    "0x00739B90",
+    "0x0088390D",
+    "0x00924D30",
+    "0x00929972",
+    "0x00949920",
+    "0x009E78C0",
+    "0x009E8AD0"
+  ],
+  "callers": [
+    {
+      "seed": "0x00721070",
+      "caller": "0x0072D640",
+      "call_type": "call",
+      "insns": 96,
+      "callees": [
+        "0x00721050",
+        "0x00721070",
+        "0x00721080",
+        "0x007212F0",
+        "0x0072C190"
+      ],
+      "contract_cost": 1,
+      "cost_kind": "zero_init",
+      "chain_depth_potential": 3,
+      "chain_potential_score": 129,
+      "blocker": null,
+      "confidence": "STRONG"
+    },
+    {
+      "seed": "0x009E8AD0",
+      "caller": "0x009E9160",
+      "call_type": "call",
+      "insns": 110,
+      "callees": [
+        "0x009773C0",
+        "0x009777D0",
+        "0x00977800",
+        "0x00977E20",
+        "0x0097FCD0",
+        "0x009E7710",
+        "0x009E8AD0",
+        "0x009E9460",
+        "0x009E9990",
+        "0x009EB980"
+      ],
+      "contract_cost": 3,
+      "cost_kind": "ordinary_ctor",
+      "chain_depth_potential": 3,
+      "chain_potential_score": 155,
+      "blocker": null,
+      "confidence": "PROVEN"
+    },
+    {
+      "seed": "0x00739B90",
+      "caller": "0x008491B0",
+      "call_type": "call",
+      "insns": 1344,
+      "callees": [
+        "0x00401600",
+        "0x00401640",
+        "0x0044FD70",
+        "0x004A8300",
+        "0x004A87E0",
+        "0x004A9510",
+        "0x0050BE00",
+        "0x00520F60",
+        "0x00520F80",
+        "0x00521220",
+        "0x00521250",
+        "0x00522450",
+        "0x005224A0",
+        "0x00526350",
+        "0x0065BF10",
+        "0x00686030",
+        "0x0071B850",
+        "0x007393B0",
+        "0x00739B90",
+        "0x007409C0",
+        "0x00743240",
+        "0x00743300",
+        "0x007499F0",
+        "0x0074A9C0",
+        "0x0075FD20",
+        "0x00814A40",
+        "0x00814B90",
+        "0x00814D40",
+        "0x00817920",
+        "0x00817E30",
+        "0x00822CA0",
+        "0x00823010",
+        "0x00823E10",
+        "0x00824100",
+        "0x008241E0",
+        "0x00825430",
+        "0x00836BD0",
+        "0x008383F0",
+        "0x00838A90",
+        "0x00847590",
+        "0x0085ED20",
+        "0x00865310",
+        "0x009EC4F0"
+      ],
+      "contract_cost": 9,
+      "cost_kind": "unknown",
+      "chain_depth_potential": 2,
+      "chain_potential_score": 470,
+      "blocker": null,
+      "confidence": "WEAK"
+    },
+    {
+      "seed": "0x0088390D",
+      "caller": "0x008858AB",
+      "call_type": "call",
+      "insns": 194,
+      "callees": [
+        "0x0088348B",
+        "0x00883903",
+        "0x0088390D",
+        "0x00883958",
+        "0x00883A16",
+        "0x00883AF7",
+        "0x00883B60",
+        "0x00883BDD",
+        "0x00883C61",
+        "0x00883D1A",
+        "0x00883D24",
+        "0x00884356",
+        "0x00885B03"
+      ],
+      "contract_cost": 9,
+      "cost_kind": "unknown",
+      "chain_depth_potential": 2,
+      "chain_potential_score": 164,
+      "blocker": null,
+      "confidence": "WEAK"
+    },
+    {
+      "seed": "0x00721070",
+      "caller": "0x0072D820",
+      "call_type": "call",
+      "insns": 96,
+      "callees": [
+        "0x00721060",
+        "0x00721070",
+        "0x00721080",
+        "0x007212F0",
+        "0x0072C190"
+      ],
+      "contract_cost": 9,
+      "cost_kind": "unknown",
+      "chain_depth_potential": 2,
+      "chain_potential_score": 104,
+      "blocker": null,
+      "confidence": "WEAK"
+    },
+    {
+      "seed": "0x00929900",
+      "caller": "0x00947790",
+      "call_type": "call",
+      "insns": 286,
+      "callees": [
+        "0x00929900",
+        "0x00929EF0",
+        "0x009472A0",
+        "0x00947590"
+      ],
+      "contract_cost": 9,
+      "cost_kind": "unknown",
+      "chain_depth_potential": 2,
+      "chain_potential_score": 79,
+      "blocker": "REQUIRED_STATE",
+      "confidence": "WEAK"
+    },
+    {
+      "seed": "0x00949920",
+      "caller": "0x00950190",
+      "call_type": "call",
+      "insns": 255,
+      "callees": [
+        "0x009239A0",
+        "0x00923C60",
+        "0x00949920"
+      ],
+      "contract_cost": 9,
+      "cost_kind": "unknown",
+      "chain_depth_potential": 2,
+      "chain_potential_score": 67,
+      "blocker": "REQUIRED_STATE",
+      "confidence": "WEAK"
+    }
+  ],
+  "depth3_candidates": [
+    {
+      "root": "0x009E9160",
+      "sequence": [
+        "0x009E9160",
+        "0x009E9990",
+        "0x009E7710"
+      ],
+      "kind": "ENTERABLE_AFTER_ORDINARY_CTOR",
+      "enterability_cost": 3,
+      "chain_potential": 90,
+      "ownership": "CALLER_OWNED",
+      "confidence": "PROVEN",
+      "note": "ctor nests base initializer; harness allocates guest this + POD source"
+    },
+    {
+      "root": "0x0072D640",
+      "sequence": [
+        "0x0072D640",
+        "0x00721050",
+        "0x007212F0",
+        "0x00721070"
+      ],
+      "kind": "ENTERABLE_DIRECT",
+      "enterability_cost": 1,
+      "chain_potential": 70,
+      "ownership": "GLOBAL_OBJECT",
+      "confidence": "STRONG",
+      "note": "uses BSS object 0xCEA3B8 via 0x00721050; stops before protected 0x0072C190",
+      "max_nesting": 2
+    },
+    {
+      "root": "0x0072DCA0",
+      "sequence": [
+        "0x0072DCA0",
+        "0x0072D640",
+        "0x00721070"
+      ],
+      "kind": "ENTERABLE_DIRECT",
+      "enterability_cost": 1,
+      "chain_potential": 80,
+      "ownership": "GLOBAL_OBJECT",
+      "confidence": "STRONG",
+      "note": "PE-zero BSS 0xCEA3F0/0xCEA3F4 selects jmp \u2192 0x0072D640. Lifter may merge tail into one frame; nesting depth depends on lift shape."
+    }
+  ],
+  "constructor_census": {
+    "proven_constructors": [
+      {
+        "va": "0x009E9160",
+        "class": "PROVEN_CONSTRUCTOR",
+        "vtable": "0x00C30E68",
+        "confidence": "PROVEN",
+        "note": "stores vtable, nested base/init calls, registers callbacks via 0x009E8AD0"
+      }
+    ],
+    "strong_constructors": [
+      {
+        "va": "0x009E7710",
+        "class": "STRONG_CONSTRUCTOR",
+        "vtable": "0x00C30D5C",
+        "confidence": "STRONG",
+        "note": "base this-store + lock xadd refcount"
+      },
+      {
+        "va": "0x006E8D70",
+        "class": "STRONG_CONSTRUCTOR",
+        "vtable": "0x00BA679C",
+        "confidence": "WEAK",
+        "note": "heuristic vtable+fields; not promoted without consumer"
+      },
+      {
+        "va": "0x006EBD00",
+        "class": "STRONG_CONSTRUCTOR",
+        "vtable": "0x00BA6C6C",
+        "confidence": "WEAK",
+        "note": "heuristic vtable+fields; not promoted without consumer"
+      },
+      {
+        "va": "0x007008E0",
+        "class": "STRONG_CONSTRUCTOR",
+        "vtable": "0x00BA7520",
+        "confidence": "WEAK",
+        "note": "heuristic vtable+fields; not promoted without consumer"
+      },
+      {
+        "va": "0x00707EB0",
+        "class": "STRONG_CONSTRUCTOR",
+        "vtable": "0x00BA7264",
+        "confidence": "WEAK",
+        "note": "heuristic vtable+fields; not promoted without consumer"
+      },
+      {
+        "va": "0x0070A3E0",
+        "class": "STRONG_CONSTRUCTOR",
+        "vtable": "0x00BA7B34",
+        "confidence": "WEAK",
+        "note": "heuristic vtable+fields; not promoted without consumer"
+      },
+      {
+        "va": "0x0070BB60",
+        "class": "STRONG_CONSTRUCTOR",
+        "vtable": "0x00BA7BA4",
+        "confidence": "WEAK",
+        "note": "heuristic vtable+fields; not promoted without consumer"
+      },
+      {
+        "va": "0x0070C630",
+        "class": "STRONG_CONSTRUCTOR",
+        "vtable": "0x00BA7468",
+        "confidence": "WEAK",
+        "note": "heuristic vtable+fields; not promoted without consumer"
+      },
+      {
+        "va": "0x0070C6F0",
+        "class": "STRONG_CONSTRUCTOR",
+        "vtable": "0x00BA7520",
+        "confidence": "WEAK",
+        "note": "heuristic vtable+fields; not promoted without consumer"
+      },
+      {
+        "va": "0x0070D7A0",
+        "class": "STRONG_CONSTRUCTOR",
+        "vtable": "0x00BA7904",
+        "confidence": "WEAK",
+        "note": "heuristic vtable+fields; not promoted without consumer"
+      },
+      {
+        "va": "0x0070DBA0",
+        "class": "STRONG_CONSTRUCTOR",
+        "vtable": "0x00BA7AAC",
+        "confidence": "WEAK",
+        "note": "heuristic vtable+fields; not promoted without consumer"
+      },
+      {
+        "va": "0x0070DE70",
+        "class": "STRONG_CONSTRUCTOR",
+        "vtable": "0x00BA7DAC",
+        "confidence": "WEAK",
+        "note": "heuristic vtable+fields; not promoted without consumer"
+      },
+      {
+        "va": "0x0070E510",
+        "class": "STRONG_CONSTRUCTOR",
+        "vtable": "0x00BA8088",
+        "confidence": "WEAK",
+        "note": "heuristic vtable+fields; not promoted without consumer"
+      },
+      {
+        "va": "0x0070ED80",
+        "class": "STRONG_CONSTRUCTOR",
+        "vtable": "0x00B6F584",
+        "confidence": "WEAK",
+        "note": "heuristic vtable+fields; not promoted without consumer"
+      },
+      {
+        "va": "0x0070F3C0",
+        "class": "STRONG_CONSTRUCTOR",
+        "vtable": "0x00BA84E8",
+        "confidence": "WEAK",
+        "note": "heuristic vtable+fields; not promoted without consumer"
+      },
+      {
+        "va": "0x0070F690",
+        "class": "STRONG_CONSTRUCTOR",
+        "vtable": "0x00BA853C",
+        "confidence": "WEAK",
+        "note": "heuristic vtable+fields; not promoted without consumer"
+      },
+      {
+        "va": "0x0070F870",
+        "class": "STRONG_CONSTRUCTOR",
+        "vtable": "0x00BA679C",
+        "confidence": "WEAK",
+        "note": "heuristic vtable+fields; not promoted without consumer"
+      },
+      {
+        "va": "0x0070FF60",
+        "class": "STRONG_CONSTRUCTOR",
+        "vtable": "0x00BA72BC",
+        "confidence": "WEAK",
+        "note": "heuristic vtable+fields; not promoted without consumer"
+      },
+      {
+        "va": "0x00710A40",
+        "class": "STRONG_CONSTRUCTOR",
+        "vtable": "0x00BA87C0",
+        "confidence": "WEAK",
+        "note": "heuristic vtable+fields; not promoted without consumer"
+      },
+      {
+        "va": "0x00710F70",
+        "class": "STRONG_CONSTRUCTOR",
+        "vtable": "0x00BA88FC",
+        "confidence": "WEAK",
+        "note": "heuristic vtable+fields; not promoted without consumer"
+      }
+    ],
+    "ordinary_initializers": [
+      {
+        "va": "0x009E9990",
+        "class": "ORDINARY_INITIALIZER",
+        "confidence": "STRONG",
+        "note": "copies POD source into this+4 subobject after base ctor"
+      }
+    ],
+    "pod_builders": [
+      {
+        "va": "0x00929900",
+        "class": "POD_BUILDER",
+        "confidence": "PROVEN",
+        "note": "Phase 27 parent; zeroed this + primitive stack; calls 0x00924D30"
+      },
+      {
+        "va": "0x00949920",
+        "class": "POD_BUILDER",
+        "confidence": "PROVEN",
+        "note": "math leaf; harness POD this + floats"
+      }
+    ]
+  }
+}
