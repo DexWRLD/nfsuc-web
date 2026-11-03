@@ -261,6 +261,14 @@ export class UcDownloadManager {
     return this.cache.read(id, entry.sha256);
   }
 
+  async ensureAsset(manifest: AssetManifest, entry: AssetEntry, signal: AbortSignal): Promise<Uint8Array | null> {
+    assertDownloadAllowed(manifest, entry);
+    const cached = await this.readAsset(manifest, entry.id);
+    if (cached?.byteLength === entry.size && await sha256Hex(cached) === entry.sha256) return cached;
+    await this.downloadOne(manifest, entry, signal);
+    return this.readAsset(manifest, entry.id);
+  }
+
   getCache(): AssetCache { return this.cache; }
 
   private async downloadAll(

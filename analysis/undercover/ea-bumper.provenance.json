@@ -1,0 +1,32 @@
+{
+  "source": {
+    "path": "MOVIES/ea_bumper_english_ntsc.vp6",
+    "size": 8306328,
+    "sha256": "d4982c58fa09d35390b4b02f504035002e0ec665ced3cd13f9f92e413284012c",
+    "container": "ea",
+    "codec": "vp6",
+    "width": 1280,
+    "height": 720,
+    "duration": 11.544643
+  },
+  "derivative": {
+    "path": "ea-bumper.mp4",
+    "size": 1016295,
+    "sha256": "c21e846377132ea74773e1b7a41679f27bcf47f5634fc752dc267b74b7284eb8",
+    "container": "mp4",
+    "codec": "h264",
+    "pixelFormat": "yuv420p",
+    "width": 1280,
+    "height": 720,
+    "frames": 346,
+    "frameRate": "982047/32767",
+    "duration": 11.544643,
+    "audioStreams": 0
+  },
+  "relationship": "Video-only transcode",
+  "authorization": "copyrighted-authorized-private",
+  "ffmpeg": "9.0.2 Gyan full build",
+  "command": "ffmpeg -v warning -xerror -f ea -i <source> -map 0:v:0 -an -c:v libx264 -pix_fmt yuv420p -movflags +faststart ea-bumper.mp4",
+  "videoDecode": "Source and derivative decode exit 0",
+  "audioDecode": "Unverified: EA revision2=23 not implemented"
+}

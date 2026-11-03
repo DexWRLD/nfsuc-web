@@ -27,6 +27,7 @@ const CONTENT = {
   '.js': 'text/javascript; charset=utf-8',
   '.mjs': 'text/javascript; charset=utf-8',
   '.css': 'text/css; charset=utf-8',
+  '.mp4': 'video/mp4',
   '.json': 'application/json',
   '.txt': 'text/plain; charset=utf-8',
   '.wasm': 'application/wasm',
@@ -271,6 +272,11 @@ export function createUcLanApp(opts) {
       res.writeHead(200, { 'content-type': 'application/json', 'content-length': Buffer.byteLength(body) });
       if (req.method === 'HEAD') { res.end(); return; }
       res.end(body);
+      return;
+    }
+
+    if (u.pathname === '/uc-asset-manifest.json' && fs.existsSync(manifestPath)) {
+      sendFile(req, res, manifestPath);
       return;
     }
 
