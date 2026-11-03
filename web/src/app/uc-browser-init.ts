@@ -4,6 +4,9 @@ interface InitializerExports {
   write_count(): number;
   guest_esp(): number;
   guest_eax(): number;
+  run_prefix(): number;
+  prefix_fault(): number;
+  prefix_entry(index: number): number;
 }
 
 export async function runUndercoverInitializer() {
@@ -24,5 +27,16 @@ export async function runUndercoverInitializer() {
       || result.eip !== 0x00dec0de || result.esp !== 0x0300f000 || result.eax !== 0) {
     throw new Error('Unexpected translated initializer state');
   }
-  return result;
+  try {
+    guest.run_prefix();
+  } catch (error) {
+    if (!(error instanceof WebAssembly.RuntimeError) || guest.prefix_fault() >>> 0 !== 0xfffffffc) throw error;
+    const entered = Array.from({ length: 5 }, (_, index) => guest.prefix_entry(index));
+    const expected = [0x0099dcd0, 0x009e78c0, 0x009b6290, 0x009e4b10, 0x009e78c0];
+    if (entered.some((address, index) => address !== expected[index]) || guest.prefix_entry(5)) {
+      throw new Error('Unexpected startup prefix trace');
+    }
+    return { ...result, prefix: { entered, faultAddress: guest.prefix_fault() >>> 0 } };
+  }
+  throw new Error('Startup prefix returned unexpectedly');
 }

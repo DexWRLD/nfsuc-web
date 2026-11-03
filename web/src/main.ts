@@ -29,11 +29,23 @@ void fetch('/uc-project-evidence.json').then(async response => {
 
 const runInit = document.querySelector<HTMLButtonElement>('#run-guest-init')!;
 const initResult = document.querySelector<HTMLElement>('#guest-init-result')!;
+const initTrace = document.querySelector<HTMLElement>('#guest-init-trace')!;
 runInit.addEventListener('click', async () => {
   runInit.disabled = true;
+  initTrace.textContent = '';
   try {
     const trace = await runUndercoverInitializer();
-    initResult.textContent = 'Initializer completed · 49 writes · stopped before callback dispatch. Boot continuation requires initialized object state.';
+    initResult.textContent = 'Initializer completed. Startup probe stopped on an uninitialized object field.';
+    const hex = (value: number) => '0x' + value.toString(16).toUpperCase().padStart(8, '0');
+    initTrace.textContent = [
+      'Initializer ' + hex(trace.entry) + ' · ' + trace.writes + ' writes',
+      hex(trace.slot) + ' → ' + hex(trace.after),
+      'Verified return ESP ' + hex(trace.esp),
+      'Entered in order: ' + trace.prefix.entered.map(hex).join(', '),
+      'Last dispatch: 0x009E4B32 → 0x009E78C0 (diagnostic callback)',
+      'Read at 0x009E4B49 → ' + hex(trace.prefix.faultAddress),
+      'Missing producer: allocator-backed field 0x0189D0A8',
+    ].join('\n');
     console.info('[uc-init]', trace);
   } catch (error) {
     initResult.textContent = error instanceof Error ? error.message : String(error);

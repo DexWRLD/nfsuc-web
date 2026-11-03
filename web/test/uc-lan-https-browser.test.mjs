@@ -136,6 +136,10 @@ test('authorized EA bumper plays over the LAN asset pipeline', { skip: !process.
     assert.deepEqual(await message.args()[1].jsonValue(), {
       entry: 0x009e8ad0, slot: 0x0189d1a4, before: 0, after: 0x009e78c0,
       writes: 49, eip: 0x00dec0de, esp: 0x0300f000, eax: 0,
+      prefix: {
+        entered: [0x0099dcd0, 0x009e78c0, 0x009b6290, 0x009e4b10, 0x009e78c0],
+        faultAddress: 0xfffffffc,
+      },
     });
   }
   const video = page.locator('#uc-startup-preview video');
