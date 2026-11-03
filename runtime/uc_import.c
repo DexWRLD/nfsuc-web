@@ -225,6 +225,85 @@ int uc_guest_clock_advance_ns(uint64_t delta_ns) {
     return 1;
 }
 
+/*
+ * Deterministic guest wait (SleepEx timeout-only).
+ * Single guest thread. No scheduler. No APC delivery.
+ * Alertable finite waits may complete by timeout only when no pending APC
+ * exists in the supported guest model.
+ */
+#define UC_WAIT_INFINITE 0xffffffffu
+#define UC_NS_PER_MS     1000000ull
+static int uc_wait_apc_pending;
+static unsigned uc_wait_sleepex_done;
+/* Last completed wait descriptor (diagnostic / tests). */
+static uint32_t uc_wait_last_ms;
+static int uc_wait_last_alertable;
+static uint64_t uc_wait_last_start_ticks;
+static uint64_t uc_wait_last_deadline_ticks;
+
+void uc_wait_reset(void) {
+    uc_wait_apc_pending = 0;
+    uc_wait_sleepex_done = 0;
+    uc_wait_last_ms = 0;
+    uc_wait_last_alertable = 0;
+    uc_wait_last_start_ticks = 0;
+    uc_wait_last_deadline_ticks = 0;
+}
+
+void uc_wait_set_pending_apc(int pending) {
+    uc_wait_apc_pending = pending ? 1 : 0;
+}
+
+int uc_wait_pending_apc(void) {
+    return uc_wait_apc_pending;
+}
+
+unsigned uc_wait_sleepex_completions(void) {
+    return uc_wait_sleepex_done;
+}
+
+static uint32_t uc_hle_sleep_ex(uint32_t ms, uint32_t alertable, int *ok) {
+    uint64_t start, need_ns, need_ticks, room;
+    int alert = alertable != 0;
+    /* Infinite wait: no wake source in the single-thread model. */
+    if (ms == UC_WAIT_INFINITE) {
+        *ok = 0;
+        return 0;
+    }
+    /* Known pending APC: timeout-only path must not ignore it. */
+    if (alert && uc_wait_apc_pending) {
+        *ok = 0;
+        return 0;
+    }
+    start = uc_guest_qpc_ticks;
+    if (ms == 0) {
+        /* Zero timeout: complete immediately; no invented elapsed time. */
+        uc_wait_last_ms = 0;
+        uc_wait_last_alertable = alert;
+        uc_wait_last_start_ticks = start;
+        uc_wait_last_deadline_ticks = start;
+        uc_wait_sleepex_done++;
+        *ok = 1;
+        return 0; /* timeout */
+    }
+    /* Finite timeout: advance virtual time by exactly ms milliseconds. */
+    need_ns = (uint64_t)ms * UC_NS_PER_MS;
+    need_ticks = need_ns / UC_NS_PER_QPC_TICK;
+    room = ~uc_guest_qpc_ticks;
+    if (need_ticks > room) {
+        *ok = 0;
+        return 0;
+    }
+    uc_guest_qpc_ticks += need_ticks;
+    uc_wait_last_ms = ms;
+    uc_wait_last_alertable = alert;
+    uc_wait_last_start_ticks = start;
+    uc_wait_last_deadline_ticks = uc_guest_qpc_ticks;
+    uc_wait_sleepex_done++;
+    *ok = 1;
+    return 0; /* WAIT_OBJECT_0 / timeout; never WAIT_IO_COMPLETION here */
+}
+
 static int uc_store_u64_le(uint32_t addr, uint64_t value) {
     int ok_lo = 1, ok_hi = 1;
     if (!range_ok(addr, 8)) return 0;
@@ -297,6 +376,7 @@ void uc_sync_reset(void) {
     uc_process_reset();
     uc_thread_reset();
     uc_guest_clock_reset();
+    uc_wait_reset();
 }
 
 unsigned uc_sync_critsec_count(void) {
@@ -742,6 +822,11 @@ static uint32_t hle_run(struct CPU *c, const UcImport *imp, const UcDecoded *in,
     if (imp->hle == UC_HLE_QUERYPERFORMANCEFREQUENCY) {
         if (in->stack_dwords < 1) return 0;
         return uc_hle_query_performance_frequency(in->stack[0], ok);
+    }
+    if (imp->hle == UC_HLE_SLEEPEX) {
+        /* SleepEx(dwMilliseconds, bAlertable): stdcall 2 args → DWORD. */
+        if (in->stack_dwords < 2) return 0;
+        return uc_hle_sleep_ex(in->stack[0], in->stack[1], ok);
     }
     if (imp->hle == UC_HLE_CREATESEMAPHOREA) {
         /* CreateSemaphoreA(attrs, initial, maximum, name): stdcall, 4 args; HANDLE. */

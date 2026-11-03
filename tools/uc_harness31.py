@@ -84,6 +84,7 @@ class Out(ctypes.Structure):
         ("thread_priority", ctypes.c_int32),
         ("qpc_calls", ctypes.c_uint32), ("qpf_calls", ctypes.c_uint32),
         ("qpc_ticks_lo", ctypes.c_uint32), ("qpc_ticks_hi", ctypes.c_uint32),
+        ("sleepex_calls", ctypes.c_uint32), ("sleepex_done", ctypes.c_uint32),
     ]
 
 
@@ -127,7 +128,7 @@ static int abort_run, blocked_kind, block_tls_set, cur_root;
 static uint32_t blocked_va, blocked_fn, tls_alloc_calls, tls_set_calls;
 static uint32_t ics_calls, mutex_calls, gpc_calls, sem_calls;
 static uint32_t gct_calls, gtp_calls, spc_calls, stp_calls;
-static uint32_t qpc_calls, qpf_calls;
+static uint32_t qpc_calls, qpf_calls, sleepex_calls;
 static uint32_t entered[%(ent_cap)d];
 static int entered_n, depth_now, depth_max;
 static uint32_t imp_target[%(imp_cap)d], imp_ok[%(imp_cap)d], imp_hle[%(imp_cap)d];
@@ -202,6 +203,14 @@ void dispatch_indirect(CPU *c, uint32_t target) {
     if (imp && imp->hle == UC_HLE_SETTHREADPRIORITY) stp_calls++;
     if (imp && imp->hle == UC_HLE_QUERYPERFORMANCECOUNTER) qpc_calls++;
     if (imp && imp->hle == UC_HLE_QUERYPERFORMANCEFREQUENCY) qpf_calls++;
+    if (imp && imp->hle == UC_HLE_SLEEPEX) {
+        sleepex_calls++;
+        /* Bound repeated SleepEx calibration loops. */
+        if (sleepex_calls > 64u) {
+            note_block(target, 4); /* K_TIMING / timing-loop budget */
+            POP32(c->eip); c->eax = 0; return;
+        }
+    }
     ok = imp ? uc_import_invoke(c, imp, 0) : 0;
     if (nimp < %(imp_cap)d) imp_ok[nimp] = (uint32_t)ok;
     nimp++;
@@ -244,6 +253,7 @@ typedef struct Out {
     uint32_t gct_calls, gtp_calls, spc_calls, stp_calls;
     int32_t thread_priority;
     uint32_t qpc_calls, qpf_calls, qpc_ticks_lo, qpc_ticks_hi;
+    uint32_t sleepex_calls, sleepex_done;
 } Out;
 
 static void wr32(uint32_t a, uint32_t v) { uc_guest_store32(a, v, 0); }
@@ -270,6 +280,7 @@ __declspec(dllexport) int uc_p31_run(const Spec *s, Out *out) {
     uc_process_reset();
     uc_thread_reset();
     uc_guest_clock_reset();
+    uc_wait_reset();
     uc_access_fault.active = 0;
     uc_import_fault.active = 0;
     uc_current_fn = 0;
@@ -278,7 +289,7 @@ __declspec(dllexport) int uc_p31_run(const Spec *s, Out *out) {
     tls_alloc_calls = tls_set_calls = 0;
     ics_calls = mutex_calls = gpc_calls = sem_calls = 0;
     gct_calls = gtp_calls = spc_calls = stp_calls = 0;
-    qpc_calls = qpf_calls = 0;
+    qpc_calls = qpf_calls = sleepex_calls = 0;
     unsup_why[0] = 0;
     diag_noop_target = s->noop_target; diag_noop_args = s->noop_args; diag_hits = 0;
     for (i = 0; i < 0x1000; i++) uc_guest_store8(0x03004000u + i, 0);
@@ -328,6 +339,8 @@ __declspec(dllexport) int uc_p31_run(const Spec *s, Out *out) {
         out->qpc_ticks_lo = (uint32_t)ticks;
         out->qpc_ticks_hi = (uint32_t)(ticks >> 32);
     }
+    out->sleepex_calls = sleepex_calls;
+    out->sleepex_done = uc_wait_sleepex_completions();
     for (i = 0; i < 47 && unsup_why[i]; i++) out->unsupported_why[i] = unsup_why[i];
     return 0;
 }
