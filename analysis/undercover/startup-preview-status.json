@@ -1,0 +1,10 @@
+{
+  "AUTHENTIC_STARTUP_ASSET_PREVIEW": "READY",
+  "AUTHENTIC_INTRO_VIDEO_PREVIEW": "IDENTIFIED_NO_DECODER",
+  "FIRST_FRAME_PATH_BLOCKED_BY_PROTECTED_BACKEND": "BLOCKED",
+  "notes": {
+    "AUTHENTIC_STARTUP_ASSET_PREVIEW": "dialoglogo128x128.jpg independently verified JPEG; not LS_EALOGO.FNG / BUN member proof.",
+    "AUTHENTIC_INTRO_VIDEO_PREVIEW": "Concrete .vp6 files on disk; no independent browser decoder.",
+    "FIRST_FRAME_PATH_BLOCKED_BY_PROTECTED_BACKEND": "Startup logo preview does not unblock gameplay rendering."
+  }
+}

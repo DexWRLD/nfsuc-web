@@ -1,5 +1,5 @@
 {
-  "phase": 50,
+  "phase": 51,
   "definitions": {
     "ENTERABLE": "All pre-entry required state establishable via primitives, static PE data, standard runtime, or proven ordinary init/ctor. Not merely IMPORT_READY.",
     "DEEPEST_ORDINARY_EXECUTION_CHAIN": "Max nested ordinary UC frames in one harness run.",
@@ -162,7 +162,7 @@
     "0x00B57CD0",
     "0x00B57CF0"
   ],
-  "execution_runs": 346,
+  "execution_runs": 358,
   "deepest_ordinary_execution_chain": 4,
   "largest_executed_ordinary_closure": 20,
   "ordinary_execution_sequence_length": 5,
@@ -807,5 +807,25 @@
     "browser_renderer": "SYNTHETIC_TEXTURE_AND_MESH_PREVIEW",
     "note": "Strict BC1 decoder + provenance + synthetic previews; authentic Undercover texture/mesh sources still unverified."
   },
-  "recommended_phase51": "Locate one readable authorized DXT1 span with proven offset/size/format digests; or match XP_SMOKEBALL_* vertex/index spans to a verified 0x50 declaration; keep opaque draw backends untouched; FIRST_FRAME remains blocked."
+  "recommended_phase51": "Locate one readable authorized DXT1 span with proven offset/size/format digests; or match XP_SMOKEBALL_* vertex/index spans to a verified 0x50 declaration; keep opaque draw backends untouched; FIRST_FRAME remains blocked.",
+  "phase51": {
+    "startup_preview_tests_passed": true,
+    "startup_browser_tests_passed": true,
+    "dxt1_decoder_tests_passed": true,
+    "node_uc_assets_passed": true,
+    "lan_server_tests_passed": true,
+    "frontend_build_passed": true,
+    "blocked_external_unchanged": 74,
+    "authentic_startup_asset_preview": "READY",
+    "authentic_intro_video_preview": "IDENTIFIED_NO_DECODER",
+    "verified_startup_image_sha256": "6c30b18704f937bb7257b44598bc66097de2bbc806e007d8f72c2d19765408a7",
+    "verified_startup_image_path": "dialoglogo128x128.jpg",
+    "bun_logo_payload_verified": false,
+    "vp6_decoder_implemented": false,
+    "browser_game_renderer_ready": false,
+    "asset_distribution": "PRIVATE_LAN_FIXTURE_HOST_READY",
+    "lan_testing_readiness": "PRIVATE_LAN_HTTPS_READY",
+    "note": "Independently verified install-root dialog JPEG preview; FNG/BUN boot logos and VP6 remain unsupported; FIRST_FRAME blocked."
+  },
+  "recommended_phase52": "Map verified BUN/BIGF membership for NFS_UNDERCOVER_LOGO or LS_EALOGO with proven offset/length digests; or obtain a rights-cleared offline VP6\u2192browser-safe conversion retaining provenance; continue DXT1 span hunt; keep opaque draw backends untouched; FIRST_FRAME remains blocked."
 }

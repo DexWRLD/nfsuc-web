@@ -1,0 +1,599 @@
+{
+  "target": {
+    "program": "nfs.exe",
+    "architecture": "PE32 x86",
+    "image_base": "0x00400000",
+    "entry": "0x01FCA510",
+    "sha256": "6b10551649fd70fa630bd7454fd953f51555fa2dd2112faae84ac8ca97844bcd"
+  },
+  "status": "STARTUP_ASSET_PROVENANCE_AND_BOOT_EDGES_UNVERIFIED",
+  "resources": [
+    {
+      "address": "0x00B74F74",
+      "name": "LOADING.FNG",
+      "confidence": "STATIC_STRING_ONLY",
+      "references": null,
+      "reference_search": "not_queried"
+    },
+    {
+      "address": "0x00B74F80",
+      "name": "LS_SPLASH.FNG",
+      "confidence": "STATIC_STRING_ONLY",
+      "references": [],
+      "reference_search": "queried"
+    },
+    {
+      "address": "0x00B74F90",
+      "name": "LS_ATTRACTFMV.FNG",
+      "confidence": "STATIC_STRING_ONLY",
+      "references": [],
+      "reference_search": "queried"
+    },
+    {
+      "address": "0x00B74FA4",
+      "name": "LS_EALOGO.FNG",
+      "confidence": "STATIC_STRING_ONLY",
+      "references": [],
+      "reference_search": "queried"
+    },
+    {
+      "address": "0x00B74FB4",
+      "name": "LS_PSA.FNG",
+      "confidence": "STATIC_STRING_ONLY",
+      "references": [],
+      "reference_search": "queried"
+    },
+    {
+      "address": "0x00B74FC0",
+      "name": "FEANYMOVIE.FNG",
+      "confidence": "STATIC_STRING_ONLY",
+      "references": [],
+      "reference_search": "queried"
+    },
+    {
+      "address": "0x00B74FD0",
+      "name": "MC_MAIN.FNG",
+      "confidence": "STATIC_STRING_ONLY",
+      "references": null,
+      "reference_search": "not_queried"
+    },
+    {
+      "address": "0x00B73C5C",
+      "name": "FeMainMenu.fng",
+      "confidence": "STATIC_STRING_ONLY",
+      "references": [],
+      "reference_search": "queried"
+    },
+    {
+      "address": "0x00B86420",
+      "name": "FRONTEND\\LOGOTEXTURES.BUN",
+      "confidence": "STATIC_STRING_ONLY",
+      "references": [
+        {
+          "from": "00cc5eac",
+          "type": "DATA",
+          "from_function": null
+        }
+      ],
+      "reference_search": "queried"
+    },
+    {
+      "address": "0x00B7FF3C",
+      "name": "FRONTEND\\BOOTFLOWTEXTURES.BUN",
+      "confidence": "STATIC_STRING_ONLY",
+      "references": [],
+      "reference_search": "queried"
+    },
+    {
+      "address": "0x00B7EE48",
+      "name": "FRONTEND\\FRONTB1.BUN",
+      "confidence": "STATIC_STRING_ONLY",
+      "references": null,
+      "reference_search": "not_queried"
+    },
+    {
+      "address": "0x00B76148",
+      "name": "frontend.bin",
+      "confidence": "STATIC_STRING_ONLY",
+      "references": [],
+      "reference_search": "queried"
+    },
+    {
+      "address": "0x00B76158",
+      "name": "frontend.vlt",
+      "confidence": "STATIC_STRING_ONLY",
+      "references": null,
+      "reference_search": "not_queried"
+    },
+    {
+      "address": "0x00B74974",
+      "name": "%sMOVIES\\%s%s%s%s%s",
+      "confidence": "STATIC_STRING_ONLY",
+      "references": [],
+      "reference_search": "queried"
+    },
+    {
+      "address": "0x00B7E850",
+      "name": "%sMOVIES\\%s%s%s%s.vp6",
+      "confidence": "STATIC_STRING_ONLY",
+      "references": [],
+      "reference_search": "queried"
+    },
+    {
+      "address": "0x00B7E8BC",
+      "name": "Attract",
+      "confidence": "STATIC_STRING_ONLY",
+      "references": null,
+      "reference_search": "not_queried"
+    },
+    {
+      "address": "0x00B7F8CC",
+      "name": "SUBTITLES\\%s.sub",
+      "confidence": "STATIC_STRING_ONLY",
+      "references": null,
+      "reference_search": "not_queried"
+    },
+    {
+      "address": "0x00B75060",
+      "name": "LANGUAGES\\%s_SUBTITLES.BIN",
+      "confidence": "STATIC_STRING_ONLY",
+      "references": null,
+      "reference_search": "not_queried"
+    },
+    {
+      "address": "0x00B7507C",
+      "name": "LANGUAGES\\%s_FRONTEND.BIN",
+      "confidence": "STATIC_STRING_ONLY",
+      "references": [],
+      "reference_search": "queried"
+    },
+    {
+      "address": "0x00B8DFFC",
+      "name": "SkipCareerIntro",
+      "confidence": "STATIC_STRING_ONLY",
+      "references": [
+        {
+          "from": "00b4bc62",
+          "type": "DATA",
+          "from_function": {
+            "name": "FUN_00b4bc30",
+            "address": "00b4bc30"
+          }
+        }
+      ],
+      "reference_search": "queried"
+    },
+    {
+      "address": "0x00BBBBC4",
+      "name": "movie_done",
+      "confidence": "STATIC_STRING_ONLY",
+      "references": [],
+      "reference_search": "queried"
+    },
+    {
+      "address": "0x00B8802C",
+      "name": "MovieFinished",
+      "confidence": "STATIC_STRING_ONLY",
+      "references": [],
+      "reference_search": "queried"
+    },
+    {
+      "address": "0x00B85C88",
+      "name": "FEBootFlowStateManager PCBootFlowStateManager",
+      "confidence": "STATIC_STRING_ONLY",
+      "references": [],
+      "reference_search": "queried"
+    },
+    {
+      "address": "0x00B86B8C",
+      "name": "LoadUniqueBootflowTextures",
+      "confidence": "STATIC_STRING_ONLY",
+      "references": [],
+      "reference_search": "queried"
+    },
+    {
+      "address": "0x00B870D8",
+      "name": "AddBootFlowEventsStage",
+      "confidence": "STATIC_STRING_ONLY",
+      "references": [],
+      "reference_search": "queried"
+    },
+    {
+      "address": "0x00B73380",
+      "name": "PLAY_SINGLE_MOVIE",
+      "confidence": "STATIC_STRING_ONLY",
+      "references": [
+        {
+          "from": "00cc0f10",
+          "type": "DATA",
+          "from_function": null
+        }
+      ],
+      "reference_search": "queried"
+    },
+    {
+      "address": "0x00B73394",
+      "name": "PLAY_ALL_MOVIES",
+      "confidence": "STATIC_STRING_ONLY",
+      "references": null,
+      "reference_search": "not_queried"
+    }
+  ],
+  "edges": [
+    {
+      "from": "0x0076CA20",
+      "site": "0x0076CB40",
+      "to": "0x00766730",
+      "type": "callback address",
+      "role": "prior verified graphics thread setup",
+      "confidence": "STATIC_EDGE"
+    },
+    {
+      "from": "0x00766730",
+      "site": "0x00766773",
+      "to": "0x0072E5D0",
+      "type": "direct",
+      "role": "prior verified graphics initialization, frontend connection unknown",
+      "confidence": "STATIC_EDGE"
+    },
+    {
+      "from": "0x0080BD00",
+      "site": "0x0080BD55",
+      "to": "0x00981360",
+      "type": "direct",
+      "role": "core movie object",
+      "confidence": "STATIC_EDGE"
+    },
+    {
+      "from": "0x0080BD00",
+      "site": "0x0080BD95",
+      "to": "0x00985120",
+      "type": "direct",
+      "role": "game video decoder object",
+      "confidence": "STATIC_EDGE"
+    },
+    {
+      "from": "0x0080BD00",
+      "site": "0x0080BDC2",
+      "to": "0x009807F0",
+      "type": "direct",
+      "role": "register decoder in core +0x3C if state <2",
+      "confidence": "STATIC_EDGE"
+    },
+    {
+      "from": "0x0080BD00",
+      "site": "0x0080BDEF",
+      "to": "0x00524F20",
+      "type": "opaque",
+      "role": "video renderer constructor",
+      "confidence": "STATIC_EDGE"
+    },
+    {
+      "from": "0x0080BD00",
+      "site": "0x0080BE09",
+      "to": "0x00980830",
+      "type": "direct",
+      "role": "register renderer in core +0x48 if state <2",
+      "confidence": "STATIC_EDGE"
+    },
+    {
+      "from": "0x0080BD00",
+      "site": "0x0080BE46",
+      "to": "0x009852D0",
+      "type": "direct",
+      "role": "audio decoder with outer +0x25 enabled",
+      "confidence": "STATIC_EDGE"
+    },
+    {
+      "from": "0x0080BD00",
+      "site": "0x0080BE60",
+      "to": "0x00980810",
+      "type": "direct",
+      "role": "audio decoder registration",
+      "confidence": "STATIC_EDGE"
+    },
+    {
+      "from": "0x0080BD00",
+      "site": "0x0080BEB8",
+      "to": "0x00980850",
+      "type": "direct",
+      "role": "audio renderer registration",
+      "confidence": "STATIC_EDGE"
+    },
+    {
+      "from": "0x0080BD00",
+      "site": "0x0080BEE4",
+      "to": "0x00525060",
+      "type": "direct",
+      "role": "renderable operations constructor call",
+      "confidence": "STATIC_EDGE"
+    },
+    {
+      "from": "0x0080BD00",
+      "site": "0x0080BEFE",
+      "to": "0x00980880",
+      "type": "direct",
+      "role": "renderable operations registration",
+      "confidence": "STATIC_EDGE"
+    },
+    {
+      "from": "0x00981360",
+      "site": "0x0098155F",
+      "to": "0x00982B60",
+      "type": "direct",
+      "role": "decode coordinator, thread and semaphore objects",
+      "confidence": "STATIC_EDGE"
+    },
+    {
+      "from": "0x00981360",
+      "site": "0x00981592",
+      "to": "0x00982810",
+      "type": "direct",
+      "role": "internal renderer coordinator",
+      "confidence": "STATIC_EDGE"
+    },
+    {
+      "from": "0x00981360",
+      "site": "0x009815C5",
+      "to": "0x00982700",
+      "type": "direct",
+      "role": "timer wrapper",
+      "confidence": "STATIC_EDGE"
+    },
+    {
+      "from": "0x00807050",
+      "site": "0x008070B6",
+      "to": "0x00980A00",
+      "type": "direct",
+      "role": "prepare streams from state 1",
+      "confidence": "STATIC_EDGE"
+    },
+    {
+      "from": "0x00807050",
+      "site": "0x008070E1",
+      "to": "0x009809B0",
+      "type": "direct",
+      "role": "audio-enabled parameter setter",
+      "confidence": "STATIC_EDGE"
+    },
+    {
+      "from": "0x00807050",
+      "site": "0x008070F0",
+      "to": "0x00980DE0",
+      "type": "direct",
+      "role": "state 5 or 6 check",
+      "confidence": "STATIC_EDGE"
+    },
+    {
+      "from": "0x00807050",
+      "site": "0x008070FF",
+      "to": "0x00980E00",
+      "type": "direct",
+      "role": "advance clock and choose output",
+      "confidence": "STATIC_EDGE"
+    },
+    {
+      "from": "0x00807050",
+      "site": "0x0080710B",
+      "to": null,
+      "type": "virtual",
+      "role": "outer object vtable +8, no verified target",
+      "confidence": "STATIC_EDGE"
+    },
+    {
+      "from": "0x00807050",
+      "site": "0x00807113",
+      "to": "0x00981030",
+      "type": "direct",
+      "role": "progress and completion",
+      "confidence": "STATIC_EDGE"
+    },
+    {
+      "from": "0x00985020",
+      "site": "0x0098502C",
+      "to": "0x0097B1A0",
+      "type": "direct",
+      "role": "packet dequeue",
+      "confidence": "STATIC_EDGE"
+    },
+    {
+      "from": "0x00985020",
+      "site": "0x009850AC",
+      "to": "0x00985BD0",
+      "type": "direct",
+      "role": "decode helper boundary, algorithm not identified",
+      "confidence": "STATIC_EDGE"
+    },
+    {
+      "from": "0x00985020",
+      "site": "0x009850BA",
+      "to": "0x0097E250",
+      "type": "direct",
+      "role": "packet recycle",
+      "confidence": "STATIC_EDGE"
+    },
+    {
+      "from": "0x00985020",
+      "site": "0x009850E9",
+      "to": "0x00984D20",
+      "type": "direct",
+      "role": "copy decoded frame planes",
+      "confidence": "STATIC_EDGE"
+    },
+    {
+      "from": "0x00980E00",
+      "site": "0x00980E1C",
+      "to": "0x009827A0",
+      "type": "direct",
+      "role": "clock selection",
+      "confidence": "STATIC_EDGE"
+    },
+    {
+      "from": "0x00980E00",
+      "site": "0x00980E5D",
+      "to": "0x00982F70",
+      "type": "direct",
+      "role": "frame selection and renderer callbacks",
+      "confidence": "STATIC_EDGE"
+    },
+    {
+      "from": "0x00981030",
+      "site": "0x0098108C",
+      "to": "0x00982AC0",
+      "type": "direct",
+      "role": "forward render and audio-related state",
+      "confidence": "STATIC_EDGE"
+    },
+    {
+      "from": "0x00809270",
+      "site": "0x00809280",
+      "to": "0x00981150",
+      "type": "direct",
+      "role": "stop / cleanup",
+      "confidence": "STATIC_EDGE"
+    },
+    {
+      "from": "0x00809270",
+      "site": "0x008092F2",
+      "to": "0x00981620",
+      "type": "direct",
+      "role": "core teardown",
+      "confidence": "STATIC_EDGE"
+    },
+    {
+      "from": "0x00809270",
+      "site": "0x008092F8",
+      "to": "0x00686030",
+      "type": "opaque",
+      "role": "core deallocation",
+      "confidence": "STATIC_EDGE"
+    },
+    {
+      "from": "0x00766480",
+      "site": "0x00766700",
+      "to": "0x00686290",
+      "type": "opaque",
+      "role": "previously verified eRenderFrontEndRVM draw handoff",
+      "confidence": "STATIC_EDGE"
+    }
+  ],
+  "dispatch_data": [
+    {
+      "slot": "0x00BBBB9C",
+      "target": "0x0080BD00",
+      "role": "movie initialization",
+      "invocation_proven": false
+    },
+    {
+      "slot": "0x00BBBBA0",
+      "target": "0x00809270",
+      "role": "movie cleanup",
+      "invocation_proven": false
+    },
+    {
+      "slot": "0x00BBBBBC",
+      "target": "0x00807050",
+      "role": "movie update",
+      "invocation_proven": false
+    },
+    {
+      "slot": "0x00C12A20",
+      "target": "0x00985020",
+      "role": "decoder vtable slot +0x14",
+      "invocation_proven": false
+    },
+    {
+      "slot": "0x00CC5EAC",
+      "target": "0x00B86420",
+      "role": "logo bundle path pointer",
+      "invocation_proven": false
+    }
+  ],
+  "structures": {
+    "outer_movie": {
+      "+0x25": "audio enable byte",
+      "+0x1C0": "core player, 0x310-byte allocation",
+      "+0x1C4": "video decoder, 0x20-byte allocation",
+      "+0x1C8": "video renderer, 0x14-byte allocation",
+      "+0x1CC": "renderable operations",
+      "+0x1D0": "audio renderer",
+      "+0x1D4": "audio decoder"
+    },
+    "core_movie": {
+      "+0x3C": "decoder interface",
+      "+0x48": "renderer interface",
+      "+0xB4": "frame-count-like value",
+      "+0xC8": "selected renderable pointer",
+      "+0x10C": "current renderable ordinal",
+      "+0x17C": "state",
+      "+0x120": "internal decode coordinator",
+      "+0x124": "internal renderer coordinator",
+      "+0x128": "timer wrapper"
+    },
+    "decoded_frame": {
+      "+0x04/+0x08/+0x0C": "plane pointers or contiguous layout base",
+      "+0x1C/+0x20/+0x24": "destination pitches",
+      "+0x28/+0x2C": "width / height",
+      "+0x34": "frame ordinal",
+      "+0x40": "+0x40 ready-like byte",
+      "+0x50/+0x51": "packet and output flags, precise semantics not fully recovered"
+    }
+  },
+  "states": [
+    {
+      "value": 1,
+      "evidence": "0x00980A00 metadata and stream setup branch"
+    },
+    {
+      "value": 2,
+      "evidence": "0x00980A00 writes 2 after setup"
+    },
+    {
+      "value": 3,
+      "evidence": "0x00981051 writes 3 when prior state is 2"
+    },
+    {
+      "value": 4,
+      "evidence": "0x00980E00 admits values 2 through 4, transition into 4 unresolved"
+    },
+    {
+      "value": 5,
+      "evidence": "0x009810DF final ordinal and queue checks"
+    },
+    {
+      "value": 6,
+      "evidence": "0x00981150 cleanup sets 6"
+    }
+  ],
+  "source_asset": {
+    "verified": false,
+    "filename": null,
+    "sha256": null,
+    "offset": null,
+    "length": null,
+    "format": null
+  },
+  "limitations": [
+    "No boot event order established",
+    "No concrete startup movie path resolved from template",
+    "No link between LS_EALOGO.FNG and logo bundle contents established",
+    "0x00524F20 bad instruction data blocks native renderer trace",
+    "No verified frontend transition from movie completion",
+    "No codec/container identity proven by file bytes",
+    "No source payload inspected"
+  ],
+  "search": {
+    "import_count": 633,
+    "video_related_imports_in_name_filter": 0,
+    "string_zero_matches": [
+      ".bik",
+      "bink",
+      ".wmv",
+      ".avi",
+      "rad game",
+      "skipintro",
+      "nointro",
+      "nomovie"
+    ]
+  }
+}

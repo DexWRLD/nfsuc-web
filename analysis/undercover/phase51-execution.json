@@ -1,0 +1,35 @@
+{
+  "phase": 51,
+  "metrics_delta": {
+    "unique_before": 84,
+    "unique_after": 84,
+    "enterable_before": 50,
+    "enterable_after": 50,
+    "runs_before": 346,
+    "runs_after": 358
+  },
+  "newly_executed": [],
+  "families": {
+    "family_a": true,
+    "family_b": true,
+    "family_c": true
+  },
+  "node": {
+    "startup": true,
+    "startup_browser": true,
+    "dxt1": true,
+    "assets": true,
+    "lan": true,
+    "build": true
+  },
+  "statuses": {
+    "AUTHENTIC_STARTUP_ASSET_PREVIEW": "READY",
+    "AUTHENTIC_INTRO_VIDEO_PREVIEW": "IDENTIFIED_NO_DECODER",
+    "FIRST_FRAME_PATH_BLOCKED_BY_PROTECTED_BACKEND": "BLOCKED",
+    "notes": {
+      "AUTHENTIC_STARTUP_ASSET_PREVIEW": "dialoglogo128x128.jpg independently verified JPEG; not LS_EALOGO.FNG / BUN member proof.",
+      "AUTHENTIC_INTRO_VIDEO_PREVIEW": "Concrete .vp6 files on disk; no independent browser decoder.",
+      "FIRST_FRAME_PATH_BLOCKED_BY_PROTECTED_BACKEND": "Startup logo preview does not unblock gameplay rendering."
+    }
+  }
+}

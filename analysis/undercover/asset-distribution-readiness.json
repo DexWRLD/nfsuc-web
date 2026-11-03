@@ -1,10 +1,37 @@
 {
-  "phase": 50,
+  "phase": 51,
   "asset_distribution_readiness": "PRIVATE_LAN_FIXTURE_HOST_READY",
   "lan_testing_readiness": "PRIVATE_LAN_HTTPS_READY",
   "production_undercover_assets": "UNAVAILABLE_PENDING_AUTHORIZED_SOURCE",
-  "browser_renderer_readiness": "SYNTHETIC_TEXTURE_AND_MESH_PREVIEW",
+  "browser_renderer_readiness": "STARTUP_LOGO_AND_SYNTHETIC_TEXTURE_PREVIEW",
   "first_frame": "FIRST_FRAME_PATH_BLOCKED_BY_PROTECTED_BACKEND",
+  "startup_preview": {
+    "AUTHENTIC_STARTUP_ASSET_PREVIEW": "READY",
+    "AUTHENTIC_INTRO_VIDEO_PREVIEW": "IDENTIFIED_NO_DECODER",
+    "FIRST_FRAME_PATH_BLOCKED_BY_PROTECTED_BACKEND": "BLOCKED",
+    "notes": {
+      "AUTHENTIC_STARTUP_ASSET_PREVIEW": "dialoglogo128x128.jpg independently verified JPEG; not LS_EALOGO.FNG / BUN member proof.",
+      "AUTHENTIC_INTRO_VIDEO_PREVIEW": "Concrete .vp6 files on disk; no independent browser decoder.",
+      "FIRST_FRAME_PATH_BLOCKED_BY_PROTECTED_BACKEND": "Startup logo preview does not unblock gameplay rendering."
+    }
+  },
+  "verified_startup_image": {
+    "resource_id": "install.dialoglogo128x128",
+    "relative_path": "dialoglogo128x128.jpg",
+    "source_sha256": "6c30b18704f937bb7257b44598bc66097de2bbc806e007d8f72c2d19765408a7",
+    "payload_sha256": "6c30b18704f937bb7257b44598bc66097de2bbc806e007d8f72c2d19765408a7",
+    "source_byte_offset": 0,
+    "source_byte_length": 22685,
+    "media_format": "image/jpeg",
+    "width": 128,
+    "height": 128,
+    "independently_decodable": true,
+    "browser_native": true,
+    "identity_note": "Original ship file from the Undercover install root. NOT proven to be LS_EALOGO.FNG / LOGOTEXTURES.BUN / BOOTFLOWTEXTURES.BUN member.",
+    "export_tool": "tools/uc_export_startup_logo.py",
+    "authorized_export_dir": "%USERPROFILE%\\.nfsuc-web\\authorized-startup",
+    "git_committed": false
+  },
   "texture_preview": {
     "phase": 50,
     "synthetic_texture_decoder": "WORKING",
@@ -32,22 +59,12 @@
       "authorization category authorized-verified"
     ]
   },
-  "cube_correction": {
-    "phase": 50,
-    "correction": "CreateCubeTexture_not_CreateVolumeTexture",
-    "site": "0x007513E2",
-    "uploader": "0x00751360",
-    "create2d": "0x007515D3",
-    "prior_incorrect_label": "volume-texture-shaped method",
-    "evidence": "analysis/undercover/undercover-asset-browser-report.md",
-    "discriminator_string_site": "0x00B7277C",
-    "note": "Six-face path supports CreateCubeTexture. Do not infer archive layout from runtime upload alignment."
-  },
   "clean_pc_ux": {
     "no_game_install_required_for_fixtures": true,
     "automatic_download": true,
     "authentic_play_enabled": false,
-    "synthetic_texture_preview": true,
-    "authentic_texture_preview": false
+    "synthetic_startup_preview": true,
+    "authentic_startup_logo_via_authorized_root": true,
+    "authentic_intro_video": false
   }
 }

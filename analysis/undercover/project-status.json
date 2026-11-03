@@ -1,6 +1,6 @@
 {
-  "current_phase": 50,
-  "strategy": "Phase 50: BC1 decoder, provenance-gated texture preview, vertex-decl + mesh validators; authentic payloads still missing; FIRST_FRAME frozen.",
+  "current_phase": 51,
+  "strategy": "Phase 51: authentic install-root dialog logo preview + startup state machine; BUN/FNG boot logos and VP6 still unsupported; FIRST_FRAME frozen.",
   "boundaries": {
     "0x00686000": {
       "status": "PROTECTED_OR_EXTERNAL_DEPENDENCY",
@@ -479,6 +479,11 @@
     {
       "phase": 50,
       "name": "DXT1 decoder & asset preview contracts",
+      "state": "completed"
+    },
+    {
+      "phase": 51,
+      "name": "Authentic startup logo preview & intro inventory",
       "state": "completed"
     }
   ],

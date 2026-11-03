@@ -1,0 +1,354 @@
+{
+  "phase": 51,
+  "install_root": "C:\\Games\\Need For Speed Undercover",
+  "accessible": true,
+  "read_only": true,
+  "ghidra_report": "analysis/undercover/undercover-intro-startup-report.md",
+  "entries": [
+    {
+      "relative_path": "dialoglogo128x128.jpg",
+      "present": true,
+      "size": 22685,
+      "sha256": "6c30b18704f937bb7257b44598bc66097de2bbc806e007d8f72c2d19765408a7",
+      "head_hex": "ffd8ffe000104a46494600010201012c",
+      "head_ascii": "......JFIF.....,",
+      "magics_in_first_512kib": [
+        {
+          "magic": "\u00ff\u00d8\u00ff",
+          "offset": 0
+        }
+      ],
+      "format_metadata": {
+        "format": "JPEG",
+        "width": 128,
+        "height": 128,
+        "independently_decodable": true,
+        "browser_native": true
+      },
+      "resource_identity": "install-root dialoglogo128x128.jpg",
+      "startup_screen_link": "Present in install tree. Not proven to be LS_EALOGO.FNG or a LOGOTEXTURES.BUN member. Suitable as independently decodable original ship asset for dialog/GDF branding preview only if labeled as such."
+    },
+    {
+      "relative_path": "FRONTEND/LOGOTEXTURES.BUN",
+      "present": true,
+      "size": 2178816,
+      "sha256": "4822ff18c9810f7fbf7e9ad9a09bd5ee59745c86f5087b21cd8bb9538a686352",
+      "head_hex": "000030b3f83e21000000000030000000",
+      "head_ascii": "..0..>!.....0...",
+      "magics_in_first_512kib": [
+        {
+          "magic": "DXT1",
+          "offset": 4804
+        },
+        {
+          "magic": "DXT5",
+          "offset": 4780
+        }
+      ],
+      "format_metadata": {
+        "u32_le_prefix": [
+          "0xB3300000",
+          "0x00213EF8",
+          "0x00000000",
+          "0x00000030",
+          "0x00000000",
+          "0x00000000",
+          "0x00000000",
+          "0x00000000"
+        ],
+        "ascii_prefix": "..0..>!.....0...................",
+        "known_bun_parser": false,
+        "note": "No verified Undercover BUN\u2192texture membership parser; format unsupported for authentic decode."
+      },
+      "startup_screen_link": "Named in executable string table as frontend bundle lead. Internal EA logo membership NOT verified."
+    },
+    {
+      "relative_path": "FRONTEND/BOOTFLOWTEXTURES.BUN",
+      "present": true,
+      "size": 530176,
+      "sha256": "3d188dbc4ded3237805fe04258d419bade3094ba3f80593345d325c0b7bd4925",
+      "head_hex": "000030b3f81608000000000030000000",
+      "head_ascii": "..0.........0...",
+      "magics_in_first_512kib": [
+        {
+          "magic": "DXT3",
+          "offset": 3788
+        },
+        {
+          "magic": "DXT5",
+          "offset": 3908
+        }
+      ],
+      "format_metadata": {
+        "u32_le_prefix": [
+          "0xB3300000",
+          "0x000816F8",
+          "0x00000000",
+          "0x00000030",
+          "0x00000000",
+          "0x00000000",
+          "0x00000000",
+          "0x00000000"
+        ],
+        "ascii_prefix": "..0.........0...................",
+        "known_bun_parser": false,
+        "note": "No verified Undercover BUN\u2192texture membership parser; format unsupported for authentic decode."
+      },
+      "startup_screen_link": "Named in executable string table as frontend bundle lead. Internal EA logo membership NOT verified."
+    },
+    {
+      "relative_path": "FRONTEND/FRONTB1.BUN",
+      "present": true,
+      "size": 450304,
+      "sha256": "e1b5ec6d759d7ad44268306f7d04bb2cb47a484a919987e771ba302b54893c00",
+      "head_hex": "000030b3f8de06000000000030000000",
+      "head_ascii": "..0.........0...",
+      "magics_in_first_512kib": [
+        {
+          "magic": "DXT3",
+          "offset": 3796
+        },
+        {
+          "magic": "DXT5",
+          "offset": 3940
+        }
+      ],
+      "format_metadata": {
+        "u32_le_prefix": [
+          "0xB3300000",
+          "0x0006DEF8",
+          "0x00000000",
+          "0x00000030",
+          "0x00000000",
+          "0x00000000",
+          "0x00000000",
+          "0x00000000"
+        ],
+        "ascii_prefix": "..0.........0...................",
+        "known_bun_parser": false,
+        "note": "No verified Undercover BUN\u2192texture membership parser; format unsupported for authentic decode."
+      },
+      "startup_screen_link": "Named in executable string table as frontend bundle lead. Internal EA logo membership NOT verified."
+    },
+    {
+      "relative_path": "FRONTEND/FrontB1.lzc",
+      "present": true,
+      "size": 131587,
+      "sha256": "9f8b88fbfe022c88bb2ef52a3f249b665fa199000271e7119900b028d15de699",
+      "head_hex": "5246504b0110000000df0600f3010200",
+      "head_ascii": "RFPK............",
+      "magics_in_first_512kib": [],
+      "format_metadata": {
+        "u32_le_prefix": [
+          "0x4B504652",
+          "0x00001001",
+          "0x0006DF00",
+          "0x000201F3",
+          "0xDF06FB10",
+          "0x0000E100",
+          "0xDEF8B330",
+          "0x00040006"
+        ],
+        "ascii_prefix": "RFPK....................0.......",
+        "known_bun_parser": false,
+        "note": "No verified Undercover BUN\u2192texture membership parser; format unsupported for authentic decode."
+      },
+      "startup_screen_link": "Named in executable string table as frontend bundle lead. Internal EA logo membership NOT verified."
+    },
+    {
+      "relative_path": "MOVIES/ea_bumper_english_ntsc.vp6",
+      "present": true,
+      "size": 8306328,
+      "sha256": "d4982c58fa09d35390b4b02f504035002e0ec665ced3cd13f9f92e413284012c",
+      "head_hex": "4d56686420000000767036300005d002",
+      "head_ascii": "MVhd ...vp60....",
+      "magics_in_first_512kib": [
+        {
+          "magic": "\u00ff\u00d8\u00ff",
+          "offset": 404602
+        }
+      ],
+      "format_metadata": {
+        "extension": "vp6",
+        "browser_native": false,
+        "decoder_in_repo": false,
+        "note": "VP6 suffix matches path template; container/codec not verified for browser playback."
+      },
+      "startup_screen_link": "Concrete movie file present. Matches Attract / ea_bumper naming leads. No independent browser decoder implemented."
+    },
+    {
+      "relative_path": "MOVIES/attract_english_ntsc.vp6",
+      "present": true,
+      "size": 12893076,
+      "sha256": "bd1baa7671d182509b88dbfe1d372777568b053bfa36a60d7ebf8216807806e8",
+      "head_hex": "4d56686420000000767036300005d002",
+      "head_ascii": "MVhd ...vp60....",
+      "magics_in_first_512kib": [
+        {
+          "magic": "\u00ff\u00d8\u00ff",
+          "offset": 13184
+        }
+      ],
+      "format_metadata": {
+        "extension": "vp6",
+        "browser_native": false,
+        "decoder_in_repo": false,
+        "note": "VP6 suffix matches path template; container/codec not verified for browser playback."
+      },
+      "startup_screen_link": "Concrete movie file present. Matches Attract / ea_bumper naming leads. No independent browser decoder implemented."
+    },
+    {
+      "relative_path": "UI/splashscreen.big",
+      "present": true,
+      "size": 228176,
+      "sha256": "3674f2d4cf013f46315b840fd0ad32cdfdb0d5b9b02103e74bdb1edc13a9a79f",
+      "head_hex": "42494746507b03000000001a0000012c",
+      "head_ascii": "BIGFP{.........,",
+      "magics_in_first_512kib": [
+        {
+          "magic": "\u00ff\u00d8\u00ff",
+          "offset": 75077
+        },
+        {
+          "magic": "BIGF",
+          "offset": 0
+        }
+      ],
+      "format_metadata": {
+        "extension": "big",
+        "magics": [
+          {
+            "magic": "\u00ff\u00d8\u00ff",
+            "offset": 75077
+          },
+          {
+            "magic": "BIGF",
+            "offset": 0
+          }
+        ],
+        "independently_decodable": false,
+        "note": "UI .big package; format not established for Phase 51 image extract."
+      }
+    },
+    {
+      "relative_path": "UI/bootloadingscreen.big",
+      "present": true,
+      "size": 19488,
+      "sha256": "e6abd8a767d8ab24360c7c267f47cf7bec9a52a2469ccfc874480569160fcc18",
+      "head_hex": "42494746204c00000000000900000073",
+      "head_ascii": "BIGF L.........s",
+      "magics_in_first_512kib": [
+        {
+          "magic": "BIGF",
+          "offset": 0
+        }
+      ],
+      "format_metadata": {
+        "extension": "big",
+        "magics": [
+          {
+            "magic": "BIGF",
+            "offset": 0
+          }
+        ],
+        "independently_decodable": false,
+        "note": "UI .big package; format not established for Phase 51 image extract."
+      }
+    },
+    {
+      "relative_path": "UI/psascreen.big",
+      "present": true,
+      "size": 20000,
+      "sha256": "e2f1257cda8e77dbde8feb8eec0b0cd1892274d38002d11db15ce7e0d1f40571",
+      "head_hex": "42494746204e00000000000a0000007c",
+      "head_ascii": "BIGF N.........|",
+      "magics_in_first_512kib": [
+        {
+          "magic": "BIGF",
+          "offset": 0
+        }
+      ],
+      "format_metadata": {
+        "extension": "big",
+        "magics": [
+          {
+            "magic": "BIGF",
+            "offset": 0
+          }
+        ],
+        "independently_decodable": false,
+        "note": "UI .big package; format not established for Phase 51 image extract."
+      }
+    },
+    {
+      "relative_path": "UI/bootload.big",
+      "present": true,
+      "size": 11296,
+      "sha256": "bbd6ccad22fdeda767b860891da2d83fd4d388de7dc8f6a856425f807e8f7a03",
+      "head_hex": "42494746202c00000000000300000036",
+      "head_ascii": "BIGF ,.........6",
+      "magics_in_first_512kib": [
+        {
+          "magic": "BIGF",
+          "offset": 0
+        }
+      ],
+      "format_metadata": {
+        "extension": "big",
+        "magics": [
+          {
+            "magic": "BIGF",
+            "offset": 0
+          }
+        ],
+        "independently_decodable": false,
+        "note": "UI .big package; format not established for Phase 51 image extract."
+      }
+    }
+  ],
+  "fng_names_in_exe_only": [
+    "LS_EALOGO.FNG",
+    "LS_SPLASH.FNG",
+    "LS_ATTRACTFMV.FNG",
+    "LS_PSA.FNG",
+    "FEANYMOVIE.FNG",
+    "FeMainMenu.fng"
+  ],
+  "fng_files_on_disk": false,
+  "note": ".FNG names are executable string leads; no corresponding .FNG files were found as loose files. Bundle membership unresolved.",
+  "verified_startup_image": {
+    "resource_id": "install.dialoglogo128x128",
+    "relative_path": "dialoglogo128x128.jpg",
+    "source_sha256": "6c30b18704f937bb7257b44598bc66097de2bbc806e007d8f72c2d19765408a7",
+    "payload_sha256": "6c30b18704f937bb7257b44598bc66097de2bbc806e007d8f72c2d19765408a7",
+    "source_byte_offset": 0,
+    "source_byte_length": 22685,
+    "media_format": "image/jpeg",
+    "width": 128,
+    "height": 128,
+    "independently_decodable": true,
+    "browser_native": true,
+    "identity_note": "Original ship file from the Undercover install root. NOT proven to be LS_EALOGO.FNG / LOGOTEXTURES.BUN / BOOTFLOWTEXTURES.BUN member.",
+    "export_tool": "tools/uc_export_startup_logo.py",
+    "authorized_export_dir": "%USERPROFILE%\\.nfsuc-web\\authorized-startup",
+    "git_committed": false
+  },
+  "vp6_movies": {
+    "path_template_ghidra": "%sMOVIES\\%s%s%s%s.vp6 @ 0x00B7E850",
+    "files_on_disk": true,
+    "browser_native": false,
+    "decoder_in_repo": false,
+    "status": "IDENTIFIED_NO_DECODER",
+    "example": {
+      "relative_path": "MOVIES/ea_bumper_english_ntsc.vp6",
+      "sha256": "d4982c58fa09d35390b4b02f504035002e0ec665ced3cd13f9f92e413284012c",
+      "size": 8306328,
+      "head_ascii": "MVhd ...vp60...."
+    }
+  },
+  "bun_status": {
+    "LOGOTEXTURES.BUN": "present; DXT FourCC seen; no verified membership/offset parser",
+    "BOOTFLOWTEXTURES.BUN": "present; DXT FourCC seen; no verified membership/offset parser",
+    "FRONTB1.BUN": "present; unsupported without parser"
+  }
+}
