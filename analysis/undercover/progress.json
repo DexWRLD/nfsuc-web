@@ -1,8 +1,8 @@
 {
   "project": {
     "name": "nfsuc-web",
-    "current_phase": 58,
-    "strategy": "Original error-screen queue append and scanner tested in Edge with synthetic guest fixtures. Native queue state, Apt dispatch and screen display remain unverified."
+    "current_phase": 59,
+    "strategy": "Both original boot-screen completion callback bodies verified in Edge with fixture entry. Native registration, flag consumers and original screen display remain unverified."
   },
   "discovery": {
     "candidates": 25450,
