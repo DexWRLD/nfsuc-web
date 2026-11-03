@@ -1,6 +1,6 @@
 {
-  "current_phase": 39,
-  "strategy": "Phase 39: object lifecycle + published global early-exit consumers. Graphics frozen.",
+  "current_phase": 40,
+  "strategy": "Phase 40: independent POD object family + vtable dispatch attempt. Graphics frozen.",
   "boundaries": {
     "0x00686000": {
       "status": "PROTECTED_OR_EXTERNAL_DEPENDENCY",
@@ -424,6 +424,11 @@
     {
       "phase": 39,
       "name": "Object lifecycle and global publication consumers",
+      "state": "completed"
+    },
+    {
+      "phase": 40,
+      "name": "Independent object family and real vtable dispatch",
       "state": "completed"
     }
   ],

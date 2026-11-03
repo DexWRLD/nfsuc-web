@@ -1,10 +1,11 @@
 {
-  "phase": 39,
+  "phase": 40,
   "campaign_outcomes": {
     "EXECUTED_CHAIN": 8,
     "BLOCKED_REQUIRED_STATE": 3,
     "UNKNOWN": 1,
-    "EXECUTED_STATEFUL_SEQUENCE": 11
+    "EXECUTED_STATEFUL_SEQUENCE": 8,
+    "EXECUTED_VTABLE_DISPATCH": 1
   },
   "real_blocker_histogram": {
     "REQUIRED_STATE": 4,
@@ -34,5 +35,6 @@
     2
   ],
   "clean_stateful_sequences": 11,
-  "latest_real_runtime_boundary": "STATEFUL object+global consumers; D1A4 meaningful path BLOCKED_ALLOCATOR/factory"
+  "real_vtable_dispatches_executed": 1,
+  "latest_real_runtime_boundary": "Independent POD family B clean; vtable=EXECUTED_VTABLE_DISPATCH; allocator/factory still closed"
 }

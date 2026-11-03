@@ -1,5 +1,5 @@
 {
-  "phase": 39,
+  "phase": 40,
   "definitions": {
     "ENTERABLE": "All pre-entry required state establishable via primitives, static PE data, standard runtime, or proven ordinary init/ctor. Not merely IMPORT_READY.",
     "DEEPEST_ORDINARY_EXECUTION_CHAIN": "Max nested ordinary UC frames in one harness run.",
@@ -8,7 +8,10 @@
     "CLEAN_ORDINARY_ROOTS": "Roots whose tested contract finishes with no blocker and no stubs.",
     "EXECUTED_ORDINARY_CONSTRUCTORS": "Distinct constructor/base-init bodies actually entered (strong/proven).",
     "UNIQUE_UC_FUNCTIONS_EXECUTED": "Generated UC functions actually entered; no HLE/runtime helpers; no stub-only visits.",
-    "ENTERABLE_WITH_DEPTH_4_POTENTIAL": "Strict: >=4 nested ordinary frames, no pending imports/protected/unresolved-indirect/unlifted; contract defensible. Zero is acceptable."
+    "ENTERABLE_WITH_DEPTH_4_POTENTIAL": "Strict: >=4 nested ordinary frames, no pending imports/protected/unresolved-indirect/unlifted; contract defensible. Zero is acceptable.",
+    "INDEPENDENT_OBJECT_FAMILIES_EXECUTED": "Distinct ordinary object contracts with actual constructor/initializer execution (not merely another method on an existing family).",
+    "CLEAN_INDEPENDENT_OBJECT_LIFECYCLES": "Independent families with clean constructor/initializer \u2192 consumer sequence.",
+    "REAL_VTABLE_DISPATCHES_EXECUTED": "Ordinary generated virtual-call sites whose target was resolved and entered via guest DISPATCH_CALL (not harness direct entry)."
   },
   "high_functions": 22779,
   "generated": 22770,
@@ -48,7 +51,7 @@
     "0x009EBC70",
     "0x00B57CD0"
   ],
-  "unique_uc_functions_executed": 56,
+  "unique_uc_functions_executed": 61,
   "unique_uc_functions_executed_list": [
     "0x00721050",
     "0x00721070",
@@ -62,6 +65,10 @@
     "0x0087B880",
     "0x0087BEB8",
     "0x0088390D",
+    "0x0090749E",
+    "0x0090826A",
+    "0x0090827E",
+    "0x0090B452",
     "0x00924D30",
     "0x00929972",
     "0x00949920",
@@ -91,6 +98,7 @@
     "0x009E8400",
     "0x009E8460",
     "0x009E8AD0",
+    "0x009E8E00",
     "0x009E9140",
     "0x009E9150",
     "0x009E9160",
@@ -107,9 +115,9 @@
     "0x00B57CD0",
     "0x00B57CF0"
   ],
-  "execution_runs": 137,
+  "execution_runs": 179,
   "deepest_ordinary_execution_chain": 4,
-  "largest_executed_ordinary_closure": 18,
+  "largest_executed_ordinary_closure": 22,
   "ordinary_execution_sequence_length": 5,
   "largest_stateful_sequence_coverage": 22,
   "clean_stateful_sequences": 11,
@@ -142,6 +150,9 @@
     "0x009EB350",
     "0x009EBC70"
   ],
+  "independent_object_families_executed": 2,
+  "clean_independent_object_lifecycles": 2,
+  "real_vtable_dispatches_executed": 1,
   "enterable_with_depth_3_potential": 5,
   "enterable_with_depth_3_potential_roots": [
     "0x0097BB30",
@@ -166,31 +177,34 @@
     "IMPORT_READY": 737,
     "RUNTIME_READY": 72,
     "ENTERABLE": 29,
-    "EXECUTED": 56,
-    "UNIQUE": 56,
-    "EXECUTION_RUNS": 137,
+    "EXECUTED": 61,
+    "UNIQUE": 61,
+    "EXECUTION_RUNS": 179,
     "CLEAN_ORDINARY_ROOTS": 13,
     "EXECUTED_ORDINARY_CONSTRUCTORS": 9,
     "DEEPEST": 4,
-    "LARGEST_CLOSURE": 18,
+    "LARGEST_CLOSURE": 22,
     "ORDINARY_EXECUTION_SEQUENCE_LENGTH": 5,
     "LARGEST_STATEFUL_SEQUENCE_COVERAGE": 22,
     "CLEAN_STATEFUL_SEQUENCES": 11,
-    "PROVEN_POST_CONSTRUCTOR_CONSUMERS": 8,
-    "LATEST_REAL_RUNTIME_BOUNDARY": "STATEFUL object+global consumers; D1A4 meaningful path BLOCKED_ALLOCATOR/factory",
+    "INDEPENDENT_OBJECT_FAMILIES_EXECUTED": 2,
+    "CLEAN_INDEPENDENT_OBJECT_LIFECYCLES": 2,
+    "REAL_VTABLE_DISPATCHES_EXECUTED": 1,
+    "LATEST_REAL_RUNTIME_BOUNDARY": "Independent POD family B clean; vtable=EXECUTED_VTABLE_DISPATCH; allocator/factory still closed",
     "MOST_COMMON_REAL_BLOCKER": [
       "REQUIRED_STATE:UNKNOWN_OBJECT",
       2
     ]
   },
   "campaign_summary": {
-    "phase39_stateful_sequences": 12,
-    "clean_stateful_sequences": 11,
+    "phase40_sequences": 9,
+    "clean_stateful_sequences": 8,
     "outcomes": {
       "EXECUTED_CHAIN": 8,
       "BLOCKED_REQUIRED_STATE": 3,
       "UNKNOWN": 1,
-      "EXECUTED_STATEFUL_SEQUENCE": 11
+      "EXECUTED_STATEFUL_SEQUENCE": 8,
+      "EXECUTED_VTABLE_DISPATCH": 1
     },
     "real_blocker_histogram": {
       "REQUIRED_STATE": 4,
@@ -219,18 +233,18 @@
       "REQUIRED_STATE:UNKNOWN_OBJECT",
       2
     ],
-    "ctor_clean": true,
-    "new_functions": [
-      "0x009E77D0",
-      "0x009E83D0",
-      "0x009E8460"
-    ],
+    "family_a_getter_0x5a": true,
+    "family_b_lifecycle_clean": true,
+    "family_b_copy_clean": true,
+    "new_functions": [],
     "tlsgetvalue_reached": false,
     "tlsfree_reached": false,
     "filesystem_reached": false,
     "scheduler": false,
     "protected_boundary_encountered": false,
-    "diagnostics_counted": 0
+    "diagnostics_counted": 0,
+    "jtswitch_enabled_in_harness": true,
+    "sparse_uc_dispatch": true
   },
   "post_constructor": {
     "clean_constructor": true,
@@ -245,6 +259,405 @@
       "kind": "FAULT",
       "va": null,
       "at_step": "cb"
+    }
+  },
+  "object_families": {
+    "candidates_ranked": 15,
+    "executed": 2,
+    "clean_lifecycles": 2,
+    "strongest_new": "B_9E98F0_POD"
+  },
+  "virtual_dispatch": {
+    "attempted": true,
+    "real_vtable_dispatches_executed": 1,
+    "status": "EXECUTED_VTABLE_DISPATCH",
+    "detail": "0x009E8E00 performs call [vt+0x14]; with arg==constructed Family-A object, slot5 resolves to 0x009E8E00 and sparse DISPATCH_CALL entered it. Continuation hits allocator 0x009E9460 (not counted as clean lifecycle).",
+    "uc_indirect_enters_on_9e8e00_attempt": 1,
+    "probe_90749e": {
+      "name": "vcall_probe_90749e_with_pod",
+      "result": "EXECUTED_STATEFUL_SEQUENCE",
+      "clean": true,
+      "sequence_length": 2,
+      "steps": [
+        {
+          "label": "ctor_b",
+          "root": "0x009E98F0",
+          "clean": true,
+          "eax": "0x03004300",
+          "blocked_kind": "NONE",
+          "blocked_va": null,
+          "depth_max": 2,
+          "entered_n": 3,
+          "uc_indirect_enters": 0
+        },
+        {
+          "label": "caller",
+          "root": "0x0090749E",
+          "clean": true,
+          "eax": "0x000003E9",
+          "blocked_kind": "NONE",
+          "blocked_va": null,
+          "depth_max": 3,
+          "entered_n": 7,
+          "uc_indirect_enters": 0
+        }
+      ],
+      "unique_entered": 7,
+      "entered": [
+        "0x0090749E",
+        "0x0090826A",
+        "0x0090827E",
+        "0x0090B452",
+        "0x009E0880",
+        "0x009E7710",
+        "0x009E98F0"
+      ],
+      "depth_max_nested": 3,
+      "blocker": null,
+      "uc_indirect_enters": 0,
+      "invocation_type": "DIRECT_GUEST_ENTRY",
+      "final_eax": "0x000003E9",
+      "family": "VTABLE_PROBE",
+      "virtual_dispatch": "NOT_TAKEN",
+      "reason": "[arg0+0x14]==0 after POD ctor; cmp vs 0x54 skips call [vt+8]",
+      "classification": "BLOCKED_REQUIRED_STATE",
+      "sleepex_done": 0,
+      "qpc_ticks": 0
+    },
+    "sites_sampled": [
+      {
+        "caller": "0x0090749E",
+        "site": "0x009074B2",
+        "slot_offset": "0x00000008",
+        "slot_index": 2,
+        "op": "dword ptr [eax + 8]",
+        "prev": [
+          "mov esi, ecx",
+          "jne 0x9074d0",
+          "mov eax, dword ptr [edi]",
+          "mov ecx, edi"
+        ],
+        "enterable_caller": false,
+        "eligible": false,
+        "blocker": "NO_ENTERABLE_VIRTUAL_CALLER_FOUND"
+      },
+      {
+        "caller": "0x00902DF0",
+        "site": "0x00902EA5",
+        "slot_offset": "0x0000001C",
+        "slot_index": 7,
+        "op": "dword ptr [edx + 0x1c]",
+        "prev": [
+          "push esi",
+          "je 0x902eaa",
+          "mov edx, dword ptr [eax]",
+          "mov ecx, eax"
+        ],
+        "enterable_caller": false,
+        "eligible": false,
+        "blocker": "NO_ENTERABLE_VIRTUAL_CALLER_FOUND"
+      },
+      {
+        "caller": "0x00902DF8",
+        "site": "0x00902EA5",
+        "slot_offset": "0x0000001C",
+        "slot_index": 7,
+        "op": "dword ptr [edx + 0x1c]",
+        "prev": [
+          "push esi",
+          "je 0x902eaa",
+          "mov edx, dword ptr [eax]",
+          "mov ecx, eax"
+        ],
+        "enterable_caller": false,
+        "eligible": false,
+        "blocker": "NO_ENTERABLE_VIRTUAL_CALLER_FOUND"
+      },
+      {
+        "caller": "0x00903107",
+        "site": "0x009031D4",
+        "slot_offset": "0x00000000",
+        "slot_index": 0,
+        "op": "dword ptr [eax]",
+        "prev": [
+          "mov edi, eax",
+          "je 0x9031dd",
+          "mov eax, dword ptr [ecx]",
+          "push 1"
+        ],
+        "enterable_caller": false,
+        "eligible": false,
+        "blocker": "NO_ENTERABLE_VIRTUAL_CALLER_FOUND"
+      },
+      {
+        "caller": "0x0090311F",
+        "site": "0x009031D4",
+        "slot_offset": "0x00000000",
+        "slot_index": 0,
+        "op": "dword ptr [eax]",
+        "prev": [
+          "mov edi, eax",
+          "je 0x9031dd",
+          "mov eax, dword ptr [ecx]",
+          "push 1"
+        ],
+        "enterable_caller": false,
+        "eligible": false,
+        "blocker": "NO_ENTERABLE_VIRTUAL_CALLER_FOUND"
+      },
+      {
+        "caller": "0x0090313C",
+        "site": "0x009031D4",
+        "slot_offset": "0x00000000",
+        "slot_index": 0,
+        "op": "dword ptr [eax]",
+        "prev": [
+          "mov edi, eax",
+          "je 0x9031dd",
+          "mov eax, dword ptr [ecx]",
+          "push 1"
+        ],
+        "enterable_caller": false,
+        "eligible": false,
+        "blocker": "NO_ENTERABLE_VIRTUAL_CALLER_FOUND"
+      },
+      {
+        "caller": "0x00903161",
+        "site": "0x009031D4",
+        "slot_offset": "0x00000000",
+        "slot_index": 0,
+        "op": "dword ptr [eax]",
+        "prev": [
+          "mov edi, eax",
+          "je 0x9031dd",
+          "mov eax, dword ptr [ecx]",
+          "push 1"
+        ],
+        "enterable_caller": false,
+        "eligible": false,
+        "blocker": "NO_ENTERABLE_VIRTUAL_CALLER_FOUND"
+      },
+      {
+        "caller": "0x00903178",
+        "site": "0x009031D4",
+        "slot_offset": "0x00000000",
+        "slot_index": 0,
+        "op": "dword ptr [eax]",
+        "prev": [
+          "mov edi, eax",
+          "je 0x9031dd",
+          "mov eax, dword ptr [ecx]",
+          "push 1"
+        ],
+        "enterable_caller": false,
+        "eligible": false,
+        "blocker": "NO_ENTERABLE_VIRTUAL_CALLER_FOUND"
+      },
+      {
+        "caller": "0x0090319D",
+        "site": "0x009031D4",
+        "slot_offset": "0x00000000",
+        "slot_index": 0,
+        "op": "dword ptr [eax]",
+        "prev": [
+          "mov edi, eax",
+          "je 0x9031dd",
+          "mov eax, dword ptr [ecx]",
+          "push 1"
+        ],
+        "enterable_caller": false,
+        "eligible": false,
+        "blocker": "NO_ENTERABLE_VIRTUAL_CALLER_FOUND"
+      },
+      {
+        "caller": "0x009031A3",
+        "site": "0x009031D4",
+        "slot_offset": "0x00000000",
+        "slot_index": 0,
+        "op": "dword ptr [eax]",
+        "prev": [
+          "mov edi, eax",
+          "je 0x9031dd",
+          "mov eax, dword ptr [ecx]",
+          "push 1"
+        ],
+        "enterable_caller": false,
+        "eligible": false,
+        "blocker": "NO_ENTERABLE_VIRTUAL_CALLER_FOUND"
+      },
+      {
+        "caller": "0x0090340C",
+        "site": "0x0090352C",
+        "slot_offset": "0x00000000",
+        "slot_index": 0,
+        "op": "dword ptr [eax]",
+        "prev": [
+          "call 0x90311f",
+          "mov ecx, dword ptr [ebp + 8]",
+          "mov eax, dword ptr [ecx]",
+          "push 1"
+        ],
+        "enterable_caller": false,
+        "eligible": false,
+        "blocker": "NO_ENTERABLE_VIRTUAL_CALLER_FOUND"
+      },
+      {
+        "caller": "0x009034AC",
+        "site": "0x0090352C",
+        "slot_offset": "0x00000000",
+        "slot_index": 0,
+        "op": "dword ptr [eax]",
+        "prev": [
+          "call 0x90311f",
+          "mov ecx, dword ptr [ebp + 8]",
+          "mov eax, dword ptr [ecx]",
+          "push 1"
+        ],
+        "enterable_caller": false,
+        "eligible": false,
+        "blocker": "NO_ENTERABLE_VIRTUAL_CALLER_FOUND"
+      },
+      {
+        "caller": "0x00904F8E",
+        "site": "0x0090508B",
+        "slot_offset": "0x00000000",
+        "slot_index": 0,
+        "op": "dword ptr [edx]",
+        "prev": [
+          "je 0x90508d",
+          "mov edx, dword ptr [eax]",
+          "push 1",
+          "mov ecx, eax"
+        ],
+        "enterable_caller": false,
+        "eligible": false,
+        "blocker": "NO_ENTERABLE_VIRTUAL_CALLER_FOUND"
+      },
+      {
+        "caller": "0x00905069",
+        "site": "0x0090508B",
+        "slot_offset": "0x00000000",
+        "slot_index": 0,
+        "op": "dword ptr [edx]",
+        "prev": [
+          "je 0x90508d",
+          "mov edx, dword ptr [eax]",
+          "push 1",
+          "mov ecx, eax"
+        ],
+        "enterable_caller": false,
+        "eligible": false,
+        "blocker": "NO_ENTERABLE_VIRTUAL_CALLER_FOUND"
+      },
+      {
+        "caller": "0x00905151",
+        "site": "0x0090526A",
+        "slot_offset": "0x00000008",
+        "slot_index": 2,
+        "op": "dword ptr [edx + 8]",
+        "prev": [
+          "call 0x90827e",
+          "push dword ptr [ebp + 8]",
+          "mov edx, dword ptr [eax]",
+          "mov ecx, eax"
+        ],
+        "enterable_caller": false,
+        "eligible": false,
+        "blocker": "NO_ENTERABLE_VIRTUAL_CALLER_FOUND"
+      },
+      {
+        "caller": "0x009051A8",
+        "site": "0x0090526A",
+        "slot_offset": "0x00000008",
+        "slot_index": 2,
+        "op": "dword ptr [edx + 8]",
+        "prev": [
+          "call 0x90827e",
+          "push dword ptr [ebp + 8]",
+          "mov edx, dword ptr [eax]",
+          "mov ecx, eax"
+        ],
+        "enterable_caller": false,
+        "eligible": false,
+        "blocker": "NO_ENTERABLE_VIRTUAL_CALLER_FOUND"
+      },
+      {
+        "caller": "0x0090520B",
+        "site": "0x0090526A",
+        "slot_offset": "0x00000008",
+        "slot_index": 2,
+        "op": "dword ptr [edx + 8]",
+        "prev": [
+          "call 0x90827e",
+          "push dword ptr [ebp + 8]",
+          "mov edx, dword ptr [eax]",
+          "mov ecx, eax"
+        ],
+        "enterable_caller": false,
+        "eligible": false,
+        "blocker": "NO_ENTERABLE_VIRTUAL_CALLER_FOUND"
+      },
+      {
+        "caller": "0x00905249",
+        "site": "0x0090526A",
+        "slot_offset": "0x00000008",
+        "slot_index": 2,
+        "op": "dword ptr [edx + 8]",
+        "prev": [
+          "call 0x90827e",
+          "push dword ptr [ebp + 8]",
+          "mov edx, dword ptr [eax]",
+          "mov ecx, eax"
+        ],
+        "enterable_caller": false,
+        "eligible": false,
+        "blocker": "NO_ENTERABLE_VIRTUAL_CALLER_FOUND"
+      },
+      {
+        "caller": "0x00905283",
+        "site": "0x0090530A",
+        "slot_offset": "0x00000000",
+        "slot_index": 0,
+        "op": "dword ptr [eax]",
+        "prev": [
+          "test ecx, ecx",
+          "je 0x90530c",
+          "mov eax, dword ptr [ecx]",
+          "push 1"
+        ],
+        "enterable_caller": false,
+        "eligible": false,
+        "blocker": "NO_ENTERABLE_VIRTUAL_CALLER_FOUND"
+      },
+      {
+        "caller": "0x0090531B",
+        "site": "0x0090536D",
+        "slot_offset": "0x00000010",
+        "slot_index": 4,
+        "op": "dword ptr [edx + 0x10]",
+        "prev": [
+          "mov ecx, edi",
+          "call 0x90827e",
+          "mov edx, dword ptr [eax]",
+          "mov ecx, eax"
+        ],
+        "enterable_caller": false,
+        "eligible": false,
+        "blocker": "NO_ENTERABLE_VIRTUAL_CALLER_FOUND"
+      }
+    ],
+    "eligible_ordinary_call_sites": 1,
+    "actual_virtual_caller": "0x009E8E00",
+    "vtable": "0x00C30E68",
+    "slot": 5,
+    "slot_offset": "0x00000014",
+    "resolved_target": "0x009E8E00",
+    "this_adjustment": "none (ecx=arg object)",
+    "abi_verified": true,
+    "continuation_blocker": {
+      "kind": "FAULT",
+      "va": null,
+      "at_step": "virt"
     }
   },
   "synchronization": {
@@ -289,6 +702,6 @@
   },
   "first_frame": "FIRST_FRAME_PATH_BLOCKED_BY_PROTECTED_BACKEND",
   "graphics_frozen": true,
-  "recommended_phase40": "Object method frontier and published-callback early-exit are proven. Meaningful work through 0x0189D1A4 still needs factory publication of 0x0189DA84 (allocator-blocked). Phase 40: EXPAND REAL UC EXECUTION on other ordinary object families / POD constructors without allocator dependence, or deepen same-vtable methods that only need constructor-produced fields. Graphics frozen.",
+  "recommended_phase41": "Independent POD family 0x009E98F0\u21920x009E9980 is clean. Real vtable dispatch: EXECUTED_VTABLE_DISPATCH. Phase 41: EXPAND REAL UC EXECUTION on additional independent families with non-trivial stateful consumers, or find an enterable virtual caller whose object contract is fully constructor-produced without allocator dependence. Graphics frozen.",
   "phase31_metric_corrections_preserved": true
 }

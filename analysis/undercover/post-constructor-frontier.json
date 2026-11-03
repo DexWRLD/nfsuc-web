@@ -1,5 +1,5 @@
 {
-  "phase": 39,
+  "phase": 40,
   "constructor": "0x009E9160",
   "vtable_census": {
     "main": {
@@ -1256,5 +1256,546 @@
     "global": "0x0189D1A4",
     "result": "EXECUTED_STATEFUL_SEQUENCE",
     "note": "published FUNCTION_POINTER early-exit without factory object"
-  }
+  },
+  "phase40_independent_family": {
+    "ctor": "0x009E98F0",
+    "consumer": "0x009E9980",
+    "copy": "0x009E9990",
+    "clean_lifecycle": true,
+    "rtti_eax": "0x00C30F38"
+  },
+  "phase40_sequences": [
+    {
+      "name": "family_a_setter_getter",
+      "result": "EXECUTED_STATEFUL_SEQUENCE",
+      "clean": true,
+      "sequence_length": 3,
+      "steps": [
+        {
+          "label": "ctor",
+          "root": "0x009E9160",
+          "clean": true,
+          "eax": "0x03004000",
+          "blocked_kind": "NONE",
+          "blocked_va": null,
+          "depth_max": 4,
+          "entered_n": 18,
+          "uc_indirect_enters": 0
+        },
+        {
+          "label": "setter",
+          "root": "0x009E9140",
+          "clean": true,
+          "eax": "0x0000005A",
+          "blocked_kind": "NONE",
+          "blocked_va": null,
+          "depth_max": 4,
+          "entered_n": 19,
+          "uc_indirect_enters": 0
+        },
+        {
+          "label": "getter",
+          "root": "0x009E9150",
+          "clean": true,
+          "eax": "0x0000005A",
+          "blocked_kind": "NONE",
+          "blocked_va": null,
+          "depth_max": 4,
+          "entered_n": 20,
+          "uc_indirect_enters": 0
+        }
+      ],
+      "unique_entered": 20,
+      "entered": [
+        "0x0087B4F6",
+        "0x0087B880",
+        "0x009773C0",
+        "0x00977420",
+        "0x009777D0",
+        "0x00977800",
+        "0x00977E20",
+        "0x00978720",
+        "0x0097F790",
+        "0x0097F9E0",
+        "0x0097FAE0",
+        "0x0097FCD0",
+        "0x009E7710",
+        "0x009E8AD0",
+        "0x009E9140",
+        "0x009E9150",
+        "0x009E9160",
+        "0x009E9460",
+        "0x009E9990",
+        "0x009EB980"
+      ],
+      "depth_max_nested": 4,
+      "blocker": null,
+      "uc_indirect_enters": 0,
+      "invocation_type": "DIRECT_GUEST_ENTRY",
+      "final_eax": "0x0000005A",
+      "family": "A_9E9160",
+      "getter_al": 90,
+      "expected_al": 90,
+      "sleepex_done": 5,
+      "qpc_ticks": 2500000
+    },
+    {
+      "name": "family_a_five_step",
+      "result": "EXECUTED_STATEFUL_SEQUENCE",
+      "clean": true,
+      "sequence_length": 5,
+      "steps": [
+        {
+          "label": "ctor",
+          "root": "0x009E9160",
+          "clean": true,
+          "eax": "0x03004000",
+          "blocked_kind": "NONE",
+          "blocked_va": null,
+          "depth_max": 4,
+          "entered_n": 18,
+          "uc_indirect_enters": 0
+        },
+        {
+          "label": "setter",
+          "root": "0x009E9140",
+          "clean": true,
+          "eax": "0x00000011",
+          "blocked_kind": "NONE",
+          "blocked_va": null,
+          "depth_max": 4,
+          "entered_n": 19,
+          "uc_indirect_enters": 0
+        },
+        {
+          "label": "getter",
+          "root": "0x009E9150",
+          "clean": true,
+          "eax": "0x00000011",
+          "blocked_kind": "NONE",
+          "blocked_va": null,
+          "depth_max": 4,
+          "entered_n": 20,
+          "uc_indirect_enters": 0
+        },
+        {
+          "label": "rtti",
+          "root": "0x009E7780",
+          "clean": true,
+          "eax": "0x00C30DE4",
+          "blocked_kind": "NONE",
+          "blocked_va": null,
+          "depth_max": 4,
+          "entered_n": 21,
+          "uc_indirect_enters": 0
+        },
+        {
+          "label": "list_a",
+          "root": "0x009E8400",
+          "clean": true,
+          "eax": "0x00000001",
+          "blocked_kind": "NONE",
+          "blocked_va": null,
+          "depth_max": 4,
+          "entered_n": 22,
+          "uc_indirect_enters": 0
+        }
+      ],
+      "unique_entered": 22,
+      "entered": [
+        "0x0087B4F6",
+        "0x0087B880",
+        "0x009773C0",
+        "0x00977420",
+        "0x009777D0",
+        "0x00977800",
+        "0x00977E20",
+        "0x00978720",
+        "0x0097F790",
+        "0x0097F9E0",
+        "0x0097FAE0",
+        "0x0097FCD0",
+        "0x009E7710",
+        "0x009E7780",
+        "0x009E8400",
+        "0x009E8AD0",
+        "0x009E9140",
+        "0x009E9150",
+        "0x009E9160",
+        "0x009E9460",
+        "0x009E9990",
+        "0x009EB980"
+      ],
+      "depth_max_nested": 4,
+      "blocker": null,
+      "uc_indirect_enters": 0,
+      "invocation_type": "DIRECT_GUEST_ENTRY",
+      "final_eax": "0x00000001",
+      "family": "A_9E9160",
+      "regression": "phase39_five_step",
+      "sleepex_done": 5,
+      "qpc_ticks": 2500000
+    },
+    {
+      "name": "family_b_ctor_rtti",
+      "result": "EXECUTED_STATEFUL_SEQUENCE",
+      "clean": true,
+      "sequence_length": 2,
+      "steps": [
+        {
+          "label": "ctor_b",
+          "root": "0x009E98F0",
+          "clean": true,
+          "eax": "0x03004300",
+          "blocked_kind": "NONE",
+          "blocked_va": null,
+          "depth_max": 2,
+          "entered_n": 3,
+          "uc_indirect_enters": 0
+        },
+        {
+          "label": "rtti_b",
+          "root": "0x009E9980",
+          "clean": true,
+          "eax": "0x00C30F38",
+          "blocked_kind": "NONE",
+          "blocked_va": null,
+          "depth_max": 2,
+          "entered_n": 4,
+          "uc_indirect_enters": 0
+        }
+      ],
+      "unique_entered": 4,
+      "entered": [
+        "0x009E0880",
+        "0x009E7710",
+        "0x009E98F0",
+        "0x009E9980"
+      ],
+      "depth_max_nested": 2,
+      "blocker": null,
+      "uc_indirect_enters": 0,
+      "invocation_type": "DIRECT_GUEST_ENTRY",
+      "final_eax": "0x00C30F38",
+      "family": "B_9E98F0",
+      "independent": true,
+      "expected_eax": "0x00C30F38",
+      "observed_eax": "0x00C30F38",
+      "lifecycle": "CTOR_CONSUMER",
+      "sleepex_done": 0,
+      "qpc_ticks": 0
+    },
+    {
+      "name": "family_b_ctor_copy_rtti",
+      "result": "EXECUTED_STATEFUL_SEQUENCE",
+      "clean": true,
+      "sequence_length": 3,
+      "steps": [
+        {
+          "label": "ctor_b",
+          "root": "0x009E98F0",
+          "clean": true,
+          "eax": "0x03004300",
+          "blocked_kind": "NONE",
+          "blocked_va": null,
+          "depth_max": 2,
+          "entered_n": 3,
+          "uc_indirect_enters": 0
+        },
+        {
+          "label": "copy_b",
+          "root": "0x009E9990",
+          "clean": true,
+          "eax": "0x03004380",
+          "blocked_kind": "NONE",
+          "blocked_va": null,
+          "depth_max": 2,
+          "entered_n": 4,
+          "uc_indirect_enters": 0
+        },
+        {
+          "label": "rtti_dst",
+          "root": "0x009E9980",
+          "clean": true,
+          "eax": "0x00C30F38",
+          "blocked_kind": "NONE",
+          "blocked_va": null,
+          "depth_max": 2,
+          "entered_n": 5,
+          "uc_indirect_enters": 0
+        }
+      ],
+      "unique_entered": 5,
+      "entered": [
+        "0x009E0880",
+        "0x009E7710",
+        "0x009E98F0",
+        "0x009E9980",
+        "0x009E9990"
+      ],
+      "depth_max_nested": 2,
+      "blocker": null,
+      "uc_indirect_enters": 0,
+      "invocation_type": "DIRECT_GUEST_ENTRY",
+      "final_eax": "0x00C30F38",
+      "family": "B_9E98F0",
+      "independent": true,
+      "expected_eax": "0x00C30F38",
+      "lifecycle": "CTOR_COPY_CONSUMER",
+      "sleepex_done": 0,
+      "qpc_ticks": 0
+    },
+    {
+      "name": "sem_alone",
+      "result": "EXECUTED_STATEFUL_SEQUENCE",
+      "clean": true,
+      "sequence_length": 1,
+      "steps": [
+        {
+          "label": "sem",
+          "root": "0x0097BB30",
+          "clean": true,
+          "eax": "0x03004000",
+          "blocked_kind": "NONE",
+          "blocked_va": null,
+          "depth_max": 4,
+          "entered_n": 8,
+          "uc_indirect_enters": 0
+        }
+      ],
+      "unique_entered": 8,
+      "entered": [
+        "0x00977420",
+        "0x009775E0",
+        "0x00977860",
+        "0x00977AF0",
+        "0x00977E20",
+        "0x00977FD0",
+        "0x00978040",
+        "0x0097BB30"
+      ],
+      "depth_max_nested": 4,
+      "blocker": null,
+      "uc_indirect_enters": 0,
+      "invocation_type": "DIRECT_GUEST_ENTRY",
+      "final_eax": "0x03004000",
+      "family": "SEM_97BB30",
+      "note": "ctor-only; consumer needs +0x140 contract",
+      "sleepex_done": 0,
+      "qpc_ticks": 0
+    },
+    {
+      "name": "ebc70_alone",
+      "result": "EXECUTED_STATEFUL_SEQUENCE",
+      "clean": true,
+      "sequence_length": 1,
+      "steps": [
+        {
+          "label": "ebc70",
+          "root": "0x009EBC70",
+          "clean": true,
+          "eax": "0x03004000",
+          "blocked_kind": "NONE",
+          "blocked_va": null,
+          "depth_max": 3,
+          "entered_n": 5,
+          "uc_indirect_enters": 0
+        }
+      ],
+      "unique_entered": 5,
+      "entered": [
+        "0x00977420",
+        "0x00977E20",
+        "0x009E9450",
+        "0x009E9460",
+        "0x009EBC70"
+      ],
+      "depth_max_nested": 3,
+      "blocker": null,
+      "uc_indirect_enters": 0,
+      "invocation_type": "DIRECT_GUEST_ENTRY",
+      "final_eax": "0x03004000",
+      "family": "EBC70",
+      "sleepex_done": 0,
+      "qpc_ticks": 0
+    },
+    {
+      "name": "vcall_probe_90749e_with_pod",
+      "result": "EXECUTED_STATEFUL_SEQUENCE",
+      "clean": true,
+      "sequence_length": 2,
+      "steps": [
+        {
+          "label": "ctor_b",
+          "root": "0x009E98F0",
+          "clean": true,
+          "eax": "0x03004300",
+          "blocked_kind": "NONE",
+          "blocked_va": null,
+          "depth_max": 2,
+          "entered_n": 3,
+          "uc_indirect_enters": 0
+        },
+        {
+          "label": "caller",
+          "root": "0x0090749E",
+          "clean": true,
+          "eax": "0x000003E9",
+          "blocked_kind": "NONE",
+          "blocked_va": null,
+          "depth_max": 3,
+          "entered_n": 7,
+          "uc_indirect_enters": 0
+        }
+      ],
+      "unique_entered": 7,
+      "entered": [
+        "0x0090749E",
+        "0x0090826A",
+        "0x0090827E",
+        "0x0090B452",
+        "0x009E0880",
+        "0x009E7710",
+        "0x009E98F0"
+      ],
+      "depth_max_nested": 3,
+      "blocker": null,
+      "uc_indirect_enters": 0,
+      "invocation_type": "DIRECT_GUEST_ENTRY",
+      "final_eax": "0x000003E9",
+      "family": "VTABLE_PROBE",
+      "virtual_dispatch": "NOT_TAKEN",
+      "reason": "[arg0+0x14]==0 after POD ctor; cmp vs 0x54 skips call [vt+8]",
+      "classification": "BLOCKED_REQUIRED_STATE",
+      "sleepex_done": 0,
+      "qpc_ticks": 0
+    },
+    {
+      "name": "vcall_9e8e00_allocator_path",
+      "result": "EXECUTED_TO_NEXT_BLOCKER",
+      "clean": false,
+      "sequence_length": 2,
+      "steps": [
+        {
+          "label": "ctor_a",
+          "root": "0x009E9160",
+          "clean": true,
+          "eax": "0x03004000",
+          "blocked_kind": "NONE",
+          "blocked_va": null,
+          "depth_max": 4,
+          "entered_n": 18,
+          "uc_indirect_enters": 0
+        },
+        {
+          "label": "virt",
+          "root": "0x009E8E00",
+          "clean": false,
+          "eax": "0x009E8E17",
+          "blocked_kind": "FAULT",
+          "blocked_va": null,
+          "depth_max": 4,
+          "entered_n": 19,
+          "uc_indirect_enters": 1
+        }
+      ],
+      "unique_entered": 19,
+      "entered": [
+        "0x0087B4F6",
+        "0x0087B880",
+        "0x009773C0",
+        "0x00977420",
+        "0x009777D0",
+        "0x00977800",
+        "0x00977E20",
+        "0x00978720",
+        "0x0097F790",
+        "0x0097F9E0",
+        "0x0097FAE0",
+        "0x0097FCD0",
+        "0x009E7710",
+        "0x009E8AD0",
+        "0x009E8E00",
+        "0x009E9160",
+        "0x009E9460",
+        "0x009E9990",
+        "0x009EB980"
+      ],
+      "depth_max_nested": 4,
+      "blocker": {
+        "kind": "FAULT",
+        "va": null,
+        "at_step": "virt"
+      },
+      "uc_indirect_enters": 1,
+      "invocation_type": "DIRECT_GUEST_ENTRY",
+      "final_eax": "0x009E8E17",
+      "family": "VTABLE_PROBE",
+      "note": "arg==this \u2192 slot5=0x009E8E00 self; then 0x009E9460 allocator",
+      "virtual_dispatch_attempted": true,
+      "sleepex_done": 5,
+      "qpc_ticks": 2500000
+    },
+    {
+      "name": "cb_d1a4_early_exit",
+      "result": "EXECUTED_STATEFUL_SEQUENCE",
+      "clean": true,
+      "sequence_length": 2,
+      "steps": [
+        {
+          "label": "ctor_a",
+          "root": "0x009E9160",
+          "clean": true,
+          "eax": "0x03004000",
+          "blocked_kind": "NONE",
+          "blocked_va": null,
+          "depth_max": 4,
+          "entered_n": 18,
+          "uc_indirect_enters": 0
+        },
+        {
+          "label": "cb",
+          "root": "0x009E78C0",
+          "clean": true,
+          "eax": "0x00000000",
+          "blocked_kind": "NONE",
+          "blocked_va": null,
+          "depth_max": 4,
+          "entered_n": 19,
+          "uc_indirect_enters": 0
+        }
+      ],
+      "unique_entered": 19,
+      "entered": [
+        "0x0087B4F6",
+        "0x0087B880",
+        "0x009773C0",
+        "0x00977420",
+        "0x009777D0",
+        "0x00977800",
+        "0x00977E20",
+        "0x00978720",
+        "0x0097F790",
+        "0x0097F9E0",
+        "0x0097FAE0",
+        "0x0097FCD0",
+        "0x009E7710",
+        "0x009E78C0",
+        "0x009E8AD0",
+        "0x009E9160",
+        "0x009E9460",
+        "0x009E9990",
+        "0x009EB980"
+      ],
+      "depth_max_nested": 4,
+      "blocker": null,
+      "uc_indirect_enters": 0,
+      "invocation_type": "DIRECT_GUEST_ENTRY",
+      "final_eax": "0x00000000",
+      "family": "A_GLOBAL",
+      "kind": "GLOBAL_CONSUMER",
+      "sleepex_done": 5,
+      "qpc_ticks": 2500000
+    }
+  ]
 }
