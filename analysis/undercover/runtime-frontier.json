@@ -1,5 +1,5 @@
 {
-  "phase": 46,
+  "phase": 47,
   "definitions": {
     "ENTERABLE": "All pre-entry required state establishable via primitives, static PE data, standard runtime, or proven ordinary init/ctor. Not merely IMPORT_READY.",
     "DEEPEST_ORDINARY_EXECUTION_CHAIN": "Max nested ordinary UC frames in one harness run.",
@@ -22,7 +22,7 @@
   "static_ready": 20762,
   "import_ready": 737,
   "runtime_ready": 72,
-  "enterable": 45,
+  "enterable": 48,
   "enterable_roots": [
     "0x00721050",
     "0x00721070",
@@ -63,14 +63,17 @@
     "0x00A128A0",
     "0x00A128F0",
     "0x00A12940",
+    "0x00A129B0",
+    "0x00A12A40",
     "0x00A12D10",
     "0x00A12D50",
     "0x00A12D90",
+    "0x00A12DE0",
     "0x00A12E60",
     "0x00A130E0",
     "0x00B57CD0"
   ],
-  "unique_uc_functions_executed": 79,
+  "unique_uc_functions_executed": 82,
   "unique_uc_functions_executed_list": [
     "0x00721050",
     "0x00721070",
@@ -143,22 +146,25 @@
     "0x00A128A0",
     "0x00A128F0",
     "0x00A12940",
+    "0x00A129B0",
+    "0x00A12A40",
     "0x00A12D10",
     "0x00A12D50",
     "0x00A12D90",
+    "0x00A12DE0",
     "0x00A12E60",
     "0x00A130E0",
     "0x00B52140",
     "0x00B57CD0",
     "0x00B57CF0"
   ],
-  "execution_runs": 297,
+  "execution_runs": 310,
   "deepest_ordinary_execution_chain": 4,
   "largest_executed_ordinary_closure": 20,
   "ordinary_execution_sequence_length": 5,
   "largest_stateful_sequence_coverage": 22,
   "clean_stateful_sequences": 11,
-  "clean_ordinary_roots": 25,
+  "clean_ordinary_roots": 28,
   "clean_ordinary_roots_list": [
     "0x00721070",
     "0x00766100",
@@ -179,9 +185,12 @@
     "0x00A128A0",
     "0x00A128F0",
     "0x00A12940",
+    "0x00A129B0",
+    "0x00A12A40",
     "0x00A12D10",
     "0x00A12D50",
     "0x00A12D90",
+    "0x00A12DE0",
     "0x00A12E60",
     "0x00A130E0",
     "0x00B57CD0"
@@ -691,5 +700,35 @@
     "edges_imported": 28,
     "note": "Guest matrix expansion + synthetic ordinary render contracts. Opaque draw handoffs untouched. FIRST_FRAME still blocked."
   },
-  "recommended_phase47": "Recover scheduling edges from render callback 0x00766730 to scene producers (~0x00777253 / 0x007B5972) and from mesh/scene work to later Present (~0x00758674); expand remaining allocator-independent math; continue ordinary stream/state contracts with injected device mocks. Keep 0x006860F0/0x00686290/0x00686000 opaque."
+  "recommended_phase47": "Recover scheduling edges from render callback 0x00766730 to scene producers (~0x00777253 / 0x007B5972) and from mesh/scene work to later Present (~0x00758674); expand remaining allocator-independent math; continue ordinary stream/state contracts with injected device mocks. Keep 0x006860F0/0x00686290/0x00686000 opaque.",
+  "phase47": {
+    "newly_executed": [
+      "0x00A129B0",
+      "0x00A12A40",
+      "0x00A12DE0"
+    ],
+    "enterable_new": [
+      "0x00A129B0",
+      "0x00A12A40",
+      "0x00A12DE0"
+    ],
+    "runs_delta": 13,
+    "chain_clean": true,
+    "p46_smoke_ok": true,
+    "regressions": {
+      "family_a": true,
+      "family_b": true,
+      "family_c": true
+    },
+    "blocked_external_unchanged": 74,
+    "allocator_still_opaque": true,
+    "asset_distribution": "FIXTURE_PIPELINE_READY",
+    "production_assets": "UNAVAILABLE_PENDING_AUTHORIZED_SOURCE",
+    "browser_renderer": "SYNTHETIC_CLEAR_SMOKE_ONLY",
+    "asset_pipeline_tests_passed": true,
+    "asset_pipeline_runner": "python-mirror",
+    "node_uc_tests_passed": true,
+    "note": "Clean-PC fixture download pipeline + synthetic clear smoke + matrix guest expansion. Authentic first frame still blocked. Production Undercover assets unauthorized."
+  },
+  "recommended_phase48": "Host rights-authorized Undercover game data; map real resource formats into the FS bridge; recover scheduling edges for authentic Present; expand guest execution; keep opaque draw backends untouched."
 }

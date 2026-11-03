@@ -1,8 +1,8 @@
 {
   "project": {
     "name": "nfsuc-web",
-    "current_phase": 46,
-    "strategy": "Phase 46: first-frame evidence integration; matrix guest expansion; ordinary stream/mesh/range synthetic contracts; FIRST_FRAME frozen."
+    "current_phase": 47,
+    "strategy": "Phase 47: clean-PC automatic fixture downloads, FS bridge, synthetic clear smoke; matrix guest expansion; FIRST_FRAME frozen; production Undercover assets pending authorized source."
   },
   "discovery": {
     "candidates": 25450,
@@ -7170,6 +7170,11 @@
     {
       "phase": 46,
       "name": "Matrix expansion & first-frame evidence integration",
+      "state": "completed"
+    },
+    {
+      "phase": 47,
+      "name": "Clean-PC asset downloads & runtime expansion",
       "state": "completed"
     }
   ],

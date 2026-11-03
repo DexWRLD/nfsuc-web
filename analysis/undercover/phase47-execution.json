@@ -1,0 +1,289 @@
+{
+  "phase": 47,
+  "results": [
+    {
+      "name": "reg_ctor_a",
+      "root": "0x009E9160",
+      "clean": true,
+      "eax": "0x03004000",
+      "blocked_kind": "NONE",
+      "blocked_va": null,
+      "depth_max": 4,
+      "entered": [
+        "0x009E9160",
+        "0x009E7710",
+        "0x009E9990",
+        "0x009E9460",
+        "0x009773C0",
+        "0x00977E20",
+        "0x00977420",
+        "0x009EB980",
+        "0x00978720",
+        "0x0097FCD0",
+        "0x0097F790",
+        "0x0087B4F6",
+        "0x0097FAE0",
+        "0x0087B880",
+        "0x0097F9E0",
+        "0x009777D0",
+        "0x009E8AD0",
+        "0x00977800"
+      ],
+      "unique_entered": 18,
+      "oracle_ok": null,
+      "notes": null
+    },
+    {
+      "name": "reg_setter",
+      "root": "0x009E9140",
+      "clean": true,
+      "eax": "0x0000005A",
+      "blocked_kind": "NONE",
+      "blocked_va": null,
+      "depth_max": 4,
+      "entered": [
+        "0x009E9160",
+        "0x009E7710",
+        "0x009E9990",
+        "0x009E9460",
+        "0x009773C0",
+        "0x00977E20",
+        "0x00977420",
+        "0x009EB980",
+        "0x00978720",
+        "0x0097FCD0",
+        "0x0097F790",
+        "0x0087B4F6",
+        "0x0097FAE0",
+        "0x0087B880",
+        "0x0097F9E0",
+        "0x009777D0",
+        "0x009E8AD0",
+        "0x00977800",
+        "0x009E9140"
+      ],
+      "unique_entered": 19,
+      "oracle_ok": null,
+      "notes": null
+    },
+    {
+      "name": "reg_getter",
+      "root": "0x009E9150",
+      "clean": true,
+      "eax": "0x0000005A",
+      "blocked_kind": "NONE",
+      "blocked_va": null,
+      "depth_max": 4,
+      "entered": [
+        "0x009E9160",
+        "0x009E7710",
+        "0x009E9990",
+        "0x009E9460",
+        "0x009773C0",
+        "0x00977E20",
+        "0x00977420",
+        "0x009EB980",
+        "0x00978720",
+        "0x0097FCD0",
+        "0x0097F790",
+        "0x0087B4F6",
+        "0x0097FAE0",
+        "0x0087B880",
+        "0x0097F9E0",
+        "0x009777D0",
+        "0x009E8AD0",
+        "0x00977800",
+        "0x009E9140",
+        "0x009E9150"
+      ],
+      "unique_entered": 20,
+      "oracle_ok": true,
+      "notes": null
+    },
+    {
+      "name": "reg_ctor_b",
+      "root": "0x009E98F0",
+      "clean": true,
+      "eax": "0x03004300",
+      "blocked_kind": "NONE",
+      "blocked_va": null,
+      "depth_max": 2,
+      "entered": [
+        "0x009E98F0",
+        "0x009E7710",
+        "0x009E0880"
+      ],
+      "unique_entered": 3,
+      "oracle_ok": null,
+      "notes": null
+    },
+    {
+      "name": "reg_export_b",
+      "root": "0x009E9A30",
+      "clean": true,
+      "eax": "0x03004400",
+      "blocked_kind": "NONE",
+      "blocked_va": null,
+      "depth_max": 2,
+      "entered": [
+        "0x009E98F0",
+        "0x009E7710",
+        "0x009E0880",
+        "0x009E9A30"
+      ],
+      "unique_entered": 4,
+      "oracle_ok": true,
+      "notes": null
+    },
+    {
+      "name": "reg_ctor_c",
+      "root": "0x009EB350",
+      "clean": true,
+      "eax": "0x03004480",
+      "blocked_kind": "NONE",
+      "blocked_va": null,
+      "depth_max": 2,
+      "entered": [
+        "0x009EB350",
+        "0x009E7710"
+      ],
+      "unique_entered": 2,
+      "oracle_ok": null,
+      "notes": null
+    },
+    {
+      "name": "reg_field_c",
+      "root": "0x009EB2B0",
+      "clean": true,
+      "eax": "0x0300448C",
+      "blocked_kind": "NONE",
+      "blocked_va": null,
+      "depth_max": 2,
+      "entered": [
+        "0x009EB350",
+        "0x009E7710",
+        "0x009EB2B0"
+      ],
+      "unique_entered": 3,
+      "oracle_ok": true,
+      "notes": null
+    },
+    {
+      "name": "smoke_scale_rows",
+      "root": "0x00A128F0",
+      "clean": true,
+      "eax": "0x03004700",
+      "blocked_kind": "NONE",
+      "blocked_va": null,
+      "depth_max": 1,
+      "entered": [
+        "0x00A128F0"
+      ],
+      "unique_entered": 1,
+      "oracle_ok": true,
+      "notes": null
+    },
+    {
+      "name": "near_eq_true",
+      "root": "0x00A129B0",
+      "clean": true,
+      "eax": "0x03004790",
+      "blocked_kind": "NONE",
+      "blocked_va": null,
+      "depth_max": 1,
+      "entered": [
+        "0x00A129B0"
+      ],
+      "unique_entered": 1,
+      "oracle_ok": true,
+      "notes": "identical mats within eps -> *out=1; needs abs mask @0xC33CE0"
+    },
+    {
+      "name": "near_eq_false",
+      "root": "0x00A129B0",
+      "clean": true,
+      "eax": "0x03004790",
+      "blocked_kind": "NONE",
+      "blocked_va": null,
+      "depth_max": 1,
+      "entered": [
+        "0x00A129B0"
+      ],
+      "unique_entered": 1,
+      "oracle_ok": true,
+      "notes": null
+    },
+    {
+      "name": "from_vec",
+      "root": "0x00A12A40",
+      "clean": true,
+      "eax": "0x03004680",
+      "blocked_kind": "NONE",
+      "blocked_va": null,
+      "depth_max": 1,
+      "entered": [
+        "0x00A12A40"
+      ],
+      "unique_entered": 1,
+      "oracle_ok": true,
+      "notes": "got=[0.0, 0.4, -0.3, 0.0, -0.4, 0.0, 0.2, 0.0, 0.3, -0.2, 0.0, 0.0] const_read=-0.0"
+    },
+    {
+      "name": "mul_cdecl",
+      "root": "0x00A12DE0",
+      "clean": true,
+      "eax": "0x030046F0",
+      "blocked_kind": "NONE",
+      "blocked_va": null,
+      "depth_max": 1,
+      "entered": [
+        "0x00A12DE0"
+      ],
+      "unique_entered": 1,
+      "oracle_ok": true,
+      "notes": "cdecl dest=A*B; ABI ret0"
+    },
+    {
+      "name": "chain_from_vec_mul",
+      "root": "STATEFUL:matrix_chain_p47",
+      "clean": true,
+      "eax": "0x030046F0",
+      "blocked_kind": "NONE",
+      "blocked_va": null,
+      "depth_max": 1,
+      "entered": [
+        "0x00A12A40",
+        "0x00A12A40",
+        "0x00A12DE0"
+      ],
+      "unique_entered": 2,
+      "sequence_length": 2,
+      "oracle_ok": true,
+      "notes": "from_vec \u2192 cdecl mul"
+    }
+  ],
+  "newly_executed": [
+    "0x00A129B0",
+    "0x00A12A40",
+    "0x00A12DE0"
+  ],
+  "enterable_new": [
+    "0x00A129B0",
+    "0x00A12A40",
+    "0x00A12DE0"
+  ],
+  "node_tests": {
+    "runner": "python-mirror",
+    "exit_code": 0,
+    "passed": true,
+    "note": "Node not on PATH; validated via tools/uc_assets47.py mirror"
+  },
+  "metrics_delta": {
+    "unique_before": 79,
+    "unique_after": 82,
+    "enterable_before": 45,
+    "enterable_after": 48,
+    "runs_before": 297,
+    "runs_after": 310
+  }
+}
