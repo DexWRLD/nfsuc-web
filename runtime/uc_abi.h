@@ -47,7 +47,8 @@ typedef enum UcHle {
     UC_HLE_STRNCPY,
     UC_HLE_CISIN,
     UC_HLE_CICOS,
-    UC_HLE_CIACOS
+    UC_HLE_CIACOS,
+    UC_HLE_CISQRT
 } UcHle;
 
 /* Where an import argument is read, and where its result is written.
@@ -140,6 +141,7 @@ extern uint32_t (*uc_x87_current_fn)(void);
 extern UcHostUnary uc_host_sin;
 extern UcHostUnary uc_host_cos;
 extern UcHostUnary uc_host_acos;
+extern UcHostUnary uc_host_sqrt;
 
 const UcImport *uc_import_find(uint32_t thunk);
 unsigned uc_import_count(void);

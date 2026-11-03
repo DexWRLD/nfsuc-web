@@ -17,6 +17,7 @@ UcX87Fault uc_x87_fault;
 UcHostUnary uc_host_sin;
 UcHostUnary uc_host_cos;
 UcHostUnary uc_host_acos;
+UcHostUnary uc_host_sqrt;
 
 /* The image tracer owns uc_current_fn. This unit does not link it.
  * A harness that has the tracer installs a reader; otherwise the
@@ -121,6 +122,8 @@ static uint32_t hle_run(struct CPU *c, const UcImport *imp, const UcDecoded *in,
             *ok = x87_replace(c, uc_host_cos, "host cos is not bound");
         else if (imp->hle == UC_HLE_CIACOS)
             *ok = x87_replace(c, uc_host_acos, "host acos is not bound");
+        else if (imp->hle == UC_HLE_CISQRT)
+            *ok = x87_replace(c, uc_host_sqrt, "host sqrt is not bound");
         else
             x87_fail(c, "ST0 import has no x87 HLE");
         return 0;

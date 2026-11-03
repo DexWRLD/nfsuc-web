@@ -32,6 +32,7 @@ X87 = {
     "_CIsin": "UC_HLE_CISIN",
     "_CIcos": "UC_HLE_CICOS",
     "_CIacos": "UC_HLE_CIACOS",
+    "_CIsqrt": "UC_HLE_CISQRT",
 }
 
 

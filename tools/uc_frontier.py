@@ -20,7 +20,7 @@ GAME = r"C:\Games\Need For Speed Undercover\nfs.exe"
 IMPLEMENTED = {
     "memcpy", "memmove", "memset", "memcmp", "strlen", "strcmp", "strncmp",
     "strncpy",
-    "_CIsin", "_CIcos", "_CIacos",
+    "_CIsin", "_CIcos", "_CIacos", "_CIsqrt",
 }
 # Deterministic helpers whose convention is already recorded as cdecl and whose
 # operation is a pure value transform. Not a promise they are implemented.
@@ -30,7 +30,7 @@ SIMPLE_CDECL = {
     "isdigit", "isxdigit", "isalnum", "isprint", "isalpha", "iscntrl",
     "atoi", "abs", "_isnan", "strtol", "strtoul", "strtod", "atof",
     "strcspn", "strpbrk", "bsearch",
-    "_CIsqrt", "_CIpow", "_CIatan2", "_CIlog", "_CIlog10", "_CItan", "_CIfmod",
+    "_CIpow", "_CIatan2", "_CIlog", "_CIlog10", "_CItan", "_CIfmod",
     "_CIasin", "floor", "ceil", "atan", "ldexp",
 }
 
