@@ -82,6 +82,8 @@ class Out(ctypes.Structure):
         ("gct_calls", ctypes.c_uint32), ("gtp_calls", ctypes.c_uint32),
         ("spc_calls", ctypes.c_uint32), ("stp_calls", ctypes.c_uint32),
         ("thread_priority", ctypes.c_int32),
+        ("qpc_calls", ctypes.c_uint32), ("qpf_calls", ctypes.c_uint32),
+        ("qpc_ticks_lo", ctypes.c_uint32), ("qpc_ticks_hi", ctypes.c_uint32),
     ]
 
 
@@ -125,6 +127,7 @@ static int abort_run, blocked_kind, block_tls_set, cur_root;
 static uint32_t blocked_va, blocked_fn, tls_alloc_calls, tls_set_calls;
 static uint32_t ics_calls, mutex_calls, gpc_calls, sem_calls;
 static uint32_t gct_calls, gtp_calls, spc_calls, stp_calls;
+static uint32_t qpc_calls, qpf_calls;
 static uint32_t entered[%(ent_cap)d];
 static int entered_n, depth_now, depth_max;
 static uint32_t imp_target[%(imp_cap)d], imp_ok[%(imp_cap)d], imp_hle[%(imp_cap)d];
@@ -197,6 +200,8 @@ void dispatch_indirect(CPU *c, uint32_t target) {
     if (imp && imp->hle == UC_HLE_GETTHREADPRIORITY) gtp_calls++;
     if (imp && imp->hle == UC_HLE_SETPRIORITYCLASS) spc_calls++;
     if (imp && imp->hle == UC_HLE_SETTHREADPRIORITY) stp_calls++;
+    if (imp && imp->hle == UC_HLE_QUERYPERFORMANCECOUNTER) qpc_calls++;
+    if (imp && imp->hle == UC_HLE_QUERYPERFORMANCEFREQUENCY) qpf_calls++;
     ok = imp ? uc_import_invoke(c, imp, 0) : 0;
     if (nimp < %(imp_cap)d) imp_ok[nimp] = (uint32_t)ok;
     nimp++;
@@ -215,7 +220,9 @@ void unsupported_insn(CPU *c, uint32_t addr, const char *why) {
     note_block(addr, 5);
 }
 void cpuid_shim(CPU *c) { (void)c; note_block(c->eip, 7); }
-uint64_t rdtsc_shim(void) { note_block(uc_current_fn, 4); return 0; }
+/* Coherent virtual TSC from the guest performance clock — not host time.
+ * Blocking here would stop the ordinary QPC calibration path after HLE QPC. */
+uint64_t rdtsc_shim(void) { return uc_guest_clock_tsc(); }
 '''
 
 C_RUN = r'''
@@ -236,6 +243,7 @@ typedef struct Out {
     uint32_t gpc_calls, sem_calls, sem_count, priority_class;
     uint32_t gct_calls, gtp_calls, spc_calls, stp_calls;
     int32_t thread_priority;
+    uint32_t qpc_calls, qpf_calls, qpc_ticks_lo, qpc_ticks_hi;
 } Out;
 
 static void wr32(uint32_t a, uint32_t v) { uc_guest_store32(a, v, 0); }
@@ -261,6 +269,7 @@ __declspec(dllexport) int uc_p31_run(const Spec *s, Out *out) {
     uc_sync_reset();
     uc_process_reset();
     uc_thread_reset();
+    uc_guest_clock_reset();
     uc_access_fault.active = 0;
     uc_import_fault.active = 0;
     uc_current_fn = 0;
@@ -269,6 +278,7 @@ __declspec(dllexport) int uc_p31_run(const Spec *s, Out *out) {
     tls_alloc_calls = tls_set_calls = 0;
     ics_calls = mutex_calls = gpc_calls = sem_calls = 0;
     gct_calls = gtp_calls = spc_calls = stp_calls = 0;
+    qpc_calls = qpf_calls = 0;
     unsup_why[0] = 0;
     diag_noop_target = s->noop_target; diag_noop_args = s->noop_args; diag_hits = 0;
     for (i = 0; i < 0x1000; i++) uc_guest_store8(0x03004000u + i, 0);
@@ -312,6 +322,12 @@ __declspec(dllexport) int uc_p31_run(const Spec *s, Out *out) {
     out->gct_calls = gct_calls; out->gtp_calls = gtp_calls;
     out->spc_calls = spc_calls; out->stp_calls = stp_calls;
     out->thread_priority = uc_thread_priority();
+    out->qpc_calls = qpc_calls; out->qpf_calls = qpf_calls;
+    {
+        uint64_t ticks = uc_guest_clock_qpc();
+        out->qpc_ticks_lo = (uint32_t)ticks;
+        out->qpc_ticks_hi = (uint32_t)(ticks >> 32);
+    }
     for (i = 0; i < 47 && unsup_why[i]; i++) out->unsupported_why[i] = unsup_why[i];
     return 0;
 }

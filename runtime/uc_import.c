@@ -184,6 +184,62 @@ void uc_thread_reset(void) {
     uc_guest_thread_active = 1;
 }
 
+/*
+ * Deterministic guest monotonic performance clock.
+ * Frequency: 10,000,000 ticks/second (virtual; not host hardware).
+ * Epoch: zero at each harness/runtime reset.
+ * Advancement: only via uc_guest_clock_advance_ns — never host wall-clock.
+ * Virtual TSC: 3.0 GHz coherent with the same timebase (300 cycles/QPC tick).
+ */
+#define UC_QPF_HZ            10000000ull
+#define UC_NS_PER_QPC_TICK   100ull      /* 1e9 / 1e7 */
+#define UC_TSC_PER_QPC_TICK  300ull      /* 3e9 / 1e7 */
+static uint64_t uc_guest_qpc_ticks;
+
+void uc_guest_clock_reset(void) {
+    uc_guest_qpc_ticks = 0;
+}
+
+uint64_t uc_guest_clock_qpc(void) {
+    return uc_guest_qpc_ticks;
+}
+
+uint64_t uc_guest_clock_qpf(void) {
+    return UC_QPF_HZ;
+}
+
+uint64_t uc_guest_clock_tsc(void) {
+    return uc_guest_qpc_ticks * UC_TSC_PER_QPC_TICK;
+}
+
+int uc_guest_clock_advance_ns(uint64_t delta_ns) {
+    uint64_t ticks, room;
+    ticks = delta_ns / UC_NS_PER_QPC_TICK;
+    if (!ticks && delta_ns) {
+        /* Sub-tick deltas do not move the counter (documented rounding). */
+        return 1;
+    }
+    room = ~uc_guest_qpc_ticks;
+    if (ticks > room) return 0;
+    uc_guest_qpc_ticks += ticks;
+    return 1;
+}
+
+static int uc_store_u64_le(uint32_t addr, uint64_t value) {
+    int ok_lo = 1, ok_hi = 1;
+    if (!range_ok(addr, 8)) return 0;
+#if defined(UC_GUEST_CHECKED)
+    uc_guest_store32(addr, (uint32_t)value, &ok_lo);
+    uc_guest_store32(addr + 4u, (uint32_t)(value >> 32), &ok_hi);
+    return ok_lo && ok_hi;
+#else
+    UC_ST32(addr, (uint32_t)value);
+    UC_ST32(addr + 4u, (uint32_t)(value >> 32));
+    (void)ok_lo; (void)ok_hi;
+    return 1;
+#endif
+}
+
 uint32_t uc_process_priority_class(void) {
     return uc_guest_priority_class;
 }
@@ -240,6 +296,7 @@ void uc_sync_reset(void) {
     }
     uc_process_reset();
     uc_thread_reset();
+    uc_guest_clock_reset();
 }
 
 unsigned uc_sync_critsec_count(void) {
@@ -504,6 +561,27 @@ static uint32_t uc_hle_set_thread_priority(uint32_t handle, uint32_t prio, int *
     return 1;
 }
 
+static uint32_t uc_hle_query_performance_counter(uint32_t out, int *ok) {
+    /* QueryPerformanceCounter(LARGE_INTEGER*): stdcall 1 arg → BOOL.
+     * Writes little-endian 64-bit guest counter. Invalid buffer → reject. */
+    if (!uc_store_u64_le(out, uc_guest_clock_qpc())) {
+        *ok = 0;
+        return 0;
+    }
+    *ok = 1;
+    return 1;
+}
+
+static uint32_t uc_hle_query_performance_frequency(uint32_t out, int *ok) {
+    /* QueryPerformanceFrequency(LARGE_INTEGER*): same timebase as QPC. */
+    if (!uc_store_u64_le(out, uc_guest_clock_qpf())) {
+        *ok = 0;
+        return 0;
+    }
+    *ok = 1;
+    return 1;
+}
+
 int uc_abi_callee_bytes(UcAbi abi, int stack_dwords) {
     if (stack_dwords < 0) return -1;
     if (abi == UC_ABI_CDECL) return 0;
@@ -656,6 +734,14 @@ static uint32_t hle_run(struct CPU *c, const UcImport *imp, const UcDecoded *in,
     if (imp->hle == UC_HLE_SETTHREADPRIORITY) {
         if (in->stack_dwords < 2) return 0;
         return uc_hle_set_thread_priority(in->stack[0], in->stack[1], ok);
+    }
+    if (imp->hle == UC_HLE_QUERYPERFORMANCECOUNTER) {
+        if (in->stack_dwords < 1) return 0;
+        return uc_hle_query_performance_counter(in->stack[0], ok);
+    }
+    if (imp->hle == UC_HLE_QUERYPERFORMANCEFREQUENCY) {
+        if (in->stack_dwords < 1) return 0;
+        return uc_hle_query_performance_frequency(in->stack[0], ok);
     }
     if (imp->hle == UC_HLE_CREATESEMAPHOREA) {
         /* CreateSemaphoreA(attrs, initial, maximum, name): stdcall, 4 args; HANDLE. */
