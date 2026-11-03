@@ -1,8 +1,8 @@
 {
   "project": {
     "name": "nfsuc-web",
-    "current_phase": 29,
-    "strategy": "Phase 29: KERNEL32!TlsAlloc HLE at 0x00B61138 continues ctor chain past 0x009777D0 into 0x009E8AD0. Graphics frozen."
+    "current_phase": 30,
+    "strategy": "Phase 30: KERNEL32!TlsSetValue HLE at 0x00B611C8; ctor 0x009E9160 RETURNED_CLEAN. Graphics frozen."
   },
   "discovery": {
     "candidates": 25450,
@@ -36,21 +36,21 @@
     "note": "The badge is the current high-confidence.json compile record. Green cells are discovery-enrolled HIGH functions that generated and compiled. Map 'reachable' means discovery enrollment, not proven call-graph reachability."
   },
   "runtime": {
-    "recorded_completed": 14,
-    "recorded_entries": 16,
+    "recorded_completed": 15,
+    "recorded_entries": 18,
     "recorded_without_map_cell": [
       "0x00929972"
     ],
     "unlogged_entries": "UNKNOWN",
     "counts": {
-      "EXECUTED": 14,
+      "EXECUTED": 15,
       "READY": 0,
       "RUNTIME_READY_NOT_EXECUTED": 54,
       "BLOCKED_INITIALIZATION": 0,
       "BLOCKED_INDIRECT": 131,
       "BLOCKED_IMPORT": 732,
       "BLOCKED_EXTERNAL": 74,
-      "PROTECTED_BOUNDARY": 793,
+      "PROTECTED_BOUNDARY": 792,
       "UNKNOWN": 23652
     },
     "ready_closure": 19,
@@ -62,48 +62,131 @@
     "COMPILED": 22770,
     "STATIC_READY": 20762,
     "IMPORT_READY": 737,
-    "RUNTIME_READY": 56,
-    "ENTERABLE": 13,
-    "EXECUTED": 16,
+    "RUNTIME_READY": 58,
+    "ENTERABLE": 14,
+    "EXECUTED": 21,
     "DEEPEST": 3,
-    "LARGEST_CLOSURE": 10,
+    "LARGEST_CLOSURE": 11,
     "ENTERABLE_WITH_DEPTH_3_POTENTIAL": 1,
     "ENTERABLE_WITH_DEPTH_4_POTENTIAL": 0,
-    "LATEST_REAL_RUNTIME_BOUNDARY": "KERNEL32!TlsAlloc"
+    "LATEST_REAL_RUNTIME_BOUNDARY": "KERNEL32!TlsSetValue (ctor RETURNED_CLEAN)"
   },
   "top_ordinary_island": {},
   "campaign_summary": {
-    "phase29_attempted": 3,
+    "phase30_attempted": 2,
     "outcomes": {
-      "EXECUTED_TO_NEXT_BLOCKER": 1,
-      "BLOCKED_REQUIRED_STATE": 1,
-      "BLOCKED_IMPORT": 1
+      "RETURNED_CLEAN": 1,
+      "BLOCKED_REQUIRED_STATE": 1
     },
     "most_common_next_blocker": [
       "BLOCKED_REQUIRED_STATE",
       1
     ],
     "deepest_chain": 3,
-    "largest_executed_closure": 10,
-    "latest_newly_executed_root": "0x009777D0",
+    "largest_executed_closure": 11,
+    "latest_newly_executed_root": "0x00977800",
     "deepest_successful_sequence": [
       "0x009E9160",
       "0x009E9990",
       "0x009E7710"
     ],
     "tlsalloc_implemented": true,
-    "constructor_chain_continued": true,
-    "fallback_947790_executed": false,
+    "tlssetvalue_implemented": true,
+    "tlsgetvalue_implemented": false,
+    "tlsfree_implemented": false,
+    "constructor_chain_clean_return": true,
     "CIpow_reached": false,
     "floor_reached": false,
     "malloc_free_reached": false,
     "filesystem_reached": false,
     "timing_reached": false,
     "tls_reached": true,
-    "seh_required": false
+    "seh_required": false,
+    "pe_static_tls_required": false
   },
   "cisqrt": {},
   "harness_capability": {},
+  "tls_frontier": {
+    "phase": 30,
+    "category": "DYNAMIC_WIN32_TLS",
+    "kept_separate": {
+      "PE_STATIC_TLS": true,
+      "SEH_FS_STATE": true,
+      "fs_2C_direct": true
+    },
+    "guest_thread_context": "single_thread",
+    "active_guest_thread_contexts": 1,
+    "index_max": 128,
+    "first_index": 0,
+    "exhaustion": "0xFFFFFFFF",
+    "reuse_policy": "free-stack when TlsFree implemented; unused in Phase 30",
+    "invalid_index_policy": "TlsSetValue returns 0 BOOL; GetLastError not modeled",
+    "null_value_policy": "valid for allocated index",
+    "host_independence": "guest tables only; not host TlsAlloc/pthread",
+    "dynamic_tls": {
+      "TlsAlloc": {
+        "import_slot": "0x00B61138",
+        "abi": "stdcall",
+        "stack_dwords": 0,
+        "return": "EAX",
+        "implemented": true,
+        "reached": true,
+        "call_site_count": 10,
+        "high_caller_count": "see phase29",
+        "notes": "guest index table"
+      },
+      "TlsSetValue": {
+        "import_slot": "0x00B611C8",
+        "abi": "stdcall",
+        "stack_dwords": 2,
+        "return": "EAX BOOL",
+        "implemented": true,
+        "reached": true,
+        "call_site_count": 8,
+        "high_caller_count": 6,
+        "owner_function_count": 6,
+        "notes": "per-thread value table; ctor stores 0"
+      },
+      "TlsGetValue": {
+        "import_slot": "0x00B611CC",
+        "abi": "stdcall",
+        "stack_dwords": 1,
+        "return": "EAX",
+        "implemented": false,
+        "reached": false,
+        "call_site_count": 1354,
+        "high_caller_count": 759,
+        "notes": "inventoried; not on clean ctor return path"
+      },
+      "TlsFree": {
+        "import_slot": "0x00B61120",
+        "abi": "stdcall",
+        "stack_dwords": 1,
+        "return": "EAX BOOL",
+        "implemented": false,
+        "reached": false,
+        "call_site_count": 4,
+        "high_caller_count": 2,
+        "notes": "inventoried; not reached"
+      }
+    },
+    "real_ctor_args": {
+      "tls_index_storage": "object+0x240",
+      "tls_value": 0,
+      "value_provenance": "INTEGER_VALUE / NULL"
+    },
+    "parent_allocator": {
+      "parent": "0x009E9340",
+      "allocator_helper": "0x009EB870",
+      "mechanism": "0x009EB870 calls 0x009E9460 for allocator object, then virtual call [vtable+8] (edx) with size/args \u2014 runtime-initialized vtable.",
+      "identity": "vtable-mediated game allocator via global object from 0x009E9460 / 0x0189DA88",
+      "classification": "ORDINARY_GAME_ALLOCATOR",
+      "sub_class": "RUNTIME_INITIALIZED_CALLBACK",
+      "standard_crt": false,
+      "implementation_attempted": false,
+      "note": "Do not substitute malloc. Not Phase-30 scope."
+    }
+  },
   "initialization": [
     {
       "address": "0x0189D1A4",
@@ -375,6 +458,11 @@
     {
       "phase": 29,
       "name": "TlsAlloc depth-3 boundary",
+      "state": "completed"
+    },
+    {
+      "phase": 30,
+      "name": "TlsSetValue dynamic guest TLS",
       "state": "completed"
     }
   ],
@@ -143234,8 +143322,11 @@
       "generated": true,
       "compiled": true,
       "translation_status": "COMPILED",
-      "runtime_status": "PROTECTED_BOUNDARY",
+      "runtime_status": "EXECUTED",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
+      "recorded_execution": true,
+      "completed": true,
+      "first_observed_phase": 30,
       "blocker": "PROTECTED_BOUNDARY",
       "direct_callees": 0
     },
@@ -174778,7 +174869,7 @@
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
       "recorded_execution": true,
       "completed": true,
-      "first_observed_phase": 28,
+      "first_observed_phase": 30,
       "direct_callees": 10
     },
     {

@@ -558,6 +558,10 @@ def build():
         "campaign_summary": ordinary.get("campaign_summary") or {},
         "cisqrt": ordinary.get("cisqrt") or {},
         "harness_capability": ordinary.get("harness_capability") or {},
+        "tls_frontier": (
+            json.load(open(os.path.join(ANALYSIS, "tls-frontier.json"), encoding="utf-8"))
+            if os.path.isfile(os.path.join(ANALYSIS, "tls-frontier.json")) else {}
+        ),
         "initialization": status["initialization"],
         "boundaries": status["boundaries"],
         "helper_cut": helper_summary if helper_summary else "UNKNOWN",
@@ -732,6 +736,43 @@ def _cisqrt_badge(model):
     return "UNKNOWN"
 
 
+def _tls_badge(model):
+    tls = model.get("tls_frontier") or {}
+    dyn = tls.get("dynamic_tls") or {}
+    if not dyn:
+        return "UNMEASURED"
+    def st(name):
+        row = dyn.get(name) or {}
+        if row.get("implemented"):
+            return "IMPLEMENTED"
+        if row.get("reached"):
+            return "REACHED"
+        return "NOT_REACHED" if name in dyn else "PENDING"
+    return "Alloc=%s Set=%s Get=%s Free=%s thr=%s" % (
+        st("TlsAlloc"), st("TlsSetValue"), st("TlsGetValue"), st("TlsFree"),
+        tls.get("active_guest_thread_contexts") or "?",
+    )
+
+
+def _tls_html_table(model):
+    tls = model.get("tls_frontier") or {}
+    dyn = tls.get("dynamic_tls") or {}
+    rows = [
+        ("TlsAlloc", "IMPLEMENTED" if (dyn.get("TlsAlloc") or {}).get("implemented") else "PENDING"),
+        ("TlsSetValue", "IMPLEMENTED" if (dyn.get("TlsSetValue") or {}).get("implemented") else "PENDING"),
+        ("TlsGetValue", (
+            "IMPLEMENTED" if (dyn.get("TlsGetValue") or {}).get("implemented")
+            else ("NOT_REACHED" if dyn.get("TlsGetValue") else "PENDING"))),
+        ("TlsFree", (
+            "IMPLEMENTED" if (dyn.get("TlsFree") or {}).get("implemented")
+            else ("NOT_REACHED" if dyn.get("TlsFree") else "PENDING"))),
+        ("Guest thread contexts", "%s currently (no general threading)" % (
+            tls.get("active_guest_thread_contexts") or 1)),
+        ("Category", tls.get("category") or "DYNAMIC_WIN32_TLS"),
+    ]
+    return html_table(("Item", "Status"), rows)
+
+
 def _top_island_badge(model):
     top = model.get("top_ordinary_island") or {}
     if not top:
@@ -860,6 +901,7 @@ def render_svg(model, detailed=False):
         ("REAL UC EXECUTION", _real_uc_execution_badge(model)),
         ("ORDINARY INITIALIZATION", _ordinary_init_badge(model)),
         ("CRT _CIsqrt", _cisqrt_badge(model)),
+        ("DYNAMIC WIN32 TLS", _tls_badge(model)),
     ]
     parts = []
     y = badge_row(parts, badges, 14)
@@ -985,6 +1027,9 @@ th { color: #8b949e; font-weight: 600; }
 %s
 <h2>Ordinary initialization</h2>
 %s
+<h2>Dynamic Win32 TLS</h2>
+%s
+<p>Guest-managed indices/values only. Not host TLS. Not a general threading runtime.</p>
 <p>CRT <code>_CIsqrt</code>: %s. ABI: X87 ST0→ST0.</p>
 <p>Independent of <code>0x00686000</code>: %s. Discovery-enrolled on HIGH graph: %s. Runtime enterable now: %s. Call <code>%s</code> in <code>%s</code> (%s).</p>
 <p>Active objective: %s</p>
@@ -1117,6 +1162,7 @@ document.querySelectorAll("rect[data-addr]").forEach(function (node) {
             ("unknown", (model.get("ordinary_runtime_frontier") or {}).get("INIT_BLOCKED_UNKNOWN") or "?"),
             ("depth-3 potential", (model.get("ordinary_runtime_frontier") or {}).get("ENTERABLE_WITH_DEPTH_3_POTENTIAL") or "?"),
         ]),
+        _tls_html_table(model),
         html.escape(_cisqrt_badge(model)),
         html.escape(graphics["independent_of_0x00686000"]),
         html.escape(graphics["reachable_from_high_graph"]),
@@ -1256,6 +1302,7 @@ def render_png(model):
         ("REAL UC EXECUTION", _real_uc_execution_badge(model)),
         ("ORDINARY INITIALIZATION", _ordinary_init_badge(model)),
         ("CRT _CIsqrt", _cisqrt_badge(model)),
+        ("DYNAMIC WIN32 TLS", _tls_badge(model)),
     ]
 
     # Measure height with the same geometry as the SVG.
