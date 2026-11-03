@@ -1,6 +1,6 @@
 {
-  "current_phase": 27,
-  "strategy": "Phase 27: ordinary initialization. Recovered POD contracts; executed 0x00929972\u21920x00924D30 chain (depth 2) and 0x00949920. 0x0072EAE0 blocked by .securom jump slot 0x023AF9C8. Graphics frozen.",
+  "current_phase": 28,
+  "strategy": "Phase 28: ordinary init depth. Track A 0x00A52DF0 NO_ORDINARY_INIT_PATH. Executed ctor 0x009E9160\u21920x009E9990\u21920x009E7710 depth 3; BSS parent 0x0072D640\u2192leaf then protected. Graphics frozen.",
   "boundaries": {
     "0x00686000": {
       "status": "PROTECTED_OR_EXTERNAL_DEPENDENCY",
@@ -100,7 +100,7 @@
     "enterable_now": "NO",
     "object": "0x01318170",
     "esi_slot": "0x00B615C4",
-    "active_objective": "FROZEN; expand ordinary init/execution depth",
+    "active_objective": "FROZEN; deepen ordinary chains / init",
     "blockers": [
       "FIRST_FRAME_PATH_BLOCKED_BY_PROTECTED_BACKEND",
       "ORDINARY_FRONTEND_PROTECTED_BACKEND",
@@ -184,6 +184,42 @@
       "phase": 27,
       "completed": true,
       "evidence": "Phase 27: math leaf POD contract; cos/sin/sqrt HLE"
+    },
+    {
+      "address": "0x009E9160",
+      "phase": 28,
+      "completed": true,
+      "evidence": "Phase 28: ordinary ctor depth-3 root"
+    },
+    {
+      "address": "0x009E9990",
+      "phase": 28,
+      "completed": true,
+      "evidence": "Phase 28: ordinary initializer nested under ctor"
+    },
+    {
+      "address": "0x009E7710",
+      "phase": 28,
+      "completed": true,
+      "evidence": "Phase 28: base ctor/refcount helper"
+    },
+    {
+      "address": "0x0072D640",
+      "phase": 28,
+      "completed": true,
+      "evidence": "Phase 28: BSS-table parent; protected after XOR leaf"
+    },
+    {
+      "address": "0x00721050",
+      "phase": 28,
+      "completed": true,
+      "evidence": "Phase 28: returns BSS table 0xCEA3B8"
+    },
+    {
+      "address": "0x007212F0",
+      "phase": 28,
+      "completed": true,
+      "evidence": "Phase 28: table mix helper"
     }
   ],
   "phases": [
@@ -310,6 +346,11 @@
     {
       "phase": 27,
       "name": "Ordinary initialization frontier",
+      "state": "completed"
+    },
+    {
+      "phase": 28,
+      "name": "Ordinary initialization depth",
       "state": "completed"
     }
   ],
