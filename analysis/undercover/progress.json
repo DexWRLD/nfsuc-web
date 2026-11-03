@@ -1,8 +1,8 @@
 {
   "project": {
     "name": "nfsuc-web",
-    "current_phase": 57,
-    "strategy": "Original Apt lookup-to-hash prefix selects localToGlobal candidate in Edge. Full comparison, cache and native dispatch remain unverified."
+    "current_phase": 58,
+    "strategy": "Original error-screen queue append and scanner tested in Edge with synthetic guest fixtures. Native queue state, Apt dispatch and screen display remain unverified."
   },
   "discovery": {
     "candidates": 25450,

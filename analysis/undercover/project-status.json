@@ -1,6 +1,6 @@
 {
-  "current_phase": 57,
-  "strategy": "Original Apt lookup-to-hash prefix selects localToGlobal candidate in Edge. Full comparison, cache and native dispatch remain unverified.",
+  "current_phase": 58,
+  "strategy": "Original error-screen queue append and scanner tested in Edge with synthetic guest fixtures. Native queue state, Apt dispatch and screen display remain unverified.",
   "boundaries": {
     "0x00686000": {
       "status": "PROTECTED_OR_EXTERNAL_DEPENDENCY",
