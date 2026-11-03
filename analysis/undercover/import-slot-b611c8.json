@@ -1,0 +1,31 @@
+{
+  "slot": "0x00B611C8",
+  "section": ".rdata",
+  "initial_pe_dword": "0x008A9F82",
+  "hint": 870,
+  "symbol": "TlsSetValue",
+  "dll": "KERNEL32.dll",
+  "dlls_matching_name": [
+    "KERNEL32.dll"
+  ],
+  "classification": "STANDARD_WIN32_IMPORT",
+  "abi": "stdcall",
+  "stack_dwords": 2,
+  "abi_confidence": "PROVEN",
+  "public_standard": true,
+  "hle_justified": true,
+  "call_sites": [
+    "0x0097739D",
+    "0x00977808",
+    "0x009781E6",
+    "0x00978292",
+    "0x009784A6",
+    "0x00978559",
+    "0x00A0B0CF",
+    "0x00A0E475"
+  ],
+  "call_site_count": 8,
+  "owner_function_count": 6,
+  "high_caller_count": 6,
+  "import_directory_note": "Ordinary .rdata B610\u2013B617 window holds unbound hint/name RVAs; official Import/IAT dirs live in .securom (not read for dispatch)."
+}

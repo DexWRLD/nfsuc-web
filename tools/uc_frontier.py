@@ -22,6 +22,7 @@ IMPLEMENTED = {
     "strncpy",
     "_CIsin", "_CIcos", "_CIacos", "_CIsqrt",
     "TlsAlloc",
+    "TlsSetValue",
 }
 # Deterministic helpers whose convention is already recorded as cdecl and whose
 # operation is a pure value transform. Not a promise they are implemented.

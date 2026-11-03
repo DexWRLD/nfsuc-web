@@ -1,6 +1,6 @@
 {
   "note": "Analysis only. win32_call is unchanged. confidence is high only when one DLL owns the symbol and the convention is not unknown. DirectX ordinals and helper exports stay unknown. call_sites counts direct calls. tail_jumps are separate and are not added in.",
-  "thunks": 200,
+  "thunks": 203,
   "resolved": 169,
   "unresolved_slots": 0,
   "by_convention": {
@@ -2214,6 +2214,42 @@
       "tail_jumps": 0,
       "confidence": "high",
       "note": "IAT-direct ordinary call sites (call dword ptr [slot]); no jmp-thunk stub. Unbound PE name hint 867. Thunk key equals IAT slot for UC binding sentinel."
+    },
+    {
+      "dll": "KERNEL32.dll",
+      "symbol": "TlsSetValue",
+      "ordinal": null,
+      "thunk": "0x00B611C8",
+      "iat_slot": "0x00B611C8",
+      "calling_convention": "stdcall",
+      "call_sites": 8,
+      "tail_jumps": 0,
+      "confidence": "high",
+      "note": "IAT-direct call dword ptr [slot]; unbound hint 870. Thunk key = IAT slot."
+    },
+    {
+      "dll": "KERNEL32.dll",
+      "symbol": "TlsGetValue",
+      "ordinal": null,
+      "thunk": "0x00B611CC",
+      "iat_slot": "0x00B611CC",
+      "calling_convention": "stdcall",
+      "call_sites": 1354,
+      "tail_jumps": 0,
+      "confidence": "high",
+      "note": "Inventoried Phase 30; HLE not implemented unless reached."
+    },
+    {
+      "dll": "KERNEL32.dll",
+      "symbol": "TlsFree",
+      "ordinal": null,
+      "thunk": "0x00B61120",
+      "iat_slot": "0x00B61120",
+      "calling_convention": "stdcall",
+      "call_sites": 4,
+      "tail_jumps": 0,
+      "confidence": "high",
+      "note": "Inventoried Phase 30; HLE not implemented unless reached."
     }
   ]
 }

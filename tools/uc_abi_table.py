@@ -29,6 +29,7 @@ KNOWN = {
 # Public Win32 stdcall helpers with proven zero stack args.
 STDCALL_KNOWN = {
     "TlsAlloc": (0, "UC_HLE_TLSALLOC"),
+    "TlsSetValue": (2, "UC_HLE_TLSSETVALUE"),
 }
 # public: void type_info::_type_info_dtor_internal_method(void)
 THISCALL_NO_STACK = "?_type_info_dtor_internal_method@type_info@@QAEXXZ"
@@ -72,7 +73,7 @@ def main():
             dwords, hle = KNOWN[symbol]
         elif symbol in STDCALL_KNOWN and row["calling_convention"] == "stdcall":
             dwords, hle = STDCALL_KNOWN[symbol]
-            arg_loc = "UC_LOC_NONE"
+            arg_loc = "UC_LOC_NONE" if dwords == 0 else "UC_LOC_STACK"
         elif symbol in X87 and row["calling_convention"] == "cdecl":
             dwords, hle = 0, X87[symbol]
             arg_loc, ret_loc = "UC_LOC_ST0", "UC_LOC_ST0"
