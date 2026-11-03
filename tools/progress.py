@@ -515,6 +515,10 @@ def build():
         "covered_bytes": function_map.get("covered_bytes"),
         "text_size": function_map.get("text_size"),
     }
+    frontier = dict(ordinary.get("ordinary_runtime_frontier") or {})
+    execution = load_json("phase51-execution.json")["metrics_delta"]
+    frontier.update(UNIQUE=execution["unique_after"], EXECUTED=execution["unique_after"],
+                    ENTERABLE=execution["enterable_after"], EXECUTION_RUNS=execution["runs_after"])
     model = {
         "project": {
             "name": "nfsuc-web",
@@ -553,7 +557,8 @@ def build():
                 "DISCOVERED_HIGH != CALL_GRAPH_REACHABLE != RUNTIME_ENTERABLE."
             ),
         },
-        "ordinary_runtime_frontier": ordinary.get("ordinary_runtime_frontier") or {},
+        "ordinary_runtime_frontier": frontier,
+        "execution_ledger": "phase51-execution.json",
         "top_ordinary_island": ordinary.get("top_ordinary_island") or {},
         "campaign_summary": ordinary.get("campaign_summary") or {},
         "cisqrt": ordinary.get("cisqrt") or {},

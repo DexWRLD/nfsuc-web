@@ -1,8 +1,8 @@
 {
   "project": {
     "name": "nfsuc-web",
-    "current_phase": 52,
-    "strategy": "Phase 52: authorized startup JPEG and shipped EA bumper playback verified in Chromium over HTTPS. Original audio and startup order unverified. Guest boot and gameplay first frame remain blocked."
+    "current_phase": 53,
+    "strategy": "Undercover browser initializer diagnostic and authentic media preview. Full boot and gameplay first frame blocked."
   },
   "discovery": {
     "candidates": 25450,
@@ -53,8 +53,8 @@
       "PROTECTED_BOUNDARY": 792,
       "UNKNOWN": 23652
     },
-    "ready_closure": 19,
-    "ready_with_imports_closure": 35,
+    "ready_closure": null,
+    "ready_with_imports_closure": null,
     "note": "A compiled function is not a function that has run. DISCOVERED_HIGH != CALL_GRAPH_REACHABLE != RUNTIME_ENTERABLE."
   },
   "ordinary_runtime_frontier": {
@@ -63,10 +63,10 @@
     "STATIC_READY": 20762,
     "IMPORT_READY": 737,
     "RUNTIME_READY": 72,
-    "ENTERABLE": 33,
-    "EXECUTED": 67,
-    "UNIQUE": 67,
-    "EXECUTION_RUNS": 265,
+    "ENTERABLE": 50,
+    "EXECUTED": 84,
+    "UNIQUE": 84,
+    "EXECUTION_RUNS": 358,
     "CLEAN_ORDINARY_ROOTS": 13,
     "EXECUTED_ORDINARY_CONSTRUCTORS": 9,
     "DEEPEST": 4,
@@ -87,6 +87,7 @@
       2
     ]
   },
+  "execution_ledger": "phase51-execution.json",
   "top_ordinary_island": {},
   "campaign_summary": {
     "phase42_sequences": 10,
@@ -214,7 +215,7 @@
     "parent_allocator": {
       "parent": "0x009E9340",
       "allocator_helper": "0x009EB870",
-      "mechanism": "0x009EB870 calls 0x009E9460 for allocator object, then virtual call [vtable+8] (edx) with size/args — runtime-initialized vtable.",
+      "mechanism": "0x009EB870 calls 0x009E9460 for allocator object, then virtual call [vtable+8] (edx) with size/args \u2014 runtime-initialized vtable.",
       "identity": "vtable-mediated game allocator via global object from 0x009E9460 / 0x0189DA88",
       "classification": "ORDINARY_GAME_ALLOCATOR",
       "sub_class": "RUNTIME_INITIALIZED_CALLBACK",
@@ -228,7 +229,7 @@
     "category": "WIN32_SYNCHRONIZATION",
     "guest_threads": 1,
     "scheduler": "NONE",
-    "model": "SINGLE GUEST THREAD — LIMITED SYNC MODEL",
+    "model": "SINGLE GUEST THREAD \u2014 LIMITED SYNC MODEL",
     "kept_separate": {
       "DYNAMIC_WIN32_TLS": true,
       "PE_STATIC_TLS": true,
@@ -375,9 +376,9 @@
             "init": "0"
           }
         ],
-        "runtime_side_table": "guest VA → {initialized, owned, owner_thread, recursion}; no host CRITICAL_SECTION pointer stored in guest memory",
+        "runtime_side_table": "guest VA \u2192 {initialized, owned, owner_thread, recursion}; no host CRITICAL_SECTION pointer stored in guest memory",
         "repeat_init_policy": "re-write guest fields and reset side-table ownership (Windows: undefined)",
-        "invalid_pointer": "NULL or unmapped → HLE fails (*ok=0); not treated as success",
+        "invalid_pointer": "NULL or unmapped \u2192 HLE fails (*ok=0); not treated as success",
         "guest_threads": 1,
         "scheduler": "NONE"
       },
@@ -701,7 +702,7 @@
       "limitations": [
         "WaitForSingleObject / ReleaseMutex not implemented",
         "ERROR_ALREADY_EXISTS not modeled",
-        "No guest scheduler — blocking waits would be BLOCKED_THREAD_SCHEDULER"
+        "No guest scheduler \u2014 blocking waits would be BLOCKED_THREAD_SCHEDULER"
       ],
       "tests": "uc_phase32_test.py"
     },
@@ -1257,7 +1258,7 @@
     "priority_class_mutable": true,
     "thread_priority_initial": "THREAD_PRIORITY_NORMAL (0)",
     "thread_priority_mutable": true,
-    "host_scheduling_policy": "UNCHANGED — guest state only",
+    "host_scheduling_policy": "UNCHANGED \u2014 guest state only",
     "GetCurrentThread": {
       "slot": "0x00B611DC",
       "dll": "KERNEL32.dll",
@@ -1415,10 +1416,10 @@
         "0097F8E1: call ebx"
       ],
       "sequence": [
-        "GetCurrentProcess → EDI (0xFFFFFFFF)",
-        "GetPriorityClass(EDI) → save NORMAL",
-        "GetCurrentThread → ESI (0xFFFFFFFE)",
-        "GetThreadPriority(ESI) → save NORMAL(0)",
+        "GetCurrentProcess \u2192 EDI (0xFFFFFFFF)",
+        "GetPriorityClass(EDI) \u2192 save NORMAL",
+        "GetCurrentThread \u2192 ESI (0xFFFFFFFE)",
+        "GetThreadPriority(ESI) \u2192 save NORMAL(0)",
         "SetPriorityClass(EDI, 0x100 REALTIME_PRIORITY_CLASS)",
         "SetThreadPriority(ESI, 0xF THREAD_PRIORITY_TIME_CRITICAL)",
         "QueryPerformanceCounter / QueryPerformanceFrequency (timing)",
@@ -1826,7 +1827,7 @@
         "bAlertable": 1
       },
       "arg_provenance": "immediate push 1; push 0x32",
-      "return_usage": "IGNORED — next insn lea ecx,[esp+0x10]; call QPC",
+      "return_usage": "IGNORED \u2014 next insn lea ecx,[esp+0x10]; call QPC",
       "post_sleep_loop": "je 0x97F8D0 retries SleepEx until calibration threshold 0.25",
       "shape": [
         "0097F8D0: fstp st(0)",
@@ -1849,7 +1850,7 @@
       "supported_finite_alertable_timeout": true,
       "apc_delivery": false,
       "zero_timeout": "immediate complete; no invented elapsed time",
-      "infinite_timeout": "rejected (*ok=0) — BLOCKED_INFINITE_WAIT class",
+      "infinite_timeout": "rejected (*ok=0) \u2014 BLOCKED_INFINITE_WAIT class",
       "pending_apc_guard": "uc_wait_set_pending_apc(1) refuses timeout-only path",
       "return_on_timeout": 0,
       "never_returns_WAIT_IO_COMPLETION_without_callback": true,
@@ -1954,7 +1955,7 @@
         "bAlertable": 1
       },
       "arg_provenance": "immediate push 1; push 0x32",
-      "return_usage": "IGNORED — next insn lea ecx,[esp+0x10]; call QPC",
+      "return_usage": "IGNORED \u2014 next insn lea ecx,[esp+0x10]; call QPC",
       "post_sleep_loop": "je 0x97F8D0 retries SleepEx until calibration threshold 0.25",
       "shape": [
         "0097F8D0: fstp st(0)",
@@ -1978,7 +1979,7 @@
       "supported_finite_alertable_timeout": true,
       "apc_delivery": false,
       "zero_timeout": "immediate complete; no invented elapsed time",
-      "infinite_timeout": "rejected (*ok=0) — BLOCKED_INFINITE_WAIT class",
+      "infinite_timeout": "rejected (*ok=0) \u2014 BLOCKED_INFINITE_WAIT class",
       "pending_apc_guard": "uc_wait_set_pending_apc(1) refuses timeout-only path",
       "return_on_timeout": 0,
       "never_returns_WAIT_IO_COMPLETION_without_callback": true,
@@ -2191,7 +2192,7 @@
         "has_closing_brace": true
       },
       "previous_execution_failure_cause": "A. jump table not recognized",
-      "detail": "Harness Phase 31–36 lifted without JTSWITCH=1, so the absolute dword table became DISPATCH_TAIL → dispatch_indirect → BLOCKED_INDIRECT. uc_gen/genall already set JTSWITCH=1 for full builds.",
+      "detail": "Harness Phase 31\u201336 lifted without JTSWITCH=1, so the absolute dword table became DISPATCH_TAIL \u2192 dispatch_indirect \u2192 BLOCKED_INDIRECT. uc_gen/genall already set JTSWITCH=1 for full builds.",
       "correction": "Enable os.environ['JTSWITCH']='1' in uc_harness31.Harness before lift; no address-hardcoded bypass; reusable MSVC pattern.",
       "correction_generic": true,
       "hardcoded_production_bypass_avoided": true,
@@ -2688,7 +2689,7 @@
         "used_by": [
           "0x009E83D0"
         ],
-        "note": "null head → clear early-exit"
+        "note": "null head \u2192 clear early-exit"
       }
     },
     "candidates": [
@@ -3186,7 +3187,7 @@
         "sleepex_done": 5,
         "qpc_ticks": 2500000,
         "final_eax": "0x00000000",
-        "note": "this+=0xE0; [head]==0 after ctor → early exit in 0x009E81C0",
+        "note": "this+=0xE0; [head]==0 after ctor \u2192 early exit in 0x009E81C0",
         "field_e0_pre": "0x00000000"
       },
       {
@@ -4010,7 +4011,7 @@
         "invocation_type": "DIRECT_GUEST_ENTRY",
         "final_eax": "0x009E8E17",
         "family": "VTABLE_PROBE",
-        "note": "arg==this → slot5=0x009E8E00 self; then 0x009E9460 allocator",
+        "note": "arg==this \u2192 slot5=0x009E8E00 self; then 0x009E9460 allocator",
         "virtual_dispatch_attempted": true,
         "sleepex_done": 5,
         "qpc_ticks": 2500000
@@ -5256,7 +5257,7 @@
         "uc_indirect_enters": 0,
         "final_eax": "0x03004498",
         "family": "C",
-        "note": "BLOCKED — +0x14 not interface in standalone"
+        "note": "BLOCKED \u2014 +0x14 not interface in standalone"
       },
       {
         "name": "vcall_wrong_interface_regression",
@@ -5752,13 +5753,13 @@
           "matches_constructor_write": true,
           "classification": "FUNCTION_POINTER",
           "publisher_provenance": "ORDINARY_HELPER_WRITTEN",
-          "producer_chain": "0x009E9160 → 0x009E8AD0",
+          "producer_chain": "0x009E9160 \u2192 0x009E8AD0",
           "callable_target_proven": true,
           "callable_abi": "cdecl / 3 stack args; callee ret 0; early-exit if [0x0189DA84]==0",
           "readers": {
             "kind": "CALL_THROUGH_POINTER",
             "static_indirect_call_sites": 906,
-            "note": "all FF 15 A4 D1 89 01; add esp,0xC — see global-0189d1a4.md"
+            "note": "all FF 15 A4 D1 89 01; add esp,0xC \u2014 see global-0189d1a4.md"
           },
           "eligibility": "ENTERABLE_AFTER_CONSTRUCTOR",
           "eligibility_detail": "Direct invoke of published target early-returns when factory slot 0x0189DA84 is unset; meaningful inner dispatch needs factory publication (allocator-blocked)",
@@ -5774,15 +5775,15 @@
           "matches_constructor_write": true,
           "classification": "FUNCTION_POINTER",
           "publisher_provenance": "ORDINARY_HELPER_WRITTEN",
-          "producer_chain": "0x009E9160 → 0x009E8AD0",
+          "producer_chain": "0x009E9160 \u2192 0x009E8AD0",
           "callable_target_proven": true,
           "callable_abi": "uses 0x009E9460 allocator manager",
           "readers": {
             "kind": "CALL_THROUGH_POINTER",
-            "note": "object-init path call [0x0189D198] → 0x009E77D0 → 0x009E9460"
+            "note": "object-init path call [0x0189D198] \u2192 0x009E77D0 \u2192 0x009E9460"
           },
           "eligibility": "BLOCKED_PROTECTED_INIT",
-          "eligibility_detail": "0x009E77D0 → 0x009E9460 requires [0x0189DA88] allocator"
+          "eligibility_detail": "0x009E77D0 \u2192 0x009E9460 requires [0x0189DA88] allocator"
         }
       ],
       "runtime_vtable_check": {
@@ -5810,13 +5811,13 @@
         "matches_constructor_write": true,
         "classification": "FUNCTION_POINTER",
         "publisher_provenance": "ORDINARY_HELPER_WRITTEN",
-        "producer_chain": "0x009E9160 → 0x009E8AD0",
+        "producer_chain": "0x009E9160 \u2192 0x009E8AD0",
         "callable_target_proven": true,
         "callable_abi": "cdecl / 3 stack args; callee ret 0; early-exit if [0x0189DA84]==0",
         "readers": {
           "kind": "CALL_THROUGH_POINTER",
           "static_indirect_call_sites": 906,
-          "note": "all FF 15 A4 D1 89 01; add esp,0xC — see global-0189d1a4.md"
+          "note": "all FF 15 A4 D1 89 01; add esp,0xC \u2014 see global-0189d1a4.md"
         },
         "eligibility": "ENTERABLE_AFTER_CONSTRUCTOR",
         "eligibility_detail": "Direct invoke of published target early-returns when factory slot 0x0189DA84 is unset; meaningful inner dispatch needs factory publication (allocator-blocked)",
@@ -5832,15 +5833,15 @@
         "matches_constructor_write": true,
         "classification": "FUNCTION_POINTER",
         "publisher_provenance": "ORDINARY_HELPER_WRITTEN",
-        "producer_chain": "0x009E9160 → 0x009E8AD0",
+        "producer_chain": "0x009E9160 \u2192 0x009E8AD0",
         "callable_target_proven": true,
         "callable_abi": "uses 0x009E9460 allocator manager",
         "readers": {
           "kind": "CALL_THROUGH_POINTER",
-          "note": "object-init path call [0x0189D198] → 0x009E77D0 → 0x009E9460"
+          "note": "object-init path call [0x0189D198] \u2192 0x009E77D0 \u2192 0x009E9460"
         },
         "eligibility": "BLOCKED_PROTECTED_INIT",
-        "eligibility_detail": "0x009E77D0 → 0x009E9460 requires [0x0189DA88] allocator"
+        "eligibility_detail": "0x009E77D0 \u2192 0x009E9460 requires [0x0189DA88] allocator"
       }
     ],
     "confidence": "HIGH"
@@ -5890,7 +5891,7 @@
           "push eax",
           "lea ecx, [esi + 4]"
         ],
-        "note": "Existing Phase-39 family — not a second independent lifecycle",
+        "note": "Existing Phase-39 family \u2014 not a second independent lifecycle",
         "penalties": [],
         "independent_of_9E9160": false
       },
@@ -6293,14 +6294,14 @@
           {
             "va": "0x009EB2C0",
             "classification": "INITIALIZER",
-            "note": "rebinds this=[+0x10] then 0x009EBD50 — different larger type",
+            "note": "rebinds this=[+0x10] then 0x009EBD50 \u2014 different larger type",
             "standalone_safe": false,
             "label": "HIGH_CONFIDENCE"
           },
           {
             "va": "0x009EB3A0",
             "classification": "DESTRUCTOR",
-            "note": "calls 0x00686030 — excluded",
+            "note": "calls 0x00686030 \u2014 excluded",
             "standalone_safe": false,
             "label": "HIGH_CONFIDENCE"
           },
@@ -6446,14 +6447,14 @@
             {
               "va": "0x009EB2C0",
               "classification": "INITIALIZER",
-              "note": "rebinds this=[+0x10] then 0x009EBD50 — different larger type",
+              "note": "rebinds this=[+0x10] then 0x009EBD50 \u2014 different larger type",
               "standalone_safe": false,
               "label": "HIGH_CONFIDENCE"
             },
             {
               "va": "0x009EB3A0",
               "classification": "DESTRUCTOR",
-              "note": "calls 0x00686030 — excluded",
+              "note": "calls 0x00686030 \u2014 excluded",
               "standalone_safe": false,
               "label": "HIGH_CONFIDENCE"
             },
@@ -6543,10 +6544,10 @@
         "009E8E15: call edx",
         "009E8E17: xor ebx, ebx"
       ],
-      "receiver_source": "STACK_ARG0 / [esp+4] after prologue → ebp",
+      "receiver_source": "STACK_ARG0 / [esp+4] after prologue \u2192 ebp",
       "receiver_classification": "SEPARATE_INTERFACE_ARGUMENT",
       "receiver_not": "Family A primary this (edi/ecx of outer method)",
-      "vtable_source": "[ebp] → object vtable of arg0",
+      "vtable_source": "[ebp] \u2192 object vtable of arg0",
       "selected_slot": "+0x14 (index 5)",
       "expected_virtual_abi": {
         "ecx": "receiver (arg0)",
@@ -6949,7 +6950,7 @@
     "likely_low": "BLOCKED",
     "likely_high": "BLOCKED",
     "is_estimate": false,
-    "uncertainty": "FIRST_FRAME_PATH_BLOCKED_BY_PROTECTED_BACKEND — Phase 24 final; not an open estimate."
+    "uncertainty": "FIRST_FRAME_PATH_BLOCKED_BY_PROTECTED_BACKEND \u2014 Phase 24 final; not an open estimate."
   },
   "phases": [
     {
@@ -7191,6 +7192,11 @@
       "phase": 50,
       "name": "DXT1 decoder & asset preview contracts",
       "state": "completed"
+    },
+    {
+      "phase": 51,
+      "name": "Authentic startup logo preview & intro inventory",
+      "state": "completed"
     }
   ],
   "milestones": [
@@ -7317,8 +7323,8 @@
     },
     {
       "source": "runtime-frontier-closures.json",
-      "largest_ready_closure": 19,
-      "largest_ready_with_imports": 35
+      "largest_ready_closure": null,
+      "largest_ready_with_imports": null
     }
   ],
   "functions": [
