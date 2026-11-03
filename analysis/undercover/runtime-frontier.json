@@ -1,5 +1,5 @@
 {
-  "phase": 31,
+  "phase": 32,
   "definitions": {
     "ENTERABLE": "All pre-entry required state establishable via primitives, static PE data, standard runtime, or proven ordinary init/ctor. Not merely IMPORT_READY.",
     "DEEPEST_ORDINARY_EXECUTION_CHAIN": "Max nested ordinary UC frames in one harness run.",
@@ -15,8 +15,8 @@
   "compiled": 22770,
   "static_ready": 20762,
   "import_ready": 737,
-  "runtime_ready": 58,
-  "enterable": 19,
+  "runtime_ready": 61,
+  "enterable": 20,
   "enterable_roots": [
     "0x00721050",
     "0x00721070",
@@ -36,6 +36,7 @@
     "0x009E9990",
     "0x009EB350",
     "0x009EB980",
+    "0x009EBC70",
     "0x00B57CD0"
   ],
   "enterable_with_depth_3_potential": 5,
@@ -48,9 +49,12 @@
   ],
   "enterable_with_depth_4_potential": 0,
   "enterable_with_depth_4_potential_roots": [],
-  "enterable_with_depth_5_potential": 0,
-  "enterable_with_depth_5_potential_roots": [],
-  "unique_uc_functions_executed": 34,
+  "proven_depth_4_roots": [
+    "0x0097BB30",
+    "0x00B52140",
+    "0x00B57CF0"
+  ],
+  "unique_uc_functions_executed": 43,
   "unique_uc_functions_executed_list": [
     "0x00721050",
     "0x00721070",
@@ -58,17 +62,26 @@
     "0x0072D640",
     "0x00739B90",
     "0x00808770",
+    "0x0087B59B",
+    "0x0087B640",
+    "0x0087BEB8",
     "0x0088390D",
     "0x00924D30",
     "0x00929972",
     "0x00949920",
     "0x009773C0",
     "0x00977420",
+    "0x009775E0",
     "0x009777D0",
     "0x00977800",
+    "0x00977AF0",
     "0x00977E20",
+    "0x00977FD0",
+    "0x00978040",
     "0x00978720",
     "0x0097BB30",
+    "0x0097F790",
+    "0x0097FCD0",
     "0x009D9310",
     "0x009E0880",
     "0x009E7710",
@@ -87,10 +100,10 @@
     "0x00B57CD0",
     "0x00B57CF0"
   ],
-  "execution_runs": 23,
-  "deepest_ordinary_execution_chain": 3,
-  "largest_executed_ordinary_closure": 7,
-  "clean_ordinary_roots": 10,
+  "execution_runs": 35,
+  "deepest_ordinary_execution_chain": 4,
+  "largest_executed_ordinary_closure": 11,
+  "clean_ordinary_roots": 11,
   "clean_ordinary_roots_list": [
     "0x00721070",
     "0x00808770",
@@ -101,6 +114,7 @@
     "0x009E98F0",
     "0x009EB350",
     "0x009EB980",
+    "0x009EBC70",
     "0x00B57CD0"
   ],
   "executed_ordinary_constructors": 9,
@@ -124,39 +138,35 @@
     "COMPILED": 22770,
     "STATIC_READY": 20762,
     "IMPORT_READY": 737,
-    "RUNTIME_READY": 58,
-    "ENTERABLE": 19,
-    "EXECUTED": 34,
-    "UNIQUE": 34,
-    "EXECUTION_RUNS": 23,
-    "CLEAN_ORDINARY_ROOTS": 10,
+    "RUNTIME_READY": 61,
+    "ENTERABLE": 20,
+    "EXECUTED": 43,
+    "UNIQUE": 43,
+    "EXECUTION_RUNS": 35,
+    "CLEAN_ORDINARY_ROOTS": 11,
     "EXECUTED_ORDINARY_CONSTRUCTORS": 9,
-    "DEEPEST": 3,
-    "LARGEST_CLOSURE": 7,
+    "DEEPEST": 4,
+    "LARGEST_CLOSURE": 11,
     "ENTERABLE_WITH_DEPTH_3_POTENTIAL": 5,
     "ENTERABLE_WITH_DEPTH_4_POTENTIAL": 0,
-    "ENTERABLE_WITH_DEPTH_5_POTENTIAL": 0,
-    "ORDINARY_INIT_RECOVERED": 10,
-    "INIT_BLOCKED_EXTERNAL": 0,
-    "INIT_BLOCKED_PROTECTED": 2,
-    "INIT_BLOCKED_UNKNOWN": 4,
-    "LATEST_REAL_RUNTIME_BOUNDARY": "KERNEL32!InitializeCriticalSection / CreateMutexA via 0x00977420",
+    "PROVEN_DEPTH_4_ROOTS": 3,
+    "LATEST_REAL_RUNTIME_BOUNDARY": "GetPriorityClass",
     "MOST_COMMON_REAL_BLOCKER": [
-      "InitializeCriticalSection",
-      4
+      "REQUIRED_STATE:UNKNOWN_OBJECT",
+      2
     ]
   },
   "campaign_summary": {
-    "phase31_attempted": 12,
+    "phase32_attempted": 12,
     "outcomes": {
-      "EXECUTED_TO_NEXT_BLOCKER": 5,
-      "EXECUTED_CHAIN": 5,
-      "UNKNOWN": 1,
-      "BLOCKED_REQUIRED_STATE": 1
+      "EXECUTED_TO_NEXT_BLOCKER": 2,
+      "EXECUTED_CHAIN": 6,
+      "BLOCKED_REQUIRED_STATE": 3,
+      "UNKNOWN": 1
     },
     "real_blocker_histogram": {
-      "REQUIRED_STATE": 2,
-      "IMPORT": 5,
+      "REQUIRED_STATE": 4,
+      "IMPORT": 2,
       "INDIRECT": 0,
       "MEMORY": 0,
       "TLS": 0,
@@ -164,10 +174,10 @@
       "TIMING": 0,
       "EXTERNAL": 0,
       "PROTECTED": 0,
-      "CLEAN_RETURN": 5
+      "CLEAN_RETURN": 6
     },
     "required_state_histogram": {
-      "UNKNOWN_OBJECT": 0,
+      "UNKNOWN_OBJECT": 2,
       "UNKNOWN_PARENT": 0,
       "UNKNOWN_GLOBAL": 0,
       "UNKNOWN_BUFFER": 0,
@@ -177,57 +187,69 @@
       "OTHER": 1
     },
     "most_common_next_blocker": [
-      "InitializeCriticalSection",
-      4
+      "REQUIRED_STATE:UNKNOWN_OBJECT",
+      2
     ],
-    "deepest_chain": 3,
-    "largest_executed_closure": 7,
-    "clean_ordinary_roots": 10,
+    "deepest_chain": 4,
+    "largest_executed_closure": 11,
+    "clean_ordinary_roots": 11,
     "executed_ordinary_constructors": 9,
-    "latest_newly_executed_root": "0x009E9160",
-    "deepest_successful_sequence": [
-      "0x009E9160",
-      "0x009E7710",
-      "0x009E9990",
-      "0x009E9460",
-      "0x009773C0",
-      "0x00977E20",
-      "0x00977420"
+    "ics_implemented": true,
+    "create_mutex_a_implemented": true,
+    "get_current_process_implemented": true,
+    "enter_leave_delete_implemented": false,
+    "ctor_status": {
+      "before_phase32": "EXECUTED_TO_NEXT_BLOCKER / InitializeCriticalSection (no-stub)",
+      "phase30_mislabel": "RETURNED_CLEAN_WITH_STUBS",
+      "after_phase32": "EXECUTED_TO_NEXT_BLOCKER",
+      "after_blocker": "GetPriorityClass",
+      "returned_clean": false,
+      "ics_calls": 1,
+      "entered": [
+        "0x009E9160",
+        "0x009E7710",
+        "0x009E9990",
+        "0x009E9460",
+        "0x009773C0",
+        "0x00977E20",
+        "0x00977420",
+        "0x009EB980",
+        "0x00978720",
+        "0x0097FCD0",
+        "0x0097F790"
+      ],
+      "depth": 3,
+      "getcurrentprocess_reached": true,
+      "getcurrentprocess_passed": true,
+      "getcurrentprocess_implemented": true
+    },
+    "ics_blocker_reduction": "4 Phase-31 ICS stops cleared on replay",
+    "mutex_blocker_reduction": "1 Phase-31 CreateMutexA stop cleared; next was CRT fault",
+    "proven_depth_4_roots": [
+      "0x0097BB30",
+      "0x00B52140",
+      "0x00B57CF0"
     ],
-    "allocator_classification": "PROTECTED_INITIALIZED_ALLOCATOR",
-    "allocator_target_resolved": "NO",
-    "allocator_init_path_ordinary": "NO",
-    "factory_9e9340_enterable": "NO",
-    "ctor_non_allocating_callers": 0,
-    "depth4_candidates": 0,
-    "depth5_candidates": 0,
     "tlsalloc_implemented": true,
     "tlssetvalue_implemented": true,
-    "tlsgetvalue_implemented": false,
-    "tlsfree_implemented": false,
     "tlsgetvalue_reached": false,
-    "InitializeCriticalSection_reached": true,
-    "InitializeCriticalSection_implemented": false,
-    "CreateMutexA_reached": true,
-    "CreateMutexA_implemented": false,
-    "CIpow_reached": false,
-    "floor_reached": false,
-    "malloc_free_reached": false,
+    "tlsfree_reached": false,
+    "scheduler": false,
     "filesystem_reached": false,
     "timing_reached": false,
-    "diagnostic_cs_noop": {
-      "counted_in_metrics": false,
-      "next_blocker": "GetCurrentProcess",
-      "depth_max": 3
-    }
+    "protected_boundary_encountered": false
   },
-  "allocator": {
-    "classification": "PROTECTED_INITIALIZED_ALLOCATOR",
-    "ALLOCATOR_TARGET_RESOLVED": "NO",
-    "ALLOCATOR_INIT_PATH_ORDINARY": "NO",
-    "factory_enterable": "NO"
+  "synchronization": {
+    "InitializeCriticalSection": "IMPLEMENTED",
+    "CreateMutexA": "IMPLEMENTED",
+    "GetCurrentProcess": "IMPLEMENTED",
+    "EnterCriticalSection": "NOT_IMPLEMENTED",
+    "LeaveCriticalSection": "NOT_IMPLEMENTED",
+    "DeleteCriticalSection": "NOT_IMPLEMENTED",
+    "guest_threads": 1,
+    "scheduler": "NONE"
   },
   "first_frame": "FIRST_FRAME_PATH_BLOCKED_BY_PROTECTED_BACKEND",
   "graphics_frozen": true,
-  "recommended_phase32": "Allocator at [0x0189DA88] is PROTECTED_INITIALIZED_ALLOCATOR (value from 0x00686000); Track A stopped \u2014 do not implement/emulate. 0x009E9160 has no non-allocating callers. Live no-stub campaign: deepest remains 3; most common real blocker is KERNEL32!InitializeCriticalSection (and CreateMutexA) via 0x00977420 across independent ctor/static-init chains. Diagnostic (uncounted) CS no-op next hits GetCurrentProcess. Phase 32: EXPAND THREADING/TLS RUNTIME for sync primitives reached on ordinary paths. Do not reopen graphics/A52DF0. TlsGetValue still NOT REACHED."
+  "recommended_phase33": "InitializeCriticalSection, CreateMutexA, and GetCurrentProcess are implemented for the single-guest-thread model. Constructor 0x009E9160 now reaches GetPriorityClass (process affinity/priority family) after real sync+GCP. Independent root 0x0097BB30 reaches CreateSemaphoreA at proven depth 4. Phase 33: either EXPAND THREADING/TLS RUNTIME for GetPriorityClass / CreateSemaphoreA if those stay on ordinary paths, or EXPAND REAL UC EXECUTION on newly cleaned sync consumers. Do not open graphics/allocator. Enter/Leave/Delete remain unimplemented until legitimately required."
 }

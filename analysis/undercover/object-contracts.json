@@ -1,5 +1,5 @@
 {
-  "phase": 31,
+  "phase": 32,
   "contracts": [
     {
       "object_id": "allocator_mgr_189da88",
@@ -1217,5 +1217,14 @@
     },
     "non_allocating_callers": [],
     "best_non_allocating_parent": null
+  },
+  "synchronization_lock_977420": {
+    "object_id": "sync_lock_977420",
+    "target_root": "0x00977420",
+    "ownership": "EMBEDDED CRITICAL_SECTION at object+0 OR mutex HANDLE at +0",
+    "initializer": "0x00977E20",
+    "producer": "KERNEL32!InitializeCriticalSection / CreateMutexA",
+    "enterability": "ENTERABLE_AFTER_STANDARD_RUNTIME",
+    "confidence": "PROVEN"
   }
 }
