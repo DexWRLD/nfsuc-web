@@ -715,11 +715,12 @@ def _ordinary_init_badge(model):
     orf = model.get("ordinary_runtime_frontier") or {}
     if not orf:
         return "UNMEASURED"
-    return "rec=%s ext=%s prot=%s unk=%s" % (
+    return "rec=%s ext=%s prot=%s unk=%s d3=%s" % (
         orf.get("ORDINARY_INIT_RECOVERED") or "?",
         orf.get("INIT_BLOCKED_EXTERNAL") or "?",
         orf.get("INIT_BLOCKED_PROTECTED") or "?",
         orf.get("INIT_BLOCKED_UNKNOWN") or "?",
+        orf.get("ENTERABLE_WITH_DEPTH_3_POTENTIAL") or "?",
     )
 
 
@@ -1102,6 +1103,7 @@ document.querySelectorAll("rect[data-addr]").forEach(function (node) {
             ("deepest chain", (model.get("campaign_summary") or {}).get("deepest_chain") or "?"),
             ("largest executed closure", (model.get("campaign_summary") or {}).get("largest_executed_closure") or "?"),
             ("enterable", (model.get("ordinary_runtime_frontier") or {}).get("ENTERABLE") or "?"),
+            ("depth-3 candidates", (model.get("ordinary_runtime_frontier") or {}).get("ENTERABLE_WITH_DEPTH_3_POTENTIAL") or "?"),
             ("most common next blocker", (
                 (model.get("campaign_summary") or {}).get("most_common_next_blocker") or ("?", 0)
             )[0] if isinstance((model.get("campaign_summary") or {}).get("most_common_next_blocker"), (list, tuple))
@@ -1113,6 +1115,7 @@ document.querySelectorAll("rect[data-addr]").forEach(function (node) {
             ("external", (model.get("ordinary_runtime_frontier") or {}).get("INIT_BLOCKED_EXTERNAL") or "?"),
             ("protected", (model.get("ordinary_runtime_frontier") or {}).get("INIT_BLOCKED_PROTECTED") or "?"),
             ("unknown", (model.get("ordinary_runtime_frontier") or {}).get("INIT_BLOCKED_UNKNOWN") or "?"),
+            ("depth-3 potential", (model.get("ordinary_runtime_frontier") or {}).get("ENTERABLE_WITH_DEPTH_3_POTENTIAL") or "?"),
         ]),
         html.escape(_cisqrt_badge(model)),
         html.escape(graphics["independent_of_0x00686000"]),

@@ -1,8 +1,8 @@
 {
   "project": {
     "name": "nfsuc-web",
-    "current_phase": 27,
-    "strategy": "Phase 27: ordinary initialization. Recovered POD contracts; executed 0x00929972\u21920x00924D30 chain (depth 2) and 0x00949920. 0x0072EAE0 blocked by .securom jump slot 0x023AF9C8. Graphics frozen."
+    "current_phase": 28,
+    "strategy": "Phase 28: ordinary init depth. Track A 0x00A52DF0 NO_ORDINARY_INIT_PATH. Executed ctor 0x009E9160\u21920x009E9990\u21920x009E7710 depth 3; BSS parent 0x0072D640\u2192leaf then protected. Graphics frozen."
   },
   "discovery": {
     "candidates": 25450,
@@ -36,14 +36,14 @@
     "note": "The badge is the current high-confidence.json compile record. Green cells are discovery-enrolled HIGH functions that generated and compiled. Map 'reachable' means discovery enrollment, not proven call-graph reachability."
   },
   "runtime": {
-    "recorded_completed": 7,
-    "recorded_entries": 9,
+    "recorded_completed": 13,
+    "recorded_entries": 15,
     "recorded_without_map_cell": [
       "0x00929972"
     ],
     "unlogged_entries": "UNKNOWN",
     "counts": {
-      "EXECUTED": 7,
+      "EXECUTED": 13,
       "READY": 0,
       "RUNTIME_READY_NOT_EXECUTED": 54,
       "BLOCKED_INITIALIZATION": 0,
@@ -51,7 +51,7 @@
       "BLOCKED_IMPORT": 732,
       "BLOCKED_EXTERNAL": 74,
       "PROTECTED_BOUNDARY": 793,
-      "UNKNOWN": 23659
+      "UNKNOWN": 23653
     },
     "ready_closure": 19,
     "ready_with_imports_closure": 35,
@@ -63,44 +63,49 @@
     "STATIC_READY": 20762,
     "IMPORT_READY": 737,
     "RUNTIME_READY": 54,
-    "ENTERABLE": 6,
-    "EXECUTED": 8,
-    "ORDINARY_INIT_RECOVERED": 4,
+    "ENTERABLE": 12,
+    "EXECUTED": 15,
+    "ORDINARY_INIT_RECOVERED": 5,
     "INIT_BLOCKED_EXTERNAL": 0,
     "INIT_BLOCKED_PROTECTED": 1,
-    "INIT_BLOCKED_UNKNOWN": 4
+    "INIT_BLOCKED_UNKNOWN": 4,
+    "ENTERABLE_WITH_DEPTH_3_POTENTIAL": 1,
+    "DEEPEST": 3,
+    "LARGEST_CLOSURE": 4
   },
   "top_ordinary_island": {},
   "campaign_summary": {
-    "phase27_attempted": 7,
+    "phase28_attempted": 9,
     "outcomes": {
-      "EXECUTED_CHAIN": 1,
-      "EXECUTED_CLEAN": 1,
-      "BLOCKED_PROTECTED": 1,
-      "BLOCKED_REQUIRED_STATE": 4
+      "EXECUTED_TO_NEXT_BLOCKER": 2,
+      "BLOCKED_REQUIRED_STATE": 6,
+      "BLOCKED_PROTECTED": 1
     },
     "most_common_next_blocker": [
       "BLOCKED_REQUIRED_STATE",
-      4
+      6
     ],
-    "deepest_chain": 2,
-    "largest_executed_closure": 2,
-    "latest_newly_executed_root": "0x00929972",
+    "deepest_chain": 3,
+    "largest_executed_closure": 4,
+    "latest_newly_executed_root": "0x009E9160",
+    "deepest_successful_sequence": [
+      "0x009E9160",
+      "0x009E9990",
+      "0x009E7710"
+    ],
+    "constructor_method_chain": true,
+    "pod_grandparent_chain": false,
     "CIpow_reached": false,
     "floor_reached": false,
     "malloc_free_reached": false,
     "filesystem_reached": false,
     "timing_reached": false,
     "tls_reached": false,
-    "seh_required": false
+    "seh_required": false,
+    "unresolved_indirect_reached": true
   },
-  "cisqrt": {
-    "hle": "UC_HLE_CISQRT",
-    "status": "IMPLEMENTED"
-  },
-  "harness_capability": {
-    "crt_cisqrt": "IMPLEMENTED"
-  },
+  "cisqrt": {},
+  "harness_capability": {},
   "initialization": [
     {
       "address": "0x0189D1A4",
@@ -208,7 +213,7 @@
     "enterable_now": "NO",
     "object": "0x01318170",
     "esi_slot": "0x00B615C4",
-    "active_objective": "FROZEN; expand ordinary init/execution depth",
+    "active_objective": "FROZEN; deepen ordinary chains / init",
     "blockers": [
       "FIRST_FRAME_PATH_BLOCKED_BY_PROTECTED_BACKEND",
       "ORDINARY_FRONTEND_PROTECTED_BACKEND",
@@ -362,6 +367,11 @@
     {
       "phase": 27,
       "name": "Ordinary initialization frontier",
+      "state": "completed"
+    },
+    {
+      "phase": 28,
+      "name": "Ordinary initialization depth",
       "state": "completed"
     }
   ],
@@ -27720,8 +27730,11 @@
       "generated": true,
       "compiled": true,
       "translation_status": "COMPILED",
-      "runtime_status": "UNKNOWN",
+      "runtime_status": "EXECUTED",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
+      "recorded_execution": true,
+      "completed": true,
+      "first_observed_phase": 28,
       "direct_callees": 0
     },
     {
@@ -27800,8 +27813,11 @@
       "generated": true,
       "compiled": true,
       "translation_status": "COMPILED",
-      "runtime_status": "UNKNOWN",
+      "runtime_status": "EXECUTED",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
+      "recorded_execution": true,
+      "completed": true,
+      "first_observed_phase": 28,
       "direct_callees": 0
     },
     {
@@ -29859,8 +29875,11 @@
       "generated": true,
       "compiled": true,
       "translation_status": "COMPILED",
-      "runtime_status": "UNKNOWN",
+      "runtime_status": "EXECUTED",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
+      "recorded_execution": true,
+      "completed": true,
+      "first_observed_phase": 28,
       "direct_callees": 5
     },
     {
@@ -174131,8 +174150,11 @@
       "generated": true,
       "compiled": true,
       "translation_status": "COMPILED",
-      "runtime_status": "UNKNOWN",
+      "runtime_status": "EXECUTED",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
+      "recorded_execution": true,
+      "completed": true,
+      "first_observed_phase": 28,
       "direct_callees": 0
     },
     {
@@ -174746,8 +174768,11 @@
       "generated": true,
       "compiled": true,
       "translation_status": "COMPILED",
-      "runtime_status": "UNKNOWN",
+      "runtime_status": "EXECUTED",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
+      "recorded_execution": true,
+      "completed": true,
+      "first_observed_phase": 28,
       "direct_callees": 10
     },
     {
@@ -174903,8 +174928,11 @@
       "generated": true,
       "compiled": true,
       "translation_status": "COMPILED",
-      "runtime_status": "UNKNOWN",
+      "runtime_status": "EXECUTED",
       "external_helper": "NO_PATH_TO_EXTERNAL_HELPER",
+      "recorded_execution": true,
+      "completed": true,
+      "first_observed_phase": 28,
       "direct_callees": 1
     },
     {
