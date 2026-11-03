@@ -1,0 +1,36 @@
+{
+  "slot": "0x00B61138",
+  "section": ".rdata",
+  "initial_pe_dword": "0x008AB2CE",
+  "hint": 867,
+  "symbol": "TlsAlloc",
+  "dll": "KERNEL32.dll",
+  "dlls_matching_name": [
+    "KERNEL32.dll"
+  ],
+  "classification": "STANDARD_WIN32_IMPORT",
+  "abi": "stdcall",
+  "stack_dwords": 0,
+  "abi_confidence": "PROVEN",
+  "public_standard": true,
+  "hle_justified": true,
+  "call_sites": [
+    "0x00977356",
+    "0x009777D3",
+    "0x009781C2",
+    "0x0097826D",
+    "0x00978482",
+    "0x00978535",
+    "0x00B55239",
+    "0x00B57E40",
+    "0x00B57E70",
+    "0x00B57E90"
+  ],
+  "call_site_count": 10,
+  "import_directory_note": "Official PE Import/IAT directories live in .securom; ordinary .rdata B610\u2013B617 window holds unbound hint/name RVAs consumed by ordinary code.",
+  "neighbors": {
+    "0x00B61120": "TlsFree",
+    "0x00B611CC": "TlsGetValue",
+    "0x00B611D0": "GetTickCount"
+  }
+}

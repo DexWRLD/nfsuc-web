@@ -1,7 +1,7 @@
 {
   "note": "Analysis only. win32_call is unchanged. confidence is high only when one DLL owns the symbol and the convention is not unknown. DirectX ordinals and helper exports stay unknown. call_sites counts direct calls. tail_jumps are separate and are not added in.",
-  "thunks": 199,
-  "resolved": 199,
+  "thunks": 200,
+  "resolved": 169,
   "unresolved_slots": 0,
   "by_convention": {
     "cdecl": 137,
@@ -2202,6 +2202,18 @@
       "call_sites": 1,
       "tail_jumps": 0,
       "confidence": "high"
+    },
+    {
+      "dll": "KERNEL32.dll",
+      "symbol": "TlsAlloc",
+      "ordinal": null,
+      "thunk": "0x00B61138",
+      "iat_slot": "0x00B61138",
+      "calling_convention": "stdcall",
+      "call_sites": 10,
+      "tail_jumps": 0,
+      "confidence": "high",
+      "note": "IAT-direct ordinary call sites (call dword ptr [slot]); no jmp-thunk stub. Unbound PE name hint 867. Thunk key equals IAT slot for UC binding sentinel."
     }
   ]
 }

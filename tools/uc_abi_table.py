@@ -26,6 +26,10 @@ KNOWN = {
     "strncmp": (3, "UC_HLE_STRNCMP"),
     "strncpy": (3, "UC_HLE_STRNCPY"),
 }
+# Public Win32 stdcall helpers with proven zero stack args.
+STDCALL_KNOWN = {
+    "TlsAlloc": (0, "UC_HLE_TLSALLOC"),
+}
 # public: void type_info::_type_info_dtor_internal_method(void)
 THISCALL_NO_STACK = "?_type_info_dtor_internal_method@type_info@@QAEXXZ"
 X87 = {
@@ -66,6 +70,9 @@ def main():
         arg_loc, ret_loc = "UC_LOC_STACK", "UC_LOC_EAX"
         if symbol in KNOWN and row["calling_convention"] == "cdecl":
             dwords, hle = KNOWN[symbol]
+        elif symbol in STDCALL_KNOWN and row["calling_convention"] == "stdcall":
+            dwords, hle = STDCALL_KNOWN[symbol]
+            arg_loc = "UC_LOC_NONE"
         elif symbol in X87 and row["calling_convention"] == "cdecl":
             dwords, hle = 0, X87[symbol]
             arg_loc, ret_loc = "UC_LOC_ST0", "UC_LOC_ST0"
