@@ -79,6 +79,9 @@ class Out(ctypes.Structure):
         ("cs_count", ctypes.c_uint32), ("mutex_count", ctypes.c_uint32),
         ("gpc_calls", ctypes.c_uint32), ("sem_calls", ctypes.c_uint32),
         ("sem_count", ctypes.c_uint32), ("priority_class", ctypes.c_uint32),
+        ("gct_calls", ctypes.c_uint32), ("gtp_calls", ctypes.c_uint32),
+        ("spc_calls", ctypes.c_uint32), ("stp_calls", ctypes.c_uint32),
+        ("thread_priority", ctypes.c_int32),
     ]
 
 
@@ -121,6 +124,7 @@ guest_fn_t g_dtab[DISPATCH_TEXT_SIZE];
 static int abort_run, blocked_kind, block_tls_set, cur_root;
 static uint32_t blocked_va, blocked_fn, tls_alloc_calls, tls_set_calls;
 static uint32_t ics_calls, mutex_calls, gpc_calls, sem_calls;
+static uint32_t gct_calls, gtp_calls, spc_calls, stp_calls;
 static uint32_t entered[%(ent_cap)d];
 static int entered_n, depth_now, depth_max;
 static uint32_t imp_target[%(imp_cap)d], imp_ok[%(imp_cap)d], imp_hle[%(imp_cap)d];
@@ -189,6 +193,10 @@ void dispatch_indirect(CPU *c, uint32_t target) {
     if (imp && imp->hle == UC_HLE_CREATEMUTEXA) mutex_calls++;
     if (imp && imp->hle == UC_HLE_GETPRIORITYCLASS) gpc_calls++;
     if (imp && imp->hle == UC_HLE_CREATESEMAPHOREA) sem_calls++;
+    if (imp && imp->hle == UC_HLE_GETCURRENTTHREAD) gct_calls++;
+    if (imp && imp->hle == UC_HLE_GETTHREADPRIORITY) gtp_calls++;
+    if (imp && imp->hle == UC_HLE_SETPRIORITYCLASS) spc_calls++;
+    if (imp && imp->hle == UC_HLE_SETTHREADPRIORITY) stp_calls++;
     ok = imp ? uc_import_invoke(c, imp, 0) : 0;
     if (nimp < %(imp_cap)d) imp_ok[nimp] = (uint32_t)ok;
     nimp++;
@@ -226,6 +234,8 @@ typedef struct Out {
     uint32_t diag_hits;
     uint32_t ics_calls, mutex_calls, cs_count, mutex_count;
     uint32_t gpc_calls, sem_calls, sem_count, priority_class;
+    uint32_t gct_calls, gtp_calls, spc_calls, stp_calls;
+    int32_t thread_priority;
 } Out;
 
 static void wr32(uint32_t a, uint32_t v) { uc_guest_store32(a, v, 0); }
@@ -250,6 +260,7 @@ __declspec(dllexport) int uc_p31_run(const Spec *s, Out *out) {
     uc_tls_reset();
     uc_sync_reset();
     uc_process_reset();
+    uc_thread_reset();
     uc_access_fault.active = 0;
     uc_import_fault.active = 0;
     uc_current_fn = 0;
@@ -257,6 +268,7 @@ __declspec(dllexport) int uc_p31_run(const Spec *s, Out *out) {
     abort_run = blocked_kind = 0; blocked_va = blocked_fn = 0;
     tls_alloc_calls = tls_set_calls = 0;
     ics_calls = mutex_calls = gpc_calls = sem_calls = 0;
+    gct_calls = gtp_calls = spc_calls = stp_calls = 0;
     unsup_why[0] = 0;
     diag_noop_target = s->noop_target; diag_noop_args = s->noop_args; diag_hits = 0;
     for (i = 0; i < 0x1000; i++) uc_guest_store8(0x03004000u + i, 0);
@@ -297,6 +309,9 @@ __declspec(dllexport) int uc_p31_run(const Spec *s, Out *out) {
     out->gpc_calls = gpc_calls; out->sem_calls = sem_calls;
     out->sem_count = uc_sync_semaphore_count();
     out->priority_class = uc_process_priority_class();
+    out->gct_calls = gct_calls; out->gtp_calls = gtp_calls;
+    out->spc_calls = spc_calls; out->stp_calls = stp_calls;
+    out->thread_priority = uc_thread_priority();
     for (i = 0; i < 47 && unsup_why[i]; i++) out->unsupported_why[i] = unsup_why[i];
     return 0;
 }

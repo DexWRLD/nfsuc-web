@@ -17,7 +17,10 @@ ALLOCATOR_FUNCS = {0x009EB870, 0x009E9460}
 PROTECTED_BOUNDARY = {0x00686000, 0x00686030}
 
 TIMING_IMPORTS = {"GetTickCount", "QueryPerformanceCounter", "QueryPerformanceFrequency",
-                  "timeGetTime", "GetSystemTimeAsFileTime", "Sleep"}
+                  "timeGetTime", "GetSystemTimeAsFileTime", "Sleep", "SleepEx"}
+THREAD_STATE_IMPORTS = {"GetCurrentThread", "GetCurrentThreadId", "GetThreadPriority",
+                        "SetThreadPriority", "SetPriorityClass", "GetPriorityClass"}
+AFFINITY_IMPORTS = {"SetThreadAffinityMask", "GetProcessAffinityMask", "SetProcessAffinityMask"}
 FS_IMPORTS = {"CreateFileA", "ReadFile", "WriteFile", "CloseHandle", "FindFirstFileA",
               "FindNextFileA", "FindClose", "GetFileAttributesA", "SetFilePointer"}
 TLS_IMPORTS = {"TlsGetValue", "TlsFree"}
@@ -254,6 +257,11 @@ def run_campaign(specs=None, harness=None, fmap=None):
             "sem_calls": getattr(out, "sem_calls", 0),
             "sem_count": getattr(out, "sem_count", 0),
             "priority_class": getattr(out, "priority_class", 0),
+            "gct_calls": getattr(out, "gct_calls", 0),
+            "gtp_calls": getattr(out, "gtp_calls", 0),
+            "spc_calls": getattr(out, "spc_calls", 0),
+            "stp_calls": getattr(out, "stp_calls", 0),
+            "thread_priority": getattr(out, "thread_priority", 0),
             "stubs": [], "esp_delta_ok": out.esp == out.esp_expected,
         })
     return rows, harness

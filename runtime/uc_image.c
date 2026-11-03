@@ -195,6 +195,7 @@ int uc_image_reset(uint8_t *mem, uint32_t mem_size) {
     uc_tls_reset();
     uc_sync_reset();
     uc_process_reset();
+    uc_thread_reset();
     return mem && mem_size ? 0 : -1;
 }
 

@@ -135,7 +135,15 @@ enum {
     UC_OBJ_MUTEX = 1,
     UC_OBJ_SEMAPHORE = 2,
     UC_PROCESS_PSEUDO = 0xffffffffu,
-    UC_NORMAL_PRIORITY_CLASS = 0x00000020u
+    UC_THREAD_PSEUDO = 0xfffffffeu,
+    UC_NORMAL_PRIORITY_CLASS = 0x00000020u,
+    UC_IDLE_PRIORITY_CLASS = 0x00000040u,
+    UC_HIGH_PRIORITY_CLASS = 0x00000080u,
+    UC_REALTIME_PRIORITY_CLASS = 0x00000100u,
+    UC_BELOW_NORMAL_PRIORITY_CLASS = 0x00004000u,
+    UC_ABOVE_NORMAL_PRIORITY_CLASS = 0x00008000u,
+    UC_THREAD_PRIORITY_NORMAL = 0,
+    UC_THREAD_PRIORITY_ERROR_RETURN = 0x7fffffff
 };
 
 typedef struct UcCritSec {
@@ -161,19 +169,53 @@ static UcCritSec uc_cs_tab[UC_CS_CAP];
 static unsigned uc_cs_n;
 static UcKernelObj uc_obj_tab[UC_OBJ_CAP];
 static uint32_t uc_guest_priority_class;
+static int32_t uc_guest_thread_priority;
+/* One active guest thread context (index 0). Not a scheduler. */
+static unsigned uc_guest_thread_active = 1;
 
 void uc_process_reset(void) {
-    /* Documented initial policy: NORMAL_PRIORITY_CLASS.
-     * SetPriorityClass is not implemented, so the class is immutable today. */
+    /* Documented initial policy: NORMAL_PRIORITY_CLASS. */
     uc_guest_priority_class = UC_NORMAL_PRIORITY_CLASS;
+}
+
+void uc_thread_reset(void) {
+    /* Relative thread priority independent of process priority class. */
+    uc_guest_thread_priority = UC_THREAD_PRIORITY_NORMAL;
+    uc_guest_thread_active = 1;
 }
 
 uint32_t uc_process_priority_class(void) {
     return uc_guest_priority_class;
 }
 
+int32_t uc_thread_priority(void) {
+    return uc_guest_thread_priority;
+}
+
+unsigned uc_active_guest_threads(void) {
+    return uc_guest_thread_active;
+}
+
 int uc_process_pseudo_handle(uint32_t handle) {
     return handle == UC_PROCESS_PSEUDO;
+}
+
+int uc_thread_pseudo_handle(uint32_t handle) {
+    return handle == UC_THREAD_PSEUDO;
+}
+
+static int uc_priority_class_valid(uint32_t cls) {
+    return cls == UC_IDLE_PRIORITY_CLASS
+        || cls == UC_BELOW_NORMAL_PRIORITY_CLASS
+        || cls == UC_NORMAL_PRIORITY_CLASS
+        || cls == UC_ABOVE_NORMAL_PRIORITY_CLASS
+        || cls == UC_HIGH_PRIORITY_CLASS
+        || cls == UC_REALTIME_PRIORITY_CLASS;
+}
+
+static int uc_thread_priority_valid(int32_t p) {
+    /* Documented Win32 relative priorities (incl. TIME_CRITICAL=15, IDLE=-15). */
+    return p == -15 || p == -2 || p == -1 || p == 0 || p == 1 || p == 2 || p == 15;
 }
 
 void uc_sync_reset(void) {
@@ -197,6 +239,7 @@ void uc_sync_reset(void) {
         uc_obj_tab[i].name[0] = 0;
     }
     uc_process_reset();
+    uc_thread_reset();
 }
 
 unsigned uc_sync_critsec_count(void) {
@@ -433,6 +476,34 @@ static uint32_t uc_hle_get_priority_class(uint32_t handle, int *ok) {
     return uc_guest_priority_class;
 }
 
+static uint32_t uc_hle_set_priority_class(uint32_t handle, uint32_t cls, int *ok) {
+    /* SetPriorityClass(hProcess, dwPriorityClass) → BOOL.
+     * Updates guest-visible process priority only — never host scheduling. */
+    *ok = 1;
+    if (!uc_process_pseudo_handle(handle) || !uc_priority_class_valid(cls))
+        return 0;
+    uc_guest_priority_class = cls;
+    return 1;
+}
+
+static uint32_t uc_hle_get_thread_priority(uint32_t handle, int *ok) {
+    /* GetThreadPriority(hThread) → int; invalid → THREAD_PRIORITY_ERROR_RETURN. */
+    *ok = 1;
+    if (!uc_thread_pseudo_handle(handle))
+        return (uint32_t)UC_THREAD_PRIORITY_ERROR_RETURN;
+    return (uint32_t)uc_guest_thread_priority;
+}
+
+static uint32_t uc_hle_set_thread_priority(uint32_t handle, uint32_t prio, int *ok) {
+    /* SetThreadPriority(hThread, nPriority) → BOOL; guest state only. */
+    int32_t p = (int32_t)prio;
+    *ok = 1;
+    if (!uc_thread_pseudo_handle(handle) || !uc_thread_priority_valid(p))
+        return 0;
+    uc_guest_thread_priority = p;
+    return 1;
+}
+
 int uc_abi_callee_bytes(UcAbi abi, int stack_dwords) {
     if (stack_dwords < 0) return -1;
     if (abi == UC_ABI_CDECL) return 0;
@@ -560,12 +631,31 @@ static uint32_t hle_run(struct CPU *c, const UcImport *imp, const UcDecoded *in,
          * Not a host HANDLE and not a guest pointer. */
         (void)in;
         *ok = 1;
-        return 0xffffffffu;
+        return UC_PROCESS_PSEUDO;
+    }
+    if (imp->hle == UC_HLE_GETCURRENTTHREAD) {
+        /* GetCurrentThread(): stdcall, 0 args; pseudo-handle 0xFFFFFFFE.
+         * Resolves to the single active guest-thread context; not a host handle. */
+        (void)in;
+        *ok = 1;
+        return UC_THREAD_PSEUDO;
     }
     if (imp->hle == UC_HLE_GETPRIORITYCLASS) {
         /* KERNEL32!GetPriorityClass(hProcess): stdcall, 1 arg; DWORD in EAX. */
         if (in->stack_dwords < 1) return 0;
         return uc_hle_get_priority_class(in->stack[0], ok);
+    }
+    if (imp->hle == UC_HLE_SETPRIORITYCLASS) {
+        if (in->stack_dwords < 2) return 0;
+        return uc_hle_set_priority_class(in->stack[0], in->stack[1], ok);
+    }
+    if (imp->hle == UC_HLE_GETTHREADPRIORITY) {
+        if (in->stack_dwords < 1) return 0;
+        return uc_hle_get_thread_priority(in->stack[0], ok);
+    }
+    if (imp->hle == UC_HLE_SETTHREADPRIORITY) {
+        if (in->stack_dwords < 2) return 0;
+        return uc_hle_set_thread_priority(in->stack[0], in->stack[1], ok);
     }
     if (imp->hle == UC_HLE_CREATESEMAPHOREA) {
         /* CreateSemaphoreA(attrs, initial, maximum, name): stdcall, 4 args; HANDLE. */
