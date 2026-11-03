@@ -1,6 +1,108 @@
 {
-  "phase": 27,
+  "phase": 28,
   "roots": [
+    {
+      "root": "0x009E9160",
+      "phase": 28,
+      "result": "EXECUTED_TO_NEXT_BLOCKER",
+      "ordinary_initializers_executed": [
+        "0x009E7710",
+        "0x009E9990"
+      ],
+      "functions_entered": [
+        "0x009E9160",
+        "0x009E7710",
+        "0x009E9990",
+        "0x009E9460"
+      ],
+      "unique_functions_entered": 4,
+      "max_depth": 3,
+      "imports": [],
+      "indirect_resolved": 0,
+      "termination": "BLOCKED_IMPORT via stubbed 0x009777D0 / IAT [0x00B61138] (observed before full Win32 delivery)",
+      "memory_contract": "CALLER_OWNED guest buffer this; POD source arg; BSS/globals PE-zero",
+      "notes": "Constructor\u2192initializer nesting proves depth 3; harness verified depth_max>=3",
+      "evidence": "uc_phase28_test.py"
+    },
+    {
+      "root": "0x0072D640",
+      "phase": 28,
+      "result": "EXECUTED_TO_NEXT_BLOCKER",
+      "ordinary_initializers_executed": [],
+      "functions_entered": [
+        "0x0072D640",
+        "0x00721050",
+        "0x007212F0",
+        "0x00721070"
+      ],
+      "unique_functions_entered": 4,
+      "max_depth": 2,
+      "imports": [],
+      "indirect_resolved": 0,
+      "termination": "BLOCKED_PROTECTED 0x0072C190 \u2192 [.securom 0x023AF44C]",
+      "memory_contract": "primitive stack args; BSS object at 0xCEA3B8",
+      "notes": "Harness entered 4 ordinary frames then protected tail",
+      "evidence": "uc_phase28_test.py"
+    },
+    {
+      "root": "0x00A52DF0",
+      "phase": 28,
+      "result": "BLOCKED_REQUIRED_STATE",
+      "functions_entered": [],
+      "max_depth": 0,
+      "termination": "not entered",
+      "notes": "No E8, no function-map preds, no absolute imm32 refs in mapped image. Do not synthesize +0x140/+0x150. Stop Track A."
+    },
+    {
+      "root": "0x00947790",
+      "phase": 28,
+      "result": "BLOCKED_REQUIRED_STATE",
+      "functions_entered": [],
+      "max_depth": 0,
+      "termination": "not entered",
+      "notes": "Grandparent of 0x00929900 needs ESI object + EBP+0x3000c object; UNKNOWN"
+    },
+    {
+      "root": "0x00950190",
+      "phase": 28,
+      "result": "BLOCKED_REQUIRED_STATE",
+      "functions_entered": [],
+      "max_depth": 0,
+      "termination": "not entered",
+      "notes": "Caller of 0x00949920 needs +0x30018 pointer chain"
+    },
+    {
+      "root": "0x0096CED0",
+      "phase": 28,
+      "result": "BLOCKED_REQUIRED_STATE",
+      "functions_entered": [],
+      "max_depth": 0,
+      "notes": "unchanged UNKNOWN object +0xB28"
+    },
+    {
+      "root": "0x00B01EB0",
+      "phase": 28,
+      "result": "BLOCKED_REQUIRED_STATE",
+      "functions_entered": [],
+      "max_depth": 0,
+      "notes": "unchanged UNKNOWN"
+    },
+    {
+      "root": "0x00A28720",
+      "phase": 28,
+      "result": "BLOCKED_REQUIRED_STATE",
+      "functions_entered": [],
+      "max_depth": 0,
+      "notes": "unchanged packed stream UNKNOWN"
+    },
+    {
+      "root": "0x0072EAE0",
+      "phase": 28,
+      "result": "BLOCKED_PROTECTED",
+      "functions_entered": [],
+      "max_depth": 0,
+      "notes": "frozen Phase 27 protected diagnostic"
+    },
     {
       "root": "0x00929972",
       "phase": 27,
@@ -152,15 +254,22 @@
     }
   ],
   "unique_uc_functions_executed": [
+    "0x00721050",
     "0x00721070",
+    "0x007212F0",
+    "0x0072D640",
     "0x00739B90",
     "0x0088390D",
     "0x00924D30",
     "0x00929972",
     "0x00949920",
+    "0x009E7710",
     "0x009E78C0",
-    "0x009E8AD0"
+    "0x009E8AD0",
+    "0x009E9160",
+    "0x009E9460",
+    "0x009E9990"
   ],
-  "deepest_ordinary_execution_chain": 2,
-  "largest_executed_ordinary_closure": 2
+  "deepest_ordinary_execution_chain": 3,
+  "largest_executed_ordinary_closure": 4
 }

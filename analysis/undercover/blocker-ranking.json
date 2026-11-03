@@ -1,87 +1,14 @@
 {
-  "phase": 27,
+  "phase": 28,
   "campaign_outcomes": {
-    "EXECUTED_CHAIN": 1,
-    "EXECUTED_CLEAN": 1,
-    "BLOCKED_PROTECTED": 1,
-    "BLOCKED_REQUIRED_STATE": 4
+    "EXECUTED_TO_NEXT_BLOCKER": 2,
+    "BLOCKED_REQUIRED_STATE": 6,
+    "BLOCKED_PROTECTED": 1
   },
   "most_common_real_blocker": [
     "BLOCKED_REQUIRED_STATE",
-    4
+    6
   ],
-  "top_import_ready": [
-    {
-      "root": "0x0099FE50",
-      "score": 729,
-      "imports": [],
-      "high_callees": 65,
-      "insns": 794
-    },
-    {
-      "root": "0x009B97E0",
-      "score": 715,
-      "imports": [],
-      "high_callees": 60,
-      "insns": 1156
-    },
-    {
-      "root": "0x009BE240",
-      "score": 642,
-      "imports": [],
-      "high_callees": 56,
-      "insns": 824
-    },
-    {
-      "root": "0x0075A840",
-      "score": 628,
-      "imports": [],
-      "high_callees": 55,
-      "insns": 780
-    },
-    {
-      "root": "0x00AD6900",
-      "score": 614,
-      "imports": [],
-      "high_callees": 41,
-      "insns": 2043
-    },
-    {
-      "root": "0x009CD390",
-      "score": 535,
-      "imports": [],
-      "high_callees": 48,
-      "insns": 550
-    },
-    {
-      "root": "0x007E9080",
-      "score": 521,
-      "imports": [
-        "memset"
-      ],
-      "high_callees": 32,
-      "insns": 2016
-    },
-    {
-      "root": "0x00A4BC30",
-      "score": 489,
-      "imports": [],
-      "high_callees": 29,
-      "insns": 1996
-    },
-    {
-      "root": "0x00ABD490",
-      "score": 484,
-      "imports": [],
-      "high_callees": 19,
-      "insns": 2948
-    },
-    {
-      "root": "0x009D2470",
-      "score": 483,
-      "imports": [],
-      "high_callees": 43,
-      "insns": 539
-    }
-  ]
+  "depth3_blocker": "BLOCKED_IMPORT/DISPATCH at 0x009777D0 after depth 3",
+  "track_a": "NO_ORDINARY_INIT_PATH_FOUND"
 }

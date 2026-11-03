@@ -1,10 +1,10 @@
 {
-  "phase": 27,
+  "phase": 28,
   "definitions": {
     "ENTERABLE": "All pre-entry required state establishable via primitives, static PE data, standard runtime, or proven ordinary init/ctor. Not merely IMPORT_READY.",
-    "ORDINARY_INIT_RECOVERED": "Root has a complete classification that is not BLOCKED_UNKNOWN_STATE.",
-    "DEEPEST_ORDINARY_EXECUTION_CHAIN": "Max ordinary UC frames in one harness run.",
-    "LARGEST_EXECUTED_ORDINARY_CLOSURE": "Distinct ordinary UC functions entered in one controlled run."
+    "DEEPEST_ORDINARY_EXECUTION_CHAIN": "Max nested ordinary UC frames in one harness run.",
+    "LARGEST_EXECUTED_ORDINARY_CLOSURE": "Distinct ordinary UC functions entered in one run.",
+    "ENTERABLE_WITH_DEPTH_3_POTENTIAL": "Roots with proven contracts that can nest >=3 ordinary UC frames."
   },
   "high_functions": 22779,
   "generated": 22770,
@@ -12,30 +12,47 @@
   "static_ready": 20762,
   "import_ready": 737,
   "runtime_ready": 54,
-  "enterable": 6,
+  "enterable": 12,
   "enterable_roots": [
+    "0x00721050",
     "0x00721070",
+    "0x007212F0",
+    "0x0072D640",
     "0x0088390D",
     "0x00924D30",
     "0x00929900",
     "0x00929972",
-    "0x00949920"
+    "0x00949920",
+    "0x009E7710",
+    "0x009E9160",
+    "0x009E9990"
   ],
-  "unique_uc_functions_executed": 8,
+  "enterable_with_depth_3_potential": 1,
+  "enterable_with_depth_3_potential_roots": [
+    "0x009E9160"
+  ],
+  "unique_uc_functions_executed": 15,
   "unique_uc_functions_executed_list": [
+    "0x00721050",
     "0x00721070",
+    "0x007212F0",
+    "0x0072D640",
     "0x00739B90",
     "0x0088390D",
     "0x00924D30",
     "0x00929972",
     "0x00949920",
+    "0x009E7710",
     "0x009E78C0",
-    "0x009E8AD0"
+    "0x009E8AD0",
+    "0x009E9160",
+    "0x009E9460",
+    "0x009E9990"
   ],
-  "execution_runs": 5,
-  "deepest_ordinary_execution_chain": 2,
-  "largest_executed_ordinary_closure": 2,
-  "ordinary_init_recovered": 4,
+  "execution_runs": 7,
+  "deepest_ordinary_execution_chain": 3,
+  "largest_executed_ordinary_closure": 4,
+  "ordinary_init_recovered": 5,
   "init_blocked_external": 0,
   "init_blocked_protected": 1,
   "init_blocked_unknown": 4,
@@ -45,181 +62,158 @@
     "STATIC_READY": 20762,
     "IMPORT_READY": 737,
     "RUNTIME_READY": 54,
-    "ENTERABLE": 6,
-    "EXECUTED": 8,
-    "ORDINARY_INIT_RECOVERED": 4,
+    "ENTERABLE": 12,
+    "EXECUTED": 15,
+    "ORDINARY_INIT_RECOVERED": 5,
     "INIT_BLOCKED_EXTERNAL": 0,
     "INIT_BLOCKED_PROTECTED": 1,
-    "INIT_BLOCKED_UNKNOWN": 4
+    "INIT_BLOCKED_UNKNOWN": 4,
+    "ENTERABLE_WITH_DEPTH_3_POTENTIAL": 1,
+    "DEEPEST": 3,
+    "LARGEST_CLOSURE": 4
   },
   "campaign_summary": {
-    "phase27_attempted": 7,
+    "phase28_attempted": 9,
     "outcomes": {
-      "EXECUTED_CHAIN": 1,
-      "EXECUTED_CLEAN": 1,
-      "BLOCKED_PROTECTED": 1,
-      "BLOCKED_REQUIRED_STATE": 4
+      "EXECUTED_TO_NEXT_BLOCKER": 2,
+      "BLOCKED_REQUIRED_STATE": 6,
+      "BLOCKED_PROTECTED": 1
     },
     "most_common_next_blocker": [
       "BLOCKED_REQUIRED_STATE",
-      4
+      6
     ],
-    "deepest_chain": 2,
-    "largest_executed_closure": 2,
-    "latest_newly_executed_root": "0x00929972",
+    "deepest_chain": 3,
+    "largest_executed_closure": 4,
+    "latest_newly_executed_root": "0x009E9160",
+    "deepest_successful_sequence": [
+      "0x009E9160",
+      "0x009E9990",
+      "0x009E7710"
+    ],
+    "constructor_method_chain": true,
+    "pod_grandparent_chain": false,
     "CIpow_reached": false,
     "floor_reached": false,
     "malloc_free_reached": false,
     "filesystem_reached": false,
     "timing_reached": false,
     "tls_reached": false,
-    "seh_required": false
+    "seh_required": false,
+    "unresolved_indirect_reached": true
   },
-  "indirect_72eae0": {
-    "summary": "Reads this+0x18 as interface pointer; call [ [*+0x18] + 0x18 ]. Caller 0x00731320 obtains object via 0x007306C0 which does jmp dword ptr [0x023AF9C8] located in .securom.",
-    "required": [
+  "track_a_a52df0": {
+    "root": "0x00A52DF0",
+    "e8_callers": [],
+    "function_map_predecessors": [],
+    "imm32_sites": [],
+    "layout": {
+      "+0x140": "xmmword read (movaps); 16-byte vector, not proven matrix",
+      "+0x150": "xmmword read (movaps); 16-byte vector",
+      "+0x100": "xmmword write result",
+      "+0x120": "xmmword write result",
+      "stack": "float [ebp+8]; ret 4",
+      "imports": [
+        "_CIsin",
+        "_CIsqrt"
+      ]
+    },
+    "reads_0x140": [
       {
-        "name": "ecx/this",
-        "class": "THIS_POINTER",
-        "prov": "CALLER_ARGUMENT"
+        "site": "0x00A52E36",
+        "mnem": "movaps",
+        "op": "xmm1, xmmword ptr [esi + 0x140]",
+        "disp": 320,
+        "width": "xmmword"
       },
       {
-        "name": "stack buffer",
-        "class": "BUFFER",
-        "prov": "CALLER_ARGUMENT"
-      },
-      {
-        "name": "+0x18 iface",
-        "class": "VTABLE",
-        "prov": "PROTECTED_INITIALIZED"
+        "site": "0x00A52E7C",
+        "mnem": "movaps",
+        "op": "xmm2, xmmword ptr [esi + 0x140]",
+        "disp": 320,
+        "width": "xmmword"
       }
     ],
-    "protected": true,
-    "indirect_class": "PROTECTED_INITIALIZED_CALLBACK",
-    "indirect_slot": "0x023AF9C8",
-    "indirect_slot_section": ".securom",
-    "enterability": "BLOCKED_PROTECTED_INIT",
-    "enterable": false
+    "reads_0x150": [
+      {
+        "site": "0x00A52E2F",
+        "mnem": "movaps",
+        "op": "xmm3, xmmword ptr [esi + 0x150]",
+        "disp": 336,
+        "width": "xmmword"
+      },
+      {
+        "site": "0x00A52E97",
+        "mnem": "movaps",
+        "op": "xmm1, xmmword ptr [esi + 0x150]",
+        "disp": 336,
+        "width": "xmmword"
+      }
+    ],
+    "writes": [
+      {
+        "site": "0x00A52E90",
+        "mnem": "movaps",
+        "op": "xmmword ptr [esi + 0x100], xmm0",
+        "disp": 256,
+        "width": "xmmword"
+      },
+      {
+        "site": "0x00A52EC0",
+        "mnem": "movaps",
+        "op": "xmmword ptr [esi + 0x120], xmm3",
+        "disp": 288,
+        "width": "xmmword"
+      }
+    ],
+    "producer_classification": "NO_ORDINARY_INIT_PATH_FOUND",
+    "enterable": false,
+    "enterability": "BLOCKED_UNKNOWN_STATE",
+    "note": "No E8, no function-map preds, no absolute imm32 refs in mapped image. Do not synthesize +0x140/+0x150. Stop Track A.",
+    "body_prefix": [
+      "push ebp",
+      "mov ebp, esp",
+      "and esp, 0xfffffff0",
+      "sub esp, 0xc",
+      "fld dword ptr [ebp + 8]",
+      "push esi",
+      "mov esi, ecx",
+      "call 0xae5140",
+      "fstp dword ptr [esp + 8]",
+      "fld dword ptr [esp + 8]",
+      "fstp dword ptr [esp + 8]",
+      "fld dword ptr [esp + 8]",
+      "fmul st(0), st(0)",
+      "fld1 ",
+      "fsubrp st(1)",
+      "fstp dword ptr [esp + 0xc]",
+      "fld dword ptr [esp + 0xc]",
+      "call 0xae5116",
+      "fstp dword ptr [esp + 0xc]",
+      "fld dword ptr [esp + 0xc]",
+      "movaps xmm3, xmmword ptr [esi + 0x150]",
+      "movaps xmm1, xmmword ptr [esi + 0x140]",
+      "fstp dword ptr [esp + 0xc]",
+      "movss xmm0, dword ptr [esp + 0xc]",
+      "movaps xmm4, xmm0",
+      "movss xmm0, dword ptr [esp + 8]",
+      "movaps xmm2, xmm0",
+      "movaps xmm0, xmm3",
+      "shufps xmm0, xmm3, 0xc9",
+      "movaps xmm5, xmm1",
+      "shufps xmm5, xmm1, 0xd2",
+      "mulps xmm0, xmm5",
+      "movaps xmm5, xmm3",
+      "shufps xmm5, xmm3, 0xd2",
+      "shufps xmm1, xmm1, 0xc9",
+      "mulps xmm5, xmm1",
+      "shufps xmm2, xmm2, 0",
+      "subps xmm0, xmm5",
+      "mulps xmm0, xmm2",
+      "movaps xmm2, xmmword ptr [esi + 0x140]"
+    ]
   },
-  "top_import_ready": [
-    {
-      "root": "0x0099FE50",
-      "score": 729,
-      "imports": [],
-      "high_callees": 65,
-      "insns": 794
-    },
-    {
-      "root": "0x009B97E0",
-      "score": 715,
-      "imports": [],
-      "high_callees": 60,
-      "insns": 1156
-    },
-    {
-      "root": "0x009BE240",
-      "score": 642,
-      "imports": [],
-      "high_callees": 56,
-      "insns": 824
-    },
-    {
-      "root": "0x0075A840",
-      "score": 628,
-      "imports": [],
-      "high_callees": 55,
-      "insns": 780
-    },
-    {
-      "root": "0x00AD6900",
-      "score": 614,
-      "imports": [],
-      "high_callees": 41,
-      "insns": 2043
-    },
-    {
-      "root": "0x009CD390",
-      "score": 535,
-      "imports": [],
-      "high_callees": 48,
-      "insns": 550
-    },
-    {
-      "root": "0x007E9080",
-      "score": 521,
-      "imports": [
-        "memset"
-      ],
-      "high_callees": 32,
-      "insns": 2016
-    },
-    {
-      "root": "0x00A4BC30",
-      "score": 489,
-      "imports": [],
-      "high_callees": 29,
-      "insns": 1996
-    },
-    {
-      "root": "0x00ABD490",
-      "score": 484,
-      "imports": [],
-      "high_callees": 19,
-      "insns": 2948
-    },
-    {
-      "root": "0x009D2470",
-      "score": 483,
-      "imports": [],
-      "high_callees": 43,
-      "insns": 539
-    },
-    {
-      "root": "0x00AC9770",
-      "score": 482,
-      "imports": [],
-      "high_callees": 32,
-      "insns": 1621
-    },
-    {
-      "root": "0x009A39A0",
-      "score": 431,
-      "imports": [],
-      "high_callees": 37,
-      "insns": 612
-    },
-    {
-      "root": "0x00AC7AE0",
-      "score": 427,
-      "imports": [],
-      "high_callees": 27,
-      "insns": 1574
-    },
-    {
-      "root": "0x0091CD10",
-      "score": 426,
-      "imports": [
-        "memset"
-      ],
-      "high_callees": 1,
-      "insns": 4161
-    },
-    {
-      "root": "0x00A67F20",
-      "score": 399,
-      "imports": [],
-      "high_callees": 32,
-      "insns": 799
-    }
-  ],
   "first_frame": "FIRST_FRAME_PATH_BLOCKED_BY_PROTECTED_BACKEND",
   "graphics_frozen": true,
-  "recommended_phase28": "Most common remaining blocker is still BLOCKED_REQUIRED_STATE / UNKNOWN object provenance for large islands. Next: recover ordinary ctors for matrix/math objects (0x00A52DF0 family) or expand the 0x00929900-style POD parent chains. Do not implement CRT/FS/timing until an ENTERABLE chain reaches them. 0x0072EAE0 stays protected.",
-  "cisqrt": {
-    "hle": "UC_HLE_CISQRT",
-    "status": "IMPLEMENTED"
-  },
-  "harness_capability": {
-    "crt_cisqrt": "IMPLEMENTED"
-  }
+  "recommended_phase29": "Depth 3 achieved via ordinary ctor nesting. Next: either (1) resolve/stub-classify the Win32 IAT at 0x00B61138 blocking completion of 0x009E9160\u21920x009E8AD0, or (2) recover a lower-cost POD grandparent for the 0x00929900 math island (0x00947790 still UNKNOWN). Do not reopen Track A 0x00A52DF0 without new refs. No CRT HLE until a chain reaches it."
 }
