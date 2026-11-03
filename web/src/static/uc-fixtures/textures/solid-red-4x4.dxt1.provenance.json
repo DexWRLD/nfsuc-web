@@ -1,0 +1,19 @@
+{
+  "resourceId": "synthetic.solid-red",
+  "sourceFilename": "solid-red-4x4.dxt1",
+  "sourceArtifactId": "uc-fixtures/textures/solid-red-4x4.dxt1",
+  "sourceSha256": "e38c38815706876b9ce93d9fab0e837c0429d1ecf3d966b0753e7ef0da7ce302",
+  "sourceByteOffset": 0,
+  "sourceByteLength": 8,
+  "payloadSha256": "e38c38815706876b9ce93d9fab0e837c0429d1ecf3d966b0753e7ef0da7ce302",
+  "width": 4,
+  "height": 4,
+  "format": "DXT1",
+  "mipLevel": 0,
+  "textureKind": "2d",
+  "byteOrder": "little-endian",
+  "blockLayout": "dxt1-4x4-8bytes",
+  "evidenceRef": "phase50-synthetic-fixture",
+  "sourceCategory": "synthetic-fixture",
+  "note": "solid red BC1"
+}

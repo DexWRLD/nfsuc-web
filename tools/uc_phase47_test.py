@@ -49,7 +49,10 @@ class AssetDistribution(unittest.TestCase):
         self.assertEqual(
             r["production_undercover_assets"],
             "UNAVAILABLE_PENDING_AUTHORIZED_SOURCE")
-        self.assertEqual(r["browser_renderer_readiness"], "SYNTHETIC_CLEAR_SMOKE_ONLY")
+        self.assertIn(
+            r["browser_renderer_readiness"],
+            ("SYNTHETIC_CLEAR_SMOKE_ONLY", "SYNTHETIC_TEXTURE_AND_MESH_PREVIEW"),
+        )
         self.assertEqual(
             r["first_frame"], "FIRST_FRAME_PATH_BLOCKED_BY_PROTECTED_BACKEND")
         self.assertFalse(r["clean_pc_ux"]["authentic_play_enabled"])

@@ -1,0 +1,19 @@
+{
+  "resourceId": "synthetic.punch",
+  "sourceFilename": "punch-4x4.dxt1",
+  "sourceArtifactId": "uc-fixtures/textures/punch-4x4.dxt1",
+  "sourceSha256": "7ed573432d5680749c03c04c064244aa33ca723ec8c32024a61a92bf3feb32d8",
+  "sourceByteOffset": 0,
+  "sourceByteLength": 8,
+  "payloadSha256": "7ed573432d5680749c03c04c064244aa33ca723ec8c32024a61a92bf3feb32d8",
+  "width": 4,
+  "height": 4,
+  "format": "DXT1",
+  "mipLevel": 0,
+  "textureKind": "2d",
+  "byteOrder": "little-endian",
+  "blockLayout": "dxt1-4x4-8bytes",
+  "evidenceRef": "phase50-synthetic-fixture",
+  "sourceCategory": "synthetic-fixture",
+  "note": "c0<=c1 transparent"
+}

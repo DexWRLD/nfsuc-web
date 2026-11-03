@@ -72,6 +72,7 @@ import { moviesKept, Predownload } from './predownload';
 import { movieCodec } from '../host/movie';
 import { texSplit } from '../gpu/index';
 import { bootUcAssets } from './uc-boot';
+import { bootUcAssetPreviews } from './uc-asset-preview-boot';
 
 type Phase = 'boot' | 'ready' | 'error' | 'waiting' | 'starting' | 'playing' | 'exited';
 
@@ -1867,6 +1868,7 @@ export async function boot() {
   download = new Predownload(s => saves.showData(s), logLine, () => language(), () => texpack());
   // Undercover clean-PC fixture downloads (Phase 47). Does not enable authentic Play.
   void bootUcAssets(logLine);
+  void bootUcAssetPreviews(logLine);
   saves = new SavesPanel($('#saves'), $('#game-data'), {
     saveDir: SAVE, busy: () => !!session || starting || !instance.owner, confirm: confirmBox,
     onRestored: () => { void loadSettings(); void settings.refresh(); }, download, onChanged: () => vault.changed(),

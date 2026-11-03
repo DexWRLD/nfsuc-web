@@ -1,0 +1,19 @@
+{
+  "resourceId": "synthetic.green-8x8",
+  "sourceFilename": "green-8x8.dxt1",
+  "sourceArtifactId": "uc-fixtures/textures/green-8x8.dxt1",
+  "sourceSha256": "62a46acb2bc10d6a19d294d7fad3de83f9d409f7f28361468a160eeaa7604af4",
+  "sourceByteOffset": 0,
+  "sourceByteLength": 32,
+  "payloadSha256": "62a46acb2bc10d6a19d294d7fad3de83f9d409f7f28361468a160eeaa7604af4",
+  "width": 8,
+  "height": 8,
+  "format": "DXT1",
+  "mipLevel": 0,
+  "textureKind": "2d",
+  "byteOrder": "little-endian",
+  "blockLayout": "dxt1-4x4-8bytes",
+  "evidenceRef": "phase50-synthetic-fixture",
+  "sourceCategory": "synthetic-fixture",
+  "note": "multi-block"
+}

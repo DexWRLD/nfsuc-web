@@ -97,6 +97,23 @@
       <p class="hint" id="uc-clear-smoke-note" hidden></p>
     </section>
 
+    <section class="panel" id="uc-texture-preview" aria-labelledby="uc-tex-title">
+      <h2 id="uc-tex-title">Undercover DXT1 texture preview</h2>
+      <p class="hint">Manifest-driven BC1 decode. Synthetic fixtures until a verified authentic payload span exists.</p>
+      <p class="status" id="uc-tex-status" role="status">NO_RESOURCE</p>
+      <p class="status-sub" id="uc-tex-meta">Waiting…</p>
+      <canvas id="uc-tex-canvas" width="64" height="64" hidden aria-label="Decoded texture"></canvas>
+      <p class="hint" id="uc-tex-note" hidden></p>
+    </section>
+
+    <section class="panel" id="uc-mesh-preview" aria-labelledby="uc-mesh-title">
+      <h2 id="uc-mesh-title">Undercover mesh diagnostic</h2>
+      <p class="hint">Synthetic triangle-list WebGL preview. Named XP_SMOKEBALL_* sources unresolved.</p>
+      <p class="status" id="uc-mesh-status" role="status">NO_RESOURCE</p>
+      <canvas id="uc-mesh-canvas" width="160" height="120" hidden aria-label="Mesh preview"></canvas>
+      <p class="hint" id="uc-mesh-note" hidden></p>
+    </section>
+
     <section class="panel players" id="players" aria-labelledby="players-title">
       <h2 id="players-title" data-i18n>Playing now</h2>
       <!-- players.ts PlayersPanel: the numbers, and a line under them (the server full, or not answering) -->

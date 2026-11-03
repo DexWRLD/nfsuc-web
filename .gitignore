@@ -54,3 +54,6 @@ __pycache__/
 .ca.crt
 /server.key
 /ca.key
+
+# Ephemeral esbuild test bundles
+/web/test/uc-*-bundle-*.mjs
