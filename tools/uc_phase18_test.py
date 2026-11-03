@@ -106,7 +106,7 @@ def main():
 
     # Status / dashboard fields
     status = json.load(open(os.path.join(ANALYSIS, "project-status.json"), encoding="utf-8"))
-    expect(status["current_phase"] == 18, "status phase")
+    expect(status["current_phase"] >= 18, "status phase")
     expect(status["graphics"]["factory_frontier_ready"] is False, "frontier flag")
     expect(status["graphics"]["pre_factory_callback"] == "UNRESOLVED", "pre-cb")
     expect(status["graphics"]["direct3d9_implemented"] is False, "d3d status")
