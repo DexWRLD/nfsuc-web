@@ -1,14 +1,14 @@
 {
-  "phase": 32,
+  "phase": 33,
   "campaign_outcomes": {
-    "EXECUTED_TO_NEXT_BLOCKER": 2,
-    "EXECUTED_CHAIN": 6,
+    "EXECUTED_TO_NEXT_BLOCKER": 1,
+    "EXECUTED_CHAIN": 7,
     "BLOCKED_REQUIRED_STATE": 3,
     "UNKNOWN": 1
   },
   "real_blocker_histogram": {
     "REQUIRED_STATE": 4,
-    "IMPORT": 2,
+    "IMPORT": 1,
     "INDIRECT": 0,
     "MEMORY": 0,
     "TLS": 0,
@@ -16,7 +16,7 @@
     "TIMING": 0,
     "EXTERNAL": 0,
     "PROTECTED": 0,
-    "CLEAN_RETURN": 6
+    "CLEAN_RETURN": 7
   },
   "required_state_histogram": {
     "UNKNOWN_OBJECT": 2,
@@ -32,12 +32,28 @@
     "REQUIRED_STATE:UNKNOWN_OBJECT",
     2
   ],
-  "ics_cleared": true,
-  "create_mutex_a_cleared": true,
-  "latest_real_runtime_boundary": "GetPriorityClass",
+  "getpriorityclass_cleared": true,
+  "createsemaphorea_cleared": true,
+  "latest_real_runtime_boundary": "GetCurrentThread",
   "next_genuine_blockers": [
-    "CreateSemaphoreA",
-    "GetPriorityClass"
+    "BLOCKED_CRT_INITIALIZATION",
+    "GetCurrentThread"
   ],
-  "tlsgetvalue_reached": false
+  "crt_atexit": {
+    "roots": [
+      "0x00B52140",
+      "0x00B57CF0"
+    ],
+    "sequence": "static init \u2192 0x00977E20 (ICS) \u2192 0x0087B640(callback) \u2192 0x0087B59B \u2192 SEH frame 0x0087BEB8",
+    "fault": "null / unmapped guest access after CRT helper entry",
+    "globals_touched": [
+      "0x018B1E6C",
+      "0x018B1E68",
+      "IAT 0x00B61398",
+      "IAT 0x00B61394"
+    ],
+    "classification": "BLOCKED_CRT_INITIALIZATION",
+    "reason": "CRT atexit/registration path requires initialized CRT lock/heap state and import helpers; PE-zero BSS / unbound CRT IATs are not a defensible ordinary init substitute. NULL callback is not invoked.",
+    "implementation_attempted": false
+  }
 }
