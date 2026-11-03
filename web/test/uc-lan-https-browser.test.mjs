@@ -47,6 +47,7 @@ test('HTTPS LAN origin: secure context, assets ready, play disabled', async (t) 
   let browser;
   try {
     browser = await pw.chromium.launch({
+      channel: process.env.UC_BROWSER_CHANNEL || undefined,
       headless: true,
       args: [`--ignore-certificate-errors-spki-list=${handle.certs.spki.join(',')}`],
     });
@@ -61,6 +62,7 @@ test('HTTPS LAN origin: secure context, assets ready, play disabled', async (t) 
     const page = await context.newPage();
     await page.goto(origin + '/', { waitUntil: 'domcontentloaded', timeout: 60000 });
 
+    await page.locator('#play-preview').click();
     const secure = await page.evaluate(() => ({
       secure: window.isSecureContext,
       protocol: location.protocol,
@@ -123,6 +125,19 @@ test('authorized EA bumper plays over the LAN asset pipeline', { skip: !process.
   });
   await page.goto(handle.urls[0]);
   assert.equal(await page.evaluate(() => isSecureContext), true);
+  assert.match(await page.title(), /Need for Speed Undercover/);
+  assert.equal(await page.locator('#play').isDisabled(), true);
+  assert.doesNotMatch(await page.locator('body').innerText(), /Underground 2/i);
+  await page.locator('#play-preview').click();
+  if (process.env.UC_BROWSER_INIT_TEST) {
+    const trace = page.waitForEvent('console', { predicate: msg => msg.text().startsWith('[uc-init]') });
+    await page.locator('#run-guest-init').click();
+    const message = await trace;
+    assert.deepEqual(await message.args()[1].jsonValue(), {
+      entry: 0x009e8ad0, slot: 0x0189d1a4, before: 0, after: 0x009e78c0,
+      writes: 49, eip: 0x00dec0de, esp: 0x0300f000, eax: 0,
+    });
+  }
   const video = page.locator('#uc-startup-preview video');
   await page.waitForFunction(() => document.querySelector('#uc-startup-preview video')?.readyState >= 1);
   assert.equal(await video.evaluate(element => element.videoWidth), 1280);
@@ -134,6 +149,7 @@ test('authorized EA bumper plays over the LAN asset pipeline', { skip: !process.
   await video.evaluate(element => { element.currentTime = element.duration - 0.2; });
   await video.waitFor({ state: 'detached' });
   await page.reload();
+  await page.locator('#play-preview').click();
   await video.waitFor({ state: 'attached' });
   assert.equal(downloads, 1);
   await page.locator('#uc-startup-skip').click();
