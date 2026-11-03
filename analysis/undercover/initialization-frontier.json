@@ -1,5 +1,5 @@
 {
-  "phase": 28,
+  "phase": 31,
   "roots": [
     {
       "root": "0x0096CED0",
@@ -232,13 +232,86 @@
       "depth": null,
       "confidence": "PROVEN",
       "summary": "No E8, no function-map preds, no absolute imm32 refs in mapped image. Do not synthesize +0x140/+0x150. Stop Track A."
+    },
+    {
+      "root": "0x009E9340",
+      "classification": "BLOCKED_PROTECTED_INIT",
+      "allocator_classification": "PROTECTED_INITIALIZED_ALLOCATOR",
+      "ALLOCATOR_TARGET_RESOLVED": "NO",
+      "ALLOCATOR_INIT_PATH_ORDINARY": "NO",
+      "enterable": false,
+      "confidence": "PROVEN",
+      "summary": "Single ordinary writer is the setter 0x9E9410, called once from 0x008101B0 with a manager object produced by 0x00686000 (protected boundary). Method +0x08 of the heap descriptor is not ordinary-decodable. Not invoked, not emulated."
+    },
+    {
+      "root": "0x009E98F0",
+      "classification": "ENTERABLE_AFTER_ORDINARY_CTOR",
+      "kind": "ORDINARY_CONSTRUCTOR",
+      "this_source": "STACK_STORAGE",
+      "enterable": true,
+      "depth": 2,
+      "confidence": "PROVEN",
+      "summary": "non-allocating config ctor; 0x009E9340 local",
+      "phase": 31
+    },
+    {
+      "root": "0x00B57CD0",
+      "classification": "ENTERABLE_AFTER_ORDINARY_CTOR",
+      "kind": "STATIC_INITIALIZER",
+      "this_source": "GLOBAL_STORAGE",
+      "enterable": true,
+      "depth": 2,
+      "confidence": "PROVEN",
+      "summary": "CRT-style static init; string object 0x0189D184",
+      "phase": 31
+    },
+    {
+      "root": "0x009EB350",
+      "classification": "ENTERABLE_AFTER_ORDINARY_CTOR",
+      "kind": "ORDINARY_CONSTRUCTOR",
+      "this_source": "CALLER_STORAGE",
+      "enterable": true,
+      "depth": 2,
+      "confidence": "PROVEN",
+      "summary": "ret 0x10; arg2 = pointer to empty handle",
+      "phase": 31
+    },
+    {
+      "root": "0x00808770",
+      "classification": "ENTERABLE_AFTER_ORDINARY_CTOR",
+      "kind": "ORDINARY_CONSTRUCTOR",
+      "this_source": "CALLER_STORAGE",
+      "enterable": true,
+      "depth": 2,
+      "confidence": "PROVEN",
+      "summary": "four base ctors; SEH frame (prolog only, no delivery)",
+      "phase": 31
+    },
+    {
+      "root": "0x009EB980",
+      "classification": "ENTERABLE_AFTER_ORDINARY_CTOR",
+      "kind": "STATIC_INITIALIZER",
+      "this_source": "GLOBAL_STORAGE",
+      "enterable": true,
+      "depth": 2,
+      "confidence": "PROVEN",
+      "summary": "singleton-static init [0x189DA90]; PE-zero guard",
+      "phase": 31
     }
   ],
   "counts": {
-    "ordinary_init_recovered": 5,
+    "ordinary_init_recovered": 10,
     "init_blocked_external": 0,
-    "init_blocked_protected": 1,
+    "init_blocked_protected": 2,
     "init_blocked_unknown": 4,
-    "enterable": 12
+    "enterable": 19,
+    "clean_ordinary_roots": 10,
+    "executed_ordinary_constructors": 9
+  },
+  "allocator": {
+    "classification": "PROTECTED_INITIALIZED_ALLOCATOR",
+    "ALLOCATOR_TARGET_RESOLVED": "NO",
+    "ALLOCATOR_INIT_PATH_ORDINARY": "NO",
+    "factory_enterable": "NO"
   }
 }

@@ -1,6 +1,71 @@
 {
-  "phase": 30,
+  "phase": 31,
   "contracts": [
+    {
+      "object_id": "allocator_mgr_189da88",
+      "target_root": "0x009E9460",
+      "slot": "0x0189DA88",
+      "classification": "PROTECTED_INITIALIZED_ALLOCATOR",
+      "ALLOCATOR_TARGET_RESOLVED": "NO",
+      "ALLOCATOR_INIT_PATH_ORDINARY": "NO",
+      "factory_enterable": "NO",
+      "implementation_attempted": false,
+      "confidence": "PROVEN"
+    },
+    {
+      "object_id": "engine_obj_9e9160",
+      "target_root": "0x009E9160",
+      "size": "0x248",
+      "vtable": "0x00C30E68",
+      "ownership": "CALLER_OWNED / ALLOCATOR_RESULT (sole ordinary caller is 0x009E9340)",
+      "caller_inventory": {
+        "target": "0x009E9160",
+        "total_refs": 1,
+        "e8_sites": 1,
+        "e9_sites": 0,
+        "function_map_callers": [
+          "0x009E9340"
+        ],
+        "data_pointer_refs": 0,
+        "sites": [
+          {
+            "site": "0x009E9391",
+            "caller": "0x009E9340",
+            "kind": "E8",
+            "this_source": "ALLOCATOR_RESULT",
+            "caller_label": "HIGH_CONFIDENCE"
+          }
+        ],
+        "by_this_source": {
+          "STACK_STORAGE": 0,
+          "EMBEDDED_SUBOBJECT": 0,
+          "CALLER_ARGUMENT": 0,
+          "GLOBAL_STORAGE": 0,
+          "ALLOCATOR_RESULT": 1,
+          "UNKNOWN": 0
+        },
+        "non_allocating_callers": [],
+        "best_non_allocating_parent": null
+      },
+      "this_source_sole_caller": "ALLOCATOR_RESULT",
+      "non_allocating_callers": 0,
+      "required_fields": [
+        {
+          "off": "0x00",
+          "use": "vtable",
+          "pre_entry_read": false
+        },
+        {
+          "off": "0x240",
+          "use": "TLS index storage via 0x9777D0",
+          "pre_entry_read": false
+        }
+      ],
+      "initializer": "0x009E9160",
+      "enterability": "ENTERABLE_AFTER_ORDINARY_CTOR (harness this); parent factory not enterable",
+      "confidence": "PROVEN",
+      "live_blocker_no_stubs": "KERNEL32!InitializeCriticalSection via 0x00977420"
+    },
     {
       "object_id": "tls_value_slot_phase30",
       "target_root": "0x00977800",
@@ -83,35 +148,6 @@
       "enterability_cost": 3,
       "chain_potential": 50,
       "confidence": "PROVEN"
-    },
-    {
-      "object_id": "engine_obj_9e9160",
-      "target_root": "0x009E9160",
-      "required_fields": [
-        {
-          "off": "0x00",
-          "use": "vtable 0xC30E68",
-          "pre_entry_read": false
-        },
-        {
-          "off": "0x58",
-          "use": "stack arg store",
-          "pre_entry_read": false
-        }
-      ],
-      "field_provenance": "ordinary ctor writes; harness supplies this storage + POD arg",
-      "constructor": "0x009E9160",
-      "initializer": "0x009E9990",
-      "producer": "0x009E9340 (factory; not ENTERABLE \u2014 allocator)",
-      "vtable": "STATIC_ORDINARY_VTABLE 0x00C30E68",
-      "allocation": "harness guest buffer CALLER_OWNED",
-      "ownership": "CALLER_STORAGE",
-      "enterability": "ENTERABLE_AFTER_ORDINARY_CTOR",
-      "enterability_cost": 3,
-      "chain_potential": 90,
-      "confidence": "PROVEN",
-      "parent_candidate": "0x009E9340",
-      "parent_enterable": false
     },
     {
       "object_id": "bss_table_cea3b8",
@@ -1152,5 +1188,34 @@
         "0x00BD2250"
       ]
     }
+  },
+  "ctor_caller_inventory_9e9160": {
+    "target": "0x009E9160",
+    "total_refs": 1,
+    "e8_sites": 1,
+    "e9_sites": 0,
+    "function_map_callers": [
+      "0x009E9340"
+    ],
+    "data_pointer_refs": 0,
+    "sites": [
+      {
+        "site": "0x009E9391",
+        "caller": "0x009E9340",
+        "kind": "E8",
+        "this_source": "ALLOCATOR_RESULT",
+        "caller_label": "HIGH_CONFIDENCE"
+      }
+    ],
+    "by_this_source": {
+      "STACK_STORAGE": 0,
+      "EMBEDDED_SUBOBJECT": 0,
+      "CALLER_ARGUMENT": 0,
+      "GLOBAL_STORAGE": 0,
+      "ALLOCATOR_RESULT": 1,
+      "UNKNOWN": 0
+    },
+    "non_allocating_callers": [],
+    "best_non_allocating_parent": null
   }
 }
