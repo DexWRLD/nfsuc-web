@@ -532,7 +532,14 @@ def render_svg(model, detailed=False):
     d3d_impl = "YES" if gfx.get("direct3d9_implemented") else "NO"
     factory_init = gfx.get("factory_initialization") or "EXTERNAL/PROTECTED BLOCKED"
     post_init = gfx.get("post_init_graphics_frontier") or "UNKNOWN"
-    device_ptr = gfx.get("device_pointer") or "UNKNOWN"
+    device_code = gfx.get("device_code") or gfx.get("device_pointer") or "UNKNOWN"
+    device_pub = gfx.get("device_publication") or "UNKNOWN"
+    present_code = gfx.get("present_code") or "UNKNOWN"
+    present_rt = gfx.get("present_runtime") or "UNKNOWN"
+    draw_code = gfx.get("draw_code") or "UNKNOWN"
+    reset_rec = gfx.get("reset_recovery") or "UNKNOWN"
+    seam = gfx.get("post_init_seam") or "UNKNOWN"
+    d3d_just = "JUSTIFIED" if gfx.get("d3d9_implementation_justified") else "NOT JUSTIFIED"
     first_clear = gfx.get("first_clear") or "UNKNOWN"
     first_draw = gfx.get("first_draw") or "UNKNOWN"
     first_present = gfx.get("first_present") or "UNKNOWN"
@@ -548,8 +555,15 @@ def render_svg(model, detailed=False):
         ("CFG-complete", str(disc.get("cfg_complete", "?"))),
         ("CFG-budget", str(disc.get("cfg_budget_exceeded", "?"))),
         ("FACTORY INITIALIZATION", factory_init),
+        ("DEVICE CODE", device_code),
+        ("DEVICE PUBLICATION", device_pub),
+        ("PRESENT CODE", present_code),
+        ("PRESENT RUNTIME", present_rt),
+        ("DRAW CODE", draw_code),
+        ("RESET/RECOVERY", reset_rec),
+        ("POST-INIT SEAM", seam),
+        ("D3D9 IMPLEMENTATION", d3d_just),
         ("POST-INIT GRAPHICS FRONTIER", post_init),
-        ("DEVICE POINTER", device_ptr),
         ("FIRST CLEAR", first_clear),
         ("FIRST DRAW", first_draw),
         ("FIRST PRESENT", first_present),
@@ -659,7 +673,9 @@ th { color: #8b949e; font-weight: 600; }
 <h2>Current frontier</h2>
 <p>Current blocker: <code>0x00686000</code>, %s.</p>
 <p>Strategy: %s</p>
-<p>FACTORY INITIALIZATION: %s. POST-INIT GRAPHICS FRONTIER: %s. DEVICE POINTER: %s.</p>
+<p>FACTORY INITIALIZATION: %s. DEVICE CODE: %s. DEVICE PUBLICATION: %s.</p>
+<p>PRESENT CODE: %s. PRESENT RUNTIME: %s. DRAW CODE: %s. RESET/RECOVERY: %s.</p>
+<p>POST-INIT SEAM: %s. D3D9 IMPLEMENTATION: %s. POST-INIT GRAPHICS FRONTIER: %s.</p>
 <p>FIRST CLEAR: %s. FIRST DRAW: %s. FIRST PRESENT: %s.</p>
 <p>STATIC FACTORY: %s. FACTORY FRONTIER READY: %s. DIRECT3D9 IMPLEMENTED: %s.</p>
 <p>Independent of <code>0x00686000</code>: %s. Discovery-enrolled on HIGH graph: %s. Runtime enterable now: %s. Call <code>%s</code> in <code>%s</code> (%s).</p>
@@ -715,8 +731,15 @@ document.querySelectorAll("rect[data-addr]").forEach(function (node) {
         html.escape(boundary["status"]),
         html.escape(model["project"]["strategy"]),
         html.escape(graphics.get("factory_initialization") or "EXTERNAL/PROTECTED BLOCKED"),
+        html.escape(graphics.get("device_code") or graphics.get("device_pointer") or "UNKNOWN"),
+        html.escape(graphics.get("device_publication") or "UNKNOWN"),
+        html.escape(graphics.get("present_code") or "UNKNOWN"),
+        html.escape(graphics.get("present_runtime") or "UNKNOWN"),
+        html.escape(graphics.get("draw_code") or "UNKNOWN"),
+        html.escape(graphics.get("reset_recovery") or "UNKNOWN"),
+        html.escape(graphics.get("post_init_seam") or "UNKNOWN"),
+        "JUSTIFIED" if graphics.get("d3d9_implementation_justified") else "NOT JUSTIFIED",
         html.escape(graphics.get("post_init_graphics_frontier") or "UNKNOWN"),
-        html.escape(graphics.get("device_pointer") or "UNKNOWN"),
         html.escape(graphics.get("first_clear") or "UNKNOWN"),
         html.escape(graphics.get("first_draw") or "UNKNOWN"),
         html.escape(graphics.get("first_present") or "UNKNOWN"),
@@ -729,7 +752,7 @@ document.querySelectorAll("rect[data-addr]").forEach(function (node) {
         html.escape(graphics["call"]),
         html.escape(graphics["function"]),
         html.escape(graphics["confidence"]),
-        html.escape(graphics.get("active_objective") or "Find legitimate ordinary post-initialization graphics boundary"),
+        html.escape(graphics.get("active_objective") or "Map DEVICE aliases into draw paths; decide host-device Present contract"),
         html.escape("; ".join(graphics.get("blockers") or []) or "No blocker list."),
         estimate["best_case_phase"],
         estimate["likely_low"],
@@ -781,7 +804,14 @@ def render_png(model):
     d3d_impl = "YES" if gfx.get("direct3d9_implemented") else "NO"
     factory_init = gfx.get("factory_initialization") or "EXTERNAL/PROTECTED BLOCKED"
     post_init = gfx.get("post_init_graphics_frontier") or "UNKNOWN"
-    device_ptr = gfx.get("device_pointer") or "UNKNOWN"
+    device_code = gfx.get("device_code") or gfx.get("device_pointer") or "UNKNOWN"
+    device_pub = gfx.get("device_publication") or "UNKNOWN"
+    present_code = gfx.get("present_code") or "UNKNOWN"
+    present_rt = gfx.get("present_runtime") or "UNKNOWN"
+    draw_code = gfx.get("draw_code") or "UNKNOWN"
+    reset_rec = gfx.get("reset_recovery") or "UNKNOWN"
+    seam = gfx.get("post_init_seam") or "UNKNOWN"
+    d3d_just = "JUSTIFIED" if gfx.get("d3d9_implementation_justified") else "NOT JUSTIFIED"
     first_clear = gfx.get("first_clear") or "UNKNOWN"
     first_draw = gfx.get("first_draw") or "UNKNOWN"
     first_present = gfx.get("first_present") or "UNKNOWN"
@@ -797,8 +827,15 @@ def render_png(model):
         ("CFG-complete", str(disc.get("cfg_complete", "?"))),
         ("CFG-budget", str(disc.get("cfg_budget_exceeded", "?"))),
         ("FACTORY INITIALIZATION", factory_init),
+        ("DEVICE CODE", device_code),
+        ("DEVICE PUBLICATION", device_pub),
+        ("PRESENT CODE", present_code),
+        ("PRESENT RUNTIME", present_rt),
+        ("DRAW CODE", draw_code),
+        ("RESET/RECOVERY", reset_rec),
+        ("POST-INIT SEAM", seam),
+        ("D3D9 IMPLEMENTATION", d3d_just),
         ("POST-INIT GRAPHICS FRONTIER", post_init),
-        ("DEVICE POINTER", device_ptr),
         ("FIRST CLEAR", first_clear),
         ("FIRST DRAW", first_draw),
         ("FIRST PRESENT", first_present),

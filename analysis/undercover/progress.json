@@ -1,8 +1,8 @@
 {
   "project": {
     "name": "nfsuc-web",
-    "current_phase": 19,
-    "strategy": "Factory prefix via 0x00B615C4 is BLOCKED_EXTERNAL_PROTECTED_INITIALIZATION (frozen). Active objective: ordinary post-init graphics boundary around proven device 0x013C6510 (Present/Clear/EndScene). Do not reconstruct SecuROM binding or invent callbacks. Do not implement D3D9 until an ordinary publisher or accepted external-state contract exists. 0x00686000 stays unimplemented."
+    "current_phase": 20,
+    "strategy": "Factory prefix frozen. Device 0x013C6510 is PROVEN; in-game publication is DEFINITE via 0x00725200 out-param but EXTERNAL/BLOCKED (needs 0x00686000 before pub and factory field from 0x00B615C4). Present code FOUND; Present runtime BLOCKED on device state. Draw COM shapes FOUND via renderer 0x017AA798 but not DEVICE-aliased. PARTIAL post-init seam (host device for Present/Clear). D3D9 implementation NOT justified. First-frame UNBOUNDED."
   },
   "discovery": {
     "candidates": 25450,
@@ -76,25 +76,20 @@
         "0x00722D60=1",
         "0x00729977=2",
         "0x00B4F990=0"
-      ],
-      "evidence": "No ordinary invocation path to value-1 writer."
+      ]
     },
     {
       "address": "0x01318170",
-      "status": "STATIC ZERO OBJECT / ADDRESS-TAKEN ONLY",
-      "evidence": "Factory thiscall object; +0x10 holds Direct3DCreate9 result on blocked path."
+      "status": "STATIC ZERO OBJECT / ADDRESS-TAKEN ONLY"
     },
     {
       "address": "0x00B615C4",
-      "status": "BLOCKED_EXTERNAL_PROTECTED_INITIALIZATION",
-      "pe_value": "0x008AA3AE",
-      "table": "0x00B61528-0x00B615E4",
-      "evidence": "Frozen Phase 18 boundary."
+      "status": "BLOCKED_EXTERNAL_PROTECTED_INITIALIZATION"
     },
     {
       "address": "0x013C6510",
-      "status": "PROVEN_D3D9_DEVICE / NO ORDINARY WRITER",
-      "evidence": "Present/BeginScene/EndScene/Clear-shaped COM; published as COM out-param in 0x00725200; caller 0x007297D0 hits 0x00686000."
+      "status": "PROVEN_D3D9_DEVICE / PUBLICATION EXTERNAL/BLOCKED",
+      "evidence": "DEFINITE out-param publication in 0x00725200; caller 0x007297D0 hits 0x00686000 before publish; needs [obj+0x10]."
     }
   ],
   "boundaries": {
@@ -107,7 +102,7 @@
       "substituted": false,
       "lifted": false,
       "executed": false,
-      "note": "Device publisher caller 0x007297D0 hits this helper. Create path remains NO_PATH in helper-cut."
+      "note": "Occurs BEFORE successful device publication in 0x007297D0 (allocator to [obj+0x50])."
     },
     "0x0055FF30": {
       "status": "UNKNOWN",
@@ -118,7 +113,7 @@
     },
     "0x00B615C4": {
       "status": "BLOCKED_EXTERNAL_PROTECTED_INITIALIZATION",
-      "note": "Phase 18/19 freeze. Not an active reverse-engineering target."
+      "note": "Frozen. Mandatory for in-game device publication via factory field; not required on Present-only prefix."
     }
   },
   "helper_cut": {
@@ -134,41 +129,46 @@
     "call": "0x0072E3B9",
     "function": "0x0072E340",
     "confidence": "HIGH_CONFIDENCE",
-    "frontier": "FOUND",
     "factory_initialization": "EXTERNAL/PROTECTED BLOCKED",
     "static_factory_frontier": "REACHABLE",
     "runtime_factory_frontier": "NOT ENTERABLE",
     "factory_frontier_ready": false,
     "pre_factory_callback": "UNRESOLVED",
     "direct3d9_implemented": false,
+    "d3d9_implementation_justified": false,
     "callback_publication": "EXTERNAL_PROTECTED_INITIALIZATION",
     "post_init_graphics_frontier": "FOUND",
     "device_pointer": "PROVEN",
+    "device_code": "PROVEN",
     "device_va": "0x013C6510",
     "device_confidence": "PROVEN_D3D9_DEVICE",
+    "device_publication": "EXTERNAL/BLOCKED",
+    "createdevice_confidence": "CREATEDEVICE_STRONG_CANDIDATE",
+    "createdevice_vtable_offset": "0x40",
+    "present_code": "FOUND",
+    "present_runtime": "BLOCKED",
+    "draw_code": "FOUND",
+    "reset_recovery": "NOT FOUND",
+    "post_init_seam": "PARTIAL",
     "first_clear": "BLOCKED_EXTERNAL",
-    "first_draw": "NOT_FOUND",
+    "first_draw": "FOUND_STRONG",
     "first_present": "BLOCKED_EXTERNAL",
+    "present_entry": "0x00752AF0",
+    "publisher": "0x00725200",
+    "publisher_caller": "0x007297D0",
+    "renderer_candidate": "0x017AA798",
     "independent_of_0x00686000": "YES",
     "reachable_from_high_graph": "YES",
-    "reachable_means": "discovery_enrollment_and_HIGH_create_calls_thunk",
     "enterable_now": "NO",
-    "flag": "0x01311E1C",
-    "flag_value_1_writer": "0x00722D60",
     "object": "0x01318170",
     "esi_slot": "0x00B615C4",
-    "esi_slot_class": "BLOCKED_EXTERNAL_PROTECTED_INITIALIZATION",
-    "shortest_chain": [
-      "0x0072E340",
-      "0x0087A79C"
-    ],
-    "active_objective": "Find legitimate ordinary post-initialization graphics boundary",
+    "active_objective": "Map DEVICE aliases into draw/renderer paths; decide host-device Present contract",
     "blockers": [
-      "Factory prefix frozen: 0x00B615C4 EXTERNAL/PROTECTED",
-      "Device 0x013C6510 has no ordinary writer; publisher caller hits 0x00686000",
-      "FIRST_CLEAR / FIRST_PRESENT are BLOCKED_EXTERNAL",
-      "FIRST_DRAW not found on device load pattern",
-      "Direct3D9 not implemented"
+      "In-game DEVICE publication needs 0x00686000 before 0x00725200 and factory field from frozen 0x00B615C4",
+      "Present runtime blocked on live DEVICE state",
+      "Draw COM shapes not proven as aliases of 0x013C6510",
+      "Reset/recovery not found",
+      "D3D9 not implemented"
     ]
   },
   "first_frame_estimate": {
@@ -176,7 +176,7 @@
     "likely_low": "UNBOUNDED",
     "likely_high": "UNBOUNDED",
     "is_estimate": true,
-    "uncertainty": "Post-init interfaces found, but device publication requires external/protected code. Optimistic phase countdown removed."
+    "uncertainty": "PARTIAL seam for Present/Clear with host DEVICE; full frame still UNBOUNDED."
   },
   "phases": [
     {
@@ -272,6 +272,11 @@
     {
       "phase": 19,
       "name": "Post-init graphics frontier",
+      "state": "completed"
+    },
+    {
+      "phase": 20,
+      "name": "Device lifecycle and post-init seam",
       "state": "current"
     }
   ],
@@ -301,40 +306,40 @@
       "state": "REPAIRED"
     },
     {
-      "name": "STATIC D3D FACTORY FRONTIER",
-      "state": "REACHABLE"
-    },
-    {
       "name": "FACTORY INITIALIZATION",
       "state": "EXTERNAL/PROTECTED BLOCKED"
     },
     {
-      "name": "POST-INIT GRAPHICS FRONTIER",
-      "state": "FOUND"
-    },
-    {
-      "name": "DEVICE POINTER",
+      "name": "DEVICE CODE",
       "state": "PROVEN"
     },
     {
-      "name": "FIRST CLEAR",
-      "state": "BLOCKED_EXTERNAL"
+      "name": "DEVICE PUBLICATION",
+      "state": "EXTERNAL/BLOCKED"
     },
     {
-      "name": "FIRST DRAW",
-      "state": "NOT_FOUND"
+      "name": "PRESENT CODE",
+      "state": "FOUND"
     },
     {
-      "name": "FIRST PRESENT",
-      "state": "BLOCKED_EXTERNAL"
+      "name": "PRESENT RUNTIME",
+      "state": "BLOCKED"
     },
     {
-      "name": "RUNTIME D3D FACTORY FRONTIER",
-      "state": "NOT ENTERABLE"
+      "name": "DRAW CODE",
+      "state": "FOUND"
     },
     {
-      "name": "D3D9 DEVICE",
-      "state": "NOT STARTED"
+      "name": "RESET/RECOVERY",
+      "state": "NOT FOUND"
+    },
+    {
+      "name": "POST-INIT SEAM",
+      "state": "PARTIAL"
+    },
+    {
+      "name": "D3D9 IMPLEMENTATION",
+      "state": "NOT JUSTIFIED"
     },
     {
       "name": "FIRST FRAME",
