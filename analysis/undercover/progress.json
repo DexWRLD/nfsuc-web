@@ -1,8 +1,8 @@
 {
   "project": {
     "name": "nfsuc-web",
-    "current_phase": 71,
-    "strategy": "NO-GO further speculative provider translation. GO bounded hybrid CPU feasibility gate; original provider binding remains unproved and connected browser execution still traps at 0x0087B5B3."
+    "current_phase": 72,
+    "strategy": "Browser Unicorn.js executes the exact 173-instruction connected control with matching state. NO-GO adoption: measured checked adapter exceeds the 5x performance gate; keep translated Wasm and provider boundary unchanged."
   },
   "discovery": {
     "candidates": 25450,
@@ -7359,6 +7359,10 @@
     {
       "name": "NATIVE X86 DIFFERENTIAL PROTOTYPE",
       "state": "VERIFIED FIXTURE; BROWSER BACKEND NOT INTEGRATED"
+    },
+    {
+      "name": "BROWSER X86 CONNECTED DIFFERENTIAL",
+      "state": "VERIFIED TEST; ADOPTION NO-GO (PERFORMANCE)"
     }
   ],
   "history": [

@@ -1,6 +1,6 @@
 {
-  "current_phase": 71,
-  "strategy": "NO-GO further speculative provider translation. GO bounded hybrid CPU feasibility gate; original provider binding remains unproved and connected browser execution still traps at 0x0087B5B3.",
+  "current_phase": 72,
+  "strategy": "Browser Unicorn.js executes the exact 173-instruction connected control with matching state. NO-GO adoption: measured checked adapter exceeds the 5x performance gate; keep translated Wasm and provider boundary unchanged.",
   "boundaries": {
     "0x00686000": {
       "status": "PROTECTED_OR_EXTERNAL_DEPENDENCY",
@@ -647,6 +647,10 @@
     {
       "name": "NATIVE X86 DIFFERENTIAL PROTOTYPE",
       "state": "VERIFIED FIXTURE; BROWSER BACKEND NOT INTEGRATED"
+    },
+    {
+      "name": "BROWSER X86 CONNECTED DIFFERENTIAL",
+      "state": "VERIFIED TEST; ADOPTION NO-GO (PERFORMANCE)"
     }
   ],
   "frontend_frame_revalidation": {
@@ -701,5 +705,15 @@
     "provider_search": "CLOSED_UNTIL_NEW_WRITER_OR_BINDING_EVIDENCE",
     "next_milestone": 5,
     "original_crt_execution_advanced": false
+  },
+  "browser_x86": {
+    "evidence": "browser-x86-feasibility-phase72.json",
+    "differential": "browser-x86-differential-phase72.json",
+    "browser_execution": true,
+    "technical_differential_passed": true,
+    "decision": "NO_GO_ADOPTION",
+    "production_available": false,
+    "original_startup_advanced": false,
+    "new_unique_harness_functions": 0
   }
 }

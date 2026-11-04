@@ -16,17 +16,19 @@
     "0x0087B637"
   ],
   "independent_initialization_root": "0x00B57DC0",
-  "independent_initialization_evidence": "runtime-phase71.md and edge-execution-phase71.json",
+  "independent_initialization_evidence": "runtime-phase72.md and edge-execution-phase72.json",
   "provider_provenance_gate": {
     "evidence": "ordinary-import-call-evidence-phase71.json",
     "status": "BLOCKED_UNAVAILABLE_PROVIDER_PROVENANCE",
     "repeat_search": "CLOSED_UNTIL_NEW_WRITER_OR_BINDING_EVIDENCE"
   },
   "runtime_strategy": {
-    "evidence": "runtime-feasibility-phase71.md",
-    "next_milestone": 5,
+    "evidence": "browser-x86-feasibility-phase72.json",
     "native_differential_fixture_verified": true,
-    "browser_engine_integrated": false
+    "browser_differential_verified": true,
+    "browser_engine_integrated": false,
+    "decision": "NO_GO_ADOPTION",
+    "original_startup_advanced": false
   },
   "crt_initialization_order": {
     "evidence": "crt-initialization-order-phase70.json",
