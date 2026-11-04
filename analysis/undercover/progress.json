@@ -7274,7 +7274,7 @@
     },
     {
       "name": "WASM / BROWSER",
-      "state": "NOT STARTED"
+      "state": "DIAGNOSTICS VERIFIED; BOOT BLOCKED"
     },
     {
       "name": "PLAYABLE WEB BUILD",
@@ -7307,6 +7307,34 @@
     {
       "name": "BROWSER GAME RENDERER",
       "state": "NOT READY"
+    },
+    {
+      "name": "FRONTEND FRAME PREFIX",
+      "state": "VERIFIED (SYNTHETIC STATE)"
+    },
+    {
+      "name": "FRONTEND FRAME CALLER EDGE",
+      "state": "VERIFIED (SYNTHETIC STATE)"
+    },
+    {
+      "name": "FRONTEND FRAME WORK STATE",
+      "state": "UNVERIFIED"
+    },
+    {
+      "name": "FRONTEND RESOURCE SPAN",
+      "state": "UNVERIFIED"
+    },
+    {
+      "name": "ORIGINAL FRONTEND SCREEN",
+      "state": "UNVERIFIED"
+    },
+    {
+      "name": "ORIGINAL BOOT ORDER",
+      "state": "UNVERIFIED"
+    },
+    {
+      "name": "ORIGINAL GAME BOOT",
+      "state": "UNVERIFIED"
     }
   ],
   "history": [

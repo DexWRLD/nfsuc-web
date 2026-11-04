@@ -562,7 +562,7 @@
     },
     {
       "name": "WASM / BROWSER",
-      "state": "NOT STARTED"
+      "state": "DIAGNOSTICS VERIFIED; BOOT BLOCKED"
     },
     {
       "name": "PLAYABLE WEB BUILD",
@@ -595,6 +595,48 @@
     {
       "name": "BROWSER GAME RENDERER",
       "state": "NOT READY"
+    },
+    {
+      "name": "FRONTEND FRAME PREFIX",
+      "state": "VERIFIED (SYNTHETIC STATE)"
+    },
+    {
+      "name": "FRONTEND FRAME CALLER EDGE",
+      "state": "VERIFIED (SYNTHETIC STATE)"
+    },
+    {
+      "name": "FRONTEND FRAME WORK STATE",
+      "state": "UNVERIFIED"
+    },
+    {
+      "name": "FRONTEND RESOURCE SPAN",
+      "state": "UNVERIFIED"
+    },
+    {
+      "name": "ORIGINAL FRONTEND SCREEN",
+      "state": "UNVERIFIED"
+    },
+    {
+      "name": "ORIGINAL BOOT ORDER",
+      "state": "UNVERIFIED"
+    },
+    {
+      "name": "ORIGINAL GAME BOOT",
+      "state": "UNVERIFIED"
     }
-  ]
+  ],
+  "frontend_frame_revalidation": {
+    "evidence": "edge-frame-phase60-revalidation.json",
+    "classification": "original caller slice with synthetic state",
+    "FRONTEND_FRAME_PREFIX_BROWSER_VERIFIED": true,
+    "FRONTEND_FRAME_CALLER_EDGE_BROWSER_VERIFIED": true,
+    "FRONTEND_FRAME_WORK_STATE_VERIFIED": false,
+    "ORIGINAL_FRONTEND_RESOURCE_SPAN_VERIFIED": false,
+    "ORIGINAL_FRONTEND_SCREEN_DISPLAYED": false,
+    "ORIGINAL_BOOT_ORDER_VERIFIED": false,
+    "ORIGINAL_GAME_BOOT_EXECUTING": false,
+    "FIRST_FRAME_PATH_BLOCKED_BY_PROTECTED_BACKEND": "BLOCKED",
+    "fixture_cases": 9,
+    "historical_native_metrics_unchanged": true
+  }
 }
