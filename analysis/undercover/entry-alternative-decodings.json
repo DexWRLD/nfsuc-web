@@ -1,0 +1,202 @@
+{
+  "classification": "Static alternative decodings; no branch selected or executed",
+  "decodings": {
+    "0x01FCA510": [
+      {
+        "address": "0x01FCA510",
+        "bytes": "9c",
+        "instruction": "pushfd "
+      },
+      {
+        "address": "0x01FCA511",
+        "bytes": "68ed060000",
+        "instruction": "push 0x6ed"
+      },
+      {
+        "address": "0x01FCA516",
+        "bytes": "7312",
+        "instruction": "jae 0x1fca52a"
+      },
+      {
+        "address": "0x01FCA518",
+        "bytes": "810424ebe62801",
+        "instruction": "add dword ptr [esp], 0x128e6eb"
+      },
+      {
+        "address": "0x01FCA51F",
+        "bytes": "90",
+        "instruction": "nop "
+      },
+      {
+        "address": "0x01FCA520",
+        "bytes": "810424c3b7d300",
+        "instruction": "add dword ptr [esp], 0xd3b7c3"
+      }
+    ],
+    "0x01FCA520": [
+      {
+        "address": "0x01FCA520",
+        "bytes": "810424c3b7d300",
+        "instruction": "add dword ptr [esp], 0xd3b7c3"
+      },
+      {
+        "address": "0x01FCA527",
+        "bytes": "ebfa",
+        "instruction": "jmp 0x1fca523"
+      },
+      {
+        "address": "0x01FCA529",
+        "bytes": "af",
+        "instruction": "scasd eax, dword ptr es:[edi]"
+      },
+      {
+        "address": "0x01FCA52A",
+        "bytes": "83ec24",
+        "instruction": "sub esp, 0x24"
+      },
+      {
+        "address": "0x01FCA52D",
+        "bytes": "c744242005927f39",
+        "instruction": "mov dword ptr [esp + 0x20], 0x397f9205"
+      }
+    ],
+    "0x01FCA523": [
+      {
+        "address": "0x01FCA523",
+        "bytes": "c3",
+        "instruction": "ret "
+      },
+      {
+        "address": "0x01FCA524",
+        "bytes": "b7d3",
+        "instruction": "mov bh, 0xd3"
+      },
+      {
+        "address": "0x01FCA526",
+        "bytes": "00eb",
+        "instruction": "add bl, ch"
+      },
+      {
+        "address": "0x01FCA528",
+        "bytes": "fa",
+        "instruction": "cli "
+      },
+      {
+        "address": "0x01FCA529",
+        "bytes": "af",
+        "instruction": "scasd eax, dword ptr es:[edi]"
+      },
+      {
+        "address": "0x01FCA52A",
+        "bytes": "83ec24",
+        "instruction": "sub esp, 0x24"
+      },
+      {
+        "address": "0x01FCA52D",
+        "bytes": "c744242005927f39",
+        "instruction": "mov dword ptr [esp + 0x20], 0x397f9205"
+      }
+    ],
+    "0x01FCA52A": [
+      {
+        "address": "0x01FCA52A",
+        "bytes": "83ec24",
+        "instruction": "sub esp, 0x24"
+      },
+      {
+        "address": "0x01FCA52D",
+        "bytes": "c744242005927f39",
+        "instruction": "mov dword ptr [esp + 0x20], 0x397f9205"
+      },
+      {
+        "address": "0x01FCA535",
+        "bytes": "c744241c66000200",
+        "instruction": "mov dword ptr [esp + 0x1c], 0x20066"
+      },
+      {
+        "address": "0x01FCA53D",
+        "bytes": "896c2418",
+        "instruction": "mov dword ptr [esp + 0x18], ebp"
+      }
+    ],
+    "0x01FCA58C": [
+      {
+        "address": "0x01FCA58C",
+        "bytes": "810424c2040005",
+        "instruction": "add dword ptr [esp], 0x50004c2"
+      },
+      {
+        "address": "0x01FCA593",
+        "bytes": "ff742404",
+        "instruction": "push dword ptr [esp + 4]"
+      },
+      {
+        "address": "0x01FCA597",
+        "bytes": "9d",
+        "instruction": "popfd "
+      },
+      {
+        "address": "0x01FCA598",
+        "bytes": "ebf5",
+        "instruction": "jmp 0x1fca58f"
+      },
+      {
+        "address": "0x01FCA59A",
+        "bytes": "ac",
+        "instruction": "lodsb al, byte ptr [esi]"
+      },
+      {
+        "address": "0x01FCA59B",
+        "bytes": "9d",
+        "instruction": "popfd "
+      },
+      {
+        "address": "0x01FCA59C",
+        "bytes": "b8bbffffff",
+        "instruction": "mov eax, 0xffffffbb"
+      }
+    ],
+    "0x01FCA58F": [
+      {
+        "address": "0x01FCA58F",
+        "bytes": "c20400",
+        "instruction": "ret 4"
+      },
+      {
+        "address": "0x01FCA592",
+        "bytes": "05ff742404",
+        "instruction": "add eax, 0x42474ff"
+      },
+      {
+        "address": "0x01FCA597",
+        "bytes": "9d",
+        "instruction": "popfd "
+      },
+      {
+        "address": "0x01FCA598",
+        "bytes": "ebf5",
+        "instruction": "jmp 0x1fca58f"
+      },
+      {
+        "address": "0x01FCA59A",
+        "bytes": "ac",
+        "instruction": "lodsb al, byte ptr [esi]"
+      },
+      {
+        "address": "0x01FCA59B",
+        "bytes": "9d",
+        "instruction": "popfd "
+      },
+      {
+        "address": "0x01FCA59C",
+        "bytes": "b8bbffffff",
+        "instruction": "mov eax, 0xffffffbb"
+      },
+      {
+        "address": "0x01FCA5A1",
+        "bytes": "8b440445",
+        "instruction": "mov eax, dword ptr [esp + eax + 0x45]"
+      }
+    ]
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "source_sha256": "6b10551649fd70fa630bd7454fd953f51555fa2dd2112faae84ac8ca97844bcd",
+  "address": "0x00BBB2BC",
+  "bytes": "90d08000",
+  "target": "0x0080D090",
+  "classification": "Static original PE bytes only; no live receiver established"
+}
