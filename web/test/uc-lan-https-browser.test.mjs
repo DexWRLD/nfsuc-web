@@ -68,6 +68,13 @@ test('HTTPS LAN origin: secure context, assets ready, play disabled', async (t) 
       protocol: location.protocol,
     }));
     assert.equal(secure.protocol, 'https:');
+    assert.equal(await page.locator('#execution-backend').inputValue(), 'translated');
+    assert.equal(await page.locator('#execution-backend option[value="browser-x86"]').isDisabled(), true);
+    const backendStatus = JSON.parse(await page.locator('#backend-status').textContent());
+    assert.equal(backendStatus.availableOnThisSite, false);
+    assert.equal(backendStatus.decision, 'NO_GO_ADOPTION');
+    assert.equal(backendStatus.originalInstructions, 173);
+    assert.equal(backendStatus.startupReady, false);
     assert.equal(secure.secure, true);
 
     // Wait for Undercover panel boot stage / status text

@@ -25,7 +25,11 @@ async function sha(bytes: Uint8Array): Promise<string> {
     .map(value => value.toString(16).padStart(2, '0')).join('');
 }
 
-export async function createUndercoverProcess(description: unknown, payload: Uint8Array, code: Uint8Array) {
+export interface UnifiedExecutionObserver {
+  instruction?(cpu: GuestCpu, flagsKnown: number): void;
+  read?(address: number, size: number, instruction: number, value: number): void;
+}
+export async function createUndercoverProcess(description: unknown, payload: Uint8Array, code: Uint8Array, observer?: UnifiedExecutionObserver) {
   const image = description as ImageDescriptor;
   if (!image || image.version !== 1 || image.imageBase !== 0x00400000
       || image.sourceSha256 !== UNDERCOVER_SHA || image.payloadSize !== payload.length
@@ -91,9 +95,17 @@ export async function createUndercoverProcess(description: unknown, payload: Uin
   const instance = await WebAssembly.instantiate(module, {
     env: { memory: memory.memory },
     guest: {
-      readFs32: (offset: number) => threads.read(offset >>> 0),
+      readFs32: (offset: number) => {
+        const value = threads.read(offset >>> 0);
+        observer?.read?.(threads.snapshot().fsBase! + (offset >>> 0), 4, lastInstruction, value);
+        return value;
+      },
       writeFs32: (offset: number, value: number) => threads.write(offset >>> 0, value >>> 0),
-      read32: (address: number) => memory.read32(address >>> 0),
+      read32: (address: number) => {
+        const value = memory.read32(address >>> 0);
+        observer?.read?.(address >>> 0, 4, lastInstruction, value);
+        return value;
+      },
       write32: (address: number, value: number) => {
         memory.write32(address >>> 0, value);
         writes++;
@@ -108,6 +120,11 @@ export async function createUndercoverProcess(description: unknown, payload: Uin
         lastInstruction = address >>> 0;
         instructions.push(lastInstruction);
         exports.set_register(1, lastInstruction);
+        if (observer?.instruction) {
+          const observed = Object.fromEntries(registers.map((name, index) => [name, exports.get_register(index) >>> 0])) as unknown as GuestCpu;
+          observed.eflags = exports.get_flags() >>> 0;
+          observer.instruction(observed, exports.get_flags_known() >>> 0);
+        }
       },
       dispatch: (address: number) => {
         readCpu();

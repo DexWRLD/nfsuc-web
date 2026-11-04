@@ -1,3 +1,4 @@
+import { BROWSER_X86_STATUS } from './app/uc-backend-status';
 import { runUnifiedIntegration } from './app/uc-unified-boot';
 import './app/undercover-home.css';
 import { runFrontendFrame, runBootCallbacks, runFrontendQueue, runFrontendLookup, runAptDiagnostic, runUndercoverInitializer } from './app/uc-browser-init';
@@ -132,6 +133,20 @@ frameButton.addEventListener('click', async () => {
   }
 });
 
+const backendStatus = BROWSER_X86_STATUS;
+document.querySelector<HTMLElement>('#backend-status')!.textContent = JSON.stringify({
+  active: 'Existing translated Wasm', candidate: backendStatus.engine.name + ' ' + backendStatus.engine.version,
+  implementation: 'Browser WebAssembly, verified in a dedicated Edge test worker',
+  provenance: backendStatus.engine.source, license: backendStatus.engine.license,
+  availableOnThisSite: backendStatus.productionAvailable, decision: backendStatus.decision,
+  originalInstructions: backendStatus.originalInstructions, functionEntries: backendStatus.originalEntries,
+  originalGlobalWrites: backendStatus.originalGlobalWrites, differential: backendStatus.differential,
+  cpuFsConsistency: backendStatus.cpuFsConsistency, stop: backendStatus.stop,
+  medianMs: backendStatus.runtimeMedianMs, slowdown: backendStatus.slowdown,
+  canonicalMemoryBytes: backendStatus.canonicalMemoryBytes, engineMemoryBytes: backendStatus.engineMemoryBytes,
+  downloadBytes: backendStatus.engine.downloadBytes, fixture: backendStatus.fixtureProvenance,
+  startupReady: backendStatus.startupReady, reason: backendStatus.reason,
+}, null, 2);
 const unifiedButton = document.querySelector<HTMLButtonElement>('#unified-process')!;
 const unifiedResult = document.querySelector<HTMLElement>('#unified-result')!;
 const unifiedAbort = new AbortController();
