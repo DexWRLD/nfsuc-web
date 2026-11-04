@@ -1,8 +1,8 @@
 {
   "project": {
     "name": "nfsuc-web",
-    "current_phase": 75,
-    "strategy": "Opt-in compatibility-hosted security-cookie routine returns in Edge using five exact-callsite host services. Original PE startup and loader binding remain unverified. C/CPP initialization and cleanup remain blocked; normal mode preserves the provider trap."
+    "current_phase": 76,
+    "strategy": "Phase 76: host-scheduled bounded CRT startup prefix at 0x0087BB3D with compatibility ICE; stop at _initterm_e; FIRST_FRAME frozen."
   },
   "discovery": {
     "candidates": 25450,
@@ -7196,6 +7196,11 @@
     {
       "phase": 51,
       "name": "Authentic startup logo preview & intro inventory",
+      "state": "completed"
+    },
+    {
+      "phase": 76,
+      "name": "Bounded CRT startup prefix + ICE",
       "state": "completed"
     }
   ],

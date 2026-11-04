@@ -2,7 +2,7 @@
 
 Research fork aimed at **Need for Speed: Undercover** — take a retail `nfs.exe` you already own, lift ordinary x86 into C, and poke at what actually runs in a small native harness.
 
-The private browser preview displays verified startup media and bounded translated-code diagnostics. Full game boot and gameplay remain blocked. Independent of Electronic Arts.
+The private browser preview displays verified startup media and a Windows-compatible CRT diagnostic bootstrap. Full game boot and gameplay remain blocked. Independent of Electronic Arts.
 
 Your install stays on your machine. Tools only read it. Game binaries and generated game C never go in git.
 
@@ -16,9 +16,9 @@ Top: translation/compile. Bottom: runtime. Green on the top map ≠ the game wor
 python tools/progress.py
 ```
 
-Roughly: ~22.7k high-confidence functions generate and compile. The harness runs real ordinary call chains (depth 3+ via constructors/initializers, math/CRT leaves). Graphics remains blocked on a protected backend; Direct3D is not implemented. Protected startup is left alone.
+**Current phase: 76.** Roughly ~22.7k high-confidence functions generate and compile. In an opt-in Edge compatibility CRT path (not original PE entry), the host-scheduled security-cookie routine returns, then a bounded prefix of original CRT startup at `0x0087BB3D` runs through SEH / `FS:[0x18]` / `InterlockedCompareExchange`, sets startup state to 1, and stops at `_initterm_e`. Graphics remains blocked on a protected backend; Direct3D is not implemented. Original PE-entry reachability and loader binding are still unverified.
 
-More detail: [docs/roadmap.md](docs/roadmap.md), [docs/feasibility.md](docs/feasibility.md), [analysis/undercover/](analysis/undercover/).
+More detail: [analysis/undercover/runtime-phase76.md](analysis/undercover/runtime-phase76.md), [docs/roadmap.md](docs/roadmap.md), [docs/feasibility.md](docs/feasibility.md), [analysis/undercover/](analysis/undercover/).
 
 ## Quick start
 
