@@ -47,7 +47,11 @@ def validate_instruction_subset(bodies):
     if mnemonics - admitted:
         raise ValueError('Unreviewed unified instruction: '+','.join(sorted(mnemonics-admitted)))
 
-def build(image, output):
+def build(image, output, crt_cookie_output=None):
+    if crt_cookie_output is not None:
+        destination=crt_cookie_output.resolve()
+        if destination.is_relative_to(REPOSITORY) or destination.is_relative_to(image.resolve().parent):
+            raise ValueError("CRT diagnostic output must stay outside Git and the original installation")
     raw=image.read_bytes()
     if hashlib.sha256(raw).hexdigest()!=legacy.SOURCE_SHA:
         raise ValueError("Original executable SHA mismatch")
@@ -138,6 +142,16 @@ void execute(u32 address) { switch(address) {
             "-nostdlib","-Wl,--no-entry","-Wl,--import-memory","-Wl,--initial-memory=131072",
             "-Wl,--export=execute","-Wl,--export=set_register","-Wl,--export=get_register","-Wl,--export=get_flags","-Wl,--export=get_flags_known","-Wl,--export=set_flags",
             str(source),"-o",str(output/"uc-unified.wasm")],check=True)
+    if crt_cookie_output is not None:
+        import uc_crt_cookie
+        cookie,meta=uc_crt_cookie.source(raw,info)
+        variant=exports.replace("default: __builtin_trap();", "case 0x0087c264u: sub_0087c264(&cpu); return;\ndefault: __builtin_trap();")
+        crt_cookie_output.mkdir(parents=True,exist_ok=True)
+        with tempfile.TemporaryDirectory() as temp:
+            source=Path(temp)/"crt-cookie.c"
+            source.write_text(HEADER+bodies+cookie+variant,encoding="utf-8")
+            subprocess.run([p7.clang(),"--target=wasm32-unknown-unknown","-O2","-ffreestanding","-nostdlib","-Wl,--no-entry","-Wl,--import-memory","-Wl,--initial-memory=131072","-Wl,--export=execute","-Wl,--export=set_register","-Wl,--export=get_register","-Wl,--export=get_flags","-Wl,--export=get_flags_known","-Wl,--export=set_flags",str(source),"-o",str(crt_cookie_output/"uc-crt-cookie.wasm")],check=True)
+        uc_crt_cookie.metadata(meta,crt_cookie_output/"uc-crt-cookie.wasm")
     sections=p7.read_sections(str(image))["sections"]
     payload=bytearray()
     mapped=[]
@@ -168,6 +182,7 @@ if __name__=="__main__":
     p=argparse.ArgumentParser(description=__doc__)
     p.add_argument("image",type=Path)
     p.add_argument("output",type=Path)
+    p.add_argument("--crt-cookie-output",type=Path)
     args=p.parse_args()
-    build(args.image,args.output)
+    build(args.image,args.output,args.crt_cookie_output)
 

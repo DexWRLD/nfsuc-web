@@ -77,6 +77,8 @@ export class GuestAddressSpace {
     new DataView(this.memory.buffer).setUint32(address, value >>> 0, true);
   }
 
+  assertWritable(address: number, size: number) { this.check(address, size, WRITE, 'write'); }
+
   assertExecutable(address: number) { this.check(address, 1, EXECUTE, 'execute'); }
 
   reset() {

@@ -1,3 +1,4 @@
+import {runCrtBootstrap} from './app/uc-crt-bootstrap';
 import { BROWSER_X86_STATUS } from './app/uc-backend-status';
 import { runUnifiedIntegration } from './app/uc-unified-boot';
 import './app/undercover-home.css';
@@ -162,4 +163,16 @@ unifiedButton.addEventListener('click', async () => {
   } finally {
     unifiedButton.disabled = false;
   }
+});
+
+const crtRun=document.querySelector<HTMLButtonElement>('#crt-run')!;
+crtRun.addEventListener('click',async()=>{
+ const result=document.querySelector<HTMLElement>('#crt-result')!,file=document.querySelector<HTMLInputElement>('#crt-module')!.files?.[0];
+ if(!file){result.textContent='Select the reviewed local CRT diagnostic module first.';return;}
+ if(file.size>1024*1024){result.textContent='Diagnostic module exceeds the local size limit.';return;}
+ const mode=document.querySelector<HTMLSelectElement>('#crt-mode')!.value;
+ if(mode!=='original-only'&&mode!=='compatibility-crt')return;
+ crtRun.disabled=true;
+ try{result.textContent=JSON.stringify(await runCrtBootstrap(new Uint8Array(await file.arrayBuffer()),mode,unifiedAbort.signal),null,2);}
+ catch(error){result.textContent=error instanceof Error?error.message:String(error);}finally{crtRun.disabled=false;}
 });

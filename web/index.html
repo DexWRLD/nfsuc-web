@@ -17,7 +17,7 @@
 <header class="nav"><a href="#home">NFS / UNDERCOVER</a><nav aria-label="Main navigation"><a href="#preview">Preview</a><a href="#progress">Progress</a></nav></header>
 <main id="home">
   <section class="hero" aria-labelledby="title">
-    <p class="eyebrow">PC · 2008 / PRIVATE DEVELOPMENT BUILD</p>
+    <p class="eyebrow">PC Â· 2008 / PRIVATE DEVELOPMENT BUILD</p>
     <h1 id="title">Need for Speed <strong>Undercover</strong></h1>
     <p class="intro">Explore shipped startup media and see the browser tests behind the Undercover PC port.</p>
     <div class="actions">
@@ -37,7 +37,7 @@
       <p class="msg" id="uc-secure-warning" hidden role="alert"></p>
       <p class="hint" id="uc-boot-stage" aria-live="polite">Boot stage: BOOT</p>
       <p class="status" id="uc-asset-status" role="status">Checking files</p>
-      <p class="status-sub" id="uc-asset-detail">Preparing asset manifest…</p>
+      <p class="status-sub" id="uc-asset-detail">Preparing asset manifestâ€¦</p>
       <p class="hint" id="uc-asset-bytes" aria-live="polite"></p>
       <div class="bar" id="uc-asset-progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
         <div class="bar-fill" id="uc-asset-progress-fill"></div>
@@ -46,16 +46,16 @@
         <button type="button" class="btn" id="uc-asset-retry" hidden>Retry</button>
         <button type="button" class="btn" id="uc-asset-cancel" hidden>Cancel</button>
       </div>
-      <p class="msg" id="uc-asset-note">GAME_CODE_TARGET=NFS_UNDERCOVER_PC · authentic Play remains disabled · FIRST_FRAME blocked</p>
+      <p class="msg" id="uc-asset-note">GAME_CODE_TARGET=NFS_UNDERCOVER_PC Â· authentic Play remains disabled Â· FIRST_FRAME blocked</p>
       <canvas id="uc-clear-smoke" width="64" height="36" hidden aria-hidden="true"></canvas>
       <p class="hint" id="uc-clear-smoke-note" hidden></p>
     </section>
 
     <section class="panel" id="uc-startup-preview" aria-labelledby="uc-startup-title">
       <h2 id="uc-startup-title">Undercover startup preview</h2>
-      <p class="hint">Independent logo → optional video → menu placeholder. Not original boot execution.</p>
+      <p class="hint">Independent logo â†’ optional video â†’ menu placeholder. Not original boot execution.</p>
       <p class="status" id="uc-startup-status" role="status">IDLE</p>
-      <p class="status-sub" id="uc-startup-detail">Waiting…</p>
+      <p class="status-sub" id="uc-startup-detail">Waitingâ€¦</p>
       <div class="row">
         <button type="button" class="btn" id="uc-startup-skip">Skip</button>
       </div>
@@ -70,7 +70,7 @@
       <h2 id="uc-tex-title">Undercover DXT1 texture preview</h2>
       <p class="hint">Manifest-driven BC1 decode. Synthetic fixtures until a verified authentic payload span exists.</p>
       <p class="status" id="uc-tex-status" role="status">NO_RESOURCE</p>
-      <p class="status-sub" id="uc-tex-meta">Waiting…</p>
+      <p class="status-sub" id="uc-tex-meta">Waitingâ€¦</p>
       <canvas id="uc-tex-canvas" width="64" height="64" hidden aria-label="Decoded texture"></canvas>
       <p class="hint" id="uc-tex-note" hidden></p>
     </section>
@@ -93,10 +93,15 @@
         <button id="apt-constructor" type="button">Run Apt Constructor</button>
         <button id="apt-fixture" type="button">Run Synthetic Apt Stack Test</button>
         <p id="apt-result" role="status"></p>
-        <p>Allocation trace (static): factory vtable cell 0x00B6CDC4 → unresolved 0x004A9FF0. Native argument ownership and method invocation remain unverified.</p><pre id="guest-init-trace"></pre>
+        <p>Allocation trace (static): factory vtable cell 0x00B6CDC4 â†’ unresolved 0x004A9FF0. Native argument ownership and method invocation remain unverified.</p><pre id="guest-init-trace"></pre>
+        <h3>CRT bootstrap diagnostic</h3>
+        <p>Host-provided compatibility services. This does not run the original PE entry or resolve the original loader.</p>
+        <label for="crt-mode">Execution mode</label><select id="crt-mode"><option value="original-only">Original-only</option><option value="compatibility-crt">Compatibility CRT (host substitutions)</option></select>
+        <label for="crt-module">Reviewed local CRT diagnostic module</label><input id="crt-module" type="file" accept=".wasm">
+        <button id="crt-run" type="button">Run CRT Bootstrap</button><pre id="crt-result" role="status">Select the separately built local module. No new module is downloaded or shared over LAN.</pre>
         <h3>Execution backend</h3>
         <label for="execution-backend">Diagnostic engine</label>
-        <select id="execution-backend"><option value="translated">Existing translated Wasm</option><option value="browser-x86" disabled>Browser x86 � test-only; performance gate failed</option></select>
+        <select id="execution-backend"><option value="translated">Existing translated Wasm</option><option value="browser-x86" disabled>Browser x86 — test-only; performance gate failed</option></select>
         <pre id="backend-status" role="status"></pre>
         <h3>Unified Guest Process</h3><p>Uses one checked process image. Earlier controls retain their separate bounded fixture memories for regression testing.</p><button id="unified-process" type="button">Run Shared Process Integration</button><pre id="unified-result" role="status"></pre><h3>Frontend Frame Processing</h3>
         <button id="frontend-frame" type="button">Run Frame Diagnostics</button>

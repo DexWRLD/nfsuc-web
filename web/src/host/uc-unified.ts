@@ -1,3 +1,5 @@
+import { CRT_COOKIE_REGISTRY } from './uc-crt-cookie-registry';
+import { CrtCompatibilityNamespace, type CrtEnvironment } from './uc-crt-services';
 import { UNIFIED_BINDINGS as bindings, UNIFIED_REGISTRY } from './uc-unified-registry';
 import { GuestThreadFixtures, THREAD_BASES } from './uc-thread';
 import { GuestAddressSpace, GuestDispatcher, READ, WRITE, type GuestCpu, type GuestSegment } from './uc-process';
@@ -29,7 +31,8 @@ export interface UnifiedExecutionObserver {
   instruction?(cpu: GuestCpu, flagsKnown: number): void;
   read?(address: number, size: number, instruction: number, value: number): void;
 }
-export async function createUndercoverProcess(description: unknown, payload: Uint8Array, code: Uint8Array, observer?: UnifiedExecutionObserver) {
+export interface CrtDiagnosticOptions { module: Uint8Array; mode:'original-only'|'compatibility-crt'; environment:CrtEnvironment; maxInstructions?:number; }
+export async function createUndercoverProcess(description: unknown, payload: Uint8Array, code: Uint8Array, observer?: UnifiedExecutionObserver, diagnostic?:CrtDiagnosticOptions) {
   const image = description as ImageDescriptor;
   if (!image || image.version !== 1 || image.imageBase !== 0x00400000
       || image.sourceSha256 !== UNDERCOVER_SHA || image.payloadSize !== payload.length
@@ -41,6 +44,8 @@ export async function createUndercoverProcess(description: unknown, payload: Uin
         && binding.argumentBytes === bindings[index].argumentBytes && binding.frameContract === bindings[index].frameContract)) {
     throw new Error('Invalid authenticated Undercover image descriptor');
   }
+  if(diagnostic && (!['original-only','compatibility-crt'].includes(diagnostic.mode)
+    || await sha(diagnostic.module)!==CRT_COOKIE_REGISTRY.moduleSha256))throw new Error('Invalid reviewed CRT diagnostic module/mode');
   const allowed = new Set(['.text', '.rdata', '.data', '.tls', '.rsrc']);
   const segments: GuestSegment[] = [];
   let nextOffset = 0;
@@ -68,7 +73,8 @@ export async function createUndercoverProcess(description: unknown, payload: Uin
   THREAD_BASES.forEach(address => segments.push({ name: 'synthetic thread fixture', address, size: 0x1000, permissions: READ | WRITE }));
   const memory = new GuestAddressSpace(segments, image.imageBase);
   const threads = new GuestThreadFixtures(memory);
-  const module = await WebAssembly.compile(code.slice());
+  const compatibility=diagnostic?.mode==='compatibility-crt'?new CrtCompatibilityNamespace(memory,diagnostic.environment):null;
+  const module = await WebAssembly.compile((diagnostic?.module??code).slice());
   const requiredImports = new Set(['env.memory:memory', 'guest.read32:function', 'guest.write32:function',
     'guest.dispatch:function', 'guest.instruction:function', 'guest.write8:function', 'guest.readFs32:function', 'guest.writeFs32:function']);
   const imports = WebAssembly.Module.imports(module).map(entry => entry.module + '.' + entry.name + ':' + entry.kind);
@@ -80,6 +86,9 @@ export async function createUndercoverProcess(description: unknown, payload: Uin
   let dispatcher: GuestDispatcher;
   let flagsKnown = 0;
   let lastInstruction = 0;
+  let callStarted=0;
+  const maxInstructions=diagnostic?.maxInstructions??4096;
+  if(!Number.isSafeInteger(maxInstructions)||maxInstructions<1||maxInstructions>10000)throw new Error('Invalid CRT instruction budget');
   let writes = 0;
   const writeLog: { address: number; size: number; value: number; instruction: number }[] = [];
   const instructions: number[] = [];
@@ -120,6 +129,8 @@ export async function createUndercoverProcess(description: unknown, payload: Uin
         lastInstruction = address >>> 0;
         instructions.push(lastInstruction);
         exports.set_register(1, lastInstruction);
+        if(diagnostic&&(instructions.length>maxInstructions||performance.now()-callStarted>1000))throw new Error('CRT execution budget exceeded');
+        if(diagnostic&&lastInstruction===CRT_COOKIE_REGISTRY.unsupportedInstruction)throw new Error('Unsupported checked SHL flags at 0x0087C2E0');
         if (observer?.instruction) {
           const observed = Object.fromEntries(registers.map((name, index) => [name, exports.get_register(index) >>> 0])) as unknown as GuestCpu;
           observed.eflags = exports.get_flags() >>> 0;
@@ -128,7 +139,7 @@ export async function createUndercoverProcess(description: unknown, payload: Uin
       },
       dispatch: (address: number) => {
         readCpu();
-        try { dispatcher.callFromGuest(cpu, address >>> 0); }
+        try { if(!compatibility?.invoke(cpu,address>>>0))dispatcher.callFromGuest(cpu, address >>> 0); }
         finally { writeCpu(); }
       },
     },
@@ -137,7 +148,9 @@ export async function createUndercoverProcess(description: unknown, payload: Uin
   if (typeof exports.execute !== 'function' || typeof exports.set_register !== 'function'
       || typeof exports.get_register !== 'function' || typeof exports.get_flags !== 'function'
       || typeof exports.get_flags_known !== 'function' || typeof exports.set_flags !== 'function') throw new Error('Unified module exports missing');
-  dispatcher = new GuestDispatcher(memory, [...bindings.map(binding => ({
+  const activeBindings: {address:number;convention:'cdecl'|'stdcall'|'thiscall';argumentBytes:number;frameContract?:'seh-prolog4'|'seh-epilog4'|null}[]=[...bindings];
+  if(diagnostic)activeBindings.push({address:CRT_COOKIE_REGISTRY.entry,convention:'cdecl',argumentBytes:0,frameContract:null});
+  dispatcher = new GuestDispatcher(memory, [...activeBindings.map(binding => ({
     address: binding.address,
     abi: { convention: binding.convention, argumentBytes: binding.argumentBytes },
     frameContract: binding.frameContract,
@@ -157,11 +170,12 @@ export async function createUndercoverProcess(description: unknown, payload: Uin
   }))]);
 
   return {
-    memory, cpu, dispatcher, instructions, writeLog, threads, registry: UNIFIED_REGISTRY,
+    memory, cpu, dispatcher, instructions, writeLog, threads, compatibility, registry: UNIFIED_REGISTRY,
     get lastInstruction() { return lastInstruction; },
     snapshot() { return { cpu: { ...cpu }, flagsKnown, lastInstruction }; },
     get writes() { return writes; },
     call(address: number, args: number[] = []) {
+      callStarted=performance.now();
       cpu.esp = 0x0300f000;
       for (const argument of [...args].reverse()) {
         cpu.esp -= 4;
@@ -170,6 +184,7 @@ export async function createUndercoverProcess(description: unknown, payload: Uin
       dispatcher.call(cpu, address, 0x00dec0de);
     },
     reset() {
+      compatibility?.reset();
       memory.reset();
       threads.reset();
       for (const name of registers) cpu[name] = 0;

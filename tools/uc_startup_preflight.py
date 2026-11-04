@@ -59,6 +59,7 @@ def inspect(image_path, repository):
         "crt_initialization_order": {"evidence": "crt-initialization-order-phase70.json", "classification": "STATIC_CONDITIONAL_ONLY", "runtime_binding_verified": False, "walker_traversal_executed": False},
         "cleanup_frontier": {"callsite": "0x0087B5B3", "target": "0x008AAC6A", "cell": "0x00B61398", "thread": "EXPLICIT_SYNTHETIC_FIXTURE", "original_thread_initialization": False, "registration_completed": False},
         "independent_root_reachability_from_pe_entry": "UNVERIFIED",
+        "compatibility_crt": {"evidence": "crt-bootstrap-execution-phase75.json", "classification": "HOST_SCHEDULED_COMPATIBILITY_NOT_ORIGINAL_STARTUP", "cookie_completed": True, "thread_context": "HOST_NT_TIB32_PREPARED", "original_pe_startup": False, "original_loader_binding_observed": False, "c_initializers_completed": False, "cpp_constructors_completed": False, "cleanup_registration_completed": False, "full_game_boot": False},
         "source_sha256": SOURCE_SHA, "master_sha256": MASTER_SHA,
         "entry": address, "entry_section": section["name"],
         "entry_bytes": image[offset:offset+25].hex(),
