@@ -1,6 +1,6 @@
 {
-  "current_phase": 60,
-  "strategy": "Original frontend frame call edge and bounded branches verified in Edge with synthetic state. Frame work and original resource spans remain unverified.",
+  "current_phase": 63,
+  "strategy": "PE startup preflight confirms unresolved entry control flow. Active Undercover frontend cleanup validated; native legacy dependency review remains open.",
   "boundaries": {
     "0x00686000": {
       "status": "PROTECTED_OR_EXTERNAL_DEPENDENCY",
