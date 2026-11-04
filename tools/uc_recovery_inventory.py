@@ -5,6 +5,11 @@ ROOT=Path(__file__).resolve().parents[1]
 A=ROOT/"analysis"/"undercover"
 SOURCE="6b10551649fd70fa630bd7454fd953f51555fa2dd2112faae84ac8ca97844bcd"
 PRIORITIES={
+ 0x00B57DC0:("ordinary static Apt initialization","Unified constructor chain verified; resolve cleanup registration at 0x0087B640",1),
+ 0x009E7540:("Apt header-group constructor","Preserve complete unified caller/return regression",1),
+ 0x009E75A0:("Apt header initializer","Verified leaf; no separate function-count work needed",3),
+ 0x009C1830:("Apt work-state initializer","Verified field writes and return; find next genuine consumer",2),
+ 0x0087B640:("cleanup-registration wrapper","Implement verified carry semantics and establish downstream state before admitting",1),
  0x01FCA510:("PE entry","Entry control flow unresolved; preserve boundary",0),
  0x008101B0:("ordinary manager constructor","Verify ordinary callers and required factory state",1),
  0x009E12F0:("native function allocation","Recover caller contract without substituting allocator",1),

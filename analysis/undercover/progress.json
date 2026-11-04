@@ -1,8 +1,8 @@
 {
   "project": {
     "name": "nfsuc-web",
-    "current_phase": 65,
-    "strategy": "Existing translated initializer and callback prefix now share authenticated PE memory and checked address dispatch. Original startup reachability and gameplay remain blocked."
+    "current_phase": 66,
+    "strategy": "Original static Apt initialization root supplies its global receiver and completes constructor callees in shared PE memory. Cleanup registration, PE-entry reachability and gameplay remain blocked."
   },
   "discovery": {
     "candidates": 25450,

@@ -50,3 +50,8 @@ Fresh Phase 63 validation passed the maintained browser, asset, cache and native
 ## Phase 64 targeted dependency review
 
 web/build.sh explicitly requires SPEED2.EXE-generated gen/all and server.dll gen/server inputs. The current Undercover PowerShell launcher uses the Node frontend build, and the uc_* tools do not call that former-game shell build. runtime/career.c explicitly implements former-game career aids and hardcoded guest hooks. The old native build, overrides and associated tests still reference those implementations. Their shared compiler/runtime portions require extraction before deleting the native group. No additional native deletion was performed this phase, and all pre-existing discord-bot working-tree deletions remain excluded from commits.
+
+
+## Phase 66 dependency scope
+
+This phase added original Undercover initialization and registry metadata. No additional native legacy deletion was supported by the selected call graph. The previously identified mixed build/runtime dependencies remain for targeted review. Pre-existing discord-bot deletions remain excluded from the phase commits.

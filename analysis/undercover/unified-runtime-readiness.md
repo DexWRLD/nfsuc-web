@@ -38,3 +38,10 @@ uc-unified.ts now instantiates a translated Wasm module importing this process m
 Five previously verified translated bodies are explicitly bound: 0x009E8AD0, 0x0099DCD0, 0x009E78C0, 0x009B6290 and 0x009E4B10. Original lifted CALL instructions push original return addresses before calling the process's callFromGuest dispatcher. Host and module CPU views synchronize at dispatch boundaries, with EIP updated from original instruction tags.
 
 The registration leaf and root are invoked separately by the host. Within the root, the original calls and callback table dispatch are preserved. The fixture-precondition failure at 0x009E4B49 remains. Full startup reachability, general EFLAGS transfer, arbitrary instructions, Windows imports, heap and thread support are still unimplemented. Current translated condition helpers cover the verified prefix. The existing per-diagnostic memory modules remain separate regression controls and share no mutable guest state with the new process.
+
+
+## Phase 66 connected initialization
+
+The reviewed registry now contains nine callable original addresses and a classified unavailable helper. The new original root 0x00B57DC0 supplies its receiver at 0x00B57DC3 and calls the full constructor chain. Shared PE state receives 27 original writes; eight original callees return before cleanup registration traps at 0x0087B640. A read-only original pointer cell at 0x00B6370C identifies the root without proving native startup scheduling.
+
+CPU register storage is volatile across re-entrant Wasm imports, fixing the stale-register failure exposed by nested constructors. Byte reads/writes and guest-write journals now use the same checked process mapping. The default constructor path needs no Windows service adapter. General EFLAGS and the wrapper's CF-dependent instructions remain unsupported. Native startup and gameplay readiness remain blocked.

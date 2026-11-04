@@ -1,0 +1,294 @@
+{
+  "sourceSha256": "6b10551649fd70fa630bd7454fd953f51555fa2dd2112faae84ac8ca97844bcd",
+  "moduleSha256": "c93ce3485a54ca0ea17efe424d23ba67076c6f0dbce3f185b724b4b6cd766bb6",
+  "root": "0x00B57DC0",
+  "receiverSource": "Original MOV ECX,0x0189D0A0 at 0x00B57DC3",
+  "trace": [
+    {
+      "kind": "enter",
+      "address": 11894208,
+      "esp": 50393084
+    },
+    {
+      "kind": "enter",
+      "address": 10384704,
+      "esp": 50393076,
+      "callsite": 11894216,
+      "returnAddress": 11894221
+    },
+    {
+      "kind": "enter",
+      "address": 10384800,
+      "esp": 50393064,
+      "callsite": 10384714,
+      "returnAddress": 10384719
+    },
+    {
+      "kind": "return",
+      "address": 10384800,
+      "esp": 50393068
+    },
+    {
+      "kind": "enter",
+      "address": 10384800,
+      "esp": 50393064,
+      "callsite": 10384725,
+      "returnAddress": 10384730
+    },
+    {
+      "kind": "return",
+      "address": 10384800,
+      "esp": 50393068
+    },
+    {
+      "kind": "enter",
+      "address": 10384800,
+      "esp": 50393064,
+      "callsite": 10384736,
+      "returnAddress": 10384741
+    },
+    {
+      "kind": "return",
+      "address": 10384800,
+      "esp": 50393068
+    },
+    {
+      "kind": "enter",
+      "address": 10384800,
+      "esp": 50393064,
+      "callsite": 10384747,
+      "returnAddress": 10384752
+    },
+    {
+      "kind": "return",
+      "address": 10384800,
+      "esp": 50393068
+    },
+    {
+      "kind": "enter",
+      "address": 10384800,
+      "esp": 50393064,
+      "callsite": 10384758,
+      "returnAddress": 10384763
+    },
+    {
+      "kind": "return",
+      "address": 10384800,
+      "esp": 50393068
+    },
+    {
+      "kind": "enter",
+      "address": 10384800,
+      "esp": 50393064,
+      "callsite": 10384769,
+      "returnAddress": 10384774
+    },
+    {
+      "kind": "return",
+      "address": 10384800,
+      "esp": 50393068
+    },
+    {
+      "kind": "enter",
+      "address": 10229808,
+      "esp": 50393064,
+      "callsite": 10384780,
+      "returnAddress": 10384785
+    },
+    {
+      "kind": "return",
+      "address": 10229808,
+      "esp": 50393068
+    },
+    {
+      "kind": "return",
+      "address": 10384704,
+      "esp": 50393080
+    },
+    {
+      "kind": "fault",
+      "address": 11894208,
+      "esp": 50393072
+    }
+  ],
+  "globalWrites": [
+    {
+      "address": 25809056,
+      "size": 4,
+      "value": 0,
+      "instruction": 10384810
+    },
+    {
+      "address": 25809060,
+      "size": 4,
+      "value": 0,
+      "instruction": 10384819
+    },
+    {
+      "address": 25809064,
+      "size": 4,
+      "value": 0,
+      "instruction": 10384829
+    },
+    {
+      "address": 25809068,
+      "size": 4,
+      "value": 0,
+      "instruction": 10384810
+    },
+    {
+      "address": 25809072,
+      "size": 4,
+      "value": 0,
+      "instruction": 10384819
+    },
+    {
+      "address": 25809076,
+      "size": 4,
+      "value": 0,
+      "instruction": 10384829
+    },
+    {
+      "address": 25809080,
+      "size": 4,
+      "value": 0,
+      "instruction": 10384810
+    },
+    {
+      "address": 25809084,
+      "size": 4,
+      "value": 0,
+      "instruction": 10384819
+    },
+    {
+      "address": 25809088,
+      "size": 4,
+      "value": 0,
+      "instruction": 10384829
+    },
+    {
+      "address": 25809092,
+      "size": 4,
+      "value": 0,
+      "instruction": 10384810
+    },
+    {
+      "address": 25809096,
+      "size": 4,
+      "value": 0,
+      "instruction": 10384819
+    },
+    {
+      "address": 25809100,
+      "size": 4,
+      "value": 0,
+      "instruction": 10384829
+    },
+    {
+      "address": 25809104,
+      "size": 4,
+      "value": 0,
+      "instruction": 10384810
+    },
+    {
+      "address": 25809108,
+      "size": 4,
+      "value": 0,
+      "instruction": 10384819
+    },
+    {
+      "address": 25809112,
+      "size": 4,
+      "value": 0,
+      "instruction": 10384829
+    },
+    {
+      "address": 25809120,
+      "size": 4,
+      "value": 0,
+      "instruction": 10384810
+    },
+    {
+      "address": 25809124,
+      "size": 4,
+      "value": 0,
+      "instruction": 10384819
+    },
+    {
+      "address": 25809128,
+      "size": 4,
+      "value": 0,
+      "instruction": 10384829
+    },
+    {
+      "address": 25809132,
+      "size": 4,
+      "value": 0,
+      "instruction": 10229818
+    },
+    {
+      "address": 25809136,
+      "size": 4,
+      "value": 0,
+      "instruction": 10229827
+    },
+    {
+      "address": 25809140,
+      "size": 4,
+      "value": 0,
+      "instruction": 10229837
+    },
+    {
+      "address": 25809144,
+      "size": 4,
+      "value": 204800,
+      "instruction": 10229847
+    },
+    {
+      "address": 25809148,
+      "size": 4,
+      "value": 100000,
+      "instruction": 10229857
+    },
+    {
+      "address": 25809152,
+      "size": 4,
+      "value": 0,
+      "instruction": 10229867
+    },
+    {
+      "address": 25809156,
+      "size": 4,
+      "value": 0,
+      "instruction": 10229877
+    },
+    {
+      "address": 25809160,
+      "size": 4,
+      "value": 0,
+      "instruction": 10229887
+    },
+    {
+      "address": 25809164,
+      "size": 1,
+      "value": 0,
+      "instruction": 10229897
+    }
+  ],
+  "registers": {
+    "eax": 25809056,
+    "ebx": 0,
+    "ecx": 25809132,
+    "edx": 25809132,
+    "esi": 0,
+    "edi": 0,
+    "ebp": 50393080,
+    "esp": 50393072,
+    "eip": 11894226,
+    "eflags": 0
+  },
+  "blockedCallsite": "0x00B57DD2",
+  "unavailableTarget": "0x0087B640",
+  "cleanupArgument": "0x00B602E0",
+  "originalStartupReachability": "UNVERIFIED"
+}
