@@ -1,0 +1,275 @@
+{
+  "sourceSha256": "6b10551649fd70fa630bd7454fd953f51555fa2dd2112faae84ac8ca97844bcd",
+  "bindings": [
+    {
+      "address": 10390224,
+      "name": "callback table initialization",
+      "wasmExport": "execute",
+      "implementation": "RawLifter original-address body",
+      "convention": "cdecl",
+      "argumentBytes": 0,
+      "requiredRegisters": [],
+      "mappedGlobals": [
+        "0x0189D198..0x0189D270"
+      ],
+      "knownCallerInstructions": [
+        "0x009E9305"
+      ],
+      "verifiedCallees": [],
+      "indirectCallsites": [],
+      "returnBehavior": "plain RET",
+      "unresolvedDependencies": [],
+      "recoveryConfidence": "complete ordinary body",
+      "callable": true,
+      "sourceSha256": "6b10551649fd70fa630bd7454fd953f51555fa2dd2112faae84ac8ca97844bcd"
+    },
+    {
+      "address": 10083536,
+      "name": "localToGlobal bounded prefix",
+      "wasmExport": "execute",
+      "implementation": "RawLifter original-address body",
+      "convention": "cdecl",
+      "argumentBytes": 8,
+      "requiredRegisters": [],
+      "mappedGlobals": [
+        "0x0189D1A4",
+        "0x0189D0A0",
+        "0x0189DA84"
+      ],
+      "knownCallerInstructions": [],
+      "verifiedCallees": [
+        10183312
+      ],
+      "indirectCallsites": [
+        {
+          "instruction": "0x0099DCEB",
+          "slot": "0x0189D1A4",
+          "target": "0x009E78C0"
+        }
+      ],
+      "returnBehavior": "fixture stops at downstream read",
+      "unresolvedDependencies": [
+        "uninitialized Apt element",
+        "unsupported continuation"
+      ],
+      "recoveryConfidence": "bounded prefix verified by existing fixture",
+      "callable": true,
+      "sourceSha256": "6b10551649fd70fa630bd7454fd953f51555fa2dd2112faae84ac8ca97844bcd"
+    },
+    {
+      "address": 10385600,
+      "name": "diagnostic callback",
+      "wasmExport": "execute",
+      "implementation": "RawLifter original-address body",
+      "convention": "cdecl",
+      "argumentBytes": 12,
+      "requiredRegisters": [],
+      "mappedGlobals": [
+        "0x0189DA84"
+      ],
+      "knownCallerInstructions": [
+        "0x0099DCEB",
+        "0x009E4B32"
+      ],
+      "verifiedCallees": [],
+      "indirectCallsites": [],
+      "returnBehavior": "plain RET when CoreImpl pointer is zero",
+      "unresolvedDependencies": [
+        "CoreImpl virtual provider on nonzero branch"
+      ],
+      "recoveryConfidence": "complete ordinary body",
+      "callable": true,
+      "sourceSha256": "6b10551649fd70fa630bd7454fd953f51555fa2dd2112faae84ac8ca97844bcd"
+    },
+    {
+      "address": 10183312,
+      "name": "Apt depth read wrapper",
+      "wasmExport": "execute",
+      "implementation": "RawLifter original-address body",
+      "convention": "thiscall",
+      "argumentBytes": 4,
+      "requiredRegisters": [
+        "ECX: live Apt header"
+      ],
+      "mappedGlobals": [],
+      "knownCallerInstructions": [
+        "0x0099DD10"
+      ],
+      "verifiedCallees": [
+        10373904
+      ],
+      "indirectCallsites": [],
+      "returnBehavior": "RET 4",
+      "unresolvedDependencies": [
+        "valid backing storage and count"
+      ],
+      "recoveryConfidence": "complete ordinary body",
+      "callable": true,
+      "sourceSha256": "6b10551649fd70fa630bd7454fd953f51555fa2dd2112faae84ac8ca97844bcd"
+    },
+    {
+      "address": 10373904,
+      "name": "Apt depth read",
+      "wasmExport": "execute",
+      "implementation": "RawLifter original-address body",
+      "convention": "thiscall",
+      "argumentBytes": 4,
+      "requiredRegisters": [
+        "ECX: live Apt header"
+      ],
+      "mappedGlobals": [
+        "0x0189D1A4"
+      ],
+      "knownCallerInstructions": [
+        "0x009B629E"
+      ],
+      "verifiedCallees": [],
+      "indirectCallsites": [
+        {
+          "instruction": "0x009E4B32",
+          "slot": "0x0189D1A4",
+          "target": "0x009E78C0"
+        }
+      ],
+      "returnBehavior": "RET 4 if element read succeeds",
+      "unresolvedDependencies": [
+        "valid argument element"
+      ],
+      "recoveryConfidence": "complete ordinary body",
+      "callable": true,
+      "sourceSha256": "6b10551649fd70fa630bd7454fd953f51555fa2dd2112faae84ac8ca97844bcd"
+    },
+    {
+      "address": 11894208,
+      "name": "static Apt initialization root",
+      "wasmExport": "execute",
+      "implementation": "RawLifter original-address body",
+      "convention": "cdecl",
+      "argumentBytes": 0,
+      "requiredRegisters": [],
+      "mappedGlobals": [
+        "0x0189D0A0..0x0189D10C"
+      ],
+      "knownCallerInstructions": [],
+      "verifiedCallees": [
+        10384704
+      ],
+      "indirectCallsites": [],
+      "returnBehavior": "stops at original cleanup-registration call",
+      "unresolvedDependencies": [
+        "0x0087B640 at 0x00B57DD2"
+      ],
+      "recoveryConfidence": "Complete Ghidra body without warnings; original RawLifter instructions and call set checked",
+      "callable": true,
+      "sourceSha256": "6b10551649fd70fa630bd7454fd953f51555fa2dd2112faae84ac8ca97844bcd",
+      "verifiedBodyRange": [
+        "00b57dc0",
+        "00b57ddb"
+      ],
+      "staticPointerCells": [
+        "0x00B6370C"
+      ]
+    },
+    {
+      "address": 10384704,
+      "name": "Apt header group constructor",
+      "wasmExport": "execute",
+      "implementation": "RawLifter original-address body",
+      "convention": "thiscall",
+      "argumentBytes": 0,
+      "requiredRegisters": [
+        "ECX: 0x70-byte writable receiver"
+      ],
+      "mappedGlobals": [],
+      "knownCallerInstructions": [
+        "0x00B57DC8"
+      ],
+      "verifiedCallees": [
+        10384800,
+        10229808
+      ],
+      "indirectCallsites": [],
+      "returnBehavior": "RET with EAX=receiver",
+      "unresolvedDependencies": [],
+      "recoveryConfidence": "Complete Ghidra body without warnings; original RawLifter instructions and call set checked",
+      "callable": true,
+      "sourceSha256": "6b10551649fd70fa630bd7454fd953f51555fa2dd2112faae84ac8ca97844bcd",
+      "verifiedBodyRange": [
+        "009e7540",
+        "009e7597"
+      ]
+    },
+    {
+      "address": 10384800,
+      "name": "Apt header zero constructor",
+      "wasmExport": "execute",
+      "implementation": "RawLifter original-address body",
+      "convention": "thiscall",
+      "argumentBytes": 0,
+      "requiredRegisters": [
+        "ECX: 12-byte writable receiver"
+      ],
+      "mappedGlobals": [],
+      "knownCallerInstructions": [
+        "0x009E754A",
+        "0x009E7555",
+        "0x009E7560",
+        "0x009E756B",
+        "0x009E7576",
+        "0x009E7581"
+      ],
+      "verifiedCallees": [],
+      "indirectCallsites": [],
+      "returnBehavior": "RET with EAX=receiver",
+      "unresolvedDependencies": [],
+      "recoveryConfidence": "Complete Ghidra body without warnings; original RawLifter instructions and call set checked",
+      "callable": true,
+      "sourceSha256": "6b10551649fd70fa630bd7454fd953f51555fa2dd2112faae84ac8ca97844bcd",
+      "verifiedBodyRange": [
+        "009e75a0",
+        "009e75ca"
+      ]
+    },
+    {
+      "address": 10229808,
+      "name": "Apt child work-state constructor",
+      "wasmExport": "execute",
+      "implementation": "RawLifter original-address body",
+      "convention": "thiscall",
+      "argumentBytes": 0,
+      "requiredRegisters": [
+        "ECX: 0x21-byte writable receiver"
+      ],
+      "mappedGlobals": [],
+      "knownCallerInstructions": [
+        "0x009E758C"
+      ],
+      "verifiedCallees": [],
+      "indirectCallsites": [],
+      "returnBehavior": "RET with EAX=receiver",
+      "unresolvedDependencies": [],
+      "recoveryConfidence": "Complete Ghidra body without warnings; original RawLifter instructions and call set checked",
+      "callable": true,
+      "sourceSha256": "6b10551649fd70fa630bd7454fd953f51555fa2dd2112faae84ac8ca97844bcd",
+      "verifiedBodyRange": [
+        "009c1830",
+        "009c1893"
+      ]
+    }
+  ],
+  "unavailable": [
+    {
+      "address": 8894016,
+      "callsite": "0x00B57DD2",
+      "arguments": [
+        "0x00B602E0"
+      ],
+      "convention": "cdecl",
+      "classification": "unresolved internal cleanup-registration helper",
+      "callable": false,
+      "argumentBytes": 4,
+      "abiEvidence": "Original caller adds ESP,4 after return; provider remains unverified"
+    }
+  ],
+  "version": 66
+}

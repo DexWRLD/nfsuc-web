@@ -57,6 +57,16 @@ export class GuestAddressSpace {
     }
   }
 
+  read8(address: number): number {
+    this.check(address, 1, READ, 'read');
+    return new DataView(this.memory.buffer).getUint8(address);
+  }
+
+  write8(address: number, value: number) {
+    this.check(address, 1, WRITE, 'write');
+    new DataView(this.memory.buffer).setUint8(address, value & 0xff);
+  }
+
   read32(address: number): number {
     this.check(address, 4, READ, 'read');
     return new DataView(this.memory.buffer).getUint32(address, true);
@@ -95,7 +105,7 @@ export interface DispatchTarget {
 /** Dispatch admits explicit verified bindings, never the whole pseudocode index. */
 export class GuestDispatcher {
   private readonly targets = new Map<number, DispatchTarget>();
-  readonly trace: { kind: string; address: number; esp: number }[] = [];
+  readonly trace: { kind: string; address: number; esp: number; callsite?: number; returnAddress?: number }[] = [];
   constructor(private readonly memory: GuestAddressSpace, targets: DispatchTarget[]) {
     for (const target of targets) {
       if (!validRange(target.address, 1) || this.targets.has(target.address)
@@ -146,7 +156,7 @@ export class GuestDispatcher {
     if (!Number.isInteger(cpu.esp) || cpu.esp % 4) throw new GuestFault(cpu.esp, 'call', 'unaligned stack');
     const returnAddress = this.memory.read32(cpu.esp);
     const expectedEsp = cpu.esp + 4 + (target.abi.convention === 'cdecl' ? 0 : target.abi.argumentBytes);
-    this.trace.push({ kind: 'enter', address, esp: cpu.esp });
+    this.trace.push({ kind: 'enter', address, esp: cpu.esp, callsite: cpu.eip, returnAddress });
     try {
       target.execute(cpu, this.memory);
       if (cpu.eip !== returnAddress || cpu.esp !== expectedEsp) {

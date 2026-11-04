@@ -1,14 +1,8 @@
+import { UNIFIED_BINDINGS as bindings, UNIFIED_REGISTRY } from './uc-unified-registry';
 import { GuestAddressSpace, GuestDispatcher, READ, WRITE, type GuestCpu, type GuestSegment } from './uc-process';
 
 export const UNDERCOVER_SHA = '6b10551649fd70fa630bd7454fd953f51555fa2dd2112faae84ac8ca97844bcd';
 const registers = ['esp', 'eip', 'eax', 'ebp', 'ecx', 'edx', 'esi', 'edi', 'ebx'] as const;
-const bindings = [
-  { address: 0x009e8ad0, convention: 'cdecl', argumentBytes: 0 },
-  { address: 0x0099dcd0, convention: 'cdecl', argumentBytes: 8 },
-  { address: 0x009e78c0, convention: 'cdecl', argumentBytes: 12 },
-  { address: 0x009b6290, convention: 'thiscall', argumentBytes: 4 },
-  { address: 0x009e4b10, convention: 'thiscall', argumentBytes: 4 },
-] as const;
 interface ImageSegment {
   name: string; address: number; size: number; permissions: number;
   offset: number; length: number; sha256: string; unavailable: boolean;
@@ -65,7 +59,7 @@ export async function createUndercoverProcess(description: unknown, payload: Uin
   const memory = new GuestAddressSpace(segments, image.imageBase);
   const module = await WebAssembly.compile(code.slice());
   const requiredImports = new Set(['env.memory:memory', 'guest.read32:function', 'guest.write32:function',
-    'guest.dispatch:function', 'guest.instruction:function']);
+    'guest.dispatch:function', 'guest.instruction:function', 'guest.write8:function']);
   const imports = WebAssembly.Module.imports(module).map(entry => entry.module + '.' + entry.name + ':' + entry.kind);
   if (imports.length !== requiredImports.size || imports.some(entry => !requiredImports.has(entry))) {
     throw new Error('Unexpected unified module imports');
@@ -75,6 +69,7 @@ export async function createUndercoverProcess(description: unknown, payload: Uin
   let dispatcher: GuestDispatcher;
   let lastInstruction = 0;
   let writes = 0;
+  const writeLog: { address: number; size: number; value: number; instruction: number }[] = [];
   const instructions: number[] = [];
   const readCpu = () => registers.forEach((name, index) => { cpu[name] = exports.get_register(index) >>> 0; });
   const writeCpu = () => registers.forEach((name, index) => exports.set_register(index, cpu[name]));
@@ -82,7 +77,16 @@ export async function createUndercoverProcess(description: unknown, payload: Uin
     env: { memory: memory.memory },
     guest: {
       read32: (address: number) => memory.read32(address >>> 0),
-      write32: (address: number, value: number) => { memory.write32(address >>> 0, value); writes++; },
+      write32: (address: number, value: number) => {
+        memory.write32(address >>> 0, value);
+        writes++;
+        writeLog.push({ address: address >>> 0, size: 4, value: value >>> 0, instruction: lastInstruction });
+      },
+      write8: (address: number, value: number) => {
+        memory.write8(address >>> 0, value);
+        writes++;
+        writeLog.push({ address: address >>> 0, size: 1, value: value & 0xff, instruction: lastInstruction });
+      },
       instruction: (address: number) => {
         lastInstruction = address >>> 0;
         instructions.push(lastInstruction);
@@ -98,22 +102,28 @@ export async function createUndercoverProcess(description: unknown, payload: Uin
   exports = instance.exports as unknown as UnifiedExports;
   if (typeof exports.execute !== 'function' || typeof exports.set_register !== 'function'
       || typeof exports.get_register !== 'function') throw new Error('Unified module exports missing');
-  dispatcher = new GuestDispatcher(memory, bindings.map(binding => ({
+  dispatcher = new GuestDispatcher(memory, [...bindings.map(binding => ({
     address: binding.address,
     abi: { convention: binding.convention, argumentBytes: binding.argumentBytes },
     sourceSha256: UNDERCOVER_SHA,
-    evidence: 'Existing verified initializer and Phase 54 fixture prefix; uc_unified_build.py',
-    classification: 'verified',
+    evidence: 'tools/uc_unified_registry.json binding 0x' + binding.address.toString(16),
+    classification: 'verified' as const,
     execute: () => {
       writeCpu();
       try { exports.execute(binding.address); }
       finally { readCpu(); }
     },
-  })));
+  })), ...UNIFIED_REGISTRY.unavailable.map(entry => ({
+    address: entry.address,
+    abi: { convention: entry.convention, argumentBytes: entry.argumentBytes },
+    sourceSha256: UNDERCOVER_SHA, evidence: entry.callsite + ': ' + entry.classification,
+    classification: 'unavailable' as const,
+  }))]);
 
   return {
-    memory, cpu, dispatcher, instructions,
+    memory, cpu, dispatcher, instructions, writeLog, registry: UNIFIED_REGISTRY,
     get lastInstruction() { return lastInstruction; },
+    snapshot() { return { cpu: { ...cpu }, lastInstruction }; },
     get writes() { return writes; },
     call(address: number, args: number[] = []) {
       cpu.esp = 0x0300f000;
@@ -131,6 +141,7 @@ export async function createUndercoverProcess(description: unknown, payload: Uin
       writeCpu();
       dispatcher.trace.length = 0;
       instructions.length = 0;
+      writeLog.length = 0;
       writes = 0;
       lastInstruction = 0;
     },

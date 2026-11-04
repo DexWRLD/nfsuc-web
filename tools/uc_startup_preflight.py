@@ -48,7 +48,13 @@ def inspect(image_path, repository):
     # The byte check describes the known overlapping-entry boundary. It never runs it.
     if image[offset+0x17:offset+0x19] != bytes.fromhex("ebfa"):
         raise ValueError("Entry boundary no longer matches the recorded instruction")
+    registry_path = repository/"tools"/"uc_unified_registry.json"
+    registry = json.loads(registry_path.read_text(encoding="utf-8")) if registry_path.is_file() else {"bindings": []}
     return {
+        "unified_registry_addresses": [f"0x{entry['address']:08X}" for entry in registry["bindings"]],
+        "independent_initialization_root": "0x00B57DC0",
+        "independent_initialization_evidence": "runtime-phase66.md and edge-execution-phase66.json",
+        "independent_root_reachability_from_pe_entry": "UNVERIFIED",
         "source_sha256": SOURCE_SHA, "master_sha256": MASTER_SHA,
         "entry": address, "entry_section": section["name"],
         "entry_bytes": image[offset:offset+25].hex(),

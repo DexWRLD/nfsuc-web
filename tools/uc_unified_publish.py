@@ -9,6 +9,7 @@ def main():
     parser.add_argument("asset_root", type=Path)
     parser.add_argument("--allowlist", type=Path, required=True)
     parser.add_argument("--manifest", type=Path, required=True)
+    parser.add_argument("--version", type=int, default=65)
     args = parser.parse_args()
     entries = json.loads(args.allowlist.read_text(encoding="utf-8"))
     if not isinstance(entries, list):
@@ -28,7 +29,7 @@ def main():
     subprocess.run([
         "node", str(repository/"web/tools/uc-manifest-gen.mjs"),
         "--root", str(args.asset_root), "--allowlist", str(args.allowlist),
-        "--out", str(args.manifest), "--authorized", "--version", "65",
+        "--out", str(args.manifest), "--authorized", "--version", str(args.version),
     ], check=True)
 
 if __name__ == "__main__":
