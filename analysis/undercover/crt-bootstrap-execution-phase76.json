@@ -1,0 +1,849 @@
+{
+  "browser": "msedge",
+  "browserVersion": "156.0.4314.58",
+  "secureContext": true,
+  "originalOnly": {
+    "mode": "original-only",
+    "classification": "ORIGINAL_ONLY_DIAGNOSTIC",
+    "entry": 8897124,
+    "hostScheduled": true,
+    "cookieEntry": 8897124,
+    "startupEntry": 8895293,
+    "sourceSha256": "6b10551649fd70fa630bd7454fd953f51555fa2dd2112faae84ac8ca97844bcd",
+    "diagnosticModuleSha256": "2efbe299341b495f8b2cf73cd792a04e2a9048dd40172b930c8a20787c24f82c",
+    "originalPeEntryExecuted": false,
+    "originalLoaderBindingObserved": false,
+    "before": {
+      "cookie": 3141592654,
+      "complement": 1153374641
+    },
+    "after": {
+      "cookie": 3141592654,
+      "complement": 1153374641
+    },
+    "cookieReturned": false,
+    "cookieComputedByOriginalCode": false,
+    "startupPrefixEntered": false,
+    "startupPrefixStoppedAtUnsupported": false,
+    "originalInstructions": [
+      8897124,
+      8897125,
+      8897127,
+      8897130,
+      8897135,
+      8897139,
+      8897143,
+      8897144,
+      8897145,
+      8897150,
+      8897152,
+      8897157,
+      8897172,
+      8897173,
+      8897176,
+      8897177
+    ],
+    "originalFunctionsEntered": [
+      8897124
+    ],
+    "trace": [
+      {
+        "kind": "enter",
+        "address": 8897124,
+        "esp": 50393084
+      },
+      {
+        "kind": "fault",
+        "address": 8897124,
+        "esp": 50393044
+      }
+    ],
+    "registers": {
+      "eax": 50393072,
+      "ebx": 4294901760,
+      "ecx": 0,
+      "edx": 0,
+      "esi": 0,
+      "edi": 3141592654,
+      "ebp": 50393080,
+      "esp": 50393044,
+      "eip": 8897177,
+      "eflags": 68
+    },
+    "flagsKnown": 63,
+    "hostServices": [],
+    "originalMemoryWrites": [
+      {
+        "address": 50393080,
+        "size": 4,
+        "value": 0,
+        "instruction": 8897124
+      },
+      {
+        "address": 50393072,
+        "size": 4,
+        "value": 0,
+        "instruction": 8897135
+      },
+      {
+        "address": 50393076,
+        "size": 4,
+        "value": 0,
+        "instruction": 8897139
+      },
+      {
+        "address": 50393060,
+        "size": 4,
+        "value": 0,
+        "instruction": 8897143
+      },
+      {
+        "address": 50393056,
+        "size": 4,
+        "value": 0,
+        "instruction": 8897144
+      },
+      {
+        "address": 50393052,
+        "size": 4,
+        "value": 0,
+        "instruction": 8897172
+      },
+      {
+        "address": 50393048,
+        "size": 4,
+        "value": 50393072,
+        "instruction": 8897176
+      },
+      {
+        "address": 50393044,
+        "size": 4,
+        "value": 8897183,
+        "instruction": 8897177
+      }
+    ],
+    "hostEnvironmentWrites": [
+      {
+        "address": 50393084,
+        "value": 14598366,
+        "source": "HOST_DIAGNOSTIC_RETURN_FRAME"
+      }
+    ],
+    "syntheticThreadDependencies": null,
+    "virtualProcess": {
+      "processId": 1,
+      "threadId": 2,
+      "provenance": "BROWSER_COMPATIBILITY_ENVIRONMENT",
+      "bootEpoch": "Compatibility environment creation",
+      "qpcFrequency": 1000000
+    },
+    "importValuesUnchanged": true,
+    "cleanupProvider": 9088106,
+    "startupState": 0,
+    "startupOwner": 0,
+    "cleanupGlobals": [
+      0,
+      0
+    ],
+    "cInitializerCells": [
+      {
+        "cell": 11943364,
+        "value": 0
+      },
+      {
+        "cell": 11943368,
+        "value": 8895667
+      },
+      {
+        "cell": 11943372,
+        "value": 8896484
+      },
+      {
+        "cell": 11943376,
+        "value": 8896651
+      }
+    ],
+    "interlockedCompareExchange": [],
+    "milestones": {
+      "securityCookie": false,
+      "compatibilityThread": false,
+      "crtStartupRoutine": false,
+      "cInitializers": false,
+      "cppConstructors": false,
+      "cleanupRegistration": false,
+      "fullGameBoot": false
+    },
+    "lastInstruction": 8897177,
+    "exactStopAddress": 8897177,
+    "firstUnsupportedDependency": "dispatch at 0x8ab0fe: unknown function or import",
+    "stopReason": "dispatch at 0x8ab0fe: unknown function or import",
+    "nextUnadmittedEntry": null,
+    "durationMs": 0.7999999970197678,
+    "distribution": "User-selected local diagnostic module; existing private asset manifest unchanged"
+  },
+  "compatibility": {
+    "mode": "compatibility-crt",
+    "classification": "COMPATIBILITY_HOSTED_CRT_BOOTSTRAP",
+    "entry": 8895293,
+    "hostScheduled": true,
+    "cookieEntry": 8897124,
+    "startupEntry": 8895293,
+    "sourceSha256": "6b10551649fd70fa630bd7454fd953f51555fa2dd2112faae84ac8ca97844bcd",
+    "diagnosticModuleSha256": "2efbe299341b495f8b2cf73cd792a04e2a9048dd40172b930c8a20787c24f82c",
+    "originalPeEntryExecuted": false,
+    "originalLoaderBindingObserved": false,
+    "before": {
+      "cookie": 3141592654,
+      "complement": 1153374641
+    },
+    "after": {
+      "cookie": 2225208359,
+      "complement": 2069758936
+    },
+    "cookieReturned": true,
+    "cookieComputedByOriginalCode": true,
+    "startupPrefixEntered": true,
+    "startupPrefixStoppedAtUnsupported": true,
+    "originalInstructions": [
+      8897124,
+      8897125,
+      8897127,
+      8897130,
+      8897135,
+      8897139,
+      8897143,
+      8897144,
+      8897145,
+      8897150,
+      8897152,
+      8897157,
+      8897172,
+      8897173,
+      8897176,
+      8897177,
+      8897183,
+      8897186,
+      8897189,
+      8897195,
+      8897197,
+      8897203,
+      8897205,
+      8897211,
+      8897213,
+      8897216,
+      8897217,
+      8897223,
+      8897226,
+      8897229,
+      8897231,
+      8897233,
+      8897242,
+      8897244,
+      8897253,
+      8897259,
+      8897261,
+      8897267,
+      8897268,
+      8897269,
+      8897270,
+      8897271,
+      8895293,
+      8895295,
+      8895300,
+      8896184,
+      8896189,
+      8896196,
+      8896200,
+      8896204,
+      8896208,
+      8896210,
+      8896211,
+      8896212,
+      8896213,
+      8896218,
+      8896221,
+      8896223,
+      8896224,
+      8896227,
+      8896230,
+      8896233,
+      8896240,
+      8896243,
+      8896246,
+      8896252,
+      8895305,
+      8895307,
+      8895310,
+      8895316,
+      8895319,
+      8895322,
+      8895327,
+      8895328,
+      8895329,
+      8895330,
+      8895336,
+      8895338,
+      8895365,
+      8895367,
+      8895368,
+      8895373,
+      8895375,
+      8895387,
+      8895392,
+      8895394,
+      8895396,
+      8895402,
+      8895407,
+      8895412
+    ],
+    "originalFunctionsEntered": [
+      8897124,
+      8895293,
+      8896184
+    ],
+    "trace": [
+      {
+        "kind": "enter",
+        "address": 8897124,
+        "esp": 50393084
+      },
+      {
+        "kind": "return",
+        "address": 8897124,
+        "esp": 50393088
+      },
+      {
+        "kind": "enter",
+        "address": 8895293,
+        "esp": 50393084
+      },
+      {
+        "kind": "enter",
+        "address": 8896184,
+        "esp": 50393072,
+        "callsite": 8895300,
+        "returnAddress": 8895305
+      },
+      {
+        "kind": "return",
+        "address": 8896184,
+        "esp": 50393032
+      },
+      {
+        "kind": "fault",
+        "address": 8895293,
+        "esp": 50393020
+      }
+    ],
+    "registers": {
+      "eax": 0,
+      "ebx": 0,
+      "ecx": 0,
+      "edx": 0,
+      "esi": 1,
+      "edi": 25894492,
+      "ebp": 50393080,
+      "esp": 50393020,
+      "eip": 8895412,
+      "eflags": 68
+    },
+    "flagsKnown": 59,
+    "hostServices": [
+      {
+        "namespace": "compat.kernel32",
+        "name": "GetSystemTimeAsFileTime",
+        "callsite": 8897177,
+        "cell": 11932064,
+        "rawEffectiveTarget": 9089278,
+        "arguments": [
+          50393072
+        ],
+        "espBefore": 50393044,
+        "returnAddress": 8897183,
+        "hostSubstitution": true,
+        "originalLoaderBindingObserved": false,
+        "environment": "BROWSER_COMPATIBILITY_ENVIRONMENT",
+        "status": "RETURNED",
+        "output64": "134383047824770000",
+        "outputWords": [
+          2238579664,
+          31288491
+        ],
+        "eax": 50393072,
+        "espAfter": 50393052
+      },
+      {
+        "namespace": "compat.kernel32",
+        "name": "GetCurrentProcessId",
+        "callsite": 8897189,
+        "cell": 11931852,
+        "rawEffectiveTarget": 9085312,
+        "arguments": [],
+        "espBefore": 50393048,
+        "returnAddress": 8897195,
+        "hostSubstitution": true,
+        "originalLoaderBindingObserved": false,
+        "environment": "BROWSER_COMPATIBILITY_ENVIRONMENT",
+        "status": "RETURNED",
+        "eax": 3,
+        "espAfter": 50393052
+      },
+      {
+        "namespace": "compat.kernel32",
+        "name": "GetCurrentThreadId",
+        "callsite": 8897197,
+        "cell": 11932128,
+        "rawEffectiveTarget": 9084696,
+        "arguments": [],
+        "espBefore": 50393048,
+        "returnAddress": 8897203,
+        "hostSubstitution": true,
+        "originalLoaderBindingObserved": false,
+        "environment": "BROWSER_COMPATIBILITY_ENVIRONMENT",
+        "status": "RETURNED",
+        "eax": 4,
+        "espAfter": 50393052
+      },
+      {
+        "namespace": "compat.kernel32",
+        "name": "GetTickCount",
+        "callsite": 8897205,
+        "cell": 11932112,
+        "rawEffectiveTarget": 9084772,
+        "arguments": [],
+        "espBefore": 50393048,
+        "returnAddress": 8897211,
+        "hostSubstitution": true,
+        "originalLoaderBindingObserved": false,
+        "environment": "BROWSER_COMPATIBILITY_ENVIRONMENT",
+        "status": "RETURNED",
+        "eax": 79,
+        "espAfter": 50393052
+      },
+      {
+        "namespace": "compat.kernel32",
+        "name": "QueryPerformanceCounter",
+        "callsite": 8897217,
+        "cell": 11932152,
+        "rawEffectiveTarget": 9084548,
+        "arguments": [
+          50393064
+        ],
+        "espBefore": 50393044,
+        "returnAddress": 8897223,
+        "hostSubstitution": true,
+        "originalLoaderBindingObserved": false,
+        "environment": "BROWSER_COMPATIBILITY_ENVIRONMENT",
+        "status": "RETURNED",
+        "output64": "1217300",
+        "outputWords": [
+          1217300,
+          0
+        ],
+        "eax": 1,
+        "espAfter": 50393052
+      },
+      {
+        "namespace": "compat.kernel32",
+        "name": "InterlockedCompareExchange",
+        "callsite": 8895330,
+        "cell": 11932084,
+        "rawEffectiveTarget": 9089150,
+        "arguments": [
+          25894492,
+          50397184,
+          0
+        ],
+        "espBefore": 50393016,
+        "returnAddress": 8895336,
+        "hostSubstitution": true,
+        "originalLoaderBindingObserved": false,
+        "environment": "BROWSER_COMPATIBILITY_ENVIRONMENT",
+        "status": "RETURNED",
+        "exchanged": true,
+        "previous": 0,
+        "eax": 0,
+        "espAfter": 50393032
+      }
+    ],
+    "originalMemoryWrites": [
+      {
+        "address": 50393080,
+        "size": 4,
+        "value": 0,
+        "instruction": 8897124
+      },
+      {
+        "address": 50393072,
+        "size": 4,
+        "value": 0,
+        "instruction": 8897135
+      },
+      {
+        "address": 50393076,
+        "size": 4,
+        "value": 0,
+        "instruction": 8897139
+      },
+      {
+        "address": 50393060,
+        "size": 4,
+        "value": 0,
+        "instruction": 8897143
+      },
+      {
+        "address": 50393056,
+        "size": 4,
+        "value": 0,
+        "instruction": 8897144
+      },
+      {
+        "address": 50393052,
+        "size": 4,
+        "value": 0,
+        "instruction": 8897172
+      },
+      {
+        "address": 50393048,
+        "size": 4,
+        "value": 50393072,
+        "instruction": 8897176
+      },
+      {
+        "address": 50393044,
+        "size": 4,
+        "value": 8897183,
+        "instruction": 8897177
+      },
+      {
+        "address": 50393048,
+        "size": 4,
+        "value": 8897195,
+        "instruction": 8897189
+      },
+      {
+        "address": 50393048,
+        "size": 4,
+        "value": 8897203,
+        "instruction": 8897197
+      },
+      {
+        "address": 50393048,
+        "size": 4,
+        "value": 8897211,
+        "instruction": 8897205
+      },
+      {
+        "address": 50393048,
+        "size": 4,
+        "value": 50393064,
+        "instruction": 8897216
+      },
+      {
+        "address": 50393044,
+        "size": 4,
+        "value": 8897223,
+        "instruction": 8897217
+      },
+      {
+        "address": 19420808,
+        "size": 4,
+        "value": 2225208359,
+        "instruction": 8897253
+      },
+      {
+        "address": 19420812,
+        "size": 4,
+        "value": 2069758936,
+        "instruction": 8897261
+      },
+      {
+        "address": 50393080,
+        "size": 4,
+        "value": 16,
+        "instruction": 8895293
+      },
+      {
+        "address": 50393076,
+        "size": 4,
+        "value": 13276152,
+        "instruction": 8895295
+      },
+      {
+        "address": 50393072,
+        "size": 4,
+        "value": 8895305,
+        "instruction": 8895300
+      },
+      {
+        "address": 50393068,
+        "size": 4,
+        "value": 8896273,
+        "instruction": 8896184
+      },
+      {
+        "address": 50393064,
+        "size": 4,
+        "value": 4294967295,
+        "instruction": 8896189
+      },
+      {
+        "address": 50393080,
+        "size": 4,
+        "value": 0,
+        "instruction": 8896200
+      },
+      {
+        "address": 50393044,
+        "size": 4,
+        "value": 0,
+        "instruction": 8896210
+      },
+      {
+        "address": 50393040,
+        "size": 4,
+        "value": 0,
+        "instruction": 8896211
+      },
+      {
+        "address": 50393036,
+        "size": 4,
+        "value": 0,
+        "instruction": 8896212
+      },
+      {
+        "address": 50393076,
+        "size": 4,
+        "value": 2221633503,
+        "instruction": 8896218
+      },
+      {
+        "address": 50393032,
+        "size": 4,
+        "value": 2275480543,
+        "instruction": 8896223
+      },
+      {
+        "address": 50393056,
+        "size": 4,
+        "value": 50393032,
+        "instruction": 8896224
+      },
+      {
+        "address": 50393028,
+        "size": 4,
+        "value": 8895305,
+        "instruction": 8896227
+      },
+      {
+        "address": 50393076,
+        "size": 4,
+        "value": 4294967294,
+        "instruction": 8896233
+      },
+      {
+        "address": 50393072,
+        "size": 4,
+        "value": 2221633503,
+        "instruction": 8896240
+      },
+      {
+        "address": 50393076,
+        "size": 4,
+        "value": 0,
+        "instruction": 8895307
+      },
+      {
+        "address": 50393052,
+        "size": 4,
+        "value": 0,
+        "instruction": 8895319
+      },
+      {
+        "address": 50393028,
+        "size": 4,
+        "value": 0,
+        "instruction": 8895327
+      },
+      {
+        "address": 50393024,
+        "size": 4,
+        "value": 50397184,
+        "instruction": 8895328
+      },
+      {
+        "address": 50393020,
+        "size": 4,
+        "value": 25894492,
+        "instruction": 8895329
+      },
+      {
+        "address": 50393016,
+        "size": 4,
+        "value": 8895336,
+        "instruction": 8895330
+      },
+      {
+        "address": 25894488,
+        "size": 4,
+        "value": 1,
+        "instruction": 8895396
+      },
+      {
+        "address": 50393028,
+        "size": 4,
+        "value": 11943380,
+        "instruction": 8895402
+      },
+      {
+        "address": 50393024,
+        "size": 4,
+        "value": 11943364,
+        "instruction": 8895407
+      },
+      {
+        "address": 50393020,
+        "size": 4,
+        "value": 8895417,
+        "instruction": 8895412
+      }
+    ],
+    "hostEnvironmentWrites": [
+      {
+        "address": 50393084,
+        "value": 14598366,
+        "source": "HOST_DIAGNOSTIC_RETURN_FRAME"
+      },
+      {
+        "address": 50393072,
+        "value": 2238579664,
+        "service": "GetSystemTimeAsFileTime"
+      },
+      {
+        "address": 50393076,
+        "value": 31288491,
+        "service": "GetSystemTimeAsFileTime"
+      },
+      {
+        "address": 50393064,
+        "value": 1217300,
+        "service": "QueryPerformanceCounter"
+      },
+      {
+        "address": 50393068,
+        "value": 0,
+        "service": "QueryPerformanceCounter"
+      },
+      {
+        "address": 25894492,
+        "value": 50397184,
+        "service": "InterlockedCompareExchange"
+      },
+      {
+        "address": 51380224,
+        "value": 4294967295,
+        "source": "HOST_WINDOWS_COMPATIBLE_NT_TIB32"
+      },
+      {
+        "address": 51380228,
+        "value": 50397184,
+        "source": "HOST_WINDOWS_COMPATIBLE_NT_TIB32"
+      },
+      {
+        "address": 51380232,
+        "value": 50331648,
+        "source": "HOST_WINDOWS_COMPATIBLE_NT_TIB32"
+      },
+      {
+        "address": 51380248,
+        "value": 51380224,
+        "source": "HOST_WINDOWS_COMPATIBLE_NT_TIB32"
+      }
+    ],
+    "syntheticThreadDependencies": {
+      "provenance": "HOST_WINDOWS_COMPATIBLE_NT_TIB32",
+      "compatibilityContext": {
+        "processId": 3,
+        "threadId": 4,
+        "ownerToken": 50397184
+      },
+      "fsBase": 51380224,
+      "exceptionHead": 4294967295,
+      "originalThreadInitialization": false,
+      "exceptionDispatchSupported": false
+    },
+    "virtualProcess": {
+      "processId": 3,
+      "threadId": 4,
+      "provenance": "BROWSER_COMPATIBILITY_ENVIRONMENT",
+      "bootEpoch": "Compatibility environment creation",
+      "qpcFrequency": 1000000
+    },
+    "importValuesUnchanged": true,
+    "cleanupProvider": 9088106,
+    "startupState": 1,
+    "startupOwner": 50397184,
+    "cleanupGlobals": [
+      0,
+      0
+    ],
+    "cInitializerCells": [
+      {
+        "cell": 11943364,
+        "value": 0
+      },
+      {
+        "cell": 11943368,
+        "value": 8895667
+      },
+      {
+        "cell": 11943372,
+        "value": 8896484
+      },
+      {
+        "cell": 11943376,
+        "value": 8896651
+      }
+    ],
+    "interlockedCompareExchange": [
+      {
+        "namespace": "compat.kernel32",
+        "name": "InterlockedCompareExchange",
+        "callsite": 8895330,
+        "cell": 11932084,
+        "rawEffectiveTarget": 9089150,
+        "arguments": [
+          25894492,
+          50397184,
+          0
+        ],
+        "espBefore": 50393016,
+        "returnAddress": 8895336,
+        "hostSubstitution": true,
+        "originalLoaderBindingObserved": false,
+        "environment": "BROWSER_COMPATIBILITY_ENVIRONMENT",
+        "status": "RETURNED",
+        "exchanged": true,
+        "previous": 0,
+        "eax": 0,
+        "espAfter": 50393032
+      }
+    ],
+    "milestones": {
+      "securityCookie": true,
+      "compatibilityThread": true,
+      "crtStartupRoutine": true,
+      "cInitializers": false,
+      "cppConstructors": false,
+      "cleanupRegistration": false,
+      "fullGameBoot": false
+    },
+    "lastInstruction": 8895412,
+    "exactStopAddress": 8895412,
+    "firstUnsupportedDependency": "0x0087C232 -> legacy [0x00B613B4] (_initterm_e); C initializer walker not implemented",
+    "stopReason": "CRT_STARTUP_PREFIX_STOP_AT_INITTERM_E",
+    "nextUnadmittedEntry": 8895667,
+    "durationMs": 1.5,
+    "distribution": "User-selected local diagnostic module; existing private asset manifest unchanged"
+  }
+}

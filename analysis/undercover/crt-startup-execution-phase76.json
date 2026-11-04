@@ -1,0 +1,51 @@
+{
+  "phase": 76,
+  "browser": "msedge",
+  "browserVersion": "156.0.4314.58",
+  "secureContext": true,
+  "entry": "0x0087BB3D",
+  "hostScheduled": true,
+  "cookieEntry": "0x0087C264",
+  "originalInstructionCount": 90,
+  "originalFunctionsEntered": [
+    "0x0087BB3D",
+    "0x0087BEB8",
+    "0x0087C264"
+  ],
+  "originalMemoryWrites": 40,
+  "hostEnvironmentWrites": 10,
+  "compatibilityServiceCalls": 6,
+  "compatibilityServices": [
+    "GetSystemTimeAsFileTime",
+    "GetCurrentProcessId",
+    "GetCurrentThreadId",
+    "GetTickCount",
+    "QueryPerformanceCounter",
+    "InterlockedCompareExchange"
+  ],
+  "guestFsSehState": {
+    "fsBase": "0x03100000",
+    "stackBase": "0x03010000",
+    "stackLimit": "0x03000000",
+    "self": "0x03100000",
+    "exceptionHeadAfterProlog": "registration record installed by original 0x0087BEB8"
+  },
+  "startupState": 1,
+  "startupOwner": "0x03010000",
+  "startupStateChange": "0 -> 1 by original instruction 0x0087BBA4",
+  "startupOwnerChange": "0 -> StackBase by InterlockedCompareExchange host service (logged host write)",
+  "firstUnsupportedDependency": "0x0087C232 -> legacy [0x00B613B4] (_initterm_e); C initializer walker not implemented",
+  "exactStopInstruction": "0x0087BBB4",
+  "originalPeEntryExecuted": false,
+  "originalLoaderBindingObserved": false,
+  "milestones": {
+    "securityCookie": true,
+    "compatibilityThread": true,
+    "crtStartupRoutine": true,
+    "cInitializers": false,
+    "cppConstructors": false,
+    "cleanupRegistration": false,
+    "fullGameBoot": false
+  },
+  "evidenceFile": "crt-bootstrap-execution-phase76.json"
+}

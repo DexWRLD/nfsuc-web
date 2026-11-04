@@ -77,5 +77,20 @@
     "reason": "Jump enters overlapping instruction bytes; ordinary startup continuation is not verified"
   },
   "undercover_original_startup_prefix_in_browser": false,
-  "existing_browser_prefixes_reachable_from_pe_entry": "UNVERIFIED"
+  "existing_browser_prefixes_reachable_from_pe_entry": "UNVERIFIED",
+  "phase": 76,
+  "compatibility_crt_bootstrap": {
+    "status": "BOUNDED_STARTUP_PREFIX_EXECUTED",
+    "cookie": "READY",
+    "startupEntry": "0x0087BB3D",
+    "hostScheduled": true,
+    "originalPeEntryExecuted": false,
+    "originalLoaderBindingObserved": false,
+    "startupStateTransition": "0->1 observed via original MOV at 0x0087BBA4",
+    "startupOwner": "StackBase 0x03010000 via InterlockedCompareExchange host service",
+    "stop": "0x0087BBB4 CALL 0x0087C232 (_initterm_e stub)",
+    "cInitializers": false,
+    "note": "Compatibility-hosted; not authentic PE startup"
+  },
+  "first_frame": "FIRST_FRAME_PATH_BLOCKED_BY_PROTECTED_BACKEND"
 }

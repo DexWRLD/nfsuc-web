@@ -1,0 +1,116 @@
+{
+  "phase": 76,
+  "sourceSha256": "6b10551649fd70fa630bd7454fd953f51555fa2dd2112faae84ac8ca97844bcd",
+  "diagnosticModuleSha256": "2efbe299341b495f8b2cf73cd792a04e2a9048dd40172b930c8a20787c24f82c",
+  "ordinaryModuleSha256": "8d1a62e0f1347d3698c9a011bf0da415291c6054c33c0b209652064da7b71c76",
+  "ordinaryModuleBytes": 14981,
+  "diagnosticModuleBytes": 22070,
+  "diagnosticBodies": 16,
+  "classification": "HOST_SCHEDULED_BOUNDED_CRT_STARTUP_PREFIX",
+  "startup": {
+    "entry": "0x0087BB3D",
+    "endExclusive": "0x0087BBFA",
+    "bodySha256": "0128054d21e57fb02be59134259d84d3c405f7d73b9cd9a78ed9af6df5903a1e",
+    "instructionCount": 57,
+    "sehProlog": {
+      "size": "0x10",
+      "scope": "0x00CA93F8",
+      "callsite": "0x0087BB44",
+      "target": "0x0087BEB8"
+    },
+    "fsSelfRead": "0x0087BB4E",
+    "ownerTokenRead": "0x0087BB54",
+    "firstSynchronization": {
+      "callsite": "0x0087BB62",
+      "cell": "0x00B611B4",
+      "name": "InterlockedCompareExchange"
+    },
+    "firstUnsupportedDependency": {
+      "callsite": "0x0087BBB4",
+      "target": "0x0087C232",
+      "name": "_initterm_e stub via legacy 0x00B613B4"
+    }
+  },
+  "sehFrameAdmission": {
+    "cleanupRegistrar": {
+      "size": "0x14",
+      "scope": "0x00CA9380"
+    },
+    "crtStartup": {
+      "size": "0x10",
+      "scope": "0x00CA93F8"
+    },
+    "prologEspDelta": "entry_esp - (24 + size)",
+    "epilogUsesRegistrationEspAtEbpMinus0x18": true
+  },
+  "services": [
+    {
+      "name": "GetSystemTimeAsFileTime",
+      "callsite": "0x0087C299",
+      "cell": "0x00B611A0",
+      "rawValue": "0x008AB0FE",
+      "argumentBytes": 4,
+      "convention": "stdcall",
+      "implemented": true
+    },
+    {
+      "name": "GetCurrentProcessId",
+      "callsite": "0x0087C2A5",
+      "cell": "0x00B610CC",
+      "rawValue": "0x008AA180",
+      "argumentBytes": 0,
+      "convention": "stdcall",
+      "implemented": true
+    },
+    {
+      "name": "GetCurrentThreadId",
+      "callsite": "0x0087C2AD",
+      "cell": "0x00B611E0",
+      "rawValue": "0x008A9F18",
+      "argumentBytes": 0,
+      "convention": "stdcall",
+      "implemented": true
+    },
+    {
+      "name": "GetTickCount",
+      "callsite": "0x0087C2B5",
+      "cell": "0x00B611D0",
+      "rawValue": "0x008A9F64",
+      "argumentBytes": 0,
+      "convention": "stdcall",
+      "implemented": true
+    },
+    {
+      "name": "QueryPerformanceCounter",
+      "callsite": "0x0087C2C1",
+      "cell": "0x00B611F8",
+      "rawValue": "0x008A9E84",
+      "argumentBytes": 4,
+      "convention": "stdcall",
+      "implemented": true
+    },
+    {
+      "name": "InterlockedCompareExchange",
+      "callsite": "0x0087BB62",
+      "cell": "0x00B611B4",
+      "rawValue": "0x008AB07E",
+      "argumentBytes": 12,
+      "convention": "stdcall",
+      "implemented": true
+    }
+  ],
+  "unimplementedOnReachedPaths": [
+    {
+      "name": "Sleep",
+      "callsite": "0x0087BB7D",
+      "note": "foreign-owner contention path only"
+    },
+    {
+      "name": "_initterm_e",
+      "via": "0x0087C232",
+      "note": "zero-state success path stop"
+    }
+  ],
+  "originalPeEntryExecuted": false,
+  "originalLoaderBindingObserved": false
+}

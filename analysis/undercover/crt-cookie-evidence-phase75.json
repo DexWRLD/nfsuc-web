@@ -57,6 +57,11 @@
     8897271
   ],
   "instructionCount": 52,
+  "unsupportedInstruction": 8897248,
+  "classification": "HOST_SCHEDULED_DIAGNOSTIC_NOT_ORIGINAL_PE_STARTUP",
+  "moduleSha256": "2efbe299341b495f8b2cf73cd792a04e2a9048dd40172b930c8a20787c24f82c",
+  "sourceSha256": "6b10551649fd70fa630bd7454fd953f51555fa2dd2112faae84ac8ca97844bcd",
+  "normalBindingsUnchanged": 14,
   "services": [
     {
       "callsite": 8897177,
@@ -129,9 +134,5 @@
       "originalEffectiveBindingVerified": false
     }
   ],
-  "unsupportedInstruction": 8897248,
-  "classification": "HOST_SCHEDULED_DIAGNOSTIC_NOT_ORIGINAL_PE_STARTUP",
-  "moduleSha256": "7859c00ff1145937b25076452ba5afc152171bccea95240b68b5a78c0bfe3cc1",
-  "sourceSha256": "6b10551649fd70fa630bd7454fd953f51555fa2dd2112faae84ac8ca97844bcd",
-  "normalBindingsUnchanged": 14
+  "note": "Phase 75 cookie subset retained; startup fields live in crt-startup-contract-phase76.json"
 }

@@ -1,6 +1,6 @@
 {
-  "current_phase": 75,
-  "strategy": "Opt-in compatibility-hosted security-cookie routine returns in Edge using five exact-callsite host services. Original PE startup and loader binding remain unverified. C/CPP initialization and cleanup remain blocked; normal mode preserves the provider trap.",
+  "current_phase": 76,
+  "strategy": "Phase 76: host-scheduled bounded CRT startup prefix at 0x0087BB3D with compatibility ICE; stop at _initterm_e; FIRST_FRAME frozen.",
   "boundaries": {
     "0x00686000": {
       "status": "PROTECTED_OR_EXTERNAL_DEPENDENCY",
@@ -485,6 +485,11 @@
       "phase": 51,
       "name": "Authentic startup logo preview & intro inventory",
       "state": "completed"
+    },
+    {
+      "phase": 76,
+      "name": "Bounded CRT startup prefix + ICE",
+      "state": "completed"
     }
   ],
   "milestones": [
@@ -734,20 +739,22 @@
     "startup_advanced": false
   },
   "crt_compatibility_bootstrap": {
-    "evidence": "crt-bootstrap-execution-phase75.json",
-    "contracts": "crt-compatibility-contracts-phase75.json",
+    "evidence": "crt-bootstrap-execution-phase76.json",
+    "contracts": "crt-startup-contract-phase76.json",
+    "executionSummary": "crt-startup-execution-phase76.json",
     "original_pe_startup": "BLOCKED_UNVERIFIED",
     "original_loader_binding": "UNVERIFIED",
-    "compatibility_crt": "COOKIE_ROUTINE_RETURNED",
+    "compatibility_crt": "STARTUP_PREFIX_STOP_AT_INITTERM_E",
     "compatibility_thread": "HOST_NT_TIB32_PREPARED",
+    "startup_state": 1,
+    "startup_owner": "0x03010000",
     "c_initializer_completion": "NOT_EXECUTED",
     "cpp_constructor_completion": "NOT_EXECUTED",
     "cleanup_registration": "NOT_COMPLETED",
     "full_game_boot": "BLOCKED",
     "normal_bindings": 14,
-    "diagnostic_bindings": 15,
-    "original_cookie_instructions": 42,
-    "host_service_calls": 5,
+    "diagnostic_bindings": 16,
+    "host_service_calls": 6,
     "original_loader_observed": false,
     "new_lan_distribution": false
   }
