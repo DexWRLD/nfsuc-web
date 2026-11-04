@@ -1,0 +1,703 @@
+{
+  "0087b640": {
+    "get_function_by_address": {
+      "name": "FUN_0087b640",
+      "address": "0087b640",
+      "signature": "undefined FUN_0087b640(void)",
+      "namespace": "Global",
+      "body_start": "0087b640",
+      "body_end": "0087b651",
+      "body_size": 18,
+      "calling_convention": "unknown",
+      "is_thunk": false,
+      "is_external": false
+    },
+    "disassemble_function": {
+      "items": [
+        {
+          "address": "0087b640",
+          "bytes": "ff742404",
+          "instruction": "PUSH dword ptr [ESP + 0x4]",
+          "comment": null
+        },
+        {
+          "address": "0087b644",
+          "bytes": "e852ffffff",
+          "instruction": "CALL 0x0087b59b",
+          "comment": null
+        },
+        {
+          "address": "0087b649",
+          "bytes": "f7d8",
+          "instruction": "NEG EAX",
+          "comment": null
+        },
+        {
+          "address": "0087b64b",
+          "bytes": "1bc0",
+          "instruction": "SBB EAX,EAX",
+          "comment": null
+        },
+        {
+          "address": "0087b64d",
+          "bytes": "f7d8",
+          "instruction": "NEG EAX",
+          "comment": null
+        },
+        {
+          "address": "0087b64f",
+          "bytes": "59",
+          "instruction": "POP ECX",
+          "comment": null
+        },
+        {
+          "address": "0087b650",
+          "bytes": "48",
+          "instruction": "DEC EAX",
+          "comment": null
+        },
+        {
+          "address": "0087b651",
+          "bytes": "c3",
+          "instruction": "RET",
+          "comment": null
+        }
+      ],
+      "offset": 0,
+      "limit": 500,
+      "total": 8,
+      "has_more": false
+    },
+    "decompile_function_by_address": {
+      "function": {
+        "name": "FUN_0087b640",
+        "address": "0087b640"
+      },
+      "code": "\r\nint FUN_0087b640(undefined4 param_1)\r\n\r\n{\r\n  int iVar1;\r\n  \r\n  iVar1 = FUN_0087b59b(param_1);\r\n  return (iVar1 != 0) - 1;\r\n}\r\n\r\n",
+      "truncated": false
+    }
+  },
+  "0087b59b": {
+    "get_function_by_address": {
+      "name": "FUN_0087b59b",
+      "address": "0087b59b",
+      "signature": "undefined FUN_0087b59b(void)",
+      "namespace": "Global",
+      "body_start": "0087b59b",
+      "body_end": "0087b636",
+      "body_size": 108,
+      "calling_convention": "unknown",
+      "is_thunk": false,
+      "is_external": false
+    },
+    "disassemble_function": {
+      "items": [
+        {
+          "address": "0087b59b",
+          "bytes": "6a14",
+          "instruction": "PUSH 0x14",
+          "comment": null
+        },
+        {
+          "address": "0087b59d",
+          "bytes": "688093ca00",
+          "instruction": "PUSH 0xca9380",
+          "comment": null
+        },
+        {
+          "address": "0087b5a2",
+          "bytes": "e811090000",
+          "instruction": "CALL 0x0087beb8",
+          "comment": null
+        },
+        {
+          "address": "0087b5a7",
+          "bytes": "ff356c1e8b01",
+          "instruction": "PUSH dword ptr [0x018b1e6c]",
+          "comment": null
+        },
+        {
+          "address": "0087b5ad",
+          "bytes": "8b359813b600",
+          "instruction": "MOV ESI,dword ptr [0x00b61398]",
+          "comment": null
+        },
+        {
+          "address": "0087b5b3",
+          "bytes": "ffd6",
+          "instruction": "CALL ESI",
+          "comment": null
+        },
+        {
+          "address": "0087b5b5",
+          "bytes": "59",
+          "instruction": "POP ECX",
+          "comment": null
+        },
+        {
+          "address": "0087b5b6",
+          "bytes": "8945e4",
+          "instruction": "MOV dword ptr [EBP + -0x1c],EAX",
+          "comment": null
+        },
+        {
+          "address": "0087b5b9",
+          "bytes": "83f8ff",
+          "instruction": "CMP EAX,-0x1",
+          "comment": null
+        },
+        {
+          "address": "0087b5bc",
+          "bytes": "750c",
+          "instruction": "JNZ 0x0087b5ca",
+          "comment": null
+        },
+        {
+          "address": "0087b5be",
+          "bytes": "ff7508",
+          "instruction": "PUSH dword ptr [EBP + 0x8]",
+          "comment": null
+        },
+        {
+          "address": "0087b5c1",
+          "bytes": "ff159413b600",
+          "instruction": "CALL dword ptr [0x00b61394]",
+          "comment": null
+        },
+        {
+          "address": "0087b5c7",
+          "bytes": "59",
+          "instruction": "POP ECX",
+          "comment": null
+        },
+        {
+          "address": "0087b5c8",
+          "bytes": "eb67",
+          "instruction": "JMP 0x0087b631",
+          "comment": null
+        },
+        {
+          "address": "0087b5ca",
+          "bytes": "6a08",
+          "instruction": "PUSH 0x8",
+          "comment": null
+        },
+        {
+          "address": "0087b5cc",
+          "bytes": "e82d0a0000",
+          "instruction": "CALL 0x0087bffe",
+          "comment": null
+        },
+        {
+          "address": "0087b5d1",
+          "bytes": "59",
+          "instruction": "POP ECX",
+          "comment": null
+        },
+        {
+          "address": "0087b5d2",
+          "bytes": "8365fc00",
+          "instruction": "AND dword ptr [EBP + -0x4],0x0",
+          "comment": null
+        },
+        {
+          "address": "0087b5d6",
+          "bytes": "ff356c1e8b01",
+          "instruction": "PUSH dword ptr [0x018b1e6c]",
+          "comment": null
+        },
+        {
+          "address": "0087b5dc",
+          "bytes": "ffd6",
+          "instruction": "CALL ESI",
+          "comment": null
+        },
+        {
+          "address": "0087b5de",
+          "bytes": "8945e4",
+          "instruction": "MOV dword ptr [EBP + -0x1c],EAX",
+          "comment": null
+        },
+        {
+          "address": "0087b5e1",
+          "bytes": "ff35681e8b01",
+          "instruction": "PUSH dword ptr [0x018b1e68]",
+          "comment": null
+        },
+        {
+          "address": "0087b5e7",
+          "bytes": "ffd6",
+          "instruction": "CALL ESI",
+          "comment": null
+        },
+        {
+          "address": "0087b5e9",
+          "bytes": "59",
+          "instruction": "POP ECX",
+          "comment": null
+        },
+        {
+          "address": "0087b5ea",
+          "bytes": "59",
+          "instruction": "POP ECX",
+          "comment": null
+        },
+        {
+          "address": "0087b5eb",
+          "bytes": "8945e0",
+          "instruction": "MOV dword ptr [EBP + -0x20],EAX",
+          "comment": null
+        },
+        {
+          "address": "0087b5ee",
+          "bytes": "8d45e0",
+          "instruction": "LEA EAX,[EBP + -0x20]",
+          "comment": null
+        },
+        {
+          "address": "0087b5f1",
+          "bytes": "50",
+          "instruction": "PUSH EAX",
+          "comment": null
+        },
+        {
+          "address": "0087b5f2",
+          "bytes": "8d45e4",
+          "instruction": "LEA EAX,[EBP + -0x1c]",
+          "comment": null
+        },
+        {
+          "address": "0087b5f5",
+          "bytes": "50",
+          "instruction": "PUSH EAX",
+          "comment": null
+        },
+        {
+          "address": "0087b5f6",
+          "bytes": "ff7508",
+          "instruction": "PUSH dword ptr [EBP + 0x8]",
+          "comment": null
+        },
+        {
+          "address": "0087b5f9",
+          "bytes": "8b358c13b600",
+          "instruction": "MOV ESI,dword ptr [0x00b6138c]",
+          "comment": null
+        },
+        {
+          "address": "0087b5ff",
+          "bytes": "ffd6",
+          "instruction": "CALL ESI",
+          "comment": null
+        },
+        {
+          "address": "0087b631",
+          "bytes": "e8c7080000",
+          "instruction": "CALL 0x0087befd",
+          "comment": null
+        },
+        {
+          "address": "0087b636",
+          "bytes": "c3",
+          "instruction": "RET",
+          "comment": null
+        }
+      ],
+      "offset": 0,
+      "limit": 500,
+      "total": 35,
+      "has_more": false
+    },
+    "decompile_function_by_address": {
+      "function": {
+        "name": "FUN_0087b59b",
+        "address": "0087b59b"
+      },
+      "code": "\r\n/* WARNING: Function: __SEH_prolog4 replaced with injection: SEH_prolog4 */\r\n/* WARNING: Function: __SEH_epilog4 replaced with injection: EH_epilog3 */\r\n\r\nvoid FUN_0087b59b(undefined4 param_1)\r\n\r\n{\r\n  code *pcVar1;\r\n  undefined4 local_24;\r\n  int local_20 [5];\r\n  undefined4 uStack_c;\r\n  undefined *local_8;\r\n  \r\n  pcVar1 = DAT_00b61398;\r\n  local_8 = &DAT_00ca9380;\r\n  uStack_c = 0x87b5a7;\r\n  local_20[0] = (*DAT_00b61398)(DAT_018b1e6c);\r\n  if (local_20[0] == -1) {\r\n    (*(code *)PTR_FUN_00b61394)(param_1);\r\n    return;\r\n  }\r\n  FUN_0087bffe(8);\r\n  local_8 = (undefined *)0x0;\r\n  local_20[0] = (*pcVar1)(DAT_018b1e6c);\r\n  local_24 = (*pcVar1)(DAT_018b1e68);\r\n  (*(code *)PTR_thunk_FUN_0089f0b0_00b6138c)(param_1,local_20,&local_24);\r\n  return;\r\n}\r\n\r\n",
+      "truncated": false
+    }
+  },
+  "0087beb8": {
+    "get_function_by_address": {
+      "name": "__SEH_prolog4",
+      "address": "0087beb8",
+      "signature": "undefined __SEH_prolog4(void)",
+      "namespace": "Global",
+      "body_start": "0087beb8",
+      "body_end": "0087befc",
+      "body_size": 69,
+      "calling_convention": "unknown",
+      "is_thunk": false,
+      "is_external": false
+    },
+    "disassemble_function": {
+      "items": [
+        {
+          "address": "0087beb8",
+          "bytes": "6811bf8700",
+          "instruction": "PUSH 0x87bf11",
+          "comment": null
+        },
+        {
+          "address": "0087bebd",
+          "bytes": "64ff3500000000",
+          "instruction": "PUSH dword ptr FS:[0x0]",
+          "comment": null
+        },
+        {
+          "address": "0087bec4",
+          "bytes": "8b442410",
+          "instruction": "MOV EAX,dword ptr [ESP + 0x10]",
+          "comment": null
+        },
+        {
+          "address": "0087bec8",
+          "bytes": "896c2410",
+          "instruction": "MOV dword ptr [ESP + 0x10],EBP",
+          "comment": null
+        },
+        {
+          "address": "0087becc",
+          "bytes": "8d6c2410",
+          "instruction": "LEA EBP,[ESP + 0x10]",
+          "comment": null
+        },
+        {
+          "address": "0087bed0",
+          "bytes": "2be0",
+          "instruction": "SUB ESP,EAX",
+          "comment": null
+        },
+        {
+          "address": "0087bed2",
+          "bytes": "53",
+          "instruction": "PUSH EBX",
+          "comment": null
+        },
+        {
+          "address": "0087bed3",
+          "bytes": "56",
+          "instruction": "PUSH ESI",
+          "comment": null
+        },
+        {
+          "address": "0087bed4",
+          "bytes": "57",
+          "instruction": "PUSH EDI",
+          "comment": null
+        },
+        {
+          "address": "0087bed5",
+          "bytes": "a188562801",
+          "instruction": "MOV EAX,[0x01285688]",
+          "comment": null
+        },
+        {
+          "address": "0087beda",
+          "bytes": "3145fc",
+          "instruction": "XOR dword ptr [EBP + -0x4],EAX",
+          "comment": null
+        },
+        {
+          "address": "0087bedd",
+          "bytes": "33c5",
+          "instruction": "XOR EAX,EBP",
+          "comment": null
+        },
+        {
+          "address": "0087bedf",
+          "bytes": "50",
+          "instruction": "PUSH EAX",
+          "comment": null
+        },
+        {
+          "address": "0087bee0",
+          "bytes": "8965e8",
+          "instruction": "MOV dword ptr [EBP + -0x18],ESP",
+          "comment": null
+        },
+        {
+          "address": "0087bee3",
+          "bytes": "ff75f8",
+          "instruction": "PUSH dword ptr [EBP + -0x8]",
+          "comment": null
+        },
+        {
+          "address": "0087bee6",
+          "bytes": "8b45fc",
+          "instruction": "MOV EAX,dword ptr [EBP + -0x4]",
+          "comment": null
+        },
+        {
+          "address": "0087bee9",
+          "bytes": "c745fcfeffffff",
+          "instruction": "MOV dword ptr [EBP + -0x4],0xfffffffe",
+          "comment": null
+        },
+        {
+          "address": "0087bef0",
+          "bytes": "8945f8",
+          "instruction": "MOV dword ptr [EBP + -0x8],EAX",
+          "comment": null
+        },
+        {
+          "address": "0087bef3",
+          "bytes": "8d45f0",
+          "instruction": "LEA EAX,[EBP + -0x10]",
+          "comment": null
+        },
+        {
+          "address": "0087bef6",
+          "bytes": "64a300000000",
+          "instruction": "MOV FS:[0x0],EAX",
+          "comment": null
+        },
+        {
+          "address": "0087befc",
+          "bytes": "c3",
+          "instruction": "RET",
+          "comment": null
+        }
+      ],
+      "offset": 0,
+      "limit": 500,
+      "total": 21,
+      "has_more": false
+    },
+    "decompile_function_by_address": {
+      "function": {
+        "name": "__SEH_prolog4",
+        "address": "0087beb8"
+      },
+      "code": "\r\n/* WARNING: This is an inlined function */\r\n/* WARNING: Unable to track spacebase fully for stack */\r\n/* Library Function - Single Match\r\n    __SEH_prolog4\r\n   \r\n   Library: Visual Studio */\r\n\r\nvoid __SEH_prolog4(undefined4 param_1,int param_2)\r\n\r\n{\r\n  undefined4 unaff_EBX;\r\n  undefined4 unaff_ESI;\r\n  undefined4 unaff_EDI;\r\n  int *unaff_FS_OFFSET;\r\n  undefined4 unaff_retaddr;\r\n  uint auStack_1c [5];\r\n  undefined1 local_8 [8];\r\n  \r\n  param_2 = -param_2;\r\n  *(undefined4 *)((int)auStack_1c + param_2 + 0x10) = unaff_EBX;\r\n  *(undefined4 *)((int)auStack_1c + param_2 + 0xc) = unaff_ESI;\r\n  *(undefined4 *)((int)auStack_1c + param_2 + 8) = unaff_EDI;\r\n  *(uint *)((int)auStack_1c + param_2 + 4) = DAT_01285688 ^ (uint)((int)register0x00000010 + 8);\r\n  *(undefined4 *)((int)auStack_1c + param_2) = unaff_retaddr;\r\n  *unaff_FS_OFFSET = (int)local_8;\r\n  return;\r\n}\r\n\r\n",
+      "truncated": false
+    }
+  },
+  "008aac6a": {
+    "get_function_by_address": {
+      "name": "FUN_008aac60",
+      "address": "008aac60",
+      "signature": "undefined FUN_008aac60(void)",
+      "namespace": "Global",
+      "body_start": "008aac60",
+      "body_end": "008aac77",
+      "body_size": 24,
+      "calling_convention": "unknown",
+      "is_thunk": false,
+      "is_external": false
+    },
+    "disassemble_function": {
+      "items": [
+        {
+          "address": "008aac60",
+          "bytes": "8b8424c0000000",
+          "instruction": "MOV EAX,dword ptr [ESP + 0xc0]",
+          "comment": null
+        },
+        {
+          "address": "008aac67",
+          "bytes": "56",
+          "instruction": "PUSH ESI",
+          "comment": null
+        },
+        {
+          "address": "008aac68",
+          "bytes": "50",
+          "instruction": "PUSH EAX",
+          "comment": null
+        },
+        {
+          "address": "008aac69",
+          "bytes": "8d4c2478",
+          "instruction": "LEA ECX,[ESP + 0x78]",
+          "comment": null
+        },
+        {
+          "address": "008aac6d",
+          "bytes": "68804fbc00",
+          "instruction": "PUSH 0xbc4f80",
+          "comment": null
+        },
+        {
+          "address": "008aac72",
+          "bytes": "51",
+          "instruction": "PUSH ECX",
+          "comment": null
+        },
+        {
+          "address": "008aac73",
+          "bytes": "e8520afdff",
+          "instruction": "CALL 0x0087b6ca",
+          "comment": null
+        }
+      ],
+      "offset": 0,
+      "limit": 500,
+      "total": 7,
+      "has_more": false
+    },
+    "decompile_function_by_address": {
+      "function": {
+        "name": "FUN_008aac60",
+        "address": "008aac60"
+      },
+      "code": "\r\nvoid FUN_008aac60(void)\r\n\r\n{\r\n  undefined1 uStack00000070;\r\n  undefined4 in_stack_000000c0;\r\n  \r\n                    /* WARNING: Subroutine does not return */\r\n  thunk_FUN_008aa9aa(&uStack00000070,\"%s.%d\",in_stack_000000c0);\r\n}\r\n\r\n",
+      "truncated": false
+    }
+  },
+  "008aac60": {
+    "get_function_by_address": {
+      "name": "FUN_008aac60",
+      "address": "008aac60",
+      "signature": "undefined FUN_008aac60(void)",
+      "namespace": "Global",
+      "body_start": "008aac60",
+      "body_end": "008aac77",
+      "body_size": 24,
+      "calling_convention": "unknown",
+      "is_thunk": false,
+      "is_external": false
+    },
+    "disassemble_function": {
+      "items": [
+        {
+          "address": "008aac60",
+          "bytes": "8b8424c0000000",
+          "instruction": "MOV EAX,dword ptr [ESP + 0xc0]",
+          "comment": null
+        },
+        {
+          "address": "008aac67",
+          "bytes": "56",
+          "instruction": "PUSH ESI",
+          "comment": null
+        },
+        {
+          "address": "008aac68",
+          "bytes": "50",
+          "instruction": "PUSH EAX",
+          "comment": null
+        },
+        {
+          "address": "008aac69",
+          "bytes": "8d4c2478",
+          "instruction": "LEA ECX,[ESP + 0x78]",
+          "comment": null
+        },
+        {
+          "address": "008aac6d",
+          "bytes": "68804fbc00",
+          "instruction": "PUSH 0xbc4f80",
+          "comment": null
+        },
+        {
+          "address": "008aac72",
+          "bytes": "51",
+          "instruction": "PUSH ECX",
+          "comment": null
+        },
+        {
+          "address": "008aac73",
+          "bytes": "e8520afdff",
+          "instruction": "CALL 0x0087b6ca",
+          "comment": null
+        }
+      ],
+      "offset": 0,
+      "limit": 500,
+      "total": 7,
+      "has_more": false
+    },
+    "decompile_function_by_address": {
+      "function": {
+        "name": "FUN_008aac60",
+        "address": "008aac60"
+      },
+      "code": "\r\nvoid FUN_008aac60(void)\r\n\r\n{\r\n  undefined1 uStack00000070;\r\n  undefined4 in_stack_000000c0;\r\n  \r\n                    /* WARNING: Subroutine does not return */\r\n  thunk_FUN_008aa9aa(&uStack00000070,\"%s.%d\",in_stack_000000c0);\r\n}\r\n\r\n",
+      "truncated": false
+    }
+  },
+  "00b61398": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"items\": [\n    {\n      \"from\": \"0087b5ad\",\n      \"type\": \"READ\",\n      \"from_function\": {\n        \"name\": \"FUN_0087b59b\",\n        \"address\": \"0087b59b\"\n      }\n    }\n  ],\n  \"offset\": 0,\n  \"limit\": 100,\n  \"total\": 1,\n  \"has_more\": false\n}"
+      }
+    ],
+    "structuredContent": {
+      "items": [
+        {
+          "from": "0087b5ad",
+          "type": "READ",
+          "from_function": {
+            "name": "FUN_0087b59b",
+            "address": "0087b59b"
+          }
+        }
+      ],
+      "offset": 0,
+      "limit": 100,
+      "total": 1,
+      "has_more": false
+    },
+    "isError": false
+  },
+  "00b61394": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"items\": [\n    {\n      \"from\": \"0087b5c1\",\n      \"type\": \"READ\",\n      \"from_function\": {\n        \"name\": \"FUN_0087b59b\",\n        \"address\": \"0087b59b\"\n      }\n    }\n  ],\n  \"offset\": 0,\n  \"limit\": 100,\n  \"total\": 1,\n  \"has_more\": false\n}"
+      }
+    ],
+    "structuredContent": {
+      "items": [
+        {
+          "from": "0087b5c1",
+          "type": "READ",
+          "from_function": {
+            "name": "FUN_0087b59b",
+            "address": "0087b59b"
+          }
+        }
+      ],
+      "offset": 0,
+      "limit": 100,
+      "total": 1,
+      "has_more": false
+    },
+    "isError": false
+  },
+  "018b1e6c": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"items\": [\n    {\n      \"from\": \"0087b5a7\",\n      \"type\": \"READ\",\n      \"from_function\": {\n        \"name\": \"FUN_0087b59b\",\n        \"address\": \"0087b59b\"\n      }\n    },\n    {\n      \"from\": \"0087b5d6\",\n      \"type\": \"READ\",\n      \"from_function\": {\n        \"name\": \"FUN_0087b59b\",\n        \"address\": \"0087b59b\"\n      }\n    }\n  ],\n  \"offset\": 0,\n  \"limit\": 100,\n  \"total\": 2,\n  \"has_more\": false\n}"
+      }
+    ],
+    "structuredContent": {
+      "items": [
+        {
+          "from": "0087b5a7",
+          "type": "READ",
+          "from_function": {
+            "name": "FUN_0087b59b",
+            "address": "0087b59b"
+          }
+        },
+        {
+          "from": "0087b5d6",
+          "type": "READ",
+          "from_function": {
+            "name": "FUN_0087b59b",
+            "address": "0087b59b"
+          }
+        }
+      ],
+      "offset": 0,
+      "limit": 100,
+      "total": 2,
+      "has_more": false
+    },
+    "isError": false
+  }
+}

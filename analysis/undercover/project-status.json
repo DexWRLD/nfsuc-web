@@ -1,6 +1,6 @@
 {
-  "current_phase": 66,
-  "strategy": "Original static Apt initialization root supplies its global receiver and completes constructor callees in shared PE memory. Cleanup registration, PE-entry reachability and gameplay remain blocked.",
+  "current_phase": 67,
+  "strategy": "Original Apt constructor prefix now enters the verified cleanup wrapper. Arithmetic flags and wrapper ABI fixtures pass; SEH-dependent callee 0x0087B59B, native startup reachability and gameplay remain blocked.",
   "boundaries": {
     "0x00686000": {
       "status": "PROTECTED_OR_EXTERNAL_DEPENDENCY",
@@ -128,7 +128,7 @@
     "likely_low": "BLOCKED",
     "likely_high": "BLOCKED",
     "is_estimate": false,
-    "uncertainty": "FIRST_FRAME_PATH_BLOCKED_BY_PROTECTED_BACKEND — Phase 24 final; not an open estimate."
+    "uncertainty": "FIRST_FRAME_PATH_BLOCKED_BY_PROTECTED_BACKEND \u2014 Phase 24 final; not an open estimate."
   },
   "recorded_execution": [
     {

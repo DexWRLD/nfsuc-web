@@ -1,8 +1,8 @@
 {
   "project": {
     "name": "nfsuc-web",
-    "current_phase": 66,
-    "strategy": "Original static Apt initialization root supplies its global receiver and completes constructor callees in shared PE memory. Cleanup registration, PE-entry reachability and gameplay remain blocked."
+    "current_phase": 67,
+    "strategy": "Original Apt constructor prefix now enters the verified cleanup wrapper. Arithmetic flags and wrapper ABI fixtures pass; SEH-dependent callee 0x0087B59B, native startup reachability and gameplay remain blocked."
   },
   "discovery": {
     "candidates": 25450,

@@ -45,3 +45,11 @@ The registration leaf and root are invoked separately by the host. Within the ro
 The reviewed registry now contains nine callable original addresses and a classified unavailable helper. The new original root 0x00B57DC0 supplies its receiver at 0x00B57DC3 and calls the full constructor chain. Shared PE state receives 27 original writes; eight original callees return before cleanup registration traps at 0x0087B640. A read-only original pointer cell at 0x00B6370C identifies the root without proving native startup scheduling.
 
 CPU register storage is volatile across re-entrant Wasm imports, fixing the stale-register failure exposed by nested constructors. Byte reads/writes and guest-write journals now use the same checked process mapping. The default constructor path needs no Windows service adapter. General EFLAGS and the wrapper's CF-dependent instructions remain unsupported. Native startup and gameplay readiness remain blocked.
+
+## Phase 67 arithmetic subset and wrapper entry
+
+Ten reviewed bindings now include original 0x0087B640, reached through 0x00B57DD2. Its original argument forwarding executes; the call at 0x0087B644 stops before unresolved ordinary callee 0x0087B59B. Actual execution still records 27 global writes and eight callee returns. Cleanup registration and wrapper return remain unverified.
+
+The shared bridge now preserves volatile arithmetic flags and validity across imports. NEG/SBB/DEC, width masking, borrow, overflow and condition codes have independent Wasm fixture coverage. Undefined flag consumption traps; nonadmitted instructions fail the build. This is a six-arithmetic-flag subset, not general EFLAGS or FS/SEH support. The exact wrapper's post-call result path runs only with explicit synthetic test-callee returns outside the game process. PUSH source-before-ESP order is corrected.
+
+Next blocker is warning-bearing/noncontiguous CRT cleanup code, SEH prolog state and unresolved file-backed provider boundaries. No Windows import adapter is reached. See runtime-phase67.md and phase68-handoff.md. Native startup, PE entry continuation and gameplay remain blocked.

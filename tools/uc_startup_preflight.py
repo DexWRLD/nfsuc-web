@@ -53,7 +53,8 @@ def inspect(image_path, repository):
     return {
         "unified_registry_addresses": [f"0x{entry['address']:08X}" for entry in registry["bindings"]],
         "independent_initialization_root": "0x00B57DC0",
-        "independent_initialization_evidence": "runtime-phase66.md and edge-execution-phase66.json",
+        "independent_initialization_evidence": "runtime-phase67.md and edge-execution-phase67.json",
+        "cleanup_frontier": {"callsite": "0x0087B644", "target": "0x0087B59B", "registration_completed": False},
         "independent_root_reachability_from_pe_entry": "UNVERIFIED",
         "source_sha256": SOURCE_SHA, "master_sha256": MASTER_SHA,
         "entry": address, "entry_section": section["name"],

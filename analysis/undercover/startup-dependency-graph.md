@@ -1,5 +1,7 @@
 # Undercover startup dependency graph
 
+Phase 67 frontier: the independently entered original root 0x00B57DC0 completes the verified Apt constructor calls, enters 0x0087B640 at original callsite 0x00B57DD2, then stops at 0x0087B644 → 0x0087B59B. The latter requires warning-bearing SEH prolog 0x0087BEB8, thread FS state and unresolved provider cells 0x00B61398/94/8C. These are .rdata pointers, not import declarations; 0x008AAC6A lies inside the current instruction listing at 0x008AAC69. The wrapper's result arithmetic is fixture-tested only. This does not connect the island to the PE entry. Detailed evidence: runtime-phase67.md, ghidra-phase67.json and pe-evidence-phase67.json.
+
 The canonical navigation sources are nfs_undercover_full_decompile.c and nfs_undercover_function_index.json. The master SHA-256 remains f293d93d31fcbf86ad9b9639f2cf10c34defe9c621cfe7f1a5e975f598ddf88a, size 54,494,254 bytes. Its 25,419 emitted bodies combine 17,018 Ghidra results and 8,401 RawLifter translations. Warnings and recovery status must be checked before execution.
 
 ## Verified entry frontier

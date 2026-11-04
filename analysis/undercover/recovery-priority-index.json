@@ -148,100 +148,67 @@
       "recommended_next_action": "Verify ordinary callers and required factory state"
     },
     {
-      "address": "0x0087B640",
-      "classification": "decompiled",
-      "reasons": [],
-      "warning_details": [],
+      "address": "0x0087B59B",
+      "classification": "emitted_with_warnings",
+      "reasons": [
+        "decompiler warnings",
+        "computed callsites require target proof"
+      ],
+      "warning_details": [
+        "Function: __SEH_prolog4 replaced with injection: SEH_prolog4",
+        "Function: __SEH_epilog4 replaced with injection: EH_epilog3"
+      ],
       "failure_reason": "",
       "known_callers": [
-        "0072bac0",
-        "0072bb50",
-        "0072bbe0",
-        "00733d40",
-        "00737290",
-        "00787830",
-        "00821d20",
-        "0083b150",
-        "00842490",
-        "008468c0",
-        "008649e0",
-        "0086d910",
-        "008a0660",
-        "008b55c0",
-        "008d9040",
-        "008f7500",
-        "00901ea0",
-        "00902100",
-        "00902270",
-        "00902380",
-        "00902410",
-        "009028d0",
-        "009029c0",
-        "00902c90",
-        "00902d20",
-        "0097ca00",
-        "00acbf10",
-        "00b460c0",
-        "00b46160",
-        "00b47070",
-        "00b47bb0",
-        "00b47c10",
-        "00b47cb0",
-        "00b47ee0",
-        "00b48100",
-        "00b49510",
-        "00b4a020",
-        "00b4c5d0",
-        "00b4c630",
-        "00b4ca80",
-        "00b4db70",
-        "00b4dbf0",
-        "00b4dc50",
-        "00b4dcd0",
-        "00b4dd30",
-        "00b4dd90",
-        "00b4de30",
-        "00b4de90",
-        "00b4def0",
-        "00b4df50",
-        "00b4dfb0",
-        "00b4e010",
-        "00b4e070",
-        "00b4e0d0",
-        "00b4e130",
-        "00b4e190",
-        "00b4e1f0",
-        "00b4e250",
-        "00b4e2b0",
-        "00b4e710",
-        "00b50370",
-        "00b50920",
-        "00b521a0",
-        "00b523e0",
-        "00b52f80",
-        "00b547c0",
-        "00b559b0",
-        "00b559d0",
-        "00b559f0",
-        "00b57cf0",
-        "00b57d20",
-        "00b57d50",
-        "00b57d90",
-        "00b57dc0",
-        "00b57de0",
-        "00b57e00",
-        "023d4180"
+        "0087b640"
       ],
       "known_callees": [
-        "0087b59b"
+        "0087beb8",
+        "0087befd",
+        "0087bffe",
+        "008aac46",
+        "008aac60"
       ],
-      "computed_callsites": [],
-      "runtime_relevance": "cleanup-registration wrapper",
+      "computed_callsites": [
+        "0087b5b3",
+        "0087b5c1",
+        "0087b5dc",
+        "0087b5e7",
+        "0087b5ff"
+      ],
+      "runtime_relevance": "ordinary cleanup callee",
       "priority": 1,
       "overlap_risk": false,
       "confidence": "recovery outcome only; runtime semantics unverified",
-      "recovery_feasibility": "requires ABI and target validation",
-      "recommended_next_action": "Implement verified carry semantics and establish downstream state before admitting"
+      "recovery_feasibility": "requires static boundary review",
+      "recommended_next_action": "Resolve SEH injection, noncontiguous body and provider boundaries before admission"
+    },
+    {
+      "address": "0x0087BEB8",
+      "classification": "emitted_with_warnings",
+      "reasons": [
+        "decompiler warnings"
+      ],
+      "warning_details": [
+        "This is an inlined function",
+        "Unable to track spacebase fully for stack"
+      ],
+      "failure_reason": "",
+      "known_callers": [
+        "0087b384",
+        "0087b3e2",
+        "0087b452",
+        "0087b59b",
+        "0087bf34"
+      ],
+      "known_callees": [],
+      "computed_callsites": [],
+      "runtime_relevance": "SEH frame prolog",
+      "priority": 1,
+      "overlap_risk": false,
+      "confidence": "recovery outcome only; runtime semantics unverified",
+      "recovery_feasibility": "requires static boundary review",
+      "recommended_next_action": "Prove FS thread state and nonstandard stack contract without flat-address substitution"
     },
     {
       "address": "0x009E12F0",
@@ -426,7 +393,7 @@
       "overlap_risk": false,
       "confidence": "recovery outcome only; runtime semantics unverified",
       "recovery_feasibility": "requires ABI and target validation",
-      "recommended_next_action": "Unified constructor chain verified; resolve cleanup registration at 0x0087B640"
+      "recommended_next_action": "Constructor and wrapper entry verified; cleanup stops at 0x0087B59B"
     },
     {
       "address": "0x006860F0",
@@ -527,6 +494,126 @@
       "confidence": "recovery outcome only; runtime semantics unverified",
       "recovery_feasibility": "requires ABI and target validation",
       "recommended_next_action": "Resolve callback state and reached Windows API contract"
+    },
+    {
+      "address": "0x0087B640",
+      "classification": "decompiled",
+      "reasons": [],
+      "warning_details": [],
+      "failure_reason": "",
+      "known_callers": [
+        "0072bac0",
+        "0072bb50",
+        "0072bbe0",
+        "00733d40",
+        "00737290",
+        "00787830",
+        "00821d20",
+        "0083b150",
+        "00842490",
+        "008468c0",
+        "008649e0",
+        "0086d910",
+        "008a0660",
+        "008b55c0",
+        "008d9040",
+        "008f7500",
+        "00901ea0",
+        "00902100",
+        "00902270",
+        "00902380",
+        "00902410",
+        "009028d0",
+        "009029c0",
+        "00902c90",
+        "00902d20",
+        "0097ca00",
+        "00acbf10",
+        "00b460c0",
+        "00b46160",
+        "00b47070",
+        "00b47bb0",
+        "00b47c10",
+        "00b47cb0",
+        "00b47ee0",
+        "00b48100",
+        "00b49510",
+        "00b4a020",
+        "00b4c5d0",
+        "00b4c630",
+        "00b4ca80",
+        "00b4db70",
+        "00b4dbf0",
+        "00b4dc50",
+        "00b4dcd0",
+        "00b4dd30",
+        "00b4dd90",
+        "00b4de30",
+        "00b4de90",
+        "00b4def0",
+        "00b4df50",
+        "00b4dfb0",
+        "00b4e010",
+        "00b4e070",
+        "00b4e0d0",
+        "00b4e130",
+        "00b4e190",
+        "00b4e1f0",
+        "00b4e250",
+        "00b4e2b0",
+        "00b4e710",
+        "00b50370",
+        "00b50920",
+        "00b521a0",
+        "00b523e0",
+        "00b52f80",
+        "00b547c0",
+        "00b559b0",
+        "00b559d0",
+        "00b559f0",
+        "00b57cf0",
+        "00b57d20",
+        "00b57d50",
+        "00b57d90",
+        "00b57dc0",
+        "00b57de0",
+        "00b57e00",
+        "023d4180"
+      ],
+      "known_callees": [
+        "0087b59b"
+      ],
+      "computed_callsites": [],
+      "runtime_relevance": "cleanup-registration wrapper",
+      "priority": 2,
+      "overlap_risk": false,
+      "confidence": "recovery outcome only; runtime semantics unverified",
+      "recovery_feasibility": "requires ABI and target validation",
+      "recommended_next_action": "Admitted; result semantics tested only with isolated callee fixtures"
+    },
+    {
+      "address": "0x008AAC60",
+      "classification": "emitted_with_warnings",
+      "reasons": [
+        "decompiler warnings"
+      ],
+      "warning_details": [
+        "Subroutine does not return"
+      ],
+      "failure_reason": "",
+      "known_callers": [
+        "0087b59b"
+      ],
+      "known_callees": [
+        "0087b6ca"
+      ],
+      "computed_callsites": [],
+      "runtime_relevance": "file-backed provider candidate",
+      "priority": 2,
+      "overlap_risk": false,
+      "confidence": "recovery outcome only; runtime semantics unverified",
+      "recovery_feasibility": "requires static boundary review",
+      "recommended_next_action": "Verify function entry and high stack-offset inputs; not an import declaration"
     },
     {
       "address": "0x009C1830",
@@ -88949,42 +89036,6 @@
       "recommended_next_action": "Inspect original instructions and caller contracts"
     },
     {
-      "address": "0x0087B59B",
-      "classification": "emitted_with_warnings",
-      "reasons": [
-        "decompiler warnings",
-        "computed callsites require target proof"
-      ],
-      "warning_details": [
-        "Function: __SEH_prolog4 replaced with injection: SEH_prolog4",
-        "Function: __SEH_epilog4 replaced with injection: EH_epilog3"
-      ],
-      "failure_reason": "",
-      "known_callers": [
-        "0087b640"
-      ],
-      "known_callees": [
-        "0087beb8",
-        "0087befd",
-        "0087bffe",
-        "008aac46",
-        "008aac60"
-      ],
-      "computed_callsites": [
-        "0087b5b3",
-        "0087b5c1",
-        "0087b5dc",
-        "0087b5e7",
-        "0087b5ff"
-      ],
-      "runtime_relevance": "unestablished runtime relevance",
-      "priority": 4,
-      "overlap_risk": false,
-      "confidence": "recovery outcome only; runtime semantics unverified",
-      "recovery_feasibility": "requires static boundary review",
-      "recommended_next_action": "Inspect original instructions and caller contracts"
-    },
-    {
       "address": "0x0087B6AC",
       "classification": "emitted_with_warnings",
       "reasons": [
@@ -89399,33 +89450,6 @@
       "runtime_relevance": "unestablished runtime relevance",
       "priority": 4,
       "overlap_risk": true,
-      "confidence": "recovery outcome only; runtime semantics unverified",
-      "recovery_feasibility": "requires static boundary review",
-      "recommended_next_action": "Inspect original instructions and caller contracts"
-    },
-    {
-      "address": "0x0087BEB8",
-      "classification": "emitted_with_warnings",
-      "reasons": [
-        "decompiler warnings"
-      ],
-      "warning_details": [
-        "This is an inlined function",
-        "Unable to track spacebase fully for stack"
-      ],
-      "failure_reason": "",
-      "known_callers": [
-        "0087b384",
-        "0087b3e2",
-        "0087b452",
-        "0087b59b",
-        "0087bf34"
-      ],
-      "known_callees": [],
-      "computed_callsites": [],
-      "runtime_relevance": "unestablished runtime relevance",
-      "priority": 4,
-      "overlap_risk": false,
       "confidence": "recovery outcome only; runtime semantics unverified",
       "recovery_feasibility": "requires static boundary review",
       "recommended_next_action": "Inspect original instructions and caller contracts"
@@ -104017,30 +104041,6 @@
       "overlap_risk": false,
       "confidence": "recovery outcome only; runtime semantics unverified",
       "recovery_feasibility": "requires ABI and target validation",
-      "recommended_next_action": "Inspect original instructions and caller contracts"
-    },
-    {
-      "address": "0x008AAC60",
-      "classification": "emitted_with_warnings",
-      "reasons": [
-        "decompiler warnings"
-      ],
-      "warning_details": [
-        "Subroutine does not return"
-      ],
-      "failure_reason": "",
-      "known_callers": [
-        "0087b59b"
-      ],
-      "known_callees": [
-        "0087b6ca"
-      ],
-      "computed_callsites": [],
-      "runtime_relevance": "unestablished runtime relevance",
-      "priority": 4,
-      "overlap_risk": false,
-      "confidence": "recovery outcome only; runtime semantics unverified",
-      "recovery_feasibility": "requires static boundary review",
       "recommended_next_action": "Inspect original instructions and caller contracts"
     },
     {
