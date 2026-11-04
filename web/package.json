@@ -1,9 +1,9 @@
 {
-  "name": "nfsu2-web",
+  "name": "nfsuc-web",
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "description": "NFS Underground 2 in the browser: the recompiled game as WebAssembly, WebGPU renderer, Web Audio, your own game files",
+  "description": "Need for Speed Undercover PC 1.1.2.1 research runtime and private browser preview",
   "scripts": {
     "start": "bash ./start.sh",
     "build": "node build.mjs",

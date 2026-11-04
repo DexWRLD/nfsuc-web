@@ -1,0 +1,2997 @@
+[
+  {
+    "path": ".github/workflows/tests.yml",
+    "matching_lines": 2,
+    "classification": "INVESTIGATE legacy documentation, build or testing reference"
+  },
+  {
+    "path": ".gitignore",
+    "matching_lines": 3,
+    "classification": "INVESTIGATE legacy documentation, build or testing reference"
+  },
+  {
+    "path": "README.md",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE legacy documentation, build or testing reference"
+  },
+  {
+    "path": "analysis/undercover/blocked-external-attribution.json",
+    "matching_lines": 1,
+    "classification": "KEEP Undercover evidence and tools with historical tooling-origin attribution"
+  },
+  {
+    "path": "analysis/undercover/clean-pc-validation.json",
+    "matching_lines": 2,
+    "classification": "KEEP Undercover evidence and tools with historical tooling-origin attribution"
+  },
+  {
+    "path": "analysis/undercover/code-analysis.json",
+    "matching_lines": 2,
+    "classification": "KEEP Undercover evidence and tools with historical tooling-origin attribution"
+  },
+  {
+    "path": "analysis/undercover/code-analysis.md",
+    "matching_lines": 3,
+    "classification": "KEEP Undercover evidence and tools with historical tooling-origin attribution"
+  },
+  {
+    "path": "analysis/undercover/function-map.md",
+    "matching_lines": 1,
+    "classification": "KEEP Undercover evidence and tools with historical tooling-origin attribution"
+  },
+  {
+    "path": "analysis/undercover/graphics-function-coverage-phase43.json",
+    "matching_lines": 1,
+    "classification": "KEEP Undercover evidence and tools with historical tooling-origin attribution"
+  },
+  {
+    "path": "analysis/undercover/lan-validation.json",
+    "matching_lines": 2,
+    "classification": "KEEP Undercover evidence and tools with historical tooling-origin attribution"
+  },
+  {
+    "path": "analysis/undercover/nfs-pe.json",
+    "matching_lines": 2,
+    "classification": "KEEP Undercover evidence and tools with historical tooling-origin attribution"
+  },
+  {
+    "path": "analysis/undercover/nfs-pe.md",
+    "matching_lines": 3,
+    "classification": "KEEP Undercover evidence and tools with historical tooling-origin attribution"
+  },
+  {
+    "path": "analysis/undercover/phase3-baseline.md",
+    "matching_lines": 1,
+    "classification": "KEEP Undercover evidence and tools with historical tooling-origin attribution"
+  },
+  {
+    "path": "analysis/undercover/phase48-execution.json",
+    "matching_lines": 2,
+    "classification": "KEEP Undercover evidence and tools with historical tooling-origin attribution"
+  },
+  {
+    "path": "analysis/undercover/progress.html",
+    "matching_lines": 1,
+    "classification": "KEEP Undercover evidence and tools with historical tooling-origin attribution"
+  },
+  {
+    "path": "analysis/undercover/progress.json",
+    "matching_lines": 2,
+    "classification": "KEEP Undercover evidence and tools with historical tooling-origin attribution"
+  },
+  {
+    "path": "analysis/undercover/project-audit-after-phase52.md",
+    "matching_lines": 1,
+    "classification": "KEEP Undercover evidence and tools with historical tooling-origin attribution"
+  },
+  {
+    "path": "analysis/undercover/recompilation-feasibility.md",
+    "matching_lines": 1,
+    "classification": "KEEP Undercover evidence and tools with historical tooling-origin attribution"
+  },
+  {
+    "path": "analysis/undercover/runtime-frontier.json",
+    "matching_lines": 1,
+    "classification": "KEEP Undercover evidence and tools with historical tooling-origin attribution"
+  },
+  {
+    "path": "analysis/undercover/runtime-phase25.md",
+    "matching_lines": 1,
+    "classification": "KEEP Undercover evidence and tools with historical tooling-origin attribution"
+  },
+  {
+    "path": "analysis/undercover/runtime-phase40.md",
+    "matching_lines": 1,
+    "classification": "KEEP Undercover evidence and tools with historical tooling-origin attribution"
+  },
+  {
+    "path": "analysis/undercover/runtime-phase41.md",
+    "matching_lines": 1,
+    "classification": "KEEP Undercover evidence and tools with historical tooling-origin attribution"
+  },
+  {
+    "path": "analysis/undercover/runtime-phase43.md",
+    "matching_lines": 1,
+    "classification": "KEEP Undercover evidence and tools with historical tooling-origin attribution"
+  },
+  {
+    "path": "analysis/undercover/runtime-phase44.md",
+    "matching_lines": 1,
+    "classification": "KEEP Undercover evidence and tools with historical tooling-origin attribution"
+  },
+  {
+    "path": "analysis/undercover/runtime-phase45.md",
+    "matching_lines": 1,
+    "classification": "KEEP Undercover evidence and tools with historical tooling-origin attribution"
+  },
+  {
+    "path": "analysis/undercover/runtime-phase46.md",
+    "matching_lines": 1,
+    "classification": "KEEP Undercover evidence and tools with historical tooling-origin attribution"
+  },
+  {
+    "path": "analysis/undercover/runtime-phase47.md",
+    "matching_lines": 1,
+    "classification": "KEEP Undercover evidence and tools with historical tooling-origin attribution"
+  },
+  {
+    "path": "analysis/undercover/runtime-phase48.md",
+    "matching_lines": 1,
+    "classification": "KEEP Undercover evidence and tools with historical tooling-origin attribution"
+  },
+  {
+    "path": "analysis/undercover/runtime-phase49.md",
+    "matching_lines": 1,
+    "classification": "KEEP Undercover evidence and tools with historical tooling-origin attribution"
+  },
+  {
+    "path": "analysis/undercover/runtime-phase50.md",
+    "matching_lines": 1,
+    "classification": "KEEP Undercover evidence and tools with historical tooling-origin attribution"
+  },
+  {
+    "path": "analysis/undercover/runtime-phase51.md",
+    "matching_lines": 1,
+    "classification": "KEEP Undercover evidence and tools with historical tooling-origin attribution"
+  },
+  {
+    "path": "analysis/undercover/target-provenance.json",
+    "matching_lines": 1,
+    "classification": "KEEP Undercover evidence and tools with historical tooling-origin attribution"
+  },
+  {
+    "path": "analysis/undercover/vtable-execution-frontier.json",
+    "matching_lines": 1,
+    "classification": "KEEP Undercover evidence and tools with historical tooling-origin attribution"
+  },
+  {
+    "path": "docs/architecture.md",
+    "matching_lines": 12,
+    "classification": "INVESTIGATE legacy documentation, build or testing reference"
+  },
+  {
+    "path": "docs/feasibility.md",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE legacy documentation, build or testing reference"
+  },
+  {
+    "path": "docs/upstream-nfsu2.md",
+    "matching_lines": 14,
+    "classification": "INVESTIGATE legacy documentation, build or testing reference"
+  },
+  {
+    "path": "docs/web/DESIGN.md",
+    "matching_lines": 18,
+    "classification": "INVESTIGATE legacy documentation, build or testing reference"
+  },
+  {
+    "path": "docs/web/PLAYING.md",
+    "matching_lines": 7,
+    "classification": "INVESTIGATE legacy documentation, build or testing reference"
+  },
+  {
+    "path": "docs/web/VPS.md",
+    "matching_lines": 162,
+    "classification": "INVESTIGATE legacy documentation, build or testing reference"
+  },
+  {
+    "path": "docs/web/gpu-abi.md",
+    "matching_lines": 4,
+    "classification": "INVESTIGATE legacy documentation, build or testing reference"
+  },
+  {
+    "path": "gen.sh",
+    "matching_lines": 2,
+    "classification": "INVESTIGATE legacy documentation, build or testing reference"
+  },
+  {
+    "path": "link.sh",
+    "matching_lines": 15,
+    "classification": "INVESTIGATE legacy documentation, build or testing reference"
+  },
+  {
+    "path": "pack.sh",
+    "matching_lines": 24,
+    "classification": "INVESTIGATE legacy documentation, build or testing reference"
+  },
+  {
+    "path": "run.sh",
+    "matching_lines": 11,
+    "classification": "INVESTIGATE legacy documentation, build or testing reference"
+  },
+  {
+    "path": "runtime/audio.m",
+    "matching_lines": 7,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "runtime/autotest.c",
+    "matching_lines": 22,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "runtime/bundle.m",
+    "matching_lines": 156,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "runtime/career.c",
+    "matching_lines": 33,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "runtime/carshadow.c",
+    "matching_lines": 2,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "runtime/com.c",
+    "matching_lines": 23,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "runtime/cpu.h",
+    "matching_lines": 9,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "runtime/d3dx_hle.c",
+    "matching_lines": 2,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "runtime/dinput_pad.c",
+    "matching_lines": 17,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "runtime/discord.c",
+    "matching_lines": 32,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "runtime/dispatch.c",
+    "matching_lines": 4,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "runtime/drifttest.c",
+    "matching_lines": 2,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "runtime/enhance.c",
+    "matching_lines": 10,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "runtime/enhance.h",
+    "matching_lines": 6,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "runtime/fileio.c",
+    "matching_lines": 10,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "runtime/fpscounter.h",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "runtime/fpscounter.m",
+    "matching_lines": 7,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "runtime/framerate.c",
+    "matching_lines": 34,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "runtime/gamepad.m",
+    "matching_lines": 10,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "runtime/garage.c",
+    "matching_lines": 2,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "runtime/genexec.c",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "runtime/headlights.c",
+    "matching_lines": 2,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "runtime/heap.c",
+    "matching_lines": 13,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "runtime/hiddenraces.c",
+    "matching_lines": 2,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "runtime/horn.c",
+    "matching_lines": 3,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "runtime/horn.h",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "runtime/intro.c",
+    "matching_lines": 9,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "runtime/kbd.h",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "runtime/keyboard.c",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "runtime/keyboard_mac.m",
+    "matching_lines": 4,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "runtime/language.c",
+    "matching_lines": 6,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "runtime/lifecycle.c",
+    "matching_lines": 5,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "runtime/mem.c",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "runtime/menusize.c",
+    "matching_lines": 5,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "runtime/metal.m",
+    "matching_lines": 30,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "runtime/module.c",
+    "matching_lines": 4,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "runtime/movie.c",
+    "matching_lines": 17,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "runtime/mprace.c",
+    "matching_lines": 4,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "runtime/net_vlan.c",
+    "matching_lines": 3,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "runtime/nettest.h",
+    "matching_lines": 8,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "runtime/online.c",
+    "matching_lines": 6,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "runtime/oracle.c",
+    "matching_lines": 26,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "runtime/overrides.c",
+    "matching_lines": 17,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "runtime/racenet.c",
+    "matching_lines": 12,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "runtime/radio.c",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "runtime/regional.c",
+    "matching_lines": 2,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "runtime/roam.c",
+    "matching_lines": 19,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "runtime/roam_asipeer.c",
+    "matching_lines": 13,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "runtime/roam_bsd.c",
+    "matching_lines": 3,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "runtime/roam_core.c",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "runtime/roam_game.c",
+    "matching_lines": 81,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "runtime/roam_host.h",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "runtime/roam_plat.h",
+    "matching_lines": 6,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "runtime/sms.c",
+    "matching_lines": 15,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "runtime/texrep.h",
+    "matching_lines": 2,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "runtime/texrep.m",
+    "matching_lines": 19,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "runtime/uc_abi.h",
+    "matching_lines": 2,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "runtime/uc_image.h",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "runtime/uc_import.c",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "runtime/vsemu.c",
+    "matching_lines": 3,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "runtime/vsemu.h",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "runtime/watchdog.c",
+    "matching_lines": 5,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "runtime/web/audio_proto.h",
+    "matching_lines": 3,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "runtime/web/audio_web.c",
+    "matching_lines": 8,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "runtime/web/compat/wasm_plat.h",
+    "matching_lines": 15,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "runtime/web/gcpu.c",
+    "matching_lines": 3,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "runtime/web/gpu_proto.h",
+    "matching_lines": 3,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "runtime/web/gpu_web.c",
+    "matching_lines": 15,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "runtime/web/host_abi.h",
+    "matching_lines": 10,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "runtime/web/input_proto.h",
+    "matching_lines": 3,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "runtime/web/input_web.c",
+    "matching_lines": 4,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "runtime/web/lan_vfd.h",
+    "matching_lines": 2,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "runtime/web/main_web.c",
+    "matching_lines": 7,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "runtime/web/memchk.c",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "runtime/web/net_lan.c",
+    "matching_lines": 7,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "runtime/web/net_proto.h",
+    "matching_lines": 3,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "runtime/web/null_platform.c",
+    "matching_lines": 3,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "runtime/web/radio_proto.h",
+    "matching_lines": 2,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "runtime/web/roam_web.c",
+    "matching_lines": 12,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "runtime/web/sha256.c",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "runtime/web/shader_dump.c",
+    "matching_lines": 2,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "runtime/web/stackprobe.c",
+    "matching_lines": 7,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "runtime/web/status_proto.h",
+    "matching_lines": 2,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "runtime/web/status_web.c",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "runtime/web/texrep_web.c",
+    "matching_lines": 4,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "runtime/web/thread_exit.c",
+    "matching_lines": 2,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "runtime/web/ticketlock.h",
+    "matching_lines": 2,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "runtime/web/tz.c",
+    "matching_lines": 12,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "runtime/web/vsemu_wgsl.inc",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "runtime/web/wgsl.h",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "runtime/widescreen.c",
+    "matching_lines": 11,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "runtime/widescreen.h",
+    "matching_lines": 2,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "runtime/win32.c",
+    "matching_lines": 12,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "runtime/win32_ext.c",
+    "matching_lines": 60,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "runtime/winsock.c",
+    "matching_lines": 64,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "runtime/winsock.h",
+    "matching_lines": 4,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/asi_harness.c",
+    "matching_lines": 19,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/asi_vm.h",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/asi_win32.h",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/boot.c",
+    "matching_lines": 9,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/discord_suite.sh",
+    "matching_lines": 8,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/discord_unit.c",
+    "matching_lines": 7,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/discord_unit.sh",
+    "matching_lines": 2,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/heap_stress.c",
+    "matching_lines": 5,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/net/lan_race.sh",
+    "matching_lines": 6,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/net/loop_run.sh",
+    "matching_lines": 11,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/net/loopback-only.sb",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/net/oracle.sh",
+    "matching_lines": 2,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/net/vlan_run.sh",
+    "matching_lines": 11,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/net_harness.c",
+    "matching_lines": 66,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/radio_unit.c",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/roam/plan_create.sh",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/roam/plan_starve.sh",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/roam_fakepeer.c",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/roam_pe_selftest.c",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/roam_selftest.c",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/run_suite.sh",
+    "matching_lines": 10,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/scripts/carbal_drag_a.txt",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/scripts/carbal_drag_b.txt",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/scripts/carbal_mp_a.txt",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/scripts/carbal_speed.txt",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/scripts/carbal_straight.txt",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/scripts/career_bot.txt",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/scripts/career_cover.txt",
+    "matching_lines": 2,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/scripts/career_cover_gone.txt",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/scripts/career_cover_name.txt",
+    "matching_lines": 4,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/scripts/career_lot_badstock.txt",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/scripts/career_outrun.txt",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/scripts/career_sponsor.txt",
+    "matching_lines": 2,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/scripts/drift_oracle.txt",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/scripts/drift_score.txt",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/scripts/drift_traj.txt",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/scripts/fe_spinners.txt",
+    "matching_lines": 4,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/scripts/garage_drive.txt",
+    "matching_lines": 3,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/scripts/garage_reload.txt",
+    "matching_lines": 2,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/scripts/garage_slots.txt",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/scripts/hidden_races_map.txt",
+    "matching_lines": 2,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/scripts/kb_app_shortcuts.txt",
+    "matching_lines": 3,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/scripts/kb_layout_de.txt",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/scripts/kb_profile_prefill.txt",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/scripts/kb_rebind_load.txt",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/scripts/kb_rebind_save.txt",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/scripts/lan_host_short.txt",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/scripts/lan_menu.txt",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/scripts/mprace_away_a.txt",
+    "matching_lines": 3,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/scripts/mprace_card_a.txt",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/scripts/mprace_control.txt",
+    "matching_lines": 2,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/scripts/mprace_crowd_b.txt",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/scripts/mprace_decline.txt",
+    "matching_lines": 2,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/scripts/mprace_gone_c.txt",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/scripts/mprace_hostleft_a.txt",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/scripts/mprace_idle_b.txt",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/scripts/mprace_lobby_a.txt",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/scripts/mprace_lone_a.txt",
+    "matching_lines": 2,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/scripts/mprace_map.txt",
+    "matching_lines": 2,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/scripts/mprace_pull_a.txt",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/scripts/mprace_room_a.txt",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/scripts/mprace_savemenu_b.txt",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/scripts/mprace_shots_a.txt",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/scripts/mprace_solo.txt",
+    "matching_lines": 2,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/scripts/mprace_spots.txt",
+    "matching_lines": 2,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/scripts/mprace_trip_host.txt",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/scripts/online_canary.txt",
+    "matching_lines": 2,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/scripts/online_login.txt",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/scripts/online_relogin.txt",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/scripts/online_samename_holder.txt",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/scripts/pad_bind_load.txt",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/scripts/pad_hotplug.txt",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/scripts/pad_hotplug_controls.txt",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/scripts/pad_hotplug_race.txt",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/scripts/photo_names_a.txt",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/scripts/roam_asi_drive_s.txt",
+    "matching_lines": 2,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/scripts/roam_asi_snapshot.txt",
+    "matching_lines": 2,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/scripts/roam_asi_solo.txt",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/scripts/roam_asi_watch.txt",
+    "matching_lines": 2,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/scripts/roam_block.txt",
+    "matching_lines": 2,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/scripts/roam_crew_crowd.txt",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/scripts/roam_crew_hub.txt",
+    "matching_lines": 2,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/scripts/roam_crew_look.txt",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/scripts/roam_crew_map.txt",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/scripts/roam_crew_menu.txt",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/scripts/roam_crew_mix.txt",
+    "matching_lines": 2,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/scripts/roam_crowd_busy.txt",
+    "matching_lines": 3,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/scripts/roam_crowd_carpool.txt",
+    "matching_lines": 2,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/scripts/roam_crowd_crib.txt",
+    "matching_lines": 2,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/scripts/roam_crowd_decals.txt",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/scripts/roam_crowd_jumps.txt",
+    "matching_lines": 2,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/scripts/roam_crowd_map_all.txt",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/scripts/roam_crowd_near.txt",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/scripts/roam_crowd_races.txt",
+    "matching_lines": 4,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/scripts/roam_crowd_rims.txt",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/scripts/roam_crowd_shoot.txt",
+    "matching_lines": 3,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/scripts/roam_crowd_shopparts.txt",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/scripts/roam_crowd_stream.txt",
+    "matching_lines": 6,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/scripts/roam_doors.txt",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/scripts/roam_doors_lot.txt",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/scripts/roam_doors_outrun.txt",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/scripts/roam_drift_nitrous.txt",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/scripts/roam_drift_outrun.txt",
+    "matching_lines": 2,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/scripts/roam_drift_race_nos.txt",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/scripts/roam_drift_setup.txt",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/scripts/roam_events_a.txt",
+    "matching_lines": 4,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/scripts/roam_events_b.txt",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/scripts/roam_friend_a.txt",
+    "matching_lines": 4,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/scripts/roam_friend_app_a.txt",
+    "matching_lines": 4,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/scripts/roam_friend_b.txt",
+    "matching_lines": 4,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/scripts/roam_keepright_a.txt",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/scripts/roam_map_filter.txt",
+    "matching_lines": 2,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/scripts/roam_mp_blocked.txt",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/scripts/roam_mp_collide.txt",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/scripts/roam_mp_drive.txt",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/scripts/roam_mp_drive_s.txt",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/scripts/roam_mp_em_stage4.txt",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/scripts/roam_mp_engine_a.txt",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/scripts/roam_mp_hit_a.txt",
+    "matching_lines": 2,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/scripts/roam_mp_hit_fast_a.txt",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/scripts/roam_mp_minimap_a.txt",
+    "matching_lines": 2,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/scripts/roam_mp_park.txt",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/scripts/roam_mp_ram_a.txt",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/scripts/roam_mp_soak.txt",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/scripts/roam_mp_twin.txt",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/scripts/roam_mp_watch_s.txt",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/scripts/roam_msg_app_a.txt",
+    "matching_lines": 3,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/scripts/roam_nan_car.txt",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/scripts/roam_nan_hit_b.txt",
+    "matching_lines": 2,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/scripts/roam_ownparts.txt",
+    "matching_lines": 4,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/scripts/roam_ownparts_view_a.txt",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/scripts/roam_probe1.txt",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/scripts/roam_room_alone.txt",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/scripts/roam_say_view_a.txt",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/scripts/roam_spawn_hide.txt",
+    "matching_lines": 3,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/scripts/roam_stream_drive.txt",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/scripts/roam_touch_nochat.txt",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/scripts/shop_short.txt",
+    "matching_lines": 2,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/scripts/sms_hello.txt",
+    "matching_lines": 2,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/scripts/sms_keep.txt",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/scripts/sms_kept.txt",
+    "matching_lines": 3,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/scripts/tex_dump_tour.txt",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/scripts/tune_graph.txt",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/scripts/watchdog_loading.txt",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/scripts/web_pad_rumble.txt",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/scripts/web_pad_rumble_long.txt",
+    "matching_lines": 2,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/srvoracle.sh",
+    "matching_lines": 2,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/uc_harness.h",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/watchdog_unit.c",
+    "matching_lines": 2,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/web/drive/app_dump_context.json",
+    "matching_lines": 3,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/web/drive/app_kb_quickrace.json",
+    "matching_lines": 7,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/web/drive/app_script_quickrace.json",
+    "matching_lines": 10,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/web/drive/headed_escape.json",
+    "matching_lines": 6,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/web/drive/headed_real.json",
+    "matching_lines": 5,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/web/drive/kb_quickrace.json",
+    "matching_lines": 6,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/web/drive/lifecycle.json",
+    "matching_lines": 8,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/web/drive/quit_loading.json",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/web/gilbench.c",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/web/scripts/intro_gpu_original.txt",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/web/scripts/intro_tap_escape.txt",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/web/scripts/intro_tap_return.txt",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/web/scripts/intro_tap_space.txt",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/web/scripts/intro_tappad_a.txt",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/web/scripts/intro_tappad_b.txt",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/web/scripts/intro_tappad_start.txt",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/web/scripts/kb_opt_chars.txt",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/web/scripts/language_screens.txt",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/web/scripts/movies_av1.txt",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/web/scripts/pacing_menus.txt",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/web/scripts/perf_short.txt",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/web/scripts/quickrace_ms.txt",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/web/scripts/rain_hfr.txt",
+    "matching_lines": 3,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/web/scripts/subtitles.txt",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/web/scripts/uhud.txt",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tests/web/tztest.c",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "tools/_mk_uc_fixtures.py",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE legacy documentation, build or testing reference"
+  },
+  {
+    "path": "tools/apptest.sh",
+    "matching_lines": 30,
+    "classification": "INVESTIGATE legacy documentation, build or testing reference"
+  },
+  {
+    "path": "tools/asi_check.py",
+    "matching_lines": 3,
+    "classification": "INVESTIGATE legacy documentation, build or testing reference"
+  },
+  {
+    "path": "tools/autorun.sh",
+    "matching_lines": 32,
+    "classification": "INVESTIGATE legacy documentation, build or testing reference"
+  },
+  {
+    "path": "tools/build_roam_asi.sh",
+    "matching_lines": 11,
+    "classification": "INVESTIGATE legacy documentation, build or testing reference"
+  },
+  {
+    "path": "tools/career_report.py",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE legacy documentation, build or testing reference"
+  },
+  {
+    "path": "tools/career_segments.sh",
+    "matching_lines": 10,
+    "classification": "INVESTIGATE legacy documentation, build or testing reference"
+  },
+  {
+    "path": "tools/contact_sheet.py",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE legacy documentation, build or testing reference"
+  },
+  {
+    "path": "tools/drift_compare.py",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE legacy documentation, build or testing reference"
+  },
+  {
+    "path": "tools/hfr_compare.py",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE legacy documentation, build or testing reference"
+  },
+  {
+    "path": "tools/hooks/pre-push",
+    "matching_lines": 3,
+    "classification": "INVESTIGATE legacy documentation, build or testing reference"
+  },
+  {
+    "path": "tools/lan_trace.py",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE legacy documentation, build or testing reference"
+  },
+  {
+    "path": "tools/langpacks.py",
+    "matching_lines": 8,
+    "classification": "INVESTIGATE legacy documentation, build or testing reference"
+  },
+  {
+    "path": "tools/lregs.py",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE legacy documentation, build or testing reference"
+  },
+  {
+    "path": "tools/photoicon.py",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE legacy documentation, build or testing reference"
+  },
+  {
+    "path": "tools/progress.py",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE legacy documentation, build or testing reference"
+  },
+  {
+    "path": "tools/roam_asi_test.sh",
+    "matching_lines": 5,
+    "classification": "INVESTIGATE legacy documentation, build or testing reference"
+  },
+  {
+    "path": "tools/roam_compare.py",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE legacy documentation, build or testing reference"
+  },
+  {
+    "path": "tools/roam_fingerprint.py",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE legacy documentation, build or testing reference"
+  },
+  {
+    "path": "tools/roam_modsites.py",
+    "matching_lines": 4,
+    "classification": "INVESTIGATE legacy documentation, build or testing reference"
+  },
+  {
+    "path": "tools/roam_multi.sh",
+    "matching_lines": 9,
+    "classification": "INVESTIGATE legacy documentation, build or testing reference"
+  },
+  {
+    "path": "tools/roam_plan.sh",
+    "matching_lines": 8,
+    "classification": "INVESTIGATE legacy documentation, build or testing reference"
+  },
+  {
+    "path": "tools/roam_solo.sh",
+    "matching_lines": 6,
+    "classification": "INVESTIGATE legacy documentation, build or testing reference"
+  },
+  {
+    "path": "tools/texpack/README.md",
+    "matching_lines": 2,
+    "classification": "INVESTIGATE legacy documentation, build or testing reference"
+  },
+  {
+    "path": "tools/texpack/build.sh",
+    "matching_lines": 3,
+    "classification": "INVESTIGATE legacy documentation, build or testing reference"
+  },
+  {
+    "path": "tools/texpack/setup.sh",
+    "matching_lines": 6,
+    "classification": "INVESTIGATE legacy documentation, build or testing reference"
+  },
+  {
+    "path": "tools/texpack/texpack.py",
+    "matching_lines": 8,
+    "classification": "INVESTIGATE legacy documentation, build or testing reference"
+  },
+  {
+    "path": "tools/texpacks.py",
+    "matching_lines": 2,
+    "classification": "INVESTIGATE legacy documentation, build or testing reference"
+  },
+  {
+    "path": "tools/uc_analyze.py",
+    "matching_lines": 4,
+    "classification": "KEEP Undercover evidence and tools with historical tooling-origin attribution"
+  },
+  {
+    "path": "tools/uc_code_analyze.py",
+    "matching_lines": 3,
+    "classification": "KEEP Undercover evidence and tools with historical tooling-origin attribution"
+  },
+  {
+    "path": "tools/uc_funcmap.py",
+    "matching_lines": 2,
+    "classification": "KEEP Undercover evidence and tools with historical tooling-origin attribution"
+  },
+  {
+    "path": "tools/uc_gen.py",
+    "matching_lines": 3,
+    "classification": "KEEP Undercover evidence and tools with historical tooling-origin attribution"
+  },
+  {
+    "path": "tools/uc_harness31.py",
+    "matching_lines": 2,
+    "classification": "KEEP Undercover evidence and tools with historical tooling-origin attribution"
+  },
+  {
+    "path": "tools/uc_phase25.py",
+    "matching_lines": 1,
+    "classification": "KEEP Undercover evidence and tools with historical tooling-origin attribution"
+  },
+  {
+    "path": "tools/uc_phase40.py",
+    "matching_lines": 2,
+    "classification": "KEEP Undercover evidence and tools with historical tooling-origin attribution"
+  },
+  {
+    "path": "tools/uc_phase41.py",
+    "matching_lines": 2,
+    "classification": "KEEP Undercover evidence and tools with historical tooling-origin attribution"
+  },
+  {
+    "path": "tools/uc_phase41_test.py",
+    "matching_lines": 1,
+    "classification": "KEEP Undercover evidence and tools with historical tooling-origin attribution"
+  },
+  {
+    "path": "tools/uc_phase42.py",
+    "matching_lines": 2,
+    "classification": "KEEP Undercover evidence and tools with historical tooling-origin attribution"
+  },
+  {
+    "path": "tools/uc_phase43.py",
+    "matching_lines": 2,
+    "classification": "KEEP Undercover evidence and tools with historical tooling-origin attribution"
+  },
+  {
+    "path": "tools/uc_phase44.py",
+    "matching_lines": 2,
+    "classification": "KEEP Undercover evidence and tools with historical tooling-origin attribution"
+  },
+  {
+    "path": "tools/uc_phase45.py",
+    "matching_lines": 1,
+    "classification": "KEEP Undercover evidence and tools with historical tooling-origin attribution"
+  },
+  {
+    "path": "tools/uc_phase46.py",
+    "matching_lines": 1,
+    "classification": "KEEP Undercover evidence and tools with historical tooling-origin attribution"
+  },
+  {
+    "path": "tools/uc_phase47.py",
+    "matching_lines": 1,
+    "classification": "KEEP Undercover evidence and tools with historical tooling-origin attribution"
+  },
+  {
+    "path": "tools/uc_phase48.py",
+    "matching_lines": 1,
+    "classification": "KEEP Undercover evidence and tools with historical tooling-origin attribution"
+  },
+  {
+    "path": "tools/uc_phase49.py",
+    "matching_lines": 1,
+    "classification": "KEEP Undercover evidence and tools with historical tooling-origin attribution"
+  },
+  {
+    "path": "tools/uc_phase50.py",
+    "matching_lines": 1,
+    "classification": "KEEP Undercover evidence and tools with historical tooling-origin attribution"
+  },
+  {
+    "path": "tools/uc_phase51.py",
+    "matching_lines": 1,
+    "classification": "KEEP Undercover evidence and tools with historical tooling-origin attribution"
+  },
+  {
+    "path": "tools/uc_target_verify.py",
+    "matching_lines": 2,
+    "classification": "KEEP Undercover evidence and tools with historical tooling-origin attribution"
+  },
+  {
+    "path": "tools/vlanhub.py",
+    "matching_lines": 4,
+    "classification": "INVESTIGATE legacy documentation, build or testing reference"
+  },
+  {
+    "path": "tools/writewatch.c",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE legacy documentation, build or testing reference"
+  },
+  {
+    "path": "web/build.sh",
+    "matching_lines": 10,
+    "classification": "INVESTIGATE legacy documentation, build or testing reference"
+  },
+  {
+    "path": "web/deploy/Caddyfile",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE legacy documentation, build or testing reference"
+  },
+  {
+    "path": "web/deploy/README.md",
+    "matching_lines": 12,
+    "classification": "INVESTIGATE legacy documentation, build or testing reference"
+  },
+  {
+    "path": "web/deploy/cloudflare-only.sh",
+    "matching_lines": 2,
+    "classification": "INVESTIGATE legacy documentation, build or testing reference"
+  },
+  {
+    "path": "web/deploy/cloudflared.yml",
+    "matching_lines": 2,
+    "classification": "INVESTIGATE legacy documentation, build or testing reference"
+  },
+  {
+    "path": "web/deploy/compose.443.yml",
+    "matching_lines": 3,
+    "classification": "INVESTIGATE legacy documentation, build or testing reference"
+  },
+  {
+    "path": "web/deploy/compose.cloudflare.yml",
+    "matching_lines": 5,
+    "classification": "INVESTIGATE legacy documentation, build or testing reference"
+  },
+  {
+    "path": "web/deploy/compose.origin.yml",
+    "matching_lines": 8,
+    "classification": "INVESTIGATE legacy documentation, build or testing reference"
+  },
+  {
+    "path": "web/deploy/compose.tunnel.yml",
+    "matching_lines": 13,
+    "classification": "INVESTIGATE legacy documentation, build or testing reference"
+  },
+  {
+    "path": "web/deploy/compose.yml",
+    "matching_lines": 27,
+    "classification": "INVESTIGATE legacy documentation, build or testing reference"
+  },
+  {
+    "path": "web/deploy/nfsu2",
+    "matching_lines": 9,
+    "classification": "INVESTIGATE legacy documentation, build or testing reference"
+  },
+  {
+    "path": "web/deploy/nfsu2-cloudflare-only.service",
+    "matching_lines": 5,
+    "classification": "INVESTIGATE legacy documentation, build or testing reference"
+  },
+  {
+    "path": "web/deploy/nfsu2-web.service",
+    "matching_lines": 12,
+    "classification": "INVESTIGATE legacy documentation, build or testing reference"
+  },
+  {
+    "path": "web/deploy/nfsu2.slice",
+    "matching_lines": 3,
+    "classification": "INVESTIGATE legacy documentation, build or testing reference"
+  },
+  {
+    "path": "web/deploy/pack.sh",
+    "matching_lines": 20,
+    "classification": "INVESTIGATE legacy documentation, build or testing reference"
+  },
+  {
+    "path": "web/deploy/release.sh",
+    "matching_lines": 33,
+    "classification": "INVESTIGATE legacy documentation, build or testing reference"
+  },
+  {
+    "path": "web/docs/uc-clean-pc-deploy.md",
+    "matching_lines": 2,
+    "classification": "INVESTIGATE legacy documentation, build or testing reference"
+  },
+  {
+    "path": "web/docs/uc-private-lan.md",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE legacy documentation, build or testing reference"
+  },
+  {
+    "path": "web/gen.sh",
+    "matching_lines": 2,
+    "classification": "INVESTIGATE legacy documentation, build or testing reference"
+  },
+  {
+    "path": "web/server-rs/Cargo.lock",
+    "matching_lines": 41,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/Cargo.toml",
+    "matching_lines": 24,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/Dockerfile",
+    "matching_lines": 19,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/README.md",
+    "matching_lines": 55,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/build.sh",
+    "matching_lines": 4,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/cargo.sh",
+    "matching_lines": 3,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/crates/bans/Cargo.toml",
+    "matching_lines": 2,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/crates/bans/src/lib.rs",
+    "matching_lines": 9,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/crates/claims/Cargo.toml",
+    "matching_lines": 3,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/crates/claims/src/lib.rs",
+    "matching_lines": 19,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/crates/claims/src/tests.rs",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/crates/headers/Cargo.toml",
+    "matching_lines": 2,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/crates/headers/src/ip.rs",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/crates/headers/src/lib.rs",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/crates/http/Cargo.toml",
+    "matching_lines": 4,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/crates/http/src/head.rs",
+    "matching_lines": 2,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/crates/http/src/lib.rs",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/crates/http/src/tls.rs",
+    "matching_lines": 2,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/crates/http/tests/bench.rs",
+    "matching_lines": 2,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/crates/http/tests/common/mod.rs",
+    "matching_lines": 7,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/crates/http/tests/cross_node.rs",
+    "matching_lines": 3,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/crates/http/tests/engine.rs",
+    "matching_lines": 6,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/crates/http/tests/memory.rs",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/crates/http/tests/tls.rs",
+    "matching_lines": 21,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/crates/http/tests/unix.rs",
+    "matching_lines": 3,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/crates/http/tests/upgrade_hold.rs",
+    "matching_lines": 5,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/crates/lan/Cargo.toml",
+    "matching_lines": 4,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/crates/lan/src/away.rs",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/crates/lan/src/compact.rs",
+    "matching_lines": 3,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/crates/lan/src/conn.rs",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/crates/lan/src/impair.rs",
+    "matching_lines": 8,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/crates/lan/src/lag.rs",
+    "matching_lines": 3,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/crates/lan/src/lib.rs",
+    "matching_lines": 27,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/crates/lan/src/members.rs",
+    "matching_lines": 6,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/crates/lan/src/mix.rs",
+    "matching_lines": 2,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/crates/lan/src/queue.rs",
+    "matching_lines": 2,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/crates/lan/src/reader.rs",
+    "matching_lines": 7,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/crates/lan/src/route.rs",
+    "matching_lines": 6,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/crates/lan/src/store.rs",
+    "matching_lines": 2,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/crates/lan/src/text.rs",
+    "matching_lines": 6,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/crates/lan/tests/backlog.rs",
+    "matching_lines": 4,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/crates/lan/tests/block.rs",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/crates/lan/tests/expel.rs",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/crates/lan/tests/harness/mod.rs",
+    "matching_lines": 14,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/crates/lan/tests/lan.rs",
+    "matching_lines": 5,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/crates/lan/tests/lan_rules.rs",
+    "matching_lines": 3,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/crates/lan/tests/load.rs",
+    "matching_lines": 12,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/crates/lan/tests/memory.rs",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/crates/lan/tests/page.mjs",
+    "matching_lines": 6,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/crates/lan/tests/page.rs",
+    "matching_lines": 2,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/crates/lan/tests/queue.rs",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/crates/names/Cargo.toml",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/crates/names/src/cross_check.rs",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/crates/names/src/lib.rs",
+    "matching_lines": 2,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/crates/names/src/tests.rs",
+    "matching_lines": 3,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/crates/online/Cargo.toml",
+    "matching_lines": 4,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/crates/online/src/aries.rs",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/crates/online/src/buddy.rs",
+    "matching_lines": 19,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/crates/online/src/core.rs",
+    "matching_lines": 4,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/crates/online/src/http.rs",
+    "matching_lines": 2,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/crates/online/src/jsx.rs",
+    "matching_lines": 2,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/crates/online/src/lib.rs",
+    "matching_lines": 10,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/crates/online/src/lobby.rs",
+    "matching_lines": 24,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/crates/online/src/races.rs",
+    "matching_lines": 2,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/crates/online/src/stats.rs",
+    "matching_lines": 5,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/crates/online/src/tests/audit.rs",
+    "matching_lines": 7,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/crates/online/src/tests/claims.rs",
+    "matching_lines": 3,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/crates/online/src/tests/load.rs",
+    "matching_lines": 2,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/crates/online/src/tests/lobby.rs",
+    "matching_lines": 3,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/crates/online/src/tests/session.rs",
+    "matching_lines": 4,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/crates/online/src/tests/thread.rs",
+    "matching_lines": 2,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/crates/online/src/tests/vhost.rs",
+    "matching_lines": 2,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/crates/online/src/tests/world.rs",
+    "matching_lines": 4,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/crates/online/src/trace.rs",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/crates/online/src/vhost.rs",
+    "matching_lines": 5,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/crates/roam/Cargo.toml",
+    "matching_lines": 3,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/crates/roam/src/hub.rs",
+    "matching_lines": 23,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/crates/roam/src/lib.rs",
+    "matching_lines": 14,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/crates/roam/src/results.rs",
+    "matching_lines": 12,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/crates/roam/src/watch.rs",
+    "matching_lines": 7,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/crates/roam/src/wire.rs",
+    "matching_lines": 2,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/crates/roam/tests/bench.rs",
+    "matching_lines": 3,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/crates/roam/tests/hypot.rs",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/crates/roam/tests/kit/mod.rs",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/crates/roam/tests/popin.rs",
+    "matching_lines": 2,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/crates/roam/tests/roam_ahead.rs",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/crates/roam/tests/roam_block.rs",
+    "matching_lines": 3,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/crates/roam/tests/roam_cheat.rs",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/crates/roam/tests/roam_claims.rs",
+    "matching_lines": 4,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/crates/roam/tests/roam_crew.rs",
+    "matching_lines": 2,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/crates/roam/tests/roam_friends.rs",
+    "matching_lines": 2,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/crates/roam/tests/roam_hub.rs",
+    "matching_lines": 3,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/crates/roam/tests/roam_links.rs",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/crates/roam/tests/roam_lobby.rs",
+    "matching_lines": 3,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/crates/roam/tests/roam_names.rs",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/crates/roam/tests/roam_near.rs",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/crates/roam/tests/roam_thread.rs",
+    "matching_lines": 2,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/crates/roamload/Cargo.toml",
+    "matching_lines": 4,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/crates/roamload/src/main.rs",
+    "matching_lines": 19,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/crates/util/Cargo.toml",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/crates/util/src/cpu.rs",
+    "matching_lines": 14,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/crates/util/src/host.rs",
+    "matching_lines": 4,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/crates/util/src/logfile.rs",
+    "matching_lines": 2,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/crates/util/tests/node_numbers.rs",
+    "matching_lines": 2,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/crates/vault/Cargo.toml",
+    "matching_lines": 2,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/crates/vault/src/lib.rs",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/crates/ws/Cargo.toml",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/crates/ws/src/lib.rs",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/crates/ws/tests/bench.rs",
+    "matching_lines": 2,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/crates/ws/tests/common/mod.rs",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/crates/ws/tests/handshake.rs",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/crates/ws/tests/node.rs",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/crates/ws/tests/reader.rs",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/crates/ws/tests/tungstenite.rs",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/src/app/blocks.rs",
+    "matching_lines": 4,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/src/app/control.rs",
+    "matching_lines": 18,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/src/app/days.rs",
+    "matching_lines": 4,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/src/app/etag.rs",
+    "matching_lines": 2,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/src/app/files.rs",
+    "matching_lines": 3,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/src/app/friends.rs",
+    "matching_lines": 21,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/src/app/kept.rs",
+    "matching_lines": 11,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/src/app/lan.rs",
+    "matching_lines": 16,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/src/app/manifest.rs",
+    "matching_lines": 4,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/src/app/mod.rs",
+    "matching_lines": 35,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/src/app/names.rs",
+    "matching_lines": 15,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/src/app/pool.rs",
+    "matching_lines": 2,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/src/app/route_tests.rs",
+    "matching_lines": 11,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/src/app/run.rs",
+    "matching_lines": 51,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/src/app/testkit.rs",
+    "matching_lines": 9,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/src/app/turnstile.rs",
+    "matching_lines": 6,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/src/app/url.rs",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/src/app/vault.rs",
+    "matching_lines": 11,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/src/app/wasm.rs",
+    "matching_lines": 10,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/src/ctl.rs",
+    "matching_lines": 4,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/src/main.rs",
+    "matching_lines": 15,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/src/options.rs",
+    "matching_lines": 37,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/tests/binary.rs",
+    "matching_lines": 31,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/tests/common/mod.rs",
+    "matching_lines": 22,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/tests/fuzz.rs",
+    "matching_lines": 7,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/tests/online_switch.rs",
+    "matching_lines": 9,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/server-rs/tests/roam_switch.rs",
+    "matching_lines": 8,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "web/src/app/device.ts",
+    "matching_lines": 2,
+    "classification": "INVESTIGATE legacy documentation, build or testing reference"
+  },
+  {
+    "path": "web/src/app/display.ts",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE legacy documentation, build or testing reference"
+  },
+  {
+    "path": "web/src/app/i18n.ts",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE legacy documentation, build or testing reference"
+  },
+  {
+    "path": "web/src/app/uc-asset-manifest.ts",
+    "matching_lines": 2,
+    "classification": "INVESTIGATE legacy documentation, build or testing reference"
+  },
+  {
+    "path": "web/src/app/uc-dxt1.ts",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE legacy documentation, build or testing reference"
+  },
+  {
+    "path": "web/src/audio/index.ts",
+    "matching_lines": 4,
+    "classification": "KEEP mixed reusable infrastructure; compatibility identifiers require caller migration"
+  },
+  {
+    "path": "web/src/audio/worklet.ts",
+    "matching_lines": 1,
+    "classification": "KEEP mixed reusable infrastructure; compatibility identifiers require caller migration"
+  },
+  {
+    "path": "web/src/gpu/index.ts",
+    "matching_lines": 2,
+    "classification": "KEEP mixed reusable infrastructure; compatibility identifiers require caller migration"
+  },
+  {
+    "path": "web/src/host/abi.ts",
+    "matching_lines": 1,
+    "classification": "KEEP mixed reusable infrastructure; compatibility identifiers require caller migration"
+  },
+  {
+    "path": "web/src/host/game-worker.ts",
+    "matching_lines": 6,
+    "classification": "KEEP mixed reusable infrastructure; compatibility identifiers require caller migration"
+  },
+  {
+    "path": "web/src/host/io-worker.ts",
+    "matching_lines": 9,
+    "classification": "KEEP mixed reusable infrastructure; compatibility identifiers require caller migration"
+  },
+  {
+    "path": "web/src/host/movie.ts",
+    "matching_lines": 2,
+    "classification": "KEEP mixed reusable infrastructure; compatibility identifiers require caller migration"
+  },
+  {
+    "path": "web/src/host/process.ts",
+    "matching_lines": 4,
+    "classification": "KEEP mixed reusable infrastructure; compatibility identifiers require caller migration"
+  },
+  {
+    "path": "web/src/host/tz.ts",
+    "matching_lines": 3,
+    "classification": "KEEP mixed reusable infrastructure; compatibility identifiers require caller migration"
+  },
+  {
+    "path": "web/src/input/gamepad.ts",
+    "matching_lines": 1,
+    "classification": "KEEP mixed reusable infrastructure; compatibility identifiers require caller migration"
+  },
+  {
+    "path": "web/src/input/index.ts",
+    "matching_lines": 3,
+    "classification": "KEEP mixed reusable infrastructure; compatibility identifiers require caller migration"
+  },
+  {
+    "path": "web/src/input/wheel.ts",
+    "matching_lines": 2,
+    "classification": "KEEP mixed reusable infrastructure; compatibility identifiers require caller migration"
+  },
+  {
+    "path": "web/src/radio-folder.ts",
+    "matching_lines": 2,
+    "classification": "INVESTIGATE legacy documentation, build or testing reference"
+  },
+  {
+    "path": "web/src/static/uc-asset-manifest.json",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE legacy documentation, build or testing reference"
+  },
+  {
+    "path": "web/src/test/hostcheck.ts",
+    "matching_lines": 3,
+    "classification": "INVESTIGATE legacy documentation, build or testing reference"
+  },
+  {
+    "path": "web/start.sh",
+    "matching_lines": 11,
+    "classification": "INVESTIGATE legacy documentation, build or testing reference"
+  },
+  {
+    "path": "web/test/audit.test.mjs",
+    "matching_lines": 16,
+    "classification": "INVESTIGATE legacy documentation, build or testing reference"
+  },
+  {
+    "path": "web/test/cf-sim.mjs",
+    "matching_lines": 5,
+    "classification": "INVESTIGATE legacy documentation, build or testing reference"
+  },
+  {
+    "path": "web/test/data-blocks.test.mjs",
+    "matching_lines": 4,
+    "classification": "INVESTIGATE legacy documentation, build or testing reference"
+  },
+  {
+    "path": "web/test/deploy.test.mjs",
+    "matching_lines": 40,
+    "classification": "INVESTIGATE legacy documentation, build or testing reference"
+  },
+  {
+    "path": "web/test/lan.test.mjs",
+    "matching_lines": 3,
+    "classification": "INVESTIGATE legacy documentation, build or testing reference"
+  },
+  {
+    "path": "web/test/lan_unit.c",
+    "matching_lines": 4,
+    "classification": "INVESTIGATE legacy documentation, build or testing reference"
+  },
+  {
+    "path": "web/test/module.test.mjs",
+    "matching_lines": 3,
+    "classification": "INVESTIGATE legacy documentation, build or testing reference"
+  },
+  {
+    "path": "web/test/movies-av1.test.mjs",
+    "matching_lines": 6,
+    "classification": "INVESTIGATE legacy documentation, build or testing reference"
+  },
+  {
+    "path": "web/test/page-narrow.test.mjs",
+    "matching_lines": 6,
+    "classification": "INVESTIGATE legacy documentation, build or testing reference"
+  },
+  {
+    "path": "web/test/roam-asi.test.mjs",
+    "matching_lines": 8,
+    "classification": "INVESTIGATE legacy documentation, build or testing reference"
+  },
+  {
+    "path": "web/test/start-sh.test.mjs",
+    "matching_lines": 7,
+    "classification": "INVESTIGATE legacy documentation, build or testing reference"
+  },
+  {
+    "path": "web/test/suite-module.test.mjs",
+    "matching_lines": 4,
+    "classification": "INVESTIGATE legacy documentation, build or testing reference"
+  },
+  {
+    "path": "web/test/uc-lan-https-browser.test.mjs",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE legacy documentation, build or testing reference"
+  },
+  {
+    "path": "web/test/wasi-run.mjs",
+    "matching_lines": 2,
+    "classification": "INVESTIGATE legacy documentation, build or testing reference"
+  },
+  {
+    "path": "web/tools/aliasguard.sh",
+    "matching_lines": 2,
+    "classification": "INVESTIGATE legacy documentation, build or testing reference"
+  },
+  {
+    "path": "web/tools/aliastest.sh",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE legacy documentation, build or testing reference"
+  },
+  {
+    "path": "web/tools/app-test.mjs",
+    "matching_lines": 125,
+    "classification": "INVESTIGATE legacy documentation, build or testing reference"
+  },
+  {
+    "path": "web/tools/audio-test.mjs",
+    "matching_lines": 5,
+    "classification": "INVESTIGATE legacy documentation, build or testing reference"
+  },
+  {
+    "path": "web/tools/bench.mjs",
+    "matching_lines": 10,
+    "classification": "INVESTIGATE legacy documentation, build or testing reference"
+  },
+  {
+    "path": "web/tools/browser.mjs",
+    "matching_lines": 5,
+    "classification": "INVESTIGATE legacy documentation, build or testing reference"
+  },
+  {
+    "path": "web/tools/deploy-e2e.mjs",
+    "matching_lines": 22,
+    "classification": "INVESTIGATE legacy documentation, build or testing reference"
+  },
+  {
+    "path": "web/tools/dev-server.mjs",
+    "matching_lines": 3,
+    "classification": "INVESTIGATE legacy documentation, build or testing reference"
+  },
+  {
+    "path": "web/tools/drive.mjs",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE legacy documentation, build or testing reference"
+  },
+  {
+    "path": "web/tools/input-suite.mjs",
+    "matching_lines": 11,
+    "classification": "INVESTIGATE legacy documentation, build or testing reference"
+  },
+  {
+    "path": "web/tools/intro-test.mjs",
+    "matching_lines": 4,
+    "classification": "INVESTIGATE legacy documentation, build or testing reference"
+  },
+  {
+    "path": "web/tools/isatest.sh",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE legacy documentation, build or testing reference"
+  },
+  {
+    "path": "web/tools/lan-pair.mjs",
+    "matching_lines": 10,
+    "classification": "INVESTIGATE legacy documentation, build or testing reference"
+  },
+  {
+    "path": "web/tools/main_all.sh",
+    "matching_lines": 5,
+    "classification": "INVESTIGATE legacy documentation, build or testing reference"
+  },
+  {
+    "path": "web/tools/mix-load.mjs",
+    "matching_lines": 10,
+    "classification": "INVESTIGATE legacy documentation, build or testing reference"
+  },
+  {
+    "path": "web/tools/offline-test.mjs",
+    "matching_lines": 21,
+    "classification": "INVESTIGATE legacy documentation, build or testing reference"
+  },
+  {
+    "path": "web/tools/online-load.mjs",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE legacy documentation, build or testing reference"
+  },
+  {
+    "path": "web/tools/online-pair.mjs",
+    "matching_lines": 17,
+    "classification": "INVESTIGATE legacy documentation, build or testing reference"
+  },
+  {
+    "path": "web/tools/predownload-test.mjs",
+    "matching_lines": 9,
+    "classification": "INVESTIGATE legacy documentation, build or testing reference"
+  },
+  {
+    "path": "web/tools/roam-crowd.mjs",
+    "matching_lines": 2,
+    "classification": "INVESTIGATE legacy documentation, build or testing reference"
+  },
+  {
+    "path": "web/tools/roam-pair.mjs",
+    "matching_lines": 23,
+    "classification": "INVESTIGATE legacy documentation, build or testing reference"
+  },
+  {
+    "path": "web/tools/run-suite.mjs",
+    "matching_lines": 15,
+    "classification": "INVESTIGATE legacy documentation, build or testing reference"
+  },
+  {
+    "path": "web/tools/save-seed.mjs",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE legacy documentation, build or testing reference"
+  },
+  {
+    "path": "web/tools/server-cmd.mjs",
+    "matching_lines": 15,
+    "classification": "INVESTIGATE legacy documentation, build or testing reference"
+  },
+  {
+    "path": "web/tools/server-compare.mjs",
+    "matching_lines": 8,
+    "classification": "INVESTIGATE legacy documentation, build or testing reference"
+  },
+  {
+    "path": "web/tools/settings-diff.mjs",
+    "matching_lines": 10,
+    "classification": "INVESTIGATE legacy documentation, build or testing reference"
+  },
+  {
+    "path": "web/tools/shader-check.mjs",
+    "matching_lines": 4,
+    "classification": "INVESTIGATE legacy documentation, build or testing reference"
+  },
+  {
+    "path": "web/tools/tztest.mjs",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE legacy documentation, build or testing reference"
+  },
+  {
+    "path": "web/tools/uc-lan-server.mjs",
+    "matching_lines": 2,
+    "classification": "INVESTIGATE legacy documentation, build or testing reference"
+  },
+  {
+    "path": "web/tools/uc-manifest-gen.mjs",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE legacy documentation, build or testing reference"
+  },
+  {
+    "path": "web/tools/vault-pair.mjs",
+    "matching_lines": 17,
+    "classification": "INVESTIGATE legacy documentation, build or testing reference"
+  },
+  {
+    "path": "web/tools/wgsl-xl.c",
+    "matching_lines": 3,
+    "classification": "INVESTIGATE legacy documentation, build or testing reference"
+  },
+  {
+    "path": "win/roam_asi/NFSU2FreeRoam.ini",
+    "matching_lines": 4,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "win/roam_asi/README.txt",
+    "matching_lines": 8,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "win/roam_asi/roam_asi.c",
+    "matching_lines": 30,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "win/roam_asi/roam_fp.h",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "win/roam_asi/roam_host_win.h",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "win/roam_asi/roam_libc.c",
+    "matching_lines": 1,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  },
+  {
+    "path": "win/roam_asi/roam_win.c",
+    "matching_lines": 7,
+    "classification": "INVESTIGATE remaining native/game/service dependencies before deletion"
+  }
+]

@@ -91,7 +91,7 @@ export function checkIsolation(): Check {
       'PAGE-NOT-SECURE', { browser: browserName() });
   }
   if (!crossOriginIsolated || typeof SharedArrayBuffer === 'undefined') {
-    return check('isolation', label, 'fail', N('The page is not cross-origin isolated (no SharedArrayBuffer). Open it from the NFSU2 web server.'), 'PAGE-NOT-ISOLATED');
+    return check('isolation', label, 'fail', N('The page is not cross-origin isolated (no SharedArrayBuffer). Open it from the private Undercover HTTPS server with isolation headers.'), 'PAGE-NOT-ISOLATED');
   }
   try { new WebAssembly.Memory({ initial: 1, maximum: 65536, shared: true }); }
   catch (e) { return check('isolation', label, 'fail', N('Shared 4 GB WebAssembly memory is not available: {error}'), 'PAGE-NO-MEMORY', { error: String(e) }); }

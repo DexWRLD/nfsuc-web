@@ -1,0 +1,686 @@
+[
+  {
+    "path": "web/src/app/away.ts",
+    "reason": "Inherited shell/game UI absent from Undercover entry and retained runtime import closure",
+    "evidence": "No retained frontend entry, host, GPU or audio import reaches this file; removed tests are separately listed",
+    "validation": "TypeScript, build, Undercover Node/Edge, native campaign and export assembly"
+  },
+  {
+    "path": "web/src/app/changelog.ts",
+    "reason": "Inherited shell/game UI absent from Undercover entry and retained runtime import closure",
+    "evidence": "No retained frontend entry, host, GPU or audio import reaches this file; removed tests are separately listed",
+    "validation": "TypeScript, build, Undercover Node/Edge, native campaign and export assembly"
+  },
+  {
+    "path": "web/src/app/claim-ui.ts",
+    "reason": "Inherited shell/game UI absent from Undercover entry and retained runtime import closure",
+    "evidence": "No retained frontend entry, host, GPU or audio import reaches this file; removed tests are separately listed",
+    "validation": "TypeScript, build, Undercover Node/Edge, native campaign and export assembly"
+  },
+  {
+    "path": "web/src/app/claim.ts",
+    "reason": "Inherited shell/game UI absent from Undercover entry and retained runtime import closure",
+    "evidence": "No retained frontend entry, host, GPU or audio import reaches this file; removed tests are separately listed",
+    "validation": "TypeScript, build, Undercover Node/Edge, native campaign and export assembly"
+  },
+  {
+    "path": "web/src/app/contract.ts",
+    "reason": "Inherited shell/game UI absent from Undercover entry and retained runtime import closure",
+    "evidence": "No retained frontend entry, host, GPU or audio import reaches this file; removed tests are separately listed",
+    "validation": "TypeScript, build, Undercover Node/Edge, native campaign and export assembly"
+  },
+  {
+    "path": "web/src/app/crews.ts",
+    "reason": "Inherited shell/game UI absent from Undercover entry and retained runtime import closure",
+    "evidence": "No retained frontend entry, host, GPU or audio import reaches this file; removed tests are separately listed",
+    "validation": "TypeScript, build, Undercover Node/Edge, native campaign and export assembly"
+  },
+  {
+    "path": "web/src/app/drift.png",
+    "reason": "Inherited shell/game UI absent from Undercover entry and retained runtime import closure",
+    "evidence": "No retained frontend entry, host, GPU or audio import reaches this file; removed tests are separately listed",
+    "validation": "TypeScript, build, Undercover Node/Edge, native campaign and export assembly"
+  },
+  {
+    "path": "web/src/app/drift.ts",
+    "reason": "Inherited shell/game UI absent from Undercover entry and retained runtime import closure",
+    "evidence": "No retained frontend entry, host, GPU or audio import reaches this file; removed tests are separately listed",
+    "validation": "TypeScript, build, Undercover Node/Edge, native campaign and export assembly"
+  },
+  {
+    "path": "web/src/app/friends.ts",
+    "reason": "Inherited shell/game UI absent from Undercover entry and retained runtime import closure",
+    "evidence": "No retained frontend entry, host, GPU or audio import reaches this file; removed tests are separately listed",
+    "validation": "TypeScript, build, Undercover Node/Edge, native campaign and export assembly"
+  },
+  {
+    "path": "web/src/app/game.ts",
+    "reason": "Inherited shell/game UI absent from Undercover entry and retained runtime import closure",
+    "evidence": "No retained frontend entry, host, GPU or audio import reaches this file; removed tests are separately listed",
+    "validation": "TypeScript, build, Undercover Node/Edge, native campaign and export assembly"
+  },
+  {
+    "path": "web/src/app/horn-preview.ts",
+    "reason": "Inherited shell/game UI absent from Undercover entry and retained runtime import closure",
+    "evidence": "No retained frontend entry, host, GPU or audio import reaches this file; removed tests are separately listed",
+    "validation": "TypeScript, build, Undercover Node/Edge, native campaign and export assembly"
+  },
+  {
+    "path": "web/src/app/instance.ts",
+    "reason": "Inherited shell/game UI absent from Undercover entry and retained runtime import closure",
+    "evidence": "No retained frontend entry, host, GPU or audio import reaches this file; removed tests are separately listed",
+    "validation": "TypeScript, build, Undercover Node/Edge, native campaign and export assembly"
+  },
+  {
+    "path": "web/src/app/invite.ts",
+    "reason": "Inherited shell/game UI absent from Undercover entry and retained runtime import closure",
+    "evidence": "No retained frontend entry, host, GPU or audio import reaches this file; removed tests are separately listed",
+    "validation": "TypeScript, build, Undercover Node/Edge, native campaign and export assembly"
+  },
+  {
+    "path": "web/src/app/lang/chinese.json",
+    "reason": "Inherited shell/game UI absent from Undercover entry and retained runtime import closure",
+    "evidence": "No retained frontend entry, host, GPU or audio import reaches this file; removed tests are separately listed",
+    "validation": "TypeScript, build, Undercover Node/Edge, native campaign and export assembly"
+  },
+  {
+    "path": "web/src/app/lang/danish.json",
+    "reason": "Inherited shell/game UI absent from Undercover entry and retained runtime import closure",
+    "evidence": "No retained frontend entry, host, GPU or audio import reaches this file; removed tests are separately listed",
+    "validation": "TypeScript, build, Undercover Node/Edge, native campaign and export assembly"
+  },
+  {
+    "path": "web/src/app/lang/dutch.json",
+    "reason": "Inherited shell/game UI absent from Undercover entry and retained runtime import closure",
+    "evidence": "No retained frontend entry, host, GPU or audio import reaches this file; removed tests are separately listed",
+    "validation": "TypeScript, build, Undercover Node/Edge, native campaign and export assembly"
+  },
+  {
+    "path": "web/src/app/lang/french.json",
+    "reason": "Inherited shell/game UI absent from Undercover entry and retained runtime import closure",
+    "evidence": "No retained frontend entry, host, GPU or audio import reaches this file; removed tests are separately listed",
+    "validation": "TypeScript, build, Undercover Node/Edge, native campaign and export assembly"
+  },
+  {
+    "path": "web/src/app/lang/german.json",
+    "reason": "Inherited shell/game UI absent from Undercover entry and retained runtime import closure",
+    "evidence": "No retained frontend entry, host, GPU or audio import reaches this file; removed tests are separately listed",
+    "validation": "TypeScript, build, Undercover Node/Edge, native campaign and export assembly"
+  },
+  {
+    "path": "web/src/app/lang/hungarian.json",
+    "reason": "Inherited shell/game UI absent from Undercover entry and retained runtime import closure",
+    "evidence": "No retained frontend entry, host, GPU or audio import reaches this file; removed tests are separately listed",
+    "validation": "TypeScript, build, Undercover Node/Edge, native campaign and export assembly"
+  },
+  {
+    "path": "web/src/app/lang/italian.json",
+    "reason": "Inherited shell/game UI absent from Undercover entry and retained runtime import closure",
+    "evidence": "No retained frontend entry, host, GPU or audio import reaches this file; removed tests are separately listed",
+    "validation": "TypeScript, build, Undercover Node/Edge, native campaign and export assembly"
+  },
+  {
+    "path": "web/src/app/lang/japanese.json",
+    "reason": "Inherited shell/game UI absent from Undercover entry and retained runtime import closure",
+    "evidence": "No retained frontend entry, host, GPU or audio import reaches this file; removed tests are separately listed",
+    "validation": "TypeScript, build, Undercover Node/Edge, native campaign and export assembly"
+  },
+  {
+    "path": "web/src/app/lang/korean.json",
+    "reason": "Inherited shell/game UI absent from Undercover entry and retained runtime import closure",
+    "evidence": "No retained frontend entry, host, GPU or audio import reaches this file; removed tests are separately listed",
+    "validation": "TypeScript, build, Undercover Node/Edge, native campaign and export assembly"
+  },
+  {
+    "path": "web/src/app/lang/polish.json",
+    "reason": "Inherited shell/game UI absent from Undercover entry and retained runtime import closure",
+    "evidence": "No retained frontend entry, host, GPU or audio import reaches this file; removed tests are separately listed",
+    "validation": "TypeScript, build, Undercover Node/Edge, native campaign and export assembly"
+  },
+  {
+    "path": "web/src/app/lang/portuguese.json",
+    "reason": "Inherited shell/game UI absent from Undercover entry and retained runtime import closure",
+    "evidence": "No retained frontend entry, host, GPU or audio import reaches this file; removed tests are separately listed",
+    "validation": "TypeScript, build, Undercover Node/Edge, native campaign and export assembly"
+  },
+  {
+    "path": "web/src/app/lang/russian.json",
+    "reason": "Inherited shell/game UI absent from Undercover entry and retained runtime import closure",
+    "evidence": "No retained frontend entry, host, GPU or audio import reaches this file; removed tests are separately listed",
+    "validation": "TypeScript, build, Undercover Node/Edge, native campaign and export assembly"
+  },
+  {
+    "path": "web/src/app/lang/spanish.json",
+    "reason": "Inherited shell/game UI absent from Undercover entry and retained runtime import closure",
+    "evidence": "No retained frontend entry, host, GPU or audio import reaches this file; removed tests are separately listed",
+    "validation": "TypeScript, build, Undercover Node/Edge, native campaign and export assembly"
+  },
+  {
+    "path": "web/src/app/lang/swedish.json",
+    "reason": "Inherited shell/game UI absent from Undercover entry and retained runtime import closure",
+    "evidence": "No retained frontend entry, host, GPU or audio import reaches this file; removed tests are separately listed",
+    "validation": "TypeScript, build, Undercover Node/Edge, native campaign and export assembly"
+  },
+  {
+    "path": "web/src/app/lang/thai.json",
+    "reason": "Inherited shell/game UI absent from Undercover entry and retained runtime import closure",
+    "evidence": "No retained frontend entry, host, GPU or audio import reaches this file; removed tests are separately listed",
+    "validation": "TypeScript, build, Undercover Node/Edge, native campaign and export assembly"
+  },
+  {
+    "path": "web/src/app/lang/turkish.json",
+    "reason": "Inherited shell/game UI absent from Undercover entry and retained runtime import closure",
+    "evidence": "No retained frontend entry, host, GPU or audio import reaches this file; removed tests are separately listed",
+    "validation": "TypeScript, build, Undercover Node/Edge, native campaign and export assembly"
+  },
+  {
+    "path": "web/src/app/lastgame.ts",
+    "reason": "Inherited shell/game UI absent from Undercover entry and retained runtime import closure",
+    "evidence": "No retained frontend entry, host, GPU or audio import reaches this file; removed tests are separately listed",
+    "validation": "TypeScript, build, Undercover Node/Edge, native campaign and export assembly"
+  },
+  {
+    "path": "web/src/app/loader.ts",
+    "reason": "Inherited shell/game UI absent from Undercover entry and retained runtime import closure",
+    "evidence": "No retained frontend entry, host, GPU or audio import reaches this file; removed tests are separately listed",
+    "validation": "TypeScript, build, Undercover Node/Edge, native campaign and export assembly"
+  },
+  {
+    "path": "web/src/app/lobby.ts",
+    "reason": "Inherited shell/game UI absent from Undercover entry and retained runtime import closure",
+    "evidence": "No retained frontend entry, host, GPU or audio import reaches this file; removed tests are separately listed",
+    "validation": "TypeScript, build, Undercover Node/Edge, native campaign and export assembly"
+  },
+  {
+    "path": "web/src/app/logs.ts",
+    "reason": "Inherited shell/game UI absent from Undercover entry and retained runtime import closure",
+    "evidence": "No retained frontend entry, host, GPU or audio import reaches this file; removed tests are separately listed",
+    "validation": "TypeScript, build, Undercover Node/Edge, native campaign and export assembly"
+  },
+  {
+    "path": "web/src/app/messages.ts",
+    "reason": "Inherited shell/game UI absent from Undercover entry and retained runtime import closure",
+    "evidence": "No retained frontend entry, host, GPU or audio import reaches this file; removed tests are separately listed",
+    "validation": "TypeScript, build, Undercover Node/Edge, native campaign and export assembly"
+  },
+  {
+    "path": "web/src/app/names.mjs",
+    "reason": "Inherited shell/game UI absent from Undercover entry and retained runtime import closure",
+    "evidence": "No retained frontend entry, host, GPU or audio import reaches this file; removed tests are separately listed",
+    "validation": "TypeScript, build, Undercover Node/Edge, native campaign and export assembly"
+  },
+  {
+    "path": "web/src/app/nitro.png",
+    "reason": "Inherited shell/game UI absent from Undercover entry and retained runtime import closure",
+    "evidence": "No retained frontend entry, host, GPU or audio import reaches this file; removed tests are separately listed",
+    "validation": "TypeScript, build, Undercover Node/Edge, native campaign and export assembly"
+  },
+  {
+    "path": "web/src/app/overlay.ts",
+    "reason": "Inherited shell/game UI absent from Undercover entry and retained runtime import closure",
+    "evidence": "No retained frontend entry, host, GPU or audio import reaches this file; removed tests are separately listed",
+    "validation": "TypeScript, build, Undercover Node/Edge, native campaign and export assembly"
+  },
+  {
+    "path": "web/src/app/page-id.ts",
+    "reason": "Inherited shell/game UI absent from Undercover entry and retained runtime import closure",
+    "evidence": "No retained frontend entry, host, GPU or audio import reaches this file; removed tests are separately listed",
+    "validation": "TypeScript, build, Undercover Node/Edge, native campaign and export assembly"
+  },
+  {
+    "path": "web/src/app/pausehint.ts",
+    "reason": "Inherited shell/game UI absent from Undercover entry and retained runtime import closure",
+    "evidence": "No retained frontend entry, host, GPU or audio import reaches this file; removed tests are separately listed",
+    "validation": "TypeScript, build, Undercover Node/Edge, native campaign and export assembly"
+  },
+  {
+    "path": "web/src/app/phonegraphics.ts",
+    "reason": "Inherited shell/game UI absent from Undercover entry and retained runtime import closure",
+    "evidence": "No retained frontend entry, host, GPU or audio import reaches this file; removed tests are separately listed",
+    "validation": "TypeScript, build, Undercover Node/Edge, native campaign and export assembly"
+  },
+  {
+    "path": "web/src/app/photo.ts",
+    "reason": "Inherited shell/game UI absent from Undercover entry and retained runtime import closure",
+    "evidence": "No retained frontend entry, host, GPU or audio import reaches this file; removed tests are separately listed",
+    "validation": "TypeScript, build, Undercover Node/Edge, native campaign and export assembly"
+  },
+  {
+    "path": "web/src/app/phrases.ts",
+    "reason": "Inherited shell/game UI absent from Undercover entry and retained runtime import closure",
+    "evidence": "No retained frontend entry, host, GPU or audio import reaches this file; removed tests are separately listed",
+    "validation": "TypeScript, build, Undercover Node/Edge, native campaign and export assembly"
+  },
+  {
+    "path": "web/src/app/players.ts",
+    "reason": "Inherited shell/game UI absent from Undercover entry and retained runtime import closure",
+    "evidence": "No retained frontend entry, host, GPU or audio import reaches this file; removed tests are separately listed",
+    "validation": "TypeScript, build, Undercover Node/Edge, native campaign and export assembly"
+  },
+  {
+    "path": "web/src/app/playtime.ts",
+    "reason": "Inherited shell/game UI absent from Undercover entry and retained runtime import closure",
+    "evidence": "No retained frontend entry, host, GPU or audio import reaches this file; removed tests are separately listed",
+    "validation": "TypeScript, build, Undercover Node/Edge, native campaign and export assembly"
+  },
+  {
+    "path": "web/src/app/predownload.ts",
+    "reason": "Inherited shell/game UI absent from Undercover entry and retained runtime import closure",
+    "evidence": "No retained frontend entry, host, GPU or audio import reaches this file; removed tests are separately listed",
+    "validation": "TypeScript, build, Undercover Node/Edge, native campaign and export assembly"
+  },
+  {
+    "path": "web/src/app/privacy.ts",
+    "reason": "Inherited shell/game UI absent from Undercover entry and retained runtime import closure",
+    "evidence": "No retained frontend entry, host, GPU or audio import reaches this file; removed tests are separately listed",
+    "validation": "TypeScript, build, Undercover Node/Edge, native campaign and export assembly"
+  },
+  {
+    "path": "web/src/app/profile.ts",
+    "reason": "Inherited shell/game UI absent from Undercover entry and retained runtime import closure",
+    "evidence": "No retained frontend entry, host, GPU or audio import reaches this file; removed tests are separately listed",
+    "validation": "TypeScript, build, Undercover Node/Edge, native campaign and export assembly"
+  },
+  {
+    "path": "web/src/app/pwkeep.ts",
+    "reason": "Inherited shell/game UI absent from Undercover entry and retained runtime import closure",
+    "evidence": "No retained frontend entry, host, GPU or audio import reaches this file; removed tests are separately listed",
+    "validation": "TypeScript, build, Undercover Node/Edge, native campaign and export assembly"
+  },
+  {
+    "path": "web/src/app/quickchat.ts",
+    "reason": "Inherited shell/game UI absent from Undercover entry and retained runtime import closure",
+    "evidence": "No retained frontend entry, host, GPU or audio import reaches this file; removed tests are separately listed",
+    "validation": "TypeScript, build, Undercover Node/Edge, native campaign and export assembly"
+  },
+  {
+    "path": "web/src/app/radio-link.ts",
+    "reason": "Inherited shell/game UI absent from Undercover entry and retained runtime import closure",
+    "evidence": "No retained frontend entry, host, GPU or audio import reaches this file; removed tests are separately listed",
+    "validation": "TypeScript, build, Undercover Node/Edge, native campaign and export assembly"
+  },
+  {
+    "path": "web/src/app/rendercheck.ts",
+    "reason": "Inherited shell/game UI absent from Undercover entry and retained runtime import closure",
+    "evidence": "No retained frontend entry, host, GPU or audio import reaches this file; removed tests are separately listed",
+    "validation": "TypeScript, build, Undercover Node/Edge, native campaign and export assembly"
+  },
+  {
+    "path": "web/src/app/savefs.ts",
+    "reason": "Inherited shell/game UI absent from Undercover entry and retained runtime import closure",
+    "evidence": "No retained frontend entry, host, GPU or audio import reaches this file; removed tests are separately listed",
+    "validation": "TypeScript, build, Undercover Node/Edge, native campaign and export assembly"
+  },
+  {
+    "path": "web/src/app/saves-ui.ts",
+    "reason": "Inherited shell/game UI absent from Undercover entry and retained runtime import closure",
+    "evidence": "No retained frontend entry, host, GPU or audio import reaches this file; removed tests are separately listed",
+    "validation": "TypeScript, build, Undercover Node/Edge, native campaign and export assembly"
+  },
+  {
+    "path": "web/src/app/settings-ui.ts",
+    "reason": "Inherited shell/game UI absent from Undercover entry and retained runtime import closure",
+    "evidence": "No retained frontend entry, host, GPU or audio import reaches this file; removed tests are separately listed",
+    "validation": "TypeScript, build, Undercover Node/Edge, native campaign and export assembly"
+  },
+  {
+    "path": "web/src/app/settings.ts",
+    "reason": "Inherited shell/game UI absent from Undercover entry and retained runtime import closure",
+    "evidence": "No retained frontend entry, host, GPU or audio import reaches this file; removed tests are separately listed",
+    "validation": "TypeScript, build, Undercover Node/Edge, native campaign and export assembly"
+  },
+  {
+    "path": "web/src/app/shell.ts",
+    "reason": "Inherited shell/game UI absent from Undercover entry and retained runtime import closure",
+    "evidence": "No retained frontend entry, host, GPU or audio import reaches this file; removed tests are separately listed",
+    "validation": "TypeScript, build, Undercover Node/Edge, native campaign and export assembly"
+  },
+  {
+    "path": "web/src/app/shots.ts",
+    "reason": "Inherited shell/game UI absent from Undercover entry and retained runtime import closure",
+    "evidence": "No retained frontend entry, host, GPU or audio import reaches this file; removed tests are separately listed",
+    "validation": "TypeScript, build, Undercover Node/Edge, native campaign and export assembly"
+  },
+  {
+    "path": "web/src/app/status.png",
+    "reason": "Inherited shell/game UI absent from Undercover entry and retained runtime import closure",
+    "evidence": "No retained frontend entry, host, GPU or audio import reaches this file; removed tests are separately listed",
+    "validation": "TypeScript, build, Undercover Node/Edge, native campaign and export assembly"
+  },
+  {
+    "path": "web/src/app/status.ts",
+    "reason": "Inherited shell/game UI absent from Undercover entry and retained runtime import closure",
+    "evidence": "No retained frontend entry, host, GPU or audio import reaches this file; removed tests are separately listed",
+    "validation": "TypeScript, build, Undercover Node/Edge, native campaign and export assembly"
+  },
+  {
+    "path": "web/src/app/style.css",
+    "reason": "Inherited shell/game UI absent from Undercover entry and retained runtime import closure",
+    "evidence": "No retained frontend entry, host, GPU or audio import reaches this file; removed tests are separately listed",
+    "validation": "TypeScript, build, Undercover Node/Edge, native campaign and export assembly"
+  },
+  {
+    "path": "web/src/app/subsystems.ts",
+    "reason": "Inherited shell/game UI absent from Undercover entry and retained runtime import closure",
+    "evidence": "No retained frontend entry, host, GPU or audio import reaches this file; removed tests are separately listed",
+    "validation": "TypeScript, build, Undercover Node/Edge, native campaign and export assembly"
+  },
+  {
+    "path": "web/src/app/tabs.ts",
+    "reason": "Inherited shell/game UI absent from Undercover entry and retained runtime import closure",
+    "evidence": "No retained frontend entry, host, GPU or audio import reaches this file; removed tests are separately listed",
+    "validation": "TypeScript, build, Undercover Node/Edge, native campaign and export assembly"
+  },
+  {
+    "path": "web/src/app/text.d.ts",
+    "reason": "Inherited shell/game UI absent from Undercover entry and retained runtime import closure",
+    "evidence": "No retained frontend entry, host, GPU or audio import reaches this file; removed tests are separately listed",
+    "validation": "TypeScript, build, Undercover Node/Edge, native campaign and export assembly"
+  },
+  {
+    "path": "web/src/app/vault-ui.ts",
+    "reason": "Inherited shell/game UI absent from Undercover entry and retained runtime import closure",
+    "evidence": "No retained frontend entry, host, GPU or audio import reaches this file; removed tests are separately listed",
+    "validation": "TypeScript, build, Undercover Node/Edge, native campaign and export assembly"
+  },
+  {
+    "path": "web/src/app/vault-words.ts",
+    "reason": "Inherited shell/game UI absent from Undercover entry and retained runtime import closure",
+    "evidence": "No retained frontend entry, host, GPU or audio import reaches this file; removed tests are separately listed",
+    "validation": "TypeScript, build, Undercover Node/Edge, native campaign and export assembly"
+  },
+  {
+    "path": "web/src/app/vault.ts",
+    "reason": "Inherited shell/game UI absent from Undercover entry and retained runtime import closure",
+    "evidence": "No retained frontend entry, host, GPU or audio import reaches this file; removed tests are separately listed",
+    "validation": "TypeScript, build, Undercover Node/Edge, native campaign and export assembly"
+  },
+  {
+    "path": "web/src/app/wheel-setup.ts",
+    "reason": "Inherited shell/game UI absent from Undercover entry and retained runtime import closure",
+    "evidence": "No retained frontend entry, host, GPU or audio import reaches this file; removed tests are separately listed",
+    "validation": "TypeScript, build, Undercover Node/Edge, native campaign and export assembly"
+  },
+  {
+    "path": "web/src/net/index.ts",
+    "reason": "Underground 2 multiplayer protocol absent from retained runtime import closure",
+    "evidence": "No retained frontend entry, host, GPU or audio import reaches this file; removed tests are separately listed",
+    "validation": "TypeScript, build, Undercover Node/Edge, native campaign and export assembly"
+  },
+  {
+    "path": "web/src/net/proto.ts",
+    "reason": "Underground 2 multiplayer protocol absent from retained runtime import closure",
+    "evidence": "No retained frontend entry, host, GPU or audio import reaches this file; removed tests are separately listed",
+    "validation": "TypeScript, build, Undercover Node/Edge, native campaign and export assembly"
+  },
+  {
+    "path": "web/src/static/icon-180.png",
+    "reason": "Unused inherited application artwork replaced by undercover.svg in homepage and manifest",
+    "evidence": "No retained frontend entry, host, GPU or audio import reaches this file; removed tests are separately listed",
+    "validation": "TypeScript, build, Undercover Node/Edge, native campaign and export assembly"
+  },
+  {
+    "path": "web/src/static/icon-192.png",
+    "reason": "Unused inherited application artwork replaced by undercover.svg in homepage and manifest",
+    "evidence": "No retained frontend entry, host, GPU or audio import reaches this file; removed tests are separately listed",
+    "validation": "TypeScript, build, Undercover Node/Edge, native campaign and export assembly"
+  },
+  {
+    "path": "web/src/static/icon-512.png",
+    "reason": "Unused inherited application artwork replaced by undercover.svg in homepage and manifest",
+    "evidence": "No retained frontend entry, host, GPU or audio import reaches this file; removed tests are separately listed",
+    "validation": "TypeScript, build, Undercover Node/Edge, native campaign and export assembly"
+  },
+  {
+    "path": "web/src/static/icon-maskable-512.png",
+    "reason": "Unused inherited application artwork replaced by undercover.svg in homepage and manifest",
+    "evidence": "No retained frontend entry, host, GPU or audio import reaches this file; removed tests are separately listed",
+    "validation": "TypeScript, build, Undercover Node/Edge, native campaign and export assembly"
+  },
+  {
+    "path": "web/src/test/aicheck.ts",
+    "reason": "Diagnostics for removed inherited gameplay shell",
+    "evidence": "No retained frontend entry, host, GPU or audio import reaches this file; removed tests are separately listed",
+    "validation": "TypeScript, build, Undercover Node/Edge, native campaign and export assembly"
+  },
+  {
+    "path": "web/src/test/play.ts",
+    "reason": "Diagnostics for removed inherited gameplay shell",
+    "evidence": "No retained frontend entry, host, GPU or audio import reaches this file; removed tests are separately listed",
+    "validation": "TypeScript, build, Undercover Node/Edge, native campaign and export assembly"
+  },
+  {
+    "path": "web/test/autosave.test.mjs",
+    "reason": "Legacy shell/game test references source removed from the active Undercover dependency graph",
+    "evidence": "No retained frontend entry, host, GPU or audio import reaches this file; removed tests are separately listed",
+    "validation": "TypeScript, build, Undercover Node/Edge, native campaign and export assembly"
+  },
+  {
+    "path": "web/test/claim.test.mjs",
+    "reason": "Legacy shell/game test references source removed from the active Undercover dependency graph",
+    "evidence": "No retained frontend entry, host, GPU or audio import reaches this file; removed tests are separately listed",
+    "validation": "TypeScript, build, Undercover Node/Edge, native campaign and export assembly"
+  },
+  {
+    "path": "web/test/crews.test.mjs",
+    "reason": "Legacy shell/game test references source removed from the active Undercover dependency graph",
+    "evidence": "No retained frontend entry, host, GPU or audio import reaches this file; removed tests are separately listed",
+    "validation": "TypeScript, build, Undercover Node/Edge, native campaign and export assembly"
+  },
+  {
+    "path": "web/test/friends.test.mjs",
+    "reason": "Legacy shell/game test references source removed from the active Undercover dependency graph",
+    "evidence": "No retained frontend entry, host, GPU or audio import reaches this file; removed tests are separately listed",
+    "validation": "TypeScript, build, Undercover Node/Edge, native campaign and export assembly"
+  },
+  {
+    "path": "web/test/invite.test.mjs",
+    "reason": "Legacy shell/game test references source removed from the active Undercover dependency graph",
+    "evidence": "No retained frontend entry, host, GPU or audio import reaches this file; removed tests are separately listed",
+    "validation": "TypeScript, build, Undercover Node/Edge, native campaign and export assembly"
+  },
+  {
+    "path": "web/test/messages.test.mjs",
+    "reason": "Legacy shell/game test references source removed from the active Undercover dependency graph",
+    "evidence": "No retained frontend entry, host, GPU or audio import reaches this file; removed tests are separately listed",
+    "validation": "TypeScript, build, Undercover Node/Edge, native campaign and export assembly"
+  },
+  {
+    "path": "web/test/net-crews.test.mjs",
+    "reason": "Legacy shell/game test references source removed from the active Undercover dependency graph",
+    "evidence": "No retained frontend entry, host, GPU or audio import reaches this file; removed tests are separately listed",
+    "validation": "TypeScript, build, Undercover Node/Edge, native campaign and export assembly"
+  },
+  {
+    "path": "web/test/net-proto.test.mjs",
+    "reason": "Legacy shell/game test references source removed from the active Undercover dependency graph",
+    "evidence": "No retained frontend entry, host, GPU or audio import reaches this file; removed tests are separately listed",
+    "validation": "TypeScript, build, Undercover Node/Edge, native campaign and export assembly"
+  },
+  {
+    "path": "web/test/net-room.test.mjs",
+    "reason": "Legacy shell/game test references source removed from the active Undercover dependency graph",
+    "evidence": "No retained frontend entry, host, GPU or audio import reaches this file; removed tests are separately listed",
+    "validation": "TypeScript, build, Undercover Node/Edge, native campaign and export assembly"
+  },
+  {
+    "path": "web/test/page-audit.test.mjs",
+    "reason": "Legacy shell/game test references source removed from the active Undercover dependency graph",
+    "evidence": "No retained frontend entry, host, GPU or audio import reaches this file; removed tests are separately listed",
+    "validation": "TypeScript, build, Undercover Node/Edge, native campaign and export assembly"
+  },
+  {
+    "path": "web/test/pcsave.test.mjs",
+    "reason": "Legacy shell/game test references source removed from the active Undercover dependency graph",
+    "evidence": "No retained frontend entry, host, GPU or audio import reaches this file; removed tests are separately listed",
+    "validation": "TypeScript, build, Undercover Node/Edge, native campaign and export assembly"
+  },
+  {
+    "path": "web/test/phrases.test.mjs",
+    "reason": "Legacy shell/game test references source removed from the active Undercover dependency graph",
+    "evidence": "No retained frontend entry, host, GPU or audio import reaches this file; removed tests are separately listed",
+    "validation": "TypeScript, build, Undercover Node/Edge, native campaign and export assembly"
+  },
+  {
+    "path": "web/test/players.test.mjs",
+    "reason": "Legacy shell/game test references source removed from the active Undercover dependency graph",
+    "evidence": "No retained frontend entry, host, GPU or audio import reaches this file; removed tests are separately listed",
+    "validation": "TypeScript, build, Undercover Node/Edge, native campaign and export assembly"
+  },
+  {
+    "path": "web/test/restore-limit.test.mjs",
+    "reason": "Legacy shell/game test references source removed from the active Undercover dependency graph",
+    "evidence": "No retained frontend entry, host, GPU or audio import reaches this file; removed tests are separately listed",
+    "validation": "TypeScript, build, Undercover Node/Edge, native campaign and export assembly"
+  },
+  {
+    "path": "web/test/roam-block.test.mjs",
+    "reason": "Legacy shell/game test references source removed from the active Undercover dependency graph",
+    "evidence": "No retained frontend entry, host, GPU or audio import reaches this file; removed tests are separately listed",
+    "validation": "TypeScript, build, Undercover Node/Edge, native campaign and export assembly"
+  },
+  {
+    "path": "web/test/settings-reset.test.mjs",
+    "reason": "Legacy shell/game test references source removed from the active Undercover dependency graph",
+    "evidence": "No retained frontend entry, host, GPU or audio import reaches this file; removed tests are separately listed",
+    "validation": "TypeScript, build, Undercover Node/Edge, native campaign and export assembly"
+  },
+  {
+    "path": "web/test/vault.test.mjs",
+    "reason": "Legacy shell/game test references source removed from the active Undercover dependency graph",
+    "evidence": "No retained frontend entry, host, GPU or audio import reaches this file; removed tests are separately listed",
+    "validation": "TypeScript, build, Undercover Node/Edge, native campaign and export assembly"
+  },
+  {
+    "path": "web/test/app-session.test.mjs",
+    "reason": "Tests removed legacy shell modules",
+    "evidence": "web/src/app/game.ts",
+    "validation": "Retained Undercover and reusable test suites"
+  },
+  {
+    "path": "web/test/away.test.mjs",
+    "reason": "Tests removed legacy shell modules",
+    "evidence": "web/src/app/away.ts",
+    "validation": "Retained Undercover and reusable test suites"
+  },
+  {
+    "path": "web/test/horn-preview.test.mjs",
+    "reason": "Tests removed legacy shell modules",
+    "evidence": "web/src/app/horn-preview.ts",
+    "validation": "Retained Undercover and reusable test suites"
+  },
+  {
+    "path": "web/test/lastgame.test.mjs",
+    "reason": "Tests removed legacy shell modules",
+    "evidence": "web/src/app/lastgame.ts, web/src/app/logs.ts",
+    "validation": "Retained Undercover and reusable test suites"
+  },
+  {
+    "path": "web/test/logs.test.mjs",
+    "reason": "Tests removed legacy shell modules",
+    "evidence": "web/src/app/logs.ts",
+    "validation": "Retained Undercover and reusable test suites"
+  },
+  {
+    "path": "web/test/phonegraphics.test.mjs",
+    "reason": "Tests removed legacy shell modules",
+    "evidence": "web/src/app/phonegraphics.ts",
+    "validation": "Retained Undercover and reusable test suites"
+  },
+  {
+    "path": "web/test/playtime.test.mjs",
+    "reason": "Tests removed legacy shell modules",
+    "evidence": "web/src/app/playtime.ts",
+    "validation": "Retained Undercover and reusable test suites"
+  },
+  {
+    "path": "web/test/privacy.test.mjs",
+    "reason": "Tests removed legacy shell modules",
+    "evidence": "web/src/app/lastgame.ts, web/src/app/logs.ts, web/src/app/privacy.ts",
+    "validation": "Retained Undercover and reusable test suites"
+  },
+  {
+    "path": "web/test/radio.test.mjs",
+    "reason": "Tests removed legacy shell modules",
+    "evidence": "web/src/app/radio-link.ts",
+    "validation": "Retained Undercover and reusable test suites"
+  },
+  {
+    "path": "web/test/rendercheck.test.mjs",
+    "reason": "Tests removed legacy shell modules",
+    "evidence": "web/src/app/rendercheck.ts",
+    "validation": "Retained Undercover and reusable test suites"
+  },
+  {
+    "path": "web/test/settings-diff.test.mjs",
+    "reason": "Tests removed legacy shell modules",
+    "evidence": "web/src/app/settings.ts",
+    "validation": "Retained Undercover and reusable test suites"
+  },
+  {
+    "path": "web/src/sw.ts",
+    "reason": "Inherited service worker caches obsolete game routes and is unregistered by the Undercover entry",
+    "evidence": "No registration in main.ts; build entry removed",
+    "validation": "HTTPS preview and cache tests"
+  },
+  {
+    "path": "web/src/app/controls.ts",
+    "reason": "Inherited game-facing adapter depends on removed game session",
+    "evidence": "Compiler dependency check; low-level input/audio retained",
+    "validation": "TypeScript and input tests"
+  },
+  {
+    "path": "web/src/app/touch.ts",
+    "reason": "Inherited game-facing adapter depends on removed game session",
+    "evidence": "Compiler dependency check; low-level input/audio retained",
+    "validation": "TypeScript and input tests"
+  },
+  {
+    "path": "web/src/app/textentry.ts",
+    "reason": "Inherited game-facing adapter depends on removed game session",
+    "evidence": "Compiler dependency check; low-level input/audio retained",
+    "validation": "TypeScript and input tests"
+  },
+  {
+    "path": "web/src/radio.ts",
+    "reason": "Inherited game-facing adapter depends on removed game session",
+    "evidence": "Compiler dependency check; low-level input/audio retained",
+    "validation": "TypeScript and input tests"
+  },
+  {
+    "path": "web/src/radio-tags.ts",
+    "reason": "Inherited game-facing adapter depends on removed game session",
+    "evidence": "Compiler dependency check; low-level input/audio retained",
+    "validation": "TypeScript and input tests"
+  },
+  {
+    "path": "web/test/alias.test.mjs",
+    "reason": "Imports removed legacy log/privacy code",
+    "evidence": "Direct source reference and broad test failure",
+    "validation": "Supported test runner and Undercover browser suite"
+  },
+  {
+    "path": "web/test/i18n.test.mjs",
+    "reason": "Requires the removed shell language catalogs",
+    "evidence": "Direct source reference and broad test failure",
+    "validation": "Supported test runner and Undercover browser suite"
+  },
+  {
+    "path": "web/test/names.test.mjs",
+    "reason": "Imports removed multiplayer name module",
+    "evidence": "Direct source reference and broad test failure",
+    "validation": "Supported test runner and Undercover browser suite"
+  },
+  {
+    "path": "web/test/sw.test.mjs",
+    "reason": "Tests the removed obsolete service worker",
+    "evidence": "Direct source reference and broad test failure",
+    "validation": "Supported test runner and Undercover browser suite"
+  },
+  {
+    "path": "web/test/textentry.test.mjs",
+    "reason": "Tests the removed game-session text UI",
+    "evidence": "Direct source reference and broad test failure",
+    "validation": "Supported test runner and Undercover browser suite"
+  }
+]

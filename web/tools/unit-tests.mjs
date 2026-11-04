@@ -21,7 +21,9 @@ const SLOW = new Set([
 ]);
 const argv = process.argv.slice(2);
 const fast = argv.includes('--fast');
-const files = fs.readdirSync(TEST).filter(f => f.endsWith('.test.mjs') && !(fast && SLOW.has(f.slice(0, -'.test.mjs'.length))))
+// Undercover regressions plus reusable graphics, input and capability tests.
+const SHARED = new Set(['astc', 'dxt', 'hidpad', 'wheel', 'stats', 'devicelog', 'checks-gpu', 'checks-browser']);
+const files = fs.readdirSync(TEST).filter(f => (f.startsWith('uc-') || SHARED.has(f.slice(0, -'.test.mjs'.length))) && f.endsWith('.test.mjs') && !(fast && SLOW.has(f.slice(0, -'.test.mjs'.length))))
   .sort().map(f => path.join(TEST, f));
 const r = spawnSync(process.execPath, ['--test', `--test-timeout=${fast ? 120_000 : 300_000}`, ...argv.filter(a => a !== '--fast'), ...files], { stdio: 'inherit' });
 process.exit(r.status ?? 1);

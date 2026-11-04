@@ -15,11 +15,11 @@ const opts = {
     'host/io-worker': 'src/host/io-worker.ts',
     'host/predownload-worker': 'src/host/predownload-worker.ts',
     'gpu/png-worker': 'src/gpu/png-worker.ts',
-    'sw': 'src/sw.ts',
+
     'test/hostcheck': 'src/test/hostcheck.ts',
-    'test/play': 'src/test/play.ts',
+
     'test/shadercheck': 'src/test/shadercheck.ts',
-    'test/aicheck': 'src/test/aicheck.ts',
+
     'audio/worklet': 'src/audio/worklet.ts',
   },
   outdir: DIST, bundle: true, format: 'esm', target: ['chrome140', 'firefox145'], sourcemap: true, minify: !watch && !process.env.NOMINIFY,
@@ -42,6 +42,14 @@ function emit(files) {
 // an older build wrote test pages and maps into dist: never leave them there
 fs.rmSync(path.join(DIST, 'test'), { recursive: true, force: true });
 for (const f of fs.existsSync(DIST) ? fs.readdirSync(DIST, { recursive: true }) : []) if (String(f).endsWith('.map')) fs.rmSync(path.join(DIST, String(f)));
+for (const relative of ['sw.js', 'test/play.js', 'test/play.html', 'test/aicheck.js', 'test/aicheck.html',
+  'icon-180.png', 'icon-192.png', 'icon-512.png', 'icon-maskable-512.png']) {
+  for (const root of [DIST, DEV]) {
+    const obsolete = path.resolve(root, relative);
+    if (!obsolete.startsWith(path.resolve(root) + path.sep)) throw new Error('Invalid build cleanup path');
+    fs.rmSync(obsolete, { force: true });
+  }
+}
 fs.mkdirSync(path.join(DEV, 'test'), { recursive: true });
 fs.mkdirSync(DIST, { recursive: true });
 // the start page (its script and stylesheet are main.js / main.css), and its files as they are (src/static: the
@@ -93,7 +101,7 @@ function changelog(md) {
   return out;
 }
 const page =name => `<!doctype html><meta charset=utf-8><title>${name}</title><script type=module src="/test/${name}.js"></script>`;
-for (const name of ['play', 'hostcheck', 'shadercheck', 'aicheck']) fs.writeFileSync(path.join(DEV, 'test', `${name}.html`), page(name));
+for (const name of ['hostcheck', 'shadercheck']) fs.writeFileSync(path.join(DEV, 'test', `${name}.html`), page(name));
 // the player's page takes its address's test parameters only from a server that serves this (--dev: shell.ts)
 fs.writeFileSync(path.join(DEV, 'test', 'dev.json'), '{"dev":true}\n');
 if (watch) {

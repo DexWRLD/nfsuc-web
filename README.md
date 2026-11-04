@@ -2,7 +2,7 @@
 
 Research fork aimed at **Need for Speed: Undercover** — take a retail `nfs.exe` you already own, lift ordinary x86 into C, and poke at what actually runs in a small native harness.
 
-This does **not** boot the game. No browser build yet. Not affiliated with EA.
+The private browser preview displays verified startup media and bounded translated-code diagnostics. Full game boot and gameplay remain blocked. Independent of Electronic Arts.
 
 Your install stays on your machine. Tools only read it. Game binaries and generated game C never go in git.
 
