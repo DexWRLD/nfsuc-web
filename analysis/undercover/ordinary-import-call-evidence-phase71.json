@@ -1,0 +1,430 @@
+{
+  "sourceSha256": "6b10551649fd70fa630bd7454fd953f51555fa2dd2112faae84ac8ca97844bcd",
+  "researchPath": "C:\\Users\\999\\Documents\\KTA\\research\\undercover-phase70-legacy-crt-binding.md",
+  "researchSha256": "7400cf4847e2399b6d6bdef94c937fc01f5aba0c4821d53347b57b549df6af8f",
+  "scannedOrdinarySection": ".text",
+  "scannedBytes": 7733248,
+  "advertisedImportCount": 625,
+  "advertisedActiveIatLiteralReferences": [],
+  "activeIatCallOrThunkCandidates": [],
+  "absoluteCallCandidateCount": 3808,
+  "absoluteJumpThunkCandidateCount": 464,
+  "legacyNameRecords": [
+    {
+      "cell": 11932548,
+      "rawValue": 9088046,
+      "section": ".rdata",
+      "originalImportNameRva": 9088046,
+      "importNameAddress": 13282350,
+      "importNameSection": ".rdata",
+      "importName": "_unlock",
+      "nameIdentityVerifiedFromOriginalBytes": true,
+      "matchingActiveSymbols": [
+        {
+          "cell": 36495435,
+          "dll": "MSVCR80.dll",
+          "symbol": "_unlock"
+        }
+      ],
+      "advertisedImportDescriptorOwnsLegacyCell": false,
+      "runtimeBindingVerified": false,
+      "warning": "RVA interpretation proves a name record, not a callable target or live IAT binding. CPU still sees the raw dword."
+    },
+    {
+      "cell": 11932552,
+      "rawValue": 9088056,
+      "section": ".rdata",
+      "originalImportNameRva": 9088056,
+      "importNameAddress": 13282360,
+      "importNameSection": ".rdata",
+      "importName": "__dllonexit",
+      "nameIdentityVerifiedFromOriginalBytes": true,
+      "matchingActiveSymbols": [
+        {
+          "cell": 36495439,
+          "dll": "MSVCR80.dll",
+          "symbol": "__dllonexit"
+        }
+      ],
+      "advertisedImportDescriptorOwnsLegacyCell": false,
+      "runtimeBindingVerified": false,
+      "warning": "RVA interpretation proves a name record, not a callable target or live IAT binding. CPU still sees the raw dword."
+    },
+    {
+      "cell": 11932556,
+      "rawValue": 9088070,
+      "section": ".rdata",
+      "originalImportNameRva": 9088070,
+      "importNameAddress": 13282374,
+      "importNameSection": ".rdata",
+      "importName": "_encode_pointer",
+      "nameIdentityVerifiedFromOriginalBytes": true,
+      "matchingActiveSymbols": [
+        {
+          "cell": 36495443,
+          "dll": "MSVCR80.dll",
+          "symbol": "_encode_pointer"
+        }
+      ],
+      "advertisedImportDescriptorOwnsLegacyCell": false,
+      "runtimeBindingVerified": false,
+      "warning": "RVA interpretation proves a name record, not a callable target or live IAT binding. CPU still sees the raw dword."
+    },
+    {
+      "cell": 11932560,
+      "rawValue": 9088088,
+      "section": ".rdata",
+      "originalImportNameRva": 9088088,
+      "importNameAddress": 13282392,
+      "importNameSection": ".rdata",
+      "importName": "_lock",
+      "nameIdentityVerifiedFromOriginalBytes": true,
+      "matchingActiveSymbols": [
+        {
+          "cell": 36495447,
+          "dll": "MSVCR80.dll",
+          "symbol": "_lock"
+        }
+      ],
+      "advertisedImportDescriptorOwnsLegacyCell": false,
+      "runtimeBindingVerified": false,
+      "warning": "RVA interpretation proves a name record, not a callable target or live IAT binding. CPU still sees the raw dword."
+    },
+    {
+      "cell": 11932564,
+      "rawValue": 9088096,
+      "section": ".rdata",
+      "originalImportNameRva": 9088096,
+      "importNameAddress": 13282400,
+      "importNameSection": ".rdata",
+      "importName": "_onexit",
+      "nameIdentityVerifiedFromOriginalBytes": true,
+      "matchingActiveSymbols": [
+        {
+          "cell": 36495451,
+          "dll": "MSVCR80.dll",
+          "symbol": "_onexit"
+        }
+      ],
+      "advertisedImportDescriptorOwnsLegacyCell": false,
+      "runtimeBindingVerified": false,
+      "warning": "RVA interpretation proves a name record, not a callable target or live IAT binding. CPU still sees the raw dword."
+    },
+    {
+      "cell": 11932568,
+      "rawValue": 9088106,
+      "section": ".rdata",
+      "originalImportNameRva": 9088106,
+      "importNameAddress": 13282410,
+      "importNameSection": ".rdata",
+      "importName": "_decode_pointer",
+      "nameIdentityVerifiedFromOriginalBytes": true,
+      "matchingActiveSymbols": [
+        {
+          "cell": 36495455,
+          "dll": "MSVCR80.dll",
+          "symbol": "_decode_pointer"
+        }
+      ],
+      "advertisedImportDescriptorOwnsLegacyCell": false,
+      "runtimeBindingVerified": false,
+      "warning": "RVA interpretation proves a name record, not a callable target or live IAT binding. CPU still sees the raw dword."
+    },
+    {
+      "cell": 11932592,
+      "rawValue": 9088190,
+      "section": ".rdata",
+      "originalImportNameRva": 9088190,
+      "importNameAddress": 13282494,
+      "importNameSection": ".rdata",
+      "importName": "_initterm",
+      "nameIdentityVerifiedFromOriginalBytes": true,
+      "matchingActiveSymbols": [
+        {
+          "cell": 36495479,
+          "dll": "MSVCR80.dll",
+          "symbol": "_initterm"
+        }
+      ],
+      "advertisedImportDescriptorOwnsLegacyCell": false,
+      "runtimeBindingVerified": false,
+      "warning": "RVA interpretation proves a name record, not a callable target or live IAT binding. CPU still sees the raw dword."
+    },
+    {
+      "cell": 11932596,
+      "rawValue": 9088202,
+      "section": ".rdata",
+      "originalImportNameRva": 9088202,
+      "importNameAddress": 13282506,
+      "importNameSection": ".rdata",
+      "importName": "_initterm_e",
+      "nameIdentityVerifiedFromOriginalBytes": true,
+      "matchingActiveSymbols": [
+        {
+          "cell": 36495483,
+          "dll": "MSVCR80.dll",
+          "symbol": "_initterm_e"
+        }
+      ],
+      "advertisedImportDescriptorOwnsLegacyCell": false,
+      "runtimeBindingVerified": false,
+      "warning": "RVA interpretation proves a name record, not a callable target or live IAT binding. CPU still sees the raw dword."
+    },
+    {
+      "cell": 11932620,
+      "rawValue": 9088304,
+      "section": ".rdata",
+      "originalImportNameRva": 9088304,
+      "importNameAddress": 13282608,
+      "importNameSection": ".rdata",
+      "importName": "__set_app_type",
+      "nameIdentityVerifiedFromOriginalBytes": true,
+      "matchingActiveSymbols": [
+        {
+          "cell": 36495507,
+          "dll": "MSVCR80.dll",
+          "symbol": "__set_app_type"
+        }
+      ],
+      "advertisedImportDescriptorOwnsLegacyCell": false,
+      "runtimeBindingVerified": false,
+      "warning": "RVA interpretation proves a name record, not a callable target or live IAT binding. CPU still sees the raw dword."
+    },
+    {
+      "cell": 11932632,
+      "rawValue": 9088398,
+      "section": ".rdata",
+      "originalImportNameRva": 9088398,
+      "importNameAddress": 13282702,
+      "importNameSection": ".rdata",
+      "importName": "_except_handler4_common",
+      "nameIdentityVerifiedFromOriginalBytes": true,
+      "matchingActiveSymbols": [
+        {
+          "cell": 36495519,
+          "dll": "MSVCR80.dll",
+          "symbol": "_except_handler4_common"
+        }
+      ],
+      "advertisedImportDescriptorOwnsLegacyCell": false,
+      "runtimeBindingVerified": false,
+      "warning": "RVA interpretation proves a name record, not a callable target or live IAT binding. CPU still sees the raw dword."
+    },
+    {
+      "cell": 11932064,
+      "rawValue": 9089278,
+      "section": ".rdata",
+      "originalImportNameRva": 9089278,
+      "importNameAddress": 13283582,
+      "importNameSection": ".rdata",
+      "importName": "GetSystemTimeAsFileTime",
+      "nameIdentityVerifiedFromOriginalBytes": true,
+      "matchingActiveSymbols": [
+        {
+          "cell": 36493667,
+          "dll": "KERNEL32.dll",
+          "symbol": "GetSystemTimeAsFileTime"
+        }
+      ],
+      "advertisedImportDescriptorOwnsLegacyCell": false,
+      "runtimeBindingVerified": false,
+      "warning": "RVA interpretation proves a name record, not a callable target or live IAT binding. CPU still sees the raw dword."
+    },
+    {
+      "cell": 11932220,
+      "rawValue": 9086980,
+      "section": ".rdata",
+      "originalImportNameRva": 9086980,
+      "importNameAddress": 13281284,
+      "importNameSection": ".rdata",
+      "importName": "memset",
+      "nameIdentityVerifiedFromOriginalBytes": true,
+      "matchingActiveSymbols": [
+        {
+          "cell": 36495107,
+          "dll": "MSVCR80.dll",
+          "symbol": "memset"
+        }
+      ],
+      "advertisedImportDescriptorOwnsLegacyCell": false,
+      "runtimeBindingVerified": false,
+      "warning": "RVA interpretation proves a name record, not a callable target or live IAT binding. CPU still sees the raw dword."
+    }
+  ],
+  "rawLegacyCallCandidates": [
+    {
+      "address": 8893889,
+      "bytes": "ff159413b600",
+      "instruction": "CALL [0x00B61394]",
+      "cell": 11932564,
+      "activeImportIdentity": null,
+      "classification": "RAW_CANDIDATE_NOT_REACHABILITY_PROOF"
+    },
+    {
+      "address": 8895770,
+      "bytes": "ff15cc13b600",
+      "instruction": "CALL [0x00B613CC]",
+      "cell": 11932620,
+      "activeImportIdentity": null,
+      "classification": "RAW_CANDIDATE_NOT_REACHABILITY_PROOF"
+    },
+    {
+      "address": 8895778,
+      "bytes": "ff158c13b600",
+      "instruction": "CALL [0x00B6138C]",
+      "cell": 11932556,
+      "activeImportIdentity": null,
+      "classification": "RAW_CANDIDATE_NOT_REACHABILITY_PROOF"
+    },
+    {
+      "address": 8897177,
+      "bytes": "ff15a011b600",
+      "instruction": "CALL [0x00B611A0]",
+      "cell": 11932064,
+      "activeImportIdentity": null,
+      "classification": "RAW_CANDIDATE_NOT_REACHABILITY_PROOF"
+    }
+  ],
+  "rawLegacyThunkCandidates": [
+    {
+      "address": 8893142,
+      "bytes": "ff253c12b600",
+      "instruction": "JMP [0x00B6123C]",
+      "cell": 11932220,
+      "activeImportIdentity": null,
+      "classification": "RAW_CANDIDATE_NOT_REACHABILITY_PROOF"
+    },
+    {
+      "address": 8896498,
+      "bytes": "ff258413b600",
+      "instruction": "JMP [0x00B61384]",
+      "cell": 11932548,
+      "activeImportIdentity": null,
+      "classification": "RAW_CANDIDATE_NOT_REACHABILITY_PROOF"
+    },
+    {
+      "address": 8896504,
+      "bytes": "ff258813b600",
+      "instruction": "JMP [0x00B61388]",
+      "cell": 11932552,
+      "activeImportIdentity": null,
+      "classification": "RAW_CANDIDATE_NOT_REACHABILITY_PROOF"
+    },
+    {
+      "address": 8896510,
+      "bytes": "ff259013b600",
+      "instruction": "JMP [0x00B61390]",
+      "cell": 11932560,
+      "activeImportIdentity": null,
+      "classification": "RAW_CANDIDATE_NOT_REACHABILITY_PROOF"
+    },
+    {
+      "address": 8897068,
+      "bytes": "ff25b013b600",
+      "instruction": "JMP [0x00B613B0]",
+      "cell": 11932592,
+      "activeImportIdentity": null,
+      "classification": "RAW_CANDIDATE_NOT_REACHABILITY_PROOF"
+    },
+    {
+      "address": 8897074,
+      "bytes": "ff25b413b600",
+      "instruction": "JMP [0x00B613B4]",
+      "cell": 11932596,
+      "activeImportIdentity": null,
+      "classification": "RAW_CANDIDATE_NOT_REACHABILITY_PROOF"
+    },
+    {
+      "address": 8897284,
+      "bytes": "ff25d813b600",
+      "instruction": "JMP [0x00B613D8]",
+      "cell": 11932632,
+      "activeImportIdentity": null,
+      "classification": "RAW_CANDIDATE_NOT_REACHABILITY_PROOF"
+    }
+  ],
+  "ordinaryLegacyExamples": [
+    {
+      "caller": 7576464,
+      "callsite": 7576476,
+      "callBytes": "e835171400",
+      "originalReturn": 7576481,
+      "thunk": 8893142,
+      "cell": 11932220,
+      "importedName": "memset",
+      "expectedArguments": [
+        "writable destination from caller [ESP+4]",
+        "zero",
+        "0x180 bytes"
+      ],
+      "expectedAbi": "cdecl; original caller ADD ESP,0xC at 0x00739BA1",
+      "expectedReturn": "EAX destination if genuine memset provider returns",
+      "requiredState": "bounded source stack and 0x180 writable bytes; effective import binding",
+      "ordinaryEdgeVerified": true,
+      "startupReachability": "UNVERIFIED",
+      "providerBindingVerified": false
+    },
+    {
+      "caller": 8897124,
+      "callsite": 8897177,
+      "callBytes": "ff15a011b600",
+      "cell": 11932064,
+      "importedName": "GetSystemTimeAsFileTime",
+      "expectedArguments": [
+        "pointer to two writable FILETIME dwords at EBP-8"
+      ],
+      "expectedAbi": "stdcall-shaped one-pointer Win32 call; no caller cleanup at this edge",
+      "requiredState": "original cookie frame, default-cookie branch, effective import binding",
+      "ordinaryEdgeVerified": true,
+      "startupReachability": "UNVERIFIED",
+      "providerBindingVerified": false
+    }
+  ],
+  "existingMemsetHarness": {
+    "originalThunk": {
+      "address": 8893142,
+      "bytes": "ff253c12b600",
+      "instruction": "JMP [0x00B6123C]",
+      "cell": 11932220,
+      "activeImportIdentity": null,
+      "classification": "RAW_CANDIDATE_NOT_REACHABILITY_PROOF"
+    },
+    "source": "tools/uc_phase7_test.py: sub_0087b2d6 replacement + runtime/uc_import_table.inc",
+    "classification": "HOST_IMPORT_CONTRACT_FIXTURE_NOT_PROOF_OF_ORIGINAL_RUNTIME_BINDING",
+    "newlyExecuted": false
+  },
+  "earliestCrtDependencies": {
+    "cookie": {
+      "callsite": 8897177,
+      "cell": 11932064,
+      "rawValue": 9089278,
+      "importName": "GetSystemTimeAsFileTime",
+      "bindingVerified": false
+    },
+    "preC": {
+      "callsite": 8895770,
+      "cell": 11932620,
+      "rawValue": 9088304,
+      "importName": "__set_app_type",
+      "bindingVerified": false
+    },
+    "sentinel": {
+      "callsite": 8895778,
+      "cell": 11932556,
+      "rawValue": 9088070,
+      "importName": "_encode_pointer",
+      "bindingVerified": false
+    }
+  },
+  "priorWriterSearch": "crt-provider-binding-phase70.json and fresh external research: no proven writer/copy; literal/indexed scope only",
+  "legitimateOrdinaryImportExecutionEstablished": false,
+  "legacyRuntimeBindingVerified": false,
+  "provenBindingWriter": null,
+  "importedServicesExecuted": [],
+  "crtExecutionAdvanced": false,
+  "gate": "BLOCKED_UNAVAILABLE_PROVIDER_PROVENANCE",
+  "repeatSearchPolicy": "CLOSED_UNTIL_NEW_WRITER_OR_BINDING_EVIDENCE; no further positional-correspondence phases",
+  "limits": "Ordinary .text absolute literals/opcodes only. Register-computed targets/copies, dataflow and unavailable sections are not exhaustively covered. Raw opcode starts may be inside other instructions; no candidate is automatically admitted.",
+  "protectedCodeExecuted": false,
+  "legacyCellsChanged": false
+}

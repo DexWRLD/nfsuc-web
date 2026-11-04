@@ -1,8 +1,8 @@
 {
   "project": {
     "name": "nfsuc-web",
-    "current_phase": 70,
-    "strategy": "Active MSVCR80 import identities and conditional CRT order are independently verified. No effective legacy-cell binding is proved; the connected SEH registrar still stops at 0x0087B5B3 with unchanged globals and no imported services executed."
+    "current_phase": 71,
+    "strategy": "NO-GO further speculative provider translation. GO bounded hybrid CPU feasibility gate; original provider binding remains unproved and connected browser execution still traps at 0x0087B5B3."
   },
   "discovery": {
     "candidates": 25450,
@@ -7355,6 +7355,10 @@
     {
       "name": "CRT INITIALIZATION ORDER",
       "state": "CONDITIONAL STATIC GRAPH"
+    },
+    {
+      "name": "NATIVE X86 DIFFERENTIAL PROTOTYPE",
+      "state": "VERIFIED FIXTURE; BROWSER BACKEND NOT INTEGRATED"
     }
   ],
   "history": [

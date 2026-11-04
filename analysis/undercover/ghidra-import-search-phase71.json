@@ -1,0 +1,137 @@
+[
+  {
+    "address": "022cd82f",
+    "data": {
+      "items": [
+        {
+          "from": "00400e18",
+          "type": "DATA",
+          "from_function": null
+        }
+      ],
+      "offset": 0,
+      "limit": 100,
+      "total": 1,
+      "has_more": false
+    }
+  },
+  {
+    "address": "022cd893",
+    "data": {
+      "items": [],
+      "offset": 0,
+      "limit": 100,
+      "total": 0,
+      "has_more": false
+    }
+  },
+  {
+    "address": "022cdb3b",
+    "data": {
+      "items": [],
+      "offset": 0,
+      "limit": 100,
+      "total": 0,
+      "has_more": false
+    }
+  },
+  {
+    "address": "022cdb3f",
+    "data": {
+      "items": [],
+      "offset": 0,
+      "limit": 100,
+      "total": 0,
+      "has_more": false
+    }
+  },
+  {
+    "address": "022cd8cf",
+    "data": {
+      "items": [],
+      "offset": 0,
+      "limit": 100,
+      "total": 0,
+      "has_more": false
+    }
+  },
+  {
+    "address": "022cd907",
+    "data": {
+      "items": [],
+      "offset": 0,
+      "limit": 100,
+      "total": 0,
+      "has_more": false
+    }
+  },
+  {
+    "address": "00b61230",
+    "data": {
+      "items": [
+        {
+          "from": "00ae5074",
+          "type": "INDIRECTION",
+          "from_function": {
+            "name": "FUN_00ae5074",
+            "address": "00ae5074"
+          }
+        }
+      ],
+      "offset": 0,
+      "limit": 100,
+      "total": 1,
+      "has_more": false
+    }
+  },
+  {
+    "address": "00b61000",
+    "data": {
+      "items": [
+        {
+          "from": "00400d70",
+          "type": "DATA",
+          "from_function": null
+        },
+        {
+          "from": "00400e6c",
+          "type": "DATA",
+          "from_function": null
+        }
+      ],
+      "offset": 0,
+      "limit": 100,
+      "total": 2,
+      "has_more": false
+    }
+  },
+  {
+    "address": "00b611a0",
+    "data": {
+      "items": [
+        {
+          "from": "0087c299",
+          "type": "READ",
+          "from_function": {
+            "name": "___security_init_cookie",
+            "address": "0087c264"
+          }
+        }
+      ],
+      "offset": 0,
+      "limit": 100,
+      "total": 1,
+      "has_more": false
+    }
+  },
+  {
+    "address": "00b613cc",
+    "data": {
+      "items": [],
+      "offset": 0,
+      "limit": 100,
+      "total": 0,
+      "has_more": false
+    }
+  }
+]

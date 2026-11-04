@@ -1,6 +1,6 @@
 {
-  "current_phase": 70,
-  "strategy": "Active MSVCR80 import identities and conditional CRT order are independently verified. No effective legacy-cell binding is proved; the connected SEH registrar still stops at 0x0087B5B3 with unchanged globals and no imported services executed.",
+  "current_phase": 71,
+  "strategy": "NO-GO further speculative provider translation. GO bounded hybrid CPU feasibility gate; original provider binding remains unproved and connected browser execution still traps at 0x0087B5B3.",
   "boundaries": {
     "0x00686000": {
       "status": "PROTECTED_OR_EXTERNAL_DEPENDENCY",
@@ -643,6 +643,10 @@
     {
       "name": "CRT INITIALIZATION ORDER",
       "state": "CONDITIONAL STATIC GRAPH"
+    },
+    {
+      "name": "NATIVE X86 DIFFERENTIAL PROTOTYPE",
+      "state": "VERIFIED FIXTURE; BROWSER BACKEND NOT INTEGRATED"
     }
   ],
   "frontend_frame_revalidation": {
@@ -687,5 +691,15 @@
     "initializer_traversal_executed": false,
     "new_original_functions_entered": 0,
     "frontier_advanced": false
+  },
+  "runtime_feasibility": {
+    "evidence": "runtime-feasibility-phase71.md",
+    "import_evidence": "ordinary-import-call-evidence-phase71.json",
+    "native_prototype": "x86-prototype-phase71.json",
+    "native_cpu_differential_verified": true,
+    "browser_engine_integrated": false,
+    "provider_search": "CLOSED_UNTIL_NEW_WRITER_OR_BINDING_EVIDENCE",
+    "next_milestone": 5,
+    "original_crt_execution_advanced": false
   }
 }
