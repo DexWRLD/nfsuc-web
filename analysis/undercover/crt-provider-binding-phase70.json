@@ -1,0 +1,741 @@
+{
+  "sourceSha256": "6b10551649fd70fa630bd7454fd953f51555fa2dd2112faae84ac8ca97844bcd",
+  "researchPath": "C:\\Users\\999\\Documents\\KTA\\research\\undercover-phase69-provider-provenance.md",
+  "researchSha256": "1e8ec2694324de87712dfe1adfa1942b38f644b08a217737b73f521145bce72b",
+  "descriptor": {
+    "index": 13,
+    "address": 36498819,
+    "originalFirstThunkRva": 32303391,
+    "dllNameRva": 32296034,
+    "firstThunkRva": 32300791,
+    "importCount": 171,
+    "section": {
+      "name": ".securom",
+      "readable": true,
+      "writable": true,
+      "executable": true
+    }
+  },
+  "directories": {
+    "1": {
+      "rva": 32304255,
+      "size": 520
+    },
+    "5": {
+      "rva": 0,
+      "size": 0
+    },
+    "11": {
+      "rva": 0,
+      "size": 0
+    },
+    "12": {
+      "rva": 32299055,
+      "size": 2600
+    },
+    "13": {
+      "rva": 0,
+      "size": 0
+    }
+  },
+  "characteristics": 259,
+  "relocationsStripped": true,
+  "legacyBlock": {
+    "start": 11932208,
+    "endTerminator": 11932892,
+    "prefixTerminator": 0,
+    "terminator": 0
+  },
+  "providers": [
+    {
+      "legacyCell": 11932548,
+      "legacyFileValue": 9088046,
+      "legacySection": {
+        "name": ".rdata",
+        "readable": true,
+        "writable": false,
+        "executable": false
+      },
+      "activeImportCell": 36495435,
+      "activeSection": {
+        "name": ".securom",
+        "readable": true,
+        "writable": true,
+        "executable": true
+      },
+      "dll": "MSVCR80.dll",
+      "symbol": "_unlock",
+      "hintNameRva": 32297087,
+      "hint": 1011,
+      "index": 85,
+      "fileIatValue": 32297087,
+      "tableIndex": 85,
+      "positionalDelta": 24562887,
+      "correspondence": "POSITIONAL_AND_CALLSITE_ROLE_ONLY",
+      "runtimeBindingVerified": false,
+      "loaderResolvedExternalService": null,
+      "adapterImplemented": false,
+      "expectedLegacyAbi": {
+        "convention": "cdecl",
+        "argumentBytes": 4,
+        "provenance": "original consuming stack cleanup; not ABI of overlapping file target"
+      }
+    },
+    {
+      "legacyCell": 11932552,
+      "legacyFileValue": 9088056,
+      "legacySection": {
+        "name": ".rdata",
+        "readable": true,
+        "writable": false,
+        "executable": false
+      },
+      "activeImportCell": 36495439,
+      "activeSection": {
+        "name": ".securom",
+        "readable": true,
+        "writable": true,
+        "executable": true
+      },
+      "dll": "MSVCR80.dll",
+      "symbol": "__dllonexit",
+      "hintNameRva": 32297097,
+      "hint": 153,
+      "index": 86,
+      "fileIatValue": 32297097,
+      "tableIndex": 86,
+      "positionalDelta": 24562887,
+      "correspondence": "POSITIONAL_AND_CALLSITE_ROLE_ONLY",
+      "runtimeBindingVerified": false,
+      "loaderResolvedExternalService": null,
+      "adapterImplemented": false,
+      "expectedLegacyAbi": {
+        "convention": "cdecl",
+        "argumentBytes": 12,
+        "provenance": "original consuming stack cleanup; not ABI of overlapping file target"
+      }
+    },
+    {
+      "legacyCell": 11932556,
+      "legacyFileValue": 9088070,
+      "legacySection": {
+        "name": ".rdata",
+        "readable": true,
+        "writable": false,
+        "executable": false
+      },
+      "activeImportCell": 36495443,
+      "activeSection": {
+        "name": ".securom",
+        "readable": true,
+        "writable": true,
+        "executable": true
+      },
+      "dll": "MSVCR80.dll",
+      "symbol": "_encode_pointer",
+      "hintNameRva": 32297111,
+      "hint": 370,
+      "index": 87,
+      "fileIatValue": 32297111,
+      "tableIndex": 87,
+      "positionalDelta": 24562887,
+      "correspondence": "POSITIONAL_AND_CALLSITE_ROLE_ONLY",
+      "runtimeBindingVerified": false,
+      "loaderResolvedExternalService": null,
+      "adapterImplemented": false,
+      "expectedLegacyAbi": {
+        "convention": "cdecl",
+        "argumentBytes": 4,
+        "provenance": "original consuming stack cleanup; not ABI of overlapping file target"
+      }
+    },
+    {
+      "legacyCell": 11932560,
+      "legacyFileValue": 9088088,
+      "legacySection": {
+        "name": ".rdata",
+        "readable": true,
+        "writable": false,
+        "executable": false
+      },
+      "activeImportCell": 36495447,
+      "activeSection": {
+        "name": ".securom",
+        "readable": true,
+        "writable": true,
+        "executable": true
+      },
+      "dll": "MSVCR80.dll",
+      "symbol": "_lock",
+      "hintNameRva": 32297129,
+      "hint": 642,
+      "index": 88,
+      "fileIatValue": 32297129,
+      "tableIndex": 88,
+      "positionalDelta": 24562887,
+      "correspondence": "POSITIONAL_AND_CALLSITE_ROLE_ONLY",
+      "runtimeBindingVerified": false,
+      "loaderResolvedExternalService": null,
+      "adapterImplemented": false,
+      "expectedLegacyAbi": {
+        "convention": "cdecl",
+        "argumentBytes": 4,
+        "provenance": "original consuming stack cleanup; not ABI of overlapping file target"
+      }
+    },
+    {
+      "legacyCell": 11932564,
+      "legacyFileValue": 9088096,
+      "legacySection": {
+        "name": ".rdata",
+        "readable": true,
+        "writable": false,
+        "executable": false
+      },
+      "activeImportCell": 36495451,
+      "activeSection": {
+        "name": ".securom",
+        "readable": true,
+        "writable": true,
+        "executable": true
+      },
+      "dll": "MSVCR80.dll",
+      "symbol": "_onexit",
+      "hintNameRva": 32297137,
+      "hint": 808,
+      "index": 89,
+      "fileIatValue": 32297137,
+      "tableIndex": 89,
+      "positionalDelta": 24562887,
+      "correspondence": "POSITIONAL_AND_CALLSITE_ROLE_ONLY",
+      "runtimeBindingVerified": false,
+      "loaderResolvedExternalService": null,
+      "adapterImplemented": false,
+      "expectedLegacyAbi": {
+        "convention": "cdecl",
+        "argumentBytes": 4,
+        "provenance": "original consuming stack cleanup; not ABI of overlapping file target"
+      }
+    },
+    {
+      "legacyCell": 11932568,
+      "legacyFileValue": 9088106,
+      "legacySection": {
+        "name": ".rdata",
+        "readable": true,
+        "writable": false,
+        "executable": false
+      },
+      "activeImportCell": 36495455,
+      "activeSection": {
+        "name": ".securom",
+        "readable": true,
+        "writable": true,
+        "executable": true
+      },
+      "dll": "MSVCR80.dll",
+      "symbol": "_decode_pointer",
+      "hintNameRva": 32297147,
+      "hint": 360,
+      "index": 90,
+      "fileIatValue": 32297147,
+      "tableIndex": 90,
+      "positionalDelta": 24562887,
+      "correspondence": "POSITIONAL_AND_CALLSITE_ROLE_ONLY",
+      "runtimeBindingVerified": false,
+      "loaderResolvedExternalService": null,
+      "adapterImplemented": false,
+      "expectedLegacyAbi": {
+        "convention": "cdecl",
+        "argumentBytes": 4,
+        "provenance": "original consuming stack cleanup; not ABI of overlapping file target"
+      }
+    },
+    {
+      "legacyCell": 11932632,
+      "legacyFileValue": 9088398,
+      "legacySection": {
+        "name": ".rdata",
+        "readable": true,
+        "writable": false,
+        "executable": false
+      },
+      "activeImportCell": 36495519,
+      "activeSection": {
+        "name": ".securom",
+        "readable": true,
+        "writable": true,
+        "executable": true
+      },
+      "dll": "MSVCR80.dll",
+      "symbol": "_except_handler4_common",
+      "hintNameRva": 32297430,
+      "hint": 379,
+      "index": 106,
+      "fileIatValue": 32297430,
+      "tableIndex": 106,
+      "positionalDelta": 24562887,
+      "correspondence": "POSITIONAL_AND_CALLSITE_ROLE_ONLY",
+      "runtimeBindingVerified": false,
+      "loaderResolvedExternalService": null,
+      "adapterImplemented": false,
+      "expectedLegacyAbi": {
+        "convention": "cdecl",
+        "argumentBytes": 24,
+        "provenance": "original consuming stack cleanup; not ABI of overlapping file target"
+      }
+    },
+    {
+      "legacyCell": 11932592,
+      "legacyFileValue": 9088190,
+      "legacySection": {
+        "name": ".rdata",
+        "readable": true,
+        "writable": false,
+        "executable": false
+      },
+      "activeImportCell": 36495479,
+      "activeSection": {
+        "name": ".securom",
+        "readable": true,
+        "writable": true,
+        "executable": true
+      },
+      "dll": "MSVCR80.dll",
+      "symbol": "_initterm",
+      "hintNameRva": 32297229,
+      "hint": 528,
+      "index": 96,
+      "fileIatValue": 32297229,
+      "tableIndex": 96,
+      "positionalDelta": 24562887,
+      "correspondence": "POSITIONAL_AND_CALLSITE_ROLE_ONLY",
+      "runtimeBindingVerified": false,
+      "loaderResolvedExternalService": null,
+      "adapterImplemented": false,
+      "expectedLegacyAbi": {
+        "convention": "cdecl",
+        "argumentBytes": 8,
+        "provenance": "original consuming stack cleanup; not ABI of overlapping file target"
+      }
+    },
+    {
+      "legacyCell": 11932596,
+      "legacyFileValue": 9088202,
+      "legacySection": {
+        "name": ".rdata",
+        "readable": true,
+        "writable": false,
+        "executable": false
+      },
+      "activeImportCell": 36495483,
+      "activeSection": {
+        "name": ".securom",
+        "readable": true,
+        "writable": true,
+        "executable": true
+      },
+      "dll": "MSVCR80.dll",
+      "symbol": "_initterm_e",
+      "hintNameRva": 32297241,
+      "hint": 529,
+      "index": 97,
+      "fileIatValue": 32297241,
+      "tableIndex": 97,
+      "positionalDelta": 24562887,
+      "correspondence": "POSITIONAL_AND_CALLSITE_ROLE_ONLY",
+      "runtimeBindingVerified": false,
+      "loaderResolvedExternalService": null,
+      "adapterImplemented": false,
+      "expectedLegacyAbi": {
+        "convention": "cdecl",
+        "argumentBytes": 8,
+        "provenance": "original consuming stack cleanup; not ABI of overlapping file target"
+      }
+    },
+    {
+      "legacyCell": 11932620,
+      "legacyFileValue": 9088304,
+      "legacySection": {
+        "name": ".rdata",
+        "readable": true,
+        "writable": false,
+        "executable": false
+      },
+      "activeImportCell": 36495507,
+      "activeSection": {
+        "name": ".securom",
+        "readable": true,
+        "writable": true,
+        "executable": true
+      },
+      "dll": "MSVCR80.dll",
+      "symbol": "__set_app_type",
+      "hintNameRva": 32297339,
+      "hint": 232,
+      "index": 103,
+      "fileIatValue": 32297339,
+      "tableIndex": 103,
+      "positionalDelta": 24562887,
+      "correspondence": "POSITIONAL_AND_CALLSITE_ROLE_ONLY",
+      "runtimeBindingVerified": false,
+      "loaderResolvedExternalService": null,
+      "adapterImplemented": false,
+      "expectedLegacyAbi": {
+        "convention": "cdecl",
+        "argumentBytes": 4,
+        "provenance": "original consuming stack cleanup; not ABI of overlapping file target"
+      }
+    }
+  ],
+  "absoluteOperandScan": [
+    {
+      "value": 11932208,
+      "rawOccurrences": [
+        {
+          "operandAddress": 11423862,
+          "candidates": [
+            {
+              "address": 11423860,
+              "bytes": "ff253012b600",
+              "instruction": "jmp dword ptr [0xb61230]",
+              "writeCandidate": false,
+              "boundaryConfidence": "CANDIDATE_UNLESS_IN_INDEPENDENT_DECODE_OR_GHIDRA"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "value": 11932548,
+      "rawOccurrences": [
+        {
+          "operandAddress": 8896500,
+          "candidates": [
+            {
+              "address": 8896498,
+              "bytes": "ff258413b600",
+              "instruction": "jmp dword ptr [0xb61384]",
+              "writeCandidate": false,
+              "boundaryConfidence": "CANDIDATE_UNLESS_IN_INDEPENDENT_DECODE_OR_GHIDRA"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "value": 11932552,
+      "rawOccurrences": [
+        {
+          "operandAddress": 8896506,
+          "candidates": [
+            {
+              "address": 8896504,
+              "bytes": "ff258813b600",
+              "instruction": "jmp dword ptr [0xb61388]",
+              "writeCandidate": false,
+              "boundaryConfidence": "CANDIDATE_UNLESS_IN_INDEPENDENT_DECODE_OR_GHIDRA"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "value": 11932556,
+      "rawOccurrences": [
+        {
+          "operandAddress": 8893947,
+          "candidates": [
+            {
+              "address": 8893945,
+              "bytes": "8b358c13b600",
+              "instruction": "mov esi, dword ptr [0xb6138c]",
+              "writeCandidate": false,
+              "boundaryConfidence": "CANDIDATE_UNLESS_IN_INDEPENDENT_DECODE_OR_GHIDRA"
+            }
+          ]
+        },
+        {
+          "operandAddress": 8895780,
+          "candidates": [
+            {
+              "address": 8895778,
+              "bytes": "ff158c13b600",
+              "instruction": "call dword ptr [0xb6138c]",
+              "writeCandidate": false,
+              "boundaryConfidence": "CANDIDATE_UNLESS_IN_INDEPENDENT_DECODE_OR_GHIDRA"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "value": 11932560,
+      "rawOccurrences": [
+        {
+          "operandAddress": 8896512,
+          "candidates": [
+            {
+              "address": 8896510,
+              "bytes": "ff259013b600",
+              "instruction": "jmp dword ptr [0xb61390]",
+              "writeCandidate": false,
+              "boundaryConfidence": "CANDIDATE_UNLESS_IN_INDEPENDENT_DECODE_OR_GHIDRA"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "value": 11932564,
+      "rawOccurrences": [
+        {
+          "operandAddress": 8893891,
+          "candidates": [
+            {
+              "address": 8893889,
+              "bytes": "ff159413b600",
+              "instruction": "call dword ptr [0xb61394]",
+              "writeCandidate": false,
+              "boundaryConfidence": "CANDIDATE_UNLESS_IN_INDEPENDENT_DECODE_OR_GHIDRA"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "value": 11932568,
+      "rawOccurrences": [
+        {
+          "operandAddress": 8893871,
+          "candidates": [
+            {
+              "address": 8893869,
+              "bytes": "8b359813b600",
+              "instruction": "mov esi, dword ptr [0xb61398]",
+              "writeCandidate": false,
+              "boundaryConfidence": "CANDIDATE_UNLESS_IN_INDEPENDENT_DECODE_OR_GHIDRA"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "value": 11932592,
+      "rawOccurrences": [
+        {
+          "operandAddress": 8897070,
+          "candidates": [
+            {
+              "address": 8897068,
+              "bytes": "ff25b013b600",
+              "instruction": "jmp dword ptr [0xb613b0]",
+              "writeCandidate": false,
+              "boundaryConfidence": "CANDIDATE_UNLESS_IN_INDEPENDENT_DECODE_OR_GHIDRA"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "value": 11932596,
+      "rawOccurrences": [
+        {
+          "operandAddress": 8897076,
+          "candidates": [
+            {
+              "address": 8897074,
+              "bytes": "ff25b413b600",
+              "instruction": "jmp dword ptr [0xb613b4]",
+              "writeCandidate": false,
+              "boundaryConfidence": "CANDIDATE_UNLESS_IN_INDEPENDENT_DECODE_OR_GHIDRA"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "value": 11932620,
+      "rawOccurrences": [
+        {
+          "operandAddress": 8895772,
+          "candidates": [
+            {
+              "address": 8895770,
+              "bytes": "ff15cc13b600",
+              "instruction": "call dword ptr [0xb613cc]",
+              "writeCandidate": false,
+              "boundaryConfidence": "CANDIDATE_UNLESS_IN_INDEPENDENT_DECODE_OR_GHIDRA"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "value": 11932632,
+      "rawOccurrences": [
+        {
+          "operandAddress": 8897286,
+          "candidates": [
+            {
+              "address": 8897284,
+              "bytes": "ff25d813b600",
+              "instruction": "jmp dword ptr [0xb613d8]",
+              "writeCandidate": false,
+              "boundaryConfidence": "CANDIDATE_UNLESS_IN_INDEPENDENT_DECODE_OR_GHIDRA"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "value": 24562887,
+      "rawOccurrences": []
+    },
+    {
+      "value": 36495095,
+      "rawOccurrences": []
+    },
+    {
+      "value": 36495435,
+      "rawOccurrences": []
+    },
+    {
+      "value": 36495439,
+      "rawOccurrences": []
+    },
+    {
+      "value": 36495443,
+      "rawOccurrences": []
+    },
+    {
+      "value": 36495447,
+      "rawOccurrences": []
+    },
+    {
+      "value": 36495451,
+      "rawOccurrences": []
+    },
+    {
+      "value": 36495455,
+      "rawOccurrences": []
+    },
+    {
+      "value": 36495479,
+      "rawOccurrences": []
+    },
+    {
+      "value": 36495483,
+      "rawOccurrences": []
+    },
+    {
+      "value": 36495507,
+      "rawOccurrences": []
+    },
+    {
+      "value": 36495519,
+      "rawOccurrences": []
+    }
+  ],
+  "provenLegacyWriter": null,
+  "provenLoaderCopy": null,
+  "runtimeBindingVerified": false,
+  "adaptersImplemented": [],
+  "importedServicesExecuted": [],
+  "scanLimits": "Only .text literal operands and read-only indexed xrefs reviewed. Computed/unindexed writes or opaque loader behavior remain unverified; no absence proof.",
+  "activeImportCellsMappedInBrowser": false,
+  "activeImportStorage": ".securom; remains unavailable",
+  "legacyCellsChanged": false,
+  "serviceContracts": {
+    "_encode_pointer": {
+      "arguments": "one pointer-sized dword",
+      "result": "EAX transformed pointer; exact MSVCR80 algorithm/error/lifetime unverified",
+      "requiredState": "matching CRT encoding state; no secret or encoded sentinel supplied",
+      "reference": "https://learn.microsoft.com/en-us/previous-versions/bb432254(v=vs.85)",
+      "limit": "Kernel32 EncodePointer documentation is not proof of this CRT implementation or binding",
+      "legacyCallerConvention": "cdecl",
+      "activeDllImplementationAbiVerified": false,
+      "adapterImplemented": false
+    },
+    "_decode_pointer": {
+      "arguments": "one pointer-sized dword",
+      "result": "EAX decoded value expected by original caller; exact provider semantics unverified",
+      "requiredState": "same encoding context and valid encoded data; zero-filled globals are not a proven encoded sentinel",
+      "reference": null,
+      "limit": "No standalone ABI is established for 0x008AAC6A",
+      "legacyCallerConvention": "cdecl",
+      "activeDllImplementationAbiVerified": false,
+      "adapterImplemented": false
+    },
+    "_onexit": {
+      "arguments": "no-argument callback pointer",
+      "result": "documented callback pointer on success, null on storage failure",
+      "requiredState": "owned CRT exit-registration state and lifetime",
+      "reference": "https://learn.microsoft.com/en-us/cpp/c-runtime-library/reference/onexit-onexit-m",
+      "limit": "documented LIFO registration does not authorize an invented guest array",
+      "legacyCallerConvention": "cdecl",
+      "activeDllImplementationAbiVerified": false,
+      "adapterImplemented": false
+    },
+    "__dllonexit": {
+      "arguments": "callback, address of begin-pointer variable, address of end-pointer variable",
+      "result": "documented callback pointer or null on failure",
+      "requiredState": "owned mutable list pointers, allocation and teardown policy",
+      "reference": "https://learn.microsoft.com/en-us/cpp/c-runtime-library/dllonexit",
+      "limit": "provider array capacity/allocation/encoding implementation not established",
+      "legacyCallerConvention": "cdecl",
+      "activeDllImplementationAbiVerified": false,
+      "adapterImplemented": false
+    },
+    "_lock": {
+      "arguments": "int lock number; original registrar passes 8",
+      "result": "documented void; lock acquisition failure can be fatal",
+      "requiredState": "CRT lock table and ownership/concurrency policy",
+      "reference": "https://learn.microsoft.com/en-us/cpp/c-runtime-library/lock",
+      "limit": "not a success no-op; exact target CRT state unavailable",
+      "legacyCallerConvention": "cdecl",
+      "activeDllImplementationAbiVerified": false,
+      "adapterImplemented": false
+    },
+    "_unlock": {
+      "arguments": "int lock number; original finally passes 8",
+      "result": "documented void",
+      "requiredState": "matching CRT lock ownership",
+      "reference": "https://learn.microsoft.com/en-us/cpp/c-runtime-library/unlock",
+      "limit": "unentered original finally; no lock implementation admitted",
+      "legacyCallerConvention": "cdecl",
+      "activeDllImplementationAbiVerified": false,
+      "adapterImplemented": false
+    },
+    "_except_handler4_common": {
+      "arguments": "six original caller-cleaned dwords: cookie/checker and four handler arguments",
+      "result": "exception disposition/provider-dependent behavior unverified",
+      "requiredState": "validated SEH/EH4 scopes, cookie checker and unwind contracts",
+      "reference": null,
+      "limit": "unsupported exception path; no no-op adapter",
+      "legacyCallerConvention": "cdecl",
+      "activeDllImplementationAbiVerified": false,
+      "adapterImplemented": false
+    },
+    "_initterm": {
+      "arguments": "two function-pointer table bounds",
+      "result": "documented void; skips null entries",
+      "requiredState": "effective walker binding and valid earlier CRT initialization",
+      "reference": "https://learn.microsoft.com/en-us/cpp/c-runtime-library/reference/initterm-initterm-e",
+      "limit": "table catalog is not observed traversal",
+      "legacyCallerConvention": "cdecl",
+      "activeDllImplementationAbiVerified": false,
+      "adapterImplemented": false
+    },
+    "_initterm_e": {
+      "arguments": "two int-returning initializer table bounds",
+      "result": "documented zero on success, nonzero on initializer failure",
+      "requiredState": "effective walker binding and caller error gating",
+      "reference": "https://learn.microsoft.com/en-us/cpp/c-runtime-library/reference/initterm-initterm-e",
+      "limit": "conditional original order only; no browser walker executed",
+      "legacyCallerConvention": "cdecl",
+      "activeDllImplementationAbiVerified": false,
+      "adapterImplemented": false
+    }
+  }
+}

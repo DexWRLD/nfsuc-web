@@ -16,7 +16,13 @@
     "0x0087B637"
   ],
   "independent_initialization_root": "0x00B57DC0",
-  "independent_initialization_evidence": "runtime-phase69.md and edge-execution-phase69.json",
+  "independent_initialization_evidence": "runtime-phase70.md and edge-execution-phase70.json",
+  "crt_initialization_order": {
+    "evidence": "crt-initialization-order-phase70.json",
+    "classification": "STATIC_CONDITIONAL_ONLY",
+    "runtime_binding_verified": false,
+    "walker_traversal_executed": false
+  },
   "cleanup_frontier": {
     "callsite": "0x0087B5B3",
     "target": "0x008AAC6A",

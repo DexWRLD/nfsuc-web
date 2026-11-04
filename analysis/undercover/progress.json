@@ -1,8 +1,8 @@
 {
   "project": {
     "name": "nfsuc-web",
-    "current_phase": 69,
-    "strategy": "Original Apt constructor chain enters cleanup registrar and SEH prolog using an explicit synthetic guest-thread fixture; exact provider at 0x0087B5B3 is rejected. Cleanup completion, native thread startup and original game boot remain blocked."
+    "current_phase": 70,
+    "strategy": "Active MSVCR80 import identities and conditional CRT order are independently verified. No effective legacy-cell binding is proved; the connected SEH registrar still stops at 0x0087B5B3 with unchanged globals and no imported services executed."
   },
   "discovery": {
     "candidates": 25450,
@@ -7343,6 +7343,18 @@
     {
       "name": "CLEANUP REGISTRATION",
       "state": "BLOCKED: PROVIDER"
+    },
+    {
+      "name": "ACTIVE CRT IMPORT IDENTITIES",
+      "state": "VERIFIED (STATIC ONLY)"
+    },
+    {
+      "name": "LEGACY CRT PROVIDER BINDING",
+      "state": "UNVERIFIED; BLOCKED"
+    },
+    {
+      "name": "CRT INITIALIZATION ORDER",
+      "state": "CONDITIONAL STATIC GRAPH"
     }
   ],
   "history": [

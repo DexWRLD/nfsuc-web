@@ -61,3 +61,11 @@ Fourteen reviewed original bindings now include the registrar, exact missing nor
 FS offset-zero reads/writes use bounded per-thread fixture mappings, never flat address zero. Specialized exact helper contracts enforce nonstandard ESP/EBP behavior and epilog EAX preservation. Thread creation, TLS, cookie entropy initialization, exceptions/unwinding and original startup order remain unsupported. Without a supplied fixture the original FS read rejects. Separate Node/Edge normal-path fixtures verify nested frames/restoration; they do not resume the blocked registrar. The connected stop leaves its frame linked.
 
 See runtime-phase69.md, seh-normal-path-phase69.json and cleanup-registrar-coverage-phase69.json. Preserve the Phase 60 nine-case frame controls and earlier arithmetic/memory/media regressions. Full-game boot and authentic screen/gameplay remain blocked.
+
+## Phase 70 import identities do not establish binding
+
+Raw PE parsing independently verifies MSVCR80's 171 imported identities and selected counterparts to legacy cells, including the initializer walkers. The active IAT is in unavailable .securom, while reached original code uses read-only .rdata cells directly. Uniform index alignment is not a live binding; no writer, copy or advertised relocation explains replacement. No imported service adapter, legacy-cell mutation or new dispatch target is admitted.
+
+The inspector now shows active identities, original cell values, unsupported effective targets, static conditional CRT order and unchanged cookie/cleanup state. Original 0x0087BD95 establishes cookie-before-startup order if reached; state-gated C/C++ ranges and the pre-C sentinel store instructions are verified statically. Cookie entropy, FS:[0x18], synchronization and legacy walker/encoder bindings remain unresolved. No CRT traversal or sentinel publication was executed.
+
+Actual connected execution still stops exactly at 0x0087B5B3, with twelve entries/seven distinct bodies, nine callee returns, 27 original PE-global writes and a live explicitly synthetic thread SEH frame. Wasm and fourteen bindings remain unchanged. See runtime-phase70.md, crt-provider-binding-phase70.json and crt-initialization-order-phase70.json. Original startup/gameplay remain blocked.

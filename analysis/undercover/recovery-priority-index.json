@@ -184,6 +184,36 @@
       "recommended_next_action": "Normal path and omitted continuation admitted; stop at original unresolved provider 0x0087B5B3"
     },
     {
+      "address": "0x0087BCB3",
+      "classification": "not_recognized_in_ghidra",
+      "priority": 1,
+      "reasons": [
+        "Runtime-relevant research address requires explicit recovery review"
+      ],
+      "known_callers": [],
+      "known_callees": [],
+      "runtime_relevance": "pre-C cleanup sentinel initializer",
+      "recovery_feasibility": "verify exact original bounds",
+      "overlap_risk": "unknown",
+      "confidence": "existing research lead",
+      "recommended_next_action": "Original stores proven but prior __set_app_type-shaped and encode-pointer legacy bindings remain unresolved"
+    },
+    {
+      "address": "0x0087BD95",
+      "classification": "not_recognized_in_ghidra",
+      "priority": 1,
+      "reasons": [
+        "Runtime-relevant research address requires explicit recovery review"
+      ],
+      "known_callers": [],
+      "known_callees": [],
+      "runtime_relevance": "CRT cookie/startup wrapper",
+      "recovery_feasibility": "verify exact original bounds",
+      "overlap_risk": "unknown",
+      "confidence": "existing research lead",
+      "recommended_next_action": "Static direct order verified; prove effective provider binding and entry reachability before admission"
+    },
+    {
       "address": "0x008AAC6A",
       "classification": "not_recognized_in_ghidra",
       "priority": 1,
@@ -381,7 +411,7 @@
       "overlap_risk": false,
       "confidence": "recovery outcome only; runtime semantics unverified",
       "recovery_feasibility": "requires ABI and target validation",
-      "recommended_next_action": "Constructor and wrapper entry verified; cleanup stops at 0x0087B59B"
+      "recommended_next_action": "Constructor/registrar/prolog verified with thread fixture; preserve provider trap at 0x0087B5B3"
     },
     {
       "address": "0x006860F0",

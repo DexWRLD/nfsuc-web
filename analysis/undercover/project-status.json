@@ -1,6 +1,6 @@
 {
-  "current_phase": 69,
-  "strategy": "Original Apt constructor chain enters cleanup registrar and SEH prolog using an explicit synthetic guest-thread fixture; exact provider at 0x0087B5B3 is rejected. Cleanup completion, native thread startup and original game boot remain blocked.",
+  "current_phase": 70,
+  "strategy": "Active MSVCR80 import identities and conditional CRT order are independently verified. No effective legacy-cell binding is proved; the connected SEH registrar still stops at 0x0087B5B3 with unchanged globals and no imported services executed.",
   "boundaries": {
     "0x00686000": {
       "status": "PROTECTED_OR_EXTERNAL_DEPENDENCY",
@@ -631,6 +631,18 @@
     {
       "name": "CLEANUP REGISTRATION",
       "state": "BLOCKED: PROVIDER"
+    },
+    {
+      "name": "ACTIVE CRT IMPORT IDENTITIES",
+      "state": "VERIFIED (STATIC ONLY)"
+    },
+    {
+      "name": "LEGACY CRT PROVIDER BINDING",
+      "state": "UNVERIFIED; BLOCKED"
+    },
+    {
+      "name": "CRT INITIALIZATION ORDER",
+      "state": "CONDITIONAL STATIC GRAPH"
     }
   ],
   "frontend_frame_revalidation": {
@@ -663,5 +675,17 @@
     "original_thread_initialization": false,
     "registrar_completed": false,
     "original_startup_reachability": "UNVERIFIED"
+  },
+  "crt_provider_binding": {
+    "evidence": "crt-provider-binding-phase70.json",
+    "order_evidence": "crt-initialization-order-phase70.json",
+    "verified_active_identities": 10,
+    "effective_legacy_binding_verified": false,
+    "imported_services_executed": [],
+    "cleanup_sentinel_initialized": false,
+    "cookie_initializer_executed": false,
+    "initializer_traversal_executed": false,
+    "new_original_functions_entered": 0,
+    "frontier_advanced": false
   }
 }

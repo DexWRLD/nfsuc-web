@@ -4377,5 +4377,102 @@
         "adapter_status": "candidate platform API; not verified by this inventory"
       }
     ]
+  },
+  "verified_active_pe_imports": {
+    "sourceSha256": "6b10551649fd70fa630bd7454fd953f51555fa2dd2112faae84ac8ca97844bcd",
+    "evidence": "crt-provider-binding-phase70.json",
+    "note": "Raw PE DLL/symbol identities verified; positional legacy correspondence is not runtime binding. No adapter or service executed.",
+    "entries": [
+      {
+        "dll": "MSVCR80.dll",
+        "symbol": "_unlock",
+        "activeImportCell": 36495435,
+        "legacyCell": 11932548,
+        "legacyFileValue": 9088046,
+        "runtimeBindingVerified": false,
+        "adapterImplemented": false
+      },
+      {
+        "dll": "MSVCR80.dll",
+        "symbol": "__dllonexit",
+        "activeImportCell": 36495439,
+        "legacyCell": 11932552,
+        "legacyFileValue": 9088056,
+        "runtimeBindingVerified": false,
+        "adapterImplemented": false
+      },
+      {
+        "dll": "MSVCR80.dll",
+        "symbol": "_encode_pointer",
+        "activeImportCell": 36495443,
+        "legacyCell": 11932556,
+        "legacyFileValue": 9088070,
+        "runtimeBindingVerified": false,
+        "adapterImplemented": false
+      },
+      {
+        "dll": "MSVCR80.dll",
+        "symbol": "_lock",
+        "activeImportCell": 36495447,
+        "legacyCell": 11932560,
+        "legacyFileValue": 9088088,
+        "runtimeBindingVerified": false,
+        "adapterImplemented": false
+      },
+      {
+        "dll": "MSVCR80.dll",
+        "symbol": "_onexit",
+        "activeImportCell": 36495451,
+        "legacyCell": 11932564,
+        "legacyFileValue": 9088096,
+        "runtimeBindingVerified": false,
+        "adapterImplemented": false
+      },
+      {
+        "dll": "MSVCR80.dll",
+        "symbol": "_decode_pointer",
+        "activeImportCell": 36495455,
+        "legacyCell": 11932568,
+        "legacyFileValue": 9088106,
+        "runtimeBindingVerified": false,
+        "adapterImplemented": false
+      },
+      {
+        "dll": "MSVCR80.dll",
+        "symbol": "_except_handler4_common",
+        "activeImportCell": 36495519,
+        "legacyCell": 11932632,
+        "legacyFileValue": 9088398,
+        "runtimeBindingVerified": false,
+        "adapterImplemented": false
+      },
+      {
+        "dll": "MSVCR80.dll",
+        "symbol": "_initterm",
+        "activeImportCell": 36495479,
+        "legacyCell": 11932592,
+        "legacyFileValue": 9088190,
+        "runtimeBindingVerified": false,
+        "adapterImplemented": false
+      },
+      {
+        "dll": "MSVCR80.dll",
+        "symbol": "_initterm_e",
+        "activeImportCell": 36495483,
+        "legacyCell": 11932596,
+        "legacyFileValue": 9088202,
+        "runtimeBindingVerified": false,
+        "adapterImplemented": false
+      },
+      {
+        "dll": "MSVCR80.dll",
+        "symbol": "__set_app_type",
+        "activeImportCell": 36495507,
+        "legacyCell": 11932620,
+        "legacyFileValue": 9088304,
+        "runtimeBindingVerified": false,
+        "adapterImplemented": false
+      }
+    ]
   }
 }
