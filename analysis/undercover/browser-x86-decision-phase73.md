@@ -1,0 +1,49 @@
+# Phase 73 — Final browser x86 adoption decision
+
+**NO-GO. Close this adapter approach for adoption and retain Unicorn.js as a test-only differential oracle.**
+
+The initial slowdown was primarily removable adapter overhead, not evidence that every browser x86 engine is inherently incapable. The bounded optimizations removed most of that overhead, but the remaining checked path still fails the unchanged <=5x gate. No further tuning or new engine candidate is recommended in this phase.
+
+| Checked mode | x86 median ms | Comparable Wasm median ms | Ratio | Gate |
+|---|---:|---:|---:|---|
+| A: full diagnostics, combined optimizations | 4.500 | 0.300 | 15.00x | FAIL |
+| B: checked persistent/batched path, grouped means | 3.440 | 0.150 | 22.93x | FAIL |
+
+The Mode B Wasm callbacks for optional snapshots/reads are removed on the existing observer object; its mandatory journals and safety behavior remain. X86 similarly omits only optional snapshots and verbose read storage. Both keep permission checks, source authentication, instruction admission, flags/FS, budgets, write ordering and unsupported-target rejection. Reduced instrumentation does not claim instruction-snapshot equivalence; complete twelve-category correctness is independently revalidated in Mode A and every persistent recovery case.
+
+A separate concurrent regression campaign measured Mode B at 21.50x. Neither campaign approaches 5x. Cold is the first engine/session run after the module factory is initialized; it is not a cold-machine or network-load claim. Seven groups of ten paired runs improve timer resolution in Mode B; all raw values, variance and cold/warm results are in browser-x86-optimization-phase73.json.
+
+## Measured baseline and changes
+
+Baseline before optimization: original adapter median 43.500 ms; matching unprofiled cost adapter 44.700 ms. Fine-grained profiling median 61.900 ms (1.38x instrumentation overhead). Independent wall time and inclusive/exclusive nested counters are retained; inclusive totals must not be summed.
+
+The five timer yields consumed a median 25.100 ms. Byte-wise page filling caused 43177 permission checks per profiled baseline run; 396 denied setup-padding probes occur at the last partial data page, not in the 68 successful CPU reads. Source and permission checks were retained. Whole-page bulk copying alone did not remove the expensive partial-page fallback.
+
+| Experiment | Cold ms | Warm median ms | Warm min / max ms | Label |
+|---|---:|---:|---:|---|
+| C_yield_only | 17.500 | 26.500 | 17.200 / 34.900 | C |
+| C_bulk_page_copy_only | 49.400 | 48.700 | 44.000 / 53.300 | C |
+| C_snapshot_only | 52.900 | 54.500 | 48.500 / 57.200 | C |
+| C_persistent_only | 56.000 | 36.200 | 31.600 / 40.300 | C |
+| C_batch16_only | 50.200 | 50.200 | 44.800 / 54.100 | C |
+| A_combined_full | 14.500 | 4.500 | 2.800 / 6.300 | A |
+| B_fresh_checked | 13.900 | 16.300 | 13.300 / 20.400 | B |
+| B_persistent_checked | 18.000 | 4.100 | 2.000 / 5.000 | B |
+
+Mode C changes one setting at a time: yield interval, checked bulk page copy, snapshots, persistence, or batch size. Combined A and B cases are explicitly cumulative. Baseline uses single-step execution and five timer yields. Combined cases use batches of 16 and no between-batch timer yields in a dedicated bounded worker; per-instruction code hooks and all memory hooks remain active, with a 1,000 ms run budget and 60-second outer worker termination watchdog. This does not remove main-thread watchdog protection.
+
+Persistent reuse saves the pristine CPU context after synthetic segment initialization, restores registers/segments/flags, clears per-run frames/hooks/traps/metadata/budgets, and copies every attempted dirty range from the reset canonical memory. Host root return-slot state is synchronized explicitly. Every data read still compares with canonical checked memory. The engine never becomes the unchecked authority.
+
+The final warm persistent profile maps 0 new pages and restores 46 ranges / 181 bytes. Complete mapped guest-memory comparison, including stack and FS storage, passes. Recovery passes after provider, budget, synthetic UD2 and a stronger host permission-policy failure on the original first PUSH. This validates this control fixture, not arbitrary Windows exceptions or all malformed accesses.
+
+Batched code hooks finalize the previous instruction, check CALL/RET and definedness, and admit the next original instruction before it executes. An unmapped effective target is rejected on the engine fetch exception; a mapped unadmitted target is rejected before its instruction hook admits execution. Every observed code-hook sequence remains the same 173 tags. Raw engine EIP 0x008AAC6A and normalized original-callsite stop 0x0087B5B3 are retained.
+
+Remaining warm cost is concentrated in the checked instruction engine/host boundary, admission/source comparisons and callbacks. Batching reduces 173 engine-start calls to 11 but retains 173 admission hooks, 68 checked reads and 82 ordered writes. Eliminating all timer yields and repeated mapping already fails the gate. Reaching 5x from the measured Mode B median would require another 78.2% reduction; the measurements do not justify predicting that from another small adapter change.
+
+This is a practical rejection of the tested checked adapter, not a theoretical lower bound for CPU emulation. Profiling itself changes cost; profiled counters are explanatory and do not replace unprofiled gate timings. No FPS extrapolation, RSS claim, unmeasured native comparison or permanent production integration is made.
+
+## Deployment and next work
+
+Production translated Wasm, full-game disabled state, manifest, source payload and media remain unchanged. Source-build reproducibility and GPL corresponding-source/distribution obligations remain independent deployment gates even if performance had passed. No engine binary or commercial asset is committed.
+
+Return Phase 74 to the actual original-startup dependency graph. Pick one evidence-supported ordinary edge or externally documented contract tied to a real blocker. Closed legacy binding searches may reopen only with new independent writer/loader/binding evidence; do not repeat positional-table inference, fabricate provider state or fill unavailable code. No more CPU tuning, new backend candidate, helper-count expansion, SIMD, graphics or gameplay claim is warranted by Phase 73.

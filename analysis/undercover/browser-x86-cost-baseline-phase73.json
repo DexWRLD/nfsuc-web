@@ -1,0 +1,496 @@
+{
+  "phase": 73,
+  "stage": "BASELINE_BEFORE_OPTIMIZATION",
+  "secureContext": true,
+  "engineVersion": 33621247,
+  "memoryBytes": 51445760,
+  "engineMemoryBytes": 41418752,
+  "baseline": {
+    "wasm": {
+      "samples": [
+        0.3999999985098839,
+        0.30000000074505806,
+        0.3999999985098839,
+        0.30000000074505806,
+        0.20000000298023224,
+        0.19999999925494194,
+        0.19999999925494194,
+        0.19999999925494194,
+        0.19999999925494194
+      ],
+      "median": 0.20000000298023224,
+      "min": 0.19999999925494194,
+      "max": 0.3999999985098839,
+      "mean": 0.2666666665010982,
+      "standardDeviation": 0.08164965761962133
+    },
+    "originalAdapter": {
+      "samples": [
+        51.400000002235174,
+        44.30000000074506,
+        43.600000001490116,
+        42.30000000074506,
+        39.100000001490116,
+        44.19999999925494,
+        42,
+        42.80000000074506,
+        43.5
+      ],
+      "median": 43.5,
+      "min": 39.100000001490116,
+      "max": 51.400000002235174,
+      "mean": 43.688888889633944,
+      "standardDeviation": 3.104993986506509
+    },
+    "costAdapterUnprofiled": {
+      "samples": [
+        44.69999999925494,
+        45.5,
+        42.20000000298023,
+        44.30000000074506,
+        44.600000001490116,
+        40.900000002235174,
+        45.399999998509884,
+        46.79999999701977,
+        47.70000000298023
+      ],
+      "median": 44.69999999925494,
+      "min": 40.900000002235174,
+      "max": 47.70000000298023,
+      "mean": 44.67777777835727,
+      "standardDeviation": 1.9831388007197932
+    }
+  },
+  "profiles": [
+    {
+      "durationMs": 64,
+      "costs": {
+        "wallMs": 64.5,
+        "categories": {
+          "guestPermissionChecks": {
+            "calls": 43177,
+            "inclusiveMs": 12.399999976158142,
+            "exclusiveMs": 12.399999976158142
+          },
+          "codeDigestChecking": {
+            "calls": 1,
+            "inclusiveMs": 1.5,
+            "exclusiveMs": 0.9000000022351742
+          },
+          "engineInstanceCreation": {
+            "calls": 1,
+            "inclusiveMs": 0.09999999776482582,
+            "exclusiveMs": 0.09999999776482582
+          },
+          "fsGdtSetup": {
+            "calls": 1,
+            "inclusiveMs": 4.300000000745058,
+            "exclusiveMs": 4.300000000745058
+          },
+          "guestPageAllocation": {
+            "calls": 10,
+            "inclusiveMs": 0.10000000149011612,
+            "exclusiveMs": 0.10000000149011612
+          },
+          "initialCanonicalCopy": {
+            "calls": 10,
+            "inclusiveMs": 22.49999999627471,
+            "exclusiveMs": 11.100000012665987
+          },
+          "guestPageMapping": {
+            "calls": 10,
+            "inclusiveMs": 0.6999999955296516,
+            "exclusiveMs": 0.6999999955296516
+          },
+          "initialEngineCopy": {
+            "calls": 10,
+            "inclusiveMs": 0.09999999776482582,
+            "exclusiveMs": 0.09999999776482582
+          },
+          "registerInitialization": {
+            "calls": 1,
+            "inclusiveMs": 0,
+            "exclusiveMs": 0
+          },
+          "canonicalMemorySynchronization": {
+            "calls": 420,
+            "inclusiveMs": 0.7000000029802322,
+            "exclusiveMs": 0.4000000059604645
+          },
+          "registerSnapshots": {
+            "calls": 173,
+            "inclusiveMs": 1.0999999903142452,
+            "exclusiveMs": 1.0999999903142452
+          },
+          "instructionHook": {
+            "calls": 173,
+            "inclusiveMs": 0.09999999776482582,
+            "exclusiveMs": 0.09999999776482582
+          },
+          "writeHook": {
+            "calls": 82,
+            "inclusiveMs": 0.29999999701976776,
+            "exclusiveMs": 0.29999999701976776
+          },
+          "unmappedHook": {
+            "calls": 6,
+            "inclusiveMs": 15.799999993294477,
+            "exclusiveMs": 0.19999999925494194
+          },
+          "instructionExecution": {
+            "calls": 173,
+            "inclusiveMs": 22.800000000745058,
+            "exclusiveMs": 5.900000017136335
+          },
+          "flagValidityTracking": {
+            "calls": 172,
+            "inclusiveMs": 0,
+            "exclusiveMs": 0
+          },
+          "callReturnJournaling": {
+            "calls": 172,
+            "inclusiveMs": 0.20000000298023224,
+            "exclusiveMs": 0.20000000298023224
+          },
+          "readHook": {
+            "calls": 68,
+            "inclusiveMs": 0.6999999955296516,
+            "exclusiveMs": 0.5
+          },
+          "cooperativeYields": {
+            "calls": 5,
+            "inclusiveMs": 24.100000001490116,
+            "exclusiveMs": 24.100000001490116
+          },
+          "terminalRegisterCopy": {
+            "calls": 1,
+            "inclusiveMs": 0.09999999776482582,
+            "exclusiveMs": 0.09999999776482582
+          },
+          "engineTeardown": {
+            "calls": 1,
+            "inclusiveMs": 0.19999999925494194,
+            "exclusiveMs": 0.19999999925494194
+          }
+        },
+        "exclusiveSumMs": 62.79999999329448,
+        "note": "Inclusive times overlap. Sum only exclusive times; uninstrumented work and profiler overhead remain outside named scopes."
+      },
+      "comparison": {
+        "engineHooks": true,
+        "instructions": true,
+        "registers": true,
+        "writes": true,
+        "trace": true,
+        "fs": true,
+        "fsAccesses": true,
+        "reads": true,
+        "flagsKnown": true,
+        "states": true,
+        "memory": true,
+        "stop": true
+      }
+    },
+    {
+      "durationMs": 61.899999998509884,
+      "costs": {
+        "wallMs": 61.899999998509884,
+        "categories": {
+          "guestPermissionChecks": {
+            "calls": 43177,
+            "inclusiveMs": 13,
+            "exclusiveMs": 13
+          },
+          "codeDigestChecking": {
+            "calls": 1,
+            "inclusiveMs": 0.3999999985098839,
+            "exclusiveMs": 0.3999999985098839
+          },
+          "engineInstanceCreation": {
+            "calls": 1,
+            "inclusiveMs": 0,
+            "exclusiveMs": 0
+          },
+          "fsGdtSetup": {
+            "calls": 1,
+            "inclusiveMs": 4.399999998509884,
+            "exclusiveMs": 4.399999998509884
+          },
+          "guestPageAllocation": {
+            "calls": 10,
+            "inclusiveMs": 0.10000000149011612,
+            "exclusiveMs": 0.10000000149011612
+          },
+          "initialCanonicalCopy": {
+            "calls": 10,
+            "inclusiveMs": 22.700000002980232,
+            "exclusiveMs": 10.00000000745058
+          },
+          "guestPageMapping": {
+            "calls": 10,
+            "inclusiveMs": 0.09999999776482582,
+            "exclusiveMs": 0.09999999776482582
+          },
+          "initialEngineCopy": {
+            "calls": 10,
+            "inclusiveMs": 0,
+            "exclusiveMs": 0
+          },
+          "registerInitialization": {
+            "calls": 1,
+            "inclusiveMs": 0.10000000149011612,
+            "exclusiveMs": 0.10000000149011612
+          },
+          "canonicalMemorySynchronization": {
+            "calls": 420,
+            "inclusiveMs": 0.7000000067055225,
+            "exclusiveMs": 0.5000000037252903
+          },
+          "registerSnapshots": {
+            "calls": 173,
+            "inclusiveMs": 0.8999999947845936,
+            "exclusiveMs": 0.8999999947845936
+          },
+          "instructionHook": {
+            "calls": 173,
+            "inclusiveMs": 0,
+            "exclusiveMs": 0
+          },
+          "writeHook": {
+            "calls": 82,
+            "inclusiveMs": 0.19999999925494194,
+            "exclusiveMs": 0.19999999925494194
+          },
+          "unmappedHook": {
+            "calls": 6,
+            "inclusiveMs": 14.900000002235174,
+            "exclusiveMs": 0
+          },
+          "instructionExecution": {
+            "calls": 173,
+            "inclusiveMs": 20.80000000447035,
+            "exclusiveMs": 5.199999995529652
+          },
+          "flagValidityTracking": {
+            "calls": 172,
+            "inclusiveMs": 0,
+            "exclusiveMs": 0
+          },
+          "callReturnJournaling": {
+            "calls": 172,
+            "inclusiveMs": 0.10000000149011612,
+            "exclusiveMs": 0
+          },
+          "readHook": {
+            "calls": 68,
+            "inclusiveMs": 0.5000000074505806,
+            "exclusiveMs": 0.4000000059604645
+          },
+          "cooperativeYields": {
+            "calls": 5,
+            "inclusiveMs": 25.099999997764826,
+            "exclusiveMs": 25.099999997764826
+          },
+          "terminalRegisterCopy": {
+            "calls": 1,
+            "inclusiveMs": 0,
+            "exclusiveMs": 0
+          },
+          "engineTeardown": {
+            "calls": 1,
+            "inclusiveMs": 0.19999999925494194,
+            "exclusiveMs": 0.19999999925494194
+          }
+        },
+        "exclusiveSumMs": 60.600000001490116,
+        "note": "Inclusive times overlap. Sum only exclusive times; uninstrumented work and profiler overhead remain outside named scopes."
+      },
+      "comparison": {
+        "engineHooks": true,
+        "instructions": true,
+        "registers": true,
+        "writes": true,
+        "trace": true,
+        "fs": true,
+        "fsAccesses": true,
+        "reads": true,
+        "flagsKnown": true,
+        "states": true,
+        "memory": true,
+        "stop": true
+      }
+    },
+    {
+      "durationMs": 60.5,
+      "costs": {
+        "wallMs": 60.5,
+        "categories": {
+          "guestPermissionChecks": {
+            "calls": 43177,
+            "inclusiveMs": 12.700000006705523,
+            "exclusiveMs": 12.700000006705523
+          },
+          "codeDigestChecking": {
+            "calls": 1,
+            "inclusiveMs": 0.5999999977648258,
+            "exclusiveMs": 0.5999999977648258
+          },
+          "engineInstanceCreation": {
+            "calls": 1,
+            "inclusiveMs": 0,
+            "exclusiveMs": 0
+          },
+          "fsGdtSetup": {
+            "calls": 1,
+            "inclusiveMs": 3.300000000745058,
+            "exclusiveMs": 3.300000000745058
+          },
+          "guestPageAllocation": {
+            "calls": 10,
+            "inclusiveMs": 0.10000000149011612,
+            "exclusiveMs": 0.10000000149011612
+          },
+          "initialCanonicalCopy": {
+            "calls": 10,
+            "inclusiveMs": 20.600000001490116,
+            "exclusiveMs": 7.99999999627471
+          },
+          "guestPageMapping": {
+            "calls": 10,
+            "inclusiveMs": 0.5,
+            "exclusiveMs": 0.5
+          },
+          "initialEngineCopy": {
+            "calls": 10,
+            "inclusiveMs": 0.09999999776482582,
+            "exclusiveMs": 0.09999999776482582
+          },
+          "registerInitialization": {
+            "calls": 1,
+            "inclusiveMs": 0,
+            "exclusiveMs": 0
+          },
+          "canonicalMemorySynchronization": {
+            "calls": 420,
+            "inclusiveMs": 0.4999999962747097,
+            "exclusiveMs": 0.3999999947845936
+          },
+          "registerSnapshots": {
+            "calls": 173,
+            "inclusiveMs": 0.29999999701976776,
+            "exclusiveMs": 0.29999999701976776
+          },
+          "instructionHook": {
+            "calls": 173,
+            "inclusiveMs": 0.30000000074505806,
+            "exclusiveMs": 0.30000000074505806
+          },
+          "writeHook": {
+            "calls": 82,
+            "inclusiveMs": 0.20000000298023224,
+            "exclusiveMs": 0.20000000298023224
+          },
+          "unmappedHook": {
+            "calls": 6,
+            "inclusiveMs": 15,
+            "exclusiveMs": 0.09999999776482582
+          },
+          "instructionExecution": {
+            "calls": 173,
+            "inclusiveMs": 21.100000005215406,
+            "exclusiveMs": 5.300000004470348
+          },
+          "flagValidityTracking": {
+            "calls": 172,
+            "inclusiveMs": 0,
+            "exclusiveMs": 0
+          },
+          "callReturnJournaling": {
+            "calls": 172,
+            "inclusiveMs": 0.10000000149011612,
+            "exclusiveMs": 0.10000000149011612
+          },
+          "readHook": {
+            "calls": 68,
+            "inclusiveMs": 0.29999999701976776,
+            "exclusiveMs": 0.29999999701976776
+          },
+          "cooperativeYields": {
+            "calls": 5,
+            "inclusiveMs": 26,
+            "exclusiveMs": 26
+          },
+          "terminalRegisterCopy": {
+            "calls": 1,
+            "inclusiveMs": 0,
+            "exclusiveMs": 0
+          },
+          "engineTeardown": {
+            "calls": 1,
+            "inclusiveMs": 0.20000000298023224,
+            "exclusiveMs": 0.20000000298023224
+          }
+        },
+        "exclusiveSumMs": 58.5,
+        "note": "Inclusive times overlap. Sum only exclusive times; uninstrumented work and profiler overhead remain outside named scopes."
+      },
+      "comparison": {
+        "engineHooks": true,
+        "instructions": true,
+        "registers": true,
+        "writes": true,
+        "trace": true,
+        "fs": true,
+        "fsAccesses": true,
+        "reads": true,
+        "flagsKnown": true,
+        "states": true,
+        "memory": true,
+        "stop": true
+      }
+    }
+  ],
+  "externalCosts": {
+    "wallMs": 2562.699999999255,
+    "categories": {
+      "engineFactoryInitialization": {
+        "calls": 1,
+        "inclusiveMs": 46.600000001490116,
+        "exclusiveMs": 46.600000001490116
+      },
+      "guestReset": {
+        "calls": 35,
+        "inclusiveMs": 217,
+        "exclusiveMs": 217
+      },
+      "terminalStateComparison": {
+        "calls": 23,
+        "inclusiveMs": 898.7999999895692,
+        "exclusiveMs": 898.7999999895692
+      }
+    },
+    "exclusiveSumMs": 1162.3999999910593,
+    "note": "Inclusive times overlap. Sum only exclusive times; uninstrumented work and profiler overhead remain outside named scopes."
+  },
+  "reference": {
+    "instructionCount": 173,
+    "entries": 12,
+    "stop": "dispatch at 0x8aac6a: unavailable",
+    "registers": {
+      "eax": 50393044,
+      "ebx": 0,
+      "ecx": 25809132,
+      "edx": 25809132,
+      "esi": 9088106,
+      "edi": 0,
+      "ebp": 50393060,
+      "esp": 50393000,
+      "eip": 8893875,
+      "eflags": 132
+    }
+  },
+  "sourceSha256": "6b10551649fd70fa630bd7454fd953f51555fa2dd2112faae84ac8ca97844bcd",
+  "browserVersion": "156.0.4314.58",
+  "workerRoundTripMs": 2610.2141,
+  "workerBundleBytes": 68077
+}

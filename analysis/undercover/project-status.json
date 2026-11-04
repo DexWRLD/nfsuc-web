@@ -1,6 +1,6 @@
 {
-  "current_phase": 72,
-  "strategy": "Browser Unicorn.js executes the exact 173-instruction connected control with matching state. NO-GO adoption: measured checked adapter exceeds the 5x performance gate; keep translated Wasm and provider boundary unchanged.",
+  "current_phase": 73,
+  "strategy": "NO-GO browser x86 adoption after bounded cost isolation. Checked persistent/batched execution still exceeds the unchanged 5x gate. Retain translated Wasm; close further tuning and return to evidenced original startup dependencies.",
   "boundaries": {
     "0x00686000": {
       "status": "PROTECTED_OR_EXTERNAL_DEPENDENCY",
@@ -651,6 +651,10 @@
     {
       "name": "BROWSER X86 CONNECTED DIFFERENTIAL",
       "state": "VERIFIED TEST; ADOPTION NO-GO (PERFORMANCE)"
+    },
+    {
+      "name": "BROWSER X86 ADOPTION COST GATE",
+      "state": "CLOSED: NO-GO; CHECKED MODES EXCEED 5x"
     }
   ],
   "frontend_frame_revalidation": {
@@ -715,5 +719,14 @@
     "production_available": false,
     "original_startup_advanced": false,
     "new_unique_harness_functions": 0
+  },
+  "browser_x86_cost_gate": {
+    "evidence": "browser-x86-cost-breakdown-phase73.json",
+    "decision_report": "browser-x86-decision-phase73.md",
+    "decision": "NO_GO_CLOSE_APPROACH",
+    "threshold_ratio": 5,
+    "production_backend_changed": false,
+    "further_tuning_recommended": false,
+    "startup_advanced": false
   }
 }

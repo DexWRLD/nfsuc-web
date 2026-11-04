@@ -28,6 +28,9 @@
     "browser_differential_verified": true,
     "browser_engine_integrated": false,
     "decision": "NO_GO_ADOPTION",
+    "cost_decision": "NO_GO_CLOSE_APPROACH",
+    "cost_evidence": "browser-x86-cost-breakdown-phase73.json",
+    "further_cpu_tuning_recommended": false,
     "original_startup_advanced": false
   },
   "crt_initialization_order": {
