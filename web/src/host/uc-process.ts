@@ -100,6 +100,7 @@ export interface DispatchTarget {
   evidence: string;
   classification: 'candidate' | 'verified' | 'unavailable' | 'import';
   execute?: (cpu: GuestCpu, memory: GuestAddressSpace) => void;
+  frameContract?: 'seh-prolog4' | 'seh-epilog4' | null;
 }
 
 /** Dispatch admits explicit verified bindings, never the whole pseudocode index. */
@@ -116,7 +117,34 @@ export class GuestDispatcher {
           || target.execute && target.classification !== 'verified') {
         throw new Error('Invalid dispatch mapping');
       }
+      if (target.frameContract && !(target.abi.convention === 'cdecl' && target.abi.argumentBytes === 0
+          && ((target.frameContract === 'seh-prolog4' && target.address === 0x0087beb8)
+          || (target.frameContract === 'seh-epilog4' && target.address === 0x0087befd)))) throw new Error('Invalid SEH mapping');
       this.targets.set(target.address, { ...target, abi: { ...target.abi } });
+    }
+  }
+
+  private contract(cpu: GuestCpu, target: DispatchTarget, ordinaryEsp: number) {
+    if (target.frameContract === 'seh-prolog4') {
+      if (this.memory.read32(cpu.esp + 4) !== 0x00ca9380 || this.memory.read32(cpu.esp + 8) !== 0x14) {
+        throw new GuestFault(target.address, 'call', 'unsupported SEH frame inputs');
+      }
+      return { esp: cpu.esp - 44, ebp: cpu.esp + 8, eax: undefined as number | undefined };
+    }
+    if (target.frameContract === 'seh-epilog4') {
+      if (cpu.esp !== cpu.ebp - 0x38 || this.memory.read32(cpu.ebp - 0x18) !== cpu.ebp - 0x34) {
+        throw new GuestFault(target.address, 'call', 'unbalanced SEH frame');
+      }
+      return { esp: cpu.ebp + 4, ebp: this.memory.read32(cpu.ebp), eax: cpu.eax };
+    }
+    return { esp: ordinaryEsp, ebp: undefined as number | undefined, eax: undefined as number | undefined };
+  }
+
+  private checkReturn(cpu: GuestCpu, address: number, returnAddress: number, expected: ReturnType<GuestDispatcher['contract']>) {
+    if (cpu.eip !== returnAddress || cpu.esp !== expected.esp
+        || expected.ebp !== undefined && cpu.ebp !== expected.ebp
+        || expected.eax !== undefined && cpu.eax !== expected.eax) {
+      throw new GuestFault(address, 'return', 'ABI mismatch');
     }
   }
 
@@ -132,13 +160,12 @@ export class GuestDispatcher {
     const expectedEsp = cpu.esp + (target.abi.convention === 'cdecl' ? 0 : target.abi.argumentBytes);
     this.memory.write32(cpu.esp - 4, returnAddress);
     cpu.esp -= 4;
+    const expected = this.contract(cpu, target, expectedEsp);
     cpu.eip = address;
     this.trace.push({ kind: 'enter', address, esp: cpu.esp });
     try {
       target.execute(cpu, this.memory);
-      if (cpu.eip !== returnAddress || cpu.esp !== expectedEsp) {
-        throw new GuestFault(address, 'return', 'ABI mismatch');
-      }
+      this.checkReturn(cpu, address, returnAddress, expected);
       this.trace.push({ kind: 'return', address, esp: cpu.esp });
     } catch (error) {
       this.trace.push({ kind: 'fault', address, esp: cpu.esp });
@@ -156,12 +183,11 @@ export class GuestDispatcher {
     if (!Number.isInteger(cpu.esp) || cpu.esp % 4) throw new GuestFault(cpu.esp, 'call', 'unaligned stack');
     const returnAddress = this.memory.read32(cpu.esp);
     const expectedEsp = cpu.esp + 4 + (target.abi.convention === 'cdecl' ? 0 : target.abi.argumentBytes);
+    const expected = this.contract(cpu, target, expectedEsp);
     this.trace.push({ kind: 'enter', address, esp: cpu.esp, callsite: cpu.eip, returnAddress });
     try {
       target.execute(cpu, this.memory);
-      if (cpu.eip !== returnAddress || cpu.esp !== expectedEsp) {
-        throw new GuestFault(address, 'return', 'ABI mismatch');
-      }
+      this.checkReturn(cpu, address, returnAddress, expected);
       this.trace.push({ kind: 'return', address, esp: cpu.esp });
     } catch (error) {
       this.trace.push({ kind: 'fault', address, esp: cpu.esp });

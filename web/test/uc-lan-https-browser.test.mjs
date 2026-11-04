@@ -225,19 +225,30 @@ test('authorized EA bumper plays over the LAN asset pipeline', { skip: !process.
       assert.equal(evidence.initializer.esp, 0x0300f000);
       assert.equal(evidence.lastInstruction, 0x009e4b49);
       assert.equal(evidence.after, 0x009e78c0);
-      assert.equal(evidence.registeredAddresses.length, 10);
+      assert.equal(evidence.registeredAddresses.length, 14);
       assert.equal(evidence.initialization.root, '0x00B57DC0');
       assert.equal(evidence.initialization.globalWrites.length, 27);
-      assert.equal(evidence.initialization.registers.eax, 0x0189d0a0);
-      assert.equal(evidence.initialization.lastInstruction, 0x0087b644);
-      assert.match(evidence.initialization.firstUnsupportedDependency, /0x87b59b: unavailable/);
-      assert.equal(evidence.initialization.trace.filter(event => event.kind === 'return').length, 8);
+      assert.equal(evidence.initialization.registers.esi, 0x008aac6a);
+      assert.equal(evidence.initialization.lastInstruction, 0x0087b5b3);
+      assert.match(evidence.initialization.firstUnsupportedDependency, /0x8aac6a: unavailable/);
+      assert.equal(evidence.initialization.trace.filter(event => event.kind === 'return').length, 9);
       assert.equal(evidence.platformServiceCalls.length, 0);
+      assert.equal(evidence.initialization.linkedThread.provenance, 'SYNTHETIC_GENERIC_X86_THREAD_FIXTURE');
+      assert.equal(evidence.initialization.linkedThread.exceptionHead, 0x0300efd4);
+      assert.equal(evidence.initialization.provider.argument, 0);
+      assert.equal(evidence.normalPathRestoration.exceptionHead, 0xffffffff);
+      assert.equal(evidence.normalPathRestoration.eaxPreserved, true);
+      if (process.env.UC_SEH_NODE_EVIDENCE) {
+        const node = JSON.parse(fs.readFileSync(process.env.UC_SEH_NODE_EVIDENCE, 'utf8'));
+        assert.deepEqual(evidence.initialization.trace, node.trace);
+        assert.deepEqual(evidence.initialization.instructions, node.instructions);
+        assert.deepEqual(evidence.initialization.registers, node.registers);
+      }
       if (process.env.UC_BROWSER_EVIDENCE && attempt === 0) {
         fs.writeFileSync(process.env.UC_BROWSER_EVIDENCE, JSON.stringify({
           browser: process.env.UC_BROWSER_CHANNEL || 'chromium', secureContext: true,
           sourceSha256: evidence.sourceSha256, registeredAddresses: evidence.registeredAddresses,
-          initialization: evidence.initialization, platformServiceCalls: evidence.platformServiceCalls,
+          initialization: evidence.initialization, normalPathRestoration: evidence.normalPathRestoration, platformServiceCalls: evidence.platformServiceCalls,
           reset: evidence.reset,
         }, null, 2) + '\n');
       }

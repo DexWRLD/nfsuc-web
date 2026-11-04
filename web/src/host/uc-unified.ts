@@ -1,4 +1,5 @@
 import { UNIFIED_BINDINGS as bindings, UNIFIED_REGISTRY } from './uc-unified-registry';
+import { GuestThreadFixtures, THREAD_BASES } from './uc-thread';
 import { GuestAddressSpace, GuestDispatcher, READ, WRITE, type GuestCpu, type GuestSegment } from './uc-process';
 
 export const UNDERCOVER_SHA = '6b10551649fd70fa630bd7454fd953f51555fa2dd2112faae84ac8ca97844bcd';
@@ -33,7 +34,7 @@ export async function createUndercoverProcess(description: unknown, payload: Uin
       || image.bindings.length !== bindings.length
       || !image.bindings.every((binding, index) => binding
         && binding.address === bindings[index].address && binding.convention === bindings[index].convention
-        && binding.argumentBytes === bindings[index].argumentBytes)) {
+        && binding.argumentBytes === bindings[index].argumentBytes && binding.frameContract === bindings[index].frameContract)) {
     throw new Error('Invalid authenticated Undercover image descriptor');
   }
   const allowed = new Set(['.text', '.rdata', '.data', '.tls', '.rsrc']);
@@ -59,10 +60,13 @@ export async function createUndercoverProcess(description: unknown, payload: Uin
   }
   if (nextOffset !== payload.length) throw new Error('Unreferenced image payload');
   segments.push({ name: 'diagnostic stack', address: 0x03000000, size: 0x10000, permissions: READ | WRITE });
+  segments.push({ name: 'second thread fixture stack', address: 0x03010000, size: 0x10000, permissions: READ | WRITE });
+  THREAD_BASES.forEach(address => segments.push({ name: 'synthetic thread fixture', address, size: 0x1000, permissions: READ | WRITE }));
   const memory = new GuestAddressSpace(segments, image.imageBase);
+  const threads = new GuestThreadFixtures(memory);
   const module = await WebAssembly.compile(code.slice());
   const requiredImports = new Set(['env.memory:memory', 'guest.read32:function', 'guest.write32:function',
-    'guest.dispatch:function', 'guest.instruction:function', 'guest.write8:function']);
+    'guest.dispatch:function', 'guest.instruction:function', 'guest.write8:function', 'guest.readFs32:function', 'guest.writeFs32:function']);
   const imports = WebAssembly.Module.imports(module).map(entry => entry.module + '.' + entry.name + ':' + entry.kind);
   if (imports.length !== requiredImports.size || imports.some(entry => !requiredImports.has(entry))) {
     throw new Error('Unexpected unified module imports');
@@ -87,6 +91,8 @@ export async function createUndercoverProcess(description: unknown, payload: Uin
   const instance = await WebAssembly.instantiate(module, {
     env: { memory: memory.memory },
     guest: {
+      readFs32: (offset: number) => threads.read(offset >>> 0),
+      writeFs32: (offset: number, value: number) => threads.write(offset >>> 0, value >>> 0),
       read32: (address: number) => memory.read32(address >>> 0),
       write32: (address: number, value: number) => {
         memory.write32(address >>> 0, value);
@@ -117,6 +123,7 @@ export async function createUndercoverProcess(description: unknown, payload: Uin
   dispatcher = new GuestDispatcher(memory, [...bindings.map(binding => ({
     address: binding.address,
     abi: { convention: binding.convention, argumentBytes: binding.argumentBytes },
+    frameContract: binding.frameContract,
     sourceSha256: UNDERCOVER_SHA,
     evidence: 'tools/uc_unified_registry.json binding 0x' + binding.address.toString(16),
     classification: 'verified' as const,
@@ -133,7 +140,7 @@ export async function createUndercoverProcess(description: unknown, payload: Uin
   }))]);
 
   return {
-    memory, cpu, dispatcher, instructions, writeLog, registry: UNIFIED_REGISTRY,
+    memory, cpu, dispatcher, instructions, writeLog, threads, registry: UNIFIED_REGISTRY,
     get lastInstruction() { return lastInstruction; },
     snapshot() { return { cpu: { ...cpu }, flagsKnown, lastInstruction }; },
     get writes() { return writes; },
@@ -147,6 +154,7 @@ export async function createUndercoverProcess(description: unknown, payload: Uin
     },
     reset() {
       memory.reset();
+      threads.reset();
       for (const name of registers) cpu[name] = 0;
       cpu.esp = 0x0300f000;
       cpu.eflags = 0;

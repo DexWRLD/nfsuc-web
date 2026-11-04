@@ -43,6 +43,7 @@ export async function runUnifiedIntegration(signal: AbortSignal) {
   }
   const globalBefore = process.memory.read32(0x0189d0f8);
   if (process.memory.read32(0x00b6370c) !== 0x00b57dc0) throw new Error('Original initializer pointer mismatch');
+  const threadFixture = process.threads.initialize();
   let initializationFault = '';
   try { process.call(0x00b57dc0); }
   catch (error) { initializationFault = error instanceof Error ? error.message : String(error); }
@@ -50,12 +51,12 @@ export async function runUnifiedIntegration(signal: AbortSignal) {
   const initializationTrace = process.dispatcher.trace.map(event => ({ ...event }));
   const initializationEntered = initializationTrace.filter(event => event.kind === 'enter').map(event => event.address);
   const initializationWrites = process.writeLog.filter(write => write.address >= 0x00400000 && write.address < 0x03000000);
-  if (!initializationFault.includes('dispatch at 0x87b59b: unavailable')
-      || observed.lastInstruction !== 0x0087b644 || observed.cpu.eax !== 0x0189d0a0
-      || observed.cpu.esp !== 0x0300efe8
+  if (!initializationFault.includes('dispatch at 0x8aac6a: unavailable')
+      || observed.lastInstruction !== 0x0087b5b3 || observed.cpu.esi !== 0x008aac6a
+      || observed.cpu.esp !== 0x0300efa8
       || initializationEntered.join(',') !== [0x00b57dc0, 0x009e7540,
-        0x009e75a0, 0x009e75a0, 0x009e75a0, 0x009e75a0, 0x009e75a0, 0x009e75a0, 0x009c1830, 0x0087b640].join(',')
-      || initializationTrace.filter(event => event.kind === 'return').length !== 8
+        0x009e75a0, 0x009e75a0, 0x009e75a0, 0x009e75a0, 0x009e75a0, 0x009e75a0, 0x009c1830, 0x0087b640, 0x0087b59b, 0x0087beb8].join(',')
+      || initializationTrace.filter(event => event.kind === 'return').length !== 9
       || initializationWrites.length !== 27
       || process.memory.read32(0x0189d0f8) !== 0x32000 || process.memory.read32(0x0189d0fc) !== 0x186a0) {
     throw new Error('Unexpected connected Apt initialization result');
@@ -63,16 +64,39 @@ export async function runUnifiedIntegration(signal: AbortSignal) {
   const initialization = {
     root: '0x00B57DC0', staticPointerCell: '0x00B6370C', receiverSource: 'Original MOV ECX,0x0189D0A0 at 0x00B57DC3',
     entered: initializationEntered, trace: initializationTrace, globalWrites: initializationWrites,
+    threadFixture, linkedThread: process.threads.snapshot(), fsAccesses: [...process.threads.accesses],
+    linkedExceptionFrame: process.cpu.ebp - 0x10, cookieSource: { address: '0x01285688', value: process.memory.read32(0x01285688), initialization: 'AUTHENTICATED_FILE_BYTES_ONLY' },
+    provider: { callsite: '0x0087B5B3', cell: '0x00B61398', value: process.memory.read32(0x00b61398), argument: process.memory.read32(process.cpu.esp + 4), returnAddress: process.memory.read32(process.cpu.esp), classification: 'INSIDE_LEA_AT_0x008AAC69_REJECTED' },
+    rootReturned: false, wrapperReturned: false, registrarReturned: false, restorationExercisedInConnectedTrace: false,
+    instructions: [...process.instructions],
     registers: observed.cpu, lastInstruction: observed.lastInstruction, flagsKnown: observed.flagsKnown,
     phase66Checkpoint: initializationTrace.find(event => event.kind === 'enter' && event.address === 0x0087b640),
-    differenceFromPhase66: 'Original wrapper entered; callee blocked before SEH. Cleanup not registered.',
+    differenceFromPhase66: 'Original registrar and SEH prolog executed with synthetic thread; stopped at unresolved provider. Cleanup not registered.',
     firstUnsupportedDependency: initializationFault, originalStartupReachability: 'UNVERIFIED',
   };
   process.reset();
   if (process.memory.read32(0x0189d0f8) !== globalBefore || process.memory.read32(0x0189d1a4) !== before) {
     throw new Error('Initialization-state reset failed');
   }
+  // Separate normal-path helper fixture: it never resumes the blocked registrar.
+  process.threads.initialize();
+  const S = 0x0300ef00;
+  process.memory.write32(S, 0x00dec0de); process.memory.write32(S + 4, 0x00b602e0);
+  process.memory.write32(S - 4, 0x14); process.memory.write32(S - 8, 0x00ca9380);
+  Object.assign(process.cpu, { esp: S - 8, ebp: 0x11111111, ebx: 0x22222222, esi: 0x33333333, edi: 0x44444444 });
+  process.dispatcher.call(process.cpu, 0x0087beb8, 0x0087b5a7);
+  const normalFrame = process.threads.read(0);
+  process.cpu.eax = 0x13572468;
+  process.dispatcher.call(process.cpu, 0x0087befd, 0x0087b636);
+  if (process.threads.read(0) !== 0xffffffff || process.cpu.eax !== 0x13572468
+      || process.cpu.esp !== S || process.cpu.ebp !== 0x11111111 || process.cpu.ebx !== 0x22222222
+      || process.cpu.esi !== 0x33333333 || process.cpu.edi !== 0x44444444) throw new Error('SEH normal-path restoration failed');
+  const normalPathRestoration = { classification: 'SEPARATE_SYNTHETIC_CALL_FRAME', frame: normalFrame,
+    eaxPreserved: true, registersPreserved: true, exceptionHead: process.threads.read(0),
+    trace: [...process.dispatcher.trace], fsAccesses: [...process.threads.accesses], originalRegistrarCompletion: false };
+  process.reset();
   return {
+    normalPathRestoration,
     mappedSections: descriptor.segments.map((segment: { name: string; address: number; size: number; unavailable: boolean }) => ({
       name: segment.name, address: '0x' + segment.address.toString(16), size: segment.size, unavailable: segment.unavailable,
     })),

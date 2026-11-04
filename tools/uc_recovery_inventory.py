@@ -10,8 +10,10 @@ PRIORITIES={
  0x009E75A0:("Apt header initializer","Verified leaf; no separate function-count work needed",3),
  0x009C1830:("Apt work-state initializer","Verified field writes and return; find next genuine consumer",2),
  0x0087B640:("cleanup-registration wrapper","Admitted; result semantics tested only with isolated callee fixtures",2),
- 0x0087B59B:("ordinary cleanup callee","Resolve SEH injection, noncontiguous body and provider boundaries before admission",1),
- 0x0087BEB8:("SEH frame prolog","Prove FS thread state and nonstandard stack contract without flat-address substitution",1),
+ 0x0087B59B:("ordinary cleanup registrar","Normal path and omitted continuation admitted; stop at original unresolved provider 0x0087B5B3",1),
+ 0x0087BEB8:("SEH frame prolog","Normal path verified with explicit synthetic FS thread; original startup remains unverified",2),
+ 0x0087BEFD:("SEH frame epilog","Normal restoration fixture verified; exception dispatch unsupported",2),
+ 0x008AAC6A:("rejected cleanup provider pointer","Inside instruction at 0x008AAC69; preserve dispatch rejection, find original provider initialization",1),
  0x008AAC60:("file-backed provider candidate","Verify function entry and high stack-offset inputs; not an import declaration",2),
  0x01FCA510:("PE entry","Entry control flow unresolved; preserve boundary",0),
  0x008101B0:("ordinary manager constructor","Verify ordinary callers and required factory state",1),
@@ -74,6 +76,9 @@ def main():
  payload=dict(source_sha256=SOURCE,populations=index["source_manifest"],
   note="Warning, rejection, computed-call and failure populations overlap. Queue is a union by address.",
   functions=queue)
+ registry=json.loads((ROOT/"tools"/"uc_unified_registry.json").read_text(encoding="utf-8"))
+ payload["verified_instruction_overrides"]={"evidence":"cleanup-registrar-coverage-phase69.json", "canonical_master_modified":False,
+  "regions":[{"address":f"0x{entry['address']:08X}","range":entry["verifiedBodyRange"],"bodySha256":entry["bodySha256"]} for entry in registry["bindings"] if "bodySha256" in entry]}
  (A/"recovery-priority-index.json").write_text(json.dumps(payload,indent=2)+"\n")
  (A/"dispatch-candidates.json").write_text(json.dumps(dict(source_sha256=SOURCE,
   note="No callable bindings are inferred from decompiler output",targets=registries),indent=2)+"\n")

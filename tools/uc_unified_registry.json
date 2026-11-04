@@ -285,21 +285,233 @@
         "0087b640",
         "0087b651"
       ]
+    },
+    {
+      "address": 8893851,
+      "name": "Cleanup registrar with recovered normal continuation",
+      "wasmExport": "execute",
+      "implementation": "RawLifter exact reviewed ordinary instruction ranges",
+      "convention": "cdecl",
+      "argumentBytes": 4,
+      "requiredRegisters": [
+        "ESP: bounded original stack",
+        "EBP: matching live frame for epilog/finally"
+      ],
+      "mappedGlobals": [
+        "0x01285688",
+        "0x00CA9380",
+        "0x018B1E6C",
+        "0x018B1E68"
+      ],
+      "knownCallerInstructions": [
+        "0x0087B644"
+      ],
+      "verifiedCallees": [
+        "0x0087BEB8",
+        "0x0087BEFD",
+        "0x0087BFFE",
+        "0x0087BFF8",
+        "0x0087B637"
+      ],
+      "indirectCallsites": [
+        "0x0087B5B3",
+        "0x0087B5C1",
+        "0x0087B5DC",
+        "0x0087B5E7",
+        "0x0087B5FF",
+        "0x0087B60E",
+        "0x0087B618"
+      ],
+      "returnBehavior": "Original RET; specialized exact frame contract for SEH helpers",
+      "unresolvedDependencies": [
+        "Thread FS fixture; original startup unverified",
+        "Provider cells and exception dispatch unavailable"
+      ],
+      "recoveryConfidence": "Authenticated PE bytes matched independent Phase 68 instruction appendix; canonical warnings preserved",
+      "callable": true,
+      "sourceSha256": "6b10551649fd70fa630bd7454fd953f51555fa2dd2112faae84ac8ca97844bcd",
+      "verifiedBodyRange": [
+        "0087b59b",
+        "0087b636"
+      ],
+      "bodySha256": "b79f045903f793154c08cb1e1929bac4804c67e09fd173632e761aca7bd9277a",
+      "frameContract": null
+    },
+    {
+      "address": 8896184,
+      "name": "Normal-path SEH frame prolog",
+      "wasmExport": "execute",
+      "implementation": "RawLifter exact reviewed ordinary instruction ranges",
+      "convention": "cdecl",
+      "argumentBytes": 0,
+      "requiredRegisters": [
+        "ESP: bounded original stack",
+        "EBP: matching live frame for epilog/finally"
+      ],
+      "mappedGlobals": [
+        "0x01285688",
+        "0x00CA9380",
+        "0x018B1E6C",
+        "0x018B1E68"
+      ],
+      "knownCallerInstructions": [
+        "0x0087B5A2"
+      ],
+      "verifiedCallees": [],
+      "indirectCallsites": [],
+      "returnBehavior": "Original RET; specialized exact frame contract for SEH helpers",
+      "unresolvedDependencies": [
+        "Thread FS fixture; original startup unverified",
+        "Provider cells and exception dispatch unavailable"
+      ],
+      "recoveryConfidence": "Authenticated PE bytes matched independent Phase 68 instruction appendix; canonical warnings preserved",
+      "callable": true,
+      "sourceSha256": "6b10551649fd70fa630bd7454fd953f51555fa2dd2112faae84ac8ca97844bcd",
+      "verifiedBodyRange": [
+        "0087beb8",
+        "0087befc"
+      ],
+      "bodySha256": "8965ee24c71eb8add271a8b0154aea256b80e64c86c5b88a89b945eabfc5a87d",
+      "frameContract": "seh-prolog4"
+    },
+    {
+      "address": 8896253,
+      "name": "Normal-path SEH frame epilog",
+      "wasmExport": "execute",
+      "implementation": "RawLifter exact reviewed ordinary instruction ranges",
+      "convention": "cdecl",
+      "argumentBytes": 0,
+      "requiredRegisters": [
+        "ESP: bounded original stack",
+        "EBP: matching live frame for epilog/finally"
+      ],
+      "mappedGlobals": [
+        "0x01285688",
+        "0x00CA9380",
+        "0x018B1E6C",
+        "0x018B1E68"
+      ],
+      "knownCallerInstructions": [
+        "0x0087B631"
+      ],
+      "verifiedCallees": [],
+      "indirectCallsites": [],
+      "returnBehavior": "Original RET; specialized exact frame contract for SEH helpers",
+      "unresolvedDependencies": [
+        "Thread FS fixture; original startup unverified",
+        "Provider cells and exception dispatch unavailable"
+      ],
+      "recoveryConfidence": "Authenticated PE bytes matched independent Phase 68 instruction appendix; canonical warnings preserved",
+      "callable": true,
+      "sourceSha256": "6b10551649fd70fa630bd7454fd953f51555fa2dd2112faae84ac8ca97844bcd",
+      "verifiedBodyRange": [
+        "0087befd",
+        "0087bf10"
+      ],
+      "bodySha256": "39142b8d79823b8b3c0dd534ee99caf6c8cce4347b7608cfc004a14c873f7411",
+      "frameContract": "seh-epilog4"
+    },
+    {
+      "address": 8894007,
+      "name": "Cleanup finally outline",
+      "wasmExport": "execute",
+      "implementation": "RawLifter exact reviewed ordinary instruction ranges",
+      "convention": "cdecl",
+      "argumentBytes": 0,
+      "requiredRegisters": [
+        "ESP: bounded original stack",
+        "EBP: matching live frame for epilog/finally"
+      ],
+      "mappedGlobals": [
+        "0x01285688",
+        "0x00CA9380",
+        "0x018B1E6C",
+        "0x018B1E68"
+      ],
+      "knownCallerInstructions": [
+        "0x0087B629"
+      ],
+      "verifiedCallees": [
+        "0x0087BFF2"
+      ],
+      "indirectCallsites": [],
+      "returnBehavior": "Original RET; specialized exact frame contract for SEH helpers",
+      "unresolvedDependencies": [
+        "Thread FS fixture; original startup unverified",
+        "Provider cells and exception dispatch unavailable"
+      ],
+      "recoveryConfidence": "Authenticated PE bytes matched independent Phase 68 instruction appendix; canonical warnings preserved",
+      "callable": true,
+      "sourceSha256": "6b10551649fd70fa630bd7454fd953f51555fa2dd2112faae84ac8ca97844bcd",
+      "verifiedBodyRange": [
+        "0087b637",
+        "0087b63f"
+      ],
+      "bodySha256": "e45fa9457d9293b60a6ba76b5da93ad37d095dc2f4fda97482a1a4b7e3888619",
+      "frameContract": null
     }
   ],
   "unavailable": [
     {
-      "address": 8893851,
-      "callsite": "0x0087B644",
-      "arguments": [
-        "forwarded callback 0x00B602E0"
-      ],
+      "address": 9088106,
+      "callsite": "0x0087B5B3",
+      "arguments": [],
       "convention": "cdecl",
-      "argumentBytes": 4,
-      "classification": "ordinary cleanup callee: SEH injections, noncontiguous body and unresolved provider contracts",
+      "classification": "provider points inside LEA at 0x008AAC69",
       "callable": false,
-      "abiEvidence": "Wrapper POP ECX cleans forwarded dword; no return admitted"
+      "argumentBytes": 4,
+      "abiEvidence": "Blocked; no provider result or successful return admitted"
+    },
+    {
+      "address": 8896510,
+      "callsite": "0x0087B5CC",
+      "arguments": [],
+      "convention": "cdecl",
+      "classification": "unresolved provider stub",
+      "callable": false,
+      "argumentBytes": 0,
+      "abiEvidence": "Blocked; no provider result or successful return admitted"
+    },
+    {
+      "address": 8896504,
+      "callsite": "0x0087B603",
+      "arguments": [],
+      "convention": "cdecl",
+      "classification": "unresolved registration provider stub",
+      "callable": false,
+      "argumentBytes": 0,
+      "abiEvidence": "Blocked; no provider result or successful return admitted"
+    },
+    {
+      "address": 8896498,
+      "callsite": "0x0087B639",
+      "arguments": [],
+      "convention": "cdecl",
+      "classification": "unresolved finally provider stub",
+      "callable": false,
+      "argumentBytes": 0,
+      "abiEvidence": "Blocked; no provider result or successful return admitted"
+    },
+    {
+      "address": 8896273,
+      "callsite": "exception dispatch",
+      "arguments": [],
+      "convention": "cdecl",
+      "classification": "exception wrapper unsupported",
+      "callable": false,
+      "argumentBytes": 0,
+      "abiEvidence": "Blocked; no provider result or successful return admitted"
+    },
+    {
+      "address": 8897284,
+      "callsite": "0x0087BF2B",
+      "arguments": [],
+      "convention": "cdecl",
+      "classification": "exception dispatch/unwind unsupported",
+      "callable": false,
+      "argumentBytes": 0,
+      "abiEvidence": "Blocked; no provider result or successful return admitted"
     }
   ],
-  "version": 67
+  "version": 69
 }
