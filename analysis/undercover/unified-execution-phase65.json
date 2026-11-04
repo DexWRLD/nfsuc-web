@@ -1,0 +1,75 @@
+{
+  "sourceSha256": "6b10551649fd70fa630bd7454fd953f51555fa2dd2112faae84ac8ca97844bcd",
+  "moduleSha256": "025c086bacdedc7790395d1bc1ab2fbf82a7edaf505b634334e21b159804b6b5",
+  "memoryBytes": 50397184,
+  "initializationWrites": 49,
+  "callbackSlot": "0x0189D1A4",
+  "callbackTarget": "0x009E78C0",
+  "provenance": "Original ordinary PE sections; host orders registration and root with historical fixture arguments",
+  "trace": [
+    {
+      "kind": "enter",
+      "address": 10083536,
+      "esp": 50393076
+    },
+    {
+      "kind": "enter",
+      "address": 10385600,
+      "esp": 50392996
+    },
+    {
+      "kind": "return",
+      "address": 10385600,
+      "esp": 50393000
+    },
+    {
+      "kind": "enter",
+      "address": 10183312,
+      "esp": 50392996
+    },
+    {
+      "kind": "enter",
+      "address": 10373904,
+      "esp": 50392996
+    },
+    {
+      "kind": "enter",
+      "address": 10385600,
+      "esp": 50392988
+    },
+    {
+      "kind": "return",
+      "address": 10385600,
+      "esp": 50392992
+    },
+    {
+      "kind": "fault",
+      "address": 10373904,
+      "esp": 50392984
+    },
+    {
+      "kind": "fault",
+      "address": 10183312,
+      "esp": 50392984
+    },
+    {
+      "kind": "fault",
+      "address": 10083536,
+      "esp": 50392984
+    }
+  ],
+  "faultInstruction": 10373961,
+  "registers": {
+    "eax": 0,
+    "ebx": 0,
+    "ecx": 25809056,
+    "edx": 0,
+    "esi": 0,
+    "edi": 0,
+    "ebp": 50392992,
+    "esp": 50392984,
+    "eip": 10373961,
+    "eflags": 0
+  },
+  "startupOrderVerified": false
+}

@@ -29,3 +29,12 @@ Reset currently resets bytes only. CPU registers, dispatcher trace and applicati
 ## Startup status
 
 PE entry 0x01FCA510 remains BLOCKED_UNVERIFIED_ENTRY_CONTROL_FLOW. Alternative instruction decodings at 0x01FCA523 and 0x01FCA58F are recorded without selecting a branch. No ordinary initialization continuation from that entry is verified. The foundation supplies testable process contracts for a future verified ordinary entry, while existing browser islands retain their established evidence boundaries.
+
+
+## Phase 65 integration
+
+uc-unified.ts now instantiates a translated Wasm module importing this process memory. Every original guest dword read and write is routed through the checked address space; the module's compiler CPU/flag scratch occupies reserved low addresses outside guest mappings. The PE sections retain their original virtual addresses and native permission bits. Five ordinary sections are loaded from a hash-verified private payload, while six opaque regions are reserved as unavailable. The guest stack is a separate explicit diagnostic region.
+
+Five previously verified translated bodies are explicitly bound: 0x009E8AD0, 0x0099DCD0, 0x009E78C0, 0x009B6290 and 0x009E4B10. Original lifted CALL instructions push original return addresses before calling the process's callFromGuest dispatcher. Host and module CPU views synchronize at dispatch boundaries, with EIP updated from original instruction tags.
+
+The registration leaf and root are invoked separately by the host. Within the root, the original calls and callback table dispatch are preserved. The fixture-precondition failure at 0x009E4B49 remains. Full startup reachability, general EFLAGS transfer, arbitrary instructions, Windows imports, heap and thread support are still unimplemented. Current translated condition helpers cover the verified prefix. The existing per-diagnostic memory modules remain separate regression controls and share no mutable guest state with the new process.
