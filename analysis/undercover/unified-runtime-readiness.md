@@ -53,3 +53,11 @@ Ten reviewed bindings now include original 0x0087B640, reached through 0x00B57DD
 The shared bridge now preserves volatile arithmetic flags and validity across imports. NEG/SBB/DEC, width masking, borrow, overflow and condition codes have independent Wasm fixture coverage. Undefined flag consumption traps; nonadmitted instructions fail the build. This is a six-arithmetic-flag subset, not general EFLAGS or FS/SEH support. The exact wrapper's post-call result path runs only with explicit synthetic test-callee returns outside the game process. PUSH source-before-ESP order is corrected.
 
 Next blocker is warning-bearing/noncontiguous CRT cleanup code, SEH prolog state and unresolved file-backed provider boundaries. No Windows import adapter is reached. See runtime-phase67.md and phase68-handoff.md. Native startup, PE entry continuation and gameplay remain blocked.
+
+## Phase 69 conditional normal-path SEH integration
+
+Fourteen reviewed original bindings now include the registrar, exact missing normal continuation, SEH prolog/epilog and separate finally outline. The canonical master/index remain unchanged; explicit instruction-recovery overrides retain their provenance. With an explicitly initialized generic synthetic x86 thread, the original Apt root enters the registrar/prolog and stops at 0x0087B5B3, rejecting [0x00B61398]=0x008AAC6A. Twelve connected entries/seven distinct bodies, nine callee returns, 27 original PE-global writes. Later cleanup stores and registrar completion remain unobserved.
+
+FS offset-zero reads/writes use bounded per-thread fixture mappings, never flat address zero. Specialized exact helper contracts enforce nonstandard ESP/EBP behavior and epilog EAX preservation. Thread creation, TLS, cookie entropy initialization, exceptions/unwinding and original startup order remain unsupported. Without a supplied fixture the original FS read rejects. Separate Node/Edge normal-path fixtures verify nested frames/restoration; they do not resume the blocked registrar. The connected stop leaves its frame linked.
+
+See runtime-phase69.md, seh-normal-path-phase69.json and cleanup-registrar-coverage-phase69.json. Preserve the Phase 60 nine-case frame controls and earlier arithmetic/memory/media regressions. Full-game boot and authentic screen/gameplay remain blocked.

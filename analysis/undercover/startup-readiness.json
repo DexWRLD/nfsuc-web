@@ -9,13 +9,20 @@
     "0x009E7540",
     "0x009E75A0",
     "0x009C1830",
-    "0x0087B640"
+    "0x0087B640",
+    "0x0087B59B",
+    "0x0087BEB8",
+    "0x0087BEFD",
+    "0x0087B637"
   ],
   "independent_initialization_root": "0x00B57DC0",
-  "independent_initialization_evidence": "runtime-phase67.md and edge-execution-phase67.json",
+  "independent_initialization_evidence": "runtime-phase69.md and edge-execution-phase69.json",
   "cleanup_frontier": {
-    "callsite": "0x0087B644",
-    "target": "0x0087B59B",
+    "callsite": "0x0087B5B3",
+    "target": "0x008AAC6A",
+    "cell": "0x00B61398",
+    "thread": "EXPLICIT_SYNTHETIC_FIXTURE",
+    "original_thread_initialization": false,
     "registration_completed": false
   },
   "independent_root_reachability_from_pe_entry": "UNVERIFIED",

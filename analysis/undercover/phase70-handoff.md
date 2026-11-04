@@ -1,0 +1,19 @@
+# Phase 70 handoff
+
+Phase 69's original connected root is still host-entered 0x00B57DC0. It completes the original Apt constructor, enters wrapper 0x0087B640, registrar 0x0087B59B and prolog 0x0087BEB8 using an explicitly synthetic generic x86 thread fixture. It stops at original CALL 0x0087B5B3 through [0x00B61398]=0x008AAC6A. No registrar, wrapper or root return; no cleanup registration, native thread startup, game boot or gameplay claim.
+
+Read runtime-phase69.md, seh-normal-path-phase69.json (Node), edge-execution-phase69.json (Edge plus separate restoration fixture), cleanup-registrar-coverage-phase69.json, registry and the external research C:/Users/999/Documents/KTA/research/undercover-phase68-crt-seh-cleanup.md. The latter's 81 appendix encodings were independently checked against the original PE. Canonical master/index were not rewritten.
+
+At stop: EIP=0x0087B5B3, ESP=0x0300EFA8, EBP=0x0300EFE4, ESI=0x008AAC6A, EAX=0x0300EFD4. [ESP]=0x0087B5B5, [ESP+4]=0 from original global 0x018B1E6C. Fixture FS base=0x03100000, head=0x0300EFD4, prior head=0xFFFFFFFF. Callback at EBP+8 is 0x00B602E0. Twelve entries/seven distinct connected bodies, nine callee returns, 27 original PE-global writes. The linked frame remains live at the blocked call. Reset is diagnostic teardown, not original exception unwinding.
+
+Four new bodies are reviewed: registrar normal span 0x0087B59B–0x0087B636 (49 distinct instructions), prolog 0x0087BEB8–BEFC (21), epilog 0x0087BEFD–BF10 (11), separate finally outline 0x0087B637–B63F (4). Ghidra omits normal 0x0087B601–B630. The omitted block contains 0x0087B603 three-argument provider call, later global stores at 0x0087B610/61D and finally call at 0x0087B629. None ran. The finally outline is translated but unentered. Epilog runs only in separate labeled normal-path fixtures.
+
+Keep exact specialized helper ABI checks. Prolog input supports verified scope 0x00CA9380 and local size 0x14; return ESP=helper-entry ESP-44, EBP=helper-entry ESP+8. Epilog requires balanced original baseline and preserves EAX. FS accesses must remain dedicated checked offset-zero thread imports; never flat guest zero. No thread is initialized automatically. Without a fixture the root rejects at 0x0087BEBD. Two fixture TEB slots and distinct stack bounds support isolation; selection is not Windows thread scheduling/TLS. Exception wrapper 0x0087BF11 and dispatch 0x0087C304 stay unavailable.
+
+Primary next target is original provider provenance/initialization, not a replacement API. 0x008AAC6A lies inside LEA at 0x008AAC69. Do not reinterpret it, redirect it, decode it speculatively or supply a return. Cells 0x00B61394/8C/88/90/84 remain unresolved too. The provider owns the real registration storage; no callback-list schema/encoding/lifetime is established. Preserve file-backed cookie 0xBB40E64E and complement 0x44BF19B1; original cookie initializer 0x0087C264 and five entropy providers remain unbound, and startup order remains unknown.
+
+Validation: maintained Node/Edge 154 tests, 153 passed, zero failed, one old synthetic-logo Chromium skip. Exact Node/Edge instruction, dispatch and register equality passed. All nine Phase 60 frame cases, arithmetic validity, media/OPFS/cache reload passed. Python Phase 43–51 121 tests and startup preflight three passed; campaign and dashboard checks passed. Native ledger stays 84/50/358. No additional legacy removal was justified.
+
+Same six private authorized paths, manifest version 69. Shared Wasm SHA 8d1a62e0f1347d3698c9a011bf0da415291c6054c33c0b209652064da7b71c76, 14,981 bytes. Module/PE payload/assets remain outside Git. Preserve full-game disabled state, Undercover branding, source/master SHA, opaque PE entry boundary, existing unrelated 22 discord-bot deletions. No fetch or push.
+
+Local implementation commit: 498a4535. Evidence/report/dashboard changes are in the subsequent local Phase 69 commit.

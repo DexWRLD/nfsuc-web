@@ -176,39 +176,27 @@
         "0087b5e7",
         "0087b5ff"
       ],
-      "runtime_relevance": "ordinary cleanup callee",
+      "runtime_relevance": "ordinary cleanup registrar",
       "priority": 1,
       "overlap_risk": false,
       "confidence": "recovery outcome only; runtime semantics unverified",
       "recovery_feasibility": "requires static boundary review",
-      "recommended_next_action": "Resolve SEH injection, noncontiguous body and provider boundaries before admission"
+      "recommended_next_action": "Normal path and omitted continuation admitted; stop at original unresolved provider 0x0087B5B3"
     },
     {
-      "address": "0x0087BEB8",
-      "classification": "emitted_with_warnings",
-      "reasons": [
-        "decompiler warnings"
-      ],
-      "warning_details": [
-        "This is an inlined function",
-        "Unable to track spacebase fully for stack"
-      ],
-      "failure_reason": "",
-      "known_callers": [
-        "0087b384",
-        "0087b3e2",
-        "0087b452",
-        "0087b59b",
-        "0087bf34"
-      ],
-      "known_callees": [],
-      "computed_callsites": [],
-      "runtime_relevance": "SEH frame prolog",
+      "address": "0x008AAC6A",
+      "classification": "not_recognized_in_ghidra",
       "priority": 1,
-      "overlap_risk": false,
-      "confidence": "recovery outcome only; runtime semantics unverified",
-      "recovery_feasibility": "requires static boundary review",
-      "recommended_next_action": "Prove FS thread state and nonstandard stack contract without flat-address substitution"
+      "reasons": [
+        "Runtime-relevant research address requires explicit recovery review"
+      ],
+      "known_callers": [],
+      "known_callees": [],
+      "runtime_relevance": "rejected cleanup provider pointer",
+      "recovery_feasibility": "verify exact original bounds",
+      "overlap_risk": "unknown",
+      "confidence": "existing research lead",
+      "recommended_next_action": "Inside instruction at 0x008AAC69; preserve dispatch rejection, find original provider initialization"
     },
     {
       "address": "0x009E12F0",
@@ -590,6 +578,59 @@
       "confidence": "recovery outcome only; runtime semantics unverified",
       "recovery_feasibility": "requires ABI and target validation",
       "recommended_next_action": "Admitted; result semantics tested only with isolated callee fixtures"
+    },
+    {
+      "address": "0x0087BEB8",
+      "classification": "emitted_with_warnings",
+      "reasons": [
+        "decompiler warnings"
+      ],
+      "warning_details": [
+        "This is an inlined function",
+        "Unable to track spacebase fully for stack"
+      ],
+      "failure_reason": "",
+      "known_callers": [
+        "0087b384",
+        "0087b3e2",
+        "0087b452",
+        "0087b59b",
+        "0087bf34"
+      ],
+      "known_callees": [],
+      "computed_callsites": [],
+      "runtime_relevance": "SEH frame prolog",
+      "priority": 2,
+      "overlap_risk": false,
+      "confidence": "recovery outcome only; runtime semantics unverified",
+      "recovery_feasibility": "requires static boundary review",
+      "recommended_next_action": "Normal path verified with explicit synthetic FS thread; original startup remains unverified"
+    },
+    {
+      "address": "0x0087BEFD",
+      "classification": "emitted_with_warnings",
+      "reasons": [
+        "decompiler warnings"
+      ],
+      "warning_details": [
+        "This is an inlined function"
+      ],
+      "failure_reason": "",
+      "known_callers": [
+        "0087b384",
+        "0087b3e2",
+        "0087b452",
+        "0087b59b",
+        "0087bf34"
+      ],
+      "known_callees": [],
+      "computed_callsites": [],
+      "runtime_relevance": "SEH frame epilog",
+      "priority": 2,
+      "overlap_risk": false,
+      "confidence": "recovery outcome only; runtime semantics unverified",
+      "recovery_feasibility": "requires static boundary review",
+      "recommended_next_action": "Normal restoration fixture verified; exception dispatch unsupported"
     },
     {
       "address": "0x008AAC60",
@@ -89450,32 +89491,6 @@
       "runtime_relevance": "unestablished runtime relevance",
       "priority": 4,
       "overlap_risk": true,
-      "confidence": "recovery outcome only; runtime semantics unverified",
-      "recovery_feasibility": "requires static boundary review",
-      "recommended_next_action": "Inspect original instructions and caller contracts"
-    },
-    {
-      "address": "0x0087BEFD",
-      "classification": "emitted_with_warnings",
-      "reasons": [
-        "decompiler warnings"
-      ],
-      "warning_details": [
-        "This is an inlined function"
-      ],
-      "failure_reason": "",
-      "known_callers": [
-        "0087b384",
-        "0087b3e2",
-        "0087b452",
-        "0087b59b",
-        "0087bf34"
-      ],
-      "known_callees": [],
-      "computed_callsites": [],
-      "runtime_relevance": "unestablished runtime relevance",
-      "priority": 4,
-      "overlap_risk": false,
       "confidence": "recovery outcome only; runtime semantics unverified",
       "recovery_feasibility": "requires static boundary review",
       "recommended_next_action": "Inspect original instructions and caller contracts"
@@ -239191,5 +239206,43 @@
       "recovery_feasibility": "requires static boundary review",
       "recommended_next_action": "Inspect original instructions and caller contracts"
     }
-  ]
+  ],
+  "verified_instruction_overrides": {
+    "evidence": "cleanup-registrar-coverage-phase69.json",
+    "canonical_master_modified": false,
+    "regions": [
+      {
+        "address": "0x0087B59B",
+        "range": [
+          "0087b59b",
+          "0087b636"
+        ],
+        "bodySha256": "b79f045903f793154c08cb1e1929bac4804c67e09fd173632e761aca7bd9277a"
+      },
+      {
+        "address": "0x0087BEB8",
+        "range": [
+          "0087beb8",
+          "0087befc"
+        ],
+        "bodySha256": "8965ee24c71eb8add271a8b0154aea256b80e64c86c5b88a89b945eabfc5a87d"
+      },
+      {
+        "address": "0x0087BEFD",
+        "range": [
+          "0087befd",
+          "0087bf10"
+        ],
+        "bodySha256": "39142b8d79823b8b3c0dd534ee99caf6c8cce4347b7608cfc004a14c873f7411"
+      },
+      {
+        "address": "0x0087B637",
+        "range": [
+          "0087b637",
+          "0087b63f"
+        ],
+        "bodySha256": "e45fa9457d9293b60a6ba76b5da93ad37d095dc2f4fda97482a1a4b7e3888619"
+      }
+    ]
+  }
 }

@@ -1,6 +1,6 @@
 {
-  "current_phase": 67,
-  "strategy": "Original Apt constructor prefix now enters the verified cleanup wrapper. Arithmetic flags and wrapper ABI fixtures pass; SEH-dependent callee 0x0087B59B, native startup reachability and gameplay remain blocked.",
+  "current_phase": 69,
+  "strategy": "Original Apt constructor chain enters cleanup registrar and SEH prolog using an explicit synthetic guest-thread fixture; exact provider at 0x0087B5B3 is rejected. Cleanup completion, native thread startup and original game boot remain blocked.",
   "boundaries": {
     "0x00686000": {
       "status": "PROTECTED_OR_EXTERNAL_DEPENDENCY",
@@ -623,6 +623,14 @@
     {
       "name": "ORIGINAL GAME BOOT",
       "state": "UNVERIFIED"
+    },
+    {
+      "name": "NORMAL-PATH SEH HELPERS",
+      "state": "VERIFIED (THREAD FIXTURE)"
+    },
+    {
+      "name": "CLEANUP REGISTRATION",
+      "state": "BLOCKED: PROVIDER"
     }
   ],
   "frontend_frame_revalidation": {
@@ -638,5 +646,22 @@
     "FIRST_FRAME_PATH_BLOCKED_BY_PROTECTED_BACKEND": "BLOCKED",
     "fixture_cases": 9,
     "historical_native_metrics_unchanged": true
+  },
+  "seh_normal_path": {
+    "evidence": "seh-normal-path-phase69.json",
+    "browser_evidence": "edge-execution-phase69.json",
+    "classification": "ORIGINAL_CONNECTED_CODE_SYNTHETIC_THREAD",
+    "reviewed_bindings": 14,
+    "connected_entries": 12,
+    "connected_distinct_bodies": 7,
+    "callee_returns": 9,
+    "original_global_writes": 27,
+    "first_unsupported_callsite": "0x0087B5B3",
+    "provider_cell": "0x00B61398",
+    "provider_value": "0x008AAC6A",
+    "exception_dispatch_supported": false,
+    "original_thread_initialization": false,
+    "registrar_completed": false,
+    "original_startup_reachability": "UNVERIFIED"
   }
 }

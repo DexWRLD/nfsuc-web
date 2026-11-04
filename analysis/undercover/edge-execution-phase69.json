@@ -1,0 +1,663 @@
+{
+  "browser": "msedge",
+  "secureContext": true,
+  "sourceSha256": "6b10551649fd70fa630bd7454fd953f51555fa2dd2112faae84ac8ca97844bcd",
+  "registeredAddresses": [
+    "0x9e8ad0",
+    "0x99dcd0",
+    "0x9e78c0",
+    "0x9b6290",
+    "0x9e4b10",
+    "0xb57dc0",
+    "0x9e7540",
+    "0x9e75a0",
+    "0x9c1830",
+    "0x87b640",
+    "0x87b59b",
+    "0x87beb8",
+    "0x87befd",
+    "0x87b637"
+  ],
+  "initialization": {
+    "root": "0x00B57DC0",
+    "staticPointerCell": "0x00B6370C",
+    "receiverSource": "Original MOV ECX,0x0189D0A0 at 0x00B57DC3",
+    "entered": [
+      11894208,
+      10384704,
+      10384800,
+      10384800,
+      10384800,
+      10384800,
+      10384800,
+      10384800,
+      10229808,
+      8894016,
+      8893851,
+      8896184
+    ],
+    "trace": [
+      {
+        "kind": "enter",
+        "address": 11894208,
+        "esp": 50393084
+      },
+      {
+        "kind": "enter",
+        "address": 10384704,
+        "esp": 50393076,
+        "callsite": 11894216,
+        "returnAddress": 11894221
+      },
+      {
+        "kind": "enter",
+        "address": 10384800,
+        "esp": 50393064,
+        "callsite": 10384714,
+        "returnAddress": 10384719
+      },
+      {
+        "kind": "return",
+        "address": 10384800,
+        "esp": 50393068
+      },
+      {
+        "kind": "enter",
+        "address": 10384800,
+        "esp": 50393064,
+        "callsite": 10384725,
+        "returnAddress": 10384730
+      },
+      {
+        "kind": "return",
+        "address": 10384800,
+        "esp": 50393068
+      },
+      {
+        "kind": "enter",
+        "address": 10384800,
+        "esp": 50393064,
+        "callsite": 10384736,
+        "returnAddress": 10384741
+      },
+      {
+        "kind": "return",
+        "address": 10384800,
+        "esp": 50393068
+      },
+      {
+        "kind": "enter",
+        "address": 10384800,
+        "esp": 50393064,
+        "callsite": 10384747,
+        "returnAddress": 10384752
+      },
+      {
+        "kind": "return",
+        "address": 10384800,
+        "esp": 50393068
+      },
+      {
+        "kind": "enter",
+        "address": 10384800,
+        "esp": 50393064,
+        "callsite": 10384758,
+        "returnAddress": 10384763
+      },
+      {
+        "kind": "return",
+        "address": 10384800,
+        "esp": 50393068
+      },
+      {
+        "kind": "enter",
+        "address": 10384800,
+        "esp": 50393064,
+        "callsite": 10384769,
+        "returnAddress": 10384774
+      },
+      {
+        "kind": "return",
+        "address": 10384800,
+        "esp": 50393068
+      },
+      {
+        "kind": "enter",
+        "address": 10229808,
+        "esp": 50393064,
+        "callsite": 10384780,
+        "returnAddress": 10384785
+      },
+      {
+        "kind": "return",
+        "address": 10229808,
+        "esp": 50393068
+      },
+      {
+        "kind": "return",
+        "address": 10384704,
+        "esp": 50393080
+      },
+      {
+        "kind": "enter",
+        "address": 8894016,
+        "esp": 50393072,
+        "callsite": 11894226,
+        "returnAddress": 11894231
+      },
+      {
+        "kind": "enter",
+        "address": 8893851,
+        "esp": 50393064,
+        "callsite": 8894020,
+        "returnAddress": 8894025
+      },
+      {
+        "kind": "enter",
+        "address": 8896184,
+        "esp": 50393052,
+        "callsite": 8893858,
+        "returnAddress": 8893863
+      },
+      {
+        "kind": "return",
+        "address": 8896184,
+        "esp": 50393008
+      },
+      {
+        "kind": "fault",
+        "address": 8893851,
+        "esp": 50393000
+      },
+      {
+        "kind": "fault",
+        "address": 8894016,
+        "esp": 50393000
+      },
+      {
+        "kind": "fault",
+        "address": 11894208,
+        "esp": 50393000
+      }
+    ],
+    "globalWrites": [
+      {
+        "address": 25809056,
+        "size": 4,
+        "value": 0,
+        "instruction": 10384810
+      },
+      {
+        "address": 25809060,
+        "size": 4,
+        "value": 0,
+        "instruction": 10384819
+      },
+      {
+        "address": 25809064,
+        "size": 4,
+        "value": 0,
+        "instruction": 10384829
+      },
+      {
+        "address": 25809068,
+        "size": 4,
+        "value": 0,
+        "instruction": 10384810
+      },
+      {
+        "address": 25809072,
+        "size": 4,
+        "value": 0,
+        "instruction": 10384819
+      },
+      {
+        "address": 25809076,
+        "size": 4,
+        "value": 0,
+        "instruction": 10384829
+      },
+      {
+        "address": 25809080,
+        "size": 4,
+        "value": 0,
+        "instruction": 10384810
+      },
+      {
+        "address": 25809084,
+        "size": 4,
+        "value": 0,
+        "instruction": 10384819
+      },
+      {
+        "address": 25809088,
+        "size": 4,
+        "value": 0,
+        "instruction": 10384829
+      },
+      {
+        "address": 25809092,
+        "size": 4,
+        "value": 0,
+        "instruction": 10384810
+      },
+      {
+        "address": 25809096,
+        "size": 4,
+        "value": 0,
+        "instruction": 10384819
+      },
+      {
+        "address": 25809100,
+        "size": 4,
+        "value": 0,
+        "instruction": 10384829
+      },
+      {
+        "address": 25809104,
+        "size": 4,
+        "value": 0,
+        "instruction": 10384810
+      },
+      {
+        "address": 25809108,
+        "size": 4,
+        "value": 0,
+        "instruction": 10384819
+      },
+      {
+        "address": 25809112,
+        "size": 4,
+        "value": 0,
+        "instruction": 10384829
+      },
+      {
+        "address": 25809120,
+        "size": 4,
+        "value": 0,
+        "instruction": 10384810
+      },
+      {
+        "address": 25809124,
+        "size": 4,
+        "value": 0,
+        "instruction": 10384819
+      },
+      {
+        "address": 25809128,
+        "size": 4,
+        "value": 0,
+        "instruction": 10384829
+      },
+      {
+        "address": 25809132,
+        "size": 4,
+        "value": 0,
+        "instruction": 10229818
+      },
+      {
+        "address": 25809136,
+        "size": 4,
+        "value": 0,
+        "instruction": 10229827
+      },
+      {
+        "address": 25809140,
+        "size": 4,
+        "value": 0,
+        "instruction": 10229837
+      },
+      {
+        "address": 25809144,
+        "size": 4,
+        "value": 204800,
+        "instruction": 10229847
+      },
+      {
+        "address": 25809148,
+        "size": 4,
+        "value": 100000,
+        "instruction": 10229857
+      },
+      {
+        "address": 25809152,
+        "size": 4,
+        "value": 0,
+        "instruction": 10229867
+      },
+      {
+        "address": 25809156,
+        "size": 4,
+        "value": 0,
+        "instruction": 10229877
+      },
+      {
+        "address": 25809160,
+        "size": 4,
+        "value": 0,
+        "instruction": 10229887
+      },
+      {
+        "address": 25809164,
+        "size": 1,
+        "value": 0,
+        "instruction": 10229897
+      }
+    ],
+    "threadFixture": {
+      "provenance": "SYNTHETIC_GENERIC_X86_THREAD_FIXTURE",
+      "fsBase": 51380224,
+      "exceptionHead": 4294967295,
+      "originalThreadInitialization": false,
+      "exceptionDispatchSupported": false
+    },
+    "linkedThread": {
+      "provenance": "SYNTHETIC_GENERIC_X86_THREAD_FIXTURE",
+      "fsBase": 51380224,
+      "exceptionHead": 50393044,
+      "originalThreadInitialization": false,
+      "exceptionDispatchSupported": false
+    },
+    "fsAccesses": [
+      {
+        "operation": "read",
+        "base": 51380224,
+        "offset": 0,
+        "value": 4294967295
+      },
+      {
+        "operation": "write",
+        "base": 51380224,
+        "offset": 0,
+        "value": 50393044
+      }
+    ],
+    "linkedExceptionFrame": 50393044,
+    "cookieSource": {
+      "address": "0x01285688",
+      "value": 3141592654,
+      "initialization": "AUTHENTICATED_FILE_BYTES_ONLY"
+    },
+    "provider": {
+      "callsite": "0x0087B5B3",
+      "cell": "0x00B61398",
+      "value": 9088106,
+      "argument": 0,
+      "returnAddress": 8893877,
+      "classification": "INSIDE_LEA_AT_0x008AAC69_REJECTED"
+    },
+    "rootReturned": false,
+    "wrapperReturned": false,
+    "registrarReturned": false,
+    "restorationExercisedInConnectedTrace": false,
+    "instructions": [
+      11894208,
+      11894209,
+      11894211,
+      11894216,
+      10384704,
+      10384705,
+      10384707,
+      10384708,
+      10384711,
+      10384714,
+      10384800,
+      10384801,
+      10384803,
+      10384804,
+      10384807,
+      10384810,
+      10384816,
+      10384819,
+      10384826,
+      10384829,
+      10384836,
+      10384839,
+      10384841,
+      10384842,
+      10384719,
+      10384722,
+      10384725,
+      10384800,
+      10384801,
+      10384803,
+      10384804,
+      10384807,
+      10384810,
+      10384816,
+      10384819,
+      10384826,
+      10384829,
+      10384836,
+      10384839,
+      10384841,
+      10384842,
+      10384730,
+      10384733,
+      10384736,
+      10384800,
+      10384801,
+      10384803,
+      10384804,
+      10384807,
+      10384810,
+      10384816,
+      10384819,
+      10384826,
+      10384829,
+      10384836,
+      10384839,
+      10384841,
+      10384842,
+      10384741,
+      10384744,
+      10384747,
+      10384800,
+      10384801,
+      10384803,
+      10384804,
+      10384807,
+      10384810,
+      10384816,
+      10384819,
+      10384826,
+      10384829,
+      10384836,
+      10384839,
+      10384841,
+      10384842,
+      10384752,
+      10384755,
+      10384758,
+      10384800,
+      10384801,
+      10384803,
+      10384804,
+      10384807,
+      10384810,
+      10384816,
+      10384819,
+      10384826,
+      10384829,
+      10384836,
+      10384839,
+      10384841,
+      10384842,
+      10384763,
+      10384766,
+      10384769,
+      10384800,
+      10384801,
+      10384803,
+      10384804,
+      10384807,
+      10384810,
+      10384816,
+      10384819,
+      10384826,
+      10384829,
+      10384836,
+      10384839,
+      10384841,
+      10384842,
+      10384774,
+      10384777,
+      10384780,
+      10229808,
+      10229809,
+      10229811,
+      10229812,
+      10229815,
+      10229818,
+      10229824,
+      10229827,
+      10229834,
+      10229837,
+      10229844,
+      10229847,
+      10229854,
+      10229857,
+      10229864,
+      10229867,
+      10229874,
+      10229877,
+      10229884,
+      10229887,
+      10229894,
+      10229897,
+      10229901,
+      10229904,
+      10229906,
+      10229907,
+      10384785,
+      10384788,
+      10384790,
+      10384791,
+      11894221,
+      11894226,
+      8894016,
+      8894020,
+      8893851,
+      8893853,
+      8893858,
+      8896184,
+      8896189,
+      8896196,
+      8896200,
+      8896204,
+      8896208,
+      8896210,
+      8896211,
+      8896212,
+      8896213,
+      8896218,
+      8896221,
+      8896223,
+      8896224,
+      8896227,
+      8896230,
+      8896233,
+      8896240,
+      8896243,
+      8896246,
+      8896252,
+      8893863,
+      8893869,
+      8893875
+    ],
+    "registers": {
+      "eax": 50393044,
+      "ebx": 0,
+      "ecx": 25809132,
+      "edx": 25809132,
+      "esi": 9088106,
+      "edi": 0,
+      "ebp": 50393060,
+      "esp": 50393000,
+      "eip": 8893875,
+      "eflags": 132
+    },
+    "lastInstruction": 8893875,
+    "flagsKnown": 59,
+    "phase66Checkpoint": {
+      "kind": "enter",
+      "address": 8894016,
+      "esp": 50393072,
+      "callsite": 11894226,
+      "returnAddress": 11894231
+    },
+    "differenceFromPhase66": "Original registrar and SEH prolog executed with synthetic thread; stopped at unresolved provider. Cleanup not registered.",
+    "firstUnsupportedDependency": "dispatch at 0x8aac6a: unavailable",
+    "originalStartupReachability": "UNVERIFIED"
+  },
+  "normalPathRestoration": {
+    "classification": "SEPARATE_SYNTHETIC_CALL_FRAME",
+    "frame": 50392812,
+    "eaxPreserved": true,
+    "registersPreserved": true,
+    "exceptionHead": 4294967295,
+    "trace": [
+      {
+        "kind": "enter",
+        "address": 8896184,
+        "esp": 50392820
+      },
+      {
+        "kind": "return",
+        "address": 8896184,
+        "esp": 50392776
+      },
+      {
+        "kind": "enter",
+        "address": 8896253,
+        "esp": 50392772
+      },
+      {
+        "kind": "return",
+        "address": 8896253,
+        "esp": 50392832
+      }
+    ],
+    "fsAccesses": [
+      {
+        "operation": "read",
+        "base": 51380224,
+        "offset": 0,
+        "value": 4294967295
+      },
+      {
+        "operation": "write",
+        "base": 51380224,
+        "offset": 0,
+        "value": 50392812
+      },
+      {
+        "operation": "read",
+        "base": 51380224,
+        "offset": 0,
+        "value": 50392812
+      },
+      {
+        "operation": "write",
+        "base": 51380224,
+        "offset": 0,
+        "value": 4294967295
+      },
+      {
+        "operation": "read",
+        "base": 51380224,
+        "offset": 0,
+        "value": 4294967295
+      },
+      {
+        "operation": "read",
+        "base": 51380224,
+        "offset": 0,
+        "value": 4294967295
+      }
+    ],
+    "originalRegistrarCompletion": false
+  },
+  "platformServiceCalls": [],
+  "reset": "Original PE bytes and zero-filled state restored"
+}
