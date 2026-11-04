@@ -119,9 +119,11 @@ test('authorized EA bumper plays over the LAN asset pipeline', { skip: !process.
   const page = await browser.newPage();
   const errors = [];
   page.on('pageerror', error => errors.push(error.message));
+  let unifiedDownloads = 0;
   let downloads = 0;
   page.on('request', request => {
     if (request.url().endsWith('/uc-assets/ea-bumper.mp4')) downloads++;
+    if (request.url().endsWith('/uc-assets/uc-unified-image.bin')) unifiedDownloads++;
   });
   await page.goto(handle.urls[0]);
   assert.equal(await page.evaluate(() => isSecureContext), true);
@@ -198,6 +200,20 @@ test('authorized EA bumper plays over the LAN asset pipeline', { skip: !process.
       },
     });
   }
+
+  if (process.env.UC_UNIFIED_TEST) {
+    for (let attempt = 0; attempt < 2; attempt++) {
+      await page.locator('#unified-process').click();
+      await page.waitForFunction(() => document.querySelector('#unified-result')?.textContent.includes('Shared memory verified'));
+      const evidence = JSON.parse(await page.locator('#unified-result').innerText());
+      assert.equal(evidence.initializer.writes, 49);
+      assert.equal(evidence.initializer.esp, 0x0300f000);
+      assert.equal(evidence.lastInstruction, 0x009e4b49);
+      assert.equal(evidence.after, 0x009e78c0);
+      assert.match(evidence.fault, /0xfffffffc/);
+    }
+    assert.equal(unifiedDownloads, 1);
+  }
   const video = page.locator('#uc-startup-preview video');
   await page.waitForFunction(() => document.querySelector('#uc-startup-preview video')?.readyState >= 1);
   assert.equal(await video.evaluate(element => element.videoWidth), 1280);
@@ -212,6 +228,13 @@ test('authorized EA bumper plays over the LAN asset pipeline', { skip: !process.
   await page.locator('#play-preview').click();
   await video.waitFor({ state: 'attached' });
   assert.equal(downloads, 1);
+  if (process.env.UC_UNIFIED_TEST) {
+    await page.locator('#guest-init-trace').locator('..').locator('summary').click();
+    await page.locator('#unified-process').click();
+    await page.waitForFunction(() => document.querySelector('#unified-result')?.textContent.includes('Shared memory verified'));
+    assert.equal(unifiedDownloads, 1);
+  }
+
   await page.locator('#uc-startup-skip').click();
   await video.waitFor({ state: 'detached' });
   assert.deepEqual(errors, []);

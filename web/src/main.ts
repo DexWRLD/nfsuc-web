@@ -1,3 +1,4 @@
+import { runUnifiedIntegration } from './app/uc-unified-boot';
 import './app/undercover-home.css';
 import { runFrontendFrame, runBootCallbacks, runFrontendQueue, runFrontendLookup, runAptDiagnostic, runUndercoverInitializer } from './app/uc-browser-init';
 import { bootUcAssets } from './app/uc-boot';
@@ -128,5 +129,22 @@ frameButton.addEventListener('click', async () => {
     frameResult.textContent = error instanceof Error ? error.message : String(error);
   } finally {
     frameButton.disabled = false;
+  }
+});
+
+const unifiedButton = document.querySelector<HTMLButtonElement>('#unified-process')!;
+const unifiedResult = document.querySelector<HTMLElement>('#unified-result')!;
+const unifiedAbort = new AbortController();
+addEventListener('pagehide', () => unifiedAbort.abort(), { once: true });
+unifiedButton.addEventListener('click', async () => {
+  unifiedButton.disabled = true;
+  unifiedResult.textContent = 'Verifying private PE image and unified module…';
+  try {
+    const result = await runUnifiedIntegration(unifiedAbort.signal);
+    if (!unifiedAbort.signal.aborted) unifiedResult.textContent = JSON.stringify(result, null, 2);
+  } catch (error) {
+    if (!unifiedAbort.signal.aborted) unifiedResult.textContent = error instanceof Error ? error.message : String(error);
+  } finally {
+    unifiedButton.disabled = false;
   }
 });

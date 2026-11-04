@@ -136,6 +136,29 @@ export class GuestDispatcher {
     }
   }
 
+  /** A lifted CALL already pushed its original return address. */
+  callFromGuest(cpu: GuestCpu, address: number) {
+    const target = this.targets.get(address);
+    if (!target || target.classification !== 'verified' || !target.execute) {
+      throw new GuestFault(address, 'dispatch', target?.classification ?? 'unknown function or import');
+    }
+    this.memory.assertExecutable(address);
+    if (!Number.isInteger(cpu.esp) || cpu.esp % 4) throw new GuestFault(cpu.esp, 'call', 'unaligned stack');
+    const returnAddress = this.memory.read32(cpu.esp);
+    const expectedEsp = cpu.esp + 4 + (target.abi.convention === 'cdecl' ? 0 : target.abi.argumentBytes);
+    this.trace.push({ kind: 'enter', address, esp: cpu.esp });
+    try {
+      target.execute(cpu, this.memory);
+      if (cpu.eip !== returnAddress || cpu.esp !== expectedEsp) {
+        throw new GuestFault(address, 'return', 'ABI mismatch');
+      }
+      this.trace.push({ kind: 'return', address, esp: cpu.esp });
+    } catch (error) {
+      this.trace.push({ kind: 'fault', address, esp: cpu.esp });
+      throw error;
+    }
+  }
+
   resolveVtable(object: number, slotOffset: number): number {
     if (!Number.isInteger(slotOffset) || slotOffset < 0 || slotOffset % 4) {
       throw new GuestFault(object, 'vtable', 'invalid slot');
