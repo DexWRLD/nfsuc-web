@@ -53,7 +53,9 @@ def inspect(image_path, repository):
     return {
         "unified_registry_addresses": [f"0x{entry['address']:08X}" for entry in registry["bindings"]],
         "independent_initialization_root": "0x00B57DC0",
-        "independent_initialization_evidence": "runtime-phase70.md and edge-execution-phase70.json",
+        "independent_initialization_evidence": "runtime-phase71.md and edge-execution-phase71.json",
+        "provider_provenance_gate": {"evidence": "ordinary-import-call-evidence-phase71.json", "status": "BLOCKED_UNAVAILABLE_PROVIDER_PROVENANCE", "repeat_search": "CLOSED_UNTIL_NEW_WRITER_OR_BINDING_EVIDENCE"},
+        "runtime_strategy": {"evidence": "runtime-feasibility-phase71.md", "next_milestone": 5, "native_differential_fixture_verified": True, "browser_engine_integrated": False},
         "crt_initialization_order": {"evidence": "crt-initialization-order-phase70.json", "classification": "STATIC_CONDITIONAL_ONLY", "runtime_binding_verified": False, "walker_traversal_executed": False},
         "cleanup_frontier": {"callsite": "0x0087B5B3", "target": "0x008AAC6A", "cell": "0x00B61398", "thread": "EXPLICIT_SYNTHETIC_FIXTURE", "original_thread_initialization": False, "registration_completed": False},
         "independent_root_reachability_from_pe_entry": "UNVERIFIED",
