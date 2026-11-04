@@ -4,6 +4,10 @@ interface InitializerExports {
   frame_boundary(): number;
   frame_entries(): number;
   frame_receiver(): number;
+  frame_trace_length(): number;
+  frame_trace_address(index: number): number;
+  frame_register(index: number): number;
+  frame_word(index: number): number;
   run_boot_callback(mode: number): number;
   boot_flag_value(mode: number): number;
   run_queue(mode: number): number;
@@ -166,6 +170,7 @@ export async function runBootCallbacks() {
 }
 
 export async function runFrontendFrame() {
+  const evidence = [];
   const labels = [
     'Gate zero: original call returns; stopped at caller continuation 0x00785CE8',
     '+0x18 zero: call at 0x008096F5 stops at 0x00548810',
@@ -174,11 +179,13 @@ export async function runFrontendFrame() {
     'Direct null receiver: read at 0x008096EC rejected at 0x00000018',
     'Unmapped receiver: read at 0x008096EC rejected at 0xDEAD0018',
     '+0x34 nonzero, +0x4C null: virtual setup rejected at 0x0000001C',
+    'Missing manager global: original caller read rejected at 0x01873134',
+    'Truncated manager mapping: state byte read rejected at 0x0300EC60',
   ];
   for (const [mode, label] of labels.entries()) {
     const guest = await loadInitializer();
-    const boundary = [0x785ce8, 0x548810, 0x548810, 0x785ce8, 0, 0, 0][mode];
-    const fault = [0, 0, 0, 0, 0x18, 0xdead0018, 0x1c][mode];
+    const boundary = [0x785ce8, 0x548810, 0x548810, 0x785ce8, 0, 0, 0, 0, 0][mode];
+    const fault = [0, 0, 0, 0, 0x18, 0xdead0018, 0x1c, 0x01873134, 0x0300ec60][mode];
     const blocked = mode !== 0 && mode !== 3;
     let trapped = false;
     try {
@@ -188,16 +195,37 @@ export async function runFrontendFrame() {
       trapped = true;
     }
     if (trapped !== blocked || guest.frame_boundary() !== boundary
-        || guest.frame_entries() !== (mode === 3 ? 0 : 1) || (guest.prefix_fault() >>> 0) !== fault
+        || guest.frame_entries() !== (mode === 3 || mode === 7 ? 0 : 1) || (guest.prefix_fault() >>> 0) !== fault
         || (mode === 1 || mode === 2) && guest.frame_receiver() !== 0x0300ec08
         || guest.guest_esp() !== (mode === 4 ? 0x0300eff8
-          : mode === 1 ? 0x0300eff0 : mode === 5 || mode === 6 ? 0x0300eff4 : mode === 2 ? 0x0300eff8 : 0x0300effc)) {
+          : mode === 1 ? 0x0300eff0 : mode === 5 || mode === 6 || mode === 8 ? 0x0300eff4 : mode === 2 ? 0x0300eff8 : 0x0300effc)) {
       throw new Error('Unexpected frontend frame trace: ' + label);
     }
+    const trace = Array.from({ length: guest.frame_trace_length() }, (_, i) => guest.frame_trace_address(i) >>> 0);
+    const expectedWords = Array.from({ length: 20 }, () => 0);
+    expectedWords[0] = 0x51a7beef; expectedWords[18] = 0xa5a55a5a;
+    expectedWords[6] = mode === 2 || mode === 6 ? 1 : 0;
+    expectedWords[13] = mode === 6 ? 1 : 0;
+    if (expectedWords.some((value, i) => guest.frame_word(i) >>> 0 !== value)
+        || mode !== 3 && mode !== 7 && !trace.includes(0x008096e0)
+        || mode !== 3 && mode !== 4 && mode !== 7 && !trace.includes(0x00785ce3)) {
+      throw new Error('Frontend trace or fixture integrity mismatch');
+    }
+    evidence.push({ mode, branch: label, classification: 'ORIGINAL_CODE_WITH_SYNTHETIC_STATE',
+      callerEntry: mode === 4 ? null : '0x00785CD9',
+      originalCallsiteExecuted: trace.includes(0x00785ce3), routine: '0x008096E0',
+      manager: mode === 7 ? null : mode === 3 || mode === 4 ? 0 : mode === 5 ? 0xdead0000 : mode === 8 ? 0x0300ec48 : 0x0300ec00,
+      gate: mode === 0 ? 0 : 1, state18: expectedWords[6], ptr34: expectedWords[13], ptr4c: 0,
+      stateSource: 'Synthetic fixture values; not all are read before the recorded boundary',
+      trace, lastOriginalInstruction: trace.at(-1), boundary, fault, trapped,
+      registers: Object.fromEntries(['esp','eip','eax','ebp','ecx','edx','esi','edi','ebx'].map((name, i) => [name, guest.frame_register(i) >>> 0])),
+      managerWordsUnchanged: true, workStateWrites: 0, originalSchedulerVerified: false,
+    });
   }
   return [
     'Synthetic frame state · original call 0x00785CE3 → 0x008096E0 · mapped manager 0x0300EC00.',
     ...labels,
     'Guest stack validated for each path; no manager work-state writes or original screen presentation.',
+    JSON.stringify({ frontendFrameEvidence: evidence }, null, 2),
   ];
 }

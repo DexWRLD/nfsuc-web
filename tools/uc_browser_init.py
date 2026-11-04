@@ -18,7 +18,7 @@ typedef unsigned u32;
 typedef u32 uint32_t;
 typedef int int32_t;
 typedef signed char int8_t;
-typedef struct { u32 esp, eip, eax, ebp, ecx, edx, esi, edi, ebx; } CPU;
+typedef struct { volatile u32 esp, eip, eax, ebp, ecx, edx, esi, edi, ebx; } CPU;
 static u32 slots[55];
 static u32 writes, stack_word;
 static u32 *mapped(u32 address) {
@@ -38,7 +38,12 @@ static u32 pop(CPU *c) {
 PREFIX_BRIDGE = r"""
 static u32 stack[64], zero_fields[3], zero_core, fault, trace[8], entered;
 static int equal, less, below;
-static u32 frame_active, frame_gate, frame_manager, frame_words[20], frame_entered, frame_stop;
+static u32 frame_active, frame_gate, frame_manager, frame_words[20], frame_entered, frame_stop, frame_global_missing;
+static volatile u32 frame_trace[64], frame_trace_count;
+static void frame_instruction(u32 address) {
+    if (frame_trace_count >= 64) __builtin_trap();
+    frame_trace[frame_trace_count++] = address;
+}
 static u32 boot_mode, boot_manager, boot_return = 0x13572468u;
 static unsigned char boot_flag[3] = {0x53,0,0x75}, main_flag[3] = {0x53,0,0x75};
 static u32 queue_memory[64], queue_active, queue_boundary, queue_numeric;
@@ -49,7 +54,7 @@ static const u32 apt_offsets[] = {0, 12, 24, 36, 48, 64};
 static u32 *access(u32 a) {
     if (!(a & 3u)) {
         if (frame_active && a == 0x00cbf590u) return &frame_gate;
-        if (frame_active && a == 0x01873134u) return &frame_manager;
+        if (frame_active && !frame_global_missing && a == 0x01873134u) return &frame_manager;
         if (frame_active && a >= 0x0300ec00u && a < 0x0300ec50u) return &frame_words[(a-0x0300ec00u)/4u];
         if (boot_mode && a == 0x01873134u) return &boot_manager;
         if (boot_mode && a == 0x0189bf08u) return &boot_return;
@@ -350,16 +355,20 @@ u32 run_boot_callback(u32 mode) {
 def build_frame(info, lifter):
     entry, end = 0x008096E0, 0x00809732
     base = info["text_va"]
-    bounded = lift.RawLifter(info["bytes"][entry-base:end-base], entry, comments=False)
+    bounded = lift.RawLifter(info["bytes"][entry-base:end-base], entry, comments=True)
     frame, calls = bounded.lift(entry)
     if calls != {0x00548810, 0x008082F0}:
         raise ValueError("Unexpected frontend frame dependencies")
-    caller, _ = lifter.lift(0x00785CD9)
+    caller, _ = lift.RawLifter(info["bytes"], base, comments=True).lift(0x00785CD9)
     cut = "    PUSH32(0x785ce8u); sub_008096e0(c);"
     if caller.count(cut) != 1:
         raise ValueError("Unexpected original frame caller")
     caller = caller.split(cut)[0] + cut + "\nL_00785ce8: frame_stop = 0x00785ce8u; return;\n}"
     frame = frame.replace("    goto L_008096e0;", "    frame_entered++; goto L_008096e0;")
+    def instrument(body):
+        return re.sub(r"(/\* ([0-9a-f]{8})  .*?\*/)",
+                      lambda m: m[1]+f"\n    frame_instruction(0x{m[2]}u);", body)
+    frame, caller = instrument(frame), instrument(caller)
     return "\n".join((r"""
 #undef MR8
 #define MR8(a) ((unsigned char)*access(a))
@@ -371,13 +380,21 @@ def build_frame(info, lifter):
 u32 frame_boundary(void) { return frame_stop; }
 u32 frame_entries(void) { return frame_entered; }
 u32 frame_receiver(void) { return cpu.ecx; }
+u32 frame_trace_length(void) { return frame_trace_count; }
+u32 frame_trace_address(u32 i) { if(i>=frame_trace_count)__builtin_trap();return frame_trace[i]; }
+u32 frame_register(u32 i) { if(i>=9)__builtin_trap();return ((volatile u32*)&cpu)[i]; }
+u32 frame_word(u32 i) { if(i>=20)__builtin_trap();return frame_words[i]; }
 u32 run_frame(u32 mode) {
-    if (frame_active || mode > 6) __builtin_trap();
+    if (frame_active || mode > 8) __builtin_trap();
     frame_active = 1;
     frame_gate = mode != 0;
     frame_manager = (mode == 3 || mode == 4) ? 0 : mode == 5 ? 0xdead0000u : 0x0300ec00u;
+    if(mode==8)frame_manager=0x0300ec48u;
+    frame_global_missing=mode==7;
     frame_words[6] = mode == 2 || mode == 6;
     frame_words[13] = mode == 6 ? 1 : 0;
+    frame_words[0] = 0x51a7beefu;
+    frame_words[18] = 0xa5a55a5au;
     cpu = (CPU){.esp=0x0300effcu, .esi=0x1234u, .ecx=frame_manager};
     *access(cpu.esp) = 0x00dec0deu;
     if (mode == 4) sub_008096e0(&cpu);
@@ -424,7 +441,7 @@ def main():
     clang = p7.clang()
     linker = Path(clang).with_name("wasm-ld.exe")
     linker_arg = ["--ld-path=" + str(linker)] if linker.is_file() else []
-    exports = ["run_init", "read_slot", "write_count", "guest_esp", "guest_eax", "run_prefix", "prefix_fault", "prefix_entry", "prefix_read_base", "prefix_read_delta", "run_apt_constructor", "run_apt_fixture", "frontend_lookup", "frontend_stop", "frontend_native_id", "run_queue", "queue_word", "queue_stop", "queue_value", "run_boot_callback", "boot_flag_value", "run_frame", "frame_boundary", "frame_entries", "frame_receiver"]
+    exports = ["run_init", "read_slot", "write_count", "guest_esp", "guest_eax", "run_prefix", "prefix_fault", "prefix_entry", "prefix_read_base", "prefix_read_delta", "run_apt_constructor", "run_apt_fixture", "frontend_lookup", "frontend_stop", "frontend_native_id", "run_queue", "queue_word", "queue_stop", "queue_value", "run_boot_callback", "boot_flag_value", "run_frame", "frame_boundary", "frame_entries", "frame_receiver", "frame_trace_length", "frame_trace_address", "frame_register", "frame_word"]
     args.output.parent.mkdir(parents=True, exist_ok=True)
     with tempfile.TemporaryDirectory() as tmp:
         source = Path(tmp) / "init.c"

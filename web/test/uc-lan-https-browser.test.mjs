@@ -168,6 +168,21 @@ test('authorized EA bumper plays over the LAN asset pipeline', { skip: !process.
       assert.match(frame, /0x00785CE3 → 0x008096E0/);
       assert.match(frame, /0x008096F5.*0x00548810/);
       assert.match(frame, /0xDEAD0018/);
+      const frameEvidence = JSON.parse(frame.slice(frame.indexOf('{'))).frontendFrameEvidence;
+      assert.equal(frameEvidence.length, 9);
+      assert.deepEqual(frameEvidence.map(row => row.lastOriginalInstruction),
+        [0x809731,0x8096f5,0x80972b,0x785ce1,0x8096ec,0x8096ec,0x809703,0x785cd9,0x8096ec]);
+      assert.deepEqual(frameEvidence.map(row => row.workStateWrites), Array(9).fill(0));
+      assert.ok(frameEvidence.every(row => row.managerWordsUnchanged && !row.originalSchedulerVerified));
+      assert.equal(frameEvidence[0].registers.esi, 0x1234);
+      assert.equal(frameEvidence[7].fault, 0x01873134);
+      assert.equal(frameEvidence[8].fault, 0x0300ec60);
+      if (process.env.UC_FRAME_EVIDENCE) fs.writeFileSync(process.env.UC_FRAME_EVIDENCE,
+        JSON.stringify({ browser: process.env.UC_BROWSER_CHANNEL || 'chromium', secureContext: true,
+          classification: 'ORIGINAL_CALLER_SLICE_WITH_SYNTHETIC_STATE', cases: frameEvidence }, null, 2) + '\n');
+      await page.locator('#frontend-frame').click();
+      await page.waitForFunction(() => document.querySelector('#frame-result')?.textContent.includes('frontendFrameEvidence'));
+      assert.equal(await page.locator('#frame-result').innerText(), frame);
     }
     await page.locator('#boot-callbacks').click();
     await page.waitForFunction(() => document.querySelector('#boot-callback-result')?.textContent.includes('Fixture entry only'));
