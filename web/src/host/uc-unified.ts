@@ -15,6 +15,9 @@ interface UnifiedExports {
   execute(address: number): void;
   set_register(index: number, value: number): void;
   get_register(index: number): number;
+  get_flags(): number;
+  get_flags_known(): number;
+  set_flags(value: number, known: number): void;
 }
 async function sha(bytes: Uint8Array): Promise<string> {
   return Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256', bytes.slice())))
@@ -67,12 +70,20 @@ export async function createUndercoverProcess(description: unknown, payload: Uin
   const cpu: GuestCpu = { eax: 0, ebx: 0, ecx: 0, edx: 0, esi: 0, edi: 0, ebp: 0, esp: 0x0300f000, eip: 0, eflags: 0 };
   let exports: UnifiedExports;
   let dispatcher: GuestDispatcher;
+  let flagsKnown = 0;
   let lastInstruction = 0;
   let writes = 0;
   const writeLog: { address: number; size: number; value: number; instruction: number }[] = [];
   const instructions: number[] = [];
-  const readCpu = () => registers.forEach((name, index) => { cpu[name] = exports.get_register(index) >>> 0; });
-  const writeCpu = () => registers.forEach((name, index) => exports.set_register(index, cpu[name]));
+  const readCpu = () => {
+    registers.forEach((name, index) => { cpu[name] = exports.get_register(index) >>> 0; });
+    cpu.eflags = exports.get_flags() >>> 0;
+    flagsKnown = exports.get_flags_known() >>> 0;
+  };
+  const writeCpu = () => {
+    registers.forEach((name, index) => exports.set_register(index, cpu[name]));
+    exports.set_flags(cpu.eflags, flagsKnown);
+  };
   const instance = await WebAssembly.instantiate(module, {
     env: { memory: memory.memory },
     guest: {
@@ -101,7 +112,8 @@ export async function createUndercoverProcess(description: unknown, payload: Uin
   });
   exports = instance.exports as unknown as UnifiedExports;
   if (typeof exports.execute !== 'function' || typeof exports.set_register !== 'function'
-      || typeof exports.get_register !== 'function') throw new Error('Unified module exports missing');
+      || typeof exports.get_register !== 'function' || typeof exports.get_flags !== 'function'
+      || typeof exports.get_flags_known !== 'function' || typeof exports.set_flags !== 'function') throw new Error('Unified module exports missing');
   dispatcher = new GuestDispatcher(memory, [...bindings.map(binding => ({
     address: binding.address,
     abi: { convention: binding.convention, argumentBytes: binding.argumentBytes },
@@ -123,7 +135,7 @@ export async function createUndercoverProcess(description: unknown, payload: Uin
   return {
     memory, cpu, dispatcher, instructions, writeLog, registry: UNIFIED_REGISTRY,
     get lastInstruction() { return lastInstruction; },
-    snapshot() { return { cpu: { ...cpu }, lastInstruction }; },
+    snapshot() { return { cpu: { ...cpu }, flagsKnown, lastInstruction }; },
     get writes() { return writes; },
     call(address: number, args: number[] = []) {
       cpu.esp = 0x0300f000;
@@ -138,6 +150,7 @@ export async function createUndercoverProcess(description: unknown, payload: Uin
       for (const name of registers) cpu[name] = 0;
       cpu.esp = 0x0300f000;
       cpu.eflags = 0;
+      flagsKnown = 0;
       writeCpu();
       dispatcher.trace.length = 0;
       instructions.length = 0;

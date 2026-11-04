@@ -23,22 +23,26 @@ test('original static initializer supplies the receiver and completes its constr
     const gap = guest.memory.read32(0x0189d0dc);
     assert.equal(guest.memory.read32(0x0189d0f8), 0);
     // No host writes a receiver, object, factory, capacity or backing pointer.
-    assert.throws(() => guest.call(0x00b57dc0), /dispatch at 0x87b640: unavailable/);
-    assert.equal(guest.lastInstruction, 0x00b57dd2);
-    assert.equal(guest.cpu.eip, 0x00b57dd2);
+    assert.throws(() => guest.call(0x00b57dc0), /dispatch at 0x87b59b: unavailable/);
+    assert.equal(guest.lastInstruction, 0x0087b644);
+    assert.equal(guest.cpu.eip, 0x0087b644);
     assert.equal(guest.cpu.eax, 0x0189d0a0);
-    assert.equal(guest.cpu.esp, 0x0300eff0);
-    assert.equal(guest.memory.read32(guest.cpu.esp), 0x00b57dd7);
+    assert.equal(guest.cpu.esp, 0x0300efe8);
+    assert.equal(guest.memory.read32(guest.cpu.esp), 0x0087b649);
     assert.equal(guest.memory.read32(guest.cpu.esp + 4), 0x00b602e0);
     const entering = guest.dispatcher.trace.filter(event => event.kind === 'enter');
     assert.deepEqual(entering.map(event => event.address), [
       0x00b57dc0, 0x009e7540,
       0x009e75a0, 0x009e75a0, 0x009e75a0, 0x009e75a0, 0x009e75a0, 0x009e75a0,
-      0x009c1830,
+      0x009c1830, 0x0087b640,
     ]);
+    assert.equal(entering[9].callsite, 0x00b57dd2);
+    assert.equal(entering[9].returnAddress, 0x00b57dd7);
+    assert.equal(entering[9].esp, 0x0300eff0); // Exact Phase 66 stop checkpoint.
+    assert.equal(guest.memory.read32(guest.cpu.esp + 12), 0x00b602e0);
     assert.equal(entering[1].callsite, 0x00b57dc8);
     assert.equal(entering[1].returnAddress, 0x00b57dcd);
-    assert.deepEqual(entering.slice(2).map(event => event.callsite),
+    assert.deepEqual(entering.slice(2, 9).map(event => event.callsite),
       [0x009e754a, 0x009e7555, 0x009e7560, 0x009e756b, 0x009e7576, 0x009e7581, 0x009e758c]);
     assert.equal(guest.dispatcher.trace.filter(event => event.kind === 'return').length, 8);
     assert.ok(guest.dispatcher.trace.some(event => event.address === 0x009e7540 && event.kind === 'return'));
@@ -58,7 +62,8 @@ test('original static initializer supplies the receiver and completes its constr
         sourceSha256: description.sourceSha256, moduleSha256: description.moduleSha256,
         root: '0x00B57DC0', receiverSource: 'Original MOV ECX,0x0189D0A0 at 0x00B57DC3',
         trace: guest.dispatcher.trace, globalWrites: globals, registers: guest.cpu,
-        blockedCallsite: '0x00B57DD2', unavailableTarget: '0x0087B640',
+        flagsKnown: guest.snapshot().flagsKnown,
+        blockedCallsite: '0x0087B644', unavailableTarget: '0x0087B59B',
         cleanupArgument: '0x00B602E0', originalStartupReachability: 'UNVERIFIED',
       }, null, 2) + '\n');
     }
@@ -77,11 +82,11 @@ test('generated unified registry stays consistent with its reviewed source', asy
   const generated = await import('data:text/javascript;base64,' + Buffer.from(built.outputFiles[0].text).toString('base64'));
   assert.deepEqual(generated.UNIFIED_REGISTRY, document);
   assert.equal(new Set(document.bindings.map(binding => binding.address)).size, document.bindings.length);
-  assert.equal(document.bindings.length, 9);
+  assert.equal(document.bindings.length, 10);
   for (const binding of document.bindings) {
     assert.equal(binding.sourceSha256, document.sourceSha256);
     assert.ok(binding.recoveryConfidence);
     assert.ok(binding.returnBehavior);
   }
-  assert.deepEqual(document.unavailable.map(entry => [entry.address, entry.callable]), [[0x0087b640, false]]);
+  assert.deepEqual(document.unavailable.map(entry => [entry.address, entry.callable]), [[0x0087b59b, false]]);
 });

@@ -255,21 +255,51 @@
         "009c1830",
         "009c1893"
       ]
+    },
+    {
+      "address": 8894016,
+      "name": "Ordinary cleanup-registration result wrapper",
+      "wasmExport": "execute",
+      "implementation": "RawLifter original-address body",
+      "convention": "cdecl",
+      "argumentBytes": 4,
+      "requiredRegisters": [
+        "ESP: return address followed by one callback argument"
+      ],
+      "mappedGlobals": [],
+      "knownCallerInstructions": [
+        "0x00B57DD2"
+      ],
+      "verifiedCallees": [
+        "0x0087B59B"
+      ],
+      "indirectCallsites": [],
+      "returnBehavior": "Plain RET; EAX=-1 if callee returns zero, otherwise EAX=0; ECX consumes forwarded argument; DEC preserves CF",
+      "unresolvedDependencies": [
+        "0x0087B59B: SEH prolog and unresolved provider boundaries"
+      ],
+      "recoveryConfidence": "Complete Ghidra body without warnings; exact PE bytes, range and direct callee checked",
+      "callable": true,
+      "sourceSha256": "6b10551649fd70fa630bd7454fd953f51555fa2dd2112faae84ac8ca97844bcd",
+      "verifiedBodyRange": [
+        "0087b640",
+        "0087b651"
+      ]
     }
   ],
   "unavailable": [
     {
-      "address": 8894016,
-      "callsite": "0x00B57DD2",
+      "address": 8893851,
+      "callsite": "0x0087B644",
       "arguments": [
-        "0x00B602E0"
+        "forwarded callback 0x00B602E0"
       ],
       "convention": "cdecl",
-      "classification": "unresolved internal cleanup-registration helper",
-      "callable": false,
       "argumentBytes": 4,
-      "abiEvidence": "Original caller adds ESP,4 after return; provider remains unverified"
+      "classification": "ordinary cleanup callee: SEH injections, noncontiguous body and unresolved provider contracts",
+      "callable": false,
+      "abiEvidence": "Wrapper POP ECX cleans forwarded dword; no return admitted"
     }
   ],
-  "version": 66
+  "version": 67
 }

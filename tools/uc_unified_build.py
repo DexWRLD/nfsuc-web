@@ -14,26 +14,36 @@ BINDINGS = [{key: entry[key] for key in ("address", "convention", "argumentBytes
 HEADER = r"""
 typedef unsigned u32;
 typedef u32 uint32_t;
-typedef struct { volatile u32 esp,eip,eax,ebp,ecx,edx,esi,edi,ebx; } CPU;
+typedef struct { volatile u32 esp,eip,eax,ebp,ecx,edx,esi,edi,ebx,cf,pf,af,zf,sf,of,flags_known; } CPU;
 static CPU cpu;
 __attribute__((import_module("guest"),import_name("read32"))) u32 read32(u32);
 __attribute__((import_module("guest"),import_name("write32"))) void write32(u32,u32);
 __attribute__((import_module("guest"),import_name("dispatch"))) void dispatch(u32);
 __attribute__((import_module("guest"),import_name("instruction"))) void instruction(u32);
 __attribute__((import_module("guest"),import_name("write8"))) void write8(u32,u32);
-static volatile int equal, less;
 #define MR32(a) read32(a)
-#define PUSH32(v) do { c->esp -= 4; write32(c->esp,(v)); } while (0)
-#define POP32(v) do { (v)=read32(c->esp); c->esp += 4; } while (0)
-#define FLAGS_SUB_M(a,b,r,n,m) do { if(m){equal=!(r);less=(int)(a)<(int)(b);} } while(0)
-#define FLAGS_ADD_M(a,b,r,n,m) do { if(m){equal=!(r);less=(int)(r)<0;} } while(0)
-#define FLAGS_LOG_M(r,n,m) do { equal=!(r);less=(int)(r)<0; } while(0)
-#define CC_E equal
-#define CC_NE (!equal)
-#define CC_L less
-#define CC_G (!equal && !less)
+#define PUSH32(v) do { u32 pushed=(v); c->esp -= 4; write32(c->esp,pushed); } while (0)
+#define POP32(v) do { u32 popped=read32(c->esp); c->esp += 4; (v)=popped; } while (0)
 #define DISPATCH_CALL(c,target) dispatch(target)
 """
+
+HEADER += (REPOSITORY/"tools/uc_unified_flags.h").read_text(encoding="utf-8")
+
+def transform_flags(bodies):
+    # SBB/ADC consume actual incoming CF. INC/DEC preserve CF validity too.
+    bodies = bodies.replace("_ci=c->cf&1u", "_ci=flag_read(c,F_CF)")
+    bodies = bodies.replace("_cf=c->cf;", "_cf=c->cf,_ck=c->flags_known&F_CF;")
+    return bodies.replace("c->cf=_cf;", "c->cf=_cf;c->flags_known=(c->flags_known&~F_CF)|_ck;")
+
+def validate_instruction_subset(bodies):
+    # Admission is explicit. New flag/system operations need semantics and tests;
+    # compiler acceptance alone does not make an instruction supported.
+    admitted = {'mov','lea','push','pop','call','ret','jmp','add','sub','cmp',
+                'test','xor','and','or','neg','sbb','inc','dec'}
+    admitted.update('j'+condition for condition in lift.CC)
+    mnemonics = set(re.findall(r'/\* [0-9a-f]{8}  (\S+)', bodies))
+    if mnemonics - admitted:
+        raise ValueError('Unreviewed unified instruction: '+','.join(sorted(mnemonics-admitted)))
 
 def build(image, output):
     raw=image.read_bytes()
@@ -46,11 +56,16 @@ def build(image, output):
                    or entry["argumentBytes"] % 4 for entry in REGISTRY["bindings"])):
         raise ValueError("Invalid reviewed dispatch registry")
     info=uca.read_inputs(str(image))
+    wrapper = bytes.fromhex("ff742404e852fffffff7d81bc0f7d85948c3")
+    offset=0x0087B640-info["text_va"]
+    if info["bytes"][offset:offset+len(wrapper)] != wrapper:
+        raise ValueError("Cleanup wrapper original instruction bytes mismatch")
     lifter=lift.RawLifter(info["bytes"],info["text_va"],comments=True)
     initializer,_=lifter.lift(0x009E8AD0)
     bodies=initializer+"\n"+legacy.build_prefix(lifter)
     expected_calls = {
         0x00B57DC0: {0x009E7540, 0x0087B640},
+        0x0087B640: {0x0087B59B},
         0x009E7540: {0x009E75A0, 0x009C1830},
         0x009E75A0: set(),
         0x009C1830: set(),
@@ -73,6 +88,8 @@ def build(image, output):
     registry_ts += "export const UNIFIED_REGISTRY = " + json.dumps(REGISTRY, indent=2) + " as const;\n"
     (REPOSITORY/"web/src/host/uc-unified-registry.ts").write_text(registry_ts, encoding="utf-8")
 
+    validate_instruction_subset(bodies)
+    bodies=transform_flags(bodies)
     bodies=re.sub(r"    if \(entered >= 8\) __builtin_trap\(\); trace\[entered\+\+\] = \d+u;\n","",bodies)
     bodies=bodies.replace("(*indexed_read(c->edx, c->eax))","MR32(c->edx+c->eax*4+0xfffffffcu)")
     bodies=re.sub(r"MR8\(([^;\n]+?)\) = \(([^;\n]+?)\);",r"write8(\1, \2);",bodies)
@@ -84,6 +101,9 @@ def build(image, output):
     exports="""
 void set_register(u32 i,u32 v) { if(i>=9)__builtin_trap(); ((volatile u32*)&cpu)[i]=v; }
 u32 get_register(u32 i) { if(i>=9)__builtin_trap(); return ((volatile u32*)&cpu)[i]; }
+u32 get_flags(void) { return flags_value(&cpu); }
+u32 get_flags_known(void) { return cpu.flags_known; }
+void set_flags(u32 value,u32 known) { flags_restore(&cpu,value,known); }
 void execute(u32 address) { switch(address) {
 """
     exports+="\n".join(f"case 0x{a:08x}u: sub_{a:08x}(&cpu); return;" for a in ADDRESSES)
@@ -94,7 +114,7 @@ void execute(u32 address) { switch(address) {
         source.write_text(HEADER+bodies+exports)
         subprocess.run([p7.clang(),"--target=wasm32-unknown-unknown","-O2","-ffreestanding",
             "-nostdlib","-Wl,--no-entry","-Wl,--import-memory","-Wl,--initial-memory=131072",
-            "-Wl,--export=execute","-Wl,--export=set_register","-Wl,--export=get_register",
+            "-Wl,--export=execute","-Wl,--export=set_register","-Wl,--export=get_register","-Wl,--export=get_flags","-Wl,--export=get_flags_known","-Wl,--export=set_flags",
             str(source),"-o",str(output/"uc-unified.wasm")],check=True)
     sections=p7.read_sections(str(image))["sections"]
     payload=bytearray()

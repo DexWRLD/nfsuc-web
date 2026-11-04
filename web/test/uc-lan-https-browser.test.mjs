@@ -210,12 +210,12 @@ test('authorized EA bumper plays over the LAN asset pipeline', { skip: !process.
       assert.equal(evidence.initializer.esp, 0x0300f000);
       assert.equal(evidence.lastInstruction, 0x009e4b49);
       assert.equal(evidence.after, 0x009e78c0);
-      assert.equal(evidence.registeredAddresses.length, 9);
+      assert.equal(evidence.registeredAddresses.length, 10);
       assert.equal(evidence.initialization.root, '0x00B57DC0');
       assert.equal(evidence.initialization.globalWrites.length, 27);
       assert.equal(evidence.initialization.registers.eax, 0x0189d0a0);
-      assert.equal(evidence.initialization.lastInstruction, 0x00b57dd2);
-      assert.match(evidence.initialization.firstUnsupportedDependency, /0x87b640: unavailable/);
+      assert.equal(evidence.initialization.lastInstruction, 0x0087b644);
+      assert.match(evidence.initialization.firstUnsupportedDependency, /0x87b59b: unavailable/);
       assert.equal(evidence.initialization.trace.filter(event => event.kind === 'return').length, 8);
       assert.equal(evidence.platformServiceCalls.length, 0);
       if (process.env.UC_BROWSER_EVIDENCE && attempt === 0) {

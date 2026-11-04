@@ -50,11 +50,11 @@ export async function runUnifiedIntegration(signal: AbortSignal) {
   const initializationTrace = process.dispatcher.trace.map(event => ({ ...event }));
   const initializationEntered = initializationTrace.filter(event => event.kind === 'enter').map(event => event.address);
   const initializationWrites = process.writeLog.filter(write => write.address >= 0x00400000 && write.address < 0x03000000);
-  if (!initializationFault.includes('dispatch at 0x87b640: unavailable')
-      || observed.lastInstruction !== 0x00b57dd2 || observed.cpu.eax !== 0x0189d0a0
-      || observed.cpu.esp !== 0x0300eff0
+  if (!initializationFault.includes('dispatch at 0x87b59b: unavailable')
+      || observed.lastInstruction !== 0x0087b644 || observed.cpu.eax !== 0x0189d0a0
+      || observed.cpu.esp !== 0x0300efe8
       || initializationEntered.join(',') !== [0x00b57dc0, 0x009e7540,
-        0x009e75a0, 0x009e75a0, 0x009e75a0, 0x009e75a0, 0x009e75a0, 0x009e75a0, 0x009c1830].join(',')
+        0x009e75a0, 0x009e75a0, 0x009e75a0, 0x009e75a0, 0x009e75a0, 0x009e75a0, 0x009c1830, 0x0087b640].join(',')
       || initializationTrace.filter(event => event.kind === 'return').length !== 8
       || initializationWrites.length !== 27
       || process.memory.read32(0x0189d0f8) !== 0x32000 || process.memory.read32(0x0189d0fc) !== 0x186a0) {
@@ -63,7 +63,9 @@ export async function runUnifiedIntegration(signal: AbortSignal) {
   const initialization = {
     root: '0x00B57DC0', staticPointerCell: '0x00B6370C', receiverSource: 'Original MOV ECX,0x0189D0A0 at 0x00B57DC3',
     entered: initializationEntered, trace: initializationTrace, globalWrites: initializationWrites,
-    registers: observed.cpu, lastInstruction: observed.lastInstruction,
+    registers: observed.cpu, lastInstruction: observed.lastInstruction, flagsKnown: observed.flagsKnown,
+    phase66Checkpoint: initializationTrace.find(event => event.kind === 'enter' && event.address === 0x0087b640),
+    differenceFromPhase66: 'Original wrapper entered; callee blocked before SEH. Cleanup not registered.',
     firstUnsupportedDependency: initializationFault, originalStartupReachability: 'UNVERIFIED',
   };
   process.reset();
