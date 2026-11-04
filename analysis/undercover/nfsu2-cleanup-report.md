@@ -38,3 +38,10 @@ The active Undercover page and its metadata contain no Underground 2 branding. T
 ## Git
 
 Baseline dac65b08 on main, one ahead of local origin/main, with a clean working tree. No remote fetch. The decompilation commit is separate from this cleanup. Only paths listed in the removal inventory and the associated build/interface/report changes belong to this task. No push was performed.
+
+
+## Phase 63 reconciliation
+
+The preceding cleanup was committed as aff9c648. repository-classification-phase63.json now inventories all 1,400 tracked paths from the current baseline. It preserves 22 pre-existing discord-bot deletions as unrelated working-tree state. No native deletion was retried after the automatic rejection. The cleanup commit removes the old active frontend and its tests, while retained native/game build dependencies still need a verified closure.
+
+Fresh Phase 63 validation passed the maintained browser, asset, cache and native harness suites. See runtime-phase63.md for exact commands and counts. The cleanup goal remains incomplete for the native legacy graph. The active preview remains Undercover-only.
