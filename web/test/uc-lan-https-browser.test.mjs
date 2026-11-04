@@ -125,6 +125,29 @@ test('authorized EA bumper plays over the LAN asset pipeline', { skip: !process.
   });
   await page.goto(handle.urls[0]);
   assert.equal(await page.evaluate(() => isSecureContext), true);
+  const { build } = await import('esbuild');
+  const foundation = await build({
+    entryPoints: [path.join(WEB, 'src/host/uc-process.ts')],
+    bundle: true, write: false, format: 'esm', platform: 'browser',
+  });
+  const foundationUrl = 'data:text/javascript;base64,' + Buffer.from(foundation.outputFiles[0].text).toString('base64');
+  const processEvidence = await page.evaluate(async url => {
+    const { GuestAddressSpace, GuestDispatcher, READ, WRITE, EXECUTE } = await import(url);
+    const guest = new GuestAddressSpace([
+      { name: 'code', address: 0x1000, size: 16, permissions: READ | EXECUTE },
+      { name: 'data', address: 0x2000, size: 16, permissions: READ | WRITE, bytes: Uint8Array.of(7) },
+    ]);
+    guest.write32(0x2000, 9);
+    guest.reset();
+    const dispatcher = new GuestDispatcher(guest, []);
+    let blocked = false;
+    try {
+      dispatcher.call({ esp: 0x200c }, 0x1000, 0x1004);
+    } catch { blocked = true; }
+    return { wasmMemory: guest.memory instanceof WebAssembly.Memory, resetValue: guest.read32(0x2000), blocked };
+  }, foundationUrl);
+  assert.deepEqual(processEvidence, { wasmMemory: true, resetValue: 7, blocked: true });
+
   assert.match(await page.title(), /Need for Speed Undercover/);
   assert.equal(await page.locator('#play').isDisabled(), true);
   assert.doesNotMatch(await page.locator('body').innerText(), /Underground 2/i);
