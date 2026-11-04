@@ -1,8 +1,8 @@
 {
   "project": {
     "name": "nfsuc-web",
-    "current_phase": 73,
-    "strategy": "NO-GO browser x86 adoption after bounded cost isolation. Checked persistent/batched execution still exceeds the unchanged 5x gate. Retain translated Wasm; close further tuning and return to evidenced original startup dependencies."
+    "current_phase": 75,
+    "strategy": "Opt-in compatibility-hosted security-cookie routine returns in Edge using five exact-callsite host services. Original PE startup and loader binding remain unverified. C/CPP initialization and cleanup remain blocked; normal mode preserves the provider trap."
   },
   "discovery": {
     "candidates": 25450,
@@ -7367,6 +7367,10 @@
     {
       "name": "BROWSER X86 ADOPTION COST GATE",
       "state": "CLOSED: NO-GO; CHECKED MODES EXCEED 5x"
+    },
+    {
+      "name": "COMPATIBILITY CRT COOKIE",
+      "state": "VERIFIED HOST-SCHEDULED; ORIGINAL PE BOOT STILL BLOCKED"
     }
   ],
   "history": [

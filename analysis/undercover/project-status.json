@@ -1,6 +1,6 @@
 {
-  "current_phase": 73,
-  "strategy": "NO-GO browser x86 adoption after bounded cost isolation. Checked persistent/batched execution still exceeds the unchanged 5x gate. Retain translated Wasm; close further tuning and return to evidenced original startup dependencies.",
+  "current_phase": 75,
+  "strategy": "Opt-in compatibility-hosted security-cookie routine returns in Edge using five exact-callsite host services. Original PE startup and loader binding remain unverified. C/CPP initialization and cleanup remain blocked; normal mode preserves the provider trap.",
   "boundaries": {
     "0x00686000": {
       "status": "PROTECTED_OR_EXTERNAL_DEPENDENCY",
@@ -655,6 +655,10 @@
     {
       "name": "BROWSER X86 ADOPTION COST GATE",
       "state": "CLOSED: NO-GO; CHECKED MODES EXCEED 5x"
+    },
+    {
+      "name": "COMPATIBILITY CRT COOKIE",
+      "state": "VERIFIED HOST-SCHEDULED; ORIGINAL PE BOOT STILL BLOCKED"
     }
   ],
   "frontend_frame_revalidation": {
@@ -728,5 +732,23 @@
     "production_backend_changed": false,
     "further_tuning_recommended": false,
     "startup_advanced": false
+  },
+  "crt_compatibility_bootstrap": {
+    "evidence": "crt-bootstrap-execution-phase75.json",
+    "contracts": "crt-compatibility-contracts-phase75.json",
+    "original_pe_startup": "BLOCKED_UNVERIFIED",
+    "original_loader_binding": "UNVERIFIED",
+    "compatibility_crt": "COOKIE_ROUTINE_RETURNED",
+    "compatibility_thread": "HOST_NT_TIB32_PREPARED",
+    "c_initializer_completion": "NOT_EXECUTED",
+    "cpp_constructor_completion": "NOT_EXECUTED",
+    "cleanup_registration": "NOT_COMPLETED",
+    "full_game_boot": "BLOCKED",
+    "normal_bindings": 14,
+    "diagnostic_bindings": 15,
+    "original_cookie_instructions": 42,
+    "host_service_calls": 5,
+    "original_loader_observed": false,
+    "new_lan_distribution": false
   }
 }

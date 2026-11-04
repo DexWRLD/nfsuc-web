@@ -1,0 +1,137 @@
+{
+  "entry": 8897124,
+  "end": 8897272,
+  "bodySha256": "d0507c2f9c14d64b541022c69ce07f0709947437d4a350e5e47b98a91b92f910",
+  "instructionStarts": [
+    8897124,
+    8897125,
+    8897127,
+    8897130,
+    8897135,
+    8897139,
+    8897143,
+    8897144,
+    8897145,
+    8897150,
+    8897152,
+    8897157,
+    8897159,
+    8897161,
+    8897163,
+    8897165,
+    8897170,
+    8897172,
+    8897173,
+    8897176,
+    8897177,
+    8897183,
+    8897186,
+    8897189,
+    8897195,
+    8897197,
+    8897203,
+    8897205,
+    8897211,
+    8897213,
+    8897216,
+    8897217,
+    8897223,
+    8897226,
+    8897229,
+    8897231,
+    8897233,
+    8897235,
+    8897240,
+    8897242,
+    8897244,
+    8897246,
+    8897248,
+    8897251,
+    8897253,
+    8897259,
+    8897261,
+    8897267,
+    8897268,
+    8897269,
+    8897270,
+    8897271
+  ],
+  "instructionCount": 52,
+  "services": [
+    {
+      "callsite": 8897177,
+      "cell": 11932064,
+      "rawValue": 9089278,
+      "name": "GetSystemTimeAsFileTime",
+      "record": 13283582,
+      "argumentBytes": 4,
+      "convention": "stdcall",
+      "bytes": "ff15a011b600",
+      "advertisedProviders": [
+        "KERNEL32.dll"
+      ],
+      "originalEffectiveBindingVerified": false
+    },
+    {
+      "callsite": 8897189,
+      "cell": 11931852,
+      "rawValue": 9085312,
+      "name": "GetCurrentProcessId",
+      "record": 13279616,
+      "argumentBytes": 0,
+      "convention": "stdcall",
+      "bytes": "ff15cc10b600",
+      "advertisedProviders": [
+        "KERNEL32.dll"
+      ],
+      "originalEffectiveBindingVerified": false
+    },
+    {
+      "callsite": 8897197,
+      "cell": 11932128,
+      "rawValue": 9084696,
+      "name": "GetCurrentThreadId",
+      "record": 13279000,
+      "argumentBytes": 0,
+      "convention": "stdcall",
+      "bytes": "ff15e011b600",
+      "advertisedProviders": [
+        "KERNEL32.dll"
+      ],
+      "originalEffectiveBindingVerified": false
+    },
+    {
+      "callsite": 8897205,
+      "cell": 11932112,
+      "rawValue": 9084772,
+      "name": "GetTickCount",
+      "record": 13279076,
+      "argumentBytes": 0,
+      "convention": "stdcall",
+      "bytes": "ff15d011b600",
+      "advertisedProviders": [
+        "KERNEL32.dll"
+      ],
+      "originalEffectiveBindingVerified": false
+    },
+    {
+      "callsite": 8897217,
+      "cell": 11932152,
+      "rawValue": 9084548,
+      "name": "QueryPerformanceCounter",
+      "record": 13278852,
+      "argumentBytes": 4,
+      "convention": "stdcall",
+      "bytes": "ff15f811b600",
+      "advertisedProviders": [
+        "KERNEL32.dll"
+      ],
+      "originalEffectiveBindingVerified": false
+    }
+  ],
+  "unsupportedInstruction": 8897248,
+  "classification": "HOST_SCHEDULED_DIAGNOSTIC_NOT_ORIGINAL_PE_STARTUP",
+  "moduleSha256": "7859c00ff1145937b25076452ba5afc152171bccea95240b68b5a78c0bfe3cc1",
+  "sourceSha256": "6b10551649fd70fa630bd7454fd953f51555fa2dd2112faae84ac8ca97844bcd",
+  "normalBindingsUnchanged": 14
+}

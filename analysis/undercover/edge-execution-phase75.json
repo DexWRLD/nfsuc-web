@@ -1,0 +1,1146 @@
+{
+  "browser": "msedge",
+  "secureContext": true,
+  "sourceSha256": "6b10551649fd70fa630bd7454fd953f51555fa2dd2112faae84ac8ca97844bcd",
+  "registeredAddresses": [
+    "0x9e8ad0",
+    "0x99dcd0",
+    "0x9e78c0",
+    "0x9b6290",
+    "0x9e4b10",
+    "0xb57dc0",
+    "0x9e7540",
+    "0x9e75a0",
+    "0x9c1830",
+    "0x87b640",
+    "0x87b59b",
+    "0x87beb8",
+    "0x87befd",
+    "0x87b637"
+  ],
+  "initialization": {
+    "crtProviderState": {
+      "sourceSha256": "6b10551649fd70fa630bd7454fd953f51555fa2dd2112faae84ac8ca97844bcd",
+      "providers": [
+        {
+          "legacyCell": 11932548,
+          "legacyFileValue": 9088046,
+          "legacySection": {
+            "name": ".rdata",
+            "readable": true,
+            "writable": false,
+            "executable": false
+          },
+          "activeImportCell": 36495435,
+          "activeSection": {
+            "name": ".securom",
+            "readable": true,
+            "writable": true,
+            "executable": true
+          },
+          "dll": "MSVCR80.dll",
+          "symbol": "_unlock",
+          "hintNameRva": 32297087,
+          "hint": 1011,
+          "index": 85,
+          "fileIatValue": 32297087,
+          "tableIndex": 85,
+          "positionalDelta": 24562887,
+          "correspondence": "POSITIONAL_AND_CALLSITE_ROLE_ONLY",
+          "runtimeBindingVerified": false,
+          "loaderResolvedExternalService": null,
+          "adapterImplemented": false,
+          "expectedLegacyAbi": {
+            "convention": "cdecl",
+            "argumentBytes": 4,
+            "provenance": "original consuming stack cleanup; not ABI of overlapping file target"
+          },
+          "actualLegacyValue": 9088046,
+          "activeImportIdentityVerified": true,
+          "activeImportStorage": "UNAVAILABLE_PE_SECTION",
+          "effectiveTarget": 9088046,
+          "importedServiceExecuted": false
+        },
+        {
+          "legacyCell": 11932552,
+          "legacyFileValue": 9088056,
+          "legacySection": {
+            "name": ".rdata",
+            "readable": true,
+            "writable": false,
+            "executable": false
+          },
+          "activeImportCell": 36495439,
+          "activeSection": {
+            "name": ".securom",
+            "readable": true,
+            "writable": true,
+            "executable": true
+          },
+          "dll": "MSVCR80.dll",
+          "symbol": "__dllonexit",
+          "hintNameRva": 32297097,
+          "hint": 153,
+          "index": 86,
+          "fileIatValue": 32297097,
+          "tableIndex": 86,
+          "positionalDelta": 24562887,
+          "correspondence": "POSITIONAL_AND_CALLSITE_ROLE_ONLY",
+          "runtimeBindingVerified": false,
+          "loaderResolvedExternalService": null,
+          "adapterImplemented": false,
+          "expectedLegacyAbi": {
+            "convention": "cdecl",
+            "argumentBytes": 12,
+            "provenance": "original consuming stack cleanup; not ABI of overlapping file target"
+          },
+          "actualLegacyValue": 9088056,
+          "activeImportIdentityVerified": true,
+          "activeImportStorage": "UNAVAILABLE_PE_SECTION",
+          "effectiveTarget": 9088056,
+          "importedServiceExecuted": false
+        },
+        {
+          "legacyCell": 11932556,
+          "legacyFileValue": 9088070,
+          "legacySection": {
+            "name": ".rdata",
+            "readable": true,
+            "writable": false,
+            "executable": false
+          },
+          "activeImportCell": 36495443,
+          "activeSection": {
+            "name": ".securom",
+            "readable": true,
+            "writable": true,
+            "executable": true
+          },
+          "dll": "MSVCR80.dll",
+          "symbol": "_encode_pointer",
+          "hintNameRva": 32297111,
+          "hint": 370,
+          "index": 87,
+          "fileIatValue": 32297111,
+          "tableIndex": 87,
+          "positionalDelta": 24562887,
+          "correspondence": "POSITIONAL_AND_CALLSITE_ROLE_ONLY",
+          "runtimeBindingVerified": false,
+          "loaderResolvedExternalService": null,
+          "adapterImplemented": false,
+          "expectedLegacyAbi": {
+            "convention": "cdecl",
+            "argumentBytes": 4,
+            "provenance": "original consuming stack cleanup; not ABI of overlapping file target"
+          },
+          "actualLegacyValue": 9088070,
+          "activeImportIdentityVerified": true,
+          "activeImportStorage": "UNAVAILABLE_PE_SECTION",
+          "effectiveTarget": 9088070,
+          "importedServiceExecuted": false
+        },
+        {
+          "legacyCell": 11932560,
+          "legacyFileValue": 9088088,
+          "legacySection": {
+            "name": ".rdata",
+            "readable": true,
+            "writable": false,
+            "executable": false
+          },
+          "activeImportCell": 36495447,
+          "activeSection": {
+            "name": ".securom",
+            "readable": true,
+            "writable": true,
+            "executable": true
+          },
+          "dll": "MSVCR80.dll",
+          "symbol": "_lock",
+          "hintNameRva": 32297129,
+          "hint": 642,
+          "index": 88,
+          "fileIatValue": 32297129,
+          "tableIndex": 88,
+          "positionalDelta": 24562887,
+          "correspondence": "POSITIONAL_AND_CALLSITE_ROLE_ONLY",
+          "runtimeBindingVerified": false,
+          "loaderResolvedExternalService": null,
+          "adapterImplemented": false,
+          "expectedLegacyAbi": {
+            "convention": "cdecl",
+            "argumentBytes": 4,
+            "provenance": "original consuming stack cleanup; not ABI of overlapping file target"
+          },
+          "actualLegacyValue": 9088088,
+          "activeImportIdentityVerified": true,
+          "activeImportStorage": "UNAVAILABLE_PE_SECTION",
+          "effectiveTarget": 9088088,
+          "importedServiceExecuted": false
+        },
+        {
+          "legacyCell": 11932564,
+          "legacyFileValue": 9088096,
+          "legacySection": {
+            "name": ".rdata",
+            "readable": true,
+            "writable": false,
+            "executable": false
+          },
+          "activeImportCell": 36495451,
+          "activeSection": {
+            "name": ".securom",
+            "readable": true,
+            "writable": true,
+            "executable": true
+          },
+          "dll": "MSVCR80.dll",
+          "symbol": "_onexit",
+          "hintNameRva": 32297137,
+          "hint": 808,
+          "index": 89,
+          "fileIatValue": 32297137,
+          "tableIndex": 89,
+          "positionalDelta": 24562887,
+          "correspondence": "POSITIONAL_AND_CALLSITE_ROLE_ONLY",
+          "runtimeBindingVerified": false,
+          "loaderResolvedExternalService": null,
+          "adapterImplemented": false,
+          "expectedLegacyAbi": {
+            "convention": "cdecl",
+            "argumentBytes": 4,
+            "provenance": "original consuming stack cleanup; not ABI of overlapping file target"
+          },
+          "actualLegacyValue": 9088096,
+          "activeImportIdentityVerified": true,
+          "activeImportStorage": "UNAVAILABLE_PE_SECTION",
+          "effectiveTarget": 9088096,
+          "importedServiceExecuted": false
+        },
+        {
+          "legacyCell": 11932568,
+          "legacyFileValue": 9088106,
+          "legacySection": {
+            "name": ".rdata",
+            "readable": true,
+            "writable": false,
+            "executable": false
+          },
+          "activeImportCell": 36495455,
+          "activeSection": {
+            "name": ".securom",
+            "readable": true,
+            "writable": true,
+            "executable": true
+          },
+          "dll": "MSVCR80.dll",
+          "symbol": "_decode_pointer",
+          "hintNameRva": 32297147,
+          "hint": 360,
+          "index": 90,
+          "fileIatValue": 32297147,
+          "tableIndex": 90,
+          "positionalDelta": 24562887,
+          "correspondence": "POSITIONAL_AND_CALLSITE_ROLE_ONLY",
+          "runtimeBindingVerified": false,
+          "loaderResolvedExternalService": null,
+          "adapterImplemented": false,
+          "expectedLegacyAbi": {
+            "convention": "cdecl",
+            "argumentBytes": 4,
+            "provenance": "original consuming stack cleanup; not ABI of overlapping file target"
+          },
+          "actualLegacyValue": 9088106,
+          "activeImportIdentityVerified": true,
+          "activeImportStorage": "UNAVAILABLE_PE_SECTION",
+          "effectiveTarget": 9088106,
+          "importedServiceExecuted": false
+        },
+        {
+          "legacyCell": 11932632,
+          "legacyFileValue": 9088398,
+          "legacySection": {
+            "name": ".rdata",
+            "readable": true,
+            "writable": false,
+            "executable": false
+          },
+          "activeImportCell": 36495519,
+          "activeSection": {
+            "name": ".securom",
+            "readable": true,
+            "writable": true,
+            "executable": true
+          },
+          "dll": "MSVCR80.dll",
+          "symbol": "_except_handler4_common",
+          "hintNameRva": 32297430,
+          "hint": 379,
+          "index": 106,
+          "fileIatValue": 32297430,
+          "tableIndex": 106,
+          "positionalDelta": 24562887,
+          "correspondence": "POSITIONAL_AND_CALLSITE_ROLE_ONLY",
+          "runtimeBindingVerified": false,
+          "loaderResolvedExternalService": null,
+          "adapterImplemented": false,
+          "expectedLegacyAbi": {
+            "convention": "cdecl",
+            "argumentBytes": 24,
+            "provenance": "original consuming stack cleanup; not ABI of overlapping file target"
+          },
+          "actualLegacyValue": 9088398,
+          "activeImportIdentityVerified": true,
+          "activeImportStorage": "UNAVAILABLE_PE_SECTION",
+          "effectiveTarget": 9088398,
+          "importedServiceExecuted": false
+        },
+        {
+          "legacyCell": 11932592,
+          "legacyFileValue": 9088190,
+          "legacySection": {
+            "name": ".rdata",
+            "readable": true,
+            "writable": false,
+            "executable": false
+          },
+          "activeImportCell": 36495479,
+          "activeSection": {
+            "name": ".securom",
+            "readable": true,
+            "writable": true,
+            "executable": true
+          },
+          "dll": "MSVCR80.dll",
+          "symbol": "_initterm",
+          "hintNameRva": 32297229,
+          "hint": 528,
+          "index": 96,
+          "fileIatValue": 32297229,
+          "tableIndex": 96,
+          "positionalDelta": 24562887,
+          "correspondence": "POSITIONAL_AND_CALLSITE_ROLE_ONLY",
+          "runtimeBindingVerified": false,
+          "loaderResolvedExternalService": null,
+          "adapterImplemented": false,
+          "expectedLegacyAbi": {
+            "convention": "cdecl",
+            "argumentBytes": 8,
+            "provenance": "original consuming stack cleanup; not ABI of overlapping file target"
+          },
+          "actualLegacyValue": 9088190,
+          "activeImportIdentityVerified": true,
+          "activeImportStorage": "UNAVAILABLE_PE_SECTION",
+          "effectiveTarget": 9088190,
+          "importedServiceExecuted": false
+        },
+        {
+          "legacyCell": 11932596,
+          "legacyFileValue": 9088202,
+          "legacySection": {
+            "name": ".rdata",
+            "readable": true,
+            "writable": false,
+            "executable": false
+          },
+          "activeImportCell": 36495483,
+          "activeSection": {
+            "name": ".securom",
+            "readable": true,
+            "writable": true,
+            "executable": true
+          },
+          "dll": "MSVCR80.dll",
+          "symbol": "_initterm_e",
+          "hintNameRva": 32297241,
+          "hint": 529,
+          "index": 97,
+          "fileIatValue": 32297241,
+          "tableIndex": 97,
+          "positionalDelta": 24562887,
+          "correspondence": "POSITIONAL_AND_CALLSITE_ROLE_ONLY",
+          "runtimeBindingVerified": false,
+          "loaderResolvedExternalService": null,
+          "adapterImplemented": false,
+          "expectedLegacyAbi": {
+            "convention": "cdecl",
+            "argumentBytes": 8,
+            "provenance": "original consuming stack cleanup; not ABI of overlapping file target"
+          },
+          "actualLegacyValue": 9088202,
+          "activeImportIdentityVerified": true,
+          "activeImportStorage": "UNAVAILABLE_PE_SECTION",
+          "effectiveTarget": 9088202,
+          "importedServiceExecuted": false
+        },
+        {
+          "legacyCell": 11932620,
+          "legacyFileValue": 9088304,
+          "legacySection": {
+            "name": ".rdata",
+            "readable": true,
+            "writable": false,
+            "executable": false
+          },
+          "activeImportCell": 36495507,
+          "activeSection": {
+            "name": ".securom",
+            "readable": true,
+            "writable": true,
+            "executable": true
+          },
+          "dll": "MSVCR80.dll",
+          "symbol": "__set_app_type",
+          "hintNameRva": 32297339,
+          "hint": 232,
+          "index": 103,
+          "fileIatValue": 32297339,
+          "tableIndex": 103,
+          "positionalDelta": 24562887,
+          "correspondence": "POSITIONAL_AND_CALLSITE_ROLE_ONLY",
+          "runtimeBindingVerified": false,
+          "loaderResolvedExternalService": null,
+          "adapterImplemented": false,
+          "expectedLegacyAbi": {
+            "convention": "cdecl",
+            "argumentBytes": 4,
+            "provenance": "original consuming stack cleanup; not ABI of overlapping file target"
+          },
+          "actualLegacyValue": 9088304,
+          "activeImportIdentityVerified": true,
+          "activeImportStorage": "UNAVAILABLE_PE_SECTION",
+          "effectiveTarget": 9088304,
+          "importedServiceExecuted": false
+        }
+      ],
+      "runtimeBindingVerified": false,
+      "loaderCopyVerified": false,
+      "importedServicesExecuted": [],
+      "conditionalInitialization": {
+        "classification": "STATIC_CONDITIONAL_ORIGINAL_ORDER_NOT_EXECUTION",
+        "edges": [
+          {
+            "source": 8895893,
+            "target": 8897124,
+            "kind": "original direct CALL"
+          },
+          {
+            "source": 8895898,
+            "target": 8895293,
+            "kind": "original tail transfer"
+          },
+          {
+            "source": 8895412,
+            "target": 8897074,
+            "kind": "conditional C walker"
+          },
+          {
+            "source": 11943368,
+            "target": 8895667,
+            "kind": "table pointer; requires unavailable walker"
+          },
+          {
+            "source": 8895778,
+            "target": 11932556,
+            "kind": "legacy indirect transform of -1"
+          },
+          {
+            "source": 8895465,
+            "target": 8897068,
+            "kind": "conditional C++ walker"
+          },
+          {
+            "source": 11941644,
+            "target": 11894208,
+            "kind": "table pointer; requires unavailable walker"
+          }
+        ],
+        "branchConditions": {
+          "cInitialization": "startup state zero sets state one before C walker; EAX=0 from walker reaches continuation, nonzero exits error path",
+          "cppInitialization": "at 0x0087BBDD, startup state must equal one; otherwise skip constructor walker",
+          "stateTwoWrite": 8895472
+        },
+        "firstDependencies": {
+          "cookie": {
+            "callsite": 8897177,
+            "cell": 11932064
+          },
+          "startup": {
+            "prologSize": 16,
+            "scope": 13276152,
+            "fsSelfRead": 8895310,
+            "fsOffset": 24,
+            "synchronizationCall": 8895330,
+            "cell": 11932084
+          },
+          "cWalker": 11932596,
+          "preC": {
+            "headerRead": 4194304,
+            "priorProvider": 11932620,
+            "encodingProvider": 11932556
+          },
+          "cppWalker": 11932592,
+          "aptRegistrar": {
+            "callsite": 8893875,
+            "cell": 11932568
+          }
+        },
+        "traversalExecuted": false
+      },
+      "cookie": {
+        "value": 3141592654,
+        "complement": 1153374641,
+        "provenance": "AUTHENTICATED_FILE_BYTES_ONLY",
+        "initializerExecuted": false
+      },
+      "cleanupGlobals": {
+        "start": 0,
+        "end": 0,
+        "originalSentinelInitializerExecuted": false,
+        "encodedSentinelValue": null
+      },
+      "callbackRegistrationCompleted": false,
+      "originalStartupReachability": "UNVERIFIED"
+    },
+    "root": "0x00B57DC0",
+    "staticPointerCell": "0x00B6370C",
+    "receiverSource": "Original MOV ECX,0x0189D0A0 at 0x00B57DC3",
+    "entered": [
+      11894208,
+      10384704,
+      10384800,
+      10384800,
+      10384800,
+      10384800,
+      10384800,
+      10384800,
+      10229808,
+      8894016,
+      8893851,
+      8896184
+    ],
+    "trace": [
+      {
+        "kind": "enter",
+        "address": 11894208,
+        "esp": 50393084
+      },
+      {
+        "kind": "enter",
+        "address": 10384704,
+        "esp": 50393076,
+        "callsite": 11894216,
+        "returnAddress": 11894221
+      },
+      {
+        "kind": "enter",
+        "address": 10384800,
+        "esp": 50393064,
+        "callsite": 10384714,
+        "returnAddress": 10384719
+      },
+      {
+        "kind": "return",
+        "address": 10384800,
+        "esp": 50393068
+      },
+      {
+        "kind": "enter",
+        "address": 10384800,
+        "esp": 50393064,
+        "callsite": 10384725,
+        "returnAddress": 10384730
+      },
+      {
+        "kind": "return",
+        "address": 10384800,
+        "esp": 50393068
+      },
+      {
+        "kind": "enter",
+        "address": 10384800,
+        "esp": 50393064,
+        "callsite": 10384736,
+        "returnAddress": 10384741
+      },
+      {
+        "kind": "return",
+        "address": 10384800,
+        "esp": 50393068
+      },
+      {
+        "kind": "enter",
+        "address": 10384800,
+        "esp": 50393064,
+        "callsite": 10384747,
+        "returnAddress": 10384752
+      },
+      {
+        "kind": "return",
+        "address": 10384800,
+        "esp": 50393068
+      },
+      {
+        "kind": "enter",
+        "address": 10384800,
+        "esp": 50393064,
+        "callsite": 10384758,
+        "returnAddress": 10384763
+      },
+      {
+        "kind": "return",
+        "address": 10384800,
+        "esp": 50393068
+      },
+      {
+        "kind": "enter",
+        "address": 10384800,
+        "esp": 50393064,
+        "callsite": 10384769,
+        "returnAddress": 10384774
+      },
+      {
+        "kind": "return",
+        "address": 10384800,
+        "esp": 50393068
+      },
+      {
+        "kind": "enter",
+        "address": 10229808,
+        "esp": 50393064,
+        "callsite": 10384780,
+        "returnAddress": 10384785
+      },
+      {
+        "kind": "return",
+        "address": 10229808,
+        "esp": 50393068
+      },
+      {
+        "kind": "return",
+        "address": 10384704,
+        "esp": 50393080
+      },
+      {
+        "kind": "enter",
+        "address": 8894016,
+        "esp": 50393072,
+        "callsite": 11894226,
+        "returnAddress": 11894231
+      },
+      {
+        "kind": "enter",
+        "address": 8893851,
+        "esp": 50393064,
+        "callsite": 8894020,
+        "returnAddress": 8894025
+      },
+      {
+        "kind": "enter",
+        "address": 8896184,
+        "esp": 50393052,
+        "callsite": 8893858,
+        "returnAddress": 8893863
+      },
+      {
+        "kind": "return",
+        "address": 8896184,
+        "esp": 50393008
+      },
+      {
+        "kind": "fault",
+        "address": 8893851,
+        "esp": 50393000
+      },
+      {
+        "kind": "fault",
+        "address": 8894016,
+        "esp": 50393000
+      },
+      {
+        "kind": "fault",
+        "address": 11894208,
+        "esp": 50393000
+      }
+    ],
+    "globalWrites": [
+      {
+        "address": 25809056,
+        "size": 4,
+        "value": 0,
+        "instruction": 10384810
+      },
+      {
+        "address": 25809060,
+        "size": 4,
+        "value": 0,
+        "instruction": 10384819
+      },
+      {
+        "address": 25809064,
+        "size": 4,
+        "value": 0,
+        "instruction": 10384829
+      },
+      {
+        "address": 25809068,
+        "size": 4,
+        "value": 0,
+        "instruction": 10384810
+      },
+      {
+        "address": 25809072,
+        "size": 4,
+        "value": 0,
+        "instruction": 10384819
+      },
+      {
+        "address": 25809076,
+        "size": 4,
+        "value": 0,
+        "instruction": 10384829
+      },
+      {
+        "address": 25809080,
+        "size": 4,
+        "value": 0,
+        "instruction": 10384810
+      },
+      {
+        "address": 25809084,
+        "size": 4,
+        "value": 0,
+        "instruction": 10384819
+      },
+      {
+        "address": 25809088,
+        "size": 4,
+        "value": 0,
+        "instruction": 10384829
+      },
+      {
+        "address": 25809092,
+        "size": 4,
+        "value": 0,
+        "instruction": 10384810
+      },
+      {
+        "address": 25809096,
+        "size": 4,
+        "value": 0,
+        "instruction": 10384819
+      },
+      {
+        "address": 25809100,
+        "size": 4,
+        "value": 0,
+        "instruction": 10384829
+      },
+      {
+        "address": 25809104,
+        "size": 4,
+        "value": 0,
+        "instruction": 10384810
+      },
+      {
+        "address": 25809108,
+        "size": 4,
+        "value": 0,
+        "instruction": 10384819
+      },
+      {
+        "address": 25809112,
+        "size": 4,
+        "value": 0,
+        "instruction": 10384829
+      },
+      {
+        "address": 25809120,
+        "size": 4,
+        "value": 0,
+        "instruction": 10384810
+      },
+      {
+        "address": 25809124,
+        "size": 4,
+        "value": 0,
+        "instruction": 10384819
+      },
+      {
+        "address": 25809128,
+        "size": 4,
+        "value": 0,
+        "instruction": 10384829
+      },
+      {
+        "address": 25809132,
+        "size": 4,
+        "value": 0,
+        "instruction": 10229818
+      },
+      {
+        "address": 25809136,
+        "size": 4,
+        "value": 0,
+        "instruction": 10229827
+      },
+      {
+        "address": 25809140,
+        "size": 4,
+        "value": 0,
+        "instruction": 10229837
+      },
+      {
+        "address": 25809144,
+        "size": 4,
+        "value": 204800,
+        "instruction": 10229847
+      },
+      {
+        "address": 25809148,
+        "size": 4,
+        "value": 100000,
+        "instruction": 10229857
+      },
+      {
+        "address": 25809152,
+        "size": 4,
+        "value": 0,
+        "instruction": 10229867
+      },
+      {
+        "address": 25809156,
+        "size": 4,
+        "value": 0,
+        "instruction": 10229877
+      },
+      {
+        "address": 25809160,
+        "size": 4,
+        "value": 0,
+        "instruction": 10229887
+      },
+      {
+        "address": 25809164,
+        "size": 1,
+        "value": 0,
+        "instruction": 10229897
+      }
+    ],
+    "threadFixture": {
+      "provenance": "SYNTHETIC_GENERIC_X86_THREAD_FIXTURE",
+      "fsBase": 51380224,
+      "exceptionHead": 4294967295,
+      "originalThreadInitialization": false,
+      "exceptionDispatchSupported": false
+    },
+    "linkedThread": {
+      "provenance": "SYNTHETIC_GENERIC_X86_THREAD_FIXTURE",
+      "fsBase": 51380224,
+      "exceptionHead": 50393044,
+      "originalThreadInitialization": false,
+      "exceptionDispatchSupported": false
+    },
+    "fsAccesses": [
+      {
+        "operation": "read",
+        "base": 51380224,
+        "offset": 0,
+        "value": 4294967295
+      },
+      {
+        "operation": "write",
+        "base": 51380224,
+        "offset": 0,
+        "value": 50393044
+      }
+    ],
+    "linkedExceptionFrame": 50393044,
+    "cookieSource": {
+      "address": "0x01285688",
+      "value": 3141592654,
+      "initialization": "AUTHENTICATED_FILE_BYTES_ONLY"
+    },
+    "provider": {
+      "callsite": "0x0087B5B3",
+      "cell": "0x00B61398",
+      "value": 9088106,
+      "argument": 0,
+      "returnAddress": 8893877,
+      "classification": "INSIDE_LEA_AT_0x008AAC69_REJECTED"
+    },
+    "rootReturned": false,
+    "wrapperReturned": false,
+    "registrarReturned": false,
+    "restorationExercisedInConnectedTrace": false,
+    "instructions": [
+      11894208,
+      11894209,
+      11894211,
+      11894216,
+      10384704,
+      10384705,
+      10384707,
+      10384708,
+      10384711,
+      10384714,
+      10384800,
+      10384801,
+      10384803,
+      10384804,
+      10384807,
+      10384810,
+      10384816,
+      10384819,
+      10384826,
+      10384829,
+      10384836,
+      10384839,
+      10384841,
+      10384842,
+      10384719,
+      10384722,
+      10384725,
+      10384800,
+      10384801,
+      10384803,
+      10384804,
+      10384807,
+      10384810,
+      10384816,
+      10384819,
+      10384826,
+      10384829,
+      10384836,
+      10384839,
+      10384841,
+      10384842,
+      10384730,
+      10384733,
+      10384736,
+      10384800,
+      10384801,
+      10384803,
+      10384804,
+      10384807,
+      10384810,
+      10384816,
+      10384819,
+      10384826,
+      10384829,
+      10384836,
+      10384839,
+      10384841,
+      10384842,
+      10384741,
+      10384744,
+      10384747,
+      10384800,
+      10384801,
+      10384803,
+      10384804,
+      10384807,
+      10384810,
+      10384816,
+      10384819,
+      10384826,
+      10384829,
+      10384836,
+      10384839,
+      10384841,
+      10384842,
+      10384752,
+      10384755,
+      10384758,
+      10384800,
+      10384801,
+      10384803,
+      10384804,
+      10384807,
+      10384810,
+      10384816,
+      10384819,
+      10384826,
+      10384829,
+      10384836,
+      10384839,
+      10384841,
+      10384842,
+      10384763,
+      10384766,
+      10384769,
+      10384800,
+      10384801,
+      10384803,
+      10384804,
+      10384807,
+      10384810,
+      10384816,
+      10384819,
+      10384826,
+      10384829,
+      10384836,
+      10384839,
+      10384841,
+      10384842,
+      10384774,
+      10384777,
+      10384780,
+      10229808,
+      10229809,
+      10229811,
+      10229812,
+      10229815,
+      10229818,
+      10229824,
+      10229827,
+      10229834,
+      10229837,
+      10229844,
+      10229847,
+      10229854,
+      10229857,
+      10229864,
+      10229867,
+      10229874,
+      10229877,
+      10229884,
+      10229887,
+      10229894,
+      10229897,
+      10229901,
+      10229904,
+      10229906,
+      10229907,
+      10384785,
+      10384788,
+      10384790,
+      10384791,
+      11894221,
+      11894226,
+      8894016,
+      8894020,
+      8893851,
+      8893853,
+      8893858,
+      8896184,
+      8896189,
+      8896196,
+      8896200,
+      8896204,
+      8896208,
+      8896210,
+      8896211,
+      8896212,
+      8896213,
+      8896218,
+      8896221,
+      8896223,
+      8896224,
+      8896227,
+      8896230,
+      8896233,
+      8896240,
+      8896243,
+      8896246,
+      8896252,
+      8893863,
+      8893869,
+      8893875
+    ],
+    "registers": {
+      "eax": 50393044,
+      "ebx": 0,
+      "ecx": 25809132,
+      "edx": 25809132,
+      "esi": 9088106,
+      "edi": 0,
+      "ebp": 50393060,
+      "esp": 50393000,
+      "eip": 8893875,
+      "eflags": 132
+    },
+    "lastInstruction": 8893875,
+    "flagsKnown": 59,
+    "phase66Checkpoint": {
+      "kind": "enter",
+      "address": 8894016,
+      "esp": 50393072,
+      "callsite": 11894226,
+      "returnAddress": 11894231
+    },
+    "differenceFromPhase66": "Original registrar and SEH prolog executed with synthetic thread; stopped at unresolved provider. Cleanup not registered.",
+    "firstUnsupportedDependency": "dispatch at 0x8aac6a: unavailable",
+    "originalStartupReachability": "UNVERIFIED"
+  },
+  "normalPathRestoration": {
+    "classification": "SEPARATE_SYNTHETIC_CALL_FRAME",
+    "frame": 50392812,
+    "eaxPreserved": true,
+    "registersPreserved": true,
+    "exceptionHead": 4294967295,
+    "trace": [
+      {
+        "kind": "enter",
+        "address": 8896184,
+        "esp": 50392820
+      },
+      {
+        "kind": "return",
+        "address": 8896184,
+        "esp": 50392776
+      },
+      {
+        "kind": "enter",
+        "address": 8896253,
+        "esp": 50392772
+      },
+      {
+        "kind": "return",
+        "address": 8896253,
+        "esp": 50392832
+      }
+    ],
+    "fsAccesses": [
+      {
+        "operation": "read",
+        "base": 51380224,
+        "offset": 0,
+        "value": 4294967295
+      },
+      {
+        "operation": "write",
+        "base": 51380224,
+        "offset": 0,
+        "value": 50392812
+      },
+      {
+        "operation": "read",
+        "base": 51380224,
+        "offset": 0,
+        "value": 50392812
+      },
+      {
+        "operation": "write",
+        "base": 51380224,
+        "offset": 0,
+        "value": 4294967295
+      },
+      {
+        "operation": "read",
+        "base": 51380224,
+        "offset": 0,
+        "value": 4294967295
+      },
+      {
+        "operation": "read",
+        "base": 51380224,
+        "offset": 0,
+        "value": 4294967295
+      }
+    ],
+    "originalRegistrarCompletion": false
+  },
+  "platformServiceCalls": [],
+  "reset": "Original PE bytes and zero-filled state restored"
+}

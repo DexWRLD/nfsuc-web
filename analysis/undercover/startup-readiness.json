@@ -48,6 +48,18 @@
     "registration_completed": false
   },
   "independent_root_reachability_from_pe_entry": "UNVERIFIED",
+  "compatibility_crt": {
+    "evidence": "crt-bootstrap-execution-phase75.json",
+    "classification": "HOST_SCHEDULED_COMPATIBILITY_NOT_ORIGINAL_STARTUP",
+    "cookie_completed": true,
+    "thread_context": "HOST_NT_TIB32_PREPARED",
+    "original_pe_startup": false,
+    "original_loader_binding_observed": false,
+    "c_initializers_completed": false,
+    "cpp_constructors_completed": false,
+    "cleanup_registration_completed": false,
+    "full_game_boot": false
+  },
   "source_sha256": "6b10551649fd70fa630bd7454fd953f51555fa2dd2112faae84ac8ca97844bcd",
   "master_sha256": "f293d93d31fcbf86ad9b9639f2cf10c34defe9c621cfe7f1a5e975f598ddf88a",
   "entry": "0x01FCA510",

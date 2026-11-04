@@ -1,0 +1,7989 @@
+{
+  "processCreateMs": 79.5,
+  "negativeTests": {
+    "invalidInstructionRejected": true,
+    "invalidInstructionStop": "Unicorn.js: Function uc_emu_start failed with code 10:\nInvalid instruction (UC_ERR_INSN_INVALID)",
+    "classification": "SYNTHETIC_UD2_NEGATIVE_FIXTURE"
+  },
+  "budgetCases": [
+    {
+      "name": "instructions",
+      "expectedStop": "BUDGET_INSTRUCTIONS",
+      "actualStop": "BUDGET_INSTRUCTIONS",
+      "passed": true,
+      "instructions": 3
+    },
+    {
+      "name": "depth",
+      "expectedStop": "BUDGET_CALL_DEPTH",
+      "actualStop": "BUDGET_CALL_DEPTH",
+      "passed": true,
+      "instructions": 4
+    },
+    {
+      "name": "writes",
+      "expectedStop": "BUDGET_WRITES",
+      "actualStop": "BUDGET_WRITES",
+      "passed": true,
+      "instructions": 4
+    },
+    {
+      "name": "accessBytes",
+      "expectedStop": "BUDGET_ACCESS_BYTES",
+      "actualStop": "BUDGET_ACCESS_BYTES",
+      "passed": true,
+      "instructions": 4
+    },
+    {
+      "name": "wall",
+      "expectedStop": "BUDGET_WALL",
+      "actualStop": "BUDGET_WALL",
+      "passed": true,
+      "instructions": 0
+    },
+    {
+      "name": "transitions",
+      "expectedStop": "BUDGET_TRANSITIONS",
+      "actualStop": "BUDGET_TRANSITIONS",
+      "passed": true,
+      "instructions": 1
+    }
+  ],
+  "benchmark": {
+    "warmupPairs": 2,
+    "measuredPairs": 7,
+    "wasmMs": [
+      0.5,
+      1.1000000014901161,
+      0.8000000044703484,
+      0.6000000014901161,
+      0.6000000014901161,
+      0.3999999985098839,
+      0.29999999701976776
+    ],
+    "x86Ms": [
+      66.69999999552965,
+      67.29999999701977,
+      59.100000001490116,
+      62,
+      52.79999999701977,
+      47,
+      47.69999999552965
+    ],
+    "wasmMedianMs": 0.6000000014901161,
+    "x86MedianMs": 59.100000001490116,
+    "ratio": 98.49999975785613,
+    "resetMedianMs": 8.5,
+    "engineInitMs": 21.80000000447035,
+    "condition": "Instrumented worker; fresh private engine and checked synchronization per run; Wasm process/module already compiled; same process reset outside timed execution"
+  },
+  "secureContext": true,
+  "engineInitMs": 21.80000000447035,
+  "engineVersion": 33621247,
+  "reference": {
+    "instructions": [
+      11894208,
+      11894209,
+      11894211,
+      11894216,
+      10384704,
+      10384705,
+      10384707,
+      10384708,
+      10384711,
+      10384714,
+      10384800,
+      10384801,
+      10384803,
+      10384804,
+      10384807,
+      10384810,
+      10384816,
+      10384819,
+      10384826,
+      10384829,
+      10384836,
+      10384839,
+      10384841,
+      10384842,
+      10384719,
+      10384722,
+      10384725,
+      10384800,
+      10384801,
+      10384803,
+      10384804,
+      10384807,
+      10384810,
+      10384816,
+      10384819,
+      10384826,
+      10384829,
+      10384836,
+      10384839,
+      10384841,
+      10384842,
+      10384730,
+      10384733,
+      10384736,
+      10384800,
+      10384801,
+      10384803,
+      10384804,
+      10384807,
+      10384810,
+      10384816,
+      10384819,
+      10384826,
+      10384829,
+      10384836,
+      10384839,
+      10384841,
+      10384842,
+      10384741,
+      10384744,
+      10384747,
+      10384800,
+      10384801,
+      10384803,
+      10384804,
+      10384807,
+      10384810,
+      10384816,
+      10384819,
+      10384826,
+      10384829,
+      10384836,
+      10384839,
+      10384841,
+      10384842,
+      10384752,
+      10384755,
+      10384758,
+      10384800,
+      10384801,
+      10384803,
+      10384804,
+      10384807,
+      10384810,
+      10384816,
+      10384819,
+      10384826,
+      10384829,
+      10384836,
+      10384839,
+      10384841,
+      10384842,
+      10384763,
+      10384766,
+      10384769,
+      10384800,
+      10384801,
+      10384803,
+      10384804,
+      10384807,
+      10384810,
+      10384816,
+      10384819,
+      10384826,
+      10384829,
+      10384836,
+      10384839,
+      10384841,
+      10384842,
+      10384774,
+      10384777,
+      10384780,
+      10229808,
+      10229809,
+      10229811,
+      10229812,
+      10229815,
+      10229818,
+      10229824,
+      10229827,
+      10229834,
+      10229837,
+      10229844,
+      10229847,
+      10229854,
+      10229857,
+      10229864,
+      10229867,
+      10229874,
+      10229877,
+      10229884,
+      10229887,
+      10229894,
+      10229897,
+      10229901,
+      10229904,
+      10229906,
+      10229907,
+      10384785,
+      10384788,
+      10384790,
+      10384791,
+      11894221,
+      11894226,
+      8894016,
+      8894020,
+      8893851,
+      8893853,
+      8893858,
+      8896184,
+      8896189,
+      8896196,
+      8896200,
+      8896204,
+      8896208,
+      8896210,
+      8896211,
+      8896212,
+      8896213,
+      8896218,
+      8896221,
+      8896223,
+      8896224,
+      8896227,
+      8896230,
+      8896233,
+      8896240,
+      8896243,
+      8896246,
+      8896252,
+      8893863,
+      8893869,
+      8893875
+    ],
+    "writes": [
+      {
+        "address": 50393080,
+        "size": 4,
+        "value": 0,
+        "instruction": 11894208
+      },
+      {
+        "address": 50393076,
+        "size": 4,
+        "value": 11894221,
+        "instruction": 11894216
+      },
+      {
+        "address": 50393072,
+        "size": 4,
+        "value": 50393080,
+        "instruction": 10384704
+      },
+      {
+        "address": 50393068,
+        "size": 4,
+        "value": 25809056,
+        "instruction": 10384707
+      },
+      {
+        "address": 50393068,
+        "size": 4,
+        "value": 25809056,
+        "instruction": 10384708
+      },
+      {
+        "address": 50393064,
+        "size": 4,
+        "value": 10384719,
+        "instruction": 10384714
+      },
+      {
+        "address": 50393060,
+        "size": 4,
+        "value": 50393072,
+        "instruction": 10384800
+      },
+      {
+        "address": 50393056,
+        "size": 4,
+        "value": 25809056,
+        "instruction": 10384803
+      },
+      {
+        "address": 50393056,
+        "size": 4,
+        "value": 25809056,
+        "instruction": 10384804
+      },
+      {
+        "address": 25809056,
+        "size": 4,
+        "value": 0,
+        "instruction": 10384810
+      },
+      {
+        "address": 25809060,
+        "size": 4,
+        "value": 0,
+        "instruction": 10384819
+      },
+      {
+        "address": 25809064,
+        "size": 4,
+        "value": 0,
+        "instruction": 10384829
+      },
+      {
+        "address": 50393064,
+        "size": 4,
+        "value": 10384730,
+        "instruction": 10384725
+      },
+      {
+        "address": 50393060,
+        "size": 4,
+        "value": 50393072,
+        "instruction": 10384800
+      },
+      {
+        "address": 50393056,
+        "size": 4,
+        "value": 25809068,
+        "instruction": 10384803
+      },
+      {
+        "address": 50393056,
+        "size": 4,
+        "value": 25809068,
+        "instruction": 10384804
+      },
+      {
+        "address": 25809068,
+        "size": 4,
+        "value": 0,
+        "instruction": 10384810
+      },
+      {
+        "address": 25809072,
+        "size": 4,
+        "value": 0,
+        "instruction": 10384819
+      },
+      {
+        "address": 25809076,
+        "size": 4,
+        "value": 0,
+        "instruction": 10384829
+      },
+      {
+        "address": 50393064,
+        "size": 4,
+        "value": 10384741,
+        "instruction": 10384736
+      },
+      {
+        "address": 50393060,
+        "size": 4,
+        "value": 50393072,
+        "instruction": 10384800
+      },
+      {
+        "address": 50393056,
+        "size": 4,
+        "value": 25809080,
+        "instruction": 10384803
+      },
+      {
+        "address": 50393056,
+        "size": 4,
+        "value": 25809080,
+        "instruction": 10384804
+      },
+      {
+        "address": 25809080,
+        "size": 4,
+        "value": 0,
+        "instruction": 10384810
+      },
+      {
+        "address": 25809084,
+        "size": 4,
+        "value": 0,
+        "instruction": 10384819
+      },
+      {
+        "address": 25809088,
+        "size": 4,
+        "value": 0,
+        "instruction": 10384829
+      },
+      {
+        "address": 50393064,
+        "size": 4,
+        "value": 10384752,
+        "instruction": 10384747
+      },
+      {
+        "address": 50393060,
+        "size": 4,
+        "value": 50393072,
+        "instruction": 10384800
+      },
+      {
+        "address": 50393056,
+        "size": 4,
+        "value": 25809092,
+        "instruction": 10384803
+      },
+      {
+        "address": 50393056,
+        "size": 4,
+        "value": 25809092,
+        "instruction": 10384804
+      },
+      {
+        "address": 25809092,
+        "size": 4,
+        "value": 0,
+        "instruction": 10384810
+      },
+      {
+        "address": 25809096,
+        "size": 4,
+        "value": 0,
+        "instruction": 10384819
+      },
+      {
+        "address": 25809100,
+        "size": 4,
+        "value": 0,
+        "instruction": 10384829
+      },
+      {
+        "address": 50393064,
+        "size": 4,
+        "value": 10384763,
+        "instruction": 10384758
+      },
+      {
+        "address": 50393060,
+        "size": 4,
+        "value": 50393072,
+        "instruction": 10384800
+      },
+      {
+        "address": 50393056,
+        "size": 4,
+        "value": 25809104,
+        "instruction": 10384803
+      },
+      {
+        "address": 50393056,
+        "size": 4,
+        "value": 25809104,
+        "instruction": 10384804
+      },
+      {
+        "address": 25809104,
+        "size": 4,
+        "value": 0,
+        "instruction": 10384810
+      },
+      {
+        "address": 25809108,
+        "size": 4,
+        "value": 0,
+        "instruction": 10384819
+      },
+      {
+        "address": 25809112,
+        "size": 4,
+        "value": 0,
+        "instruction": 10384829
+      },
+      {
+        "address": 50393064,
+        "size": 4,
+        "value": 10384774,
+        "instruction": 10384769
+      },
+      {
+        "address": 50393060,
+        "size": 4,
+        "value": 50393072,
+        "instruction": 10384800
+      },
+      {
+        "address": 50393056,
+        "size": 4,
+        "value": 25809120,
+        "instruction": 10384803
+      },
+      {
+        "address": 50393056,
+        "size": 4,
+        "value": 25809120,
+        "instruction": 10384804
+      },
+      {
+        "address": 25809120,
+        "size": 4,
+        "value": 0,
+        "instruction": 10384810
+      },
+      {
+        "address": 25809124,
+        "size": 4,
+        "value": 0,
+        "instruction": 10384819
+      },
+      {
+        "address": 25809128,
+        "size": 4,
+        "value": 0,
+        "instruction": 10384829
+      },
+      {
+        "address": 50393064,
+        "size": 4,
+        "value": 10384785,
+        "instruction": 10384780
+      },
+      {
+        "address": 50393060,
+        "size": 4,
+        "value": 50393072,
+        "instruction": 10229808
+      },
+      {
+        "address": 50393056,
+        "size": 4,
+        "value": 25809132,
+        "instruction": 10229811
+      },
+      {
+        "address": 50393056,
+        "size": 4,
+        "value": 25809132,
+        "instruction": 10229812
+      },
+      {
+        "address": 25809132,
+        "size": 4,
+        "value": 0,
+        "instruction": 10229818
+      },
+      {
+        "address": 25809136,
+        "size": 4,
+        "value": 0,
+        "instruction": 10229827
+      },
+      {
+        "address": 25809140,
+        "size": 4,
+        "value": 0,
+        "instruction": 10229837
+      },
+      {
+        "address": 25809144,
+        "size": 4,
+        "value": 204800,
+        "instruction": 10229847
+      },
+      {
+        "address": 25809148,
+        "size": 4,
+        "value": 100000,
+        "instruction": 10229857
+      },
+      {
+        "address": 25809152,
+        "size": 4,
+        "value": 0,
+        "instruction": 10229867
+      },
+      {
+        "address": 25809156,
+        "size": 4,
+        "value": 0,
+        "instruction": 10229877
+      },
+      {
+        "address": 25809160,
+        "size": 4,
+        "value": 0,
+        "instruction": 10229887
+      },
+      {
+        "address": 25809164,
+        "size": 1,
+        "value": 0,
+        "instruction": 10229897
+      },
+      {
+        "address": 50393076,
+        "size": 4,
+        "value": 11928288,
+        "instruction": 11894221
+      },
+      {
+        "address": 50393072,
+        "size": 4,
+        "value": 11894231,
+        "instruction": 11894226
+      },
+      {
+        "address": 50393068,
+        "size": 4,
+        "value": 11928288,
+        "instruction": 8894016
+      },
+      {
+        "address": 50393064,
+        "size": 4,
+        "value": 8894025,
+        "instruction": 8894020
+      },
+      {
+        "address": 50393060,
+        "size": 4,
+        "value": 20,
+        "instruction": 8893851
+      },
+      {
+        "address": 50393056,
+        "size": 4,
+        "value": 13276032,
+        "instruction": 8893853
+      },
+      {
+        "address": 50393052,
+        "size": 4,
+        "value": 8893863,
+        "instruction": 8893858
+      },
+      {
+        "address": 50393048,
+        "size": 4,
+        "value": 8896273,
+        "instruction": 8896184
+      },
+      {
+        "address": 50393044,
+        "size": 4,
+        "value": 4294967295,
+        "instruction": 8896189
+      },
+      {
+        "address": 50393060,
+        "size": 4,
+        "value": 50393080,
+        "instruction": 8896200
+      },
+      {
+        "address": 50393020,
+        "size": 4,
+        "value": 0,
+        "instruction": 8896210
+      },
+      {
+        "address": 50393016,
+        "size": 4,
+        "value": 0,
+        "instruction": 8896211
+      },
+      {
+        "address": 50393012,
+        "size": 4,
+        "value": 0,
+        "instruction": 8896212
+      },
+      {
+        "address": 50393056,
+        "size": 4,
+        "value": 3146413518,
+        "instruction": 8896218
+      },
+      {
+        "address": 50393008,
+        "size": 4,
+        "value": 3091204522,
+        "instruction": 8896223
+      },
+      {
+        "address": 50393036,
+        "size": 4,
+        "value": 50393008,
+        "instruction": 8896224
+      },
+      {
+        "address": 50393004,
+        "size": 4,
+        "value": 8893863,
+        "instruction": 8896227
+      },
+      {
+        "address": 50393056,
+        "size": 4,
+        "value": 4294967294,
+        "instruction": 8896233
+      },
+      {
+        "address": 50393052,
+        "size": 4,
+        "value": 3146413518,
+        "instruction": 8896240
+      },
+      {
+        "address": 50393004,
+        "size": 4,
+        "value": 0,
+        "instruction": 8893863
+      },
+      {
+        "address": 50393000,
+        "size": 4,
+        "value": 8893877,
+        "instruction": 8893875
+      }
+    ],
+    "registers": {
+      "eax": 50393044,
+      "ebx": 0,
+      "ecx": 25809132,
+      "edx": 25809132,
+      "esi": 9088106,
+      "edi": 0,
+      "ebp": 50393060,
+      "esp": 50393000,
+      "eip": 8893875,
+      "eflags": 132
+    },
+    "trace": [
+      {
+        "kind": "enter",
+        "address": 11894208,
+        "esp": 50393084
+      },
+      {
+        "kind": "enter",
+        "address": 10384704,
+        "esp": 50393076,
+        "callsite": 11894216,
+        "returnAddress": 11894221
+      },
+      {
+        "kind": "enter",
+        "address": 10384800,
+        "esp": 50393064,
+        "callsite": 10384714,
+        "returnAddress": 10384719
+      },
+      {
+        "kind": "return",
+        "address": 10384800,
+        "esp": 50393068
+      },
+      {
+        "kind": "enter",
+        "address": 10384800,
+        "esp": 50393064,
+        "callsite": 10384725,
+        "returnAddress": 10384730
+      },
+      {
+        "kind": "return",
+        "address": 10384800,
+        "esp": 50393068
+      },
+      {
+        "kind": "enter",
+        "address": 10384800,
+        "esp": 50393064,
+        "callsite": 10384736,
+        "returnAddress": 10384741
+      },
+      {
+        "kind": "return",
+        "address": 10384800,
+        "esp": 50393068
+      },
+      {
+        "kind": "enter",
+        "address": 10384800,
+        "esp": 50393064,
+        "callsite": 10384747,
+        "returnAddress": 10384752
+      },
+      {
+        "kind": "return",
+        "address": 10384800,
+        "esp": 50393068
+      },
+      {
+        "kind": "enter",
+        "address": 10384800,
+        "esp": 50393064,
+        "callsite": 10384758,
+        "returnAddress": 10384763
+      },
+      {
+        "kind": "return",
+        "address": 10384800,
+        "esp": 50393068
+      },
+      {
+        "kind": "enter",
+        "address": 10384800,
+        "esp": 50393064,
+        "callsite": 10384769,
+        "returnAddress": 10384774
+      },
+      {
+        "kind": "return",
+        "address": 10384800,
+        "esp": 50393068
+      },
+      {
+        "kind": "enter",
+        "address": 10229808,
+        "esp": 50393064,
+        "callsite": 10384780,
+        "returnAddress": 10384785
+      },
+      {
+        "kind": "return",
+        "address": 10229808,
+        "esp": 50393068
+      },
+      {
+        "kind": "return",
+        "address": 10384704,
+        "esp": 50393080
+      },
+      {
+        "kind": "enter",
+        "address": 8894016,
+        "esp": 50393072,
+        "callsite": 11894226,
+        "returnAddress": 11894231
+      },
+      {
+        "kind": "enter",
+        "address": 8893851,
+        "esp": 50393064,
+        "callsite": 8894020,
+        "returnAddress": 8894025
+      },
+      {
+        "kind": "enter",
+        "address": 8896184,
+        "esp": 50393052,
+        "callsite": 8893858,
+        "returnAddress": 8893863
+      },
+      {
+        "kind": "return",
+        "address": 8896184,
+        "esp": 50393008
+      },
+      {
+        "kind": "fault",
+        "address": 8893851,
+        "esp": 50393000
+      },
+      {
+        "kind": "fault",
+        "address": 8894016,
+        "esp": 50393000
+      },
+      {
+        "kind": "fault",
+        "address": 11894208,
+        "esp": 50393000
+      }
+    ],
+    "fs": {
+      "provenance": "SYNTHETIC_GENERIC_X86_THREAD_FIXTURE",
+      "fsBase": 51380224,
+      "exceptionHead": 50393044,
+      "originalThreadInitialization": false,
+      "exceptionDispatchSupported": false
+    },
+    "flagsKnown": 59,
+    "states": [
+      {
+        "cpu": {
+          "esp": 50393084,
+          "eip": 11894208,
+          "eax": 0,
+          "ebp": 0,
+          "ecx": 0,
+          "edx": 0,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 0
+        },
+        "flagsKnown": 0
+      },
+      {
+        "cpu": {
+          "esp": 50393080,
+          "eip": 11894209,
+          "eax": 0,
+          "ebp": 0,
+          "ecx": 0,
+          "edx": 0,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 0
+        },
+        "flagsKnown": 0
+      },
+      {
+        "cpu": {
+          "esp": 50393080,
+          "eip": 11894211,
+          "eax": 0,
+          "ebp": 50393080,
+          "ecx": 0,
+          "edx": 0,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 0
+        },
+        "flagsKnown": 0
+      },
+      {
+        "cpu": {
+          "esp": 50393080,
+          "eip": 11894216,
+          "eax": 0,
+          "ebp": 50393080,
+          "ecx": 25809056,
+          "edx": 0,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 0
+        },
+        "flagsKnown": 0
+      },
+      {
+        "cpu": {
+          "esp": 50393076,
+          "eip": 10384704,
+          "eax": 0,
+          "ebp": 50393080,
+          "ecx": 25809056,
+          "edx": 0,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 0
+        },
+        "flagsKnown": 0
+      },
+      {
+        "cpu": {
+          "esp": 50393072,
+          "eip": 10384705,
+          "eax": 0,
+          "ebp": 50393080,
+          "ecx": 25809056,
+          "edx": 0,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 0
+        },
+        "flagsKnown": 0
+      },
+      {
+        "cpu": {
+          "esp": 50393072,
+          "eip": 10384707,
+          "eax": 0,
+          "ebp": 50393072,
+          "ecx": 25809056,
+          "edx": 0,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 0
+        },
+        "flagsKnown": 0
+      },
+      {
+        "cpu": {
+          "esp": 50393068,
+          "eip": 10384708,
+          "eax": 0,
+          "ebp": 50393072,
+          "ecx": 25809056,
+          "edx": 0,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 0
+        },
+        "flagsKnown": 0
+      },
+      {
+        "cpu": {
+          "esp": 50393068,
+          "eip": 10384711,
+          "eax": 0,
+          "ebp": 50393072,
+          "ecx": 25809056,
+          "edx": 0,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 0
+        },
+        "flagsKnown": 0
+      },
+      {
+        "cpu": {
+          "esp": 50393068,
+          "eip": 10384714,
+          "eax": 0,
+          "ebp": 50393072,
+          "ecx": 25809056,
+          "edx": 0,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 0
+        },
+        "flagsKnown": 0
+      },
+      {
+        "cpu": {
+          "esp": 50393064,
+          "eip": 10384800,
+          "eax": 0,
+          "ebp": 50393072,
+          "ecx": 25809056,
+          "edx": 0,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 0
+        },
+        "flagsKnown": 0
+      },
+      {
+        "cpu": {
+          "esp": 50393060,
+          "eip": 10384801,
+          "eax": 0,
+          "ebp": 50393072,
+          "ecx": 25809056,
+          "edx": 0,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 0
+        },
+        "flagsKnown": 0
+      },
+      {
+        "cpu": {
+          "esp": 50393060,
+          "eip": 10384803,
+          "eax": 0,
+          "ebp": 50393060,
+          "ecx": 25809056,
+          "edx": 0,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 0
+        },
+        "flagsKnown": 0
+      },
+      {
+        "cpu": {
+          "esp": 50393056,
+          "eip": 10384804,
+          "eax": 0,
+          "ebp": 50393060,
+          "ecx": 25809056,
+          "edx": 0,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 0
+        },
+        "flagsKnown": 0
+      },
+      {
+        "cpu": {
+          "esp": 50393056,
+          "eip": 10384807,
+          "eax": 0,
+          "ebp": 50393060,
+          "ecx": 25809056,
+          "edx": 0,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 0
+        },
+        "flagsKnown": 0
+      },
+      {
+        "cpu": {
+          "esp": 50393056,
+          "eip": 10384810,
+          "eax": 25809056,
+          "ebp": 50393060,
+          "ecx": 25809056,
+          "edx": 0,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 0
+        },
+        "flagsKnown": 0
+      },
+      {
+        "cpu": {
+          "esp": 50393056,
+          "eip": 10384816,
+          "eax": 25809056,
+          "ebp": 50393060,
+          "ecx": 25809056,
+          "edx": 0,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 0
+        },
+        "flagsKnown": 0
+      },
+      {
+        "cpu": {
+          "esp": 50393056,
+          "eip": 10384819,
+          "eax": 25809056,
+          "ebp": 50393060,
+          "ecx": 25809056,
+          "edx": 0,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 0
+        },
+        "flagsKnown": 0
+      },
+      {
+        "cpu": {
+          "esp": 50393056,
+          "eip": 10384826,
+          "eax": 25809056,
+          "ebp": 50393060,
+          "ecx": 25809056,
+          "edx": 0,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 0
+        },
+        "flagsKnown": 0
+      },
+      {
+        "cpu": {
+          "esp": 50393056,
+          "eip": 10384829,
+          "eax": 25809056,
+          "ebp": 50393060,
+          "ecx": 25809056,
+          "edx": 25809056,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 0
+        },
+        "flagsKnown": 0
+      },
+      {
+        "cpu": {
+          "esp": 50393056,
+          "eip": 10384836,
+          "eax": 25809056,
+          "ebp": 50393060,
+          "ecx": 25809056,
+          "edx": 25809056,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 0
+        },
+        "flagsKnown": 0
+      },
+      {
+        "cpu": {
+          "esp": 50393056,
+          "eip": 10384839,
+          "eax": 25809056,
+          "ebp": 50393060,
+          "ecx": 25809056,
+          "edx": 25809056,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 0
+        },
+        "flagsKnown": 0
+      },
+      {
+        "cpu": {
+          "esp": 50393060,
+          "eip": 10384841,
+          "eax": 25809056,
+          "ebp": 50393060,
+          "ecx": 25809056,
+          "edx": 25809056,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 0
+        },
+        "flagsKnown": 0
+      },
+      {
+        "cpu": {
+          "esp": 50393064,
+          "eip": 10384842,
+          "eax": 25809056,
+          "ebp": 50393072,
+          "ecx": 25809056,
+          "edx": 25809056,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 0
+        },
+        "flagsKnown": 0
+      },
+      {
+        "cpu": {
+          "esp": 50393068,
+          "eip": 10384719,
+          "eax": 25809056,
+          "ebp": 50393072,
+          "ecx": 25809056,
+          "edx": 25809056,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 0
+        },
+        "flagsKnown": 0
+      },
+      {
+        "cpu": {
+          "esp": 50393068,
+          "eip": 10384722,
+          "eax": 25809056,
+          "ebp": 50393072,
+          "ecx": 25809056,
+          "edx": 25809056,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 0
+        },
+        "flagsKnown": 0
+      },
+      {
+        "cpu": {
+          "esp": 50393068,
+          "eip": 10384725,
+          "eax": 25809056,
+          "ebp": 50393072,
+          "ecx": 25809068,
+          "edx": 25809056,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 4
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393064,
+          "eip": 10384800,
+          "eax": 25809056,
+          "ebp": 50393072,
+          "ecx": 25809068,
+          "edx": 25809056,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 4
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393060,
+          "eip": 10384801,
+          "eax": 25809056,
+          "ebp": 50393072,
+          "ecx": 25809068,
+          "edx": 25809056,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 4
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393060,
+          "eip": 10384803,
+          "eax": 25809056,
+          "ebp": 50393060,
+          "ecx": 25809068,
+          "edx": 25809056,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 4
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393056,
+          "eip": 10384804,
+          "eax": 25809056,
+          "ebp": 50393060,
+          "ecx": 25809068,
+          "edx": 25809056,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 4
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393056,
+          "eip": 10384807,
+          "eax": 25809056,
+          "ebp": 50393060,
+          "ecx": 25809068,
+          "edx": 25809056,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 4
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393056,
+          "eip": 10384810,
+          "eax": 25809068,
+          "ebp": 50393060,
+          "ecx": 25809068,
+          "edx": 25809056,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 4
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393056,
+          "eip": 10384816,
+          "eax": 25809068,
+          "ebp": 50393060,
+          "ecx": 25809068,
+          "edx": 25809056,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 4
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393056,
+          "eip": 10384819,
+          "eax": 25809068,
+          "ebp": 50393060,
+          "ecx": 25809068,
+          "edx": 25809056,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 4
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393056,
+          "eip": 10384826,
+          "eax": 25809068,
+          "ebp": 50393060,
+          "ecx": 25809068,
+          "edx": 25809056,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 4
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393056,
+          "eip": 10384829,
+          "eax": 25809068,
+          "ebp": 50393060,
+          "ecx": 25809068,
+          "edx": 25809068,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 4
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393056,
+          "eip": 10384836,
+          "eax": 25809068,
+          "ebp": 50393060,
+          "ecx": 25809068,
+          "edx": 25809068,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 4
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393056,
+          "eip": 10384839,
+          "eax": 25809068,
+          "ebp": 50393060,
+          "ecx": 25809068,
+          "edx": 25809068,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 4
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393060,
+          "eip": 10384841,
+          "eax": 25809068,
+          "ebp": 50393060,
+          "ecx": 25809068,
+          "edx": 25809068,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 4
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393064,
+          "eip": 10384842,
+          "eax": 25809068,
+          "ebp": 50393072,
+          "ecx": 25809068,
+          "edx": 25809068,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 4
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393068,
+          "eip": 10384730,
+          "eax": 25809068,
+          "ebp": 50393072,
+          "ecx": 25809068,
+          "edx": 25809068,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 4
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393068,
+          "eip": 10384733,
+          "eax": 25809068,
+          "ebp": 50393072,
+          "ecx": 25809056,
+          "edx": 25809068,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 4
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393068,
+          "eip": 10384736,
+          "eax": 25809068,
+          "ebp": 50393072,
+          "ecx": 25809080,
+          "edx": 25809068,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 4
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393064,
+          "eip": 10384800,
+          "eax": 25809068,
+          "ebp": 50393072,
+          "ecx": 25809080,
+          "edx": 25809068,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 4
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393060,
+          "eip": 10384801,
+          "eax": 25809068,
+          "ebp": 50393072,
+          "ecx": 25809080,
+          "edx": 25809068,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 4
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393060,
+          "eip": 10384803,
+          "eax": 25809068,
+          "ebp": 50393060,
+          "ecx": 25809080,
+          "edx": 25809068,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 4
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393056,
+          "eip": 10384804,
+          "eax": 25809068,
+          "ebp": 50393060,
+          "ecx": 25809080,
+          "edx": 25809068,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 4
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393056,
+          "eip": 10384807,
+          "eax": 25809068,
+          "ebp": 50393060,
+          "ecx": 25809080,
+          "edx": 25809068,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 4
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393056,
+          "eip": 10384810,
+          "eax": 25809080,
+          "ebp": 50393060,
+          "ecx": 25809080,
+          "edx": 25809068,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 4
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393056,
+          "eip": 10384816,
+          "eax": 25809080,
+          "ebp": 50393060,
+          "ecx": 25809080,
+          "edx": 25809068,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 4
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393056,
+          "eip": 10384819,
+          "eax": 25809080,
+          "ebp": 50393060,
+          "ecx": 25809080,
+          "edx": 25809068,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 4
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393056,
+          "eip": 10384826,
+          "eax": 25809080,
+          "ebp": 50393060,
+          "ecx": 25809080,
+          "edx": 25809068,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 4
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393056,
+          "eip": 10384829,
+          "eax": 25809080,
+          "ebp": 50393060,
+          "ecx": 25809080,
+          "edx": 25809080,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 4
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393056,
+          "eip": 10384836,
+          "eax": 25809080,
+          "ebp": 50393060,
+          "ecx": 25809080,
+          "edx": 25809080,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 4
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393056,
+          "eip": 10384839,
+          "eax": 25809080,
+          "ebp": 50393060,
+          "ecx": 25809080,
+          "edx": 25809080,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 4
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393060,
+          "eip": 10384841,
+          "eax": 25809080,
+          "ebp": 50393060,
+          "ecx": 25809080,
+          "edx": 25809080,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 4
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393064,
+          "eip": 10384842,
+          "eax": 25809080,
+          "ebp": 50393072,
+          "ecx": 25809080,
+          "edx": 25809080,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 4
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393068,
+          "eip": 10384741,
+          "eax": 25809080,
+          "ebp": 50393072,
+          "ecx": 25809080,
+          "edx": 25809080,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 4
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393068,
+          "eip": 10384744,
+          "eax": 25809080,
+          "ebp": 50393072,
+          "ecx": 25809056,
+          "edx": 25809080,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 4
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393068,
+          "eip": 10384747,
+          "eax": 25809080,
+          "ebp": 50393072,
+          "ecx": 25809092,
+          "edx": 25809080,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393064,
+          "eip": 10384800,
+          "eax": 25809080,
+          "ebp": 50393072,
+          "ecx": 25809092,
+          "edx": 25809080,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393060,
+          "eip": 10384801,
+          "eax": 25809080,
+          "ebp": 50393072,
+          "ecx": 25809092,
+          "edx": 25809080,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393060,
+          "eip": 10384803,
+          "eax": 25809080,
+          "ebp": 50393060,
+          "ecx": 25809092,
+          "edx": 25809080,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393056,
+          "eip": 10384804,
+          "eax": 25809080,
+          "ebp": 50393060,
+          "ecx": 25809092,
+          "edx": 25809080,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393056,
+          "eip": 10384807,
+          "eax": 25809080,
+          "ebp": 50393060,
+          "ecx": 25809092,
+          "edx": 25809080,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393056,
+          "eip": 10384810,
+          "eax": 25809092,
+          "ebp": 50393060,
+          "ecx": 25809092,
+          "edx": 25809080,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393056,
+          "eip": 10384816,
+          "eax": 25809092,
+          "ebp": 50393060,
+          "ecx": 25809092,
+          "edx": 25809080,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393056,
+          "eip": 10384819,
+          "eax": 25809092,
+          "ebp": 50393060,
+          "ecx": 25809092,
+          "edx": 25809080,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393056,
+          "eip": 10384826,
+          "eax": 25809092,
+          "ebp": 50393060,
+          "ecx": 25809092,
+          "edx": 25809080,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393056,
+          "eip": 10384829,
+          "eax": 25809092,
+          "ebp": 50393060,
+          "ecx": 25809092,
+          "edx": 25809092,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393056,
+          "eip": 10384836,
+          "eax": 25809092,
+          "ebp": 50393060,
+          "ecx": 25809092,
+          "edx": 25809092,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393056,
+          "eip": 10384839,
+          "eax": 25809092,
+          "ebp": 50393060,
+          "ecx": 25809092,
+          "edx": 25809092,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393060,
+          "eip": 10384841,
+          "eax": 25809092,
+          "ebp": 50393060,
+          "ecx": 25809092,
+          "edx": 25809092,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393064,
+          "eip": 10384842,
+          "eax": 25809092,
+          "ebp": 50393072,
+          "ecx": 25809092,
+          "edx": 25809092,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393068,
+          "eip": 10384752,
+          "eax": 25809092,
+          "ebp": 50393072,
+          "ecx": 25809092,
+          "edx": 25809092,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393068,
+          "eip": 10384755,
+          "eax": 25809092,
+          "ebp": 50393072,
+          "ecx": 25809056,
+          "edx": 25809092,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393068,
+          "eip": 10384758,
+          "eax": 25809092,
+          "ebp": 50393072,
+          "ecx": 25809104,
+          "edx": 25809092,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393064,
+          "eip": 10384800,
+          "eax": 25809092,
+          "ebp": 50393072,
+          "ecx": 25809104,
+          "edx": 25809092,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393060,
+          "eip": 10384801,
+          "eax": 25809092,
+          "ebp": 50393072,
+          "ecx": 25809104,
+          "edx": 25809092,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393060,
+          "eip": 10384803,
+          "eax": 25809092,
+          "ebp": 50393060,
+          "ecx": 25809104,
+          "edx": 25809092,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393056,
+          "eip": 10384804,
+          "eax": 25809092,
+          "ebp": 50393060,
+          "ecx": 25809104,
+          "edx": 25809092,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393056,
+          "eip": 10384807,
+          "eax": 25809092,
+          "ebp": 50393060,
+          "ecx": 25809104,
+          "edx": 25809092,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393056,
+          "eip": 10384810,
+          "eax": 25809104,
+          "ebp": 50393060,
+          "ecx": 25809104,
+          "edx": 25809092,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393056,
+          "eip": 10384816,
+          "eax": 25809104,
+          "ebp": 50393060,
+          "ecx": 25809104,
+          "edx": 25809092,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393056,
+          "eip": 10384819,
+          "eax": 25809104,
+          "ebp": 50393060,
+          "ecx": 25809104,
+          "edx": 25809092,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393056,
+          "eip": 10384826,
+          "eax": 25809104,
+          "ebp": 50393060,
+          "ecx": 25809104,
+          "edx": 25809092,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393056,
+          "eip": 10384829,
+          "eax": 25809104,
+          "ebp": 50393060,
+          "ecx": 25809104,
+          "edx": 25809104,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393056,
+          "eip": 10384836,
+          "eax": 25809104,
+          "ebp": 50393060,
+          "ecx": 25809104,
+          "edx": 25809104,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393056,
+          "eip": 10384839,
+          "eax": 25809104,
+          "ebp": 50393060,
+          "ecx": 25809104,
+          "edx": 25809104,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393060,
+          "eip": 10384841,
+          "eax": 25809104,
+          "ebp": 50393060,
+          "ecx": 25809104,
+          "edx": 25809104,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393064,
+          "eip": 10384842,
+          "eax": 25809104,
+          "ebp": 50393072,
+          "ecx": 25809104,
+          "edx": 25809104,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393068,
+          "eip": 10384763,
+          "eax": 25809104,
+          "ebp": 50393072,
+          "ecx": 25809104,
+          "edx": 25809104,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393068,
+          "eip": 10384766,
+          "eax": 25809104,
+          "ebp": 50393072,
+          "ecx": 25809056,
+          "edx": 25809104,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393068,
+          "eip": 10384769,
+          "eax": 25809104,
+          "ebp": 50393072,
+          "ecx": 25809120,
+          "edx": 25809104,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393064,
+          "eip": 10384800,
+          "eax": 25809104,
+          "ebp": 50393072,
+          "ecx": 25809120,
+          "edx": 25809104,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393060,
+          "eip": 10384801,
+          "eax": 25809104,
+          "ebp": 50393072,
+          "ecx": 25809120,
+          "edx": 25809104,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393060,
+          "eip": 10384803,
+          "eax": 25809104,
+          "ebp": 50393060,
+          "ecx": 25809120,
+          "edx": 25809104,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393056,
+          "eip": 10384804,
+          "eax": 25809104,
+          "ebp": 50393060,
+          "ecx": 25809120,
+          "edx": 25809104,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393056,
+          "eip": 10384807,
+          "eax": 25809104,
+          "ebp": 50393060,
+          "ecx": 25809120,
+          "edx": 25809104,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393056,
+          "eip": 10384810,
+          "eax": 25809120,
+          "ebp": 50393060,
+          "ecx": 25809120,
+          "edx": 25809104,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393056,
+          "eip": 10384816,
+          "eax": 25809120,
+          "ebp": 50393060,
+          "ecx": 25809120,
+          "edx": 25809104,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393056,
+          "eip": 10384819,
+          "eax": 25809120,
+          "ebp": 50393060,
+          "ecx": 25809120,
+          "edx": 25809104,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393056,
+          "eip": 10384826,
+          "eax": 25809120,
+          "ebp": 50393060,
+          "ecx": 25809120,
+          "edx": 25809104,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393056,
+          "eip": 10384829,
+          "eax": 25809120,
+          "ebp": 50393060,
+          "ecx": 25809120,
+          "edx": 25809120,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393056,
+          "eip": 10384836,
+          "eax": 25809120,
+          "ebp": 50393060,
+          "ecx": 25809120,
+          "edx": 25809120,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393056,
+          "eip": 10384839,
+          "eax": 25809120,
+          "ebp": 50393060,
+          "ecx": 25809120,
+          "edx": 25809120,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393060,
+          "eip": 10384841,
+          "eax": 25809120,
+          "ebp": 50393060,
+          "ecx": 25809120,
+          "edx": 25809120,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393064,
+          "eip": 10384842,
+          "eax": 25809120,
+          "ebp": 50393072,
+          "ecx": 25809120,
+          "edx": 25809120,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393068,
+          "eip": 10384774,
+          "eax": 25809120,
+          "ebp": 50393072,
+          "ecx": 25809120,
+          "edx": 25809120,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393068,
+          "eip": 10384777,
+          "eax": 25809120,
+          "ebp": 50393072,
+          "ecx": 25809056,
+          "edx": 25809120,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393068,
+          "eip": 10384780,
+          "eax": 25809120,
+          "ebp": 50393072,
+          "ecx": 25809132,
+          "edx": 25809120,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393064,
+          "eip": 10229808,
+          "eax": 25809120,
+          "ebp": 50393072,
+          "ecx": 25809132,
+          "edx": 25809120,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393060,
+          "eip": 10229809,
+          "eax": 25809120,
+          "ebp": 50393072,
+          "ecx": 25809132,
+          "edx": 25809120,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393060,
+          "eip": 10229811,
+          "eax": 25809120,
+          "ebp": 50393060,
+          "ecx": 25809132,
+          "edx": 25809120,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393056,
+          "eip": 10229812,
+          "eax": 25809120,
+          "ebp": 50393060,
+          "ecx": 25809132,
+          "edx": 25809120,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393056,
+          "eip": 10229815,
+          "eax": 25809120,
+          "ebp": 50393060,
+          "ecx": 25809132,
+          "edx": 25809120,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393056,
+          "eip": 10229818,
+          "eax": 25809132,
+          "ebp": 50393060,
+          "ecx": 25809132,
+          "edx": 25809120,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393056,
+          "eip": 10229824,
+          "eax": 25809132,
+          "ebp": 50393060,
+          "ecx": 25809132,
+          "edx": 25809120,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393056,
+          "eip": 10229827,
+          "eax": 25809132,
+          "ebp": 50393060,
+          "ecx": 25809132,
+          "edx": 25809120,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393056,
+          "eip": 10229834,
+          "eax": 25809132,
+          "ebp": 50393060,
+          "ecx": 25809132,
+          "edx": 25809120,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393056,
+          "eip": 10229837,
+          "eax": 25809132,
+          "ebp": 50393060,
+          "ecx": 25809132,
+          "edx": 25809132,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393056,
+          "eip": 10229844,
+          "eax": 25809132,
+          "ebp": 50393060,
+          "ecx": 25809132,
+          "edx": 25809132,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393056,
+          "eip": 10229847,
+          "eax": 25809132,
+          "ebp": 50393060,
+          "ecx": 25809132,
+          "edx": 25809132,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393056,
+          "eip": 10229854,
+          "eax": 25809132,
+          "ebp": 50393060,
+          "ecx": 25809132,
+          "edx": 25809132,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393056,
+          "eip": 10229857,
+          "eax": 25809132,
+          "ebp": 50393060,
+          "ecx": 25809132,
+          "edx": 25809132,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393056,
+          "eip": 10229864,
+          "eax": 25809132,
+          "ebp": 50393060,
+          "ecx": 25809132,
+          "edx": 25809132,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393056,
+          "eip": 10229867,
+          "eax": 25809132,
+          "ebp": 50393060,
+          "ecx": 25809132,
+          "edx": 25809132,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393056,
+          "eip": 10229874,
+          "eax": 25809132,
+          "ebp": 50393060,
+          "ecx": 25809132,
+          "edx": 25809132,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393056,
+          "eip": 10229877,
+          "eax": 25809132,
+          "ebp": 50393060,
+          "ecx": 25809132,
+          "edx": 25809132,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393056,
+          "eip": 10229884,
+          "eax": 25809132,
+          "ebp": 50393060,
+          "ecx": 25809132,
+          "edx": 25809132,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393056,
+          "eip": 10229887,
+          "eax": 25809132,
+          "ebp": 50393060,
+          "ecx": 25809132,
+          "edx": 25809132,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393056,
+          "eip": 10229894,
+          "eax": 25809132,
+          "ebp": 50393060,
+          "ecx": 25809132,
+          "edx": 25809132,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393056,
+          "eip": 10229897,
+          "eax": 25809132,
+          "ebp": 50393060,
+          "ecx": 25809132,
+          "edx": 25809132,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393056,
+          "eip": 10229901,
+          "eax": 25809132,
+          "ebp": 50393060,
+          "ecx": 25809132,
+          "edx": 25809132,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393056,
+          "eip": 10229904,
+          "eax": 25809132,
+          "ebp": 50393060,
+          "ecx": 25809132,
+          "edx": 25809132,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393060,
+          "eip": 10229906,
+          "eax": 25809132,
+          "ebp": 50393060,
+          "ecx": 25809132,
+          "edx": 25809132,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393064,
+          "eip": 10229907,
+          "eax": 25809132,
+          "ebp": 50393072,
+          "ecx": 25809132,
+          "edx": 25809132,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393068,
+          "eip": 10384785,
+          "eax": 25809132,
+          "ebp": 50393072,
+          "ecx": 25809132,
+          "edx": 25809132,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393068,
+          "eip": 10384788,
+          "eax": 25809056,
+          "ebp": 50393072,
+          "ecx": 25809132,
+          "edx": 25809132,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393072,
+          "eip": 10384790,
+          "eax": 25809056,
+          "ebp": 50393072,
+          "ecx": 25809132,
+          "edx": 25809132,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393076,
+          "eip": 10384791,
+          "eax": 25809056,
+          "ebp": 50393080,
+          "ecx": 25809132,
+          "edx": 25809132,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393080,
+          "eip": 11894221,
+          "eax": 25809056,
+          "ebp": 50393080,
+          "ecx": 25809132,
+          "edx": 25809132,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393076,
+          "eip": 11894226,
+          "eax": 25809056,
+          "ebp": 50393080,
+          "ecx": 25809132,
+          "edx": 25809132,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393072,
+          "eip": 8894016,
+          "eax": 25809056,
+          "ebp": 50393080,
+          "ecx": 25809132,
+          "edx": 25809132,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393068,
+          "eip": 8894020,
+          "eax": 25809056,
+          "ebp": 50393080,
+          "ecx": 25809132,
+          "edx": 25809132,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393064,
+          "eip": 8893851,
+          "eax": 25809056,
+          "ebp": 50393080,
+          "ecx": 25809132,
+          "edx": 25809132,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393060,
+          "eip": 8893853,
+          "eax": 25809056,
+          "ebp": 50393080,
+          "ecx": 25809132,
+          "edx": 25809132,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393056,
+          "eip": 8893858,
+          "eax": 25809056,
+          "ebp": 50393080,
+          "ecx": 25809132,
+          "edx": 25809132,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393052,
+          "eip": 8896184,
+          "eax": 25809056,
+          "ebp": 50393080,
+          "ecx": 25809132,
+          "edx": 25809132,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393048,
+          "eip": 8896189,
+          "eax": 25809056,
+          "ebp": 50393080,
+          "ecx": 25809132,
+          "edx": 25809132,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393044,
+          "eip": 8896196,
+          "eax": 25809056,
+          "ebp": 50393080,
+          "ecx": 25809132,
+          "edx": 25809132,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393044,
+          "eip": 8896200,
+          "eax": 20,
+          "ebp": 50393080,
+          "ecx": 25809132,
+          "edx": 25809132,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393044,
+          "eip": 8896204,
+          "eax": 20,
+          "ebp": 50393080,
+          "ecx": 25809132,
+          "edx": 25809132,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393044,
+          "eip": 8896208,
+          "eax": 20,
+          "ebp": 50393060,
+          "ecx": 25809132,
+          "edx": 25809132,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393024,
+          "eip": 8896210,
+          "eax": 20,
+          "ebp": 50393060,
+          "ecx": 25809132,
+          "edx": 25809132,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 4
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393020,
+          "eip": 8896211,
+          "eax": 20,
+          "ebp": 50393060,
+          "ecx": 25809132,
+          "edx": 25809132,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 4
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393016,
+          "eip": 8896212,
+          "eax": 20,
+          "ebp": 50393060,
+          "ecx": 25809132,
+          "edx": 25809132,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 4
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393012,
+          "eip": 8896213,
+          "eax": 20,
+          "ebp": 50393060,
+          "ecx": 25809132,
+          "edx": 25809132,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 4
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393012,
+          "eip": 8896218,
+          "eax": 3141592654,
+          "ebp": 50393060,
+          "ecx": 25809132,
+          "edx": 25809132,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 4
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "esp": 50393012,
+          "eip": 8896221,
+          "eax": 3141592654,
+          "ebp": 50393060,
+          "ecx": 25809132,
+          "edx": 25809132,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 128
+        },
+        "flagsKnown": 59
+      },
+      {
+        "cpu": {
+          "esp": 50393012,
+          "eip": 8896223,
+          "eax": 3091204522,
+          "ebp": 50393060,
+          "ecx": 25809132,
+          "edx": 25809132,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 132
+        },
+        "flagsKnown": 59
+      },
+      {
+        "cpu": {
+          "esp": 50393008,
+          "eip": 8896224,
+          "eax": 3091204522,
+          "ebp": 50393060,
+          "ecx": 25809132,
+          "edx": 25809132,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 132
+        },
+        "flagsKnown": 59
+      },
+      {
+        "cpu": {
+          "esp": 50393008,
+          "eip": 8896227,
+          "eax": 3091204522,
+          "ebp": 50393060,
+          "ecx": 25809132,
+          "edx": 25809132,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 132
+        },
+        "flagsKnown": 59
+      },
+      {
+        "cpu": {
+          "esp": 50393004,
+          "eip": 8896230,
+          "eax": 3091204522,
+          "ebp": 50393060,
+          "ecx": 25809132,
+          "edx": 25809132,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 132
+        },
+        "flagsKnown": 59
+      },
+      {
+        "cpu": {
+          "esp": 50393004,
+          "eip": 8896233,
+          "eax": 3146413518,
+          "ebp": 50393060,
+          "ecx": 25809132,
+          "edx": 25809132,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 132
+        },
+        "flagsKnown": 59
+      },
+      {
+        "cpu": {
+          "esp": 50393004,
+          "eip": 8896240,
+          "eax": 3146413518,
+          "ebp": 50393060,
+          "ecx": 25809132,
+          "edx": 25809132,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 132
+        },
+        "flagsKnown": 59
+      },
+      {
+        "cpu": {
+          "esp": 50393004,
+          "eip": 8896243,
+          "eax": 3146413518,
+          "ebp": 50393060,
+          "ecx": 25809132,
+          "edx": 25809132,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 132
+        },
+        "flagsKnown": 59
+      },
+      {
+        "cpu": {
+          "esp": 50393004,
+          "eip": 8896246,
+          "eax": 50393044,
+          "ebp": 50393060,
+          "ecx": 25809132,
+          "edx": 25809132,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 132
+        },
+        "flagsKnown": 59
+      },
+      {
+        "cpu": {
+          "esp": 50393004,
+          "eip": 8896252,
+          "eax": 50393044,
+          "ebp": 50393060,
+          "ecx": 25809132,
+          "edx": 25809132,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 132
+        },
+        "flagsKnown": 59
+      },
+      {
+        "cpu": {
+          "esp": 50393008,
+          "eip": 8893863,
+          "eax": 50393044,
+          "ebp": 50393060,
+          "ecx": 25809132,
+          "edx": 25809132,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 132
+        },
+        "flagsKnown": 59
+      },
+      {
+        "cpu": {
+          "esp": 50393004,
+          "eip": 8893869,
+          "eax": 50393044,
+          "ebp": 50393060,
+          "ecx": 25809132,
+          "edx": 25809132,
+          "esi": 0,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 132
+        },
+        "flagsKnown": 59
+      },
+      {
+        "cpu": {
+          "esp": 50393004,
+          "eip": 8893875,
+          "eax": 50393044,
+          "ebp": 50393060,
+          "ecx": 25809132,
+          "edx": 25809132,
+          "esi": 9088106,
+          "edi": 0,
+          "ebx": 0,
+          "eflags": 132
+        },
+        "flagsKnown": 59
+      }
+    ],
+    "reads": [
+      {
+        "address": 50393068,
+        "size": 4,
+        "instruction": 10384711,
+        "value": 25809056
+      },
+      {
+        "address": 50393056,
+        "size": 4,
+        "instruction": 10384807,
+        "value": 25809056
+      },
+      {
+        "address": 50393056,
+        "size": 4,
+        "instruction": 10384816,
+        "value": 25809056
+      },
+      {
+        "address": 50393056,
+        "size": 4,
+        "instruction": 10384826,
+        "value": 25809056
+      },
+      {
+        "address": 50393056,
+        "size": 4,
+        "instruction": 10384836,
+        "value": 25809056
+      },
+      {
+        "address": 50393060,
+        "size": 4,
+        "instruction": 10384841,
+        "value": 50393072
+      },
+      {
+        "address": 50393064,
+        "size": 4,
+        "instruction": 10384842,
+        "value": 10384719
+      },
+      {
+        "address": 50393068,
+        "size": 4,
+        "instruction": 10384719,
+        "value": 25809056
+      },
+      {
+        "address": 50393056,
+        "size": 4,
+        "instruction": 10384807,
+        "value": 25809068
+      },
+      {
+        "address": 50393056,
+        "size": 4,
+        "instruction": 10384816,
+        "value": 25809068
+      },
+      {
+        "address": 50393056,
+        "size": 4,
+        "instruction": 10384826,
+        "value": 25809068
+      },
+      {
+        "address": 50393056,
+        "size": 4,
+        "instruction": 10384836,
+        "value": 25809068
+      },
+      {
+        "address": 50393060,
+        "size": 4,
+        "instruction": 10384841,
+        "value": 50393072
+      },
+      {
+        "address": 50393064,
+        "size": 4,
+        "instruction": 10384842,
+        "value": 10384730
+      },
+      {
+        "address": 50393068,
+        "size": 4,
+        "instruction": 10384730,
+        "value": 25809056
+      },
+      {
+        "address": 50393056,
+        "size": 4,
+        "instruction": 10384807,
+        "value": 25809080
+      },
+      {
+        "address": 50393056,
+        "size": 4,
+        "instruction": 10384816,
+        "value": 25809080
+      },
+      {
+        "address": 50393056,
+        "size": 4,
+        "instruction": 10384826,
+        "value": 25809080
+      },
+      {
+        "address": 50393056,
+        "size": 4,
+        "instruction": 10384836,
+        "value": 25809080
+      },
+      {
+        "address": 50393060,
+        "size": 4,
+        "instruction": 10384841,
+        "value": 50393072
+      },
+      {
+        "address": 50393064,
+        "size": 4,
+        "instruction": 10384842,
+        "value": 10384741
+      },
+      {
+        "address": 50393068,
+        "size": 4,
+        "instruction": 10384741,
+        "value": 25809056
+      },
+      {
+        "address": 50393056,
+        "size": 4,
+        "instruction": 10384807,
+        "value": 25809092
+      },
+      {
+        "address": 50393056,
+        "size": 4,
+        "instruction": 10384816,
+        "value": 25809092
+      },
+      {
+        "address": 50393056,
+        "size": 4,
+        "instruction": 10384826,
+        "value": 25809092
+      },
+      {
+        "address": 50393056,
+        "size": 4,
+        "instruction": 10384836,
+        "value": 25809092
+      },
+      {
+        "address": 50393060,
+        "size": 4,
+        "instruction": 10384841,
+        "value": 50393072
+      },
+      {
+        "address": 50393064,
+        "size": 4,
+        "instruction": 10384842,
+        "value": 10384752
+      },
+      {
+        "address": 50393068,
+        "size": 4,
+        "instruction": 10384752,
+        "value": 25809056
+      },
+      {
+        "address": 50393056,
+        "size": 4,
+        "instruction": 10384807,
+        "value": 25809104
+      },
+      {
+        "address": 50393056,
+        "size": 4,
+        "instruction": 10384816,
+        "value": 25809104
+      },
+      {
+        "address": 50393056,
+        "size": 4,
+        "instruction": 10384826,
+        "value": 25809104
+      },
+      {
+        "address": 50393056,
+        "size": 4,
+        "instruction": 10384836,
+        "value": 25809104
+      },
+      {
+        "address": 50393060,
+        "size": 4,
+        "instruction": 10384841,
+        "value": 50393072
+      },
+      {
+        "address": 50393064,
+        "size": 4,
+        "instruction": 10384842,
+        "value": 10384763
+      },
+      {
+        "address": 50393068,
+        "size": 4,
+        "instruction": 10384763,
+        "value": 25809056
+      },
+      {
+        "address": 50393056,
+        "size": 4,
+        "instruction": 10384807,
+        "value": 25809120
+      },
+      {
+        "address": 50393056,
+        "size": 4,
+        "instruction": 10384816,
+        "value": 25809120
+      },
+      {
+        "address": 50393056,
+        "size": 4,
+        "instruction": 10384826,
+        "value": 25809120
+      },
+      {
+        "address": 50393056,
+        "size": 4,
+        "instruction": 10384836,
+        "value": 25809120
+      },
+      {
+        "address": 50393060,
+        "size": 4,
+        "instruction": 10384841,
+        "value": 50393072
+      },
+      {
+        "address": 50393064,
+        "size": 4,
+        "instruction": 10384842,
+        "value": 10384774
+      },
+      {
+        "address": 50393068,
+        "size": 4,
+        "instruction": 10384774,
+        "value": 25809056
+      },
+      {
+        "address": 50393056,
+        "size": 4,
+        "instruction": 10229815,
+        "value": 25809132
+      },
+      {
+        "address": 50393056,
+        "size": 4,
+        "instruction": 10229824,
+        "value": 25809132
+      },
+      {
+        "address": 50393056,
+        "size": 4,
+        "instruction": 10229834,
+        "value": 25809132
+      },
+      {
+        "address": 50393056,
+        "size": 4,
+        "instruction": 10229844,
+        "value": 25809132
+      },
+      {
+        "address": 50393056,
+        "size": 4,
+        "instruction": 10229854,
+        "value": 25809132
+      },
+      {
+        "address": 50393056,
+        "size": 4,
+        "instruction": 10229864,
+        "value": 25809132
+      },
+      {
+        "address": 50393056,
+        "size": 4,
+        "instruction": 10229874,
+        "value": 25809132
+      },
+      {
+        "address": 50393056,
+        "size": 4,
+        "instruction": 10229884,
+        "value": 25809132
+      },
+      {
+        "address": 50393056,
+        "size": 4,
+        "instruction": 10229894,
+        "value": 25809132
+      },
+      {
+        "address": 50393056,
+        "size": 4,
+        "instruction": 10229901,
+        "value": 25809132
+      },
+      {
+        "address": 50393060,
+        "size": 4,
+        "instruction": 10229906,
+        "value": 50393072
+      },
+      {
+        "address": 50393064,
+        "size": 4,
+        "instruction": 10229907,
+        "value": 10384785
+      },
+      {
+        "address": 50393068,
+        "size": 4,
+        "instruction": 10384785,
+        "value": 25809056
+      },
+      {
+        "address": 50393072,
+        "size": 4,
+        "instruction": 10384790,
+        "value": 50393080
+      },
+      {
+        "address": 50393076,
+        "size": 4,
+        "instruction": 10384791,
+        "value": 11894221
+      },
+      {
+        "address": 50393076,
+        "size": 4,
+        "instruction": 8894016,
+        "value": 11928288
+      },
+      {
+        "address": 51380224,
+        "size": 4,
+        "instruction": 8896189,
+        "value": 4294967295
+      },
+      {
+        "address": 50393060,
+        "size": 4,
+        "instruction": 8896196,
+        "value": 20
+      },
+      {
+        "address": 19420808,
+        "size": 4,
+        "instruction": 8896213,
+        "value": 3141592654
+      },
+      {
+        "address": 50393056,
+        "size": 4,
+        "instruction": 8896218,
+        "value": 13276032
+      },
+      {
+        "address": 50393052,
+        "size": 4,
+        "instruction": 8896227,
+        "value": 8893863
+      },
+      {
+        "address": 50393056,
+        "size": 4,
+        "instruction": 8896230,
+        "value": 3146413518
+      },
+      {
+        "address": 50393004,
+        "size": 4,
+        "instruction": 8896252,
+        "value": 8893863
+      },
+      {
+        "address": 25894508,
+        "size": 4,
+        "instruction": 8893863,
+        "value": 0
+      },
+      {
+        "address": 11932568,
+        "size": 4,
+        "instruction": 8893869,
+        "value": 9088106
+      }
+    ],
+    "fsAccesses": [
+      {
+        "operation": "read",
+        "base": 51380224,
+        "offset": 0,
+        "value": 4294967295
+      },
+      {
+        "operation": "write",
+        "base": 51380224,
+        "offset": 0,
+        "value": 50393044
+      }
+    ],
+    "stop": "dispatch at 0x8aac6a: unavailable"
+  },
+  "actual": {
+    "rawEngineStopEip": 9088106,
+    "executedInstructionAddresses": [
+      11894208,
+      11894209,
+      11894211,
+      11894216,
+      10384704,
+      10384705,
+      10384707,
+      10384708,
+      10384711,
+      10384714,
+      10384800,
+      10384801,
+      10384803,
+      10384804,
+      10384807,
+      10384810,
+      10384816,
+      10384819,
+      10384826,
+      10384829,
+      10384836,
+      10384839,
+      10384841,
+      10384842,
+      10384719,
+      10384722,
+      10384725,
+      10384800,
+      10384801,
+      10384803,
+      10384804,
+      10384807,
+      10384810,
+      10384816,
+      10384819,
+      10384826,
+      10384829,
+      10384836,
+      10384839,
+      10384841,
+      10384842,
+      10384730,
+      10384733,
+      10384736,
+      10384800,
+      10384801,
+      10384803,
+      10384804,
+      10384807,
+      10384810,
+      10384816,
+      10384819,
+      10384826,
+      10384829,
+      10384836,
+      10384839,
+      10384841,
+      10384842,
+      10384741,
+      10384744,
+      10384747,
+      10384800,
+      10384801,
+      10384803,
+      10384804,
+      10384807,
+      10384810,
+      10384816,
+      10384819,
+      10384826,
+      10384829,
+      10384836,
+      10384839,
+      10384841,
+      10384842,
+      10384752,
+      10384755,
+      10384758,
+      10384800,
+      10384801,
+      10384803,
+      10384804,
+      10384807,
+      10384810,
+      10384816,
+      10384819,
+      10384826,
+      10384829,
+      10384836,
+      10384839,
+      10384841,
+      10384842,
+      10384763,
+      10384766,
+      10384769,
+      10384800,
+      10384801,
+      10384803,
+      10384804,
+      10384807,
+      10384810,
+      10384816,
+      10384819,
+      10384826,
+      10384829,
+      10384836,
+      10384839,
+      10384841,
+      10384842,
+      10384774,
+      10384777,
+      10384780,
+      10229808,
+      10229809,
+      10229811,
+      10229812,
+      10229815,
+      10229818,
+      10229824,
+      10229827,
+      10229834,
+      10229837,
+      10229844,
+      10229847,
+      10229854,
+      10229857,
+      10229864,
+      10229867,
+      10229874,
+      10229877,
+      10229884,
+      10229887,
+      10229894,
+      10229897,
+      10229901,
+      10229904,
+      10229906,
+      10229907,
+      10384785,
+      10384788,
+      10384790,
+      10384791,
+      11894221,
+      11894226,
+      8894016,
+      8894020,
+      8893851,
+      8893853,
+      8893858,
+      8896184,
+      8896189,
+      8896196,
+      8896200,
+      8896204,
+      8896208,
+      8896210,
+      8896211,
+      8896212,
+      8896213,
+      8896218,
+      8896221,
+      8896223,
+      8896224,
+      8896227,
+      8896230,
+      8896233,
+      8896240,
+      8896243,
+      8896246,
+      8896252,
+      8893863,
+      8893869,
+      8893875
+    ],
+    "flagsKnown": 59,
+    "instructions": [
+      11894208,
+      11894209,
+      11894211,
+      11894216,
+      10384704,
+      10384705,
+      10384707,
+      10384708,
+      10384711,
+      10384714,
+      10384800,
+      10384801,
+      10384803,
+      10384804,
+      10384807,
+      10384810,
+      10384816,
+      10384819,
+      10384826,
+      10384829,
+      10384836,
+      10384839,
+      10384841,
+      10384842,
+      10384719,
+      10384722,
+      10384725,
+      10384800,
+      10384801,
+      10384803,
+      10384804,
+      10384807,
+      10384810,
+      10384816,
+      10384819,
+      10384826,
+      10384829,
+      10384836,
+      10384839,
+      10384841,
+      10384842,
+      10384730,
+      10384733,
+      10384736,
+      10384800,
+      10384801,
+      10384803,
+      10384804,
+      10384807,
+      10384810,
+      10384816,
+      10384819,
+      10384826,
+      10384829,
+      10384836,
+      10384839,
+      10384841,
+      10384842,
+      10384741,
+      10384744,
+      10384747,
+      10384800,
+      10384801,
+      10384803,
+      10384804,
+      10384807,
+      10384810,
+      10384816,
+      10384819,
+      10384826,
+      10384829,
+      10384836,
+      10384839,
+      10384841,
+      10384842,
+      10384752,
+      10384755,
+      10384758,
+      10384800,
+      10384801,
+      10384803,
+      10384804,
+      10384807,
+      10384810,
+      10384816,
+      10384819,
+      10384826,
+      10384829,
+      10384836,
+      10384839,
+      10384841,
+      10384842,
+      10384763,
+      10384766,
+      10384769,
+      10384800,
+      10384801,
+      10384803,
+      10384804,
+      10384807,
+      10384810,
+      10384816,
+      10384819,
+      10384826,
+      10384829,
+      10384836,
+      10384839,
+      10384841,
+      10384842,
+      10384774,
+      10384777,
+      10384780,
+      10229808,
+      10229809,
+      10229811,
+      10229812,
+      10229815,
+      10229818,
+      10229824,
+      10229827,
+      10229834,
+      10229837,
+      10229844,
+      10229847,
+      10229854,
+      10229857,
+      10229864,
+      10229867,
+      10229874,
+      10229877,
+      10229884,
+      10229887,
+      10229894,
+      10229897,
+      10229901,
+      10229904,
+      10229906,
+      10229907,
+      10384785,
+      10384788,
+      10384790,
+      10384791,
+      11894221,
+      11894226,
+      8894016,
+      8894020,
+      8893851,
+      8893853,
+      8893858,
+      8896184,
+      8896189,
+      8896196,
+      8896200,
+      8896204,
+      8896208,
+      8896210,
+      8896211,
+      8896212,
+      8896213,
+      8896218,
+      8896221,
+      8896223,
+      8896224,
+      8896227,
+      8896230,
+      8896233,
+      8896240,
+      8896243,
+      8896246,
+      8896252,
+      8893863,
+      8893869,
+      8893875
+    ],
+    "states": [
+      {
+        "cpu": {
+          "eax": 0,
+          "ebx": 0,
+          "ecx": 0,
+          "edx": 0,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 0,
+          "esp": 50393084,
+          "eip": 11894208,
+          "eflags": 0
+        },
+        "flagsKnown": 0
+      },
+      {
+        "cpu": {
+          "eax": 0,
+          "ebx": 0,
+          "ecx": 0,
+          "edx": 0,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 0,
+          "esp": 50393080,
+          "eip": 11894209,
+          "eflags": 0
+        },
+        "flagsKnown": 0
+      },
+      {
+        "cpu": {
+          "eax": 0,
+          "ebx": 0,
+          "ecx": 0,
+          "edx": 0,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393080,
+          "esp": 50393080,
+          "eip": 11894211,
+          "eflags": 0
+        },
+        "flagsKnown": 0
+      },
+      {
+        "cpu": {
+          "eax": 0,
+          "ebx": 0,
+          "ecx": 25809056,
+          "edx": 0,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393080,
+          "esp": 50393080,
+          "eip": 11894216,
+          "eflags": 0
+        },
+        "flagsKnown": 0
+      },
+      {
+        "cpu": {
+          "eax": 0,
+          "ebx": 0,
+          "ecx": 25809056,
+          "edx": 0,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393080,
+          "esp": 50393076,
+          "eip": 10384704,
+          "eflags": 0
+        },
+        "flagsKnown": 0
+      },
+      {
+        "cpu": {
+          "eax": 0,
+          "ebx": 0,
+          "ecx": 25809056,
+          "edx": 0,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393080,
+          "esp": 50393072,
+          "eip": 10384705,
+          "eflags": 0
+        },
+        "flagsKnown": 0
+      },
+      {
+        "cpu": {
+          "eax": 0,
+          "ebx": 0,
+          "ecx": 25809056,
+          "edx": 0,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393072,
+          "esp": 50393072,
+          "eip": 10384707,
+          "eflags": 0
+        },
+        "flagsKnown": 0
+      },
+      {
+        "cpu": {
+          "eax": 0,
+          "ebx": 0,
+          "ecx": 25809056,
+          "edx": 0,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393072,
+          "esp": 50393068,
+          "eip": 10384708,
+          "eflags": 0
+        },
+        "flagsKnown": 0
+      },
+      {
+        "cpu": {
+          "eax": 0,
+          "ebx": 0,
+          "ecx": 25809056,
+          "edx": 0,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393072,
+          "esp": 50393068,
+          "eip": 10384711,
+          "eflags": 0
+        },
+        "flagsKnown": 0
+      },
+      {
+        "cpu": {
+          "eax": 0,
+          "ebx": 0,
+          "ecx": 25809056,
+          "edx": 0,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393072,
+          "esp": 50393068,
+          "eip": 10384714,
+          "eflags": 0
+        },
+        "flagsKnown": 0
+      },
+      {
+        "cpu": {
+          "eax": 0,
+          "ebx": 0,
+          "ecx": 25809056,
+          "edx": 0,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393072,
+          "esp": 50393064,
+          "eip": 10384800,
+          "eflags": 0
+        },
+        "flagsKnown": 0
+      },
+      {
+        "cpu": {
+          "eax": 0,
+          "ebx": 0,
+          "ecx": 25809056,
+          "edx": 0,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393072,
+          "esp": 50393060,
+          "eip": 10384801,
+          "eflags": 0
+        },
+        "flagsKnown": 0
+      },
+      {
+        "cpu": {
+          "eax": 0,
+          "ebx": 0,
+          "ecx": 25809056,
+          "edx": 0,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393060,
+          "esp": 50393060,
+          "eip": 10384803,
+          "eflags": 0
+        },
+        "flagsKnown": 0
+      },
+      {
+        "cpu": {
+          "eax": 0,
+          "ebx": 0,
+          "ecx": 25809056,
+          "edx": 0,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393060,
+          "esp": 50393056,
+          "eip": 10384804,
+          "eflags": 0
+        },
+        "flagsKnown": 0
+      },
+      {
+        "cpu": {
+          "eax": 0,
+          "ebx": 0,
+          "ecx": 25809056,
+          "edx": 0,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393060,
+          "esp": 50393056,
+          "eip": 10384807,
+          "eflags": 0
+        },
+        "flagsKnown": 0
+      },
+      {
+        "cpu": {
+          "eax": 25809056,
+          "ebx": 0,
+          "ecx": 25809056,
+          "edx": 0,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393060,
+          "esp": 50393056,
+          "eip": 10384810,
+          "eflags": 0
+        },
+        "flagsKnown": 0
+      },
+      {
+        "cpu": {
+          "eax": 25809056,
+          "ebx": 0,
+          "ecx": 25809056,
+          "edx": 0,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393060,
+          "esp": 50393056,
+          "eip": 10384816,
+          "eflags": 0
+        },
+        "flagsKnown": 0
+      },
+      {
+        "cpu": {
+          "eax": 25809056,
+          "ebx": 0,
+          "ecx": 25809056,
+          "edx": 0,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393060,
+          "esp": 50393056,
+          "eip": 10384819,
+          "eflags": 0
+        },
+        "flagsKnown": 0
+      },
+      {
+        "cpu": {
+          "eax": 25809056,
+          "ebx": 0,
+          "ecx": 25809056,
+          "edx": 0,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393060,
+          "esp": 50393056,
+          "eip": 10384826,
+          "eflags": 0
+        },
+        "flagsKnown": 0
+      },
+      {
+        "cpu": {
+          "eax": 25809056,
+          "ebx": 0,
+          "ecx": 25809056,
+          "edx": 25809056,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393060,
+          "esp": 50393056,
+          "eip": 10384829,
+          "eflags": 0
+        },
+        "flagsKnown": 0
+      },
+      {
+        "cpu": {
+          "eax": 25809056,
+          "ebx": 0,
+          "ecx": 25809056,
+          "edx": 25809056,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393060,
+          "esp": 50393056,
+          "eip": 10384836,
+          "eflags": 0
+        },
+        "flagsKnown": 0
+      },
+      {
+        "cpu": {
+          "eax": 25809056,
+          "ebx": 0,
+          "ecx": 25809056,
+          "edx": 25809056,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393060,
+          "esp": 50393056,
+          "eip": 10384839,
+          "eflags": 0
+        },
+        "flagsKnown": 0
+      },
+      {
+        "cpu": {
+          "eax": 25809056,
+          "ebx": 0,
+          "ecx": 25809056,
+          "edx": 25809056,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393060,
+          "esp": 50393060,
+          "eip": 10384841,
+          "eflags": 0
+        },
+        "flagsKnown": 0
+      },
+      {
+        "cpu": {
+          "eax": 25809056,
+          "ebx": 0,
+          "ecx": 25809056,
+          "edx": 25809056,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393072,
+          "esp": 50393064,
+          "eip": 10384842,
+          "eflags": 0
+        },
+        "flagsKnown": 0
+      },
+      {
+        "cpu": {
+          "eax": 25809056,
+          "ebx": 0,
+          "ecx": 25809056,
+          "edx": 25809056,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393072,
+          "esp": 50393068,
+          "eip": 10384719,
+          "eflags": 0
+        },
+        "flagsKnown": 0
+      },
+      {
+        "cpu": {
+          "eax": 25809056,
+          "ebx": 0,
+          "ecx": 25809056,
+          "edx": 25809056,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393072,
+          "esp": 50393068,
+          "eip": 10384722,
+          "eflags": 0
+        },
+        "flagsKnown": 0
+      },
+      {
+        "cpu": {
+          "eax": 25809056,
+          "ebx": 0,
+          "ecx": 25809068,
+          "edx": 25809056,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393072,
+          "esp": 50393068,
+          "eip": 10384725,
+          "eflags": 4
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 25809056,
+          "ebx": 0,
+          "ecx": 25809068,
+          "edx": 25809056,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393072,
+          "esp": 50393064,
+          "eip": 10384800,
+          "eflags": 4
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 25809056,
+          "ebx": 0,
+          "ecx": 25809068,
+          "edx": 25809056,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393072,
+          "esp": 50393060,
+          "eip": 10384801,
+          "eflags": 4
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 25809056,
+          "ebx": 0,
+          "ecx": 25809068,
+          "edx": 25809056,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393060,
+          "esp": 50393060,
+          "eip": 10384803,
+          "eflags": 4
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 25809056,
+          "ebx": 0,
+          "ecx": 25809068,
+          "edx": 25809056,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393060,
+          "esp": 50393056,
+          "eip": 10384804,
+          "eflags": 4
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 25809056,
+          "ebx": 0,
+          "ecx": 25809068,
+          "edx": 25809056,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393060,
+          "esp": 50393056,
+          "eip": 10384807,
+          "eflags": 4
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 25809068,
+          "ebx": 0,
+          "ecx": 25809068,
+          "edx": 25809056,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393060,
+          "esp": 50393056,
+          "eip": 10384810,
+          "eflags": 4
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 25809068,
+          "ebx": 0,
+          "ecx": 25809068,
+          "edx": 25809056,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393060,
+          "esp": 50393056,
+          "eip": 10384816,
+          "eflags": 4
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 25809068,
+          "ebx": 0,
+          "ecx": 25809068,
+          "edx": 25809056,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393060,
+          "esp": 50393056,
+          "eip": 10384819,
+          "eflags": 4
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 25809068,
+          "ebx": 0,
+          "ecx": 25809068,
+          "edx": 25809056,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393060,
+          "esp": 50393056,
+          "eip": 10384826,
+          "eflags": 4
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 25809068,
+          "ebx": 0,
+          "ecx": 25809068,
+          "edx": 25809068,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393060,
+          "esp": 50393056,
+          "eip": 10384829,
+          "eflags": 4
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 25809068,
+          "ebx": 0,
+          "ecx": 25809068,
+          "edx": 25809068,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393060,
+          "esp": 50393056,
+          "eip": 10384836,
+          "eflags": 4
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 25809068,
+          "ebx": 0,
+          "ecx": 25809068,
+          "edx": 25809068,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393060,
+          "esp": 50393056,
+          "eip": 10384839,
+          "eflags": 4
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 25809068,
+          "ebx": 0,
+          "ecx": 25809068,
+          "edx": 25809068,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393060,
+          "esp": 50393060,
+          "eip": 10384841,
+          "eflags": 4
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 25809068,
+          "ebx": 0,
+          "ecx": 25809068,
+          "edx": 25809068,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393072,
+          "esp": 50393064,
+          "eip": 10384842,
+          "eflags": 4
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 25809068,
+          "ebx": 0,
+          "ecx": 25809068,
+          "edx": 25809068,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393072,
+          "esp": 50393068,
+          "eip": 10384730,
+          "eflags": 4
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 25809068,
+          "ebx": 0,
+          "ecx": 25809056,
+          "edx": 25809068,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393072,
+          "esp": 50393068,
+          "eip": 10384733,
+          "eflags": 4
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 25809068,
+          "ebx": 0,
+          "ecx": 25809080,
+          "edx": 25809068,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393072,
+          "esp": 50393068,
+          "eip": 10384736,
+          "eflags": 4
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 25809068,
+          "ebx": 0,
+          "ecx": 25809080,
+          "edx": 25809068,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393072,
+          "esp": 50393064,
+          "eip": 10384800,
+          "eflags": 4
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 25809068,
+          "ebx": 0,
+          "ecx": 25809080,
+          "edx": 25809068,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393072,
+          "esp": 50393060,
+          "eip": 10384801,
+          "eflags": 4
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 25809068,
+          "ebx": 0,
+          "ecx": 25809080,
+          "edx": 25809068,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393060,
+          "esp": 50393060,
+          "eip": 10384803,
+          "eflags": 4
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 25809068,
+          "ebx": 0,
+          "ecx": 25809080,
+          "edx": 25809068,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393060,
+          "esp": 50393056,
+          "eip": 10384804,
+          "eflags": 4
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 25809068,
+          "ebx": 0,
+          "ecx": 25809080,
+          "edx": 25809068,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393060,
+          "esp": 50393056,
+          "eip": 10384807,
+          "eflags": 4
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 25809080,
+          "ebx": 0,
+          "ecx": 25809080,
+          "edx": 25809068,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393060,
+          "esp": 50393056,
+          "eip": 10384810,
+          "eflags": 4
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 25809080,
+          "ebx": 0,
+          "ecx": 25809080,
+          "edx": 25809068,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393060,
+          "esp": 50393056,
+          "eip": 10384816,
+          "eflags": 4
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 25809080,
+          "ebx": 0,
+          "ecx": 25809080,
+          "edx": 25809068,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393060,
+          "esp": 50393056,
+          "eip": 10384819,
+          "eflags": 4
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 25809080,
+          "ebx": 0,
+          "ecx": 25809080,
+          "edx": 25809068,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393060,
+          "esp": 50393056,
+          "eip": 10384826,
+          "eflags": 4
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 25809080,
+          "ebx": 0,
+          "ecx": 25809080,
+          "edx": 25809080,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393060,
+          "esp": 50393056,
+          "eip": 10384829,
+          "eflags": 4
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 25809080,
+          "ebx": 0,
+          "ecx": 25809080,
+          "edx": 25809080,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393060,
+          "esp": 50393056,
+          "eip": 10384836,
+          "eflags": 4
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 25809080,
+          "ebx": 0,
+          "ecx": 25809080,
+          "edx": 25809080,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393060,
+          "esp": 50393056,
+          "eip": 10384839,
+          "eflags": 4
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 25809080,
+          "ebx": 0,
+          "ecx": 25809080,
+          "edx": 25809080,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393060,
+          "esp": 50393060,
+          "eip": 10384841,
+          "eflags": 4
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 25809080,
+          "ebx": 0,
+          "ecx": 25809080,
+          "edx": 25809080,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393072,
+          "esp": 50393064,
+          "eip": 10384842,
+          "eflags": 4
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 25809080,
+          "ebx": 0,
+          "ecx": 25809080,
+          "edx": 25809080,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393072,
+          "esp": 50393068,
+          "eip": 10384741,
+          "eflags": 4
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 25809080,
+          "ebx": 0,
+          "ecx": 25809056,
+          "edx": 25809080,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393072,
+          "esp": 50393068,
+          "eip": 10384744,
+          "eflags": 4
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 25809080,
+          "ebx": 0,
+          "ecx": 25809092,
+          "edx": 25809080,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393072,
+          "esp": 50393068,
+          "eip": 10384747,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 25809080,
+          "ebx": 0,
+          "ecx": 25809092,
+          "edx": 25809080,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393072,
+          "esp": 50393064,
+          "eip": 10384800,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 25809080,
+          "ebx": 0,
+          "ecx": 25809092,
+          "edx": 25809080,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393072,
+          "esp": 50393060,
+          "eip": 10384801,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 25809080,
+          "ebx": 0,
+          "ecx": 25809092,
+          "edx": 25809080,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393060,
+          "esp": 50393060,
+          "eip": 10384803,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 25809080,
+          "ebx": 0,
+          "ecx": 25809092,
+          "edx": 25809080,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393060,
+          "esp": 50393056,
+          "eip": 10384804,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 25809080,
+          "ebx": 0,
+          "ecx": 25809092,
+          "edx": 25809080,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393060,
+          "esp": 50393056,
+          "eip": 10384807,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 25809092,
+          "ebx": 0,
+          "ecx": 25809092,
+          "edx": 25809080,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393060,
+          "esp": 50393056,
+          "eip": 10384810,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 25809092,
+          "ebx": 0,
+          "ecx": 25809092,
+          "edx": 25809080,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393060,
+          "esp": 50393056,
+          "eip": 10384816,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 25809092,
+          "ebx": 0,
+          "ecx": 25809092,
+          "edx": 25809080,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393060,
+          "esp": 50393056,
+          "eip": 10384819,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 25809092,
+          "ebx": 0,
+          "ecx": 25809092,
+          "edx": 25809080,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393060,
+          "esp": 50393056,
+          "eip": 10384826,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 25809092,
+          "ebx": 0,
+          "ecx": 25809092,
+          "edx": 25809092,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393060,
+          "esp": 50393056,
+          "eip": 10384829,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 25809092,
+          "ebx": 0,
+          "ecx": 25809092,
+          "edx": 25809092,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393060,
+          "esp": 50393056,
+          "eip": 10384836,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 25809092,
+          "ebx": 0,
+          "ecx": 25809092,
+          "edx": 25809092,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393060,
+          "esp": 50393056,
+          "eip": 10384839,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 25809092,
+          "ebx": 0,
+          "ecx": 25809092,
+          "edx": 25809092,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393060,
+          "esp": 50393060,
+          "eip": 10384841,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 25809092,
+          "ebx": 0,
+          "ecx": 25809092,
+          "edx": 25809092,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393072,
+          "esp": 50393064,
+          "eip": 10384842,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 25809092,
+          "ebx": 0,
+          "ecx": 25809092,
+          "edx": 25809092,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393072,
+          "esp": 50393068,
+          "eip": 10384752,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 25809092,
+          "ebx": 0,
+          "ecx": 25809056,
+          "edx": 25809092,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393072,
+          "esp": 50393068,
+          "eip": 10384755,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 25809092,
+          "ebx": 0,
+          "ecx": 25809104,
+          "edx": 25809092,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393072,
+          "esp": 50393068,
+          "eip": 10384758,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 25809092,
+          "ebx": 0,
+          "ecx": 25809104,
+          "edx": 25809092,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393072,
+          "esp": 50393064,
+          "eip": 10384800,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 25809092,
+          "ebx": 0,
+          "ecx": 25809104,
+          "edx": 25809092,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393072,
+          "esp": 50393060,
+          "eip": 10384801,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 25809092,
+          "ebx": 0,
+          "ecx": 25809104,
+          "edx": 25809092,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393060,
+          "esp": 50393060,
+          "eip": 10384803,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 25809092,
+          "ebx": 0,
+          "ecx": 25809104,
+          "edx": 25809092,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393060,
+          "esp": 50393056,
+          "eip": 10384804,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 25809092,
+          "ebx": 0,
+          "ecx": 25809104,
+          "edx": 25809092,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393060,
+          "esp": 50393056,
+          "eip": 10384807,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 25809104,
+          "ebx": 0,
+          "ecx": 25809104,
+          "edx": 25809092,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393060,
+          "esp": 50393056,
+          "eip": 10384810,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 25809104,
+          "ebx": 0,
+          "ecx": 25809104,
+          "edx": 25809092,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393060,
+          "esp": 50393056,
+          "eip": 10384816,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 25809104,
+          "ebx": 0,
+          "ecx": 25809104,
+          "edx": 25809092,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393060,
+          "esp": 50393056,
+          "eip": 10384819,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 25809104,
+          "ebx": 0,
+          "ecx": 25809104,
+          "edx": 25809092,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393060,
+          "esp": 50393056,
+          "eip": 10384826,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 25809104,
+          "ebx": 0,
+          "ecx": 25809104,
+          "edx": 25809104,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393060,
+          "esp": 50393056,
+          "eip": 10384829,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 25809104,
+          "ebx": 0,
+          "ecx": 25809104,
+          "edx": 25809104,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393060,
+          "esp": 50393056,
+          "eip": 10384836,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 25809104,
+          "ebx": 0,
+          "ecx": 25809104,
+          "edx": 25809104,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393060,
+          "esp": 50393056,
+          "eip": 10384839,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 25809104,
+          "ebx": 0,
+          "ecx": 25809104,
+          "edx": 25809104,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393060,
+          "esp": 50393060,
+          "eip": 10384841,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 25809104,
+          "ebx": 0,
+          "ecx": 25809104,
+          "edx": 25809104,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393072,
+          "esp": 50393064,
+          "eip": 10384842,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 25809104,
+          "ebx": 0,
+          "ecx": 25809104,
+          "edx": 25809104,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393072,
+          "esp": 50393068,
+          "eip": 10384763,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 25809104,
+          "ebx": 0,
+          "ecx": 25809056,
+          "edx": 25809104,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393072,
+          "esp": 50393068,
+          "eip": 10384766,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 25809104,
+          "ebx": 0,
+          "ecx": 25809120,
+          "edx": 25809104,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393072,
+          "esp": 50393068,
+          "eip": 10384769,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 25809104,
+          "ebx": 0,
+          "ecx": 25809120,
+          "edx": 25809104,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393072,
+          "esp": 50393064,
+          "eip": 10384800,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 25809104,
+          "ebx": 0,
+          "ecx": 25809120,
+          "edx": 25809104,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393072,
+          "esp": 50393060,
+          "eip": 10384801,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 25809104,
+          "ebx": 0,
+          "ecx": 25809120,
+          "edx": 25809104,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393060,
+          "esp": 50393060,
+          "eip": 10384803,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 25809104,
+          "ebx": 0,
+          "ecx": 25809120,
+          "edx": 25809104,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393060,
+          "esp": 50393056,
+          "eip": 10384804,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 25809104,
+          "ebx": 0,
+          "ecx": 25809120,
+          "edx": 25809104,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393060,
+          "esp": 50393056,
+          "eip": 10384807,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 25809120,
+          "ebx": 0,
+          "ecx": 25809120,
+          "edx": 25809104,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393060,
+          "esp": 50393056,
+          "eip": 10384810,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 25809120,
+          "ebx": 0,
+          "ecx": 25809120,
+          "edx": 25809104,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393060,
+          "esp": 50393056,
+          "eip": 10384816,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 25809120,
+          "ebx": 0,
+          "ecx": 25809120,
+          "edx": 25809104,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393060,
+          "esp": 50393056,
+          "eip": 10384819,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 25809120,
+          "ebx": 0,
+          "ecx": 25809120,
+          "edx": 25809104,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393060,
+          "esp": 50393056,
+          "eip": 10384826,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 25809120,
+          "ebx": 0,
+          "ecx": 25809120,
+          "edx": 25809120,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393060,
+          "esp": 50393056,
+          "eip": 10384829,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 25809120,
+          "ebx": 0,
+          "ecx": 25809120,
+          "edx": 25809120,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393060,
+          "esp": 50393056,
+          "eip": 10384836,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 25809120,
+          "ebx": 0,
+          "ecx": 25809120,
+          "edx": 25809120,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393060,
+          "esp": 50393056,
+          "eip": 10384839,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 25809120,
+          "ebx": 0,
+          "ecx": 25809120,
+          "edx": 25809120,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393060,
+          "esp": 50393060,
+          "eip": 10384841,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 25809120,
+          "ebx": 0,
+          "ecx": 25809120,
+          "edx": 25809120,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393072,
+          "esp": 50393064,
+          "eip": 10384842,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 25809120,
+          "ebx": 0,
+          "ecx": 25809120,
+          "edx": 25809120,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393072,
+          "esp": 50393068,
+          "eip": 10384774,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 25809120,
+          "ebx": 0,
+          "ecx": 25809056,
+          "edx": 25809120,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393072,
+          "esp": 50393068,
+          "eip": 10384777,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 25809120,
+          "ebx": 0,
+          "ecx": 25809132,
+          "edx": 25809120,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393072,
+          "esp": 50393068,
+          "eip": 10384780,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 25809120,
+          "ebx": 0,
+          "ecx": 25809132,
+          "edx": 25809120,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393072,
+          "esp": 50393064,
+          "eip": 10229808,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 25809120,
+          "ebx": 0,
+          "ecx": 25809132,
+          "edx": 25809120,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393072,
+          "esp": 50393060,
+          "eip": 10229809,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 25809120,
+          "ebx": 0,
+          "ecx": 25809132,
+          "edx": 25809120,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393060,
+          "esp": 50393060,
+          "eip": 10229811,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 25809120,
+          "ebx": 0,
+          "ecx": 25809132,
+          "edx": 25809120,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393060,
+          "esp": 50393056,
+          "eip": 10229812,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 25809120,
+          "ebx": 0,
+          "ecx": 25809132,
+          "edx": 25809120,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393060,
+          "esp": 50393056,
+          "eip": 10229815,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 25809132,
+          "ebx": 0,
+          "ecx": 25809132,
+          "edx": 25809120,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393060,
+          "esp": 50393056,
+          "eip": 10229818,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 25809132,
+          "ebx": 0,
+          "ecx": 25809132,
+          "edx": 25809120,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393060,
+          "esp": 50393056,
+          "eip": 10229824,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 25809132,
+          "ebx": 0,
+          "ecx": 25809132,
+          "edx": 25809120,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393060,
+          "esp": 50393056,
+          "eip": 10229827,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 25809132,
+          "ebx": 0,
+          "ecx": 25809132,
+          "edx": 25809120,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393060,
+          "esp": 50393056,
+          "eip": 10229834,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 25809132,
+          "ebx": 0,
+          "ecx": 25809132,
+          "edx": 25809132,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393060,
+          "esp": 50393056,
+          "eip": 10229837,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 25809132,
+          "ebx": 0,
+          "ecx": 25809132,
+          "edx": 25809132,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393060,
+          "esp": 50393056,
+          "eip": 10229844,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 25809132,
+          "ebx": 0,
+          "ecx": 25809132,
+          "edx": 25809132,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393060,
+          "esp": 50393056,
+          "eip": 10229847,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 25809132,
+          "ebx": 0,
+          "ecx": 25809132,
+          "edx": 25809132,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393060,
+          "esp": 50393056,
+          "eip": 10229854,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 25809132,
+          "ebx": 0,
+          "ecx": 25809132,
+          "edx": 25809132,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393060,
+          "esp": 50393056,
+          "eip": 10229857,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 25809132,
+          "ebx": 0,
+          "ecx": 25809132,
+          "edx": 25809132,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393060,
+          "esp": 50393056,
+          "eip": 10229864,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 25809132,
+          "ebx": 0,
+          "ecx": 25809132,
+          "edx": 25809132,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393060,
+          "esp": 50393056,
+          "eip": 10229867,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 25809132,
+          "ebx": 0,
+          "ecx": 25809132,
+          "edx": 25809132,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393060,
+          "esp": 50393056,
+          "eip": 10229874,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 25809132,
+          "ebx": 0,
+          "ecx": 25809132,
+          "edx": 25809132,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393060,
+          "esp": 50393056,
+          "eip": 10229877,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 25809132,
+          "ebx": 0,
+          "ecx": 25809132,
+          "edx": 25809132,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393060,
+          "esp": 50393056,
+          "eip": 10229884,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 25809132,
+          "ebx": 0,
+          "ecx": 25809132,
+          "edx": 25809132,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393060,
+          "esp": 50393056,
+          "eip": 10229887,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 25809132,
+          "ebx": 0,
+          "ecx": 25809132,
+          "edx": 25809132,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393060,
+          "esp": 50393056,
+          "eip": 10229894,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 25809132,
+          "ebx": 0,
+          "ecx": 25809132,
+          "edx": 25809132,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393060,
+          "esp": 50393056,
+          "eip": 10229897,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 25809132,
+          "ebx": 0,
+          "ecx": 25809132,
+          "edx": 25809132,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393060,
+          "esp": 50393056,
+          "eip": 10229901,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 25809132,
+          "ebx": 0,
+          "ecx": 25809132,
+          "edx": 25809132,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393060,
+          "esp": 50393056,
+          "eip": 10229904,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 25809132,
+          "ebx": 0,
+          "ecx": 25809132,
+          "edx": 25809132,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393060,
+          "esp": 50393060,
+          "eip": 10229906,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 25809132,
+          "ebx": 0,
+          "ecx": 25809132,
+          "edx": 25809132,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393072,
+          "esp": 50393064,
+          "eip": 10229907,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 25809132,
+          "ebx": 0,
+          "ecx": 25809132,
+          "edx": 25809132,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393072,
+          "esp": 50393068,
+          "eip": 10384785,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 25809056,
+          "ebx": 0,
+          "ecx": 25809132,
+          "edx": 25809132,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393072,
+          "esp": 50393068,
+          "eip": 10384788,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 25809056,
+          "ebx": 0,
+          "ecx": 25809132,
+          "edx": 25809132,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393072,
+          "esp": 50393072,
+          "eip": 10384790,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 25809056,
+          "ebx": 0,
+          "ecx": 25809132,
+          "edx": 25809132,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393080,
+          "esp": 50393076,
+          "eip": 10384791,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 25809056,
+          "ebx": 0,
+          "ecx": 25809132,
+          "edx": 25809132,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393080,
+          "esp": 50393080,
+          "eip": 11894221,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 25809056,
+          "ebx": 0,
+          "ecx": 25809132,
+          "edx": 25809132,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393080,
+          "esp": 50393076,
+          "eip": 11894226,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 25809056,
+          "ebx": 0,
+          "ecx": 25809132,
+          "edx": 25809132,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393080,
+          "esp": 50393072,
+          "eip": 8894016,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 25809056,
+          "ebx": 0,
+          "ecx": 25809132,
+          "edx": 25809132,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393080,
+          "esp": 50393068,
+          "eip": 8894020,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 25809056,
+          "ebx": 0,
+          "ecx": 25809132,
+          "edx": 25809132,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393080,
+          "esp": 50393064,
+          "eip": 8893851,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 25809056,
+          "ebx": 0,
+          "ecx": 25809132,
+          "edx": 25809132,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393080,
+          "esp": 50393060,
+          "eip": 8893853,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 25809056,
+          "ebx": 0,
+          "ecx": 25809132,
+          "edx": 25809132,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393080,
+          "esp": 50393056,
+          "eip": 8893858,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 25809056,
+          "ebx": 0,
+          "ecx": 25809132,
+          "edx": 25809132,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393080,
+          "esp": 50393052,
+          "eip": 8896184,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 25809056,
+          "ebx": 0,
+          "ecx": 25809132,
+          "edx": 25809132,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393080,
+          "esp": 50393048,
+          "eip": 8896189,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 25809056,
+          "ebx": 0,
+          "ecx": 25809132,
+          "edx": 25809132,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393080,
+          "esp": 50393044,
+          "eip": 8896196,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 20,
+          "ebx": 0,
+          "ecx": 25809132,
+          "edx": 25809132,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393080,
+          "esp": 50393044,
+          "eip": 8896200,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 20,
+          "ebx": 0,
+          "ecx": 25809132,
+          "edx": 25809132,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393080,
+          "esp": 50393044,
+          "eip": 8896204,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 20,
+          "ebx": 0,
+          "ecx": 25809132,
+          "edx": 25809132,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393060,
+          "esp": 50393044,
+          "eip": 8896208,
+          "eflags": 0
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 20,
+          "ebx": 0,
+          "ecx": 25809132,
+          "edx": 25809132,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393060,
+          "esp": 50393024,
+          "eip": 8896210,
+          "eflags": 4
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 20,
+          "ebx": 0,
+          "ecx": 25809132,
+          "edx": 25809132,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393060,
+          "esp": 50393020,
+          "eip": 8896211,
+          "eflags": 4
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 20,
+          "ebx": 0,
+          "ecx": 25809132,
+          "edx": 25809132,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393060,
+          "esp": 50393016,
+          "eip": 8896212,
+          "eflags": 4
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 20,
+          "ebx": 0,
+          "ecx": 25809132,
+          "edx": 25809132,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393060,
+          "esp": 50393012,
+          "eip": 8896213,
+          "eflags": 4
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 3141592654,
+          "ebx": 0,
+          "ecx": 25809132,
+          "edx": 25809132,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393060,
+          "esp": 50393012,
+          "eip": 8896218,
+          "eflags": 4
+        },
+        "flagsKnown": 63
+      },
+      {
+        "cpu": {
+          "eax": 3141592654,
+          "ebx": 0,
+          "ecx": 25809132,
+          "edx": 25809132,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393060,
+          "esp": 50393012,
+          "eip": 8896221,
+          "eflags": 128
+        },
+        "flagsKnown": 59
+      },
+      {
+        "cpu": {
+          "eax": 3091204522,
+          "ebx": 0,
+          "ecx": 25809132,
+          "edx": 25809132,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393060,
+          "esp": 50393012,
+          "eip": 8896223,
+          "eflags": 132
+        },
+        "flagsKnown": 59
+      },
+      {
+        "cpu": {
+          "eax": 3091204522,
+          "ebx": 0,
+          "ecx": 25809132,
+          "edx": 25809132,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393060,
+          "esp": 50393008,
+          "eip": 8896224,
+          "eflags": 132
+        },
+        "flagsKnown": 59
+      },
+      {
+        "cpu": {
+          "eax": 3091204522,
+          "ebx": 0,
+          "ecx": 25809132,
+          "edx": 25809132,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393060,
+          "esp": 50393008,
+          "eip": 8896227,
+          "eflags": 132
+        },
+        "flagsKnown": 59
+      },
+      {
+        "cpu": {
+          "eax": 3091204522,
+          "ebx": 0,
+          "ecx": 25809132,
+          "edx": 25809132,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393060,
+          "esp": 50393004,
+          "eip": 8896230,
+          "eflags": 132
+        },
+        "flagsKnown": 59
+      },
+      {
+        "cpu": {
+          "eax": 3146413518,
+          "ebx": 0,
+          "ecx": 25809132,
+          "edx": 25809132,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393060,
+          "esp": 50393004,
+          "eip": 8896233,
+          "eflags": 132
+        },
+        "flagsKnown": 59
+      },
+      {
+        "cpu": {
+          "eax": 3146413518,
+          "ebx": 0,
+          "ecx": 25809132,
+          "edx": 25809132,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393060,
+          "esp": 50393004,
+          "eip": 8896240,
+          "eflags": 132
+        },
+        "flagsKnown": 59
+      },
+      {
+        "cpu": {
+          "eax": 3146413518,
+          "ebx": 0,
+          "ecx": 25809132,
+          "edx": 25809132,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393060,
+          "esp": 50393004,
+          "eip": 8896243,
+          "eflags": 132
+        },
+        "flagsKnown": 59
+      },
+      {
+        "cpu": {
+          "eax": 50393044,
+          "ebx": 0,
+          "ecx": 25809132,
+          "edx": 25809132,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393060,
+          "esp": 50393004,
+          "eip": 8896246,
+          "eflags": 132
+        },
+        "flagsKnown": 59
+      },
+      {
+        "cpu": {
+          "eax": 50393044,
+          "ebx": 0,
+          "ecx": 25809132,
+          "edx": 25809132,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393060,
+          "esp": 50393004,
+          "eip": 8896252,
+          "eflags": 132
+        },
+        "flagsKnown": 59
+      },
+      {
+        "cpu": {
+          "eax": 50393044,
+          "ebx": 0,
+          "ecx": 25809132,
+          "edx": 25809132,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393060,
+          "esp": 50393008,
+          "eip": 8893863,
+          "eflags": 132
+        },
+        "flagsKnown": 59
+      },
+      {
+        "cpu": {
+          "eax": 50393044,
+          "ebx": 0,
+          "ecx": 25809132,
+          "edx": 25809132,
+          "esi": 0,
+          "edi": 0,
+          "ebp": 50393060,
+          "esp": 50393004,
+          "eip": 8893869,
+          "eflags": 132
+        },
+        "flagsKnown": 59
+      },
+      {
+        "cpu": {
+          "eax": 50393044,
+          "ebx": 0,
+          "ecx": 25809132,
+          "edx": 25809132,
+          "esi": 9088106,
+          "edi": 0,
+          "ebp": 50393060,
+          "esp": 50393004,
+          "eip": 8893875,
+          "eflags": 132
+        },
+        "flagsKnown": 59
+      }
+    ],
+    "reads": [
+      {
+        "address": 50393068,
+        "size": 4,
+        "instruction": 10384711,
+        "value": 25809056
+      },
+      {
+        "address": 50393056,
+        "size": 4,
+        "instruction": 10384807,
+        "value": 25809056
+      },
+      {
+        "address": 50393056,
+        "size": 4,
+        "instruction": 10384816,
+        "value": 25809056
+      },
+      {
+        "address": 50393056,
+        "size": 4,
+        "instruction": 10384826,
+        "value": 25809056
+      },
+      {
+        "address": 50393056,
+        "size": 4,
+        "instruction": 10384836,
+        "value": 25809056
+      },
+      {
+        "address": 50393060,
+        "size": 4,
+        "instruction": 10384841,
+        "value": 50393072
+      },
+      {
+        "address": 50393064,
+        "size": 4,
+        "instruction": 10384842,
+        "value": 10384719
+      },
+      {
+        "address": 50393068,
+        "size": 4,
+        "instruction": 10384719,
+        "value": 25809056
+      },
+      {
+        "address": 50393056,
+        "size": 4,
+        "instruction": 10384807,
+        "value": 25809068
+      },
+      {
+        "address": 50393056,
+        "size": 4,
+        "instruction": 10384816,
+        "value": 25809068
+      },
+      {
+        "address": 50393056,
+        "size": 4,
+        "instruction": 10384826,
+        "value": 25809068
+      },
+      {
+        "address": 50393056,
+        "size": 4,
+        "instruction": 10384836,
+        "value": 25809068
+      },
+      {
+        "address": 50393060,
+        "size": 4,
+        "instruction": 10384841,
+        "value": 50393072
+      },
+      {
+        "address": 50393064,
+        "size": 4,
+        "instruction": 10384842,
+        "value": 10384730
+      },
+      {
+        "address": 50393068,
+        "size": 4,
+        "instruction": 10384730,
+        "value": 25809056
+      },
+      {
+        "address": 50393056,
+        "size": 4,
+        "instruction": 10384807,
+        "value": 25809080
+      },
+      {
+        "address": 50393056,
+        "size": 4,
+        "instruction": 10384816,
+        "value": 25809080
+      },
+      {
+        "address": 50393056,
+        "size": 4,
+        "instruction": 10384826,
+        "value": 25809080
+      },
+      {
+        "address": 50393056,
+        "size": 4,
+        "instruction": 10384836,
+        "value": 25809080
+      },
+      {
+        "address": 50393060,
+        "size": 4,
+        "instruction": 10384841,
+        "value": 50393072
+      },
+      {
+        "address": 50393064,
+        "size": 4,
+        "instruction": 10384842,
+        "value": 10384741
+      },
+      {
+        "address": 50393068,
+        "size": 4,
+        "instruction": 10384741,
+        "value": 25809056
+      },
+      {
+        "address": 50393056,
+        "size": 4,
+        "instruction": 10384807,
+        "value": 25809092
+      },
+      {
+        "address": 50393056,
+        "size": 4,
+        "instruction": 10384816,
+        "value": 25809092
+      },
+      {
+        "address": 50393056,
+        "size": 4,
+        "instruction": 10384826,
+        "value": 25809092
+      },
+      {
+        "address": 50393056,
+        "size": 4,
+        "instruction": 10384836,
+        "value": 25809092
+      },
+      {
+        "address": 50393060,
+        "size": 4,
+        "instruction": 10384841,
+        "value": 50393072
+      },
+      {
+        "address": 50393064,
+        "size": 4,
+        "instruction": 10384842,
+        "value": 10384752
+      },
+      {
+        "address": 50393068,
+        "size": 4,
+        "instruction": 10384752,
+        "value": 25809056
+      },
+      {
+        "address": 50393056,
+        "size": 4,
+        "instruction": 10384807,
+        "value": 25809104
+      },
+      {
+        "address": 50393056,
+        "size": 4,
+        "instruction": 10384816,
+        "value": 25809104
+      },
+      {
+        "address": 50393056,
+        "size": 4,
+        "instruction": 10384826,
+        "value": 25809104
+      },
+      {
+        "address": 50393056,
+        "size": 4,
+        "instruction": 10384836,
+        "value": 25809104
+      },
+      {
+        "address": 50393060,
+        "size": 4,
+        "instruction": 10384841,
+        "value": 50393072
+      },
+      {
+        "address": 50393064,
+        "size": 4,
+        "instruction": 10384842,
+        "value": 10384763
+      },
+      {
+        "address": 50393068,
+        "size": 4,
+        "instruction": 10384763,
+        "value": 25809056
+      },
+      {
+        "address": 50393056,
+        "size": 4,
+        "instruction": 10384807,
+        "value": 25809120
+      },
+      {
+        "address": 50393056,
+        "size": 4,
+        "instruction": 10384816,
+        "value": 25809120
+      },
+      {
+        "address": 50393056,
+        "size": 4,
+        "instruction": 10384826,
+        "value": 25809120
+      },
+      {
+        "address": 50393056,
+        "size": 4,
+        "instruction": 10384836,
+        "value": 25809120
+      },
+      {
+        "address": 50393060,
+        "size": 4,
+        "instruction": 10384841,
+        "value": 50393072
+      },
+      {
+        "address": 50393064,
+        "size": 4,
+        "instruction": 10384842,
+        "value": 10384774
+      },
+      {
+        "address": 50393068,
+        "size": 4,
+        "instruction": 10384774,
+        "value": 25809056
+      },
+      {
+        "address": 50393056,
+        "size": 4,
+        "instruction": 10229815,
+        "value": 25809132
+      },
+      {
+        "address": 50393056,
+        "size": 4,
+        "instruction": 10229824,
+        "value": 25809132
+      },
+      {
+        "address": 50393056,
+        "size": 4,
+        "instruction": 10229834,
+        "value": 25809132
+      },
+      {
+        "address": 50393056,
+        "size": 4,
+        "instruction": 10229844,
+        "value": 25809132
+      },
+      {
+        "address": 50393056,
+        "size": 4,
+        "instruction": 10229854,
+        "value": 25809132
+      },
+      {
+        "address": 50393056,
+        "size": 4,
+        "instruction": 10229864,
+        "value": 25809132
+      },
+      {
+        "address": 50393056,
+        "size": 4,
+        "instruction": 10229874,
+        "value": 25809132
+      },
+      {
+        "address": 50393056,
+        "size": 4,
+        "instruction": 10229884,
+        "value": 25809132
+      },
+      {
+        "address": 50393056,
+        "size": 4,
+        "instruction": 10229894,
+        "value": 25809132
+      },
+      {
+        "address": 50393056,
+        "size": 4,
+        "instruction": 10229901,
+        "value": 25809132
+      },
+      {
+        "address": 50393060,
+        "size": 4,
+        "instruction": 10229906,
+        "value": 50393072
+      },
+      {
+        "address": 50393064,
+        "size": 4,
+        "instruction": 10229907,
+        "value": 10384785
+      },
+      {
+        "address": 50393068,
+        "size": 4,
+        "instruction": 10384785,
+        "value": 25809056
+      },
+      {
+        "address": 50393072,
+        "size": 4,
+        "instruction": 10384790,
+        "value": 50393080
+      },
+      {
+        "address": 50393076,
+        "size": 4,
+        "instruction": 10384791,
+        "value": 11894221
+      },
+      {
+        "address": 50393076,
+        "size": 4,
+        "instruction": 8894016,
+        "value": 11928288
+      },
+      {
+        "address": 51380224,
+        "size": 4,
+        "instruction": 8896189,
+        "value": 4294967295
+      },
+      {
+        "address": 50393060,
+        "size": 4,
+        "instruction": 8896196,
+        "value": 20
+      },
+      {
+        "address": 19420808,
+        "size": 4,
+        "instruction": 8896213,
+        "value": 3141592654
+      },
+      {
+        "address": 50393056,
+        "size": 4,
+        "instruction": 8896218,
+        "value": 13276032
+      },
+      {
+        "address": 50393052,
+        "size": 4,
+        "instruction": 8896227,
+        "value": 8893863
+      },
+      {
+        "address": 50393056,
+        "size": 4,
+        "instruction": 8896230,
+        "value": 3146413518
+      },
+      {
+        "address": 50393004,
+        "size": 4,
+        "instruction": 8896252,
+        "value": 8893863
+      },
+      {
+        "address": 25894508,
+        "size": 4,
+        "instruction": 8893863,
+        "value": 0
+      },
+      {
+        "address": 11932568,
+        "size": 4,
+        "instruction": 8893869,
+        "value": 9088106
+      }
+    ],
+    "writes": [
+      {
+        "address": 50393080,
+        "size": 4,
+        "value": 0,
+        "instruction": 11894208
+      },
+      {
+        "address": 50393076,
+        "size": 4,
+        "value": 11894221,
+        "instruction": 11894216
+      },
+      {
+        "address": 50393072,
+        "size": 4,
+        "value": 50393080,
+        "instruction": 10384704
+      },
+      {
+        "address": 50393068,
+        "size": 4,
+        "value": 25809056,
+        "instruction": 10384707
+      },
+      {
+        "address": 50393068,
+        "size": 4,
+        "value": 25809056,
+        "instruction": 10384708
+      },
+      {
+        "address": 50393064,
+        "size": 4,
+        "value": 10384719,
+        "instruction": 10384714
+      },
+      {
+        "address": 50393060,
+        "size": 4,
+        "value": 50393072,
+        "instruction": 10384800
+      },
+      {
+        "address": 50393056,
+        "size": 4,
+        "value": 25809056,
+        "instruction": 10384803
+      },
+      {
+        "address": 50393056,
+        "size": 4,
+        "value": 25809056,
+        "instruction": 10384804
+      },
+      {
+        "address": 25809056,
+        "size": 4,
+        "value": 0,
+        "instruction": 10384810
+      },
+      {
+        "address": 25809060,
+        "size": 4,
+        "value": 0,
+        "instruction": 10384819
+      },
+      {
+        "address": 25809064,
+        "size": 4,
+        "value": 0,
+        "instruction": 10384829
+      },
+      {
+        "address": 50393064,
+        "size": 4,
+        "value": 10384730,
+        "instruction": 10384725
+      },
+      {
+        "address": 50393060,
+        "size": 4,
+        "value": 50393072,
+        "instruction": 10384800
+      },
+      {
+        "address": 50393056,
+        "size": 4,
+        "value": 25809068,
+        "instruction": 10384803
+      },
+      {
+        "address": 50393056,
+        "size": 4,
+        "value": 25809068,
+        "instruction": 10384804
+      },
+      {
+        "address": 25809068,
+        "size": 4,
+        "value": 0,
+        "instruction": 10384810
+      },
+      {
+        "address": 25809072,
+        "size": 4,
+        "value": 0,
+        "instruction": 10384819
+      },
+      {
+        "address": 25809076,
+        "size": 4,
+        "value": 0,
+        "instruction": 10384829
+      },
+      {
+        "address": 50393064,
+        "size": 4,
+        "value": 10384741,
+        "instruction": 10384736
+      },
+      {
+        "address": 50393060,
+        "size": 4,
+        "value": 50393072,
+        "instruction": 10384800
+      },
+      {
+        "address": 50393056,
+        "size": 4,
+        "value": 25809080,
+        "instruction": 10384803
+      },
+      {
+        "address": 50393056,
+        "size": 4,
+        "value": 25809080,
+        "instruction": 10384804
+      },
+      {
+        "address": 25809080,
+        "size": 4,
+        "value": 0,
+        "instruction": 10384810
+      },
+      {
+        "address": 25809084,
+        "size": 4,
+        "value": 0,
+        "instruction": 10384819
+      },
+      {
+        "address": 25809088,
+        "size": 4,
+        "value": 0,
+        "instruction": 10384829
+      },
+      {
+        "address": 50393064,
+        "size": 4,
+        "value": 10384752,
+        "instruction": 10384747
+      },
+      {
+        "address": 50393060,
+        "size": 4,
+        "value": 50393072,
+        "instruction": 10384800
+      },
+      {
+        "address": 50393056,
+        "size": 4,
+        "value": 25809092,
+        "instruction": 10384803
+      },
+      {
+        "address": 50393056,
+        "size": 4,
+        "value": 25809092,
+        "instruction": 10384804
+      },
+      {
+        "address": 25809092,
+        "size": 4,
+        "value": 0,
+        "instruction": 10384810
+      },
+      {
+        "address": 25809096,
+        "size": 4,
+        "value": 0,
+        "instruction": 10384819
+      },
+      {
+        "address": 25809100,
+        "size": 4,
+        "value": 0,
+        "instruction": 10384829
+      },
+      {
+        "address": 50393064,
+        "size": 4,
+        "value": 10384763,
+        "instruction": 10384758
+      },
+      {
+        "address": 50393060,
+        "size": 4,
+        "value": 50393072,
+        "instruction": 10384800
+      },
+      {
+        "address": 50393056,
+        "size": 4,
+        "value": 25809104,
+        "instruction": 10384803
+      },
+      {
+        "address": 50393056,
+        "size": 4,
+        "value": 25809104,
+        "instruction": 10384804
+      },
+      {
+        "address": 25809104,
+        "size": 4,
+        "value": 0,
+        "instruction": 10384810
+      },
+      {
+        "address": 25809108,
+        "size": 4,
+        "value": 0,
+        "instruction": 10384819
+      },
+      {
+        "address": 25809112,
+        "size": 4,
+        "value": 0,
+        "instruction": 10384829
+      },
+      {
+        "address": 50393064,
+        "size": 4,
+        "value": 10384774,
+        "instruction": 10384769
+      },
+      {
+        "address": 50393060,
+        "size": 4,
+        "value": 50393072,
+        "instruction": 10384800
+      },
+      {
+        "address": 50393056,
+        "size": 4,
+        "value": 25809120,
+        "instruction": 10384803
+      },
+      {
+        "address": 50393056,
+        "size": 4,
+        "value": 25809120,
+        "instruction": 10384804
+      },
+      {
+        "address": 25809120,
+        "size": 4,
+        "value": 0,
+        "instruction": 10384810
+      },
+      {
+        "address": 25809124,
+        "size": 4,
+        "value": 0,
+        "instruction": 10384819
+      },
+      {
+        "address": 25809128,
+        "size": 4,
+        "value": 0,
+        "instruction": 10384829
+      },
+      {
+        "address": 50393064,
+        "size": 4,
+        "value": 10384785,
+        "instruction": 10384780
+      },
+      {
+        "address": 50393060,
+        "size": 4,
+        "value": 50393072,
+        "instruction": 10229808
+      },
+      {
+        "address": 50393056,
+        "size": 4,
+        "value": 25809132,
+        "instruction": 10229811
+      },
+      {
+        "address": 50393056,
+        "size": 4,
+        "value": 25809132,
+        "instruction": 10229812
+      },
+      {
+        "address": 25809132,
+        "size": 4,
+        "value": 0,
+        "instruction": 10229818
+      },
+      {
+        "address": 25809136,
+        "size": 4,
+        "value": 0,
+        "instruction": 10229827
+      },
+      {
+        "address": 25809140,
+        "size": 4,
+        "value": 0,
+        "instruction": 10229837
+      },
+      {
+        "address": 25809144,
+        "size": 4,
+        "value": 204800,
+        "instruction": 10229847
+      },
+      {
+        "address": 25809148,
+        "size": 4,
+        "value": 100000,
+        "instruction": 10229857
+      },
+      {
+        "address": 25809152,
+        "size": 4,
+        "value": 0,
+        "instruction": 10229867
+      },
+      {
+        "address": 25809156,
+        "size": 4,
+        "value": 0,
+        "instruction": 10229877
+      },
+      {
+        "address": 25809160,
+        "size": 4,
+        "value": 0,
+        "instruction": 10229887
+      },
+      {
+        "address": 25809164,
+        "size": 1,
+        "value": 0,
+        "instruction": 10229897
+      },
+      {
+        "address": 50393076,
+        "size": 4,
+        "value": 11928288,
+        "instruction": 11894221
+      },
+      {
+        "address": 50393072,
+        "size": 4,
+        "value": 11894231,
+        "instruction": 11894226
+      },
+      {
+        "address": 50393068,
+        "size": 4,
+        "value": 11928288,
+        "instruction": 8894016
+      },
+      {
+        "address": 50393064,
+        "size": 4,
+        "value": 8894025,
+        "instruction": 8894020
+      },
+      {
+        "address": 50393060,
+        "size": 4,
+        "value": 20,
+        "instruction": 8893851
+      },
+      {
+        "address": 50393056,
+        "size": 4,
+        "value": 13276032,
+        "instruction": 8893853
+      },
+      {
+        "address": 50393052,
+        "size": 4,
+        "value": 8893863,
+        "instruction": 8893858
+      },
+      {
+        "address": 50393048,
+        "size": 4,
+        "value": 8896273,
+        "instruction": 8896184
+      },
+      {
+        "address": 50393044,
+        "size": 4,
+        "value": 4294967295,
+        "instruction": 8896189
+      },
+      {
+        "address": 50393060,
+        "size": 4,
+        "value": 50393080,
+        "instruction": 8896200
+      },
+      {
+        "address": 50393020,
+        "size": 4,
+        "value": 0,
+        "instruction": 8896210
+      },
+      {
+        "address": 50393016,
+        "size": 4,
+        "value": 0,
+        "instruction": 8896211
+      },
+      {
+        "address": 50393012,
+        "size": 4,
+        "value": 0,
+        "instruction": 8896212
+      },
+      {
+        "address": 50393056,
+        "size": 4,
+        "value": 3146413518,
+        "instruction": 8896218
+      },
+      {
+        "address": 50393008,
+        "size": 4,
+        "value": 3091204522,
+        "instruction": 8896223
+      },
+      {
+        "address": 50393036,
+        "size": 4,
+        "value": 50393008,
+        "instruction": 8896224
+      },
+      {
+        "address": 50393004,
+        "size": 4,
+        "value": 8893863,
+        "instruction": 8896227
+      },
+      {
+        "address": 50393056,
+        "size": 4,
+        "value": 4294967294,
+        "instruction": 8896233
+      },
+      {
+        "address": 50393052,
+        "size": 4,
+        "value": 3146413518,
+        "instruction": 8896240
+      },
+      {
+        "address": 51380224,
+        "size": 4,
+        "value": 50393044,
+        "instruction": 8896246
+      },
+      {
+        "address": 50393004,
+        "size": 4,
+        "value": 0,
+        "instruction": 8893863
+      },
+      {
+        "address": 50393000,
+        "size": 4,
+        "value": 8893877,
+        "instruction": 8893875
+      }
+    ],
+    "trace": [
+      {
+        "kind": "enter",
+        "address": 11894208,
+        "esp": 50393084
+      },
+      {
+        "kind": "enter",
+        "address": 10384704,
+        "esp": 50393076,
+        "callsite": 11894216,
+        "returnAddress": 11894221
+      },
+      {
+        "kind": "enter",
+        "address": 10384800,
+        "esp": 50393064,
+        "callsite": 10384714,
+        "returnAddress": 10384719
+      },
+      {
+        "kind": "return",
+        "address": 10384800,
+        "esp": 50393068
+      },
+      {
+        "kind": "enter",
+        "address": 10384800,
+        "esp": 50393064,
+        "callsite": 10384725,
+        "returnAddress": 10384730
+      },
+      {
+        "kind": "return",
+        "address": 10384800,
+        "esp": 50393068
+      },
+      {
+        "kind": "enter",
+        "address": 10384800,
+        "esp": 50393064,
+        "callsite": 10384736,
+        "returnAddress": 10384741
+      },
+      {
+        "kind": "return",
+        "address": 10384800,
+        "esp": 50393068
+      },
+      {
+        "kind": "enter",
+        "address": 10384800,
+        "esp": 50393064,
+        "callsite": 10384747,
+        "returnAddress": 10384752
+      },
+      {
+        "kind": "return",
+        "address": 10384800,
+        "esp": 50393068
+      },
+      {
+        "kind": "enter",
+        "address": 10384800,
+        "esp": 50393064,
+        "callsite": 10384758,
+        "returnAddress": 10384763
+      },
+      {
+        "kind": "return",
+        "address": 10384800,
+        "esp": 50393068
+      },
+      {
+        "kind": "enter",
+        "address": 10384800,
+        "esp": 50393064,
+        "callsite": 10384769,
+        "returnAddress": 10384774
+      },
+      {
+        "kind": "return",
+        "address": 10384800,
+        "esp": 50393068
+      },
+      {
+        "kind": "enter",
+        "address": 10229808,
+        "esp": 50393064,
+        "callsite": 10384780,
+        "returnAddress": 10384785
+      },
+      {
+        "kind": "return",
+        "address": 10229808,
+        "esp": 50393068
+      },
+      {
+        "kind": "return",
+        "address": 10384704,
+        "esp": 50393080
+      },
+      {
+        "kind": "enter",
+        "address": 8894016,
+        "esp": 50393072,
+        "callsite": 11894226,
+        "returnAddress": 11894231
+      },
+      {
+        "kind": "enter",
+        "address": 8893851,
+        "esp": 50393064,
+        "callsite": 8894020,
+        "returnAddress": 8894025
+      },
+      {
+        "kind": "enter",
+        "address": 8896184,
+        "esp": 50393052,
+        "callsite": 8893858,
+        "returnAddress": 8893863
+      },
+      {
+        "kind": "return",
+        "address": 8896184,
+        "esp": 50393008
+      }
+    ],
+    "registers": {
+      "eax": 50393044,
+      "ebx": 0,
+      "ecx": 25809132,
+      "edx": 25809132,
+      "esi": 9088106,
+      "edi": 0,
+      "ebp": 50393060,
+      "esp": 50393000,
+      "eip": 8893875,
+      "eflags": 132
+    },
+    "stop": "dispatch at 0x8aac6a: unavailable",
+    "fs": {
+      "provenance": "SYNTHETIC_GENERIC_X86_THREAD_FIXTURE",
+      "fsBase": 51380224,
+      "exceptionHead": 50393044,
+      "originalThreadInitialization": false,
+      "exceptionDispatchSupported": false
+    },
+    "fsAccesses": [
+      {
+        "operation": "read",
+        "base": 51380224,
+        "offset": 0,
+        "value": 4294967295
+      },
+      {
+        "operation": "write",
+        "base": 51380224,
+        "offset": 0,
+        "value": 50393044
+      }
+    ],
+    "fsConfigured": true,
+    "transitions": 502,
+    "accessBytes": 597,
+    "mappedBytes": 40960,
+    "durationMs": 94.59999999403954,
+    "engineMemoryBytes": 41418752,
+    "limits": {
+      "instructions": 10000,
+      "depth": 64,
+      "writes": 2000,
+      "accessBytes": 65536,
+      "wallMs": 1000,
+      "transitions": 100000
+    },
+    "classification": "ORIGINAL_BYTES_EXPLICIT_SYNTHETIC_THREAD_NOT_STARTUP"
+  },
+  "comparison": {
+    "engineHooks": true,
+    "instructions": true,
+    "registers": true,
+    "writes": true,
+    "trace": true,
+    "fs": true,
+    "fsAccesses": true,
+    "reads": true,
+    "flagsKnown": true,
+    "states": true,
+    "memory": true,
+    "stop": true
+  },
+  "mismatches": [],
+  "wasmMs": 3.399999998509884,
+  "memoryBytes": 51445760,
+  "sourceSha256": "6b10551649fd70fa630bd7454fd953f51555fa2dd2112faae84ac8ca97844bcd",
+  "originalStartupReachability": "UNVERIFIED",
+  "cpuSimdInitializerTested": false,
+  "backendTransitionsTested": false,
+  "privateEngineDiscardedAfterEveryRun": true
+}
