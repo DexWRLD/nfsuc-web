@@ -1,4 +1,5 @@
 import { createUndercoverProcess } from '../host/uc-unified';
+import { describeCrtState } from '../host/uc-crt-state';
 import { UcDownloadManager } from './uc-download-manager';
 import { MemoryAssetStore, openOpfsAssetStore } from './uc-asset-cache';
 
@@ -62,6 +63,7 @@ export async function runUnifiedIntegration(signal: AbortSignal) {
     throw new Error('Unexpected connected Apt initialization result');
   }
   const initialization = {
+    crtProviderState: describeCrtState(process.memory),
     root: '0x00B57DC0', staticPointerCell: '0x00B6370C', receiverSource: 'Original MOV ECX,0x0189D0A0 at 0x00B57DC3',
     entered: initializationEntered, trace: initializationTrace, globalWrites: initializationWrites,
     threadFixture, linkedThread: process.threads.snapshot(), fsAccesses: [...process.threads.accesses],

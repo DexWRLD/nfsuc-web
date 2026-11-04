@@ -5,7 +5,7 @@ ROOT=Path(__file__).resolve().parents[1]
 A=ROOT/"analysis"/"undercover"
 SOURCE="6b10551649fd70fa630bd7454fd953f51555fa2dd2112faae84ac8ca97844bcd"
 PRIORITIES={
- 0x00B57DC0:("ordinary static Apt initialization","Constructor and wrapper entry verified; cleanup stops at 0x0087B59B",1),
+ 0x00B57DC0:("ordinary static Apt initialization","Constructor/registrar/prolog verified with thread fixture; preserve provider trap at 0x0087B5B3",1),
  0x009E7540:("Apt header-group constructor","Preserve complete unified caller/return regression",1),
  0x009E75A0:("Apt header initializer","Verified leaf; no separate function-count work needed",3),
  0x009C1830:("Apt work-state initializer","Verified field writes and return; find next genuine consumer",2),
@@ -14,6 +14,8 @@ PRIORITIES={
  0x0087BEB8:("SEH frame prolog","Normal path verified with explicit synthetic FS thread; original startup remains unverified",2),
  0x0087BEFD:("SEH frame epilog","Normal restoration fixture verified; exception dispatch unsupported",2),
  0x008AAC6A:("rejected cleanup provider pointer","Inside instruction at 0x008AAC69; preserve dispatch rejection, find original provider initialization",1),
+ 0x0087BD95:("CRT cookie/startup wrapper","Static direct order verified; prove effective provider binding and entry reachability before admission",1),
+ 0x0087BCB3:("pre-C cleanup sentinel initializer","Original stores proven but prior __set_app_type-shaped and encode-pointer legacy bindings remain unresolved",1),
  0x008AAC60:("file-backed provider candidate","Verify function entry and high stack-offset inputs; not an import declaration",2),
  0x01FCA510:("PE entry","Entry control flow unresolved; preserve boundary",0),
  0x008101B0:("ordinary manager constructor","Verify ordinary callers and required factory state",1),
@@ -102,9 +104,16 @@ def main():
   groups[group].append(dict(name=name,address=row[1],signature=row[3] if len(row)>3 else None,
    ownership="requires API contract review; no generic success stub",
    adapter_status="candidate platform API; not verified by this inventory"))
- (A/"windows-service-inventory.json").write_text(json.dumps(dict(
+ service_inventory=dict(
   note="Name-based triage only. Signatures are recovered Ghidra metadata, not proven ABI.",
-  groups=dict(sorted(groups.items()))),indent=2)+"\n")
+  groups=dict(sorted(groups.items())))
+ crt_path=A/"crt-provider-binding-phase70.json"
+ if crt_path.is_file():
+  crt=json.loads(crt_path.read_text(encoding="utf-8"))
+  service_inventory["verified_active_pe_imports"]={"sourceSha256":crt["sourceSha256"],"evidence":"crt-provider-binding-phase70.json",
+   "note":"Raw PE DLL/symbol identities verified; positional legacy correspondence is not runtime binding. No adapter or service executed.",
+   "entries":[{"dll":p["dll"],"symbol":p["symbol"],"activeImportCell":p["activeImportCell"],"legacyCell":p["legacyCell"],"legacyFileValue":p["legacyFileValue"],"runtimeBindingVerified":False,"adapterImplemented":False} for p in crt["providers"]]}
+ (A/"windows-service-inventory.json").write_text(json.dumps(service_inventory,indent=2)+"\n")
  print("Recovery union",len(queue),"dispatch candidates",len(registries),"external declarations",len(imports))
 if __name__=="__main__": main()
 

@@ -238,6 +238,15 @@ test('authorized EA bumper plays over the LAN asset pipeline', { skip: !process.
       assert.equal(evidence.initialization.provider.argument, 0);
       assert.equal(evidence.normalPathRestoration.exceptionHead, 0xffffffff);
       assert.equal(evidence.normalPathRestoration.eaxPreserved, true);
+      const crt = evidence.initialization.crtProviderState;
+      assert.equal(crt.runtimeBindingVerified, false);
+      assert.equal(crt.providers.find(row => row.legacyCell === 0x00b61398).symbol, '_decode_pointer');
+      assert.equal(crt.providers.find(row => row.legacyCell === 0x00b61398).actualLegacyValue, 0x008aac6a);
+      assert.equal(crt.providers.find(row => row.legacyCell === 0x00b61398).activeImportCell, 0x022ce05f);
+      assert.equal(crt.cleanupGlobals.start, 0); assert.equal(crt.cleanupGlobals.end, 0);
+      assert.equal(crt.cookie.initializerExecuted, false);
+      assert.equal(crt.conditionalInitialization.traversalExecuted, false);
+      assert.deepEqual(crt.importedServicesExecuted, []);
       if (process.env.UC_SEH_NODE_EVIDENCE) {
         const node = JSON.parse(fs.readFileSync(process.env.UC_SEH_NODE_EVIDENCE, 'utf8'));
         assert.deepEqual(evidence.initialization.trace, node.trace);
