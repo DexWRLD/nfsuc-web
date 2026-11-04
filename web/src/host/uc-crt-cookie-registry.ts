@@ -58,6 +58,90 @@ export const CRT_COOKIE_REGISTRY = {
     8897271
   ],
   "instructionCount": 52,
+  "startup": {
+    "entry": 8895293,
+    "endExclusive": 8895482,
+    "bodySha256": "0128054d21e57fb02be59134259d84d3c405f7d73b9cd9a78ed9af6df5903a1e",
+    "instructionStarts": [
+      8895293,
+      8895295,
+      8895300,
+      8895305,
+      8895307,
+      8895310,
+      8895316,
+      8895319,
+      8895322,
+      8895327,
+      8895328,
+      8895329,
+      8895330,
+      8895336,
+      8895338,
+      8895340,
+      8895342,
+      8895344,
+      8895346,
+      8895347,
+      8895350,
+      8895352,
+      8895357,
+      8895363,
+      8895365,
+      8895367,
+      8895368,
+      8895373,
+      8895375,
+      8895377,
+      8895379,
+      8895384,
+      8895385,
+      8895387,
+      8895392,
+      8895394,
+      8895396,
+      8895402,
+      8895407,
+      8895412,
+      8895417,
+      8895418,
+      8895419,
+      8895421,
+      8895423,
+      8895430,
+      8895435,
+      8895440,
+      8895446,
+      8895451,
+      8895453,
+      8895455,
+      8895460,
+      8895465,
+      8895470,
+      8895471,
+      8895472
+    ],
+    "instructionCount": 57,
+    "sehProlog": {
+      "size": 16,
+      "scope": 13276152,
+      "callsite": 8895300,
+      "target": 8896184
+    },
+    "fsSelfRead": 8895310,
+    "ownerTokenRead": 8895316,
+    "firstSynchronization": {
+      "callsite": 8895330,
+      "cell": 11932084,
+      "name": "InterlockedCompareExchange"
+    },
+    "firstUnsupportedDependency": {
+      "callsite": 8895412,
+      "target": 8897074,
+      "name": "_initterm_e stub via legacy 0x00B613B4"
+    },
+    "classification": "HOST_SCHEDULED_BOUNDED_CRT_STARTUP_PREFIX"
+  },
   "services": [
     {
       "callsite": 8897177,
@@ -128,11 +212,26 @@ export const CRT_COOKIE_REGISTRY = {
         "KERNEL32.dll"
       ],
       "originalEffectiveBindingVerified": false
+    },
+    {
+      "callsite": 8895330,
+      "cell": 11932084,
+      "rawValue": 9089150,
+      "name": "InterlockedCompareExchange",
+      "record": 13283454,
+      "argumentBytes": 12,
+      "convention": "stdcall",
+      "bytes": "ff15b411b600",
+      "advertisedProviders": [
+        "KERNEL32.dll"
+      ],
+      "originalEffectiveBindingVerified": false
     }
   ],
   "unsupportedInstruction": 8897248,
   "classification": "HOST_SCHEDULED_DIAGNOSTIC_NOT_ORIGINAL_PE_STARTUP",
-  "moduleSha256": "7859c00ff1145937b25076452ba5afc152171bccea95240b68b5a78c0bfe3cc1",
+  "moduleSha256": "2efbe299341b495f8b2cf73cd792a04e2a9048dd40172b930c8a20787c24f82c",
   "sourceSha256": "6b10551649fd70fa630bd7454fd953f51555fa2dd2112faae84ac8ca97844bcd",
-  "normalBindingsUnchanged": 14
+  "normalBindingsUnchanged": 14,
+  "diagnosticBodies": 16
 } as const;

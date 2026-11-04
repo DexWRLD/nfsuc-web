@@ -145,7 +145,10 @@ void execute(u32 address) { switch(address) {
     if crt_cookie_output is not None:
         import uc_crt_cookie
         cookie,meta=uc_crt_cookie.source(raw,info)
-        variant=exports.replace("default: __builtin_trap();", "case 0x0087c264u: sub_0087c264(&cpu); return;\ndefault: __builtin_trap();")
+        cases=("case 0x0087c264u: sub_0087c264(&cpu); return;\n"
+               "case 0x0087bb3du: sub_0087bb3d(&cpu); return;\n"
+               "default: __builtin_trap();")
+        variant=exports.replace("default: __builtin_trap();", cases)
         crt_cookie_output.mkdir(parents=True,exist_ok=True)
         with tempfile.TemporaryDirectory() as temp:
             source=Path(temp)/"crt-cookie.c"

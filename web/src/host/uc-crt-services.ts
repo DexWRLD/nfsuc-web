@@ -29,7 +29,9 @@ export class CrtCompatibilityNamespace {
     for(let i=0;i<=site.name.length;i++)if(this.memory.read8(site.record+2+i)!==(i===site.name.length?0:site.name.charCodeAt(i)))throw new Error('Compatibility import-name record changed');
     const before=cpu.esp,ret=this.memory.read32(before);
     if(ret!==site.callsite+6)throw new GuestFault(ret,'compatibility','original return address mismatch');
-    const args=site.argumentBytes?[this.memory.read32(before+4)]:[];
+    const argCount=site.argumentBytes/4;
+    const args:number[]=[];
+    for(let i=0;i<argCount;i++)args.push(this.memory.read32(before+4+i*4));
     const event:Record<string,unknown>={namespace:'compat.kernel32',name:site.name,callsite:site.callsite,cell:site.cell,rawEffectiveTarget:target,arguments:args,espBefore:before,returnAddress:ret,hostSubstitution:true,originalLoaderBindingObserved:false,environment:this.environment.provenance,status:'ENTERED'};
     this.calls.push(event);
     try {
@@ -48,6 +50,19 @@ export class CrtCompatibilityNamespace {
       else if(site.name==='GetCurrentThreadId')cpu.eax=this.environment.threadId;
       else if(site.name==='GetTickCount'){
         const tick=this.environment.tickCount();if(!Number.isInteger(tick)||tick<0||tick>0xffffffff)throw new Error('Invalid tick count');cpu.eax=tick;
+      }else if(site.name==='InterlockedCompareExchange'){
+        // Win32 x86 stdcall LONG InterlockedCompareExchange(LONG*, LONG Exchange, LONG Comperand).
+        // Single-thread compatibility: read/compare/store without concurrent guest threads.
+        // https://learn.microsoft.com/en-us/windows/win32/api/winnt/nf-winnt-interlockedcompareexchange
+        const [destination,exchange,comperand]=args;
+        this.memory.assertWritable(destination,4);
+        const previous=this.memory.read32(destination);
+        if(previous===comperand){
+          this.memory.write32(destination,exchange);
+          this.hostWrites.push({address:destination,value:exchange,service:site.name});
+          event.exchanged=true;
+        }else event.exchanged=false;
+        event.previous=previous;cpu.eax=previous;
       }else throw new Error('Unsupported compatibility service');
       cpu.esp=(before+4+site.argumentBytes)>>>0;cpu.eip=ret;
       event.eax=cpu.eax;event.espAfter=cpu.esp;event.status='RETURNED';return true;

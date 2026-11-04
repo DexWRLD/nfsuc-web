@@ -128,13 +128,28 @@ export class GuestDispatcher {
 
   private contract(cpu: GuestCpu, target: DispatchTarget, ordinaryEsp: number) {
     if (target.frameContract === 'seh-prolog4') {
-      if (this.memory.read32(cpu.esp + 4) !== 0x00ca9380 || this.memory.read32(cpu.esp + 8) !== 0x14) {
+      // Original SEH4 prolog subtracts the caller size argument. Reviewed frames:
+      // cleanup registrar  size=0x14 scope=0x00CA9380; CRT startup size=0x10 scope=0x00CA93F8.
+      const scope = this.memory.read32(cpu.esp + 4);
+      const size = this.memory.read32(cpu.esp + 8);
+      const cleanup = scope === 0x00ca9380 && size === 0x14;
+      const startup = scope === 0x00ca93f8 && size === 0x10;
+      if (!cleanup && !startup) {
         throw new GuestFault(target.address, 'call', 'unsupported SEH frame inputs');
       }
-      return { esp: cpu.esp - 44, ebp: cpu.esp + 8, eax: undefined as number | undefined };
+      // After ret: esp = entry_esp - 8 - size - 16 = entry_esp - (24 + size).
+      return { esp: cpu.esp - (24 + size), ebp: cpu.esp + 8, eax: undefined as number | undefined };
     }
     if (target.frameContract === 'seh-epilog4') {
-      if (cpu.esp !== cpu.ebp - 0x38 || this.memory.read32(cpu.ebp - 0x18) !== cpu.ebp - 0x34) {
+      // [ebp-0x18] holds esp after the prolog registration push sequence (= ebp - 32 - size).
+      if (!Number.isInteger(cpu.ebp) || cpu.ebp < 0x20 || cpu.ebp % 4) {
+        throw new GuestFault(target.address, 'call', 'unbalanced SEH frame');
+      }
+      let registrationEsp: number;
+      try { registrationEsp = this.memory.read32(cpu.ebp - 0x18); }
+      catch { throw new GuestFault(target.address, 'call', 'unbalanced SEH frame'); }
+      const size = (cpu.ebp - 32 - registrationEsp) >>> 0;
+      if ((size !== 0x10 && size !== 0x14) || cpu.esp !== ((registrationEsp - 4) >>> 0)) {
         throw new GuestFault(target.address, 'call', 'unbalanced SEH frame');
       }
       return { esp: cpu.ebp + 4, ebp: this.memory.read32(cpu.ebp), eax: cpu.eax };

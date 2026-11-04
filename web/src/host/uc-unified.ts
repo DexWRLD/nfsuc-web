@@ -149,7 +149,12 @@ export async function createUndercoverProcess(description: unknown, payload: Uin
       || typeof exports.get_register !== 'function' || typeof exports.get_flags !== 'function'
       || typeof exports.get_flags_known !== 'function' || typeof exports.set_flags !== 'function') throw new Error('Unified module exports missing');
   const activeBindings: {address:number;convention:'cdecl'|'stdcall'|'thiscall';argumentBytes:number;frameContract?:'seh-prolog4'|'seh-epilog4'|null}[]=[...bindings];
-  if(diagnostic)activeBindings.push({address:CRT_COOKIE_REGISTRY.entry,convention:'cdecl',argumentBytes:0,frameContract:null});
+  if(diagnostic){
+    activeBindings.push({address:CRT_COOKIE_REGISTRY.entry,convention:'cdecl',argumentBytes:0,frameContract:null});
+    if('startup' in CRT_COOKIE_REGISTRY && CRT_COOKIE_REGISTRY.startup){
+      activeBindings.push({address:CRT_COOKIE_REGISTRY.startup.entry,convention:'cdecl',argumentBytes:0,frameContract:null});
+    }
+  }
   dispatcher = new GuestDispatcher(memory, [...activeBindings.map(binding => ({
     address: binding.address,
     abi: { convention: binding.convention, argumentBytes: binding.argumentBytes },

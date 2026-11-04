@@ -43,11 +43,47 @@ test('Windows-compatible NT_TIB context preserves ownership fields and resets wi
  assert.equal(g.threads.read(0),0xffffffff);assert.equal(g.threads.read(0x18),0x3100000);assert.equal(g.memory.read32(g.threads.read(0x18)+4),0x3010000);
  assert.equal(t.compatibilityContext.threadId,456);assert.equal(g.memory.read32(0x18b1e58),0);assert.equal(g.memory.read32(0x18b1e5c),0);
  assert.throws(()=>g.threads.initializeWindowsCompatible(123,456),/Reset required/);assert.throws(()=>g.threads.read(0x24),/unsupported/);
- assert.throws(()=>g.call(0x87bb3d),/dispatch/);assert.equal(g.compatibility.calls.length,5);g.reset();assert.equal(g.threads.snapshot().fsBase,null);assert.throws(()=>g.threads.read(0x18),/uninitialized/);
+ assert.throws(()=>g.call(0x87bb3d),/dispatch at 0x87c232/);
+ assert.equal(g.memory.read32(0x18b1e58),1);assert.equal(g.memory.read32(0x18b1e5c),0x3010000);
+ assert.equal(g.compatibility.calls.filter(c=>c.name==='InterlockedCompareExchange').length,1);
+ assert.equal(g.lastInstruction,0x87bbb4);g.reset();assert.equal(g.threads.snapshot().fsBase,null);assert.throws(()=>g.threads.read(0x18),/uninitialized/);
 });
 test('initializer order stays blocked before the first non-null unreviewed C entry',{skip},async()=>{
  const g=await create();const values=[0,1,2,3].map(i=>g.memory.read32(0xb63dc4+i*4));assert.deepEqual(values,[0,0x87bcb3,0x87bfe4,0x87c08b]);
  assert.throws(()=>g.call(0x87c232),/dispatch/);assert.throws(()=>g.call(0x87bcb3),/dispatch/);assert.equal(g.memory.read32(0x18b1e68),0);assert.equal(g.memory.read32(0x18b1e6c),0);assert.equal(g.compatibility.calls.length,0);
+});
+test('bounded CRT startup prefix uses SEH 0x10/CA93F8, FS owner token, ICE and stops at _initterm_e',{skip},async()=>{
+ const g=await create();g.call(0x87c264);g.threads.initializeWindowsCompatible(123,456);
+ assert.throws(()=>g.call(0x87bb3d),/dispatch at 0x87c232/);
+ assert.equal(g.lastInstruction,0x87bbb4);assert.equal(g.cpu.eip,0x87bbb4);
+ assert.ok(g.instructions.includes(0x87bb44));assert.ok(g.instructions.includes(0x87bb4e));assert.ok(g.instructions.includes(0x87bb62));
+ assert.equal(g.memory.read32(0x18b1e58),1);assert.equal(g.memory.read32(0x18b1e5c),0x3010000);
+ assert.equal(g.memory.read32(0x18b1e68),0);assert.equal(g.memory.read32(0x18b1e6c),0);
+ const ice=g.compatibility.calls.find(c=>c.name==='InterlockedCompareExchange');
+ assert.equal(ice.status,'RETURNED');assert.equal(ice.hostSubstitution,true);assert.equal(ice.originalLoaderBindingObserved,false);
+ assert.equal(ice.espAfter-ice.espBefore,16);assert.deepEqual(ice.arguments,[0x18b1e5c,0x3010000,0]);assert.equal(ice.eax,0);assert.equal(ice.exchanged,true);
+ assert.ok(g.compatibility.hostWrites.some(w=>w.address===0x18b1e5c&&w.value===0x3010000&&w.service==='InterlockedCompareExchange'));
+ assert.ok(g.writeLog.some(w=>w.address===0x18b1e58&&w.value===1&&w.instruction===0x87bba4));
+ assert.equal(g.memory.read32(0xb611b4),0x8ab07e);assert.equal(g.memory.read32(0xb613b4),0x8aacca);
+});
+test('startup SEH frame rejects unknown size/scope and original-only still refuses host ICE',{skip},async()=>{
+ const g=await create('original-only');g.threads.initializeWindowsCompatible(1,2);
+ assert.throws(()=>g.call(0x87bb3d),/dispatch at 0x8ab07e/);assert.equal(g.lastInstruction,0x87bb62);
+ assert.equal(g.memory.read32(0x18b1e58),0);assert.equal(g.memory.read32(0x18b1e5c),0);assert.equal(g.compatibility,null);
+ const h=await create();h.threads.initialize();
+ assert.throws(()=>h.call(0x87beb8,[0x14,0xca93f8]),/unsupported SEH frame inputs/);
+ assert.throws(()=>h.call(0x87beb8,[0x10,0xca9380]),/unsupported SEH frame inputs/);
+ const S=0x300ef00;h.memory.write32(S,0xdec0de);h.memory.write32(S+4,0xb602e0);h.memory.write32(S-4,0x10);h.memory.write32(S-8,0xca93f8);h.cpu.esp=S-8;
+ h.dispatcher.call(h.cpu,0x87beb8,0x87bb49);assert.equal(h.cpu.ebp,S-4);assert.equal(h.cpu.esp,S-52);
+});
+test('foreign owner forces Sleep path; Sleep remains unimplemented',{skip},async()=>{
+ const g=await create();g.call(0x87c264);g.threads.initializeWindowsCompatible(123,456);
+ g.memory.write32(0x18b1e5c,0xdead0001); // other owner token
+ assert.throws(()=>g.call(0x87bb3d),/dispatch at 0x8aa0d0/); // Sleep raw target
+ assert.equal(g.lastInstruction,0x87bb7d);assert.equal(g.memory.read32(0x18b1e58),0);assert.equal(g.memory.read32(0x18b1e5c),0xdead0001);
+ const ice=g.compatibility.calls.filter(c=>c.name==='InterlockedCompareExchange');
+ assert.ok(ice.length>=1);assert.equal(ice[0].exchanged,false);assert.equal(ice[0].eax,0xdead0001);
+ assert.ok(!g.compatibility.calls.some(c=>c.name==='Sleep'));
 });
 
 test('clock errors and truncated output ranges propagate without partial host writes',{skip},async()=>{
