@@ -55,7 +55,7 @@ def inspect(image_path, repository):
         "independent_initialization_root": "0x00B57DC0",
         "independent_initialization_evidence": "runtime-phase72.md and edge-execution-phase72.json",
         "provider_provenance_gate": {"evidence": "ordinary-import-call-evidence-phase71.json", "status": "BLOCKED_UNAVAILABLE_PROVIDER_PROVENANCE", "repeat_search": "CLOSED_UNTIL_NEW_WRITER_OR_BINDING_EVIDENCE"},
-        "runtime_strategy": {"evidence": "browser-x86-feasibility-phase72.json", "native_differential_fixture_verified": True, "browser_differential_verified": True, "browser_engine_integrated": False, "decision": "NO_GO_ADOPTION", "original_startup_advanced": False},
+        "runtime_strategy": {"evidence": "browser-x86-feasibility-phase72.json", "native_differential_fixture_verified": True, "browser_differential_verified": True, "browser_engine_integrated": False, "decision": "NO_GO_ADOPTION", "cost_decision": "NO_GO_CLOSE_APPROACH", "cost_evidence": "browser-x86-cost-breakdown-phase73.json", "further_cpu_tuning_recommended": False, "original_startup_advanced": False},
         "crt_initialization_order": {"evidence": "crt-initialization-order-phase70.json", "classification": "STATIC_CONDITIONAL_ONLY", "runtime_binding_verified": False, "walker_traversal_executed": False},
         "cleanup_frontier": {"callsite": "0x0087B5B3", "target": "0x008AAC6A", "cell": "0x00B61398", "thread": "EXPLICIT_SYNTHETIC_FIXTURE", "original_thread_initialization": False, "registration_completed": False},
         "independent_root_reachability_from_pe_entry": "UNVERIFIED",

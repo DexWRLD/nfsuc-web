@@ -1,0 +1,14 @@
+// Phase 73 local-only worker runner. Reuses the reviewed external engine and manifest.
+import fs from 'node:fs/promises';import path from 'node:path';import os from 'node:os';import {createHash} from 'node:crypto';import * as esbuild from 'esbuild';
+import {startUcLanServer} from './uc-lan-server.mjs';
+const [enginePath,assetRoot,output,stage='baseline']=process.argv.slice(2);const temp=await fs.mkdtemp(path.join(os.tmpdir(),'uc-x86-cost-'));let server,browser;
+try{
+ const engine=await fs.readFile(enginePath);if(createHash('sha256').update(engine).digest('hex')!=='643adbbb0c77eadb71182f116c9da0860814221a25194dac3ed561589929ef6d')throw new Error('Reviewed engine digest mismatch');
+ const bundle=await esbuild.build({entryPoints:['tools/uc-browser-x86-cost-worker.mjs'],bundle:true,format:'iife',platform:'browser',write:false});
+ await fs.writeFile(path.join(temp,'worker.js'),bundle.outputFiles[0].contents);await fs.writeFile(path.join(temp,'engine.js'),engine);await fs.copyFile('../analysis/undercover/browser-x86-admission-phase72.json',path.join(temp,'admission.json'));await fs.writeFile(path.join(temp,'index.html'),'<!doctype html><title>Phase 73 bounded profiling</title>');
+ server=await startUcLanServer({bind:'127.0.0.1',port:0,dist:temp,assetRoot,manifest:path.join(assetRoot,'phase52-manifest.json'),certDir:path.join(temp,'certs')});
+ const {chromium}=await import('playwright');browser=await chromium.launch({channel:'msedge',headless:true});const context=await browser.newContext({ignoreHTTPSErrors:true});const page=await context.newPage();await page.goto(server.urls[0]);
+ const began=performance.now();const result=await page.evaluate(stage=>new Promise((resolve,reject)=>{const w=new Worker('/worker.js'),timer=setTimeout(()=>{w.terminate();reject(new Error('60s outer worker watchdog'));},60000);let bootPingMs,warmPingMs,pingStarted=performance.now();w.onmessage=e=>{if(e.data.ping){if(bootPingMs===undefined){bootPingMs=performance.now()-pingStarted;pingStarted=performance.now();w.postMessage({ping:true});}else{warmPingMs=performance.now()-pingStarted;w.postMessage({stage});}return;}clearTimeout(timer);w.terminate();resolve({...e.data,workerBootPingMs:bootPingMs,workerWarmPingMs:warmPingMs})};w.onerror=e=>{clearTimeout(timer);w.terminate();reject(new Error(e.message))};w.postMessage({ping:true});}),stage);
+ result.browserVersion=browser.version();result.workerRoundTripMs=performance.now()-began;result.workerBundleBytes=bundle.outputFiles[0].contents.length;
+ await fs.writeFile(output,JSON.stringify(result,null,2)+'\n');if(result.error)throw new Error(result.error);console.log(JSON.stringify({baseline:result.baseline,profiles:result.profiles?.map(p=>p.costs),workerRoundTripMs:result.workerRoundTripMs},null,2));
+}finally{await browser?.close();await server?.close();await fs.rm(temp,{recursive:true,force:true});}
